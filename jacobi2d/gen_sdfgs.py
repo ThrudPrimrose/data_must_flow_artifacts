@@ -4,6 +4,8 @@ import numpy
 import dace
 from dace.transformation.passes.vectorization.vectorize_cpu import VectorizeCPU
 
+S = dace.symbol("S")
+
 @dace.program
 def jacobi2d(A: dace.float64[S, S], B: dace.float64[S, S], tsteps: dace.int64):  #, N, tsteps):
     for t in range(tsteps):
@@ -44,8 +46,7 @@ def run_vectorization_test(dace_func,
     sdfg.name = sdfg_name
     if simplify:
         sdfg.simplify(validate=True, validate_all=True, skip=skip_simplify or set())
-    if save_sdfgs and sdfg_name:
-        sdfg.save(f"{sdfg_name}.sdfg")
+
     c_sdfg = sdfg.compile()
 
     # Vectorized SDFG
@@ -54,8 +55,6 @@ def run_vectorization_test(dace_func,
 
     VectorizeCPU(vector_width=vector_width).apply_pass(copy_sdfg, {})
 
-    if save_sdfgs and sdfg_name:
-        copy_sdfg.save(f"{sdfg_name}_vectorized.sdfg")
     c_copy_sdfg = copy_sdfg.compile()
 
     # Run both
@@ -84,7 +83,6 @@ def test_jacobi2d():
                                'tsteps': 5,
                            },
                            vector_width=8,
-                           save_sdfgs=True,
                            sdfg_name="jacobi2d")
 
 if __name__ == "__main__":
@@ -100,8 +98,16 @@ if __name__ == "__main__":
     jacobi2d_sdfg_vectorized.save("jacobi2d_vectorized_static_veclen_8.sdfgz", compress=True)
 
     jacobi2d_sdfg_vectorized2 = copy.deepcopy(jacobi2d_sdfg)
-    VectorizeCPU(vector_width=8192).apply_pass(jacobi2d_sdfg_vectorized2, {})
-    jacobi2d_sdfg.name = "jacobi2d_vectorized_static_veclen_8192"
-    jacobi2d_sdfg_vectorized2.save("jacobi2d_vectorized_static_veclen_8192.sdfgz", compress=True)
+    VectorizeCPU(vector_width=8192, insert_copies=False).apply_pass(jacobi2d_sdfg_vectorized2, {})
+    jacobi2d_sdfg_vectorized2.name = "jacobi2d_vectorized_static_veclen_8192_no_cpy"
+    jacobi2d_sdfg_vectorized2.save("jacobi2d_vectorized_static_veclen_8192_no_cpy.sdfgz", compress=True)
 
-    # TODO @Yakup: Generate fused data-loads for Jacobi2D
+    jacobi2d_sdfg_vectorized3 = copy.deepcopy(jacobi2d_sdfg)
+    VectorizeCPU(vector_width=8, insert_copies=True, fuse_overlapping_loads=True).apply_pass(jacobi2d_sdfg_vectorized3, {})
+    jacobi2d_sdfg_vectorized3.name = "jacobi2d_vectorized_static_veclen_8_fused"
+    jacobi2d_sdfg_vectorized3.save("jacobi2d_vectorized_static_veclen_8_fused.sdfgz", compress=True)
+
+    jacobi2d_sdfg_vectorized4 = copy.deepcopy(jacobi2d_sdfg)
+    VectorizeCPU(vector_width=8, insert_copies=False, fuse_overlapping_loads=True).apply_pass(jacobi2d_sdfg_vectorized4, {})
+    jacobi2d_sdfg_vectorized4.name = "jacobi2d_vectorized_static_veclen_8_no_cpy"
+    jacobi2d_sdfg_vectorized4.save("jacobi2d_vectorized_static_veclen_8_no_cpy.sdfgz", compress=True)
