@@ -1,6 +1,10 @@
 import dace
 import subprocess
 import sys
+import numpy
+from dace.sdfg.state import LoopRegion
+from dace.transformation.interstate import LoopToMap
+import copy
 
 compiler_flags = [
     "-fopenmp",
@@ -23,9 +27,9 @@ compiler_flags = [
 includes = [dace.__path__[0] + "/runtime/include"]
 
 
-def analyze_sdfg(sdfg: dace.SDFG):
+def analyze_sdfg_clang(sdfg: dace.SDFG):
     """
-    Analyzes the given SDFG for vectorization opportunities.
+    Analyzes the given SDFG for vectorization opportunities using Clang's vectorization reports.
 
     Parameters:
         sdfg (dace.SDFG): The SDFG to analyze.
@@ -100,6 +104,62 @@ def analyze_sdfg(sdfg: dace.SDFG):
     return reports, vectorized_loops, unvectorized_loops
 
 
+def get_dynamic_instruction_count(sdfg: dace.SDFG):
+    """
+    Gets the dynamic instruction count of the given SDFG by compiling and running it.
+
+    Parameters:
+        sdfg (dace.SDFG): The SDFG to analyze.
+    """
+
+    # Install PAPI with apt get papi-tools libpapi-dev
+    sdfg.clear_instrumentation_reports()
+
+    # Wrap the SDFG into a single iteration loop with PAPI instrumentation
+    lp = LoopRegion("papi_region", "i < 1", "i", "i = 0", "i = i + 1")
+    node_mapping = {}
+    to_remove = set()
+
+    for n in sdfg.nodes():
+        n_copy = copy.deepcopy(n)
+        node_mapping[n] = n_copy
+        lp.add_node(n_copy)
+        to_remove.add(n)
+    for src, dst, edge in sdfg.edges():
+        src_copy = node_mapping[src]
+        dst_copy = node_mapping[dst]
+        lp.add_edge(src_copy, dst_copy, copy.deepcopy(edge.data))
+
+    sdfg.add_node(lp, is_start_block=True)
+    for n in to_remove:
+        sdfg.remove_node(n)
+
+    xform = LoopToMap()
+    xform._sdfg = sdfg
+    xform.loop = lp
+    xform.apply(sdfg, sdfg)
+
+    appl_cnt = 0
+    for node in sdfg.start_state.nodes():
+        if isinstance(node, dace.sdfg.nodes.MapEntry):
+            node.instrument = dace.InstrumentationType.PAPI_Counters
+            appl_cnt += 1
+    assert appl_cnt == 1
+
+    obj = sdfg.compile()
+
+    ### This part needs to be made general
+    _S = 10
+    A = numpy.random.random((_S, _S))
+    B = numpy.random.random((_S, _S))
+    obj(A=A, B=B, S=_S, tsteps=5)
+
+    ############
+
+    report = sdfg.get_latest_report()
+    print(report)
+
+
 if __name__ == "__main__":
     # We excpect a SDFG file path as argument
     if len(sys.argv) != 2:
@@ -108,7 +168,10 @@ if __name__ == "__main__":
     sdfg_file_path = sys.argv[1]
     sdfg = dace.SDFG.from_file(sdfg_file_path)
 
-    reports, vec_loops, unvec_loops = analyze_sdfg(sdfg)
+    get_dynamic_instruction_count(sdfg)
+    exit(0)
+
+    reports, vec_loops, unvec_loops = analyze_sdfg_clang(sdfg)
     print(f"{sdfg.name} Vectorization Analysis Report")
     print("=============================")
     for loc, messages in reports.items():
