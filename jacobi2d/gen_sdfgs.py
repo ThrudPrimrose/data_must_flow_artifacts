@@ -24,19 +24,6 @@ def run_vectorization_test(dace_func,
                            skip_simplify=None,
                            save_sdfgs=False,
                            sdfg_name=None):
-    """
-    Run vectorization test and compare results.
-
-    Args:
-        dace_func: DaCe program function to test
-        arrays: Dict of numpy arrays (will be copied internally)
-        params: Dict of additional parameters to pass to compiled functions
-        vector_width: Vector width for vectorization
-        simplify: Whether to simplify the SDFG
-        skip_simplify: Set of passes to skip during simplification
-        save_sdfgs: Whether to save SDFGs to disk
-        sdfg_name: Base name for saved SDFGs
-    """
     # Create copies for comparison
     arrays_orig = {k: copy.deepcopy(v) for k, v in arrays.items()}
     arrays_vec = {k: copy.deepcopy(v) for k, v in arrays.items()}
