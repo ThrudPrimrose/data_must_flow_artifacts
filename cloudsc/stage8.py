@@ -23,6 +23,8 @@ from dace.transformation.passes.remove_redundant_copy_tasklets import RemoveRedu
 from dace.transformation.passes.scalar_to_symbol import ScalarToSymbolPromotion
 from dace.transformation.passes.simplify import InlineSDFGs
 from dace.transformation.passes.split_tasklets import SplitTasklets
+from dace.transformation.passes.vectorization.vectorize import Vectorize
+from dace.transformation.passes.vectorization.vectorize_cpu import VectorizeCPU
 from run_and_compare import run_and_compare
 from loop_check import count_loops
 from dace.transformation.passes.lift_trivial_if import LiftTrivialIf
@@ -34,78 +36,81 @@ from dace.transformation.interstate import InlineSDFG, InlineMultistateSDFG
 
 
 original_sdfg = dace.SDFG.from_file("cloudsc_inner.sdfgz")
-sdfg = dace.SDFG.from_file("stage6.sdfgz")
-sdfg.name = "cloudsc_stage6"
+using_wip = False
+if  os.path.exists("stage8_wip.sdfgz"):
+    sdfg = dace.SDFG.from_file("stage8_wip.sdfgz")
+    sdfg.name = "cloudsc_stage8_wip"
+    using_wip = True
+else:
+    sdfg = dace.SDFG.from_file("stage7.sdfgz")
+    sdfg.name = "cloudsc_stage7"
 
-for n, g in original_sdfg.all_nodes_recursive():
-    if isinstance(n, dace.nodes.NestedSDFG) and (n.label == "foedelta_srt4" or n.sdfg.label == "foedelta_srt4"):
-        cutil.replace_length_one_arrays_with_scalars(n.sdfg)
-        """
-        for n2 in n.sdfg.all_control_flow_blocks():
-            if isinstance(n2, ConditionalBlock):
-                code_str = "(ptare_var_0 - rtt_var_1) >= 0.0"
-                for cond, body in n2.branches:
-                    cond = CodeBlock(
-                        "(ptare_var_0[0] - rtt_var_1[0]) >= 0.0"
-                    )
-        """
+for sd in [sdfg, original_sdfg]:
+    for n, g in sd.all_nodes_recursive():
+        if isinstance(n, dace.nodes.NestedSDFG) and (n.label == "foedelta_srt4" or n.sdfg.label == "foedelta_srt4"):
+            cutil.replace_length_one_arrays_with_scalars(n.sdfg)
+            state: dace.SDFGState = set(n.sdfg.all_states()).pop()
+            tasklet = {n for n in state.nodes() if isinstance(n, dace.nodes.Tasklet)}.pop()
+            for name, in_name in [("ptare_var_0", "_in1"), ("rtt_var_1", "_in2")]:
+                if name in state.sdfg.symbols:
+                    state.sdfg.remove_symbol(name)
+                if name not in state.sdfg.arrays:
+                    state.sdfg.add_scalar(name, dace.float64)
+                state.add_edge(
+                    state.add_access(name), None, tasklet, in_name, dace.memlet.Memlet(f"{name}[0]")
+                )
+                tasklet.add_in_connector(in_name)
+                tasklet.code = CodeBlock(tasklet.code.as_string.replace(name, in_name))
 
-for n, g in sdfg.all_nodes_recursive():
-    if isinstance(n, dace.nodes.NestedSDFG) and (n.label == "foedelta_srt4" or n.sdfg.label == "foedelta_srt4"):
-        cutil.replace_length_one_arrays_with_scalars(n.sdfg)
+def remove_math_dot_call(sdfg: dace.SDFG):
+    for n, g in sdfg.all_nodes_recursive():
+        if isinstance(n, dace.nodes.Tasklet):
+            if "math." in n.code.as_string:
+                no_math_code = n.code.as_string.replace("math.", "")
+                nc = CodeBlock(no_math_code)
+                n.code = nc
 
+def inline(sdfg: dace.SDFG):
+    InlineSDFGs().apply_pass(sdfg, {})
+    for state in sdfg.all_states():
+        for node in state.nodes():
+            if isinstance(node, dace.nodes.NestedSDFG):
+                inline(node.sdfg)
+
+remove_math_dot_call(sdfg)
+remove_math_dot_call(original_sdfg)
+
+if not using_wip:
+    inline(sdfg)
+    inline(original_sdfg)
+
+sdfg.validate()
+original_sdfg.validate()
 
 assert run_and_compare(original_sdfg, sdfg), "Sanity Check 1/2"
 assert run_and_compare(original_sdfg, sdfg), "Sanity Check 2/2"
 
-
-InlineSDFGs().apply_pass(sdfg)
-for n, g in sdfg.all_nodes_recursive():
-    if isinstance(n, dace.nodes.NestedSDFG):
-        InlineSDFGs().apply_pass(n.sdfg)
-InlineSDFGs().apply_pass(sdfg)
-
-assert run_and_compare(original_sdfg, sdfg), "Inline SDFGs 1/2"
-assert run_and_compare(original_sdfg, sdfg), "Inline SDFG 2/2"
-
-#assert run_and_compare(original_sdfg, sdfg), "Stage 8 - sanity check"
-from dace.sdfg.propagation import propagate_memlets_sdfg
-
-for i in range(5):
-    propagate_memlets_sdfg(sdfg)
-    sdfg.validate()
-    for n, g in original_sdfg.all_nodes_recursive():
-        if isinstance(n, dace.nodes.NestedSDFG):
-            propagate_memlets_sdfg(n.sdfg)
-            n.sdfg.validate()
-sdfg.validate()
-sdfg.save("stage7_memprop.sdfgz", compress=True)
-print("Mem Prop")
-assert run_and_compare(original_sdfg, sdfg), "MemProp - (1/2)"
-assert run_and_compare(original_sdfg, sdfg), "MemProp - (2/2)"
-sdfg.apply_transformations_repeated(MapCollapse)
-sdfg.validate()
-for n, g in original_sdfg.all_nodes_recursive():
-    if isinstance(n, dace.nodes.NestedSDFG):
-        n.sdfg.apply_transformations_repeated(MapCollapse)
-print("Map Collapse")
-assert run_and_compare(original_sdfg, sdfg), "MapCollapse - (1/2)"
-assert run_and_compare(original_sdfg, sdfg), "MapCollapse - (2/2)"
-#assert run_and_compare(original_sdfg, sdfg), "Stage 8 - Map Collapse"
+sdfg.reset_cfg_list()
 
 
-for n,g in sdfg.all_nodes_recursive():
-    if isinstance(n, dace.nodes.MapEntry):
-        AssignmentAndCopyKernelToMemsetAndMemcpy(apply_only_on_labels=[n.label]).apply_pass(sdfg, {})
-        sdfg.validate()
-        sdfg.save("stage8_befor_validation.sdfgz", compress=True)
-        print("Assignment And Copy to Memset and Memcpy")
-        assert run_and_compare(original_sdfg, sdfg), "AssignmentAndCopyKernelToMemsetAndMemcpy - (1/2)"
-        assert run_and_compare(original_sdfg, sdfg), "AssignmentAndCopyKernelToMemsetAndMemcpy - (1/2)"
+def has_inner_maps(state: dace.SDFGState, map_entry: dace.nodes.MapEntry) -> bool:
+    for n in state.all_nodes_between(map_entry, state.exit_node(map_entry)):
+        if isinstance(n, dace.nodes.MapEntry):
+            return True
+    return False
 
 
-print("Stage 8 - (1/2)")
-assert run_and_compare(original_sdfg, sdfg), "Stage 8 - (1/2)"
-print("Stage 8 - (2/2)")
-assert run_and_compare(original_sdfg, sdfg), "Stage 8 - (2/2)"
-sdfg.save("stage8.sdfgz", compress=True)
+map_entries = {(n, g) for n, g in sdfg.all_nodes_recursive() if isinstance(n, dace.nodes.MapEntry) and has_inner_maps(g, n) is False}
+
+for i, (map_entry, state) in enumerate(map_entries):
+    print(f"Apply vectorization on map {map_entry.map.label}({map_entry})({map_entry.map}) in state {state}")
+    retdict = VectorizeCPU(vector_width=8, apply_on_maps=[map_entry],
+                insert_copies=True, only_apply_vectorization_pass=True).apply_pass(sdfg, {})
+    applied = retdict[Vectorize.__name__]
+    if applied > 0:
+        sdfg.save(f"stage8_wip.sdfgz", compress=True)
+        print(f"Vectorized Map {i} - (1/2)")
+        assert run_and_compare(original_sdfg, sdfg), f"Vectorized Map {i} - (1/2)"
+        print(f"Vectorized Map {i} - (2/2)")
+        assert run_and_compare(original_sdfg, sdfg), f"Vectorized Map {i} - (2/2)"
+        sdfg.save(f"stage8.sdfgz", compress=True)
