@@ -15,6 +15,42 @@ import seaborn as sns
 import sys
 import numpy as np
 
+
+def plot_speedups(df, y):
+    # Create the bar plot
+    plt = sns.catplot(
+        data=df,
+        y="Name",
+        x=y,
+        kind="bar",
+        errorbar=("ci", 95),
+        height=10,
+        aspect=1.5,
+    )
+
+    # Move y-axis labels inside the bars
+    if True:
+        for idx, p in enumerate(plt.ax.patches):
+            height = p.get_height()
+            label = p.axes.get_yticklabels()[idx].get_text()
+            plt.ax.text(
+                0,
+                p.get_y() + height / 2,
+                f"  {label}",
+                ha="left",
+                va="center",
+                color="white",
+                weight="bold",
+            )
+        plt.ax.set_yticklabels([])
+        plt.ax.set_yticks([])
+
+    # Tight layout, save, and clear
+    plt.tight_layout()
+    plt.savefig(f"{y.replace(' ', '_').lower()}_speedup.pdf")
+    plt.figure.clear()
+
+
 if __name__ == "__main__":
     if len(sys.argv) != 2:
         print("Usage: python vec_plotter.py <csv_file_path>")
@@ -31,52 +67,27 @@ if __name__ == "__main__":
         ["Base SDFG", "Dynamic Instruction Count"]
     ]
     base_counts = base_counts.rename(
-        columns={"Dynamic Instruction Count": "Base Dynamic Instruction Count"}
+        columns={"Dynamic Instruction Count": "Base Dynamic Instruction Count (median)"}
     )
-    merged_df = pd.merge(median_df, base_counts, on="Base SDFG", how="left")
+    df = pd.merge(df, base_counts, on="Base SDFG", how="left")
 
     # Now do the same for the base dynamic cycle count
     base_cycles = median_df[median_df["Base SDFG"] == median_df["Name"]][
         ["Base SDFG", "Dynamic Cycle Count"]
     ]
     base_cycles = base_cycles.rename(
-        columns={"Dynamic Cycle Count": "Base Dynamic Cycle Count"}
+        columns={"Dynamic Cycle Count": "Base Dynamic Cycle Count (median)"}
     )
-    merged_df = pd.merge(merged_df, base_cycles, on="Base SDFG", how="left")
+    df = pd.merge(df, base_cycles, on="Base SDFG", how="left")
 
     # Compute speedups
-    merged_df["Instruction Count Speedup"] = (
-        merged_df["Base Dynamic Instruction Count"]
-        / merged_df["Dynamic Instruction Count"]
+    df["Instruction Count Speedup"] = (
+        df["Base Dynamic Instruction Count (median)"] / df["Dynamic Instruction Count"]
     )
-    merged_df["Cycle Count Speedup"] = (
-        merged_df["Base Dynamic Cycle Count"] / merged_df["Dynamic Cycle Count"]
+    df["Cycle Count Speedup"] = (
+        df["Base Dynamic Cycle Count (median)"] / df["Dynamic Cycle Count"]
     )
 
-    # Plot Instruction Count Speedup
-    sns.barplot(
-        data=merged_df,
-        x="Name",
-        y="Instruction Count Speedup",
-        hue="Base SDFG",
-    )
-    plt.xticks(rotation=45, ha="right")
-    plt.ylabel("Speedup (lower is better)")
-    plt.title("Dynamic Instruction Count Speedup over Base SDFG")
-    plt.tight_layout()
-    plt.savefig("instruction_count_speedup.pdf")
-    plt.clf()
-
-    # Plot Cycle Count Speedup
-    sns.barplot(
-        data=merged_df,
-        x="Name",
-        y="Cycle Count Speedup",
-        hue="Base SDFG",
-    )
-    plt.xticks(rotation=45, ha="right")
-    plt.ylabel("Speedup (lower is better)")
-    plt.title("Dynamic Cycle Count Speedup over Base SDFG")
-    plt.tight_layout()
-    plt.savefig("cycle_count_speedup.pdf")
-    plt.clf()
+    # Plot Speedups
+    plot_speedups(df, "Instruction Count Speedup")
+    plot_speedups(df, "Cycle Count Speedup")
