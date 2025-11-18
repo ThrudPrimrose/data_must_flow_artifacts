@@ -154,7 +154,11 @@ def get_dynamic_instruction_count(sdfg: dace.SDFG):
     obj = sdfg.compile()
     # TODO: Support provided input data
     input_data = get_small_input_data(sdfg)
-    obj(**input_data)
+    try:
+        obj.safe_call(**input_data)
+    except Exception as e:
+        print(f"Error: {e}", file=sys.stderr)
+        return -1, -1
 
     # Extract instruction counts from the report
     report = sdfg.get_latest_report()
