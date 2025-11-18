@@ -46,6 +46,7 @@ def plot_speedups(df, y):
         plt.ax.set_yticks([])
 
     # Tight layout, save, and clear
+    plt.ax.set_xlabel(f"{y} (lower is better)")
     plt.tight_layout()
     plt.savefig(f"{y.replace(' ', '_').lower()}_speedup.pdf")
     plt.figure.clear()
@@ -82,10 +83,10 @@ if __name__ == "__main__":
 
     # Compute speedups
     df["Instruction Count Speedup"] = (
-        df["Base Dynamic Instruction Count (median)"] / df["Dynamic Instruction Count"]
+        df["Dynamic Instruction Count"] / df["Base Dynamic Instruction Count (median)"]
     )
     df["Cycle Count Speedup"] = (
-        df["Base Dynamic Cycle Count (median)"] / df["Dynamic Cycle Count"]
+        df["Dynamic Cycle Count"] / df["Base Dynamic Cycle Count (median)"]
     )
 
     # Plot Speedups
