@@ -2,9 +2,6 @@ import dace
 import subprocess
 import sys
 import numpy
-from dace.sdfg.state import LoopRegion
-from dace.transformation.interstate import LoopToMap
-import copy
 
 compiler_flags = [
     "-fopenmp",
@@ -112,40 +109,17 @@ def get_dynamic_instruction_count(sdfg: dace.SDFG):
         sdfg (dace.SDFG): The SDFG to analyze.
     """
 
+    # Set PAPI instrumentation config
+    dace.config.Config.set(
+        "instrumentation",
+        "papi",
+        "default_counters",
+        value="['PAPI_TOT_INS', 'PAPI_TOT_CYC']",
+    )
+
     # Install PAPI with apt get papi-tools libpapi-dev
     sdfg.clear_instrumentation_reports()
-
-    # Wrap the SDFG into a single iteration loop with PAPI instrumentation
-    lp = LoopRegion("papi_region", "i < 1", "i", "i = 0", "i = i + 1")
-    node_mapping = {}
-    to_remove = set()
-
-    for n in sdfg.nodes():
-        n_copy = copy.deepcopy(n)
-        node_mapping[n] = n_copy
-        lp.add_node(n_copy)
-        to_remove.add(n)
-    for src, dst, edge in sdfg.edges():
-        src_copy = node_mapping[src]
-        dst_copy = node_mapping[dst]
-        lp.add_edge(src_copy, dst_copy, copy.deepcopy(edge.data))
-
-    sdfg.add_node(lp, is_start_block=True)
-    for n in to_remove:
-        sdfg.remove_node(n)
-
-    xform = LoopToMap()
-    xform._sdfg = sdfg
-    xform.loop = lp
-    xform.apply(sdfg, sdfg)
-
-    appl_cnt = 0
-    for node in sdfg.start_state.nodes():
-        if isinstance(node, dace.sdfg.nodes.MapEntry):
-            node.instrument = dace.InstrumentationType.PAPI_Counters
-            appl_cnt += 1
-    assert appl_cnt == 1
-
+    sdfg.instrument = dace.InstrumentationType.PAPI_Counters
     obj = sdfg.compile()
 
     ### This part needs to be made general
