@@ -2,6 +2,7 @@ import dace
 import subprocess
 import sys
 import numpy as np
+import shutil as shutils
 
 compiler_flags = [
     "-fopenmp",
@@ -144,11 +145,15 @@ def get_dynamic_instruction_count(sdfg: dace.SDFG):
         value="['PAPI_TOT_INS', 'PAPI_TOT_CYC']",
     )
 
+    # Clear DaCe cache
+    cache_dir = dace.config.Config.get("default_build_folder")
+    shutils.rmtree(cache_dir, ignore_errors=True)
+
     # Compile and run the SDFG with PAPI instrumentation
-    sdfg.clear_instrumentation_reports()
     sdfg.instrument = dace.InstrumentationType.PAPI_Counters
     obj = sdfg.compile()
-    input_data = get_small_input_data(sdfg)  # XXX: Input data should be given
+    # TODO: Support provided input data
+    input_data = get_small_input_data(sdfg)
     obj(**input_data)
 
     # Extract instruction counts from the report
@@ -170,12 +175,15 @@ if __name__ == "__main__":
         print("Usage: python vec_analysis.py <sdfg_file_paths>")
         sys.exit(1)
 
-    print("Name,Dynamic Instruction Count,Dynamic Cycle Count")
+    print("Name,Dynamic Instruction Count,Dynamic Cycle Count,Base SDFG", flush=True)
     sdfg_file_paths = sys.argv[1:]
     for sdfg_file_path in sdfg_file_paths:
+        file_name = sdfg_file_path.split("/")[-1].split(".")[0]
         sdfg = dace.SDFG.from_file(sdfg_file_path)
-        tot_ins, tot_cyc = get_dynamic_instruction_count(sdfg)
-        print(f"{sdfg.name},{tot_ins},{tot_cyc}")
+
+        for rep in range(5):
+            tot_ins, tot_cyc = get_dynamic_instruction_count(sdfg)
+            print(f"{file_name},{tot_ins},{tot_cyc},{sdfg.name}", flush=True)
 
     # LLVM Clang vectorization analysis (skipped as not expressive enough)
     exit(0)
