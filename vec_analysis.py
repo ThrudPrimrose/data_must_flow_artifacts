@@ -131,7 +131,15 @@ def get_dynamic_instruction_count(sdfg: dace.SDFG):
     ############
 
     report = sdfg.get_latest_report()
-    print(report)
+    tot_ins = 0
+    tot_cyc = 0
+    for uuid_dict in report.counters.values():
+        for sdfg_dict in uuid_dict.values():
+            if "PAPI_TOT_INS" in sdfg_dict:
+                tot_ins += sum(v for l in sdfg_dict["PAPI_TOT_INS"].values() for v in l)
+            if "PAPI_TOT_CYC" in sdfg_dict:
+                tot_cyc += sum(v for l in sdfg_dict["PAPI_TOT_CYC"].values() for v in l)
+    return tot_ins, tot_cyc
 
 
 if __name__ == "__main__":
@@ -142,7 +150,9 @@ if __name__ == "__main__":
     sdfg_file_path = sys.argv[1]
     sdfg = dace.SDFG.from_file(sdfg_file_path)
 
-    get_dynamic_instruction_count(sdfg)
+    tot_ins, tot_cyc = get_dynamic_instruction_count(sdfg)
+    print(f"Dynamic Instruction Count: {tot_ins}")
+    print(f"Dynamic Cycle Count: {tot_cyc}")
     exit(0)
 
     reports, vec_loops, unvec_loops = analyze_sdfg_clang(sdfg)
