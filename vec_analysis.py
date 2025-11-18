@@ -1,7 +1,7 @@
 import dace
 import subprocess
 import sys
-import numpy
+import numpy as np
 
 compiler_flags = [
     "-fopenmp",
@@ -22,6 +22,33 @@ compiler_flags = [
 ]
 
 includes = [dace.__path__[0] + "/runtime/include"]
+
+
+def get_small_input_data(sdfg: dace.SDFG) -> dict:
+    """
+    Generate small input data for the given SDFG with non-trivial entries.
+    """
+    input_data = {}
+    sym_data = {}
+    for sym in sdfg.symbols:
+        if sym not in sdfg.constants:
+            sym_data[sym] = 3
+            input_data[sym] = 3
+
+    for argName, argType in sdfg.arglist().items():
+        if isinstance(argType, dace.data.Scalar):
+            input_data[argName] = 3
+            continue
+
+        shape = []
+        for entry in argType.shape:
+            shape.append(dace.symbolic.evaluate(entry, {**sdfg.constants, **sym_data}))
+        shape = tuple(shape)
+        arr = dace.ndarray(shape=shape, dtype=argType.dtype)
+        # prime number to avoid nice alignment
+        arr[:] = (np.arange(arr.size).reshape(arr.shape) + 3) % 7 + 3
+        input_data[argName] = arr
+    return input_data
 
 
 def analyze_sdfg_clang(sdfg: dace.SDFG):
@@ -117,19 +144,14 @@ def get_dynamic_instruction_count(sdfg: dace.SDFG):
         value="['PAPI_TOT_INS', 'PAPI_TOT_CYC']",
     )
 
-    # Install PAPI with apt get papi-tools libpapi-dev
+    # Compile and run the SDFG with PAPI instrumentation
     sdfg.clear_instrumentation_reports()
     sdfg.instrument = dace.InstrumentationType.PAPI_Counters
     obj = sdfg.compile()
+    input_data = get_small_input_data(sdfg)  # XXX: Input data should be given
+    obj(**input_data)
 
-    ### This part needs to be made general
-    _S = 10
-    A = numpy.random.random((_S, _S))
-    B = numpy.random.random((_S, _S))
-    obj(A=A, B=B, S=_S, tsteps=5)
-
-    ############
-
+    # Extract instruction counts from the report
     report = sdfg.get_latest_report()
     tot_ins = 0
     tot_cyc = 0
@@ -144,17 +166,19 @@ def get_dynamic_instruction_count(sdfg: dace.SDFG):
 
 if __name__ == "__main__":
     # We excpect a SDFG file path as argument
-    if len(sys.argv) != 2:
-        print("Usage: python vec_analysis.py <sdfg_file_path>")
+    if len(sys.argv) <= 2:
+        print("Usage: python vec_analysis.py <sdfg_file_paths>")
         sys.exit(1)
-    sdfg_file_path = sys.argv[1]
-    sdfg = dace.SDFG.from_file(sdfg_file_path)
 
-    tot_ins, tot_cyc = get_dynamic_instruction_count(sdfg)
-    print(f"Dynamic Instruction Count: {tot_ins}")
-    print(f"Dynamic Cycle Count: {tot_cyc}")
+    print("Name,Dynamic Instruction Count,Dynamic Cycle Count")
+    sdfg_file_paths = sys.argv[1:]
+    for sdfg_file_path in sdfg_file_paths:
+        sdfg = dace.SDFG.from_file(sdfg_file_path)
+        tot_ins, tot_cyc = get_dynamic_instruction_count(sdfg)
+        print(f"{sdfg.name},{tot_ins},{tot_cyc}")
+
+    # LLVM Clang vectorization analysis (skipped as not expressive enough)
     exit(0)
-
     reports, vec_loops, unvec_loops = analyze_sdfg_clang(sdfg)
     print(f"{sdfg.name} Vectorization Analysis Report")
     print("=============================")
