@@ -1,7 +1,7 @@
 """
 This is the plotter for the vec_analysis.py script, which outputs a CSV in the following format:
-Name,Dynamic Instruction Count,Dynamic Cycle Count,Base SDFG
-<name>,<dynamic_instruction_count>,<dynamic_cycle_count>,<base_sdfg>
+Name,Dynamic Instruction Count,Dynamic Cycle Count,Runtime (ms),Base SDFG
+<name>,<dynamic_instruction_count>,<dynamic_cycle_count>,<runtime_in_ms>,<base_sdfg_name>
 
 It groups the SDFGs by the base SDFG name. Then it computes the speedup:
 speedup = median_dynamic_instruction_count_base_sdfg / median_dynamic_instruction_count_variant_sdfg
@@ -81,6 +81,15 @@ if __name__ == "__main__":
     )
     df = pd.merge(df, base_cycles, on="Base SDFG", how="left")
 
+    # Now do the same for the base runtime
+    base_runtimes = median_df[median_df["Base SDFG"] == median_df["Name"]][
+        ["Base SDFG", "Runtime (ms)"]
+    ]
+    base_runtimes = base_runtimes.rename(
+        columns={"Runtime (ms)": "Base Runtime (ms) (median)"}
+    )
+    df = pd.merge(df, base_runtimes, on="Base SDFG", how="left")
+
     # Compute speedups
     df["Instruction Count Speedup"] = (
         df["Dynamic Instruction Count"] / df["Base Dynamic Instruction Count (median)"]
@@ -88,7 +97,9 @@ if __name__ == "__main__":
     df["Cycle Count Speedup"] = (
         df["Dynamic Cycle Count"] / df["Base Dynamic Cycle Count (median)"]
     )
+    df["Runtime Speedup"] = df["Runtime (ms)"] / df["Base Runtime (ms) (median)"]
 
     # Plot Speedups
     plot_speedups(df, "Instruction Count Speedup")
     plot_speedups(df, "Cycle Count Speedup")
+    plot_speedups(df, "Runtime Speedup")

@@ -154,11 +154,7 @@ def get_dynamic_instruction_count(sdfg: dace.SDFG):
     obj = sdfg.compile()
     # TODO: Support provided input data
     input_data = get_small_input_data(sdfg)
-    try:
-        obj.safe_call(**input_data)
-    except Exception as e:
-        print(f"Error: {e}", file=sys.stderr)
-        return -1, -1
+    obj(**input_data)
 
     # Extract instruction counts from the report
     report = sdfg.get_latest_report()
@@ -173,13 +169,43 @@ def get_dynamic_instruction_count(sdfg: dace.SDFG):
     return tot_ins, tot_cyc
 
 
+def get_runtime(sdfg: dace.SDFG):
+    """
+    Gets the runtime of the given SDFG by compiling and running it.
+
+    Parameters:
+        sdfg (dace.SDFG): The SDFG to analyze.
+    """
+    # Clear DaCe cache
+    cache_dir = dace.config.Config.get("default_build_folder")
+    shutils.rmtree(cache_dir, ignore_errors=True)
+
+    # Compile and run the SDFG with PAPI instrumentation
+    sdfg.instrument = dace.InstrumentationType.Timer
+    obj = sdfg.compile()
+    # TODO: Support provided input data
+    input_data = get_small_input_data(sdfg)
+    obj(**input_data)
+
+    # Extract runtime from the report
+    report = sdfg.get_latest_report()
+    tot_time = 0
+    for uuid_dict in report.durations.values():
+        for sdfg_dict in uuid_dict.values():
+            tot_time += sum(v for l in sdfg_dict.values() for v in l)
+    return tot_time
+
+
 if __name__ == "__main__":
     # We excpect a SDFG file path as argument
-    if len(sys.argv) <= 2:
+    if len(sys.argv) < 2:
         print("Usage: python vec_analysis.py <sdfg_file_paths>")
         sys.exit(1)
 
-    print("Name,Dynamic Instruction Count,Dynamic Cycle Count,Base SDFG", flush=True)
+    print(
+        "Name,Dynamic Instruction Count,Dynamic Cycle Count,Runtime (ms),Base SDFG",
+        flush=True,
+    )
     sdfg_file_paths = sys.argv[1:]
     for sdfg_file_path in sdfg_file_paths:
         file_name = sdfg_file_path.split("/")[-1].split(".")[0]
@@ -187,7 +213,8 @@ if __name__ == "__main__":
 
         for rep in range(5):
             tot_ins, tot_cyc = get_dynamic_instruction_count(sdfg)
-            print(f"{file_name},{tot_ins},{tot_cyc},{sdfg.name}", flush=True)
+            runtime = get_runtime(sdfg)
+            print(f"{file_name},{tot_ins},{tot_cyc},{runtime},{sdfg.name}", flush=True)
 
     # LLVM Clang vectorization analysis (skipped as not expressive enough)
     exit(0)
