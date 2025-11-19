@@ -9,7 +9,7 @@ N = 1024 * 8  # Ensure divisibility for vectorization
 
 @dace.program
 def division_by_zero(A: dace.float64[N], B: dace.float64[N], c: dace.float64):
-    for i in dace.map[0:N,]:
+    for i in dace.map[0:N]:
         if A[i] > 0.0:
             B[i] = c / A[i]
         else:

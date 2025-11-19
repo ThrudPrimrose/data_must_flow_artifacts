@@ -14,6 +14,7 @@ import matplotlib.pyplot as plt
 import seaborn as sns
 import sys
 import numpy as np
+import matplotlib.patheffects as PathEffects
 
 
 def plot_speedups(df, y):
@@ -23,27 +24,34 @@ def plot_speedups(df, y):
         y="Name",
         x=y,
         kind="bar",
+        hue="Base SDFG",
         errorbar=("ci", 95),
         height=10,
         aspect=1.5,
     )
 
+    # Remove the legend
+    if plt._legend is not None:
+        plt._legend.remove()
+
     # Move y-axis labels inside the bars
-    if True:
-        for idx, p in enumerate(plt.ax.patches):
-            height = p.get_height()
-            label = p.axes.get_yticklabels()[idx].get_text()
-            plt.ax.text(
-                0,
-                p.get_y() + height / 2,
-                f"  {label}",
-                ha="left",
-                va="center",
-                color="white",
-                weight="bold",
-            )
-        plt.ax.set_yticklabels([])
-        plt.ax.set_yticks([])
+    categories = df["Name"].unique()
+    y_positions = np.arange(len(categories))
+
+    for y_pos, cat in zip(y_positions, categories):
+        txt = plt.ax.text(
+            0,
+            y_pos,
+            f"  {cat}",
+            va="center",
+            ha="left",
+            color="white",
+            weight="bold",
+        )
+        txt.set_path_effects([PathEffects.withStroke(linewidth=1, foreground="black")])
+
+    plt.ax.set_yticklabels([])
+    plt.ax.set_yticks([])
 
     # Tight layout, save, and clear
     plt.ax.set_xlabel(f"{y} (lower is better)")

@@ -6,7 +6,7 @@ from dace.transformation.passes.vectorization.vectorize_cpu import VectorizeCPU
 from dace.sdfg import utils as sdutil
 
 # S = dace.symbol("S")
-S = 1024 * 8 + 2  # Ensure divisibility for vectorization
+S = 128 * 8 + 2  # Ensure divisibility for vectorization
 
 
 @dace.program
@@ -105,11 +105,11 @@ if __name__ == "__main__":
     )
 
     jacobi2d_sdfg_vectorized2 = copy.deepcopy(jacobi2d_sdfg)
-    VectorizeCPU(vector_width=8192, insert_copies=False).apply_pass(
+    VectorizeCPU(vector_width=128, insert_copies=False).apply_pass(
         jacobi2d_sdfg_vectorized2, {}
     )
     jacobi2d_sdfg_vectorized2.save(
-        "jacobi2d_vectorized_static_veclen_8192_no_cpy.sdfgz", compress=True
+        "jacobi2d_vectorized_static_veclen_128_no_cpy.sdfgz", compress=True
     )
 
     jacobi2d_sdfg_vectorized3 = copy.deepcopy(jacobi2d_sdfg)
