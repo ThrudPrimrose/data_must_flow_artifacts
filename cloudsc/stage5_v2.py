@@ -21,12 +21,23 @@ from dace.transformation.interstate.loop_unroll import LoopUnroll
 from dace.transformation.passes.scalar_to_symbol import ScalarToSymbolPromotion
 from dace.transformation.passes.simplify import InlineSDFGs
 from dace.transformation.passes.split_tasklets import SplitTasklets
+from dace.transformation.passes.vectorization.remove_reduntant_assignments import RemoveRedundantAssignments
 from run_and_compare import run_and_compare
 from loop_check import count_loops
 from dace.transformation.passes.lift_trivial_if import LiftTrivialIf
 from dace.transformation.passes.eliminate_branches import EliminateBranches
 from dace.transformation.interstate.move_loop_invariant_if_up import MoveLoopInvariantIfUp
 import os
+import dace.sdfg.construction_utils as cutil
+from dace.transformation.interstate.state_fusion_with_happens_before import StateFusionExtended
+from dace.transformation.passes import InlineSDFGs
+from dace.transformation.passes.remove_redundant_copy_tasklets import RemoveReduntantCopyTasklets
+from dace.transformation.passes.split_tasklets import SplitTasklets
+from run_and_compare import run_and_compare
+from dace.transformation.passes.clean_data_to_scalar_slice_to_tasklet_pattern import CleanDataToScalarSliceToTaskletPattern
+from dace.transformation.passes.split_tasklets import SplitTasklets
+from dace.transformation.passes.vectorization.tasklet_preprocessing_passes import PowerOperatorExpansion, RemoveFPTypeCasts, RemoveIntTypeCasts
+from dace.transformation.passes.vectorization.lower_interstate_conditional_assignments_to_tasklets import LowerInterstateConditionalAssignmentsToTasklets
 
 original_sdfg = dace.SDFG.from_file("cloudsc_inner.sdfgz")
 
@@ -210,9 +221,10 @@ def count_remaining_branches(
     
     return ret_list
 
+pipeline_dict = dict()
 eb = EliminateBranches()
 eb.try_clean = True
-eb.apply_pass(sdfg, {})
+pipeline_dict[EliminateBranches.__name__] = eb.apply_pass(sdfg, {})
 
 remaining_labels = count_remaining_branches(sdfg, sdfg, None, False)
 for k in remaining_labels:
@@ -223,3 +235,64 @@ sdfg.save("stage5_v2_wip.sdfgz", compress=True)
 assert run_and_compare(original_sdfg, sdfg), "Clean + Apply (1/2)"
 assert run_and_compare(original_sdfg, sdfg), "Clean + Apply (2/2)"
 sdfg.save("stage5_v2.sdfgz", compress=True)
+
+
+RemoveRedundantAssignments().apply_pass(sdfg, pipeline_dict)
+print("Stage 6 RemoveRedundantAssignments - (1/2)")
+assert run_and_compare(original_sdfg, sdfg), "Stage 6 RemoveRedundantAssignments - (1/2)"
+print("Stage 6 RemoveRedundantAssignments - (2/2)")
+assert run_and_compare(original_sdfg, sdfg), "Stage 6 RemoveRedundantAssignments- (2/2)"
+
+
+lowering = LowerInterstateConditionalAssignmentsToTasklets()
+lowering.also_demote = ["zalfaw"]
+has_applied = lowering.apply_pass(sdfg, {})
+sdfg.validate()
+sdfg.save("stage6_wip.sdfgz", compress=True)
+print("Stage 6 LowerInterstateConditionalAssignments - (1/2)")
+assert run_and_compare(original_sdfg, sdfg), "Stage 6 LowerInterstateConditionalAssignments - (1/2)"
+print("Stage 6 LowerInterstateConditionalAssignments - (2/2)")
+assert run_and_compare(original_sdfg, sdfg), "Stage 6 LowerInterstateConditionalAssignments - (2/2)"
+
+RemoveFPTypeCasts().apply_pass(sdfg, {})
+sdfg.validate()
+sdfg.save("stage6_wip.sdfgz", compress=True)
+print("Stage 6 RemoveFPTypeCasts- (1/2)")
+assert run_and_compare(original_sdfg, sdfg), "Stage 6 RemoveFPTypeCasts- (1/2)"
+print("Stage 6 RemoveFPTypeCasts- (2/2)")
+assert run_and_compare(original_sdfg, sdfg), "Stage 6 RemoveFPTypeCasts- (2/2)"
+
+RemoveIntTypeCasts().apply_pass(sdfg, {})
+sdfg.validate()
+print("Stage 6 RemoveIntTypeCasts- (1/2)")
+assert run_and_compare(original_sdfg, sdfg), "Stage 6 RemoveIntTypeCasts- (1/2)"
+print("Stage 6 RemoveIntTypeCasts- (2/2)")
+assert run_and_compare(original_sdfg, sdfg), "Stage 6 RemoveIntTypeCasts- (2/2)"
+
+PowerOperatorExpansion().apply_pass(sdfg, {})
+sdfg.validate()
+print("Stage 6 PowerOperatorExpansion- (1/2)")
+assert run_and_compare(original_sdfg, sdfg), "Stage 6 PowerOperatorExpansion- (1/2)"
+print("Stage 6 PowerOperatorExpansion- (2/2)")
+assert run_and_compare(original_sdfg, sdfg), "Stage 6 PowerOperatorExpansion- (2/2)"
+
+SplitTasklets().apply_pass(sdfg, {})
+sdfg.validate()
+print("Stage 6 SplitTasklets- (1/2)")
+assert run_and_compare(original_sdfg, sdfg), "Stage 6 SplitTasklets (1/2)"
+print("Stage 6 SplitTasklets- (2/2)")
+assert run_and_compare(original_sdfg, sdfg), "Stage 6 SplitTasklets (2/2)"
+
+CleanDataToScalarSliceToTaskletPattern().apply_pass(sdfg, {})
+sdfg.validate()
+sdfg.save("stage6_wip.sdfgz", compress=True)
+print("Stage 6 CleanDataToScalarSliceToTasklet- (1/2)")
+assert run_and_compare(original_sdfg, sdfg), "Stage 6 CleanDataToScalarSliceToTasklet (1/2)"
+print("Stage 6 CleanDataToScalarSliceToTasklet- (2/2)")
+assert run_and_compare(original_sdfg, sdfg), "Stage 6 CleanDataToScalarSliceToTasklet(2/2)"
+
+print("Stage 6 - (1/2)")
+assert run_and_compare(original_sdfg, sdfg), "Stage 6 - (1/2)"
+print("Stage 6 - (2/2)")
+assert run_and_compare(original_sdfg, sdfg), "Stage 6 - (2/2)"
+sdfg.save("stage6.sdfgz", compress=True)

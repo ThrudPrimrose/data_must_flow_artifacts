@@ -2,6 +2,8 @@ import dace
 from dace.transformation.dataflow.map_collapse import MapCollapse
 from dace.transformation.passes.assignment_and_copy_kernel_to_memset_and_memcpy import AssignmentAndCopyKernelToMemsetAndMemcpy
 from dace.transformation.passes.simplify import InlineSDFGs
+from dace.transformation.passes.vectorization.lower_interstate_conditional_assignments_to_tasklets import LowerInterstateConditionalAssignmentsToTasklets
+from dace.transformation.passes.vectorization.vectorize_gpu import RemoveEmptyStates
 from run_and_compare import run_and_compare
 import dace.sdfg.construction_utils as cutil
 
@@ -12,11 +14,24 @@ for n, g in original_sdfg.all_nodes_recursive():
     if isinstance(n, dace.nodes.NestedSDFG) and (n.label == "foedelta_srt4" or n.sdfg.label == "foedelta_srt4"):
         cutil.replace_length_one_arrays_with_scalars(n.sdfg)
 
-assert run_and_compare(original_sdfg, sdfg), "Sanity Check - (1/2)"
-assert run_and_compare(original_sdfg, sdfg), "Sanity Check - (2/2)"
+#assert run_and_compare(original_sdfg, sdfg), "Sanity Check - (1/2)"
+#assert run_and_compare(original_sdfg, sdfg), "Sanity Check - (2/2)"
 
 
-InlineSDFGs().apply_pass(sdfg)
+RemoveEmptyStates().apply_pass(sdfg, {})
+sdfg.save("stage7_wip.sdfgz", compress=True)
+assert run_and_compare(original_sdfg, sdfg), "RemoveEmptyStates - (1/2)"
+assert run_and_compare(original_sdfg, sdfg), "RemoveEmptyStates - (1/2)"
+
+ep = LowerInterstateConditionalAssignmentsToTasklets()
+ep.conditional_assignment_tasklet_prefix = "_if_cond"
+ep.apply_pass(sdfg, {})
+sdfg.save("stage7_wip.sdfgz", compress=True)
+
+assert run_and_compare(original_sdfg, sdfg), "Lower2 - (1/2)"
+assert run_and_compare(original_sdfg, sdfg), "Lower2 - (1/2)"
+
+InlineSDFGs().apply_pass(sdfg, {})
 for n, g in sdfg.all_nodes_recursive():
     if isinstance(n, dace.nodes.NestedSDFG):
         InlineSDFGs().apply_pass(n.sdfg, {})
