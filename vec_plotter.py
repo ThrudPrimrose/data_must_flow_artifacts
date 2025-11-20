@@ -61,13 +61,15 @@ def plot_speedups(df, y):
 
 
 if __name__ == "__main__":
-    if len(sys.argv) != 3:
-        print("Usage: python vec_plotter.py <csv_file_path> <metric>")
+    if len(sys.argv) != 2:
+        print("Usage: python vec_plotter.py <csv_file_path>")
         sys.exit(1)
 
     csv_file_path = sys.argv[1]
-    metric = sys.argv[2]
     df = pd.read_csv(csv_file_path)
+
+    # Metric is the last column
+    metric = df.columns[-1]
 
     # Group by Base SDFG and Name to compute medians
     median_df = df.groupby(["Base SDFG", "Name"]).median().reset_index()
