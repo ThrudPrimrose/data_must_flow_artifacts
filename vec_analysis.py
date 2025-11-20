@@ -4,6 +4,7 @@ import sys
 import numpy as np
 import shutil as shutils
 
+# For analysis, we use Clang's vectorization reports
 compiler_flags = [
     "-fopenmp",
     "-std=c++17",
@@ -21,7 +22,6 @@ compiler_flags = [
     "-Rpass-missed=loop-vectorize",
     "-Rpass-analysis=loop-vectorize",
 ]
-
 includes = [dace.__path__[0] + "/runtime/include"]
 
 
@@ -129,7 +129,7 @@ def analyze_sdfg_clang(sdfg: dace.SDFG):
     return reports, vectorized_loops, unvectorized_loops
 
 
-def get_dynamic_instruction_count(sdfg: dace.SDFG):
+def get_dynamic_instruction_counts(sdfg: dace.SDFG, reps: int):
     """
     Gets the dynamic instruction count of the given SDFG by compiling and running it.
 
@@ -154,22 +154,32 @@ def get_dynamic_instruction_count(sdfg: dace.SDFG):
     obj = sdfg.compile()
     # TODO: Support provided input data
     input_data = get_small_input_data(sdfg)
-    obj(**input_data)
+
+    for r in range(reps):
+        obj(**input_data)
 
     # Extract instruction counts from the report
-    report = sdfg.get_latest_report()
-    tot_ins = 0
-    tot_cyc = 0
-    for uuid_dict in report.counters.values():
-        for sdfg_dict in uuid_dict.values():
-            if "PAPI_TOT_INS" in sdfg_dict:
-                tot_ins += sum(v for l in sdfg_dict["PAPI_TOT_INS"].values() for v in l)
-            if "PAPI_TOT_CYC" in sdfg_dict:
-                tot_cyc += sum(v for l in sdfg_dict["PAPI_TOT_CYC"].values() for v in l)
-    return tot_ins, tot_cyc
+    ins = []
+    cycs = []
+    for report in sdfg.get_instrumentation_reports():
+        tot_ins = 0
+        tot_cyc = 0
+        for uuid_dict in report.counters.values():
+            for sdfg_dict in uuid_dict.values():
+                if "PAPI_TOT_INS" in sdfg_dict:
+                    tot_ins += sum(
+                        v for l in sdfg_dict["PAPI_TOT_INS"].values() for v in l
+                    )
+                if "PAPI_TOT_CYC" in sdfg_dict:
+                    tot_cyc += sum(
+                        v for l in sdfg_dict["PAPI_TOT_CYC"].values() for v in l
+                    )
+        ins.append(tot_ins)
+        cycs.append(tot_cyc)
+    return ins, cycs
 
 
-def get_runtime(sdfg: dace.SDFG):
+def get_runtimes(sdfg: dace.SDFG, reps: int, warmup: int):
     """
     Gets the runtime of the given SDFG by compiling and running it.
 
@@ -185,15 +195,23 @@ def get_runtime(sdfg: dace.SDFG):
     obj = sdfg.compile()
     # TODO: Support provided input data
     input_data = get_small_input_data(sdfg)
-    obj(**input_data)
+
+    for r in range(warmup + reps):
+        obj(**input_data)
 
     # Extract runtime from the report
-    report = sdfg.get_latest_report()
-    tot_time = 0
-    for uuid_dict in report.durations.values():
-        for sdfg_dict in uuid_dict.values():
-            tot_time += sum(v for l in sdfg_dict.values() for v in l)
-    return tot_time
+    times = []
+    cnt = 0
+    for report in sdfg.get_instrumentation_reports():
+        if cnt < warmup:
+            cnt += 1
+            continue
+        tot_time = 0
+        for uuid_dict in report.durations.values():
+            for sdfg_dict in uuid_dict.values():
+                tot_time += sum(v for l in sdfg_dict.values() for v in l)
+        times.append(tot_time)
+    return times
 
 
 if __name__ == "__main__":
@@ -202,20 +220,47 @@ if __name__ == "__main__":
         print("Usage: python vec_analysis.py <sdfg_file_paths>")
         sys.exit(1)
 
-    print(
-        "Name,Dynamic Instruction Count,Dynamic Cycle Count,Runtime (ms),Base SDFG",
-        flush=True,
-    )
+    # Get SDFGs
+    sdfgs = []
     sdfg_file_paths = sys.argv[1:]
     for sdfg_file_path in sdfg_file_paths:
         file_name = sdfg_file_path.split("/")[-1].split(".")[0]
         sdfg = dace.SDFG.from_file(sdfg_file_path)
+        sdfgs.append((file_name, sdfg))
 
-        for rep in range(5):
-            tot_ins, tot_cyc = get_dynamic_instruction_count(sdfg)
-            runtime = get_runtime(sdfg)
-            print(f"{file_name},{tot_ins},{tot_cyc},{runtime},{sdfg.name}", flush=True)
+    # Gather measurement
+    tot_ins_per_sdfg = {}
+    tot_cyc_per_sdfg = {}
+    runtimes_per_sdfg = {}
 
+    for _, sdfg in sdfgs:
+        # tot_ins, tot_cyc = get_dynamic_instruction_counts(sdfg, reps=5)
+        # tot_ins_per_sdfg[sdfg] = tot_ins
+        # tot_cyc_per_sdfg[sdfg] = tot_cyc
+        tot_ins_per_sdfg[sdfg] = []
+        tot_cyc_per_sdfg[sdfg] = []
+        runtimes_per_sdfg[sdfg] = get_runtimes(sdfg, reps=5, warmup=2)
+
+    # Dump CSVs
+    with open("dyn_ins_data.csv", "w") as f:
+        print("Name,Base SDFG,Dynamic Instruction Count", file=f)
+        for file_name, sdfg in sdfgs:
+            for tot_ins in tot_ins_per_sdfg[sdfg]:
+                print(f"{file_name},{sdfg.name},{tot_ins}", file=f)
+
+    with open("dyn_cyc_data.csv", "w") as f:
+        print("Name,Base SDFG,Dynamic Cycle Count", file=f)
+        for file_name, sdfg in sdfgs:
+            for tot_cyc in tot_cyc_per_sdfg[sdfg]:
+                print(f"{file_name},{sdfg.name},{tot_cyc}", file=f)
+
+    with open("runtimes_data.csv", "w") as f:
+        print("Name,Base SDFG,Runtime (ms)", file=f)
+        for file_name, sdfg in sdfgs:
+            for runtime in runtimes_per_sdfg[sdfg]:
+                print(f"{file_name},{sdfg.name},{runtime}", file=f)
+
+    #####################################################################
     # LLVM Clang vectorization analysis (skipped as not expressive enough)
     exit(0)
     reports, vec_loops, unvec_loops = analyze_sdfg_clang(sdfg)
