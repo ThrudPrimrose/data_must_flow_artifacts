@@ -233,12 +233,11 @@ if __name__ == "__main__":
     tot_cyc_per_sdfg = {}
     runtimes_per_sdfg = {}
 
-    for _, sdfg in sdfgs:
-        # tot_ins, tot_cyc = get_dynamic_instruction_counts(sdfg, reps=5)
-        # tot_ins_per_sdfg[sdfg] = tot_ins
-        # tot_cyc_per_sdfg[sdfg] = tot_cyc
-        tot_ins_per_sdfg[sdfg] = []
-        tot_cyc_per_sdfg[sdfg] = []
+    for file_name, sdfg in sdfgs:
+        print(f"Analyzing SDFG: {file_name}")
+        tot_ins, tot_cyc = get_dynamic_instruction_counts(sdfg, reps=5)
+        tot_ins_per_sdfg[sdfg] = tot_ins
+        tot_cyc_per_sdfg[sdfg] = tot_cyc
         runtimes_per_sdfg[sdfg] = get_runtimes(sdfg, reps=5, warmup=2)
 
     # Dump CSVs
