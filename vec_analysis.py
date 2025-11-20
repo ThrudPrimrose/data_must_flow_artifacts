@@ -151,12 +151,11 @@ def get_dynamic_instruction_counts(sdfg: dace.SDFG, reps: int):
 
     # Compile and run the SDFG with PAPI instrumentation
     sdfg.instrument = dace.InstrumentationType.PAPI_Counters
-    obj = sdfg.compile()
     # TODO: Support provided input data
     input_data = get_small_input_data(sdfg)
 
     for r in range(reps):
-        obj(**input_data)
+        sdfg(**input_data)
 
     # Extract instruction counts from the report
     ins = []
