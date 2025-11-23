@@ -178,11 +178,11 @@ def save_timings_to_csv(filename, timings_dict):
     """
     with open(filename, "w", newline="") as f:
         writer = csv.writer(f)
-        writer.writerow(["sdfg_name", "rep", "time_seconds"])
+        writer.writerow(["sdfg_name", "size", "rep", "time_seconds"])
 
-        for sdfg_name, times in timings_dict.items():
+        for (sdfg_name,size), times in timings_dict.items():
             for i, t in enumerate(times):
-                writer.writerow([sdfg_name, i, t])
+                writer.writerow([sdfg_name, size, i, t])
 
 # -------------------------------------------------------
 # Helpers
@@ -266,7 +266,7 @@ if __name__ == "__main__":
         params = {"tsteps": 50}
 
         # Run baseline
-        all_timings["jacobi2d"] = run_sdfg_multiple_times(
+        all_timings["jacobi2d", size] = run_sdfg_multiple_times(
             sdfg=jacobi2d_sdfg,
             arrays=base_arrays,
             params=params,
@@ -304,8 +304,8 @@ if __name__ == "__main__":
                 sdfg=sdfg_aligned, arrays=aligned_arrays, params=params, num_runs=NUM_REPS
             )
 
-        # -------------------------------------------------------
-        # CSV output
-        # -------------------------------------------------------
-        save_timings_to_csv("jacobi2d_timings.csv", all_timings)
-        print("Saved timing results to jacobi2d_timings.csv")
+    # -------------------------------------------------------
+    # CSV output
+    # -------------------------------------------------------
+    save_timings_to_csv("jacobi2d_timings.csv", all_timings)
+    print("Saved timing results to jacobi2d_timings.csv")
