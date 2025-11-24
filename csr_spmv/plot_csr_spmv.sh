@@ -1,0 +1,4 @@
+python plot.py gcc/amd_epyc/csr_gemmver_timings_1_core.csv  csr_gemmver_timings_1_core_amd_epyc_gcc.png csr_spmv gcc amd_epyc_7742
+python plot.py llvm/amd_epyc/csr_gemmver_timings_1_core.csv  csr_gemmver_timings_1_core_amd_epyc_llvm.png csr_spmv llvm amd_epyc_7742
+python plot.py gcc/intel_xeon/csr_gemmver_timings_1_core.csv  csr_gemmver_timings_1_core_intel_xeon_gcc.png csr_spmv gcc intel_xeon_gold
+python plot.py llvm/intel_xeon/csr_gemmver_timings_1_core.csv  csr_gemmver_timings_1_core_intel_xeon_llvm.png csr_spmv llvm intel_xeon_gold
