@@ -1,0 +1,1226 @@
+Physical cores: 128
+Run time division_by_zero iter 0: 7.264 ms
+Run time division_by_zero iter 1: 7.076 ms
+Run time division_by_zero iter 2: 7.199 ms
+Run time division_by_zero iter 3: 7.152 ms
+Run time division_by_zero iter 4: 7.074 ms
+Run time division_by_zero iter 5: 7.095 ms
+Run time division_by_zero iter 6: 7.037 ms
+Run time division_by_zero iter 7: 6.887 ms
+Run time division_by_zero iter 8: 6.986 ms
+Run time division_by_zero iter 9: 7.111 ms
+Run time division_by_zero iter 10: 7.132 ms
+Run time division_by_zero iter 11: 7.023 ms
+Run time division_by_zero iter 12: 6.882 ms
+Run time division_by_zero iter 13: 7.169 ms
+Run time division_by_zero iter 14: 6.899 ms
+Run time division_by_zero iter 15: 7.088 ms
+Run time division_by_zero iter 16: 6.879 ms
+Run time division_by_zero iter 17: 6.913 ms
+Run time division_by_zero iter 18: 6.899 ms
+Run time division_by_zero iter 19: 6.945 ms
+[can_be_applied] to if_197 is True
+[can_be_applied] to if_197 is True
+Changing __out = (__in1 / __in2) to have +1.7800590868057611e-307 to avoid NaN/inf floating-point exception in division!
+Run time division_by_zero_vectorized_static_veclen_8_no_cpy iter 0: 3.370 ms
+Run time division_by_zero_vectorized_static_veclen_8_no_cpy iter 1: 3.108 ms
+Run time division_by_zero_vectorized_static_veclen_8_no_cpy iter 2: 5.205 ms
+Run time division_by_zero_vectorized_static_veclen_8_no_cpy iter 3: 3.496 ms
+Run time division_by_zero_vectorized_static_veclen_8_no_cpy iter 4: 3.575 ms
+Run time division_by_zero_vectorized_static_veclen_8_no_cpy iter 5: 3.077 ms
+Run time division_by_zero_vectorized_static_veclen_8_no_cpy iter 6: 3.233 ms
+Run time division_by_zero_vectorized_static_veclen_8_no_cpy iter 7: 3.618 ms
+Run time division_by_zero_vectorized_static_veclen_8_no_cpy iter 8: 3.213 ms
+Run time division_by_zero_vectorized_static_veclen_8_no_cpy iter 9: 3.610 ms
+Run time division_by_zero_vectorized_static_veclen_8_no_cpy iter 10: 4.838 ms
+Run time division_by_zero_vectorized_static_veclen_8_no_cpy iter 11: 3.787 ms
+Run time division_by_zero_vectorized_static_veclen_8_no_cpy iter 12: 3.829 ms
+Run time division_by_zero_vectorized_static_veclen_8_no_cpy iter 13: 3.689 ms
+Run time division_by_zero_vectorized_static_veclen_8_no_cpy iter 14: 3.738 ms
+Run time division_by_zero_vectorized_static_veclen_8_no_cpy iter 15: 3.176 ms
+Run time division_by_zero_vectorized_static_veclen_8_no_cpy iter 16: 3.719 ms
+Run time division_by_zero_vectorized_static_veclen_8_no_cpy iter 17: 4.918 ms
+Run time division_by_zero_vectorized_static_veclen_8_no_cpy iter 18: 3.289 ms
+Run time division_by_zero_vectorized_static_veclen_8_no_cpy iter 19: 3.365 ms
+[can_be_applied] to if_197 is True
+[can_be_applied] to if_197 is True
+Changing __out = (__in1 / __in2) to have +1.7800590868057611e-307 to avoid NaN/inf floating-point exception in division!
+Run time division_by_zero_vectorized_static_veclen_8_cpy iter 0: 3.749 ms
+Run time division_by_zero_vectorized_static_veclen_8_cpy iter 1: 3.482 ms
+Run time division_by_zero_vectorized_static_veclen_8_cpy iter 2: 3.211 ms
+Run time division_by_zero_vectorized_static_veclen_8_cpy iter 3: 3.146 ms
+Run time division_by_zero_vectorized_static_veclen_8_cpy iter 4: 3.169 ms
+Run time division_by_zero_vectorized_static_veclen_8_cpy iter 5: 3.354 ms
+Run time division_by_zero_vectorized_static_veclen_8_cpy iter 6: 3.003 ms
+Run time division_by_zero_vectorized_static_veclen_8_cpy iter 7: 3.187 ms
+Run time division_by_zero_vectorized_static_veclen_8_cpy iter 8: 3.543 ms
+Run time division_by_zero_vectorized_static_veclen_8_cpy iter 9: 3.576 ms
+Run time division_by_zero_vectorized_static_veclen_8_cpy iter 10: 3.740 ms
+Run time division_by_zero_vectorized_static_veclen_8_cpy iter 11: 3.180 ms
+Run time division_by_zero_vectorized_static_veclen_8_cpy iter 12: 3.134 ms
+Run time division_by_zero_vectorized_static_veclen_8_cpy iter 13: 3.224 ms
+Run time division_by_zero_vectorized_static_veclen_8_cpy iter 14: 3.202 ms
+Run time division_by_zero_vectorized_static_veclen_8_cpy iter 15: 3.288 ms
+Run time division_by_zero_vectorized_static_veclen_8_cpy iter 16: 3.292 ms
+Run time division_by_zero_vectorized_static_veclen_8_cpy iter 17: 3.428 ms
+Run time division_by_zero_vectorized_static_veclen_8_cpy iter 18: 3.211 ms
+Run time division_by_zero_vectorized_static_veclen_8_cpy iter 19: 4.285 ms
+[can_be_applied] to if_197 is True
+[can_be_applied] to if_197 is True
+Changing __out = (__in1 / __in2) to have +1.7800590868057611e-307 to avoid NaN/inf floating-point exception in division!
+Run time division_by_zero_vectorized_static_veclen_16_no_cpy iter 0: 4.097 ms
+Run time division_by_zero_vectorized_static_veclen_16_no_cpy iter 1: 4.121 ms
+Run time division_by_zero_vectorized_static_veclen_16_no_cpy iter 2: 4.161 ms
+Run time division_by_zero_vectorized_static_veclen_16_no_cpy iter 3: 4.009 ms
+Run time division_by_zero_vectorized_static_veclen_16_no_cpy iter 4: 4.581 ms
+Run time division_by_zero_vectorized_static_veclen_16_no_cpy iter 5: 3.966 ms
+Run time division_by_zero_vectorized_static_veclen_16_no_cpy iter 6: 4.235 ms
+Run time division_by_zero_vectorized_static_veclen_16_no_cpy iter 7: 4.382 ms
+Run time division_by_zero_vectorized_static_veclen_16_no_cpy iter 8: 4.431 ms
+Run time division_by_zero_vectorized_static_veclen_16_no_cpy iter 9: 4.053 ms
+Run time division_by_zero_vectorized_static_veclen_16_no_cpy iter 10: 4.001 ms
+Run time division_by_zero_vectorized_static_veclen_16_no_cpy iter 11: 4.028 ms
+Run time division_by_zero_vectorized_static_veclen_16_no_cpy iter 12: 3.975 ms
+Run time division_by_zero_vectorized_static_veclen_16_no_cpy iter 13: 4.065 ms
+Run time division_by_zero_vectorized_static_veclen_16_no_cpy iter 14: 4.007 ms
+Run time division_by_zero_vectorized_static_veclen_16_no_cpy iter 15: 4.161 ms
+Run time division_by_zero_vectorized_static_veclen_16_no_cpy iter 16: 4.016 ms
+Run time division_by_zero_vectorized_static_veclen_16_no_cpy iter 17: 4.170 ms
+Run time division_by_zero_vectorized_static_veclen_16_no_cpy iter 18: 4.141 ms
+Run time division_by_zero_vectorized_static_veclen_16_no_cpy iter 19: 4.218 ms
+[can_be_applied] to if_197 is True
+[can_be_applied] to if_197 is True
+Changing __out = (__in1 / __in2) to have +1.7800590868057611e-307 to avoid NaN/inf floating-point exception in division!
+Run time division_by_zero_vectorized_static_veclen_16_cpy iter 0: 5.606 ms
+Run time division_by_zero_vectorized_static_veclen_16_cpy iter 1: 5.489 ms
+Run time division_by_zero_vectorized_static_veclen_16_cpy iter 2: 5.759 ms
+Run time division_by_zero_vectorized_static_veclen_16_cpy iter 3: 5.366 ms
+Run time division_by_zero_vectorized_static_veclen_16_cpy iter 4: 5.246 ms
+Run time division_by_zero_vectorized_static_veclen_16_cpy iter 5: 5.301 ms
+Run time division_by_zero_vectorized_static_veclen_16_cpy iter 6: 5.434 ms
+Run time division_by_zero_vectorized_static_veclen_16_cpy iter 7: 5.424 ms
+Run time division_by_zero_vectorized_static_veclen_16_cpy iter 8: 5.443 ms
+Run time division_by_zero_vectorized_static_veclen_16_cpy iter 9: 5.780 ms
+Run time division_by_zero_vectorized_static_veclen_16_cpy iter 10: 5.547 ms
+Run time division_by_zero_vectorized_static_veclen_16_cpy iter 11: 5.592 ms
+Run time division_by_zero_vectorized_static_veclen_16_cpy iter 12: 5.587 ms
+Run time division_by_zero_vectorized_static_veclen_16_cpy iter 13: 5.547 ms
+Run time division_by_zero_vectorized_static_veclen_16_cpy iter 14: 5.550 ms
+Run time division_by_zero_vectorized_static_veclen_16_cpy iter 15: 5.600 ms
+Run time division_by_zero_vectorized_static_veclen_16_cpy iter 16: 5.676 ms
+Run time division_by_zero_vectorized_static_veclen_16_cpy iter 17: 5.452 ms
+Run time division_by_zero_vectorized_static_veclen_16_cpy iter 18: 5.858 ms
+Run time division_by_zero_vectorized_static_veclen_16_cpy iter 19: 5.671 ms
+[can_be_applied] to if_197 is True
+[can_be_applied] to if_197 is True
+Changing __out = (__in1 / __in2) to have +1.7800590868057611e-307 to avoid NaN/inf floating-point exception in division!
+Run time division_by_zero_vectorized_static_veclen_32_no_cpy iter 0: 5.104 ms
+Run time division_by_zero_vectorized_static_veclen_32_no_cpy iter 1: 4.943 ms
+Run time division_by_zero_vectorized_static_veclen_32_no_cpy iter 2: 4.998 ms
+Run time division_by_zero_vectorized_static_veclen_32_no_cpy iter 3: 5.043 ms
+Run time division_by_zero_vectorized_static_veclen_32_no_cpy iter 4: 5.076 ms
+Run time division_by_zero_vectorized_static_veclen_32_no_cpy iter 5: 4.903 ms
+Run time division_by_zero_vectorized_static_veclen_32_no_cpy iter 6: 5.197 ms
+Run time division_by_zero_vectorized_static_veclen_32_no_cpy iter 7: 4.943 ms
+Run time division_by_zero_vectorized_static_veclen_32_no_cpy iter 8: 5.394 ms
+Run time division_by_zero_vectorized_static_veclen_32_no_cpy iter 9: 5.911 ms
+Run time division_by_zero_vectorized_static_veclen_32_no_cpy iter 10: 5.041 ms
+Run time division_by_zero_vectorized_static_veclen_32_no_cpy iter 11: 4.897 ms
+Run time division_by_zero_vectorized_static_veclen_32_no_cpy iter 12: 5.067 ms
+Run time division_by_zero_vectorized_static_veclen_32_no_cpy iter 13: 5.020 ms
+Run time division_by_zero_vectorized_static_veclen_32_no_cpy iter 14: 4.850 ms
+Run time division_by_zero_vectorized_static_veclen_32_no_cpy iter 15: 5.038 ms
+Run time division_by_zero_vectorized_static_veclen_32_no_cpy iter 16: 5.380 ms
+Run time division_by_zero_vectorized_static_veclen_32_no_cpy iter 17: 5.051 ms
+Run time division_by_zero_vectorized_static_veclen_32_no_cpy iter 18: 5.006 ms
+Run time division_by_zero_vectorized_static_veclen_32_no_cpy iter 19: 4.655 ms
+[can_be_applied] to if_197 is True
+[can_be_applied] to if_197 is True
+Changing __out = (__in1 / __in2) to have +1.7800590868057611e-307 to avoid NaN/inf floating-point exception in division!
+Run time division_by_zero_vectorized_static_veclen_32_cpy iter 0: 5.433 ms
+Run time division_by_zero_vectorized_static_veclen_32_cpy iter 1: 5.009 ms
+Run time division_by_zero_vectorized_static_veclen_32_cpy iter 2: 5.376 ms
+Run time division_by_zero_vectorized_static_veclen_32_cpy iter 3: 5.414 ms
+Run time division_by_zero_vectorized_static_veclen_32_cpy iter 4: 5.270 ms
+Run time division_by_zero_vectorized_static_veclen_32_cpy iter 5: 5.214 ms
+Run time division_by_zero_vectorized_static_veclen_32_cpy iter 6: 5.352 ms
+Run time division_by_zero_vectorized_static_veclen_32_cpy iter 7: 5.487 ms
+Run time division_by_zero_vectorized_static_veclen_32_cpy iter 8: 5.353 ms
+Run time division_by_zero_vectorized_static_veclen_32_cpy iter 9: 5.099 ms
+Run time division_by_zero_vectorized_static_veclen_32_cpy iter 10: 5.268 ms
+Run time division_by_zero_vectorized_static_veclen_32_cpy iter 11: 5.197 ms
+Run time division_by_zero_vectorized_static_veclen_32_cpy iter 12: 5.392 ms
+Run time division_by_zero_vectorized_static_veclen_32_cpy iter 13: 5.194 ms
+Run time division_by_zero_vectorized_static_veclen_32_cpy iter 14: 5.014 ms
+Run time division_by_zero_vectorized_static_veclen_32_cpy iter 15: 5.025 ms
+Run time division_by_zero_vectorized_static_veclen_32_cpy iter 16: 5.039 ms
+Run time division_by_zero_vectorized_static_veclen_32_cpy iter 17: 5.049 ms
+Run time division_by_zero_vectorized_static_veclen_32_cpy iter 18: 5.008 ms
+Run time division_by_zero_vectorized_static_veclen_32_cpy iter 19: 5.019 ms
+[can_be_applied] to if_197 is True
+[can_be_applied] to if_197 is True
+Changing __out = (__in1 / __in2) to have +1.7800590868057611e-307 to avoid NaN/inf floating-point exception in division!
+Run time division_by_zero_vectorized_static_veclen_64_no_cpy iter 0: 4.936 ms
+Run time division_by_zero_vectorized_static_veclen_64_no_cpy iter 1: 4.894 ms
+Run time division_by_zero_vectorized_static_veclen_64_no_cpy iter 2: 4.907 ms
+Run time division_by_zero_vectorized_static_veclen_64_no_cpy iter 3: 4.824 ms
+Run time division_by_zero_vectorized_static_veclen_64_no_cpy iter 4: 4.892 ms
+Run time division_by_zero_vectorized_static_veclen_64_no_cpy iter 5: 4.866 ms
+Run time division_by_zero_vectorized_static_veclen_64_no_cpy iter 6: 4.779 ms
+Run time division_by_zero_vectorized_static_veclen_64_no_cpy iter 7: 4.759 ms
+Run time division_by_zero_vectorized_static_veclen_64_no_cpy iter 8: 4.731 ms
+Run time division_by_zero_vectorized_static_veclen_64_no_cpy iter 9: 4.758 ms
+Run time division_by_zero_vectorized_static_veclen_64_no_cpy iter 10: 4.714 ms
+Run time division_by_zero_vectorized_static_veclen_64_no_cpy iter 11: 4.727 ms
+Run time division_by_zero_vectorized_static_veclen_64_no_cpy iter 12: 4.720 ms
+Run time division_by_zero_vectorized_static_veclen_64_no_cpy iter 13: 4.715 ms
+Run time division_by_zero_vectorized_static_veclen_64_no_cpy iter 14: 4.699 ms
+Run time division_by_zero_vectorized_static_veclen_64_no_cpy iter 15: 4.638 ms
+Run time division_by_zero_vectorized_static_veclen_64_no_cpy iter 16: 4.704 ms
+Run time division_by_zero_vectorized_static_veclen_64_no_cpy iter 17: 4.698 ms
+Run time division_by_zero_vectorized_static_veclen_64_no_cpy iter 18: 4.722 ms
+Run time division_by_zero_vectorized_static_veclen_64_no_cpy iter 19: 4.778 ms
+[can_be_applied] to if_197 is True
+[can_be_applied] to if_197 is True
+Changing __out = (__in1 / __in2) to have +1.7800590868057611e-307 to avoid NaN/inf floating-point exception in division!
+Run time division_by_zero_vectorized_static_veclen_64_cpy iter 0: 10.660 ms
+Run time division_by_zero_vectorized_static_veclen_64_cpy iter 1: 6.899 ms
+Run time division_by_zero_vectorized_static_veclen_64_cpy iter 2: 6.796 ms
+Run time division_by_zero_vectorized_static_veclen_64_cpy iter 3: 6.901 ms
+Run time division_by_zero_vectorized_static_veclen_64_cpy iter 4: 7.079 ms
+Run time division_by_zero_vectorized_static_veclen_64_cpy iter 5: 8.233 ms
+Run time division_by_zero_vectorized_static_veclen_64_cpy iter 6: 7.051 ms
+Run time division_by_zero_vectorized_static_veclen_64_cpy iter 7: 6.970 ms
+Run time division_by_zero_vectorized_static_veclen_64_cpy iter 8: 6.985 ms
+Run time division_by_zero_vectorized_static_veclen_64_cpy iter 9: 6.830 ms
+Run time division_by_zero_vectorized_static_veclen_64_cpy iter 10: 8.964 ms
+Run time division_by_zero_vectorized_static_veclen_64_cpy iter 11: 7.815 ms
+Run time division_by_zero_vectorized_static_veclen_64_cpy iter 12: 6.768 ms
+Run time division_by_zero_vectorized_static_veclen_64_cpy iter 13: 6.732 ms
+Run time division_by_zero_vectorized_static_veclen_64_cpy iter 14: 6.689 ms
+Run time division_by_zero_vectorized_static_veclen_64_cpy iter 15: 6.768 ms
+Run time division_by_zero_vectorized_static_veclen_64_cpy iter 16: 8.383 ms
+Run time division_by_zero_vectorized_static_veclen_64_cpy iter 17: 6.823 ms
+Run time division_by_zero_vectorized_static_veclen_64_cpy iter 18: 6.807 ms
+Run time division_by_zero_vectorized_static_veclen_64_cpy iter 19: 6.810 ms
+Run time division_by_zero iter 0: 26.501 ms
+Run time division_by_zero iter 1: 26.554 ms
+Run time division_by_zero iter 2: 26.639 ms
+Run time division_by_zero iter 3: 26.974 ms
+Run time division_by_zero iter 4: 26.463 ms
+Run time division_by_zero iter 5: 26.675 ms
+Run time division_by_zero iter 6: 26.748 ms
+Run time division_by_zero iter 7: 26.664 ms
+Run time division_by_zero iter 8: 26.512 ms
+Run time division_by_zero iter 9: 26.751 ms
+Run time division_by_zero iter 10: 26.530 ms
+Run time division_by_zero iter 11: 26.576 ms
+Run time division_by_zero iter 12: 26.785 ms
+Run time division_by_zero iter 13: 26.735 ms
+Run time division_by_zero iter 14: 26.781 ms
+Run time division_by_zero iter 15: 26.636 ms
+Run time division_by_zero iter 16: 26.646 ms
+Run time division_by_zero iter 17: 26.537 ms
+Run time division_by_zero iter 18: 26.581 ms
+Run time division_by_zero iter 19: 26.525 ms
+[can_be_applied] to if_197 is True
+[can_be_applied] to if_197 is True
+Changing __out = (__in1 / __in2) to have +1.7800590868057611e-307 to avoid NaN/inf floating-point exception in division!
+Run time division_by_zero_vectorized_static_veclen_8_no_cpy iter 0: 11.386 ms
+Run time division_by_zero_vectorized_static_veclen_8_no_cpy iter 1: 11.347 ms
+Run time division_by_zero_vectorized_static_veclen_8_no_cpy iter 2: 11.964 ms
+Run time division_by_zero_vectorized_static_veclen_8_no_cpy iter 3: 11.619 ms
+Run time division_by_zero_vectorized_static_veclen_8_no_cpy iter 4: 11.407 ms
+Run time division_by_zero_vectorized_static_veclen_8_no_cpy iter 5: 11.487 ms
+Run time division_by_zero_vectorized_static_veclen_8_no_cpy iter 6: 11.448 ms
+Run time division_by_zero_vectorized_static_veclen_8_no_cpy iter 7: 10.864 ms
+Run time division_by_zero_vectorized_static_veclen_8_no_cpy iter 8: 15.843 ms
+Run time division_by_zero_vectorized_static_veclen_8_no_cpy iter 9: 10.954 ms
+Run time division_by_zero_vectorized_static_veclen_8_no_cpy iter 10: 13.436 ms
+Run time division_by_zero_vectorized_static_veclen_8_no_cpy iter 11: 12.377 ms
+Run time division_by_zero_vectorized_static_veclen_8_no_cpy iter 12: 12.321 ms
+Run time division_by_zero_vectorized_static_veclen_8_no_cpy iter 13: 10.983 ms
+Run time division_by_zero_vectorized_static_veclen_8_no_cpy iter 14: 18.627 ms
+Run time division_by_zero_vectorized_static_veclen_8_no_cpy iter 15: 15.357 ms
+Run time division_by_zero_vectorized_static_veclen_8_no_cpy iter 16: 16.301 ms
+Run time division_by_zero_vectorized_static_veclen_8_no_cpy iter 17: 12.525 ms
+Run time division_by_zero_vectorized_static_veclen_8_no_cpy iter 18: 14.295 ms
+Run time division_by_zero_vectorized_static_veclen_8_no_cpy iter 19: 13.319 ms
+[can_be_applied] to if_197 is True
+[can_be_applied] to if_197 is True
+Changing __out = (__in1 / __in2) to have +1.7800590868057611e-307 to avoid NaN/inf floating-point exception in division!
+Run time division_by_zero_vectorized_static_veclen_8_cpy iter 0: 12.181 ms
+Run time division_by_zero_vectorized_static_veclen_8_cpy iter 1: 12.416 ms
+Run time division_by_zero_vectorized_static_veclen_8_cpy iter 2: 12.295 ms
+Run time division_by_zero_vectorized_static_veclen_8_cpy iter 3: 12.300 ms
+Run time division_by_zero_vectorized_static_veclen_8_cpy iter 4: 12.287 ms
+Run time division_by_zero_vectorized_static_veclen_8_cpy iter 5: 12.645 ms
+Run time division_by_zero_vectorized_static_veclen_8_cpy iter 6: 12.233 ms
+Run time division_by_zero_vectorized_static_veclen_8_cpy iter 7: 12.198 ms
+Run time division_by_zero_vectorized_static_veclen_8_cpy iter 8: 12.186 ms
+Run time division_by_zero_vectorized_static_veclen_8_cpy iter 9: 12.304 ms
+Run time division_by_zero_vectorized_static_veclen_8_cpy iter 10: 12.193 ms
+Run time division_by_zero_vectorized_static_veclen_8_cpy iter 11: 12.185 ms
+Run time division_by_zero_vectorized_static_veclen_8_cpy iter 12: 12.781 ms
+Run time division_by_zero_vectorized_static_veclen_8_cpy iter 13: 12.328 ms
+Run time division_by_zero_vectorized_static_veclen_8_cpy iter 14: 12.336 ms
+Run time division_by_zero_vectorized_static_veclen_8_cpy iter 15: 12.836 ms
+Run time division_by_zero_vectorized_static_veclen_8_cpy iter 16: 12.961 ms
+Run time division_by_zero_vectorized_static_veclen_8_cpy iter 17: 12.080 ms
+Run time division_by_zero_vectorized_static_veclen_8_cpy iter 18: 12.274 ms
+Run time division_by_zero_vectorized_static_veclen_8_cpy iter 19: 12.174 ms
+[can_be_applied] to if_197 is True
+[can_be_applied] to if_197 is True
+Changing __out = (__in1 / __in2) to have +1.7800590868057611e-307 to avoid NaN/inf floating-point exception in division!
+Run time division_by_zero_vectorized_static_veclen_16_no_cpy iter 0: 14.716 ms
+Run time division_by_zero_vectorized_static_veclen_16_no_cpy iter 1: 14.699 ms
+Run time division_by_zero_vectorized_static_veclen_16_no_cpy iter 2: 14.725 ms
+Run time division_by_zero_vectorized_static_veclen_16_no_cpy iter 3: 14.640 ms
+Run time division_by_zero_vectorized_static_veclen_16_no_cpy iter 4: 14.634 ms
+Run time division_by_zero_vectorized_static_veclen_16_no_cpy iter 5: 14.776 ms
+Run time division_by_zero_vectorized_static_veclen_16_no_cpy iter 6: 14.639 ms
+Run time division_by_zero_vectorized_static_veclen_16_no_cpy iter 7: 14.978 ms
+Run time division_by_zero_vectorized_static_veclen_16_no_cpy iter 8: 14.546 ms
+Run time division_by_zero_vectorized_static_veclen_16_no_cpy iter 9: 14.911 ms
+Run time division_by_zero_vectorized_static_veclen_16_no_cpy iter 10: 14.765 ms
+Run time division_by_zero_vectorized_static_veclen_16_no_cpy iter 11: 14.828 ms
+Run time division_by_zero_vectorized_static_veclen_16_no_cpy iter 12: 14.866 ms
+Run time division_by_zero_vectorized_static_veclen_16_no_cpy iter 13: 14.788 ms
+Run time division_by_zero_vectorized_static_veclen_16_no_cpy iter 14: 14.783 ms
+Run time division_by_zero_vectorized_static_veclen_16_no_cpy iter 15: 14.884 ms
+Run time division_by_zero_vectorized_static_veclen_16_no_cpy iter 16: 14.894 ms
+Run time division_by_zero_vectorized_static_veclen_16_no_cpy iter 17: 15.250 ms
+Run time division_by_zero_vectorized_static_veclen_16_no_cpy iter 18: 15.539 ms
+Run time division_by_zero_vectorized_static_veclen_16_no_cpy iter 19: 14.933 ms
+[can_be_applied] to if_197 is True
+[can_be_applied] to if_197 is True
+Changing __out = (__in1 / __in2) to have +1.7800590868057611e-307 to avoid NaN/inf floating-point exception in division!
+Run time division_by_zero_vectorized_static_veclen_16_cpy iter 0: 19.021 ms
+Run time division_by_zero_vectorized_static_veclen_16_cpy iter 1: 18.502 ms
+Run time division_by_zero_vectorized_static_veclen_16_cpy iter 2: 18.946 ms
+Run time division_by_zero_vectorized_static_veclen_16_cpy iter 3: 18.870 ms
+Run time division_by_zero_vectorized_static_veclen_16_cpy iter 4: 18.512 ms
+Run time division_by_zero_vectorized_static_veclen_16_cpy iter 5: 18.612 ms
+Run time division_by_zero_vectorized_static_veclen_16_cpy iter 6: 18.787 ms
+Run time division_by_zero_vectorized_static_veclen_16_cpy iter 7: 18.661 ms
+Run time division_by_zero_vectorized_static_veclen_16_cpy iter 8: 18.716 ms
+Run time division_by_zero_vectorized_static_veclen_16_cpy iter 9: 19.616 ms
+Run time division_by_zero_vectorized_static_veclen_16_cpy iter 10: 18.554 ms
+Run time division_by_zero_vectorized_static_veclen_16_cpy iter 11: 19.311 ms
+Run time division_by_zero_vectorized_static_veclen_16_cpy iter 12: 18.659 ms
+Run time division_by_zero_vectorized_static_veclen_16_cpy iter 13: 18.545 ms
+Run time division_by_zero_vectorized_static_veclen_16_cpy iter 14: 18.727 ms
+Run time division_by_zero_vectorized_static_veclen_16_cpy iter 15: 18.819 ms
+Run time division_by_zero_vectorized_static_veclen_16_cpy iter 16: 19.851 ms
+Run time division_by_zero_vectorized_static_veclen_16_cpy iter 17: 19.315 ms
+Run time division_by_zero_vectorized_static_veclen_16_cpy iter 18: 19.300 ms
+Run time division_by_zero_vectorized_static_veclen_16_cpy iter 19: 18.716 ms
+[can_be_applied] to if_197 is True
+[can_be_applied] to if_197 is True
+Changing __out = (__in1 / __in2) to have +1.7800590868057611e-307 to avoid NaN/inf floating-point exception in division!
+Run time division_by_zero_vectorized_static_veclen_32_no_cpy iter 0: 15.615 ms
+Run time division_by_zero_vectorized_static_veclen_32_no_cpy iter 1: 14.619 ms
+Run time division_by_zero_vectorized_static_veclen_32_no_cpy iter 2: 14.768 ms
+Run time division_by_zero_vectorized_static_veclen_32_no_cpy iter 3: 14.781 ms
+Run time division_by_zero_vectorized_static_veclen_32_no_cpy iter 4: 14.803 ms
+Run time division_by_zero_vectorized_static_veclen_32_no_cpy iter 5: 14.644 ms
+Run time division_by_zero_vectorized_static_veclen_32_no_cpy iter 6: 14.658 ms
+Run time division_by_zero_vectorized_static_veclen_32_no_cpy iter 7: 15.190 ms
+Run time division_by_zero_vectorized_static_veclen_32_no_cpy iter 8: 14.789 ms
+Run time division_by_zero_vectorized_static_veclen_32_no_cpy iter 9: 14.749 ms
+Run time division_by_zero_vectorized_static_veclen_32_no_cpy iter 10: 14.629 ms
+Run time division_by_zero_vectorized_static_veclen_32_no_cpy iter 11: 14.981 ms
+Run time division_by_zero_vectorized_static_veclen_32_no_cpy iter 12: 14.854 ms
+Run time division_by_zero_vectorized_static_veclen_32_no_cpy iter 13: 15.243 ms
+Run time division_by_zero_vectorized_static_veclen_32_no_cpy iter 14: 14.778 ms
+Run time division_by_zero_vectorized_static_veclen_32_no_cpy iter 15: 14.826 ms
+Run time division_by_zero_vectorized_static_veclen_32_no_cpy iter 16: 14.708 ms
+Run time division_by_zero_vectorized_static_veclen_32_no_cpy iter 17: 14.794 ms
+Run time division_by_zero_vectorized_static_veclen_32_no_cpy iter 18: 15.114 ms
+Run time division_by_zero_vectorized_static_veclen_32_no_cpy iter 19: 14.602 ms
+[can_be_applied] to if_197 is True
+[can_be_applied] to if_197 is True
+Changing __out = (__in1 / __in2) to have +1.7800590868057611e-307 to avoid NaN/inf floating-point exception in division!
+Run time division_by_zero_vectorized_static_veclen_32_cpy iter 0: 19.307 ms
+Run time division_by_zero_vectorized_static_veclen_32_cpy iter 1: 18.133 ms
+Run time division_by_zero_vectorized_static_veclen_32_cpy iter 2: 18.176 ms
+Run time division_by_zero_vectorized_static_veclen_32_cpy iter 3: 18.060 ms
+Run time division_by_zero_vectorized_static_veclen_32_cpy iter 4: 18.219 ms
+Run time division_by_zero_vectorized_static_veclen_32_cpy iter 5: 18.082 ms
+Run time division_by_zero_vectorized_static_veclen_32_cpy iter 6: 18.001 ms
+Run time division_by_zero_vectorized_static_veclen_32_cpy iter 7: 18.312 ms
+Run time division_by_zero_vectorized_static_veclen_32_cpy iter 8: 18.681 ms
+Run time division_by_zero_vectorized_static_veclen_32_cpy iter 9: 17.903 ms
+Run time division_by_zero_vectorized_static_veclen_32_cpy iter 10: 18.022 ms
+Run time division_by_zero_vectorized_static_veclen_32_cpy iter 11: 18.327 ms
+Run time division_by_zero_vectorized_static_veclen_32_cpy iter 12: 18.097 ms
+Run time division_by_zero_vectorized_static_veclen_32_cpy iter 13: 18.283 ms
+Run time division_by_zero_vectorized_static_veclen_32_cpy iter 14: 18.339 ms
+Run time division_by_zero_vectorized_static_veclen_32_cpy iter 15: 17.921 ms
+Run time division_by_zero_vectorized_static_veclen_32_cpy iter 16: 18.121 ms
+Run time division_by_zero_vectorized_static_veclen_32_cpy iter 17: 18.716 ms
+Run time division_by_zero_vectorized_static_veclen_32_cpy iter 18: 18.292 ms
+Run time division_by_zero_vectorized_static_veclen_32_cpy iter 19: 17.641 ms
+[can_be_applied] to if_197 is True
+[can_be_applied] to if_197 is True
+Changing __out = (__in1 / __in2) to have +1.7800590868057611e-307 to avoid NaN/inf floating-point exception in division!
+Run time division_by_zero_vectorized_static_veclen_64_no_cpy iter 0: 17.828 ms
+Run time division_by_zero_vectorized_static_veclen_64_no_cpy iter 1: 17.003 ms
+Run time division_by_zero_vectorized_static_veclen_64_no_cpy iter 2: 17.455 ms
+Run time division_by_zero_vectorized_static_veclen_64_no_cpy iter 3: 17.383 ms
+Run time division_by_zero_vectorized_static_veclen_64_no_cpy iter 4: 17.837 ms
+Run time division_by_zero_vectorized_static_veclen_64_no_cpy iter 5: 17.951 ms
+Run time division_by_zero_vectorized_static_veclen_64_no_cpy iter 6: 17.895 ms
+Run time division_by_zero_vectorized_static_veclen_64_no_cpy iter 7: 18.275 ms
+Run time division_by_zero_vectorized_static_veclen_64_no_cpy iter 8: 17.417 ms
+Run time division_by_zero_vectorized_static_veclen_64_no_cpy iter 9: 17.021 ms
+Run time division_by_zero_vectorized_static_veclen_64_no_cpy iter 10: 16.873 ms
+Run time division_by_zero_vectorized_static_veclen_64_no_cpy iter 11: 17.607 ms
+Run time division_by_zero_vectorized_static_veclen_64_no_cpy iter 12: 17.334 ms
+Run time division_by_zero_vectorized_static_veclen_64_no_cpy iter 13: 18.494 ms
+Run time division_by_zero_vectorized_static_veclen_64_no_cpy iter 14: 18.339 ms
+Run time division_by_zero_vectorized_static_veclen_64_no_cpy iter 15: 17.618 ms
+Run time division_by_zero_vectorized_static_veclen_64_no_cpy iter 16: 17.657 ms
+Run time division_by_zero_vectorized_static_veclen_64_no_cpy iter 17: 18.273 ms
+Run time division_by_zero_vectorized_static_veclen_64_no_cpy iter 18: 18.410 ms
+Run time division_by_zero_vectorized_static_veclen_64_no_cpy iter 19: 17.556 ms
+[can_be_applied] to if_197 is True
+[can_be_applied] to if_197 is True
+Changing __out = (__in1 / __in2) to have +1.7800590868057611e-307 to avoid NaN/inf floating-point exception in division!
+Run time division_by_zero_vectorized_static_veclen_64_cpy iter 0: 21.773 ms
+Run time division_by_zero_vectorized_static_veclen_64_cpy iter 1: 21.583 ms
+Run time division_by_zero_vectorized_static_veclen_64_cpy iter 2: 21.580 ms
+Run time division_by_zero_vectorized_static_veclen_64_cpy iter 3: 21.829 ms
+Run time division_by_zero_vectorized_static_veclen_64_cpy iter 4: 22.192 ms
+Run time division_by_zero_vectorized_static_veclen_64_cpy iter 5: 22.128 ms
+Run time division_by_zero_vectorized_static_veclen_64_cpy iter 6: 22.443 ms
+Run time division_by_zero_vectorized_static_veclen_64_cpy iter 7: 22.406 ms
+Run time division_by_zero_vectorized_static_veclen_64_cpy iter 8: 22.208 ms
+Run time division_by_zero_vectorized_static_veclen_64_cpy iter 9: 22.536 ms
+Run time division_by_zero_vectorized_static_veclen_64_cpy iter 10: 22.103 ms
+Run time division_by_zero_vectorized_static_veclen_64_cpy iter 11: 23.042 ms
+Run time division_by_zero_vectorized_static_veclen_64_cpy iter 12: 21.797 ms
+Run time division_by_zero_vectorized_static_veclen_64_cpy iter 13: 22.412 ms
+Run time division_by_zero_vectorized_static_veclen_64_cpy iter 14: 22.399 ms
+Run time division_by_zero_vectorized_static_veclen_64_cpy iter 15: 22.323 ms
+Run time division_by_zero_vectorized_static_veclen_64_cpy iter 16: 22.534 ms
+Run time division_by_zero_vectorized_static_veclen_64_cpy iter 17: 22.886 ms
+Run time division_by_zero_vectorized_static_veclen_64_cpy iter 18: 22.606 ms
+Run time division_by_zero_vectorized_static_veclen_64_cpy iter 19: 22.147 ms
+Run time division_by_zero iter 0: 51.933 ms
+Run time division_by_zero iter 1: 52.018 ms
+Run time division_by_zero iter 2: 51.713 ms
+Run time division_by_zero iter 3: 51.942 ms
+Run time division_by_zero iter 4: 51.935 ms
+Run time division_by_zero iter 5: 51.855 ms
+Run time division_by_zero iter 6: 51.856 ms
+Run time division_by_zero iter 7: 51.994 ms
+Run time division_by_zero iter 8: 51.967 ms
+Run time division_by_zero iter 9: 51.977 ms
+Run time division_by_zero iter 10: 53.486 ms
+Run time division_by_zero iter 11: 53.434 ms
+Run time division_by_zero iter 12: 53.621 ms
+Run time division_by_zero iter 13: 53.407 ms
+Run time division_by_zero iter 14: 52.532 ms
+Run time division_by_zero iter 15: 53.375 ms
+Run time division_by_zero iter 16: 53.228 ms
+Run time division_by_zero iter 17: 53.460 ms
+Run time division_by_zero iter 18: 53.477 ms
+Run time division_by_zero iter 19: 51.938 ms
+[can_be_applied] to if_197 is True
+[can_be_applied] to if_197 is True
+Changing __out = (__in1 / __in2) to have +1.7800590868057611e-307 to avoid NaN/inf floating-point exception in division!
+Run time division_by_zero_vectorized_static_veclen_8_no_cpy iter 0: 20.485 ms
+Run time division_by_zero_vectorized_static_veclen_8_no_cpy iter 1: 20.602 ms
+Run time division_by_zero_vectorized_static_veclen_8_no_cpy iter 2: 20.812 ms
+Run time division_by_zero_vectorized_static_veclen_8_no_cpy iter 3: 20.901 ms
+Run time division_by_zero_vectorized_static_veclen_8_no_cpy iter 4: 20.741 ms
+Run time division_by_zero_vectorized_static_veclen_8_no_cpy iter 5: 22.572 ms
+Run time division_by_zero_vectorized_static_veclen_8_no_cpy iter 6: 22.074 ms
+Run time division_by_zero_vectorized_static_veclen_8_no_cpy iter 7: 20.772 ms
+Run time division_by_zero_vectorized_static_veclen_8_no_cpy iter 8: 20.714 ms
+Run time division_by_zero_vectorized_static_veclen_8_no_cpy iter 9: 23.091 ms
+Run time division_by_zero_vectorized_static_veclen_8_no_cpy iter 10: 33.322 ms
+Run time division_by_zero_vectorized_static_veclen_8_no_cpy iter 11: 29.332 ms
+Run time division_by_zero_vectorized_static_veclen_8_no_cpy iter 12: 29.631 ms
+Run time division_by_zero_vectorized_static_veclen_8_no_cpy iter 13: 30.618 ms
+Run time division_by_zero_vectorized_static_veclen_8_no_cpy iter 14: 29.363 ms
+Run time division_by_zero_vectorized_static_veclen_8_no_cpy iter 15: 29.425 ms
+Run time division_by_zero_vectorized_static_veclen_8_no_cpy iter 16: 29.830 ms
+Run time division_by_zero_vectorized_static_veclen_8_no_cpy iter 17: 29.978 ms
+Run time division_by_zero_vectorized_static_veclen_8_no_cpy iter 18: 30.220 ms
+Run time division_by_zero_vectorized_static_veclen_8_no_cpy iter 19: 31.531 ms
+[can_be_applied] to if_197 is True
+[can_be_applied] to if_197 is True
+Changing __out = (__in1 / __in2) to have +1.7800590868057611e-307 to avoid NaN/inf floating-point exception in division!
+Run time division_by_zero_vectorized_static_veclen_8_cpy iter 0: 20.052 ms
+Run time division_by_zero_vectorized_static_veclen_8_cpy iter 1: 19.805 ms
+Run time division_by_zero_vectorized_static_veclen_8_cpy iter 2: 20.507 ms
+Run time division_by_zero_vectorized_static_veclen_8_cpy iter 3: 21.721 ms
+Run time division_by_zero_vectorized_static_veclen_8_cpy iter 4: 21.513 ms
+Run time division_by_zero_vectorized_static_veclen_8_cpy iter 5: 20.181 ms
+Run time division_by_zero_vectorized_static_veclen_8_cpy iter 6: 20.178 ms
+Run time division_by_zero_vectorized_static_veclen_8_cpy iter 7: 19.653 ms
+Run time division_by_zero_vectorized_static_veclen_8_cpy iter 8: 30.173 ms
+Run time division_by_zero_vectorized_static_veclen_8_cpy iter 9: 28.681 ms
+Run time division_by_zero_vectorized_static_veclen_8_cpy iter 10: 29.391 ms
+Run time division_by_zero_vectorized_static_veclen_8_cpy iter 11: 29.383 ms
+Run time division_by_zero_vectorized_static_veclen_8_cpy iter 12: 29.702 ms
+Run time division_by_zero_vectorized_static_veclen_8_cpy iter 13: 31.331 ms
+Run time division_by_zero_vectorized_static_veclen_8_cpy iter 14: 26.404 ms
+Run time division_by_zero_vectorized_static_veclen_8_cpy iter 15: 30.536 ms
+Run time division_by_zero_vectorized_static_veclen_8_cpy iter 16: 30.057 ms
+Run time division_by_zero_vectorized_static_veclen_8_cpy iter 17: 29.746 ms
+Run time division_by_zero_vectorized_static_veclen_8_cpy iter 18: 28.362 ms
+Run time division_by_zero_vectorized_static_veclen_8_cpy iter 19: 34.812 ms
+[can_be_applied] to if_197 is True
+[can_be_applied] to if_197 is True
+Changing __out = (__in1 / __in2) to have +1.7800590868057611e-307 to avoid NaN/inf floating-point exception in division!
+Run time division_by_zero_vectorized_static_veclen_16_no_cpy iter 0: 27.831 ms
+Run time division_by_zero_vectorized_static_veclen_16_no_cpy iter 1: 26.979 ms
+Run time division_by_zero_vectorized_static_veclen_16_no_cpy iter 2: 27.690 ms
+Run time division_by_zero_vectorized_static_veclen_16_no_cpy iter 3: 27.155 ms
+Run time division_by_zero_vectorized_static_veclen_16_no_cpy iter 4: 26.798 ms
+Run time division_by_zero_vectorized_static_veclen_16_no_cpy iter 5: 27.170 ms
+Run time division_by_zero_vectorized_static_veclen_16_no_cpy iter 6: 26.846 ms
+Run time division_by_zero_vectorized_static_veclen_16_no_cpy iter 7: 27.246 ms
+Run time division_by_zero_vectorized_static_veclen_16_no_cpy iter 8: 28.481 ms
+Run time division_by_zero_vectorized_static_veclen_16_no_cpy iter 9: 26.843 ms
+Run time division_by_zero_vectorized_static_veclen_16_no_cpy iter 10: 35.591 ms
+Run time division_by_zero_vectorized_static_veclen_16_no_cpy iter 11: 33.710 ms
+Run time division_by_zero_vectorized_static_veclen_16_no_cpy iter 12: 34.720 ms
+Run time division_by_zero_vectorized_static_veclen_16_no_cpy iter 13: 34.454 ms
+Run time division_by_zero_vectorized_static_veclen_16_no_cpy iter 14: 35.732 ms
+Run time division_by_zero_vectorized_static_veclen_16_no_cpy iter 15: 33.471 ms
+Run time division_by_zero_vectorized_static_veclen_16_no_cpy iter 16: 33.672 ms
+Run time division_by_zero_vectorized_static_veclen_16_no_cpy iter 17: 36.432 ms
+Run time division_by_zero_vectorized_static_veclen_16_no_cpy iter 18: 33.610 ms
+Run time division_by_zero_vectorized_static_veclen_16_no_cpy iter 19: 34.238 ms
+[can_be_applied] to if_197 is True
+[can_be_applied] to if_197 is True
+Changing __out = (__in1 / __in2) to have +1.7800590868057611e-307 to avoid NaN/inf floating-point exception in division!
+Run time division_by_zero_vectorized_static_veclen_16_cpy iter 0: 36.176 ms
+Run time division_by_zero_vectorized_static_veclen_16_cpy iter 1: 36.191 ms
+Run time division_by_zero_vectorized_static_veclen_16_cpy iter 2: 36.136 ms
+Run time division_by_zero_vectorized_static_veclen_16_cpy iter 3: 36.022 ms
+Run time division_by_zero_vectorized_static_veclen_16_cpy iter 4: 36.456 ms
+Run time division_by_zero_vectorized_static_veclen_16_cpy iter 5: 36.212 ms
+Run time division_by_zero_vectorized_static_veclen_16_cpy iter 6: 36.092 ms
+Run time division_by_zero_vectorized_static_veclen_16_cpy iter 7: 36.544 ms
+Run time division_by_zero_vectorized_static_veclen_16_cpy iter 8: 40.185 ms
+Run time division_by_zero_vectorized_static_veclen_16_cpy iter 9: 38.055 ms
+Run time division_by_zero_vectorized_static_veclen_16_cpy iter 10: 38.135 ms
+Run time division_by_zero_vectorized_static_veclen_16_cpy iter 11: 38.713 ms
+Run time division_by_zero_vectorized_static_veclen_16_cpy iter 12: 38.143 ms
+Run time division_by_zero_vectorized_static_veclen_16_cpy iter 13: 39.068 ms
+Run time division_by_zero_vectorized_static_veclen_16_cpy iter 14: 38.543 ms
+Run time division_by_zero_vectorized_static_veclen_16_cpy iter 15: 38.324 ms
+Run time division_by_zero_vectorized_static_veclen_16_cpy iter 16: 38.385 ms
+Run time division_by_zero_vectorized_static_veclen_16_cpy iter 17: 38.551 ms
+Run time division_by_zero_vectorized_static_veclen_16_cpy iter 18: 39.219 ms
+Run time division_by_zero_vectorized_static_veclen_16_cpy iter 19: 38.629 ms
+[can_be_applied] to if_197 is True
+[can_be_applied] to if_197 is True
+Changing __out = (__in1 / __in2) to have +1.7800590868057611e-307 to avoid NaN/inf floating-point exception in division!
+Run time division_by_zero_vectorized_static_veclen_32_no_cpy iter 0: 26.941 ms
+Run time division_by_zero_vectorized_static_veclen_32_no_cpy iter 1: 38.892 ms
+Run time division_by_zero_vectorized_static_veclen_32_no_cpy iter 2: 37.631 ms
+Run time division_by_zero_vectorized_static_veclen_32_no_cpy iter 3: 36.892 ms
+Run time division_by_zero_vectorized_static_veclen_32_no_cpy iter 4: 33.780 ms
+Run time division_by_zero_vectorized_static_veclen_32_no_cpy iter 5: 36.793 ms
+Run time division_by_zero_vectorized_static_veclen_32_no_cpy iter 6: 37.451 ms
+Run time division_by_zero_vectorized_static_veclen_32_no_cpy iter 7: 38.507 ms
+Run time division_by_zero_vectorized_static_veclen_32_no_cpy iter 8: 35.364 ms
+Run time division_by_zero_vectorized_static_veclen_32_no_cpy iter 9: 35.586 ms
+Run time division_by_zero_vectorized_static_veclen_32_no_cpy iter 10: 37.697 ms
+Run time division_by_zero_vectorized_static_veclen_32_no_cpy iter 11: 35.090 ms
+Run time division_by_zero_vectorized_static_veclen_32_no_cpy iter 12: 35.030 ms
+Run time division_by_zero_vectorized_static_veclen_32_no_cpy iter 13: 37.533 ms
+Run time division_by_zero_vectorized_static_veclen_32_no_cpy iter 14: 34.801 ms
+Run time division_by_zero_vectorized_static_veclen_32_no_cpy iter 15: 34.640 ms
+Run time division_by_zero_vectorized_static_veclen_32_no_cpy iter 16: 36.396 ms
+Run time division_by_zero_vectorized_static_veclen_32_no_cpy iter 17: 33.886 ms
+Run time division_by_zero_vectorized_static_veclen_32_no_cpy iter 18: 34.051 ms
+Run time division_by_zero_vectorized_static_veclen_32_no_cpy iter 19: 34.280 ms
+[can_be_applied] to if_197 is True
+[can_be_applied] to if_197 is True
+Changing __out = (__in1 / __in2) to have +1.7800590868057611e-307 to avoid NaN/inf floating-point exception in division!
+Run time division_by_zero_vectorized_static_veclen_32_cpy iter 0: 46.385 ms
+Run time division_by_zero_vectorized_static_veclen_32_cpy iter 1: 38.718 ms
+Run time division_by_zero_vectorized_static_veclen_32_cpy iter 2: 39.411 ms
+Run time division_by_zero_vectorized_static_veclen_32_cpy iter 3: 38.832 ms
+Run time division_by_zero_vectorized_static_veclen_32_cpy iter 4: 46.026 ms
+Run time division_by_zero_vectorized_static_veclen_32_cpy iter 5: 43.116 ms
+Run time division_by_zero_vectorized_static_veclen_32_cpy iter 6: 38.561 ms
+Run time division_by_zero_vectorized_static_veclen_32_cpy iter 7: 44.786 ms
+Run time division_by_zero_vectorized_static_veclen_32_cpy iter 8: 45.868 ms
+Run time division_by_zero_vectorized_static_veclen_32_cpy iter 9: 39.595 ms
+Run time division_by_zero_vectorized_static_veclen_32_cpy iter 10: 38.285 ms
+Run time division_by_zero_vectorized_static_veclen_32_cpy iter 11: 47.604 ms
+Run time division_by_zero_vectorized_static_veclen_32_cpy iter 12: 37.805 ms
+Run time division_by_zero_vectorized_static_veclen_32_cpy iter 13: 43.494 ms
+Run time division_by_zero_vectorized_static_veclen_32_cpy iter 14: 39.829 ms
+Run time division_by_zero_vectorized_static_veclen_32_cpy iter 15: 43.551 ms
+Run time division_by_zero_vectorized_static_veclen_32_cpy iter 16: 45.922 ms
+Run time division_by_zero_vectorized_static_veclen_32_cpy iter 17: 39.981 ms
+Run time division_by_zero_vectorized_static_veclen_32_cpy iter 18: 44.690 ms
+Run time division_by_zero_vectorized_static_veclen_32_cpy iter 19: 44.452 ms
+[can_be_applied] to if_197 is True
+[can_be_applied] to if_197 is True
+Changing __out = (__in1 / __in2) to have +1.7800590868057611e-307 to avoid NaN/inf floating-point exception in division!
+Run time division_by_zero_vectorized_static_veclen_64_no_cpy iter 0: 30.951 ms
+Run time division_by_zero_vectorized_static_veclen_64_no_cpy iter 1: 36.246 ms
+Run time division_by_zero_vectorized_static_veclen_64_no_cpy iter 2: 35.513 ms
+Run time division_by_zero_vectorized_static_veclen_64_no_cpy iter 3: 43.105 ms
+Run time division_by_zero_vectorized_static_veclen_64_no_cpy iter 4: 45.124 ms
+Run time division_by_zero_vectorized_static_veclen_64_no_cpy iter 5: 35.061 ms
+Run time division_by_zero_vectorized_static_veclen_64_no_cpy iter 6: 45.067 ms
+Run time division_by_zero_vectorized_static_veclen_64_no_cpy iter 7: 37.301 ms
+Run time division_by_zero_vectorized_static_veclen_64_no_cpy iter 8: 37.833 ms
+Run time division_by_zero_vectorized_static_veclen_64_no_cpy iter 9: 45.045 ms
+Run time division_by_zero_vectorized_static_veclen_64_no_cpy iter 10: 36.235 ms
+Run time division_by_zero_vectorized_static_veclen_64_no_cpy iter 11: 43.565 ms
+Run time division_by_zero_vectorized_static_veclen_64_no_cpy iter 12: 41.384 ms
+Run time division_by_zero_vectorized_static_veclen_64_no_cpy iter 13: 37.603 ms
+Run time division_by_zero_vectorized_static_veclen_64_no_cpy iter 14: 40.791 ms
+Run time division_by_zero_vectorized_static_veclen_64_no_cpy iter 15: 36.366 ms
+Run time division_by_zero_vectorized_static_veclen_64_no_cpy iter 16: 45.268 ms
+Run time division_by_zero_vectorized_static_veclen_64_no_cpy iter 17: 45.429 ms
+Run time division_by_zero_vectorized_static_veclen_64_no_cpy iter 18: 45.738 ms
+Run time division_by_zero_vectorized_static_veclen_64_no_cpy iter 19: 44.346 ms
+[can_be_applied] to if_197 is True
+[can_be_applied] to if_197 is True
+Changing __out = (__in1 / __in2) to have +1.7800590868057611e-307 to avoid NaN/inf floating-point exception in division!
+Run time division_by_zero_vectorized_static_veclen_64_cpy iter 0: 40.908 ms
+Run time division_by_zero_vectorized_static_veclen_64_cpy iter 1: 42.677 ms
+Run time division_by_zero_vectorized_static_veclen_64_cpy iter 2: 42.834 ms
+Run time division_by_zero_vectorized_static_veclen_64_cpy iter 3: 42.996 ms
+Run time division_by_zero_vectorized_static_veclen_64_cpy iter 4: 43.057 ms
+Run time division_by_zero_vectorized_static_veclen_64_cpy iter 5: 43.183 ms
+Run time division_by_zero_vectorized_static_veclen_64_cpy iter 6: 42.744 ms
+Run time division_by_zero_vectorized_static_veclen_64_cpy iter 7: 42.912 ms
+Run time division_by_zero_vectorized_static_veclen_64_cpy iter 8: 43.059 ms
+Run time division_by_zero_vectorized_static_veclen_64_cpy iter 9: 43.121 ms
+Run time division_by_zero_vectorized_static_veclen_64_cpy iter 10: 42.787 ms
+Run time division_by_zero_vectorized_static_veclen_64_cpy iter 11: 42.756 ms
+Run time division_by_zero_vectorized_static_veclen_64_cpy iter 12: 42.582 ms
+Run time division_by_zero_vectorized_static_veclen_64_cpy iter 13: 42.336 ms
+Run time division_by_zero_vectorized_static_veclen_64_cpy iter 14: 41.359 ms
+Run time division_by_zero_vectorized_static_veclen_64_cpy iter 15: 43.707 ms
+Run time division_by_zero_vectorized_static_veclen_64_cpy iter 16: 42.131 ms
+Run time division_by_zero_vectorized_static_veclen_64_cpy iter 17: 47.771 ms
+Run time division_by_zero_vectorized_static_veclen_64_cpy iter 18: 56.538 ms
+Run time division_by_zero_vectorized_static_veclen_64_cpy iter 19: 45.872 ms
+Run time division_by_zero iter 0: 102.810 ms
+Run time division_by_zero iter 1: 108.436 ms
+Run time division_by_zero iter 2: 113.341 ms
+Run time division_by_zero iter 3: 111.730 ms
+Run time division_by_zero iter 4: 108.617 ms
+Run time division_by_zero iter 5: 113.915 ms
+Run time division_by_zero iter 6: 108.804 ms
+Run time division_by_zero iter 7: 113.995 ms
+Run time division_by_zero iter 8: 113.115 ms
+Run time division_by_zero iter 9: 108.569 ms
+Run time division_by_zero iter 10: 110.533 ms
+Run time division_by_zero iter 11: 115.512 ms
+Run time division_by_zero iter 12: 115.572 ms
+Run time division_by_zero iter 13: 113.177 ms
+Run time division_by_zero iter 14: 114.346 ms
+Run time division_by_zero iter 15: 108.555 ms
+Run time division_by_zero iter 16: 108.795 ms
+Run time division_by_zero iter 17: 111.295 ms
+Run time division_by_zero iter 18: 110.547 ms
+Run time division_by_zero iter 19: 103.564 ms
+[can_be_applied] to if_197 is True
+[can_be_applied] to if_197 is True
+Changing __out = (__in1 / __in2) to have +1.7800590868057611e-307 to avoid NaN/inf floating-point exception in division!
+Run time division_by_zero_vectorized_static_veclen_8_no_cpy iter 0: 87.303 ms
+Run time division_by_zero_vectorized_static_veclen_8_no_cpy iter 1: 76.086 ms
+Run time division_by_zero_vectorized_static_veclen_8_no_cpy iter 2: 76.395 ms
+Run time division_by_zero_vectorized_static_veclen_8_no_cpy iter 3: 85.415 ms
+Run time division_by_zero_vectorized_static_veclen_8_no_cpy iter 4: 83.354 ms
+Run time division_by_zero_vectorized_static_veclen_8_no_cpy iter 5: 75.105 ms
+Run time division_by_zero_vectorized_static_veclen_8_no_cpy iter 6: 82.205 ms
+Run time division_by_zero_vectorized_static_veclen_8_no_cpy iter 7: 85.644 ms
+Run time division_by_zero_vectorized_static_veclen_8_no_cpy iter 8: 87.766 ms
+Run time division_by_zero_vectorized_static_veclen_8_no_cpy iter 9: 72.925 ms
+Run time division_by_zero_vectorized_static_veclen_8_no_cpy iter 10: 84.330 ms
+Run time division_by_zero_vectorized_static_veclen_8_no_cpy iter 11: 66.399 ms
+Run time division_by_zero_vectorized_static_veclen_8_no_cpy iter 12: 81.994 ms
+Run time division_by_zero_vectorized_static_veclen_8_no_cpy iter 13: 66.245 ms
+Run time division_by_zero_vectorized_static_veclen_8_no_cpy iter 14: 57.535 ms
+Run time division_by_zero_vectorized_static_veclen_8_no_cpy iter 15: 40.744 ms
+Run time division_by_zero_vectorized_static_veclen_8_no_cpy iter 16: 59.822 ms
+Run time division_by_zero_vectorized_static_veclen_8_no_cpy iter 17: 68.585 ms
+Run time division_by_zero_vectorized_static_veclen_8_no_cpy iter 18: 40.213 ms
+Run time division_by_zero_vectorized_static_veclen_8_no_cpy iter 19: 51.048 ms
+[can_be_applied] to if_197 is True
+[can_be_applied] to if_197 is True
+Changing __out = (__in1 / __in2) to have +1.7800590868057611e-307 to avoid NaN/inf floating-point exception in division!
+Run time division_by_zero_vectorized_static_veclen_8_cpy iter 0: 84.891 ms
+Run time division_by_zero_vectorized_static_veclen_8_cpy iter 1: 83.182 ms
+Run time division_by_zero_vectorized_static_veclen_8_cpy iter 2: 71.867 ms
+Run time division_by_zero_vectorized_static_veclen_8_cpy iter 3: 82.859 ms
+Run time division_by_zero_vectorized_static_veclen_8_cpy iter 4: 83.632 ms
+Run time division_by_zero_vectorized_static_veclen_8_cpy iter 5: 81.136 ms
+Run time division_by_zero_vectorized_static_veclen_8_cpy iter 6: 65.007 ms
+Run time division_by_zero_vectorized_static_veclen_8_cpy iter 7: 84.128 ms
+Run time division_by_zero_vectorized_static_veclen_8_cpy iter 8: 89.045 ms
+Run time division_by_zero_vectorized_static_veclen_8_cpy iter 9: 78.266 ms
+Run time division_by_zero_vectorized_static_veclen_8_cpy iter 10: 65.259 ms
+Run time division_by_zero_vectorized_static_veclen_8_cpy iter 11: 74.179 ms
+Run time division_by_zero_vectorized_static_veclen_8_cpy iter 12: 38.376 ms
+Run time division_by_zero_vectorized_static_veclen_8_cpy iter 13: 38.508 ms
+Run time division_by_zero_vectorized_static_veclen_8_cpy iter 14: 50.124 ms
+Run time division_by_zero_vectorized_static_veclen_8_cpy iter 15: 68.878 ms
+Run time division_by_zero_vectorized_static_veclen_8_cpy iter 16: 71.294 ms
+Run time division_by_zero_vectorized_static_veclen_8_cpy iter 17: 74.090 ms
+Run time division_by_zero_vectorized_static_veclen_8_cpy iter 18: 47.654 ms
+Run time division_by_zero_vectorized_static_veclen_8_cpy iter 19: 47.646 ms
+[can_be_applied] to if_197 is True
+[can_be_applied] to if_197 is True
+Changing __out = (__in1 / __in2) to have +1.7800590868057611e-307 to avoid NaN/inf floating-point exception in division!
+Run time division_by_zero_vectorized_static_veclen_16_no_cpy iter 0: 52.118 ms
+Run time division_by_zero_vectorized_static_veclen_16_no_cpy iter 1: 51.921 ms
+Run time division_by_zero_vectorized_static_veclen_16_no_cpy iter 2: 54.530 ms
+Run time division_by_zero_vectorized_static_veclen_16_no_cpy iter 3: 56.471 ms
+Run time division_by_zero_vectorized_static_veclen_16_no_cpy iter 4: 63.487 ms
+Run time division_by_zero_vectorized_static_veclen_16_no_cpy iter 5: 54.443 ms
+Run time division_by_zero_vectorized_static_veclen_16_no_cpy iter 6: 90.281 ms
+Run time division_by_zero_vectorized_static_veclen_16_no_cpy iter 7: 85.008 ms
+Run time division_by_zero_vectorized_static_veclen_16_no_cpy iter 8: 78.029 ms
+Run time division_by_zero_vectorized_static_veclen_16_no_cpy iter 9: 80.893 ms
+Run time division_by_zero_vectorized_static_veclen_16_no_cpy iter 10: 84.957 ms
+Run time division_by_zero_vectorized_static_veclen_16_no_cpy iter 11: 88.396 ms
+Run time division_by_zero_vectorized_static_veclen_16_no_cpy iter 12: 90.163 ms
+Run time division_by_zero_vectorized_static_veclen_16_no_cpy iter 13: 89.983 ms
+Run time division_by_zero_vectorized_static_veclen_16_no_cpy iter 14: 81.061 ms
+Run time division_by_zero_vectorized_static_veclen_16_no_cpy iter 15: 96.052 ms
+Run time division_by_zero_vectorized_static_veclen_16_no_cpy iter 16: 89.036 ms
+Run time division_by_zero_vectorized_static_veclen_16_no_cpy iter 17: 85.185 ms
+Run time division_by_zero_vectorized_static_veclen_16_no_cpy iter 18: 82.817 ms
+Run time division_by_zero_vectorized_static_veclen_16_no_cpy iter 19: 78.033 ms
+[can_be_applied] to if_197 is True
+[can_be_applied] to if_197 is True
+Changing __out = (__in1 / __in2) to have +1.7800590868057611e-307 to avoid NaN/inf floating-point exception in division!
+Run time division_by_zero_vectorized_static_veclen_16_cpy iter 0: 73.392 ms
+Run time division_by_zero_vectorized_static_veclen_16_cpy iter 1: 93.181 ms
+Run time division_by_zero_vectorized_static_veclen_16_cpy iter 2: 92.199 ms
+Run time division_by_zero_vectorized_static_veclen_16_cpy iter 3: 86.101 ms
+Run time division_by_zero_vectorized_static_veclen_16_cpy iter 4: 93.169 ms
+Run time division_by_zero_vectorized_static_veclen_16_cpy iter 5: 92.086 ms
+Run time division_by_zero_vectorized_static_veclen_16_cpy iter 6: 85.267 ms
+Run time division_by_zero_vectorized_static_veclen_16_cpy iter 7: 81.172 ms
+Run time division_by_zero_vectorized_static_veclen_16_cpy iter 8: 83.779 ms
+Run time division_by_zero_vectorized_static_veclen_16_cpy iter 9: 90.947 ms
+Run time division_by_zero_vectorized_static_veclen_16_cpy iter 10: 91.632 ms
+Run time division_by_zero_vectorized_static_veclen_16_cpy iter 11: 88.926 ms
+Run time division_by_zero_vectorized_static_veclen_16_cpy iter 12: 92.255 ms
+Run time division_by_zero_vectorized_static_veclen_16_cpy iter 13: 89.057 ms
+Run time division_by_zero_vectorized_static_veclen_16_cpy iter 14: 89.087 ms
+Run time division_by_zero_vectorized_static_veclen_16_cpy iter 15: 91.894 ms
+Run time division_by_zero_vectorized_static_veclen_16_cpy iter 16: 90.895 ms
+Run time division_by_zero_vectorized_static_veclen_16_cpy iter 17: 84.437 ms
+Run time division_by_zero_vectorized_static_veclen_16_cpy iter 18: 82.404 ms
+Run time division_by_zero_vectorized_static_veclen_16_cpy iter 19: 75.826 ms
+[can_be_applied] to if_197 is True
+[can_be_applied] to if_197 is True
+Changing __out = (__in1 / __in2) to have +1.7800590868057611e-307 to avoid NaN/inf floating-point exception in division!
+Run time division_by_zero_vectorized_static_veclen_32_no_cpy iter 0: 70.026 ms
+Run time division_by_zero_vectorized_static_veclen_32_no_cpy iter 1: 74.979 ms
+Run time division_by_zero_vectorized_static_veclen_32_no_cpy iter 2: 89.317 ms
+Run time division_by_zero_vectorized_static_veclen_32_no_cpy iter 3: 72.806 ms
+Run time division_by_zero_vectorized_static_veclen_32_no_cpy iter 4: 86.812 ms
+Run time division_by_zero_vectorized_static_veclen_32_no_cpy iter 5: 82.049 ms
+Run time division_by_zero_vectorized_static_veclen_32_no_cpy iter 6: 77.193 ms
+Run time division_by_zero_vectorized_static_veclen_32_no_cpy iter 7: 83.755 ms
+Run time division_by_zero_vectorized_static_veclen_32_no_cpy iter 8: 85.389 ms
+Run time division_by_zero_vectorized_static_veclen_32_no_cpy iter 9: 76.087 ms
+Run time division_by_zero_vectorized_static_veclen_32_no_cpy iter 10: 80.475 ms
+Run time division_by_zero_vectorized_static_veclen_32_no_cpy iter 11: 86.619 ms
+Run time division_by_zero_vectorized_static_veclen_32_no_cpy iter 12: 76.466 ms
+Run time division_by_zero_vectorized_static_veclen_32_no_cpy iter 13: 77.597 ms
+Run time division_by_zero_vectorized_static_veclen_32_no_cpy iter 14: 81.899 ms
+Run time division_by_zero_vectorized_static_veclen_32_no_cpy iter 15: 85.279 ms
+Run time division_by_zero_vectorized_static_veclen_32_no_cpy iter 16: 79.633 ms
+Run time division_by_zero_vectorized_static_veclen_32_no_cpy iter 17: 71.495 ms
+Run time division_by_zero_vectorized_static_veclen_32_no_cpy iter 18: 85.347 ms
+Run time division_by_zero_vectorized_static_veclen_32_no_cpy iter 19: 85.176 ms
+[can_be_applied] to if_197 is True
+[can_be_applied] to if_197 is True
+Changing __out = (__in1 / __in2) to have +1.7800590868057611e-307 to avoid NaN/inf floating-point exception in division!
+Run time division_by_zero_vectorized_static_veclen_32_cpy iter 0: 70.908 ms
+Run time division_by_zero_vectorized_static_veclen_32_cpy iter 1: 70.293 ms
+Run time division_by_zero_vectorized_static_veclen_32_cpy iter 2: 76.425 ms
+Run time division_by_zero_vectorized_static_veclen_32_cpy iter 3: 75.354 ms
+Run time division_by_zero_vectorized_static_veclen_32_cpy iter 4: 83.326 ms
+Run time division_by_zero_vectorized_static_veclen_32_cpy iter 5: 87.228 ms
+Run time division_by_zero_vectorized_static_veclen_32_cpy iter 6: 99.393 ms
+Run time division_by_zero_vectorized_static_veclen_32_cpy iter 7: 77.715 ms
+Run time division_by_zero_vectorized_static_veclen_32_cpy iter 8: 81.073 ms
+Run time division_by_zero_vectorized_static_veclen_32_cpy iter 9: 97.278 ms
+Run time division_by_zero_vectorized_static_veclen_32_cpy iter 10: 85.167 ms
+Run time division_by_zero_vectorized_static_veclen_32_cpy iter 11: 91.848 ms
+Run time division_by_zero_vectorized_static_veclen_32_cpy iter 12: 92.536 ms
+Run time division_by_zero_vectorized_static_veclen_32_cpy iter 13: 83.031 ms
+Run time division_by_zero_vectorized_static_veclen_32_cpy iter 14: 96.239 ms
+Run time division_by_zero_vectorized_static_veclen_32_cpy iter 15: 102.560 ms
+Run time division_by_zero_vectorized_static_veclen_32_cpy iter 16: 98.269 ms
+Run time division_by_zero_vectorized_static_veclen_32_cpy iter 17: 91.859 ms
+Run time division_by_zero_vectorized_static_veclen_32_cpy iter 18: 96.291 ms
+Run time division_by_zero_vectorized_static_veclen_32_cpy iter 19: 96.001 ms
+[can_be_applied] to if_197 is True
+[can_be_applied] to if_197 is True
+Changing __out = (__in1 / __in2) to have +1.7800590868057611e-307 to avoid NaN/inf floating-point exception in division!
+Run time division_by_zero_vectorized_static_veclen_64_no_cpy iter 0: 90.792 ms
+Run time division_by_zero_vectorized_static_veclen_64_no_cpy iter 1: 70.098 ms
+Run time division_by_zero_vectorized_static_veclen_64_no_cpy iter 2: 71.575 ms
+Run time division_by_zero_vectorized_static_veclen_64_no_cpy iter 3: 104.645 ms
+Run time division_by_zero_vectorized_static_veclen_64_no_cpy iter 4: 88.583 ms
+Run time division_by_zero_vectorized_static_veclen_64_no_cpy iter 5: 85.697 ms
+Run time division_by_zero_vectorized_static_veclen_64_no_cpy iter 6: 84.430 ms
+Run time division_by_zero_vectorized_static_veclen_64_no_cpy iter 7: 91.403 ms
+Run time division_by_zero_vectorized_static_veclen_64_no_cpy iter 8: 80.047 ms
+Run time division_by_zero_vectorized_static_veclen_64_no_cpy iter 9: 72.670 ms
+Run time division_by_zero_vectorized_static_veclen_64_no_cpy iter 10: 86.754 ms
+Run time division_by_zero_vectorized_static_veclen_64_no_cpy iter 11: 102.797 ms
+Run time division_by_zero_vectorized_static_veclen_64_no_cpy iter 12: 66.739 ms
+Run time division_by_zero_vectorized_static_veclen_64_no_cpy iter 13: 89.666 ms
+Run time division_by_zero_vectorized_static_veclen_64_no_cpy iter 14: 89.673 ms
+Run time division_by_zero_vectorized_static_veclen_64_no_cpy iter 15: 107.641 ms
+Run time division_by_zero_vectorized_static_veclen_64_no_cpy iter 16: 108.184 ms
+Run time division_by_zero_vectorized_static_veclen_64_no_cpy iter 17: 108.150 ms
+Run time division_by_zero_vectorized_static_veclen_64_no_cpy iter 18: 90.178 ms
+Run time division_by_zero_vectorized_static_veclen_64_no_cpy iter 19: 103.806 ms
+[can_be_applied] to if_197 is True
+[can_be_applied] to if_197 is True
+Changing __out = (__in1 / __in2) to have +1.7800590868057611e-307 to avoid NaN/inf floating-point exception in division!
+Run time division_by_zero_vectorized_static_veclen_64_cpy iter 0: 85.082 ms
+Run time division_by_zero_vectorized_static_veclen_64_cpy iter 1: 98.636 ms
+Run time division_by_zero_vectorized_static_veclen_64_cpy iter 2: 83.716 ms
+Run time division_by_zero_vectorized_static_veclen_64_cpy iter 3: 82.593 ms
+Run time division_by_zero_vectorized_static_veclen_64_cpy iter 4: 94.066 ms
+Run time division_by_zero_vectorized_static_veclen_64_cpy iter 5: 99.460 ms
+Run time division_by_zero_vectorized_static_veclen_64_cpy iter 6: 85.632 ms
+Run time division_by_zero_vectorized_static_veclen_64_cpy iter 7: 96.100 ms
+Run time division_by_zero_vectorized_static_veclen_64_cpy iter 8: 96.168 ms
+Run time division_by_zero_vectorized_static_veclen_64_cpy iter 9: 97.628 ms
+Run time division_by_zero_vectorized_static_veclen_64_cpy iter 10: 105.696 ms
+Run time division_by_zero_vectorized_static_veclen_64_cpy iter 11: 85.180 ms
+Run time division_by_zero_vectorized_static_veclen_64_cpy iter 12: 110.117 ms
+Run time division_by_zero_vectorized_static_veclen_64_cpy iter 13: 107.825 ms
+Run time division_by_zero_vectorized_static_veclen_64_cpy iter 14: 99.563 ms
+Run time division_by_zero_vectorized_static_veclen_64_cpy iter 15: 111.837 ms
+Run time division_by_zero_vectorized_static_veclen_64_cpy iter 16: 104.087 ms
+Run time division_by_zero_vectorized_static_veclen_64_cpy iter 17: 98.571 ms
+Run time division_by_zero_vectorized_static_veclen_64_cpy iter 18: 107.582 ms
+Run time division_by_zero_vectorized_static_veclen_64_cpy iter 19: 99.364 ms
+Run time division_by_zero iter 0: 243.092 ms
+Run time division_by_zero iter 1: 235.673 ms
+Run time division_by_zero iter 2: 224.808 ms
+Run time division_by_zero iter 3: 226.496 ms
+Run time division_by_zero iter 4: 227.140 ms
+Run time division_by_zero iter 5: 226.125 ms
+Run time division_by_zero iter 6: 216.518 ms
+Run time division_by_zero iter 7: 216.661 ms
+Run time division_by_zero iter 8: 207.026 ms
+Run time division_by_zero iter 9: 206.847 ms
+Run time division_by_zero iter 10: 216.286 ms
+Run time division_by_zero iter 11: 216.913 ms
+Run time division_by_zero iter 12: 234.069 ms
+Run time division_by_zero iter 13: 226.831 ms
+Run time division_by_zero iter 14: 227.204 ms
+Run time division_by_zero iter 15: 236.879 ms
+Run time division_by_zero iter 16: 230.164 ms
+Run time division_by_zero iter 17: 241.175 ms
+Run time division_by_zero iter 18: 250.325 ms
+Run time division_by_zero iter 19: 237.677 ms
+[can_be_applied] to if_197 is True
+[can_be_applied] to if_197 is True
+Changing __out = (__in1 / __in2) to have +1.7800590868057611e-307 to avoid NaN/inf floating-point exception in division!
+Run time division_by_zero_vectorized_static_veclen_8_no_cpy iter 0: 163.438 ms
+Run time division_by_zero_vectorized_static_veclen_8_no_cpy iter 1: 142.269 ms
+Run time division_by_zero_vectorized_static_veclen_8_no_cpy iter 2: 179.303 ms
+Run time division_by_zero_vectorized_static_veclen_8_no_cpy iter 3: 163.088 ms
+Run time division_by_zero_vectorized_static_veclen_8_no_cpy iter 4: 190.283 ms
+Run time division_by_zero_vectorized_static_veclen_8_no_cpy iter 5: 177.662 ms
+Run time division_by_zero_vectorized_static_veclen_8_no_cpy iter 6: 177.704 ms
+Run time division_by_zero_vectorized_static_veclen_8_no_cpy iter 7: 182.829 ms
+Run time division_by_zero_vectorized_static_veclen_8_no_cpy iter 8: 186.491 ms
+Run time division_by_zero_vectorized_static_veclen_8_no_cpy iter 9: 196.925 ms
+Run time division_by_zero_vectorized_static_veclen_8_no_cpy iter 10: 152.329 ms
+Run time division_by_zero_vectorized_static_veclen_8_no_cpy iter 11: 147.015 ms
+Run time division_by_zero_vectorized_static_veclen_8_no_cpy iter 12: 171.662 ms
+Run time division_by_zero_vectorized_static_veclen_8_no_cpy iter 13: 191.372 ms
+Run time division_by_zero_vectorized_static_veclen_8_no_cpy iter 14: 188.284 ms
+Run time division_by_zero_vectorized_static_veclen_8_no_cpy iter 15: 173.280 ms
+Run time division_by_zero_vectorized_static_veclen_8_no_cpy iter 16: 174.434 ms
+Run time division_by_zero_vectorized_static_veclen_8_no_cpy iter 17: 174.715 ms
+Run time division_by_zero_vectorized_static_veclen_8_no_cpy iter 18: 155.415 ms
+Run time division_by_zero_vectorized_static_veclen_8_no_cpy iter 19: 130.207 ms
+[can_be_applied] to if_197 is True
+[can_be_applied] to if_197 is True
+Changing __out = (__in1 / __in2) to have +1.7800590868057611e-307 to avoid NaN/inf floating-point exception in division!
+Run time division_by_zero_vectorized_static_veclen_8_cpy iter 0: 176.212 ms
+Run time division_by_zero_vectorized_static_veclen_8_cpy iter 1: 188.890 ms
+Run time division_by_zero_vectorized_static_veclen_8_cpy iter 2: 194.386 ms
+Run time division_by_zero_vectorized_static_veclen_8_cpy iter 3: 195.074 ms
+Run time division_by_zero_vectorized_static_veclen_8_cpy iter 4: 190.562 ms
+Run time division_by_zero_vectorized_static_veclen_8_cpy iter 5: 185.990 ms
+Run time division_by_zero_vectorized_static_veclen_8_cpy iter 6: 159.856 ms
+Run time division_by_zero_vectorized_static_veclen_8_cpy iter 7: 178.154 ms
+Run time division_by_zero_vectorized_static_veclen_8_cpy iter 8: 177.200 ms
+Run time division_by_zero_vectorized_static_veclen_8_cpy iter 9: 163.945 ms
+Run time division_by_zero_vectorized_static_veclen_8_cpy iter 10: 160.569 ms
+Run time division_by_zero_vectorized_static_veclen_8_cpy iter 11: 151.937 ms
+Run time division_by_zero_vectorized_static_veclen_8_cpy iter 12: 136.122 ms
+Run time division_by_zero_vectorized_static_veclen_8_cpy iter 13: 140.483 ms
+Run time division_by_zero_vectorized_static_veclen_8_cpy iter 14: 75.374 ms
+Run time division_by_zero_vectorized_static_veclen_8_cpy iter 15: 131.098 ms
+Run time division_by_zero_vectorized_static_veclen_8_cpy iter 16: 139.964 ms
+Run time division_by_zero_vectorized_static_veclen_8_cpy iter 17: 137.460 ms
+Run time division_by_zero_vectorized_static_veclen_8_cpy iter 18: 149.153 ms
+Run time division_by_zero_vectorized_static_veclen_8_cpy iter 19: 158.531 ms
+[can_be_applied] to if_197 is True
+[can_be_applied] to if_197 is True
+Changing __out = (__in1 / __in2) to have +1.7800590868057611e-307 to avoid NaN/inf floating-point exception in division!
+Run time division_by_zero_vectorized_static_veclen_16_no_cpy iter 0: 174.610 ms
+Run time division_by_zero_vectorized_static_veclen_16_no_cpy iter 1: 168.975 ms
+Run time division_by_zero_vectorized_static_veclen_16_no_cpy iter 2: 171.220 ms
+Run time division_by_zero_vectorized_static_veclen_16_no_cpy iter 3: 163.010 ms
+Run time division_by_zero_vectorized_static_veclen_16_no_cpy iter 4: 173.844 ms
+Run time division_by_zero_vectorized_static_veclen_16_no_cpy iter 5: 165.253 ms
+Run time division_by_zero_vectorized_static_veclen_16_no_cpy iter 6: 161.872 ms
+Run time division_by_zero_vectorized_static_veclen_16_no_cpy iter 7: 188.054 ms
+Run time division_by_zero_vectorized_static_veclen_16_no_cpy iter 8: 165.685 ms
+Run time division_by_zero_vectorized_static_veclen_16_no_cpy iter 9: 160.382 ms
+Run time division_by_zero_vectorized_static_veclen_16_no_cpy iter 10: 179.330 ms
+Run time division_by_zero_vectorized_static_veclen_16_no_cpy iter 11: 175.189 ms
+Run time division_by_zero_vectorized_static_veclen_16_no_cpy iter 12: 147.023 ms
+Run time division_by_zero_vectorized_static_veclen_16_no_cpy iter 13: 166.873 ms
+Run time division_by_zero_vectorized_static_veclen_16_no_cpy iter 14: 170.353 ms
+Run time division_by_zero_vectorized_static_veclen_16_no_cpy iter 15: 173.416 ms
+Run time division_by_zero_vectorized_static_veclen_16_no_cpy iter 16: 161.244 ms
+Run time division_by_zero_vectorized_static_veclen_16_no_cpy iter 17: 178.975 ms
+Run time division_by_zero_vectorized_static_veclen_16_no_cpy iter 18: 162.869 ms
+Run time division_by_zero_vectorized_static_veclen_16_no_cpy iter 19: 176.672 ms
+[can_be_applied] to if_197 is True
+[can_be_applied] to if_197 is True
+Changing __out = (__in1 / __in2) to have +1.7800590868057611e-307 to avoid NaN/inf floating-point exception in division!
+Run time division_by_zero_vectorized_static_veclen_16_cpy iter 0: 180.203 ms
+Run time division_by_zero_vectorized_static_veclen_16_cpy iter 1: 191.969 ms
+Run time division_by_zero_vectorized_static_veclen_16_cpy iter 2: 190.866 ms
+Run time division_by_zero_vectorized_static_veclen_16_cpy iter 3: 186.611 ms
+Run time division_by_zero_vectorized_static_veclen_16_cpy iter 4: 180.413 ms
+Run time division_by_zero_vectorized_static_veclen_16_cpy iter 5: 180.151 ms
+Run time division_by_zero_vectorized_static_veclen_16_cpy iter 6: 188.827 ms
+Run time division_by_zero_vectorized_static_veclen_16_cpy iter 7: 178.456 ms
+Run time division_by_zero_vectorized_static_veclen_16_cpy iter 8: 179.040 ms
+Run time division_by_zero_vectorized_static_veclen_16_cpy iter 9: 187.020 ms
+Run time division_by_zero_vectorized_static_veclen_16_cpy iter 10: 189.550 ms
+Run time division_by_zero_vectorized_static_veclen_16_cpy iter 11: 180.136 ms
+Run time division_by_zero_vectorized_static_veclen_16_cpy iter 12: 176.453 ms
+Run time division_by_zero_vectorized_static_veclen_16_cpy iter 13: 189.796 ms
+Run time division_by_zero_vectorized_static_veclen_16_cpy iter 14: 156.368 ms
+Run time division_by_zero_vectorized_static_veclen_16_cpy iter 15: 163.126 ms
+Run time division_by_zero_vectorized_static_veclen_16_cpy iter 16: 198.925 ms
+Run time division_by_zero_vectorized_static_veclen_16_cpy iter 17: 161.386 ms
+Run time division_by_zero_vectorized_static_veclen_16_cpy iter 18: 206.681 ms
+Run time division_by_zero_vectorized_static_veclen_16_cpy iter 19: 217.117 ms
+[can_be_applied] to if_197 is True
+[can_be_applied] to if_197 is True
+Changing __out = (__in1 / __in2) to have +1.7800590868057611e-307 to avoid NaN/inf floating-point exception in division!
+Run time division_by_zero_vectorized_static_veclen_32_no_cpy iter 0: 213.613 ms
+Run time division_by_zero_vectorized_static_veclen_32_no_cpy iter 1: 181.747 ms
+Run time division_by_zero_vectorized_static_veclen_32_no_cpy iter 2: 202.347 ms
+Run time division_by_zero_vectorized_static_veclen_32_no_cpy iter 3: 176.982 ms
+Run time division_by_zero_vectorized_static_veclen_32_no_cpy iter 4: 204.036 ms
+Run time division_by_zero_vectorized_static_veclen_32_no_cpy iter 5: 179.384 ms
+Run time division_by_zero_vectorized_static_veclen_32_no_cpy iter 6: 181.753 ms
+Run time division_by_zero_vectorized_static_veclen_32_no_cpy iter 7: 203.185 ms
+Run time division_by_zero_vectorized_static_veclen_32_no_cpy iter 8: 217.314 ms
+Run time division_by_zero_vectorized_static_veclen_32_no_cpy iter 9: 194.413 ms
+Run time division_by_zero_vectorized_static_veclen_32_no_cpy iter 10: 227.875 ms
+Run time division_by_zero_vectorized_static_veclen_32_no_cpy iter 11: 246.448 ms
+Run time division_by_zero_vectorized_static_veclen_32_no_cpy iter 12: 208.743 ms
+Run time division_by_zero_vectorized_static_veclen_32_no_cpy iter 13: 178.958 ms
+Run time division_by_zero_vectorized_static_veclen_32_no_cpy iter 14: 214.872 ms
+Run time division_by_zero_vectorized_static_veclen_32_no_cpy iter 15: 182.253 ms
+Run time division_by_zero_vectorized_static_veclen_32_no_cpy iter 16: 204.983 ms
+Run time division_by_zero_vectorized_static_veclen_32_no_cpy iter 17: 185.621 ms
+Run time division_by_zero_vectorized_static_veclen_32_no_cpy iter 18: 182.249 ms
+Run time division_by_zero_vectorized_static_veclen_32_no_cpy iter 19: 207.778 ms
+[can_be_applied] to if_197 is True
+[can_be_applied] to if_197 is True
+Changing __out = (__in1 / __in2) to have +1.7800590868057611e-307 to avoid NaN/inf floating-point exception in division!
+Run time division_by_zero_vectorized_static_veclen_32_cpy iter 0: 189.833 ms
+Run time division_by_zero_vectorized_static_veclen_32_cpy iter 1: 216.669 ms
+Run time division_by_zero_vectorized_static_veclen_32_cpy iter 2: 235.248 ms
+Run time division_by_zero_vectorized_static_veclen_32_cpy iter 3: 220.566 ms
+Run time division_by_zero_vectorized_static_veclen_32_cpy iter 4: 211.558 ms
+Run time division_by_zero_vectorized_static_veclen_32_cpy iter 5: 186.859 ms
+Run time division_by_zero_vectorized_static_veclen_32_cpy iter 6: 224.239 ms
+Run time division_by_zero_vectorized_static_veclen_32_cpy iter 7: 215.868 ms
+Run time division_by_zero_vectorized_static_veclen_32_cpy iter 8: 190.267 ms
+Run time division_by_zero_vectorized_static_veclen_32_cpy iter 9: 215.032 ms
+Run time division_by_zero_vectorized_static_veclen_32_cpy iter 10: 215.840 ms
+Run time division_by_zero_vectorized_static_veclen_32_cpy iter 11: 178.926 ms
+Run time division_by_zero_vectorized_static_veclen_32_cpy iter 12: 203.243 ms
+Run time division_by_zero_vectorized_static_veclen_32_cpy iter 13: 232.917 ms
+Run time division_by_zero_vectorized_static_veclen_32_cpy iter 14: 191.994 ms
+Run time division_by_zero_vectorized_static_veclen_32_cpy iter 15: 186.639 ms
+Run time division_by_zero_vectorized_static_veclen_32_cpy iter 16: 217.111 ms
+Run time division_by_zero_vectorized_static_veclen_32_cpy iter 17: 188.576 ms
+Run time division_by_zero_vectorized_static_veclen_32_cpy iter 18: 211.134 ms
+Run time division_by_zero_vectorized_static_veclen_32_cpy iter 19: 148.721 ms
+[can_be_applied] to if_197 is True
+[can_be_applied] to if_197 is True
+Changing __out = (__in1 / __in2) to have +1.7800590868057611e-307 to avoid NaN/inf floating-point exception in division!
+Run time division_by_zero_vectorized_static_veclen_64_no_cpy iter 0: 182.842 ms
+Run time division_by_zero_vectorized_static_veclen_64_no_cpy iter 1: 188.267 ms
+Run time division_by_zero_vectorized_static_veclen_64_no_cpy iter 2: 199.357 ms
+Run time division_by_zero_vectorized_static_veclen_64_no_cpy iter 3: 184.751 ms
+Run time division_by_zero_vectorized_static_veclen_64_no_cpy iter 4: 214.813 ms
+Run time division_by_zero_vectorized_static_veclen_64_no_cpy iter 5: 179.395 ms
+Run time division_by_zero_vectorized_static_veclen_64_no_cpy iter 6: 215.388 ms
+Run time division_by_zero_vectorized_static_veclen_64_no_cpy iter 7: 212.735 ms
+Run time division_by_zero_vectorized_static_veclen_64_no_cpy iter 8: 213.018 ms
+Run time division_by_zero_vectorized_static_veclen_64_no_cpy iter 9: 212.516 ms
+Run time division_by_zero_vectorized_static_veclen_64_no_cpy iter 10: 213.731 ms
+Run time division_by_zero_vectorized_static_veclen_64_no_cpy iter 11: 207.287 ms
+Run time division_by_zero_vectorized_static_veclen_64_no_cpy iter 12: 177.558 ms
+Run time division_by_zero_vectorized_static_veclen_64_no_cpy iter 13: 182.667 ms
+Run time division_by_zero_vectorized_static_veclen_64_no_cpy iter 14: 199.314 ms
+Run time division_by_zero_vectorized_static_veclen_64_no_cpy iter 15: 184.794 ms
+Run time division_by_zero_vectorized_static_veclen_64_no_cpy iter 16: 178.689 ms
+Run time division_by_zero_vectorized_static_veclen_64_no_cpy iter 17: 172.900 ms
+Run time division_by_zero_vectorized_static_veclen_64_no_cpy iter 18: 133.266 ms
+Run time division_by_zero_vectorized_static_veclen_64_no_cpy iter 19: 132.017 ms
+[can_be_applied] to if_197 is True
+[can_be_applied] to if_197 is True
+Changing __out = (__in1 / __in2) to have +1.7800590868057611e-307 to avoid NaN/inf floating-point exception in division!
+Run time division_by_zero_vectorized_static_veclen_64_cpy iter 0: 218.211 ms
+Run time division_by_zero_vectorized_static_veclen_64_cpy iter 1: 243.885 ms
+Run time division_by_zero_vectorized_static_veclen_64_cpy iter 2: 253.193 ms
+Run time division_by_zero_vectorized_static_veclen_64_cpy iter 3: 203.400 ms
+Run time division_by_zero_vectorized_static_veclen_64_cpy iter 4: 220.249 ms
+Run time division_by_zero_vectorized_static_veclen_64_cpy iter 5: 199.356 ms
+Run time division_by_zero_vectorized_static_veclen_64_cpy iter 6: 201.767 ms
+Run time division_by_zero_vectorized_static_veclen_64_cpy iter 7: 196.461 ms
+Run time division_by_zero_vectorized_static_veclen_64_cpy iter 8: 204.175 ms
+Run time division_by_zero_vectorized_static_veclen_64_cpy iter 9: 226.206 ms
+Run time division_by_zero_vectorized_static_veclen_64_cpy iter 10: 212.217 ms
+Run time division_by_zero_vectorized_static_veclen_64_cpy iter 11: 210.972 ms
+Run time division_by_zero_vectorized_static_veclen_64_cpy iter 12: 217.642 ms
+Run time division_by_zero_vectorized_static_veclen_64_cpy iter 13: 169.054 ms
+Run time division_by_zero_vectorized_static_veclen_64_cpy iter 14: 197.608 ms
+Run time division_by_zero_vectorized_static_veclen_64_cpy iter 15: 198.426 ms
+Run time division_by_zero_vectorized_static_veclen_64_cpy iter 16: 226.901 ms
+Run time division_by_zero_vectorized_static_veclen_64_cpy iter 17: 212.427 ms
+Run time division_by_zero_vectorized_static_veclen_64_cpy iter 18: 210.241 ms
+Run time division_by_zero_vectorized_static_veclen_64_cpy iter 19: 180.087 ms
+Run time division_by_zero iter 0: 487.211 ms
+Run time division_by_zero iter 1: 458.815 ms
+Run time division_by_zero iter 2: 418.503 ms
+Run time division_by_zero iter 3: 422.174 ms
+Run time division_by_zero iter 4: 422.399 ms
+Run time division_by_zero iter 5: 439.990 ms
+Run time division_by_zero iter 6: 421.973 ms
+Run time division_by_zero iter 7: 440.512 ms
+Run time division_by_zero iter 8: 434.004 ms
+Run time division_by_zero iter 9: 429.568 ms
+Run time division_by_zero iter 10: 432.796 ms
+Run time division_by_zero iter 11: 437.231 ms
+Run time division_by_zero iter 12: 424.532 ms
+Run time division_by_zero iter 13: 422.207 ms
+Run time division_by_zero iter 14: 422.693 ms
+Run time division_by_zero iter 15: 417.688 ms
+Run time division_by_zero iter 16: 424.065 ms
+Run time division_by_zero iter 17: 430.939 ms
+Run time division_by_zero iter 18: 422.334 ms
+Run time division_by_zero iter 19: 421.946 ms
+[can_be_applied] to if_197 is True
+[can_be_applied] to if_197 is True
+Changing __out = (__in1 / __in2) to have +1.7800590868057611e-307 to avoid NaN/inf floating-point exception in division!
+Run time division_by_zero_vectorized_static_veclen_8_no_cpy iter 0: 331.464 ms
+Run time division_by_zero_vectorized_static_veclen_8_no_cpy iter 1: 354.639 ms
+Run time division_by_zero_vectorized_static_veclen_8_no_cpy iter 2: 343.242 ms
+Run time division_by_zero_vectorized_static_veclen_8_no_cpy iter 3: 361.094 ms
+Run time division_by_zero_vectorized_static_veclen_8_no_cpy iter 4: 340.674 ms
+Run time division_by_zero_vectorized_static_veclen_8_no_cpy iter 5: 347.743 ms
+Run time division_by_zero_vectorized_static_veclen_8_no_cpy iter 6: 299.891 ms
+Run time division_by_zero_vectorized_static_veclen_8_no_cpy iter 7: 293.913 ms
+Run time division_by_zero_vectorized_static_veclen_8_no_cpy iter 8: 319.548 ms
+Run time division_by_zero_vectorized_static_veclen_8_no_cpy iter 9: 290.485 ms
+Run time division_by_zero_vectorized_static_veclen_8_no_cpy iter 10: 367.558 ms
+Run time division_by_zero_vectorized_static_veclen_8_no_cpy iter 11: 374.965 ms
+Run time division_by_zero_vectorized_static_veclen_8_no_cpy iter 12: 372.745 ms
+Run time division_by_zero_vectorized_static_veclen_8_no_cpy iter 13: 436.689 ms
+Run time division_by_zero_vectorized_static_veclen_8_no_cpy iter 14: 381.188 ms
+Run time division_by_zero_vectorized_static_veclen_8_no_cpy iter 15: 418.730 ms
+Run time division_by_zero_vectorized_static_veclen_8_no_cpy iter 16: 424.028 ms
+Run time division_by_zero_vectorized_static_veclen_8_no_cpy iter 17: 425.797 ms
+Run time division_by_zero_vectorized_static_veclen_8_no_cpy iter 18: 475.782 ms
+Run time division_by_zero_vectorized_static_veclen_8_no_cpy iter 19: 372.071 ms
+[can_be_applied] to if_197 is True
+[can_be_applied] to if_197 is True
+Changing __out = (__in1 / __in2) to have +1.7800590868057611e-307 to avoid NaN/inf floating-point exception in division!
+Run time division_by_zero_vectorized_static_veclen_8_cpy iter 0: 428.573 ms
+Run time division_by_zero_vectorized_static_veclen_8_cpy iter 1: 430.362 ms
+Run time division_by_zero_vectorized_static_veclen_8_cpy iter 2: 418.303 ms
+Run time division_by_zero_vectorized_static_veclen_8_cpy iter 3: 435.800 ms
+Run time division_by_zero_vectorized_static_veclen_8_cpy iter 4: 439.661 ms
+Run time division_by_zero_vectorized_static_veclen_8_cpy iter 5: 432.234 ms
+Run time division_by_zero_vectorized_static_veclen_8_cpy iter 6: 464.880 ms
+Run time division_by_zero_vectorized_static_veclen_8_cpy iter 7: 425.112 ms
+Run time division_by_zero_vectorized_static_veclen_8_cpy iter 8: 431.147 ms
+Run time division_by_zero_vectorized_static_veclen_8_cpy iter 9: 428.641 ms
+Run time division_by_zero_vectorized_static_veclen_8_cpy iter 10: 406.635 ms
+Run time division_by_zero_vectorized_static_veclen_8_cpy iter 11: 355.580 ms
+Run time division_by_zero_vectorized_static_veclen_8_cpy iter 12: 477.330 ms
+Run time division_by_zero_vectorized_static_veclen_8_cpy iter 13: 413.624 ms
+Run time division_by_zero_vectorized_static_veclen_8_cpy iter 14: 421.809 ms
+Run time division_by_zero_vectorized_static_veclen_8_cpy iter 15: 385.624 ms
+Run time division_by_zero_vectorized_static_veclen_8_cpy iter 16: 493.986 ms
+Run time division_by_zero_vectorized_static_veclen_8_cpy iter 17: 471.440 ms
+Run time division_by_zero_vectorized_static_veclen_8_cpy iter 18: 390.528 ms
+Run time division_by_zero_vectorized_static_veclen_8_cpy iter 19: 404.020 ms
+[can_be_applied] to if_197 is True
+[can_be_applied] to if_197 is True
+Changing __out = (__in1 / __in2) to have +1.7800590868057611e-307 to avoid NaN/inf floating-point exception in division!
+Run time division_by_zero_vectorized_static_veclen_16_no_cpy iter 0: 416.333 ms
+Run time division_by_zero_vectorized_static_veclen_16_no_cpy iter 1: 425.311 ms
+Run time division_by_zero_vectorized_static_veclen_16_no_cpy iter 2: 436.937 ms
+Run time division_by_zero_vectorized_static_veclen_16_no_cpy iter 3: 422.965 ms
+Run time division_by_zero_vectorized_static_veclen_16_no_cpy iter 4: 421.419 ms
+Run time division_by_zero_vectorized_static_veclen_16_no_cpy iter 5: 417.965 ms
+Run time division_by_zero_vectorized_static_veclen_16_no_cpy iter 6: 439.752 ms
+Run time division_by_zero_vectorized_static_veclen_16_no_cpy iter 7: 470.488 ms
+Run time division_by_zero_vectorized_static_veclen_16_no_cpy iter 8: 437.041 ms
+Run time division_by_zero_vectorized_static_veclen_16_no_cpy iter 9: 472.557 ms
+Run time division_by_zero_vectorized_static_veclen_16_no_cpy iter 10: 418.714 ms
+Run time division_by_zero_vectorized_static_veclen_16_no_cpy iter 11: 389.326 ms
+Run time division_by_zero_vectorized_static_veclen_16_no_cpy iter 12: 351.205 ms
+Run time division_by_zero_vectorized_static_veclen_16_no_cpy iter 13: 341.640 ms
+Run time division_by_zero_vectorized_static_veclen_16_no_cpy iter 14: 423.251 ms
+Run time division_by_zero_vectorized_static_veclen_16_no_cpy iter 15: 433.423 ms
+Run time division_by_zero_vectorized_static_veclen_16_no_cpy iter 16: 423.121 ms
+Run time division_by_zero_vectorized_static_veclen_16_no_cpy iter 17: 438.150 ms
+Run time division_by_zero_vectorized_static_veclen_16_no_cpy iter 18: 506.794 ms
+Run time division_by_zero_vectorized_static_veclen_16_no_cpy iter 19: 464.242 ms
+[can_be_applied] to if_197 is True
+[can_be_applied] to if_197 is True
+Changing __out = (__in1 / __in2) to have +1.7800590868057611e-307 to avoid NaN/inf floating-point exception in division!
+Run time division_by_zero_vectorized_static_veclen_16_cpy iter 0: 473.156 ms
+Run time division_by_zero_vectorized_static_veclen_16_cpy iter 1: 448.974 ms
+Run time division_by_zero_vectorized_static_veclen_16_cpy iter 2: 465.677 ms
+Run time division_by_zero_vectorized_static_veclen_16_cpy iter 3: 484.197 ms
+Run time division_by_zero_vectorized_static_veclen_16_cpy iter 4: 446.636 ms
+Run time division_by_zero_vectorized_static_veclen_16_cpy iter 5: 443.632 ms
+Run time division_by_zero_vectorized_static_veclen_16_cpy iter 6: 497.344 ms
+Run time division_by_zero_vectorized_static_veclen_16_cpy iter 7: 434.214 ms
+Run time division_by_zero_vectorized_static_veclen_16_cpy iter 8: 397.465 ms
+Run time division_by_zero_vectorized_static_veclen_16_cpy iter 9: 445.546 ms
+Run time division_by_zero_vectorized_static_veclen_16_cpy iter 10: 433.793 ms
+Run time division_by_zero_vectorized_static_veclen_16_cpy iter 11: 497.623 ms
+Run time division_by_zero_vectorized_static_veclen_16_cpy iter 12: 517.920 ms
+Run time division_by_zero_vectorized_static_veclen_16_cpy iter 13: 458.376 ms
+Run time division_by_zero_vectorized_static_veclen_16_cpy iter 14: 468.267 ms
+Run time division_by_zero_vectorized_static_veclen_16_cpy iter 15: 445.224 ms
+Run time division_by_zero_vectorized_static_veclen_16_cpy iter 16: 444.912 ms
+Run time division_by_zero_vectorized_static_veclen_16_cpy iter 17: 444.038 ms
+Run time division_by_zero_vectorized_static_veclen_16_cpy iter 18: 450.469 ms
+Run time division_by_zero_vectorized_static_veclen_16_cpy iter 19: 437.210 ms
+[can_be_applied] to if_197 is True
+[can_be_applied] to if_197 is True
+Changing __out = (__in1 / __in2) to have +1.7800590868057611e-307 to avoid NaN/inf floating-point exception in division!
+Run time division_by_zero_vectorized_static_veclen_32_no_cpy iter 0: 375.236 ms
+Run time division_by_zero_vectorized_static_veclen_32_no_cpy iter 1: 428.591 ms
+Run time division_by_zero_vectorized_static_veclen_32_no_cpy iter 2: 415.103 ms
+Run time division_by_zero_vectorized_static_veclen_32_no_cpy iter 3: 481.279 ms
+Run time division_by_zero_vectorized_static_veclen_32_no_cpy iter 4: 447.975 ms
+Run time division_by_zero_vectorized_static_veclen_32_no_cpy iter 5: 378.093 ms
+Run time division_by_zero_vectorized_static_veclen_32_no_cpy iter 6: 413.573 ms
+Run time division_by_zero_vectorized_static_veclen_32_no_cpy iter 7: 434.325 ms
+Run time division_by_zero_vectorized_static_veclen_32_no_cpy iter 8: 434.248 ms
+Run time division_by_zero_vectorized_static_veclen_32_no_cpy iter 9: 436.657 ms
+Run time division_by_zero_vectorized_static_veclen_32_no_cpy iter 10: 441.259 ms
+Run time division_by_zero_vectorized_static_veclen_32_no_cpy iter 11: 467.596 ms
+Run time division_by_zero_vectorized_static_veclen_32_no_cpy iter 12: 489.706 ms
+Run time division_by_zero_vectorized_static_veclen_32_no_cpy iter 13: 457.081 ms
+Run time division_by_zero_vectorized_static_veclen_32_no_cpy iter 14: 440.710 ms
+Run time division_by_zero_vectorized_static_veclen_32_no_cpy iter 15: 437.845 ms
+Run time division_by_zero_vectorized_static_veclen_32_no_cpy iter 16: 475.494 ms
+Run time division_by_zero_vectorized_static_veclen_32_no_cpy iter 17: 434.360 ms
+Run time division_by_zero_vectorized_static_veclen_32_no_cpy iter 18: 436.735 ms
+Run time division_by_zero_vectorized_static_veclen_32_no_cpy iter 19: 250.897 ms
+[can_be_applied] to if_197 is True
+[can_be_applied] to if_197 is True
+Changing __out = (__in1 / __in2) to have +1.7800590868057611e-307 to avoid NaN/inf floating-point exception in division!
+Run time division_by_zero_vectorized_static_veclen_32_cpy iter 0: 415.625 ms
+Run time division_by_zero_vectorized_static_veclen_32_cpy iter 1: 445.843 ms
+Run time division_by_zero_vectorized_static_veclen_32_cpy iter 2: 490.919 ms
+Run time division_by_zero_vectorized_static_veclen_32_cpy iter 3: 447.841 ms
+Run time division_by_zero_vectorized_static_veclen_32_cpy iter 4: 436.147 ms
+Run time division_by_zero_vectorized_static_veclen_32_cpy iter 5: 485.621 ms
+Run time division_by_zero_vectorized_static_veclen_32_cpy iter 6: 466.620 ms
+Run time division_by_zero_vectorized_static_veclen_32_cpy iter 7: 504.153 ms
+Run time division_by_zero_vectorized_static_veclen_32_cpy iter 8: 487.140 ms
+Run time division_by_zero_vectorized_static_veclen_32_cpy iter 9: 456.192 ms
+Run time division_by_zero_vectorized_static_veclen_32_cpy iter 10: 448.639 ms
+Run time division_by_zero_vectorized_static_veclen_32_cpy iter 11: 448.176 ms
+Run time division_by_zero_vectorized_static_veclen_32_cpy iter 12: 434.439 ms
+Run time division_by_zero_vectorized_static_veclen_32_cpy iter 13: 443.960 ms
+Run time division_by_zero_vectorized_static_veclen_32_cpy iter 14: 471.323 ms
+Run time division_by_zero_vectorized_static_veclen_32_cpy iter 15: 440.729 ms
+Run time division_by_zero_vectorized_static_veclen_32_cpy iter 16: 425.156 ms
+Run time division_by_zero_vectorized_static_veclen_32_cpy iter 17: 429.092 ms
+Run time division_by_zero_vectorized_static_veclen_32_cpy iter 18: 383.669 ms
+Run time division_by_zero_vectorized_static_veclen_32_cpy iter 19: 298.827 ms
+[can_be_applied] to if_197 is True
+[can_be_applied] to if_197 is True
+Changing __out = (__in1 / __in2) to have +1.7800590868057611e-307 to avoid NaN/inf floating-point exception in division!
+Run time division_by_zero_vectorized_static_veclen_64_no_cpy iter 0: 430.354 ms
+Run time division_by_zero_vectorized_static_veclen_64_no_cpy iter 1: 449.257 ms
+Run time division_by_zero_vectorized_static_veclen_64_no_cpy iter 2: 465.816 ms
+Run time division_by_zero_vectorized_static_veclen_64_no_cpy iter 3: 367.861 ms
+Run time division_by_zero_vectorized_static_veclen_64_no_cpy iter 4: 364.168 ms
+Run time division_by_zero_vectorized_static_veclen_64_no_cpy iter 5: 436.180 ms
+Run time division_by_zero_vectorized_static_veclen_64_no_cpy iter 6: 403.530 ms
+Run time division_by_zero_vectorized_static_veclen_64_no_cpy iter 7: 409.535 ms
+Run time division_by_zero_vectorized_static_veclen_64_no_cpy iter 8: 427.854 ms
+Run time division_by_zero_vectorized_static_veclen_64_no_cpy iter 9: 411.033 ms
+Run time division_by_zero_vectorized_static_veclen_64_no_cpy iter 10: 491.743 ms
+Run time division_by_zero_vectorized_static_veclen_64_no_cpy iter 11: 362.874 ms
+Run time division_by_zero_vectorized_static_veclen_64_no_cpy iter 12: 365.653 ms
+Run time division_by_zero_vectorized_static_veclen_64_no_cpy iter 13: 371.352 ms
+Run time division_by_zero_vectorized_static_veclen_64_no_cpy iter 14: 370.555 ms
+Run time division_by_zero_vectorized_static_veclen_64_no_cpy iter 15: 435.437 ms
+Run time division_by_zero_vectorized_static_veclen_64_no_cpy iter 16: 419.578 ms
+Run time division_by_zero_vectorized_static_veclen_64_no_cpy iter 17: 333.586 ms
+Run time division_by_zero_vectorized_static_veclen_64_no_cpy iter 18: 277.173 ms
+Run time division_by_zero_vectorized_static_veclen_64_no_cpy iter 19: 265.586 ms
+[can_be_applied] to if_197 is True
+[can_be_applied] to if_197 is True
+Changing __out = (__in1 / __in2) to have +1.7800590868057611e-307 to avoid NaN/inf floating-point exception in division!
+Run time division_by_zero_vectorized_static_veclen_64_cpy iter 0: 443.442 ms
+Run time division_by_zero_vectorized_static_veclen_64_cpy iter 1: 430.162 ms
+Run time division_by_zero_vectorized_static_veclen_64_cpy iter 2: 419.488 ms
+Run time division_by_zero_vectorized_static_veclen_64_cpy iter 3: 430.468 ms
+Run time division_by_zero_vectorized_static_veclen_64_cpy iter 4: 404.505 ms
+Run time division_by_zero_vectorized_static_veclen_64_cpy iter 5: 399.720 ms
+Run time division_by_zero_vectorized_static_veclen_64_cpy iter 6: 394.814 ms
+Run time division_by_zero_vectorized_static_veclen_64_cpy iter 7: 354.240 ms
+Run time division_by_zero_vectorized_static_veclen_64_cpy iter 8: 356.665 ms
+Run time division_by_zero_vectorized_static_veclen_64_cpy iter 9: 356.920 ms
+Run time division_by_zero_vectorized_static_veclen_64_cpy iter 10: 352.518 ms
+Run time division_by_zero_vectorized_static_veclen_64_cpy iter 11: 349.951 ms
+Run time division_by_zero_vectorized_static_veclen_64_cpy iter 12: 345.034 ms
+Run time division_by_zero_vectorized_static_veclen_64_cpy iter 13: 345.667 ms
+Run time division_by_zero_vectorized_static_veclen_64_cpy iter 14: 345.610 ms
+Run time division_by_zero_vectorized_static_veclen_64_cpy iter 15: 346.353 ms
+Run time division_by_zero_vectorized_static_veclen_64_cpy iter 16: 343.446 ms
+Run time division_by_zero_vectorized_static_veclen_64_cpy iter 17: 463.937 ms
+Run time division_by_zero_vectorized_static_veclen_64_cpy iter 18: 356.008 ms
+Run time division_by_zero_vectorized_static_veclen_64_cpy iter 19: 358.970 ms
+Saved timing results to division_by_zero_timings.csv

@@ -1,0 +1,42 @@
+Traceback (most recent call last):
+  File "/scratch/ybudanaz/dace/dace/codegen/compiler.py", line 224, in configure_and_compile
+    _run_liveoutput(cmake_command, shell=True, cwd=build_folder, output_stream=output_stream)
+  File "/scratch/ybudanaz/dace/dace/codegen/compiler.py", line 429, in _run_liveoutput
+    raise subprocess.CalledProcessError(process.returncode, command, output.getvalue())
+subprocess.CalledProcessError: Command 'cmake  "/scratch/ybudanaz/dace/dace/codegen" -DDACE_SRC_DIR="/scratch/ybudanaz/data_must_flow_artifacts/division_by_zero/llvm/intel_xeon/.dacecache/division_by_zero/src" -DDACE_FILES="cpu/division_by_zero.cpp" -DDACE_PROGRAM_NAME=division_by_zero -DDACE_ENV_CMAKE_FILES="" -DDACE_ENV_COMPILE_FLAGS="" -DDACE_ENV_INCLUDES="" -DDACE_ENV_LIBRARIES="" -DDACE_ENV_MINIMUM_VERSION=0 -DDACE_ENV_PACKAGES="" -DDACE_ENV_VAR_KEYS="" -DDACE_ENV_VAR_VALUES="" -DCMAKE_CXX_FLAGS="-fopenmp -std=c++17 -faligned-new -fPIC -Wall -Wextra -O3 -march=native -ffast-math -Wno-unused-parameter -Wno-unused-label" -DDACE_LIBS="" -DCMAKE_BUILD_TYPE=RelWithDebInfo -DCMAKE_SHARED_LINKER_FLAGS="-Wl,--disable-new-dtags"' returned non-zero exit status 1.
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/scratch/ybudanaz/dace/dace/codegen/compiler.py", line 232, in configure_and_compile
+    _run_liveoutput(cmake_command, shell=True, cwd=build_folder, output_stream=output_stream)
+  File "/scratch/ybudanaz/dace/dace/codegen/compiler.py", line 429, in _run_liveoutput
+    raise subprocess.CalledProcessError(process.returncode, command, output.getvalue())
+subprocess.CalledProcessError: Command 'cmake  "/scratch/ybudanaz/dace/dace/codegen" -DDACE_SRC_DIR="/scratch/ybudanaz/data_must_flow_artifacts/division_by_zero/llvm/intel_xeon/.dacecache/division_by_zero/src" -DDACE_FILES="cpu/division_by_zero.cpp" -DDACE_PROGRAM_NAME=division_by_zero -DDACE_ENV_CMAKE_FILES="" -DDACE_ENV_COMPILE_FLAGS="" -DDACE_ENV_INCLUDES="" -DDACE_ENV_LIBRARIES="" -DDACE_ENV_MINIMUM_VERSION=0 -DDACE_ENV_PACKAGES="" -DDACE_ENV_VAR_KEYS="" -DDACE_ENV_VAR_VALUES="" -DCMAKE_CXX_FLAGS="-fopenmp -std=c++17 -faligned-new -fPIC -Wall -Wextra -O3 -march=native -ffast-math -Wno-unused-parameter -Wno-unused-label" -DDACE_LIBS="" -DCMAKE_BUILD_TYPE=RelWithDebInfo -DCMAKE_SHARED_LINKER_FLAGS="-Wl,--disable-new-dtags"' returned non-zero exit status 1.
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/scratch/ybudanaz/data_must_flow_artifacts/division_by_zero/llvm/intel_xeon/benchmark_division_by_zero.py", line 215, in <module>
+    all_timings["division_by_zero", S] = run_sdfg_multiple_times(
+                                         ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/scratch/ybudanaz/data_must_flow_artifacts/division_by_zero/llvm/intel_xeon/benchmark_division_by_zero.py", line 134, in run_sdfg_multiple_times
+    compiled = sdfg.compile()
+               ^^^^^^^^^^^^^^
+  File "/scratch/ybudanaz/dace/dace/sdfg/sdfg.py", line 2436, in compile
+    shared_library = compiler.configure_and_compile(program_folder, sdfg.name)
+                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/scratch/ybudanaz/dace/dace/codegen/compiler.py", line 238, in configure_and_compile
+    raise cgx.CompilerConfigurationError('Configuration failure:\n' + ex.output)
+dace.codegen.exceptions.CompilerConfigurationError: Configuration failure:
+CMake Error at /scratch/ybudanaz/spack/opt/spack/linux-centos8-zen2/gcc-10.2.0/cmake-3.31.5-e4eaei3py5jp3p3f33m62kgkczyp4zgh/share/cmake-3.31/Modules/CMakeDetermineCCompiler.cmake:49 (message):
+  Could not find compiler set in environment variable CC:
+  clang.
+Call Stack (most recent call first):
+  CMakeLists.txt:3 (project)
+
+
+CMake Error: CMAKE_C_COMPILER not set, after EnableLanguage
+CMake Error: CMAKE_CXX_COMPILER not set, after EnableLanguage
+-- Configuring incomplete, errors occurred!
+
