@@ -1,0 +1,4 @@
+python plot.py gcc/amd_epyc/division_by_zero_timings_1_core.csv  division_by_zero_timings_1_core_amd_epyc_gcc.png division_by_zero gcc amd_epyc_7742
+python plot.py llvm/amd_epyc/division_by_zero_timings_1_core.csv  division_by_zero_timings_1_core_amd_epyc_llvm.png division_by_zero llvm amd_epyc_7742
+python plot.py gcc/intel_xeon/division_by_zero_timings_1_core.csv  division_by_zero_timings_1_core_intel_xeon_gcc.png division_by_zero gcc intel_xeon_gold
+python plot.py llvm/intel_xeon/division_by_zero_timings_1_core.csv  division_by_zero_timings_1_core_intel_xeon_llvm.png division_by_zero llvm intel_xeon_gold
