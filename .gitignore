@@ -3,3 +3,5 @@
 _dacegraphs
 venv
 
+*.sdfg
+*.sdfgz

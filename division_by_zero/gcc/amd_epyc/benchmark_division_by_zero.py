@@ -7,7 +7,6 @@ import dace
 from dace.transformation.passes.vectorization.vectorize_cpu import VectorizeCPU
 from dace.sdfg import utils as sdutil
 
-# S = dace.symbol("S")
 
 
 import subprocess
@@ -35,15 +34,12 @@ def init_openmp():
     ncores = get_physical_cores()
 
     # Set OpenMP environment
-    os.environ["OMP_NUM_THREADS"] = str(ncores)
+    os.environ["OMP_NUM_THREADS"] = "1"
     os.environ["OMP_PLACES"] = "cores"
     os.environ["OMP_PROC_BIND"] = "true"
 
 # Call before loading OpenMP-linked C++ libs
 init_openmp()
-
-
-
 
 def run_vectorization_test(
     dace_func,
@@ -92,43 +88,29 @@ def run_vectorization_test(
     print(sdfg.get_instrumentation_reports()[-1])
     print(copy_sdfg.get_instrumentation_reports()[-1])
 
-def test_jacobi2d():
-    S = 8194  # Ensure divisibility for vectorization
+def test_division_by_zero():
+    # S = dace.symbol("S")
+    S = 8192 * 4 * 8  # Ensure divisibility for vectorization
 
     A = np.random.random((S, S))
     B = np.random.random((S, S))
 
     @dace.program
-    def jacobi2d(
-        A: dace.float64[S, S], B: dace.float64[S, S], tsteps: dace.int64
-    ):  # , N, tsteps):
-        for t in range(tsteps):
-            for i, j in dace.map[0 : S - 2, 0 : S - 2]:
-                B[i + 1, j + 1] = 0.2 * (
-                    A[i + 1, j + 1]
-                    + A[i, j + 1]
-                    + A[i + 2, j + 1]
-                    + A[i + 1, j]
-                    + A[i + 1, j + 2]
-                )
-
-            for i, j in dace.map[0 : S - 2, 0 : S - 2]:
-                A[i + 1, j + 1] = 0.2 * (
-                    B[i + 1, j + 1]
-                    + B[i, j + 1]
-                    + B[i + 2, j + 1]
-                    + B[i + 1, j]
-                    + B[i + 1, j + 2]
-                )
+    def division_by_zero(A: dace.float64[S], B: dace.float64[S], c: dace.float64):
+        for i in dace.map[0:S]:
+            if A[i] > 0.0:
+                B[i] = c / A[i]
+            else:
+                B[i] = 0.0
 
     run_vectorization_test(
-        dace_func=jacobi2d,
+        dace_func=division_by_zero,
         arrays={"A": A, "B": B},
         params={
             "tsteps": 5,
         },
         vector_width=8,
-        sdfg_name="jacobi2d",
+        sdfg_name="division_by_zero",
     )
 
 
@@ -180,7 +162,7 @@ def save_timings_to_csv(filename, timings_dict):
         writer = csv.writer(f)
         writer.writerow(["sdfg_name", "size", "rep", "time_seconds"])
 
-        for (sdfg_name,size), times in timings_dict.items():
+        for (sdfg_name, size), times in timings_dict.items():
             for i, t in enumerate(times):
                 writer.writerow([sdfg_name, size, i, t])
 
@@ -191,33 +173,12 @@ def save_timings_to_csv(filename, timings_dict):
 def build_vectorized_sdfg(base_sdfg, vec_width, insert_copies, suffix):
     sdfg = copy.deepcopy(base_sdfg)
     VectorizeCPU(vector_width=vec_width, insert_copies=insert_copies).apply_pass(sdfg, {})
-    name = f"jacobi2d_vectorized_static_veclen_{vec_width}_{suffix}"
+    name = f"division_by_zero_vectorized_static_veclen_{vec_width}_{suffix}"
     sdfg.name = name
     sdfg.instrument = dace.dtypes.InstrumentationType.Timer
     sdfg.save(f"{name}.sdfgz", compress=True)
     return sdfg, name
 
-
-def build_aligned_arrays_and_sdfg(base_sdfg, S, vec_width):
-    S_stride = S + vec_width - 2
-    A = np.random.random((S, S_stride))
-    B = np.random.random((S, S_stride))
-    arrays = {"A": A, "B": B}
-
-    sdfg = copy.deepcopy(base_sdfg)
-    VectorizeCPU(vector_width=vec_width, insert_copies=False).apply_pass(sdfg, {})
-
-    name = f"jacobi2d_vectorized_static_veclen_{vec_width}_no_cpy_aligned"
-    sdfg.name = name
-
-    # Fix strides
-    for arr in sdfg.arrays.values():
-        if isinstance(arr, dace.data.Array) and not arr.transient:
-            arr.strides = (S_stride, 1)
-
-    sdfg.instrument = dace.dtypes.InstrumentationType.Timer
-    sdfg.save(f"{name}.sdfgz", compress=True)
-    return sdfg, arrays, name
 
 
 # -------------------------------------------------------
@@ -228,46 +189,31 @@ if __name__ == "__main__":
     NUM_REPS = 20
     all_timings = {}
 
-    for S in [1024+2, 2048+2, 4096+2, 8192+2]:
-        size = S
+    # S = dace.symbol("S")
+    for S in [8192 * 64, 8192 * 256, 8192 * 512, 8192 * 1024, 8192 * 2048, 8192 * 4096, 8192 * 8192]:
         @dace.program
-        def jacobi2d(
-            A: dace.float64[S, S], B: dace.float64[S, S], tsteps: dace.int64
-        ):  # , N, tsteps):
-            for t in range(tsteps):
-                for i, j in dace.map[0 : S - 2, 0 : S - 2]:
-                    B[i + 1, j + 1] = 0.2 * (
-                        A[i + 1, j + 1]
-                        + A[i, j + 1]
-                        + A[i + 2, j + 1]
-                        + A[i + 1, j]
-                        + A[i + 1, j + 2]
-                    )
-
-                for i, j in dace.map[0 : S - 2, 0 : S - 2]:
-                    A[i + 1, j + 1] = 0.2 * (
-                        B[i + 1, j + 1]
-                        + B[i, j + 1]
-                        + B[i + 2, j + 1]
-                        + B[i + 1, j]
-                        + B[i + 1, j + 2]
-                    )
+        def division_by_zero(A: dace.float64[S], B: dace.float64[S], c: dace.float64):
+            for i in dace.map[0:S]:
+                if A[i] > 0.0:
+                    B[i] = c / A[i]
+                else:
+                    B[i] = 0.0
 
         # Baseline SDFG
-        jacobi2d_sdfg = jacobi2d.to_sdfg()
-        jacobi2d_sdfg.name = "jacobi2d"
-        jacobi2d_sdfg.instrument = dace.dtypes.InstrumentationType.Timer
-        jacobi2d_sdfg.save("jacobi2d.sdfgz", compress=True)
+        division_by_zero_sdfg = division_by_zero.to_sdfg()
+        division_by_zero_sdfg.name = "division_by_zero"
+        division_by_zero_sdfg.instrument = dace.dtypes.InstrumentationType.Timer
+        division_by_zero_sdfg.save("division_by_zero.sdfgz", compress=True)
 
         # Baseline arrays
-        A = np.random.random((S, S))
-        B = np.random.random((S, S))
-        base_arrays = {"A": A, "B": B}
-        params = {"tsteps": 50}
+        A = np.random.random((S, ))
+        B = np.random.random((S, ))
+        base_arrays = {"A": A, "B": B, }
+        params = {"c": np.float64(1.0), }
 
         # Run baseline
-        all_timings["jacobi2d", size] = run_sdfg_multiple_times(
-            sdfg=jacobi2d_sdfg,
+        all_timings["division_by_zero", S] = run_sdfg_multiple_times(
+            sdfg=division_by_zero_sdfg,
             arrays=base_arrays,
             params=params,
             num_runs=NUM_REPS,
@@ -279,33 +225,22 @@ if __name__ == "__main__":
         for l in [8, 16, 32, 64]:
             # no-copy version
             sdfg_vec, name = build_vectorized_sdfg(
-                jacobi2d_sdfg, vec_width=l, insert_copies=False, suffix="no_cpy"
+                division_by_zero_sdfg, vec_width=l, insert_copies=False, suffix="no_cpy"
             )
-            all_timings[name, size] = run_sdfg_multiple_times(
+            all_timings[name, S] = run_sdfg_multiple_times(
                 sdfg=sdfg_vec, arrays=base_arrays, params=params, num_runs=NUM_REPS
             )
 
             # copy version
             sdfg_vec_cpy, name = build_vectorized_sdfg(
-                jacobi2d_sdfg, vec_width=l, insert_copies=True, suffix="cpy"
+                division_by_zero_sdfg, vec_width=l, insert_copies=True, suffix="cpy"
             )
-            all_timings[name, size] = run_sdfg_multiple_times(
+            all_timings[name, S] = run_sdfg_multiple_times(
                 sdfg=sdfg_vec_cpy, arrays=base_arrays, params=params, num_runs=NUM_REPS
-            )
-
-        # -------------------------------------------------------
-        # Aligned versions (different arrays!)
-        # -------------------------------------------------------
-        for l in [8, 16, 32, 64]:
-            sdfg_aligned, aligned_arrays, name = build_aligned_arrays_and_sdfg(
-                jacobi2d_sdfg, S=S, vec_width=l
-            )
-            all_timings[name, size] = run_sdfg_multiple_times(
-                sdfg=sdfg_aligned, arrays=aligned_arrays, params=params, num_runs=NUM_REPS
             )
 
     # -------------------------------------------------------
     # CSV output
     # -------------------------------------------------------
-    save_timings_to_csv("jacobi2d_timings.csv", all_timings)
-    print("Saved timing results to jacobi2d_timings.csv")
+    save_timings_to_csv("division_by_zero_timings_1_core.csv", all_timings)
+    print("Saved timing results to division_by_zero_timings.csv")
