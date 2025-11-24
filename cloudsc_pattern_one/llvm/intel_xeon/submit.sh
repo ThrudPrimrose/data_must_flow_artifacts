@@ -1,5 +1,5 @@
 #!/bin/bash
-#SBATCH --job-name=cloudsc_1_intel_xeon_llvm  # Job name
+#SBATCH --job-name=csc1_intel_llvm  # Job name
 #SBATCH --nodes=1                     # Number of nodes
 #SBATCH --partition=intel               # Partition/queue
 #SBATCH --time=01:00:00               # Walltime (hh:mm:ss)
