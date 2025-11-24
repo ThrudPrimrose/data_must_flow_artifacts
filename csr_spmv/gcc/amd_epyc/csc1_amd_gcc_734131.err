@@ -1,0 +1,37 @@
+/scratch/ybudanaz/dace/dace/sdfg/propagation.py:1508: UserWarning: Cannot find appropriate memlet pattern to propagate idx through __map_316_b0:__map_316_e1
+  warnings.warn('Cannot find appropriate memlet pattern to '
+/scratch/ybudanaz/dace/dace/sdfg/propagation.py:1508: UserWarning: Cannot find appropriate memlet pattern to propagate i through 0:__map_312_e0
+  warnings.warn('Cannot find appropriate memlet pattern to '
+/scratch/ybudanaz/dace/dace/sdfg/propagation.py:1508: UserWarning: Cannot find appropriate memlet pattern to propagate i + 1 through 0:__map_312_e0
+  warnings.warn('Cannot find appropriate memlet pattern to '
+Traceback (most recent call last):
+  File "/scratch/ybudanaz/dace/dace/codegen/compiler.py", line 245, in configure_and_compile
+    _run_liveoutput("cmake --build . --config %s" % (Config.get('compiler', 'build_type')),
+  File "/scratch/ybudanaz/dace/dace/codegen/compiler.py", line 429, in _run_liveoutput
+    raise subprocess.CalledProcessError(process.returncode, command, output.getvalue())
+subprocess.CalledProcessError: Command 'cmake --build . --config RelWithDebInfo' returned non-zero exit status 2.
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/scratch/ybudanaz/data_must_flow_artifacts/csr_spmv/gcc/amd_epyc/csr_gemmver.py", line 323, in <module>
+    all_timings["spmv_csr", size] = run_sdfg_multiple_times(
+                                    ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/scratch/ybudanaz/data_must_flow_artifacts/csr_spmv/gcc/amd_epyc/csr_gemmver.py", line 222, in run_sdfg_multiple_times
+    compiled = sdfg.compile()
+               ^^^^^^^^^^^^^^
+  File "/scratch/ybudanaz/dace/dace/sdfg/sdfg.py", line 2436, in compile
+    shared_library = compiler.configure_and_compile(program_folder, sdfg.name)
+                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/scratch/ybudanaz/dace/dace/codegen/compiler.py", line 254, in configure_and_compile
+    raise cgx.CompilationError('Compiler failure:\n' + ex.output)
+dace.codegen.exceptions.CompilationError: Compiler failure:
+[ 25%] Building CXX object CMakeFiles/spmv_csr.dir/scratch/ybudanaz/data_must_flow_artifacts/csr_spmv/gcc/amd_epyc/.dacecache/spmv_csr/src/cpu/spmv_csr.cpp.o
+/scratch/ybudanaz/data_must_flow_artifacts/csr_spmv/gcc/amd_epyc/.dacecache/spmv_csr/src/cpu/spmv_csr.cpp:156:1: fatal error: opening dependency file CMakeFiles/spmv_csr.dir/scratch/ybudanaz/data_must_flow_artifacts/csr_spmv/gcc/amd_epyc/.dacecache/spmv_csr/src/cpu/spmv_csr.cpp.o.d: No such file or directory
+  156 | }
+      | ^
+compilation terminated.
+gmake[2]: *** [CMakeFiles/spmv_csr.dir/build.make:79: CMakeFiles/spmv_csr.dir/scratch/ybudanaz/data_must_flow_artifacts/csr_spmv/gcc/amd_epyc/.dacecache/spmv_csr/src/cpu/spmv_csr.cpp.o] Error 1
+gmake[1]: *** [CMakeFiles/Makefile2:90: CMakeFiles/spmv_csr.dir/all] Error 2
+gmake: *** [Makefile:91: all] Error 2
+

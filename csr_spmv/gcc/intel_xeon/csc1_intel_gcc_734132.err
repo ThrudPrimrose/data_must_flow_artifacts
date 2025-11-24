@@ -1,0 +1,7 @@
+/scratch/ybudanaz/dace/dace/sdfg/propagation.py:1508: UserWarning: Cannot find appropriate memlet pattern to propagate idx through __map_316_b0:__map_316_e1
+  warnings.warn('Cannot find appropriate memlet pattern to '
+/scratch/ybudanaz/dace/dace/sdfg/propagation.py:1508: UserWarning: Cannot find appropriate memlet pattern to propagate i through 0:__map_312_e0
+  warnings.warn('Cannot find appropriate memlet pattern to '
+/scratch/ybudanaz/dace/dace/sdfg/propagation.py:1508: UserWarning: Cannot find appropriate memlet pattern to propagate i + 1 through 0:__map_312_e0
+  warnings.warn('Cannot find appropriate memlet pattern to '
+slurmstepd: error: *** JOB 734132 ON ault03 CANCELLED AT 2025-11-24T20:44:51 ***
