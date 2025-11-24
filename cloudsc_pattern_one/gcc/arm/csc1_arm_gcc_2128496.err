@@ -1,0 +1,28 @@
+Traceback (most recent call last):
+  File "/capstor/scratch/cscs/ybudanaz/data_must_flow_artifacts/cloudsc_pattern_one/gcc/arm/benchmark_cloudsc_pattern_one.py", line 439, in <module>
+    all_timings["cloudsc_pattern_1", N] = run_sdfg_multiple_times(
+                                          ~~~~~~~~~~~~~~~~~~~~~~~^
+        sdfg=cloudsc_pattern_1_sdfg,
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ...<2 lines>...
+        num_runs=NUM_REPS,
+        ^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "/capstor/scratch/cscs/ybudanaz/data_must_flow_artifacts/cloudsc_pattern_one/gcc/arm/benchmark_cloudsc_pattern_one.py", line 262, in run_sdfg_multiple_times
+    compiled(**arrays, **params)  # Warm-up run
+    ~~~~~~~~^^^^^^^^^^^^^^^^^^^^
+  File "/capstor/scratch/cscs/ybudanaz/dace/dace/codegen/compiled_sdfg.py", line 388, in __call__
+    argtuple, initargtuple = self._construct_args(kwargs)  # Missing arguments will be detected here.
+                             ~~~~~~~~~~~~~~~~~~~~^^^^^^^^
+  File "/capstor/scratch/cscs/ybudanaz/dace/dace/codegen/compiled_sdfg.py", line 546, in _construct_args
+    carg = dt.make_ctypes_argument(arg,
+                                   atype,
+    ...<2 lines>...
+                                   symbols=kwargs,
+                                   callback_retval_references=self._callback_retval_references)
+  File "/capstor/scratch/cscs/ybudanaz/dace/dace/data.py", line 2421, in make_ctypes_argument
+    raise TypeError(f'Passing a numpy view (e.g., sub-array or "A.T") "{a}" to DaCe '
+    ...<4 lines>...
+                    'to True.')
+TypeError: Passing a numpy view (e.g., sub-array or "A.T") "pap" to DaCe programs is not allowed in order to retain analyzability. Please make a copy with "numpy.copy(...)". If you know what you are doing, you can override this error in the configuration by setting compiler.allow_view_arguments to True.
