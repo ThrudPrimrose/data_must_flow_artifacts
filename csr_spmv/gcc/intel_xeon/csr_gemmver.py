@@ -16,7 +16,7 @@ import argparse
 # -----------------------------
 # Parse arguments
 # -----------------------------
-parser = argparse.ArgumentParser(description="Run cloudsc_pattern_1 DaCe benchmarks")
+parser = argparse.ArgumentParser(description="Run csr_spmv DaCe benchmarks")
 parser.add_argument(
     "--suffix",
     type=str,
@@ -25,7 +25,7 @@ parser.add_argument(
 )
 args = parser.parse_args()
 
-csv_filename = f"cloudsc_pattern_1_timings{('_' + args.suffix) if args.suffix else ''}_1_core.csv"
+csv_filename = f"csr_spmv_timings{('_' + args.suffix) if args.suffix else ''}_1_core.csv"
 
 def get_physical_cores():
     # Use lscpu and parse "Core(s) per socket" and "Socket(s)"
@@ -241,7 +241,7 @@ def run_sdfg_multiple_times(
 
     return times
 
-def save_timings_to_csv(filename, timings_dict, i):
+def save_timings_to_csv(filename, timings_dict, isize, i):
     """
     Write:
         sdfg_name,rep_idx,time_in_seconds
@@ -252,6 +252,8 @@ def save_timings_to_csv(filename, timings_dict, i):
             writer.writerow(["sdfg_name", "size", "rep", "time_seconds"])
 
         for (sdfg_name,size), times in timings_dict.items():
+            if size != isize:
+                continue
             for i, t in enumerate(times):
                 writer.writerow([sdfg_name, size, i, t])
 
@@ -262,7 +264,7 @@ def save_timings_to_csv(filename, timings_dict, i):
 def build_vectorized_sdfg(base_sdfg, vec_width, insert_copies, suffix):
     sdfg = copy.deepcopy(base_sdfg)
     VectorizeCPU(vector_width=vec_width, insert_copies=insert_copies).apply_pass(sdfg, {})
-    name = f"cloudsc_pattern_1_vectorized_static_veclen_{vec_width}_{suffix}"
+    name = f"csr_spmv_vectorized_static_veclen_{vec_width}_{suffix}"
     sdfg.name = name
     sdfg.instrument = dace.dtypes.InstrumentationType.Timer
     return sdfg, name
@@ -276,7 +278,7 @@ if __name__ == "__main__":
     NUM_REPS = 10
     all_timings = {}
 
-    for i, N in enumerate([2048, 4096, 8192, 8192 * 2, 8192 * 4]):
+    for i, N in enumerate([2048, 4096, 8192, 8192 * 2]):
         size = N
         _N = N
         n = N
@@ -287,7 +289,7 @@ if __name__ == "__main__":
         dense = dense * mask  # many zeros
 
         # Create CSR arrays (data, indices, indptr)
-        dense = trim_to_multiple_of_X(dense, 32)
+        dense = trim_to_multiple_of_X(dense, 128)
         data, indices, indptr = _dense_to_csr(dense)
 
         # input / output vectors
@@ -330,7 +332,7 @@ if __name__ == "__main__":
         # -------------------------------------------------------
         # Vectorized versions
         # -------------------------------------------------------
-        for l in [8, 16, 32]:
+        for l in [8, 16, 32, 64, 128]:
             # no-copy version
             sdfg_vec, name = build_vectorized_sdfg(
                 sdfg, vec_width=l, insert_copies=False, suffix="no_cpy"
@@ -351,5 +353,5 @@ if __name__ == "__main__":
         # -------------------------------------------------------
         # CSV output
         # -------------------------------------------------------
-        save_timings_to_csv(csv_filename, all_timings, i)
+        save_timings_to_csv(csv_filename, all_timings, size, i)
         print(f"Saved timing results to {csv_filename}.csv")

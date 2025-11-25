@@ -1,0 +1,6 @@
+/scratch/ybudanaz/dace/dace/sdfg/propagation.py:1508: UserWarning: Cannot find appropriate memlet pattern to propagate idx through __map_318_b0:__map_318_e1
+  warnings.warn('Cannot find appropriate memlet pattern to '
+/scratch/ybudanaz/dace/dace/sdfg/propagation.py:1508: UserWarning: Cannot find appropriate memlet pattern to propagate i through 0:__map_314_e0
+  warnings.warn('Cannot find appropriate memlet pattern to '
+/scratch/ybudanaz/dace/dace/sdfg/propagation.py:1508: UserWarning: Cannot find appropriate memlet pattern to propagate i + 1 through 0:__map_314_e0
+  warnings.warn('Cannot find appropriate memlet pattern to '
