@@ -193,7 +193,7 @@ Disassembly of section .text:
  a3c:	48 63 4c 24 0c       	movslq 0xc(%rsp),%rcx
  a41:	89 44 24 08          	mov    %eax,0x8(%rsp)
  a45:	39 c1                	cmp    %eax,%ecx
- a47:	0f 8f fe 00 00 00    	jg     b4b <_Z42__program_jacobi2d_vectorized_cpy_internalP31jacobi2d_vectorized_cpy_state_tPdS1_l.omp_outlined+0x18b>
+ a47:	0f 8f 02 01 00 00    	jg     b4f <_Z42__program_jacobi2d_vectorized_cpy_internalP31jacobi2d_vectorized_cpy_state_tPdS1_l.omp_outlined+0x18f>
  a4d:	c4 e2 7d 19 05 92 03 	vbroadcastsd 0x392(%rip),%ymm0        # de8 <_fini+0x10>
  a54:	00 00 
  a56:	48 ba 00 00 00 00 02 	movabs $0x40200000000,%rdx
@@ -218,48 +218,49 @@ Disassembly of section .text:
  aa9:	4d 01 c2             	add    %r8,%r10
  aac:	49 c1 fc 1d          	sar    $0x1d,%r12
  ab0:	4d 8d 3c 3b          	lea    (%r11,%rdi,1),%r15
- ab4:	c4 81 7d 10 8c cf 08 	vmovupd -0x1ff8(%r15,%r9,8),%ymm1
- abb:	e0 ff ff 
- abe:	c4 81 7d 10 94 cf 18 	vmovupd -0x1fe8(%r15,%r9,8),%ymm2
- ac5:	e0 ff ff 
- ac8:	c4 81 7d 10 9c cf 38 	vmovupd -0x1fc8(%r15,%r9,8),%ymm3
+ ab4:	c4 81 7d 10 0c 23    	vmovupd (%r11,%r12,1),%ymm1
+ aba:	c4 81 7d 10 54 23 20 	vmovupd 0x20(%r11,%r12,1),%ymm2
+ ac1:	c4 81 75 58 4c cf 20 	vaddpd 0x20(%r15,%r9,8),%ymm1,%ymm1
+ ac8:	c4 81 7d 10 9c cf 18 	vmovupd -0x1fe8(%r15,%r9,8),%ymm3
  acf:	e0 ff ff 
- ad2:	c4 81 75 58 8c cf 00 	vaddpd -0x4000(%r15,%r9,8),%ymm1,%ymm1
- ad9:	c0 ff ff 
- adc:	c5 f5 58 ca          	vaddpd %ymm2,%ymm1,%ymm1
- ae0:	c4 e3 6d 06 d3 21    	vperm2f128 $0x21,%ymm3,%ymm2,%ymm2
- ae6:	c4 81 6d 58 94 cf 20 	vaddpd -0x3fe0(%r15,%r9,8),%ymm2,%ymm2
- aed:	c0 ff ff 
- af0:	c4 81 75 58 4c cf 20 	vaddpd 0x20(%r15,%r9,8),%ymm1,%ymm1
- af7:	c4 81 75 58 0c 23    	vaddpd (%r11,%r12,1),%ymm1,%ymm1
- afd:	c5 ed 58 d3          	vaddpd %ymm3,%ymm2,%ymm2
- b01:	c4 81 6d 58 54 cf 40 	vaddpd 0x40(%r15,%r9,8),%ymm2,%ymm2
- b08:	49 83 c1 08          	add    $0x8,%r9
- b0c:	c4 81 6d 58 54 23 20 	vaddpd 0x20(%r11,%r12,1),%ymm2,%ymm2
- b13:	c5 f5 59 c8          	vmulpd %ymm0,%ymm1,%ymm1
+ ad2:	c4 81 7d 10 a4 cf 38 	vmovupd -0x1fc8(%r15,%r9,8),%ymm4
+ ad9:	e0 ff ff 
+ adc:	c4 81 6d 58 54 cf 40 	vaddpd 0x40(%r15,%r9,8),%ymm2,%ymm2
+ ae3:	c4 81 75 58 8c cf 08 	vaddpd -0x1ff8(%r15,%r9,8),%ymm1,%ymm1
+ aea:	e0 ff ff 
+ aed:	c4 81 75 58 8c cf 00 	vaddpd -0x4000(%r15,%r9,8),%ymm1,%ymm1
+ af4:	c0 ff ff 
+ af7:	c5 f5 58 cb          	vaddpd %ymm3,%ymm1,%ymm1
+ afb:	c4 e3 65 06 dc 21    	vperm2f128 $0x21,%ymm4,%ymm3,%ymm3
+ b01:	c5 ed 58 d3          	vaddpd %ymm3,%ymm2,%ymm2
+ b05:	c4 81 6d 58 94 cf 20 	vaddpd -0x3fe0(%r15,%r9,8),%ymm2,%ymm2
+ b0c:	c0 ff ff 
+ b0f:	c5 f5 59 c8          	vmulpd %ymm0,%ymm1,%ymm1
+ b13:	49 83 c1 08          	add    $0x8,%r9
  b17:	c4 81 7d 11 4c 25 00 	vmovupd %ymm1,0x0(%r13,%r12,1)
- b1e:	c5 ed 59 d0          	vmulpd %ymm0,%ymm2,%ymm2
- b22:	c4 81 7d 11 54 25 20 	vmovupd %ymm2,0x20(%r13,%r12,1)
- b29:	49 81 f9 f8 03 00 00 	cmp    $0x3f8,%r9
- b30:	0f 82 6a ff ff ff    	jb     aa0 <_Z42__program_jacobi2d_vectorized_cpy_internalP31jacobi2d_vectorized_cpy_state_tPdS1_l.omp_outlined+0xe0>
- b36:	48 ff c1             	inc    %rcx
- b39:	48 01 d6             	add    %rdx,%rsi
- b3c:	48 81 c7 10 20 00 00 	add    $0x2010,%rdi
- b43:	39 c8                	cmp    %ecx,%eax
- b45:	0f 85 45 ff ff ff    	jne    a90 <_Z42__program_jacobi2d_vectorized_cpy_internalP31jacobi2d_vectorized_cpy_state_tPdS1_l.omp_outlined+0xd0>
- b4b:	48 8d 3d f6 11 20 00 	lea    0x2011f6(%rip),%rdi        # 201d48 <__dso_handle+0x20>
- b52:	89 ee                	mov    %ebp,%esi
- b54:	c5 f8 77             	vzeroupper 
- b57:	e8 b4 fc ff ff       	callq  810 <__kmpc_for_static_fini@plt>
- b5c:	48 83 c4 18          	add    $0x18,%rsp
- b60:	5b                   	pop    %rbx
- b61:	41 5c                	pop    %r12
- b63:	41 5d                	pop    %r13
- b65:	41 5e                	pop    %r14
- b67:	41 5f                	pop    %r15
- b69:	5d                   	pop    %rbp
- b6a:	c3                   	retq   
- b6b:	0f 1f 44 00 00       	nopl   0x0(%rax,%rax,1)
+ b1e:	c5 ed 58 d4          	vaddpd %ymm4,%ymm2,%ymm2
+ b22:	c5 ed 59 d0          	vmulpd %ymm0,%ymm2,%ymm2
+ b26:	c4 81 7d 11 54 25 20 	vmovupd %ymm2,0x20(%r13,%r12,1)
+ b2d:	49 81 f9 f8 03 00 00 	cmp    $0x3f8,%r9
+ b34:	0f 82 66 ff ff ff    	jb     aa0 <_Z42__program_jacobi2d_vectorized_cpy_internalP31jacobi2d_vectorized_cpy_state_tPdS1_l.omp_outlined+0xe0>
+ b3a:	48 ff c1             	inc    %rcx
+ b3d:	48 01 d6             	add    %rdx,%rsi
+ b40:	48 81 c7 10 20 00 00 	add    $0x2010,%rdi
+ b47:	39 c8                	cmp    %ecx,%eax
+ b49:	0f 85 41 ff ff ff    	jne    a90 <_Z42__program_jacobi2d_vectorized_cpy_internalP31jacobi2d_vectorized_cpy_state_tPdS1_l.omp_outlined+0xd0>
+ b4f:	48 8d 3d f2 11 20 00 	lea    0x2011f2(%rip),%rdi        # 201d48 <__dso_handle+0x20>
+ b56:	89 ee                	mov    %ebp,%esi
+ b58:	c5 f8 77             	vzeroupper 
+ b5b:	e8 b0 fc ff ff       	callq  810 <__kmpc_for_static_fini@plt>
+ b60:	48 83 c4 18          	add    $0x18,%rsp
+ b64:	5b                   	pop    %rbx
+ b65:	41 5c                	pop    %r12
+ b67:	41 5d                	pop    %r13
+ b69:	41 5e                	pop    %r14
+ b6b:	41 5f                	pop    %r15
+ b6d:	5d                   	pop    %rbp
+ b6e:	c3                   	retq   
+ b6f:	90                   	nop
 
 0000000000000b70 <_Z42__program_jacobi2d_vectorized_cpy_internalP31jacobi2d_vectorized_cpy_state_tPdS1_l.omp_outlined.1>:
  b70:	55                   	push   %rbp
@@ -300,74 +301,73 @@ Disassembly of section .text:
  bec:	48 63 4c 24 0c       	movslq 0xc(%rsp),%rcx
  bf1:	89 44 24 08          	mov    %eax,0x8(%rsp)
  bf5:	39 c1                	cmp    %eax,%ecx
- bf7:	0f 8f 02 01 00 00    	jg     cff <_Z42__program_jacobi2d_vectorized_cpy_internalP31jacobi2d_vectorized_cpy_state_tPdS1_l.omp_outlined.1+0x18f>
+ bf7:	0f 8f fe 00 00 00    	jg     cfb <_Z42__program_jacobi2d_vectorized_cpy_internalP31jacobi2d_vectorized_cpy_state_tPdS1_l.omp_outlined.1+0x18b>
  bfd:	c4 e2 7d 19 05 e2 01 	vbroadcastsd 0x1e2(%rip),%ymm0        # de8 <_fini+0x10>
  c04:	00 00 
  c06:	48 ba 00 00 00 00 02 	movabs $0x40200000000,%rdx
  c0d:	04 00 00 
  c10:	49 89 c8             	mov    %rcx,%r8
- c13:	48 69 f9 10 20 00 00 	imul   $0x2010,%rcx,%rdi
- c1a:	48 be 00 00 00 00 03 	movabs $0x40300000000,%rsi
+ c13:	48 69 f1 10 20 00 00 	imul   $0x2010,%rcx,%rsi
+ c1a:	48 bf 00 00 00 00 03 	movabs $0x40300000000,%rdi
  c21:	04 00 00 
  c24:	ff c0                	inc    %eax
  c26:	4c 0f af c2          	imul   %rdx,%r8
- c2a:	48 81 c7 48 40 00 00 	add    $0x4048,%rdi
- c31:	4c 01 c6             	add    %r8,%rsi
+ c2a:	48 81 c6 48 40 00 00 	add    $0x4048,%rsi
+ c31:	4c 01 c7             	add    %r8,%rdi
  c34:	49 b8 00 00 00 00 08 	movabs $0x800000000,%r8
  c3b:	00 00 00 
  c3e:	66 90                	xchg   %ax,%ax
  c40:	49 c7 c1 f8 ff ff ff 	mov    $0xfffffffffffffff8,%r9
- c47:	49 89 f2             	mov    %rsi,%r10
+ c47:	49 89 fa             	mov    %rdi,%r10
  c4a:	66 0f 1f 44 00 00    	nopw   0x0(%rax,%rax,1)
  c50:	4d 8b 1e             	mov    (%r14),%r11
- c53:	4d 89 d4             	mov    %r10,%r12
+ c53:	4d 89 d7             	mov    %r10,%r15
  c56:	4c 8b 2b             	mov    (%rbx),%r13
  c59:	4d 01 c2             	add    %r8,%r10
- c5c:	49 c1 fc 1d          	sar    $0x1d,%r12
- c60:	4d 8d 3c 3b          	lea    (%r11,%rdi,1),%r15
- c64:	c4 81 7d 10 0c 23    	vmovupd (%r11,%r12,1),%ymm1
- c6a:	c4 81 7d 10 54 23 20 	vmovupd 0x20(%r11,%r12,1),%ymm2
- c71:	c4 81 75 58 4c cf 20 	vaddpd 0x20(%r15,%r9,8),%ymm1,%ymm1
- c78:	c4 81 7d 10 9c cf 18 	vmovupd -0x1fe8(%r15,%r9,8),%ymm3
+ c5c:	49 c1 ff 1d          	sar    $0x1d,%r15
+ c60:	4d 8d 24 33          	lea    (%r11,%rsi,1),%r12
+ c64:	c4 81 7d 10 8c cc 08 	vmovupd -0x1ff8(%r12,%r9,8),%ymm1
+ c6b:	e0 ff ff 
+ c6e:	c4 81 7d 10 94 cc 18 	vmovupd -0x1fe8(%r12,%r9,8),%ymm2
+ c75:	e0 ff ff 
+ c78:	c4 81 7d 10 9c cc 38 	vmovupd -0x1fc8(%r12,%r9,8),%ymm3
  c7f:	e0 ff ff 
- c82:	c4 81 7d 10 a4 cf 38 	vmovupd -0x1fc8(%r15,%r9,8),%ymm4
- c89:	e0 ff ff 
- c8c:	c4 81 6d 58 54 cf 40 	vaddpd 0x40(%r15,%r9,8),%ymm2,%ymm2
- c93:	c4 81 75 58 8c cf 00 	vaddpd -0x4000(%r15,%r9,8),%ymm1,%ymm1
- c9a:	c0 ff ff 
- c9d:	c4 81 6d 58 94 cf 20 	vaddpd -0x3fe0(%r15,%r9,8),%ymm2,%ymm2
- ca4:	c0 ff ff 
- ca7:	c4 81 75 58 8c cf 08 	vaddpd -0x1ff8(%r15,%r9,8),%ymm1,%ymm1
- cae:	e0 ff ff 
- cb1:	49 83 c1 08          	add    $0x8,%r9
- cb5:	c5 f5 58 cb          	vaddpd %ymm3,%ymm1,%ymm1
- cb9:	c4 e3 65 06 dc 21    	vperm2f128 $0x21,%ymm4,%ymm3,%ymm3
- cbf:	c5 e5 58 dc          	vaddpd %ymm4,%ymm3,%ymm3
- cc3:	c5 f5 59 c8          	vmulpd %ymm0,%ymm1,%ymm1
- cc7:	c5 ed 58 d3          	vaddpd %ymm3,%ymm2,%ymm2
- ccb:	c4 81 7d 11 4c 25 00 	vmovupd %ymm1,0x0(%r13,%r12,1)
- cd2:	c5 ed 59 d0          	vmulpd %ymm0,%ymm2,%ymm2
- cd6:	c4 81 7d 11 54 25 20 	vmovupd %ymm2,0x20(%r13,%r12,1)
- cdd:	49 81 f9 f8 03 00 00 	cmp    $0x3f8,%r9
- ce4:	0f 82 66 ff ff ff    	jb     c50 <_Z42__program_jacobi2d_vectorized_cpy_internalP31jacobi2d_vectorized_cpy_state_tPdS1_l.omp_outlined.1+0xe0>
- cea:	48 ff c1             	inc    %rcx
- ced:	48 01 d6             	add    %rdx,%rsi
- cf0:	48 81 c7 10 20 00 00 	add    $0x2010,%rdi
- cf7:	39 c8                	cmp    %ecx,%eax
- cf9:	0f 85 41 ff ff ff    	jne    c40 <_Z42__program_jacobi2d_vectorized_cpy_internalP31jacobi2d_vectorized_cpy_state_tPdS1_l.omp_outlined.1+0xd0>
- cff:	48 8d 3d 8a 10 20 00 	lea    0x20108a(%rip),%rdi        # 201d90 <__dso_handle+0x68>
- d06:	89 ee                	mov    %ebp,%esi
- d08:	c5 f8 77             	vzeroupper 
- d0b:	e8 00 fb ff ff       	callq  810 <__kmpc_for_static_fini@plt>
- d10:	48 83 c4 18          	add    $0x18,%rsp
- d14:	5b                   	pop    %rbx
- d15:	41 5c                	pop    %r12
- d17:	41 5d                	pop    %r13
- d19:	41 5e                	pop    %r14
- d1b:	41 5f                	pop    %r15
- d1d:	5d                   	pop    %rbp
- d1e:	c3                   	retq   
- d1f:	90                   	nop
+ c82:	c4 81 75 58 0c 3b    	vaddpd (%r11,%r15,1),%ymm1,%ymm1
+ c88:	c4 81 75 58 4c cc 20 	vaddpd 0x20(%r12,%r9,8),%ymm1,%ymm1
+ c8f:	c4 81 75 58 8c cc 00 	vaddpd -0x4000(%r12,%r9,8),%ymm1,%ymm1
+ c96:	c0 ff ff 
+ c99:	c5 f5 58 ca          	vaddpd %ymm2,%ymm1,%ymm1
+ c9d:	c4 e3 6d 06 d3 21    	vperm2f128 $0x21,%ymm3,%ymm2,%ymm2
+ ca3:	c4 81 6d 58 54 3b 20 	vaddpd 0x20(%r11,%r15,1),%ymm2,%ymm2
+ caa:	c4 81 6d 58 54 cc 40 	vaddpd 0x40(%r12,%r9,8),%ymm2,%ymm2
+ cb1:	c5 f5 59 c8          	vmulpd %ymm0,%ymm1,%ymm1
+ cb5:	c4 81 6d 58 94 cc 20 	vaddpd -0x3fe0(%r12,%r9,8),%ymm2,%ymm2
+ cbc:	c0 ff ff 
+ cbf:	49 83 c1 08          	add    $0x8,%r9
+ cc3:	c4 81 7d 11 4c 3d 00 	vmovupd %ymm1,0x0(%r13,%r15,1)
+ cca:	c5 ed 58 d3          	vaddpd %ymm3,%ymm2,%ymm2
+ cce:	c5 ed 59 d0          	vmulpd %ymm0,%ymm2,%ymm2
+ cd2:	c4 81 7d 11 54 3d 20 	vmovupd %ymm2,0x20(%r13,%r15,1)
+ cd9:	49 81 f9 f8 03 00 00 	cmp    $0x3f8,%r9
+ ce0:	0f 82 6a ff ff ff    	jb     c50 <_Z42__program_jacobi2d_vectorized_cpy_internalP31jacobi2d_vectorized_cpy_state_tPdS1_l.omp_outlined.1+0xe0>
+ ce6:	48 ff c1             	inc    %rcx
+ ce9:	48 81 c6 10 20 00 00 	add    $0x2010,%rsi
+ cf0:	48 01 d7             	add    %rdx,%rdi
+ cf3:	39 c8                	cmp    %ecx,%eax
+ cf5:	0f 85 45 ff ff ff    	jne    c40 <_Z42__program_jacobi2d_vectorized_cpy_internalP31jacobi2d_vectorized_cpy_state_tPdS1_l.omp_outlined.1+0xd0>
+ cfb:	48 8d 3d 8e 10 20 00 	lea    0x20108e(%rip),%rdi        # 201d90 <__dso_handle+0x68>
+ d02:	89 ee                	mov    %ebp,%esi
+ d04:	c5 f8 77             	vzeroupper 
+ d07:	e8 04 fb ff ff       	callq  810 <__kmpc_for_static_fini@plt>
+ d0c:	48 83 c4 18          	add    $0x18,%rsp
+ d10:	5b                   	pop    %rbx
+ d11:	41 5c                	pop    %r12
+ d13:	41 5d                	pop    %r13
+ d15:	41 5e                	pop    %r14
+ d17:	41 5f                	pop    %r15
+ d19:	5d                   	pop    %rbp
+ d1a:	c3                   	retq   
+ d1b:	0f 1f 44 00 00       	nopl   0x0(%rax,%rax,1)
 
 0000000000000d20 <__program_jacobi2d_vectorized_cpy>:
  d20:	55                   	push   %rbp

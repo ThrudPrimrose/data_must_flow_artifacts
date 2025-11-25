@@ -8,6 +8,7 @@
 #SBATCH --chdir=/scratch/ybudanaz/data_must_flow_artifacts/jacobi2d/llvm/amd_epyc
 
 spack load cmake
+source $HOME/.bashrc
 
 alias cc=/scratch/ybudanaz/bin/clang
 alias c++=/scratch/ybudanaz/bin/clang++
@@ -15,4 +16,6 @@ alias cxx=/scratch/ybudanaz/bin/clang++
 export CC=/scratch/ybudanaz/bin/clang
 export CXX=/scratch/ybudanaz/bin/clang++
 
+
+rm -rf .dacecache
 python3 benchmark_jacobi2d.py --suffix=jacobi2d_timings_amd_epyc_llvm

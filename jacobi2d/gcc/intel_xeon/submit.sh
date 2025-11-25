@@ -7,6 +7,9 @@
 #SBATCH --error=%x_%j.err             # Standard error
 #SBATCH --chdir=/scratch/ybudanaz/data_must_flow_artifacts/jacobi2d/gcc/intel_xeon
 
+source $HOME/.bashrc
+
+
 spack load cmake
 spack load gcc@14.2
 
@@ -16,4 +19,6 @@ alias cxx=g++
 export CC=gcc
 export CXX=g++
 
+
+rm -rf .dacecache
 python3 benchmark_jacobi2d.py --suffix=jacobi2d_timings_intel_xeon_gcc

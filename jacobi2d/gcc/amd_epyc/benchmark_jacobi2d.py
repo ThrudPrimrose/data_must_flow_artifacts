@@ -186,7 +186,7 @@ def run_sdfg_multiple_times(
 
     return times
 
-def save_timings_to_csv(filename, timings_dict, i):
+def save_timings_to_csv(filename, timings_dict, isize, i):
     """
     Write:
         sdfg_name,rep_idx,time_in_seconds
@@ -196,7 +196,9 @@ def save_timings_to_csv(filename, timings_dict, i):
         if i == 0:
             writer.writerow(["sdfg_name", "size", "rep", "time_seconds"])
 
-        for (sdfg_name,size), times in timings_dict.items():
+        for (sdfg_name, size), times in timings_dict.items():
+            if size != isize:
+                continue
             for i, t in enumerate(times):
                 writer.writerow([sdfg_name, size, i, t])
 
@@ -244,7 +246,7 @@ if __name__ == "__main__":
     NUM_REPS = 10
     all_timings = {}
 
-    for i, S in enumerate([512+2, 1024+2, 2048+2, 4096+2]):
+    for i, S in enumerate([512+2, 1024+2, 2048+2, 4096+2, 8192+2]):
         size = S
         @dace.program
         def jacobi2d(
@@ -309,19 +311,9 @@ if __name__ == "__main__":
                 sdfg=sdfg_vec_cpy, arrays=base_arrays, params=params, num_runs=NUM_REPS
             )
 
-        # -------------------------------------------------------
-        # Aligned versions (different arrays!)
-        # -------------------------------------------------------
-        for l in [8, 16, 32]:
-            sdfg_aligned, aligned_arrays, name = build_aligned_arrays_and_sdfg(
-                jacobi2d_sdfg, S=S, vec_width=l
-            )
-            all_timings[name, size] = run_sdfg_multiple_times(
-                sdfg=sdfg_aligned, arrays=aligned_arrays, params=params, num_runs=NUM_REPS
-            )
 
         # -------------------------------------------------------
         # CSV output
         # -------------------------------------------------------
-        save_timings_to_csv(csv_filename, all_timings, i)
+        save_timings_to_csv(csv_filename, all_timings, size, i)
         print(f"Saved timing results to {csv_filename}.csv")

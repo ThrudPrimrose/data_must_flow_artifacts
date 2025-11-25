@@ -125,7 +125,7 @@ Disassembly of section .text:
      8f7:	4c 8d 64 24 10       	lea    0x10(%rsp),%r12
      8fc:	4c 8d 6c 24 08       	lea    0x8(%rsp),%r13
      901:	48 8d 2d a0 14 20 00 	lea    0x2014a0(%rip),%rbp        # 201da8 <__dso_handle+0x80>
-     908:	4c 8d 35 d1 03 00 00 	lea    0x3d1(%rip),%r14        # ce0 <_Z27__program_jacobi2d_internalP16jacobi2d_state_tPdS1_l.omp_outlined.1>
+     908:	4c 8d 35 f1 03 00 00 	lea    0x3f1(%rip),%r14        # d00 <_Z27__program_jacobi2d_internalP16jacobi2d_state_tPdS1_l.omp_outlined.1>
      90f:	90                   	nop
      910:	48 8d 3d 49 14 20 00 	lea    0x201449(%rip),%rdi        # 201d60 <__dso_handle+0x38>
      917:	be 02 00 00 00       	mov    $0x2,%esi
@@ -233,7 +233,7 @@ Disassembly of section .text:
      a7c:	48 8d 8e 00 20 00 00 	lea    0x2000(%rsi),%rcx
      a83:	48 89 4c 24 20       	mov    %rcx,0x20(%rsp)
      a88:	4e 8d 24 16          	lea    (%rsi,%r10,1),%r12
-     a8c:	49 81 c4 48 40 00 00 	add    $0x4048,%r12
+     a8c:	49 81 c4 68 40 00 00 	add    $0x4068,%r12
      a93:	49 89 c3             	mov    %rax,%r11
      a96:	4d 0f af d8          	imul   %r8,%r11
      a9a:	49 bf 00 00 00 00 03 	movabs $0x40300000000,%r15
@@ -245,16 +245,16 @@ Disassembly of section .text:
      ab4:	4a 8d 1c 16          	lea    (%rsi,%r10,1),%rbx
      ab8:	48 81 c3 30 40 00 00 	add    $0x4030,%rbx
      abf:	45 31 d2             	xor    %r10d,%r10d
-     ac2:	c5 fb 10 05 5e 06 00 	vmovsd 0x65e(%rip),%xmm0        # 1128 <_fini+0x10>
+     ac2:	c5 fb 10 05 9e 06 00 	vmovsd 0x69e(%rip),%xmm0        # 1168 <_fini+0x10>
      ac9:	00 
-     aca:	c4 e2 7d 19 0d 55 06 	vbroadcastsd 0x655(%rip),%ymm1        # 1128 <_fini+0x10>
-     ad1:	00 00 
-     ad3:	49 bb 00 00 00 00 08 	movabs $0x800000000,%r11
-     ada:	00 00 00 
-     add:	44 89 4c 24 10       	mov    %r9d,0x10(%rsp)
-     ae2:	eb 3a                	jmp    b1e <_Z27__program_jacobi2d_internalP16jacobi2d_state_tPdS1_l.omp_outlined+0x1be>
-     ae4:	66 66 66 2e 0f 1f 84 	data16 data16 nopw %cs:0x0(%rax,%rax,1)
-     aeb:	00 00 00 00 00 
+     aca:	62 f2 fd 48 19 0d 94 	vbroadcastsd 0x694(%rip),%zmm1        # 1168 <_fini+0x10>
+     ad1:	06 00 00 
+     ad4:	49 bb 00 00 00 00 10 	movabs $0x1000000000,%r11
+     adb:	00 00 00 
+     ade:	44 89 4c 24 10       	mov    %r9d,0x10(%rsp)
+     ae3:	eb 39                	jmp    b1e <_Z27__program_jacobi2d_internalP16jacobi2d_state_tPdS1_l.omp_outlined+0x1be>
+     ae5:	66 66 2e 0f 1f 84 00 	data16 nopw %cs:0x0(%rax,%rax,1)
+     aec:	00 00 00 00 
      af0:	48 ff c0             	inc    %rax
      af3:	41 ff c2             	inc    %r10d
      af6:	49 81 c4 10 20 00 00 	add    $0x2010,%r12
@@ -336,301 +336,315 @@ Disassembly of section .text:
      c59:	1f 84 00 00 00 00 00 
      c60:	4d 89 e8             	mov    %r13,%r8
      c63:	49 c1 f8 1d          	sar    $0x1d,%r8
-     c67:	c4 81 7d 10 94 34 c0 	vmovupd -0x2040(%r12,%r14,1),%ymm2
-     c6e:	df ff ff 
-     c71:	c4 81 7d 10 9c 34 e0 	vmovupd -0x2020(%r12,%r14,1),%ymm3
-     c78:	df ff ff 
-     c7b:	c4 a1 6d 58 14 06    	vaddpd (%rsi,%r8,1),%ymm2,%ymm2
-     c81:	c4 a1 65 58 5c 06 20 	vaddpd 0x20(%rsi,%r8,1),%ymm3,%ymm3
-     c88:	c4 81 6d 58 94 34 e0 	vaddpd 0x1fe0(%r12,%r14,1),%ymm2,%ymm2
-     c8f:	1f 00 00 
-     c92:	c4 81 65 58 9c 34 00 	vaddpd 0x2000(%r12,%r14,1),%ymm3,%ymm3
-     c99:	20 00 00 
-     c9c:	c4 81 6d 58 54 34 c8 	vaddpd -0x38(%r12,%r14,1),%ymm2,%ymm2
-     ca3:	c4 81 65 58 5c 34 e8 	vaddpd -0x18(%r12,%r14,1),%ymm3,%ymm3
-     caa:	c4 81 6d 58 54 34 d8 	vaddpd -0x28(%r12,%r14,1),%ymm2,%ymm2
-     cb1:	c4 81 65 58 5c 34 f8 	vaddpd -0x8(%r12,%r14,1),%ymm3,%ymm3
-     cb8:	c5 ed 59 d1          	vmulpd %ymm1,%ymm2,%ymm2
-     cbc:	c5 e5 59 d9          	vmulpd %ymm1,%ymm3,%ymm3
-     cc0:	c4 a1 7d 11 14 07    	vmovupd %ymm2,(%rdi,%r8,1)
-     cc6:	c4 a1 7d 11 5c 07 20 	vmovupd %ymm3,0x20(%rdi,%r8,1)
-     ccd:	4d 01 dd             	add    %r11,%r13
-     cd0:	49 83 c6 40          	add    $0x40,%r14
-     cd4:	75 8a                	jne    c60 <_Z27__program_jacobi2d_internalP16jacobi2d_state_tPdS1_l.omp_outlined+0x300>
-     cd6:	e9 15 fe ff ff       	jmpq   af0 <_Z27__program_jacobi2d_internalP16jacobi2d_state_tPdS1_l.omp_outlined+0x190>
-     cdb:	0f 1f 44 00 00       	nopl   0x0(%rax,%rax,1)
+     c67:	62 91 fd 48 10 94 34 	vmovupd -0x2060(%r12,%r14,1),%zmm2
+     c6e:	a0 df ff ff 
+     c72:	62 91 fd 48 10 9c 34 	vmovupd -0x2020(%r12,%r14,1),%zmm3
+     c79:	e0 df ff ff 
+     c7d:	62 b1 ed 48 58 14 06 	vaddpd (%rsi,%r8,1),%zmm2,%zmm2
+     c84:	62 b1 e5 48 58 5c 06 	vaddpd 0x40(%rsi,%r8,1),%zmm3,%zmm3
+     c8b:	01 
+     c8c:	62 91 ed 48 58 54 34 	vaddpd 0x1fc0(%r12,%r14,1),%zmm2,%zmm2
+     c93:	7f 
+     c94:	62 91 e5 48 58 9c 34 	vaddpd 0x2000(%r12,%r14,1),%zmm3,%zmm3
+     c9b:	00 20 00 00 
+     c9f:	62 91 ed 48 58 94 34 	vaddpd -0x58(%r12,%r14,1),%zmm2,%zmm2
+     ca6:	a8 ff ff ff 
+     caa:	62 91 e5 48 58 9c 34 	vaddpd -0x18(%r12,%r14,1),%zmm3,%zmm3
+     cb1:	e8 ff ff ff 
+     cb5:	62 91 ed 48 58 94 34 	vaddpd -0x48(%r12,%r14,1),%zmm2,%zmm2
+     cbc:	b8 ff ff ff 
+     cc0:	62 91 e5 48 58 9c 34 	vaddpd -0x8(%r12,%r14,1),%zmm3,%zmm3
+     cc7:	f8 ff ff ff 
+     ccb:	62 f1 ed 48 59 d1    	vmulpd %zmm1,%zmm2,%zmm2
+     cd1:	62 f1 e5 48 59 d9    	vmulpd %zmm1,%zmm3,%zmm3
+     cd7:	62 b1 fd 48 11 14 07 	vmovupd %zmm2,(%rdi,%r8,1)
+     cde:	62 b1 fd 48 11 5c 07 	vmovupd %zmm3,0x40(%rdi,%r8,1)
+     ce5:	01 
+     ce6:	4d 01 dd             	add    %r11,%r13
+     ce9:	49 83 ee 80          	sub    $0xffffffffffffff80,%r14
+     ced:	0f 85 6d ff ff ff    	jne    c60 <_Z27__program_jacobi2d_internalP16jacobi2d_state_tPdS1_l.omp_outlined+0x300>
+     cf3:	e9 f8 fd ff ff       	jmpq   af0 <_Z27__program_jacobi2d_internalP16jacobi2d_state_tPdS1_l.omp_outlined+0x190>
+     cf8:	0f 1f 84 00 00 00 00 	nopl   0x0(%rax,%rax,1)
+     cff:	00 
 
-0000000000000ce0 <_Z27__program_jacobi2d_internalP16jacobi2d_state_tPdS1_l.omp_outlined.1>:
-     ce0:	55                   	push   %rbp
-     ce1:	41 57                	push   %r15
-     ce3:	41 56                	push   %r14
-     ce5:	41 55                	push   %r13
-     ce7:	41 54                	push   %r12
-     ce9:	53                   	push   %rbx
-     cea:	48 83 ec 48          	sub    $0x48,%rsp
-     cee:	49 89 ce             	mov    %rcx,%r14
-     cf1:	49 89 d7             	mov    %rdx,%r15
-     cf4:	c7 44 24 08 00 00 00 	movl   $0x0,0x8(%rsp)
-     cfb:	00 
-     cfc:	c7 44 24 04 ff 03 00 	movl   $0x3ff,0x4(%rsp)
-     d03:	00 
-     d04:	c7 44 24 1c 01 00 00 	movl   $0x1,0x1c(%rsp)
-     d0b:	00 
-     d0c:	c7 44 24 18 00 00 00 	movl   $0x0,0x18(%rsp)
-     d13:	00 
-     d14:	8b 37                	mov    (%rdi),%esi
-     d16:	48 83 ec 08          	sub    $0x8,%rsp
-     d1a:	48 8d 44 24 24       	lea    0x24(%rsp),%rax
-     d1f:	48 8d 3d 52 10 20 00 	lea    0x201052(%rip),%rdi        # 201d78 <__dso_handle+0x50>
-     d26:	48 8d 4c 24 20       	lea    0x20(%rsp),%rcx
-     d2b:	4c 8d 44 24 10       	lea    0x10(%rsp),%r8
-     d30:	4c 8d 4c 24 0c       	lea    0xc(%rsp),%r9
-     d35:	89 74 24 14          	mov    %esi,0x14(%rsp)
-     d39:	ba 22 00 00 00       	mov    $0x22,%edx
-     d3e:	6a 01                	pushq  $0x1
-     d40:	6a 01                	pushq  $0x1
-     d42:	50                   	push   %rax
-     d43:	e8 a8 fa ff ff       	callq  7f0 <__kmpc_for_static_init_4@plt>
-     d48:	48 83 c4 20          	add    $0x20,%rsp
-     d4c:	8b 44 24 04          	mov    0x4(%rsp),%eax
-     d50:	3d ff 03 00 00       	cmp    $0x3ff,%eax
-     d55:	b9 ff 03 00 00       	mov    $0x3ff,%ecx
-     d5a:	0f 4c c8             	cmovl  %eax,%ecx
-     d5d:	89 4c 24 04          	mov    %ecx,0x4(%rsp)
-     d61:	48 63 44 24 08       	movslq 0x8(%rsp),%rax
-     d66:	39 c1                	cmp    %eax,%ecx
-     d68:	7d 22                	jge    d8c <_Z27__program_jacobi2d_internalP16jacobi2d_state_tPdS1_l.omp_outlined.1+0xac>
-     d6a:	48 8d 3d 1f 10 20 00 	lea    0x20101f(%rip),%rdi        # 201d90 <__dso_handle+0x68>
-     d71:	8b 74 24 0c          	mov    0xc(%rsp),%esi
-     d75:	c5 f8 77             	vzeroupper 
-     d78:	e8 33 fa ff ff       	callq  7b0 <__kmpc_for_static_fini@plt>
-     d7d:	48 83 c4 48          	add    $0x48,%rsp
-     d81:	5b                   	pop    %rbx
-     d82:	41 5c                	pop    %r12
-     d84:	41 5d                	pop    %r13
-     d86:	41 5e                	pop    %r14
-     d88:	41 5f                	pop    %r15
-     d8a:	5d                   	pop    %rbp
-     d8b:	c3                   	retq   
-     d8c:	49 b8 00 00 00 00 02 	movabs $0x40200000000,%r8
-     d93:	04 00 00 
-     d96:	48 ba 00 00 00 00 02 	movabs $0x200000000,%rdx
-     d9d:	00 00 00 
-     da0:	49 8b 37             	mov    (%r15),%rsi
-     da3:	49 8b 3e             	mov    (%r14),%rdi
-     da6:	44 8d 49 01          	lea    0x1(%rcx),%r9d
-     daa:	44 89 4c 24 14       	mov    %r9d,0x14(%rsp)
-     daf:	29 c1                	sub    %eax,%ecx
-     db1:	41 89 c1             	mov    %eax,%r9d
-     db4:	41 c1 e1 0a          	shl    $0xa,%r9d
-     db8:	45 8d 0c 41          	lea    (%r9,%rax,2),%r9d
-     dbc:	41 81 c1 03 04 00 00 	add    $0x403,%r9d
-     dc3:	4c 69 d0 10 20 00 00 	imul   $0x2010,%rax,%r10
-     dca:	4e 8d 1c 16          	lea    (%rsi,%r10,1),%r11
-     dce:	49 83 c3 08          	add    $0x8,%r11
-     dd2:	4c 89 5c 24 38       	mov    %r11,0x38(%rsp)
-     dd7:	48 01 c1             	add    %rax,%rcx
-     dda:	48 69 c9 10 20 00 00 	imul   $0x2010,%rcx,%rcx
-     de1:	48 01 f1             	add    %rsi,%rcx
-     de4:	48 81 c1 28 60 00 00 	add    $0x6028,%rcx
-     deb:	48 89 4c 24 30       	mov    %rcx,0x30(%rsp)
-     df0:	48 8d 8f 00 20 00 00 	lea    0x2000(%rdi),%rcx
-     df7:	48 89 4c 24 28       	mov    %rcx,0x28(%rsp)
-     dfc:	48 8d 8e 00 20 00 00 	lea    0x2000(%rsi),%rcx
-     e03:	48 89 4c 24 20       	mov    %rcx,0x20(%rsp)
-     e08:	4e 8d 24 16          	lea    (%rsi,%r10,1),%r12
-     e0c:	49 81 c4 48 40 00 00 	add    $0x4048,%r12
-     e13:	49 89 c3             	mov    %rax,%r11
-     e16:	4d 0f af d8          	imul   %r8,%r11
-     e1a:	49 bf 00 00 00 00 03 	movabs $0x40300000000,%r15
-     e21:	04 00 00 
-     e24:	4d 01 df             	add    %r11,%r15
-     e27:	48 b9 00 00 00 00 04 	movabs $0x40400000000,%rcx
-     e2e:	04 00 00 
-     e31:	4c 01 d9             	add    %r11,%rcx
-     e34:	4a 8d 1c 16          	lea    (%rsi,%r10,1),%rbx
-     e38:	48 81 c3 30 40 00 00 	add    $0x4030,%rbx
-     e3f:	45 31 d2             	xor    %r10d,%r10d
-     e42:	c5 fb 10 05 de 02 00 	vmovsd 0x2de(%rip),%xmm0        # 1128 <_fini+0x10>
-     e49:	00 
-     e4a:	c4 e2 7d 19 0d d5 02 	vbroadcastsd 0x2d5(%rip),%ymm1        # 1128 <_fini+0x10>
-     e51:	00 00 
-     e53:	49 bb 00 00 00 00 08 	movabs $0x800000000,%r11
-     e5a:	00 00 00 
-     e5d:	44 89 4c 24 10       	mov    %r9d,0x10(%rsp)
-     e62:	eb 3a                	jmp    e9e <_Z27__program_jacobi2d_internalP16jacobi2d_state_tPdS1_l.omp_outlined.1+0x1be>
-     e64:	66 66 66 2e 0f 1f 84 	data16 data16 nopw %cs:0x0(%rax,%rax,1)
-     e6b:	00 00 00 00 00 
-     e70:	48 ff c0             	inc    %rax
-     e73:	41 ff c2             	inc    %r10d
-     e76:	49 81 c4 10 20 00 00 	add    $0x2010,%r12
-     e7d:	49 b8 00 00 00 00 02 	movabs $0x40200000000,%r8
-     e84:	04 00 00 
-     e87:	4d 01 c7             	add    %r8,%r15
-     e8a:	4c 01 c1             	add    %r8,%rcx
-     e8d:	48 81 c3 10 20 00 00 	add    $0x2010,%rbx
-     e94:	39 44 24 14          	cmp    %eax,0x14(%rsp)
-     e98:	0f 84 cc fe ff ff    	je     d6a <_Z27__program_jacobi2d_internalP16jacobi2d_state_tPdS1_l.omp_outlined.1+0x8a>
-     e9e:	45 89 d6             	mov    %r10d,%r14d
-     ea1:	41 c1 e6 0a          	shl    $0xa,%r14d
-     ea5:	43 8d 2c 56          	lea    (%r14,%r10,2),%ebp
-     ea9:	44 01 cd             	add    %r9d,%ebp
-     eac:	81 fd 01 fc ff 7f    	cmp    $0x7ffffc01,%ebp
-     eb2:	0f 8c a8 00 00 00    	jl     f60 <_Z27__program_jacobi2d_internalP16jacobi2d_state_tPdS1_l.omp_outlined.1+0x280>
-     eb8:	49 c7 c6 00 fc ff ff 	mov    $0xfffffffffffffc00,%r14
-     ebf:	4d 89 fd             	mov    %r15,%r13
-     ec2:	48 89 cd             	mov    %rcx,%rbp
-     ec5:	66 66 2e 0f 1f 84 00 	data16 nopw %cs:0x0(%rax,%rax,1)
-     ecc:	00 00 00 00 
-     ed0:	4d 89 e8             	mov    %r13,%r8
-     ed3:	49 c1 f8 1d          	sar    $0x1d,%r8
-     ed7:	c4 a1 7b 10 94 f3 d8 	vmovsd -0x2028(%rbx,%r14,8),%xmm2
-     ede:	df ff ff 
-     ee1:	c4 a1 6b 58 14 06    	vaddsd (%rsi,%r8,1),%xmm2,%xmm2
-     ee7:	c4 a1 6b 58 94 f3 f8 	vaddsd 0x1ff8(%rbx,%r14,8),%xmm2,%xmm2
-     eee:	1f 00 00 
-     ef1:	c4 a1 6b 58 54 f3 e0 	vaddsd -0x20(%rbx,%r14,8),%xmm2,%xmm2
-     ef8:	c4 a1 6b 58 54 f3 f0 	vaddsd -0x10(%rbx,%r14,8),%xmm2,%xmm2
-     eff:	c5 eb 59 d0          	vmulsd %xmm0,%xmm2,%xmm2
-     f03:	c4 a1 7b 11 14 07    	vmovsd %xmm2,(%rdi,%r8,1)
-     f09:	49 89 e8             	mov    %rbp,%r8
-     f0c:	49 c1 f8 1d          	sar    $0x1d,%r8
-     f10:	c4 a1 7b 10 94 f3 e0 	vmovsd -0x2020(%rbx,%r14,8),%xmm2
-     f17:	df ff ff 
-     f1a:	c4 a1 6b 58 14 06    	vaddsd (%rsi,%r8,1),%xmm2,%xmm2
-     f20:	c4 a1 6b 58 94 f3 00 	vaddsd 0x2000(%rbx,%r14,8),%xmm2,%xmm2
-     f27:	20 00 00 
-     f2a:	c4 a1 6b 58 54 f3 e8 	vaddsd -0x18(%rbx,%r14,8),%xmm2,%xmm2
-     f31:	c4 a1 6b 58 54 f3 f8 	vaddsd -0x8(%rbx,%r14,8),%xmm2,%xmm2
-     f38:	c5 eb 59 d0          	vmulsd %xmm0,%xmm2,%xmm2
-     f3c:	c4 a1 7b 11 14 07    	vmovsd %xmm2,(%rdi,%r8,1)
-     f42:	48 01 d5             	add    %rdx,%rbp
-     f45:	49 01 d5             	add    %rdx,%r13
-     f48:	49 83 c6 02          	add    $0x2,%r14
-     f4c:	75 82                	jne    ed0 <_Z27__program_jacobi2d_internalP16jacobi2d_state_tPdS1_l.omp_outlined.1+0x1f0>
-     f4e:	e9 1d ff ff ff       	jmpq   e70 <_Z27__program_jacobi2d_internalP16jacobi2d_state_tPdS1_l.omp_outlined.1+0x190>
-     f53:	66 66 66 66 2e 0f 1f 	data16 data16 data16 nopw %cs:0x0(%rax,%rax,1)
-     f5a:	84 00 00 00 00 00 
-     f60:	43 8d 2c 56          	lea    (%r14,%r10,2),%ebp
-     f64:	44 01 cd             	add    %r9d,%ebp
-     f67:	4c 63 f5             	movslq %ebp,%r14
-     f6a:	4c 8b 44 24 20       	mov    0x20(%rsp),%r8
-     f6f:	4f 8d 04 f0          	lea    (%r8,%r14,8),%r8
-     f73:	4c 89 44 24 40       	mov    %r8,0x40(%rsp)
-     f78:	4a 8d 2c f6          	lea    (%rsi,%r14,8),%rbp
-     f7c:	4c 8b 44 24 28       	mov    0x28(%rsp),%r8
-     f81:	4f 8d 04 f0          	lea    (%r8,%r14,8),%r8
-     f85:	4e 8d 34 f7          	lea    (%rdi,%r14,8),%r14
-     f89:	4c 39 44 24 38       	cmp    %r8,0x38(%rsp)
-     f8e:	41 0f 92 c5          	setb   %r13b
-     f92:	4c 3b 74 24 30       	cmp    0x30(%rsp),%r14
-     f97:	4d 89 d9             	mov    %r11,%r9
-     f9a:	41 0f 92 c3          	setb   %r11b
-     f9e:	4c 39 c5             	cmp    %r8,%rbp
-     fa1:	40 0f 92 c5          	setb   %bpl
-     fa5:	4c 3b 74 24 40       	cmp    0x40(%rsp),%r14
-     faa:	41 0f 92 c6          	setb   %r14b
-     fae:	45 84 dd             	test   %r11b,%r13b
-     fb1:	4d 89 cb             	mov    %r9,%r11
-     fb4:	44 8b 4c 24 10       	mov    0x10(%rsp),%r9d
-     fb9:	0f 85 f9 fe ff ff    	jne    eb8 <_Z27__program_jacobi2d_internalP16jacobi2d_state_tPdS1_l.omp_outlined.1+0x1d8>
-     fbf:	44 20 f5             	and    %r14b,%bpl
-     fc2:	0f 85 f0 fe ff ff    	jne    eb8 <_Z27__program_jacobi2d_internalP16jacobi2d_state_tPdS1_l.omp_outlined.1+0x1d8>
-     fc8:	49 c7 c6 00 e0 ff ff 	mov    $0xffffffffffffe000,%r14
-     fcf:	4d 89 fd             	mov    %r15,%r13
-     fd2:	66 66 66 66 66 2e 0f 	data16 data16 data16 data16 nopw %cs:0x0(%rax,%rax,1)
-     fd9:	1f 84 00 00 00 00 00 
-     fe0:	4d 89 e8             	mov    %r13,%r8
-     fe3:	49 c1 f8 1d          	sar    $0x1d,%r8
-     fe7:	c4 81 7d 10 94 34 c0 	vmovupd -0x2040(%r12,%r14,1),%ymm2
-     fee:	df ff ff 
-     ff1:	c4 81 7d 10 9c 34 e0 	vmovupd -0x2020(%r12,%r14,1),%ymm3
-     ff8:	df ff ff 
-     ffb:	c4 a1 6d 58 14 06    	vaddpd (%rsi,%r8,1),%ymm2,%ymm2
-    1001:	c4 a1 65 58 5c 06 20 	vaddpd 0x20(%rsi,%r8,1),%ymm3,%ymm3
-    1008:	c4 81 6d 58 94 34 e0 	vaddpd 0x1fe0(%r12,%r14,1),%ymm2,%ymm2
-    100f:	1f 00 00 
-    1012:	c4 81 65 58 9c 34 00 	vaddpd 0x2000(%r12,%r14,1),%ymm3,%ymm3
-    1019:	20 00 00 
-    101c:	c4 81 6d 58 54 34 c8 	vaddpd -0x38(%r12,%r14,1),%ymm2,%ymm2
-    1023:	c4 81 65 58 5c 34 e8 	vaddpd -0x18(%r12,%r14,1),%ymm3,%ymm3
-    102a:	c4 81 6d 58 54 34 d8 	vaddpd -0x28(%r12,%r14,1),%ymm2,%ymm2
-    1031:	c4 81 65 58 5c 34 f8 	vaddpd -0x8(%r12,%r14,1),%ymm3,%ymm3
-    1038:	c5 ed 59 d1          	vmulpd %ymm1,%ymm2,%ymm2
-    103c:	c5 e5 59 d9          	vmulpd %ymm1,%ymm3,%ymm3
-    1040:	c4 a1 7d 11 14 07    	vmovupd %ymm2,(%rdi,%r8,1)
-    1046:	c4 a1 7d 11 5c 07 20 	vmovupd %ymm3,0x20(%rdi,%r8,1)
-    104d:	4d 01 dd             	add    %r11,%r13
-    1050:	49 83 c6 40          	add    $0x40,%r14
-    1054:	75 8a                	jne    fe0 <_Z27__program_jacobi2d_internalP16jacobi2d_state_tPdS1_l.omp_outlined.1+0x300>
-    1056:	e9 15 fe ff ff       	jmpq   e70 <_Z27__program_jacobi2d_internalP16jacobi2d_state_tPdS1_l.omp_outlined.1+0x190>
-    105b:	0f 1f 44 00 00       	nopl   0x0(%rax,%rax,1)
+0000000000000d00 <_Z27__program_jacobi2d_internalP16jacobi2d_state_tPdS1_l.omp_outlined.1>:
+     d00:	55                   	push   %rbp
+     d01:	41 57                	push   %r15
+     d03:	41 56                	push   %r14
+     d05:	41 55                	push   %r13
+     d07:	41 54                	push   %r12
+     d09:	53                   	push   %rbx
+     d0a:	48 83 ec 48          	sub    $0x48,%rsp
+     d0e:	49 89 ce             	mov    %rcx,%r14
+     d11:	49 89 d7             	mov    %rdx,%r15
+     d14:	c7 44 24 08 00 00 00 	movl   $0x0,0x8(%rsp)
+     d1b:	00 
+     d1c:	c7 44 24 04 ff 03 00 	movl   $0x3ff,0x4(%rsp)
+     d23:	00 
+     d24:	c7 44 24 1c 01 00 00 	movl   $0x1,0x1c(%rsp)
+     d2b:	00 
+     d2c:	c7 44 24 18 00 00 00 	movl   $0x0,0x18(%rsp)
+     d33:	00 
+     d34:	8b 37                	mov    (%rdi),%esi
+     d36:	48 83 ec 08          	sub    $0x8,%rsp
+     d3a:	48 8d 44 24 24       	lea    0x24(%rsp),%rax
+     d3f:	48 8d 3d 32 10 20 00 	lea    0x201032(%rip),%rdi        # 201d78 <__dso_handle+0x50>
+     d46:	48 8d 4c 24 20       	lea    0x20(%rsp),%rcx
+     d4b:	4c 8d 44 24 10       	lea    0x10(%rsp),%r8
+     d50:	4c 8d 4c 24 0c       	lea    0xc(%rsp),%r9
+     d55:	89 74 24 14          	mov    %esi,0x14(%rsp)
+     d59:	ba 22 00 00 00       	mov    $0x22,%edx
+     d5e:	6a 01                	pushq  $0x1
+     d60:	6a 01                	pushq  $0x1
+     d62:	50                   	push   %rax
+     d63:	e8 88 fa ff ff       	callq  7f0 <__kmpc_for_static_init_4@plt>
+     d68:	48 83 c4 20          	add    $0x20,%rsp
+     d6c:	8b 44 24 04          	mov    0x4(%rsp),%eax
+     d70:	3d ff 03 00 00       	cmp    $0x3ff,%eax
+     d75:	b9 ff 03 00 00       	mov    $0x3ff,%ecx
+     d7a:	0f 4c c8             	cmovl  %eax,%ecx
+     d7d:	89 4c 24 04          	mov    %ecx,0x4(%rsp)
+     d81:	48 63 44 24 08       	movslq 0x8(%rsp),%rax
+     d86:	39 c1                	cmp    %eax,%ecx
+     d88:	7d 22                	jge    dac <_Z27__program_jacobi2d_internalP16jacobi2d_state_tPdS1_l.omp_outlined.1+0xac>
+     d8a:	48 8d 3d ff 0f 20 00 	lea    0x200fff(%rip),%rdi        # 201d90 <__dso_handle+0x68>
+     d91:	8b 74 24 0c          	mov    0xc(%rsp),%esi
+     d95:	c5 f8 77             	vzeroupper 
+     d98:	e8 13 fa ff ff       	callq  7b0 <__kmpc_for_static_fini@plt>
+     d9d:	48 83 c4 48          	add    $0x48,%rsp
+     da1:	5b                   	pop    %rbx
+     da2:	41 5c                	pop    %r12
+     da4:	41 5d                	pop    %r13
+     da6:	41 5e                	pop    %r14
+     da8:	41 5f                	pop    %r15
+     daa:	5d                   	pop    %rbp
+     dab:	c3                   	retq   
+     dac:	49 b8 00 00 00 00 02 	movabs $0x40200000000,%r8
+     db3:	04 00 00 
+     db6:	48 ba 00 00 00 00 02 	movabs $0x200000000,%rdx
+     dbd:	00 00 00 
+     dc0:	49 8b 37             	mov    (%r15),%rsi
+     dc3:	49 8b 3e             	mov    (%r14),%rdi
+     dc6:	44 8d 49 01          	lea    0x1(%rcx),%r9d
+     dca:	44 89 4c 24 14       	mov    %r9d,0x14(%rsp)
+     dcf:	29 c1                	sub    %eax,%ecx
+     dd1:	41 89 c1             	mov    %eax,%r9d
+     dd4:	41 c1 e1 0a          	shl    $0xa,%r9d
+     dd8:	45 8d 0c 41          	lea    (%r9,%rax,2),%r9d
+     ddc:	41 81 c1 03 04 00 00 	add    $0x403,%r9d
+     de3:	4c 69 d0 10 20 00 00 	imul   $0x2010,%rax,%r10
+     dea:	4e 8d 1c 16          	lea    (%rsi,%r10,1),%r11
+     dee:	49 83 c3 08          	add    $0x8,%r11
+     df2:	4c 89 5c 24 38       	mov    %r11,0x38(%rsp)
+     df7:	48 01 c1             	add    %rax,%rcx
+     dfa:	48 69 c9 10 20 00 00 	imul   $0x2010,%rcx,%rcx
+     e01:	48 01 f1             	add    %rsi,%rcx
+     e04:	48 81 c1 28 60 00 00 	add    $0x6028,%rcx
+     e0b:	48 89 4c 24 30       	mov    %rcx,0x30(%rsp)
+     e10:	48 8d 8f 00 20 00 00 	lea    0x2000(%rdi),%rcx
+     e17:	48 89 4c 24 28       	mov    %rcx,0x28(%rsp)
+     e1c:	48 8d 8e 00 20 00 00 	lea    0x2000(%rsi),%rcx
+     e23:	48 89 4c 24 20       	mov    %rcx,0x20(%rsp)
+     e28:	4e 8d 24 16          	lea    (%rsi,%r10,1),%r12
+     e2c:	49 81 c4 68 40 00 00 	add    $0x4068,%r12
+     e33:	49 89 c3             	mov    %rax,%r11
+     e36:	4d 0f af d8          	imul   %r8,%r11
+     e3a:	49 bf 00 00 00 00 03 	movabs $0x40300000000,%r15
+     e41:	04 00 00 
+     e44:	4d 01 df             	add    %r11,%r15
+     e47:	48 b9 00 00 00 00 04 	movabs $0x40400000000,%rcx
+     e4e:	04 00 00 
+     e51:	4c 01 d9             	add    %r11,%rcx
+     e54:	4a 8d 1c 16          	lea    (%rsi,%r10,1),%rbx
+     e58:	48 81 c3 30 40 00 00 	add    $0x4030,%rbx
+     e5f:	45 31 d2             	xor    %r10d,%r10d
+     e62:	c5 fb 10 05 fe 02 00 	vmovsd 0x2fe(%rip),%xmm0        # 1168 <_fini+0x10>
+     e69:	00 
+     e6a:	62 f2 fd 48 19 0d f4 	vbroadcastsd 0x2f4(%rip),%zmm1        # 1168 <_fini+0x10>
+     e71:	02 00 00 
+     e74:	49 bb 00 00 00 00 10 	movabs $0x1000000000,%r11
+     e7b:	00 00 00 
+     e7e:	44 89 4c 24 10       	mov    %r9d,0x10(%rsp)
+     e83:	eb 39                	jmp    ebe <_Z27__program_jacobi2d_internalP16jacobi2d_state_tPdS1_l.omp_outlined.1+0x1be>
+     e85:	66 66 2e 0f 1f 84 00 	data16 nopw %cs:0x0(%rax,%rax,1)
+     e8c:	00 00 00 00 
+     e90:	48 ff c0             	inc    %rax
+     e93:	41 ff c2             	inc    %r10d
+     e96:	49 81 c4 10 20 00 00 	add    $0x2010,%r12
+     e9d:	49 b8 00 00 00 00 02 	movabs $0x40200000000,%r8
+     ea4:	04 00 00 
+     ea7:	4d 01 c7             	add    %r8,%r15
+     eaa:	4c 01 c1             	add    %r8,%rcx
+     ead:	48 81 c3 10 20 00 00 	add    $0x2010,%rbx
+     eb4:	39 44 24 14          	cmp    %eax,0x14(%rsp)
+     eb8:	0f 84 cc fe ff ff    	je     d8a <_Z27__program_jacobi2d_internalP16jacobi2d_state_tPdS1_l.omp_outlined.1+0x8a>
+     ebe:	45 89 d6             	mov    %r10d,%r14d
+     ec1:	41 c1 e6 0a          	shl    $0xa,%r14d
+     ec5:	43 8d 2c 56          	lea    (%r14,%r10,2),%ebp
+     ec9:	44 01 cd             	add    %r9d,%ebp
+     ecc:	81 fd 01 fc ff 7f    	cmp    $0x7ffffc01,%ebp
+     ed2:	0f 8c a8 00 00 00    	jl     f80 <_Z27__program_jacobi2d_internalP16jacobi2d_state_tPdS1_l.omp_outlined.1+0x280>
+     ed8:	49 c7 c6 00 fc ff ff 	mov    $0xfffffffffffffc00,%r14
+     edf:	4d 89 fd             	mov    %r15,%r13
+     ee2:	48 89 cd             	mov    %rcx,%rbp
+     ee5:	66 66 2e 0f 1f 84 00 	data16 nopw %cs:0x0(%rax,%rax,1)
+     eec:	00 00 00 00 
+     ef0:	4d 89 e8             	mov    %r13,%r8
+     ef3:	49 c1 f8 1d          	sar    $0x1d,%r8
+     ef7:	c4 a1 7b 10 94 f3 d8 	vmovsd -0x2028(%rbx,%r14,8),%xmm2
+     efe:	df ff ff 
+     f01:	c4 a1 6b 58 14 06    	vaddsd (%rsi,%r8,1),%xmm2,%xmm2
+     f07:	c4 a1 6b 58 94 f3 f8 	vaddsd 0x1ff8(%rbx,%r14,8),%xmm2,%xmm2
+     f0e:	1f 00 00 
+     f11:	c4 a1 6b 58 54 f3 e0 	vaddsd -0x20(%rbx,%r14,8),%xmm2,%xmm2
+     f18:	c4 a1 6b 58 54 f3 f0 	vaddsd -0x10(%rbx,%r14,8),%xmm2,%xmm2
+     f1f:	c5 eb 59 d0          	vmulsd %xmm0,%xmm2,%xmm2
+     f23:	c4 a1 7b 11 14 07    	vmovsd %xmm2,(%rdi,%r8,1)
+     f29:	49 89 e8             	mov    %rbp,%r8
+     f2c:	49 c1 f8 1d          	sar    $0x1d,%r8
+     f30:	c4 a1 7b 10 94 f3 e0 	vmovsd -0x2020(%rbx,%r14,8),%xmm2
+     f37:	df ff ff 
+     f3a:	c4 a1 6b 58 14 06    	vaddsd (%rsi,%r8,1),%xmm2,%xmm2
+     f40:	c4 a1 6b 58 94 f3 00 	vaddsd 0x2000(%rbx,%r14,8),%xmm2,%xmm2
+     f47:	20 00 00 
+     f4a:	c4 a1 6b 58 54 f3 e8 	vaddsd -0x18(%rbx,%r14,8),%xmm2,%xmm2
+     f51:	c4 a1 6b 58 54 f3 f8 	vaddsd -0x8(%rbx,%r14,8),%xmm2,%xmm2
+     f58:	c5 eb 59 d0          	vmulsd %xmm0,%xmm2,%xmm2
+     f5c:	c4 a1 7b 11 14 07    	vmovsd %xmm2,(%rdi,%r8,1)
+     f62:	48 01 d5             	add    %rdx,%rbp
+     f65:	49 01 d5             	add    %rdx,%r13
+     f68:	49 83 c6 02          	add    $0x2,%r14
+     f6c:	75 82                	jne    ef0 <_Z27__program_jacobi2d_internalP16jacobi2d_state_tPdS1_l.omp_outlined.1+0x1f0>
+     f6e:	e9 1d ff ff ff       	jmpq   e90 <_Z27__program_jacobi2d_internalP16jacobi2d_state_tPdS1_l.omp_outlined.1+0x190>
+     f73:	66 66 66 66 2e 0f 1f 	data16 data16 data16 nopw %cs:0x0(%rax,%rax,1)
+     f7a:	84 00 00 00 00 00 
+     f80:	43 8d 2c 56          	lea    (%r14,%r10,2),%ebp
+     f84:	44 01 cd             	add    %r9d,%ebp
+     f87:	4c 63 f5             	movslq %ebp,%r14
+     f8a:	4c 8b 44 24 20       	mov    0x20(%rsp),%r8
+     f8f:	4f 8d 04 f0          	lea    (%r8,%r14,8),%r8
+     f93:	4c 89 44 24 40       	mov    %r8,0x40(%rsp)
+     f98:	4a 8d 2c f6          	lea    (%rsi,%r14,8),%rbp
+     f9c:	4c 8b 44 24 28       	mov    0x28(%rsp),%r8
+     fa1:	4f 8d 04 f0          	lea    (%r8,%r14,8),%r8
+     fa5:	4e 8d 34 f7          	lea    (%rdi,%r14,8),%r14
+     fa9:	4c 39 44 24 38       	cmp    %r8,0x38(%rsp)
+     fae:	41 0f 92 c5          	setb   %r13b
+     fb2:	4c 3b 74 24 30       	cmp    0x30(%rsp),%r14
+     fb7:	4d 89 d9             	mov    %r11,%r9
+     fba:	41 0f 92 c3          	setb   %r11b
+     fbe:	4c 39 c5             	cmp    %r8,%rbp
+     fc1:	40 0f 92 c5          	setb   %bpl
+     fc5:	4c 3b 74 24 40       	cmp    0x40(%rsp),%r14
+     fca:	41 0f 92 c6          	setb   %r14b
+     fce:	45 84 dd             	test   %r11b,%r13b
+     fd1:	4d 89 cb             	mov    %r9,%r11
+     fd4:	44 8b 4c 24 10       	mov    0x10(%rsp),%r9d
+     fd9:	0f 85 f9 fe ff ff    	jne    ed8 <_Z27__program_jacobi2d_internalP16jacobi2d_state_tPdS1_l.omp_outlined.1+0x1d8>
+     fdf:	44 20 f5             	and    %r14b,%bpl
+     fe2:	0f 85 f0 fe ff ff    	jne    ed8 <_Z27__program_jacobi2d_internalP16jacobi2d_state_tPdS1_l.omp_outlined.1+0x1d8>
+     fe8:	49 c7 c6 00 e0 ff ff 	mov    $0xffffffffffffe000,%r14
+     fef:	4d 89 fd             	mov    %r15,%r13
+     ff2:	66 66 66 66 66 2e 0f 	data16 data16 data16 data16 nopw %cs:0x0(%rax,%rax,1)
+     ff9:	1f 84 00 00 00 00 00 
+    1000:	4d 89 e8             	mov    %r13,%r8
+    1003:	49 c1 f8 1d          	sar    $0x1d,%r8
+    1007:	62 91 fd 48 10 94 34 	vmovupd -0x2060(%r12,%r14,1),%zmm2
+    100e:	a0 df ff ff 
+    1012:	62 91 fd 48 10 9c 34 	vmovupd -0x2020(%r12,%r14,1),%zmm3
+    1019:	e0 df ff ff 
+    101d:	62 b1 ed 48 58 14 06 	vaddpd (%rsi,%r8,1),%zmm2,%zmm2
+    1024:	62 b1 e5 48 58 5c 06 	vaddpd 0x40(%rsi,%r8,1),%zmm3,%zmm3
+    102b:	01 
+    102c:	62 91 ed 48 58 54 34 	vaddpd 0x1fc0(%r12,%r14,1),%zmm2,%zmm2
+    1033:	7f 
+    1034:	62 91 e5 48 58 9c 34 	vaddpd 0x2000(%r12,%r14,1),%zmm3,%zmm3
+    103b:	00 20 00 00 
+    103f:	62 91 ed 48 58 94 34 	vaddpd -0x58(%r12,%r14,1),%zmm2,%zmm2
+    1046:	a8 ff ff ff 
+    104a:	62 91 e5 48 58 9c 34 	vaddpd -0x18(%r12,%r14,1),%zmm3,%zmm3
+    1051:	e8 ff ff ff 
+    1055:	62 91 ed 48 58 94 34 	vaddpd -0x48(%r12,%r14,1),%zmm2,%zmm2
+    105c:	b8 ff ff ff 
+    1060:	62 91 e5 48 58 9c 34 	vaddpd -0x8(%r12,%r14,1),%zmm3,%zmm3
+    1067:	f8 ff ff ff 
+    106b:	62 f1 ed 48 59 d1    	vmulpd %zmm1,%zmm2,%zmm2
+    1071:	62 f1 e5 48 59 d9    	vmulpd %zmm1,%zmm3,%zmm3
+    1077:	62 b1 fd 48 11 14 07 	vmovupd %zmm2,(%rdi,%r8,1)
+    107e:	62 b1 fd 48 11 5c 07 	vmovupd %zmm3,0x40(%rdi,%r8,1)
+    1085:	01 
+    1086:	4d 01 dd             	add    %r11,%r13
+    1089:	49 83 ee 80          	sub    $0xffffffffffffff80,%r14
+    108d:	0f 85 6d ff ff ff    	jne    1000 <_Z27__program_jacobi2d_internalP16jacobi2d_state_tPdS1_l.omp_outlined.1+0x300>
+    1093:	e9 f8 fd ff ff       	jmpq   e90 <_Z27__program_jacobi2d_internalP16jacobi2d_state_tPdS1_l.omp_outlined.1+0x190>
+    1098:	0f 1f 84 00 00 00 00 	nopl   0x0(%rax,%rax,1)
+    109f:	00 
 
-0000000000001060 <__program_jacobi2d>:
-    1060:	55                   	push   %rbp
-    1061:	41 57                	push   %r15
-    1063:	41 56                	push   %r14
-    1065:	41 55                	push   %r13
-    1067:	41 54                	push   %r12
-    1069:	53                   	push   %rbx
-    106a:	48 83 ec 18          	sub    $0x18,%rsp
-    106e:	48 89 74 24 10       	mov    %rsi,0x10(%rsp)
-    1073:	48 89 54 24 08       	mov    %rdx,0x8(%rsp)
-    1078:	48 85 c9             	test   %rcx,%rcx
-    107b:	7e 5c                	jle    10d9 <__program_jacobi2d+0x79>
-    107d:	48 89 cb             	mov    %rcx,%rbx
-    1080:	4c 8d 3d d9 f8 ff ff 	lea    -0x727(%rip),%r15        # 960 <_Z27__program_jacobi2d_internalP16jacobi2d_state_tPdS1_l.omp_outlined>
-    1087:	4c 8d 64 24 10       	lea    0x10(%rsp),%r12
-    108c:	4c 8d 6c 24 08       	lea    0x8(%rsp),%r13
-    1091:	48 8d 2d 10 0d 20 00 	lea    0x200d10(%rip),%rbp        # 201da8 <__dso_handle+0x80>
-    1098:	4c 8d 35 41 fc ff ff 	lea    -0x3bf(%rip),%r14        # ce0 <_Z27__program_jacobi2d_internalP16jacobi2d_state_tPdS1_l.omp_outlined.1>
-    109f:	90                   	nop
-    10a0:	48 8d 3d b9 0c 20 00 	lea    0x200cb9(%rip),%rdi        # 201d60 <__dso_handle+0x38>
-    10a7:	be 02 00 00 00       	mov    $0x2,%esi
-    10ac:	4c 89 fa             	mov    %r15,%rdx
-    10af:	4c 89 e1             	mov    %r12,%rcx
-    10b2:	4d 89 e8             	mov    %r13,%r8
-    10b5:	31 c0                	xor    %eax,%eax
-    10b7:	e8 44 f7 ff ff       	callq  800 <__kmpc_fork_call@plt>
-    10bc:	48 89 ef             	mov    %rbp,%rdi
-    10bf:	be 02 00 00 00       	mov    $0x2,%esi
-    10c4:	4c 89 f2             	mov    %r14,%rdx
-    10c7:	4c 89 e9             	mov    %r13,%rcx
-    10ca:	4d 89 e0             	mov    %r12,%r8
-    10cd:	31 c0                	xor    %eax,%eax
-    10cf:	e8 2c f7 ff ff       	callq  800 <__kmpc_fork_call@plt>
-    10d4:	48 ff cb             	dec    %rbx
-    10d7:	75 c7                	jne    10a0 <__program_jacobi2d+0x40>
-    10d9:	48 83 c4 18          	add    $0x18,%rsp
-    10dd:	5b                   	pop    %rbx
-    10de:	41 5c                	pop    %r12
-    10e0:	41 5d                	pop    %r13
-    10e2:	41 5e                	pop    %r14
-    10e4:	41 5f                	pop    %r15
-    10e6:	5d                   	pop    %rbp
-    10e7:	c3                   	retq   
-    10e8:	0f 1f 84 00 00 00 00 	nopl   0x0(%rax,%rax,1)
-    10ef:	00 
+00000000000010a0 <__program_jacobi2d>:
+    10a0:	55                   	push   %rbp
+    10a1:	41 57                	push   %r15
+    10a3:	41 56                	push   %r14
+    10a5:	41 55                	push   %r13
+    10a7:	41 54                	push   %r12
+    10a9:	53                   	push   %rbx
+    10aa:	48 83 ec 18          	sub    $0x18,%rsp
+    10ae:	48 89 74 24 10       	mov    %rsi,0x10(%rsp)
+    10b3:	48 89 54 24 08       	mov    %rdx,0x8(%rsp)
+    10b8:	48 85 c9             	test   %rcx,%rcx
+    10bb:	7e 5c                	jle    1119 <__program_jacobi2d+0x79>
+    10bd:	48 89 cb             	mov    %rcx,%rbx
+    10c0:	4c 8d 3d 99 f8 ff ff 	lea    -0x767(%rip),%r15        # 960 <_Z27__program_jacobi2d_internalP16jacobi2d_state_tPdS1_l.omp_outlined>
+    10c7:	4c 8d 64 24 10       	lea    0x10(%rsp),%r12
+    10cc:	4c 8d 6c 24 08       	lea    0x8(%rsp),%r13
+    10d1:	48 8d 2d d0 0c 20 00 	lea    0x200cd0(%rip),%rbp        # 201da8 <__dso_handle+0x80>
+    10d8:	4c 8d 35 21 fc ff ff 	lea    -0x3df(%rip),%r14        # d00 <_Z27__program_jacobi2d_internalP16jacobi2d_state_tPdS1_l.omp_outlined.1>
+    10df:	90                   	nop
+    10e0:	48 8d 3d 79 0c 20 00 	lea    0x200c79(%rip),%rdi        # 201d60 <__dso_handle+0x38>
+    10e7:	be 02 00 00 00       	mov    $0x2,%esi
+    10ec:	4c 89 fa             	mov    %r15,%rdx
+    10ef:	4c 89 e1             	mov    %r12,%rcx
+    10f2:	4d 89 e8             	mov    %r13,%r8
+    10f5:	31 c0                	xor    %eax,%eax
+    10f7:	e8 04 f7 ff ff       	callq  800 <__kmpc_fork_call@plt>
+    10fc:	48 89 ef             	mov    %rbp,%rdi
+    10ff:	be 02 00 00 00       	mov    $0x2,%esi
+    1104:	4c 89 f2             	mov    %r14,%rdx
+    1107:	4c 89 e9             	mov    %r13,%rcx
+    110a:	4d 89 e0             	mov    %r12,%r8
+    110d:	31 c0                	xor    %eax,%eax
+    110f:	e8 ec f6 ff ff       	callq  800 <__kmpc_fork_call@plt>
+    1114:	48 ff cb             	dec    %rbx
+    1117:	75 c7                	jne    10e0 <__program_jacobi2d+0x40>
+    1119:	48 83 c4 18          	add    $0x18,%rsp
+    111d:	5b                   	pop    %rbx
+    111e:	41 5c                	pop    %r12
+    1120:	41 5d                	pop    %r13
+    1122:	41 5e                	pop    %r14
+    1124:	41 5f                	pop    %r15
+    1126:	5d                   	pop    %rbp
+    1127:	c3                   	retq   
+    1128:	0f 1f 84 00 00 00 00 	nopl   0x0(%rax,%rax,1)
+    112f:	00 
 
-00000000000010f0 <__dace_init_jacobi2d>:
-    10f0:	bf 01 00 00 00       	mov    $0x1,%edi
-    10f5:	e9 d6 f6 ff ff       	jmpq   7d0 <_Znwm@plt>
-    10fa:	66 0f 1f 44 00 00    	nopw   0x0(%rax,%rax,1)
+0000000000001130 <__dace_init_jacobi2d>:
+    1130:	bf 01 00 00 00       	mov    $0x1,%edi
+    1135:	e9 96 f6 ff ff       	jmpq   7d0 <_Znwm@plt>
+    113a:	66 0f 1f 44 00 00    	nopw   0x0(%rax,%rax,1)
 
-0000000000001100 <__dace_exit_jacobi2d>:
-    1100:	48 85 ff             	test   %rdi,%rdi
-    1103:	74 0f                	je     1114 <__dace_exit_jacobi2d+0x14>
-    1105:	50                   	push   %rax
-    1106:	be 01 00 00 00       	mov    $0x1,%esi
-    110b:	e8 d0 f6 ff ff       	callq  7e0 <_ZdlPvm@plt>
-    1110:	48 83 c4 08          	add    $0x8,%rsp
-    1114:	31 c0                	xor    %eax,%eax
-    1116:	c3                   	retq   
+0000000000001140 <__dace_exit_jacobi2d>:
+    1140:	48 85 ff             	test   %rdi,%rdi
+    1143:	74 0f                	je     1154 <__dace_exit_jacobi2d+0x14>
+    1145:	50                   	push   %rax
+    1146:	be 01 00 00 00       	mov    $0x1,%esi
+    114b:	e8 90 f6 ff ff       	callq  7e0 <_ZdlPvm@plt>
+    1150:	48 83 c4 08          	add    $0x8,%rsp
+    1154:	31 c0                	xor    %eax,%eax
+    1156:	c3                   	retq   
 
 Disassembly of section .fini:
 
-0000000000001118 <_fini>:
-    1118:	f3 0f 1e fa          	endbr64 
-    111c:	48 83 ec 08          	sub    $0x8,%rsp
-    1120:	48 83 c4 08          	add    $0x8,%rsp
-    1124:	c3                   	retq   
+0000000000001158 <_fini>:
+    1158:	f3 0f 1e fa          	endbr64 
+    115c:	48 83 ec 08          	sub    $0x8,%rsp
+    1160:	48 83 c4 08          	add    $0x8,%rsp
+    1164:	c3                   	retq   
