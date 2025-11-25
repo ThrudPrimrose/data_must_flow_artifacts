@@ -1,0 +1,967 @@
+Physical cores: 288
+Run time cloudsc_pattern_1 iter 0: 27.873 ms
+Run time cloudsc_pattern_1 iter 1: 27.980 ms
+Run time cloudsc_pattern_1 iter 2: 28.289 ms
+Run time cloudsc_pattern_1 iter 3: 27.766 ms
+Run time cloudsc_pattern_1 iter 4: 27.919 ms
+Run time cloudsc_pattern_1 iter 5: 28.123 ms
+Run time cloudsc_pattern_1 iter 6: 27.628 ms
+Run time cloudsc_pattern_1 iter 7: 27.768 ms
+Run time cloudsc_pattern_1 iter 8: 28.032 ms
+Run time cloudsc_pattern_1 iter 9: 27.659 ms
+[can_be_applied] to if_385 is True
+[can_be_applied] to if_385 is True
+Changing __out = (__in1 / __in2) to have +1.7800590868057611e-307 to avoid NaN/inf floating-point exception in division!
+[can_be_applied] to if_391 is True
+Changing __out = log(__in1) to have (__in1) + 1.7800590868057611e-307 inside log() to avoid log(0) NaN!
+Changing __out = (__in1 / __in2) to have +1.7800590868057611e-307 to avoid NaN/inf floating-point exception in division!
+Changing __out = (__in1 / __in2) to have +1.7800590868057611e-307 to avoid NaN/inf floating-point exception in division!
+Changing __out = (__in1 / __in2) to have +1.7800590868057611e-307 to avoid NaN/inf floating-point exception in division!
+Changing __out = (__in1 / __in2) to have +1.7800590868057611e-307 to avoid NaN/inf floating-point exception in division!
+Changing __out = (__in1 / __in2) to have +1.7800590868057611e-307 to avoid NaN/inf floating-point exception in division!
+Changing __out = (__in1 / __in2) to have +1.7800590868057611e-307 to avoid NaN/inf floating-point exception in division!
+Changing __out = (__in1 / __in2) to have +1.7800590868057611e-307 to avoid NaN/inf floating-point exception in division!
+Changing __out = (__in1 / __in2) to have +1.7800590868057611e-307 to avoid NaN/inf floating-point exception in division!
+Changing __out = (__in1 / __in2) to have +1.7800590868057611e-307 to avoid NaN/inf floating-point exception in division!
+Changing __out = (__in1 / __in2) to have +1.7800590868057611e-307 to avoid NaN/inf floating-point exception in division!
+Run time cloudsc_pattern_1_vectorized_static_veclen_2_no_cpy iter 0: 55.257 ms
+Run time cloudsc_pattern_1_vectorized_static_veclen_2_no_cpy iter 1: 54.385 ms
+Run time cloudsc_pattern_1_vectorized_static_veclen_2_no_cpy iter 2: 54.473 ms
+Run time cloudsc_pattern_1_vectorized_static_veclen_2_no_cpy iter 3: 54.405 ms
+Run time cloudsc_pattern_1_vectorized_static_veclen_2_no_cpy iter 4: 53.779 ms
+Run time cloudsc_pattern_1_vectorized_static_veclen_2_no_cpy iter 5: 54.811 ms
+Run time cloudsc_pattern_1_vectorized_static_veclen_2_no_cpy iter 6: 55.154 ms
+Run time cloudsc_pattern_1_vectorized_static_veclen_2_no_cpy iter 7: 54.715 ms
+Run time cloudsc_pattern_1_vectorized_static_veclen_2_no_cpy iter 8: 54.494 ms
+Run time cloudsc_pattern_1_vectorized_static_veclen_2_no_cpy iter 9: 55.202 ms
+[can_be_applied] to if_385 is True
+[can_be_applied] to if_385 is True
+Changing __out = (__in1 / __in2) to have +1.7800590868057611e-307 to avoid NaN/inf floating-point exception in division!
+[can_be_applied] to if_391 is True
+Changing __out = (__in1 / __in2) to have +1.7800590868057611e-307 to avoid NaN/inf floating-point exception in division!
+Changing __out = (__in1 / __in2) to have +1.7800590868057611e-307 to avoid NaN/inf floating-point exception in division!
+Changing __out = (__in1 / __in2) to have +1.7800590868057611e-307 to avoid NaN/inf floating-point exception in division!
+Changing __out = (__in1 / __in2) to have +1.7800590868057611e-307 to avoid NaN/inf floating-point exception in division!
+Changing __out = (__in1 / __in2) to have +1.7800590868057611e-307 to avoid NaN/inf floating-point exception in division!
+Changing __out = (__in1 / __in2) to have +1.7800590868057611e-307 to avoid NaN/inf floating-point exception in division!
+Changing __out = (__in1 / __in2) to have +1.7800590868057611e-307 to avoid NaN/inf floating-point exception in division!
+Changing __out = (__in1 / __in2) to have +1.7800590868057611e-307 to avoid NaN/inf floating-point exception in division!
+Changing __out = log(__in1) to have (__in1) + 1.7800590868057611e-307 inside log() to avoid log(0) NaN!
+Changing __out = (__in1 / __in2) to have +1.7800590868057611e-307 to avoid NaN/inf floating-point exception in division!
+Changing __out = (__in1 / __in2) to have +1.7800590868057611e-307 to avoid NaN/inf floating-point exception in division!
+Run time cloudsc_pattern_1_vectorized_static_veclen_4_no_cpy iter 0: 42.245 ms
+Run time cloudsc_pattern_1_vectorized_static_veclen_4_no_cpy iter 1: 41.958 ms
+Run time cloudsc_pattern_1_vectorized_static_veclen_4_no_cpy iter 2: 40.866 ms
+Run time cloudsc_pattern_1_vectorized_static_veclen_4_no_cpy iter 3: 41.400 ms
+Run time cloudsc_pattern_1_vectorized_static_veclen_4_no_cpy iter 4: 41.322 ms
+Run time cloudsc_pattern_1_vectorized_static_veclen_4_no_cpy iter 5: 41.611 ms
+Run time cloudsc_pattern_1_vectorized_static_veclen_4_no_cpy iter 6: 41.113 ms
+Run time cloudsc_pattern_1_vectorized_static_veclen_4_no_cpy iter 7: 41.005 ms
+Run time cloudsc_pattern_1_vectorized_static_veclen_4_no_cpy iter 8: 40.464 ms
+Run time cloudsc_pattern_1_vectorized_static_veclen_4_no_cpy iter 9: 41.068 ms
+[can_be_applied] to if_385 is True
+[can_be_applied] to if_385 is True
+Changing __out = (__in1 / __in2) to have +1.7800590868057611e-307 to avoid NaN/inf floating-point exception in division!
+[can_be_applied] to if_391 is True
+Changing __out = (__in1 / __in2) to have +1.7800590868057611e-307 to avoid NaN/inf floating-point exception in division!
+Changing __out = (__in1 / __in2) to have +1.7800590868057611e-307 to avoid NaN/inf floating-point exception in division!
+Changing __out = (__in1 / __in2) to have +1.7800590868057611e-307 to avoid NaN/inf floating-point exception in division!
+Changing __out = (__in1 / __in2) to have +1.7800590868057611e-307 to avoid NaN/inf floating-point exception in division!
+Changing __out = (__in1 / __in2) to have +1.7800590868057611e-307 to avoid NaN/inf floating-point exception in division!
+Changing __out = log(__in1) to have (__in1) + 1.7800590868057611e-307 inside log() to avoid log(0) NaN!
+Changing __out = (__in1 / __in2) to have +1.7800590868057611e-307 to avoid NaN/inf floating-point exception in division!
+Changing __out = (__in1 / __in2) to have +1.7800590868057611e-307 to avoid NaN/inf floating-point exception in division!
+Changing __out = (__in1 / __in2) to have +1.7800590868057611e-307 to avoid NaN/inf floating-point exception in division!
+Changing __out = (__in1 / __in2) to have +1.7800590868057611e-307 to avoid NaN/inf floating-point exception in division!
+Changing __out = (__in1 / __in2) to have +1.7800590868057611e-307 to avoid NaN/inf floating-point exception in division!
+Run time cloudsc_pattern_1_vectorized_static_veclen_8_no_cpy iter 0: 61.853 ms
+Run time cloudsc_pattern_1_vectorized_static_veclen_8_no_cpy iter 1: 62.956 ms
+Run time cloudsc_pattern_1_vectorized_static_veclen_8_no_cpy iter 2: 63.620 ms
+Run time cloudsc_pattern_1_vectorized_static_veclen_8_no_cpy iter 3: 62.111 ms
+Run time cloudsc_pattern_1_vectorized_static_veclen_8_no_cpy iter 4: 62.608 ms
+Run time cloudsc_pattern_1_vectorized_static_veclen_8_no_cpy iter 5: 61.531 ms
+Run time cloudsc_pattern_1_vectorized_static_veclen_8_no_cpy iter 6: 62.561 ms
+Run time cloudsc_pattern_1_vectorized_static_veclen_8_no_cpy iter 7: 62.477 ms
+Run time cloudsc_pattern_1_vectorized_static_veclen_8_no_cpy iter 8: 61.630 ms
+Run time cloudsc_pattern_1_vectorized_static_veclen_8_no_cpy iter 9: 62.607 ms
+[can_be_applied] to if_385 is True
+[can_be_applied] to if_385 is True
+Changing __out = (__in1 / __in2) to have +1.7800590868057611e-307 to avoid NaN/inf floating-point exception in division!
+[can_be_applied] to if_391 is True
+Changing __out = (__in1 / __in2) to have +1.7800590868057611e-307 to avoid NaN/inf floating-point exception in division!
+Changing __out = (__in1 / __in2) to have +1.7800590868057611e-307 to avoid NaN/inf floating-point exception in division!
+Changing __out = (__in1 / __in2) to have +1.7800590868057611e-307 to avoid NaN/inf floating-point exception in division!
+Changing __out = (__in1 / __in2) to have +1.7800590868057611e-307 to avoid NaN/inf floating-point exception in division!
+Changing __out = (__in1 / __in2) to have +1.7800590868057611e-307 to avoid NaN/inf floating-point exception in division!
+Changing __out = log(__in1) to have (__in1) + 1.7800590868057611e-307 inside log() to avoid log(0) NaN!
+Changing __out = (__in1 / __in2) to have +1.7800590868057611e-307 to avoid NaN/inf floating-point exception in division!
+Changing __out = (__in1 / __in2) to have +1.7800590868057611e-307 to avoid NaN/inf floating-point exception in division!
+Changing __out = (__in1 / __in2) to have +1.7800590868057611e-307 to avoid NaN/inf floating-point exception in division!
+Changing __out = (__in1 / __in2) to have +1.7800590868057611e-307 to avoid NaN/inf floating-point exception in division!
+Changing __out = (__in1 / __in2) to have +1.7800590868057611e-307 to avoid NaN/inf floating-point exception in division!
+Run time cloudsc_pattern_1_vectorized_static_veclen_32_no_cpy iter 0: 49.819 ms
+Run time cloudsc_pattern_1_vectorized_static_veclen_32_no_cpy iter 1: 48.284 ms
+Run time cloudsc_pattern_1_vectorized_static_veclen_32_no_cpy iter 2: 48.741 ms
+Run time cloudsc_pattern_1_vectorized_static_veclen_32_no_cpy iter 3: 48.741 ms
+Run time cloudsc_pattern_1_vectorized_static_veclen_32_no_cpy iter 4: 48.390 ms
+Run time cloudsc_pattern_1_vectorized_static_veclen_32_no_cpy iter 5: 48.635 ms
+Run time cloudsc_pattern_1_vectorized_static_veclen_32_no_cpy iter 6: 48.219 ms
+Run time cloudsc_pattern_1_vectorized_static_veclen_32_no_cpy iter 7: 48.577 ms
+Run time cloudsc_pattern_1_vectorized_static_veclen_32_no_cpy iter 8: 48.536 ms
+Run time cloudsc_pattern_1_vectorized_static_veclen_32_no_cpy iter 9: 49.161 ms
+[can_be_applied] to if_385 is True
+[can_be_applied] to if_385 is True
+Changing __out = (__in1 / __in2) to have +1.7800590868057611e-307 to avoid NaN/inf floating-point exception in division!
+[can_be_applied] to if_391 is True
+Changing __out = (__in1 / __in2) to have +1.7800590868057611e-307 to avoid NaN/inf floating-point exception in division!
+Changing __out = log(__in1) to have (__in1) + 1.7800590868057611e-307 inside log() to avoid log(0) NaN!
+Changing __out = (__in1 / __in2) to have +1.7800590868057611e-307 to avoid NaN/inf floating-point exception in division!
+Changing __out = (__in1 / __in2) to have +1.7800590868057611e-307 to avoid NaN/inf floating-point exception in division!
+Changing __out = (__in1 / __in2) to have +1.7800590868057611e-307 to avoid NaN/inf floating-point exception in division!
+Changing __out = (__in1 / __in2) to have +1.7800590868057611e-307 to avoid NaN/inf floating-point exception in division!
+Changing __out = (__in1 / __in2) to have +1.7800590868057611e-307 to avoid NaN/inf floating-point exception in division!
+Changing __out = (__in1 / __in2) to have +1.7800590868057611e-307 to avoid NaN/inf floating-point exception in division!
+Changing __out = (__in1 / __in2) to have +1.7800590868057611e-307 to avoid NaN/inf floating-point exception in division!
+Changing __out = (__in1 / __in2) to have +1.7800590868057611e-307 to avoid NaN/inf floating-point exception in division!
+Changing __out = (__in1 / __in2) to have +1.7800590868057611e-307 to avoid NaN/inf floating-point exception in division!
+Run time cloudsc_pattern_1_vectorized_static_veclen_128_no_cpy iter 0: 50.018 ms
+Run time cloudsc_pattern_1_vectorized_static_veclen_128_no_cpy iter 1: 49.900 ms
+Run time cloudsc_pattern_1_vectorized_static_veclen_128_no_cpy iter 2: 48.660 ms
+Run time cloudsc_pattern_1_vectorized_static_veclen_128_no_cpy iter 3: 48.964 ms
+Run time cloudsc_pattern_1_vectorized_static_veclen_128_no_cpy iter 4: 48.652 ms
+Run time cloudsc_pattern_1_vectorized_static_veclen_128_no_cpy iter 5: 49.476 ms
+Run time cloudsc_pattern_1_vectorized_static_veclen_128_no_cpy iter 6: 48.750 ms
+Run time cloudsc_pattern_1_vectorized_static_veclen_128_no_cpy iter 7: 49.090 ms
+Run time cloudsc_pattern_1_vectorized_static_veclen_128_no_cpy iter 8: 48.869 ms
+Run time cloudsc_pattern_1_vectorized_static_veclen_128_no_cpy iter 9: 47.648 ms
+[can_be_applied] to if_385 is True
+[can_be_applied] to if_385 is True
+Changing __out = (__in1 / __in2) to have +1.7800590868057611e-307 to avoid NaN/inf floating-point exception in division!
+[can_be_applied] to if_391 is True
+Changing __out = (__in1 / __in2) to have +1.7800590868057611e-307 to avoid NaN/inf floating-point exception in division!
+Changing __out = (__in1 / __in2) to have +1.7800590868057611e-307 to avoid NaN/inf floating-point exception in division!
+Changing __out = (__in1 / __in2) to have +1.7800590868057611e-307 to avoid NaN/inf floating-point exception in division!
+Changing __out = log(__in1) to have (__in1) + 1.7800590868057611e-307 inside log() to avoid log(0) NaN!
+Changing __out = (__in1 / __in2) to have +1.7800590868057611e-307 to avoid NaN/inf floating-point exception in division!
+Changing __out = (__in1 / __in2) to have +1.7800590868057611e-307 to avoid NaN/inf floating-point exception in division!
+Changing __out = (__in1 / __in2) to have +1.7800590868057611e-307 to avoid NaN/inf floating-point exception in division!
+Changing __out = (__in1 / __in2) to have +1.7800590868057611e-307 to avoid NaN/inf floating-point exception in division!
+Changing __out = (__in1 / __in2) to have +1.7800590868057611e-307 to avoid NaN/inf floating-point exception in division!
+Changing __out = (__in1 / __in2) to have +1.7800590868057611e-307 to avoid NaN/inf floating-point exception in division!
+Changing __out = (__in1 / __in2) to have +1.7800590868057611e-307 to avoid NaN/inf floating-point exception in division!
+Run time cloudsc_pattern_1_vectorized_static_veclen_512_no_cpy iter 0: 65.717 ms
+Run time cloudsc_pattern_1_vectorized_static_veclen_512_no_cpy iter 1: 62.549 ms
+Run time cloudsc_pattern_1_vectorized_static_veclen_512_no_cpy iter 2: 62.614 ms
+Run time cloudsc_pattern_1_vectorized_static_veclen_512_no_cpy iter 3: 61.841 ms
+Run time cloudsc_pattern_1_vectorized_static_veclen_512_no_cpy iter 4: 61.414 ms
+Run time cloudsc_pattern_1_vectorized_static_veclen_512_no_cpy iter 5: 61.804 ms
+Run time cloudsc_pattern_1_vectorized_static_veclen_512_no_cpy iter 6: 62.465 ms
+Run time cloudsc_pattern_1_vectorized_static_veclen_512_no_cpy iter 7: 63.443 ms
+Run time cloudsc_pattern_1_vectorized_static_veclen_512_no_cpy iter 8: 61.058 ms
+Run time cloudsc_pattern_1_vectorized_static_veclen_512_no_cpy iter 9: 61.849 ms
+Saved timing results to cloudsc_pattern_1_timings_1_core.csv.csv
+Run time cloudsc_pattern_1 iter 0: 133.397 ms
+Run time cloudsc_pattern_1 iter 1: 129.966 ms
+Run time cloudsc_pattern_1 iter 2: 129.215 ms
+Run time cloudsc_pattern_1 iter 3: 130.558 ms
+Run time cloudsc_pattern_1 iter 4: 129.960 ms
+Run time cloudsc_pattern_1 iter 5: 130.498 ms
+Run time cloudsc_pattern_1 iter 6: 127.590 ms
+Run time cloudsc_pattern_1 iter 7: 128.558 ms
+Run time cloudsc_pattern_1 iter 8: 130.637 ms
+Run time cloudsc_pattern_1 iter 9: 128.008 ms
+[can_be_applied] to if_385 is True
+[can_be_applied] to if_385 is True
+Changing __out = (__in1 / __in2) to have +1.7800590868057611e-307 to avoid NaN/inf floating-point exception in division!
+[can_be_applied] to if_391 is True
+Changing __out = (__in1 / __in2) to have +1.7800590868057611e-307 to avoid NaN/inf floating-point exception in division!
+Changing __out = log(__in1) to have (__in1) + 1.7800590868057611e-307 inside log() to avoid log(0) NaN!
+Changing __out = (__in1 / __in2) to have +1.7800590868057611e-307 to avoid NaN/inf floating-point exception in division!
+Changing __out = (__in1 / __in2) to have +1.7800590868057611e-307 to avoid NaN/inf floating-point exception in division!
+Changing __out = (__in1 / __in2) to have +1.7800590868057611e-307 to avoid NaN/inf floating-point exception in division!
+Changing __out = (__in1 / __in2) to have +1.7800590868057611e-307 to avoid NaN/inf floating-point exception in division!
+Changing __out = (__in1 / __in2) to have +1.7800590868057611e-307 to avoid NaN/inf floating-point exception in division!
+Changing __out = (__in1 / __in2) to have +1.7800590868057611e-307 to avoid NaN/inf floating-point exception in division!
+Changing __out = (__in1 / __in2) to have +1.7800590868057611e-307 to avoid NaN/inf floating-point exception in division!
+Changing __out = (__in1 / __in2) to have +1.7800590868057611e-307 to avoid NaN/inf floating-point exception in division!
+Changing __out = (__in1 / __in2) to have +1.7800590868057611e-307 to avoid NaN/inf floating-point exception in division!
+Run time cloudsc_pattern_1_vectorized_static_veclen_2_no_cpy iter 0: 239.829 ms
+Run time cloudsc_pattern_1_vectorized_static_veclen_2_no_cpy iter 1: 248.092 ms
+Run time cloudsc_pattern_1_vectorized_static_veclen_2_no_cpy iter 2: 245.984 ms
+Run time cloudsc_pattern_1_vectorized_static_veclen_2_no_cpy iter 3: 242.231 ms
+Run time cloudsc_pattern_1_vectorized_static_veclen_2_no_cpy iter 4: 242.628 ms
+Run time cloudsc_pattern_1_vectorized_static_veclen_2_no_cpy iter 5: 235.828 ms
+Run time cloudsc_pattern_1_vectorized_static_veclen_2_no_cpy iter 6: 243.481 ms
+Run time cloudsc_pattern_1_vectorized_static_veclen_2_no_cpy iter 7: 240.258 ms
+Run time cloudsc_pattern_1_vectorized_static_veclen_2_no_cpy iter 8: 241.080 ms
+Run time cloudsc_pattern_1_vectorized_static_veclen_2_no_cpy iter 9: 237.845 ms
+[can_be_applied] to if_385 is True
+[can_be_applied] to if_385 is True
+Changing __out = (__in1 / __in2) to have +1.7800590868057611e-307 to avoid NaN/inf floating-point exception in division!
+[can_be_applied] to if_391 is True
+Changing __out = (__in1 / __in2) to have +1.7800590868057611e-307 to avoid NaN/inf floating-point exception in division!
+Changing __out = (__in1 / __in2) to have +1.7800590868057611e-307 to avoid NaN/inf floating-point exception in division!
+Changing __out = (__in1 / __in2) to have +1.7800590868057611e-307 to avoid NaN/inf floating-point exception in division!
+Changing __out = (__in1 / __in2) to have +1.7800590868057611e-307 to avoid NaN/inf floating-point exception in division!
+Changing __out = (__in1 / __in2) to have +1.7800590868057611e-307 to avoid NaN/inf floating-point exception in division!
+Changing __out = (__in1 / __in2) to have +1.7800590868057611e-307 to avoid NaN/inf floating-point exception in division!
+Changing __out = log(__in1) to have (__in1) + 1.7800590868057611e-307 inside log() to avoid log(0) NaN!
+Changing __out = (__in1 / __in2) to have +1.7800590868057611e-307 to avoid NaN/inf floating-point exception in division!
+Changing __out = (__in1 / __in2) to have +1.7800590868057611e-307 to avoid NaN/inf floating-point exception in division!
+Changing __out = (__in1 / __in2) to have +1.7800590868057611e-307 to avoid NaN/inf floating-point exception in division!
+Changing __out = (__in1 / __in2) to have +1.7800590868057611e-307 to avoid NaN/inf floating-point exception in division!
+Run time cloudsc_pattern_1_vectorized_static_veclen_4_no_cpy iter 0: 182.514 ms
+Run time cloudsc_pattern_1_vectorized_static_veclen_4_no_cpy iter 1: 180.044 ms
+Run time cloudsc_pattern_1_vectorized_static_veclen_4_no_cpy iter 2: 191.649 ms
+Run time cloudsc_pattern_1_vectorized_static_veclen_4_no_cpy iter 3: 180.116 ms
+Run time cloudsc_pattern_1_vectorized_static_veclen_4_no_cpy iter 4: 186.529 ms
+Run time cloudsc_pattern_1_vectorized_static_veclen_4_no_cpy iter 5: 180.688 ms
+Run time cloudsc_pattern_1_vectorized_static_veclen_4_no_cpy iter 6: 187.389 ms
+Run time cloudsc_pattern_1_vectorized_static_veclen_4_no_cpy iter 7: 206.612 ms
+Run time cloudsc_pattern_1_vectorized_static_veclen_4_no_cpy iter 8: 192.969 ms
+Run time cloudsc_pattern_1_vectorized_static_veclen_4_no_cpy iter 9: 189.210 ms
+[can_be_applied] to if_385 is True
+[can_be_applied] to if_385 is True
+Changing __out = (__in1 / __in2) to have +1.7800590868057611e-307 to avoid NaN/inf floating-point exception in division!
+[can_be_applied] to if_391 is True
+Changing __out = (__in1 / __in2) to have +1.7800590868057611e-307 to avoid NaN/inf floating-point exception in division!
+Changing __out = (__in1 / __in2) to have +1.7800590868057611e-307 to avoid NaN/inf floating-point exception in division!
+Changing __out = (__in1 / __in2) to have +1.7800590868057611e-307 to avoid NaN/inf floating-point exception in division!
+Changing __out = (__in1 / __in2) to have +1.7800590868057611e-307 to avoid NaN/inf floating-point exception in division!
+Changing __out = (__in1 / __in2) to have +1.7800590868057611e-307 to avoid NaN/inf floating-point exception in division!
+Changing __out = (__in1 / __in2) to have +1.7800590868057611e-307 to avoid NaN/inf floating-point exception in division!
+Changing __out = (__in1 / __in2) to have +1.7800590868057611e-307 to avoid NaN/inf floating-point exception in division!
+Changing __out = (__in1 / __in2) to have +1.7800590868057611e-307 to avoid NaN/inf floating-point exception in division!
+Changing __out = (__in1 / __in2) to have +1.7800590868057611e-307 to avoid NaN/inf floating-point exception in division!
+Changing __out = log(__in1) to have (__in1) + 1.7800590868057611e-307 inside log() to avoid log(0) NaN!
+Changing __out = (__in1 / __in2) to have +1.7800590868057611e-307 to avoid NaN/inf floating-point exception in division!
+Run time cloudsc_pattern_1_vectorized_static_veclen_8_no_cpy iter 0: 260.696 ms
+Run time cloudsc_pattern_1_vectorized_static_veclen_8_no_cpy iter 1: 261.499 ms
+Run time cloudsc_pattern_1_vectorized_static_veclen_8_no_cpy iter 2: 265.296 ms
+Run time cloudsc_pattern_1_vectorized_static_veclen_8_no_cpy iter 3: 259.173 ms
+Run time cloudsc_pattern_1_vectorized_static_veclen_8_no_cpy iter 4: 258.824 ms
+Run time cloudsc_pattern_1_vectorized_static_veclen_8_no_cpy iter 5: 260.489 ms
+Run time cloudsc_pattern_1_vectorized_static_veclen_8_no_cpy iter 6: 252.851 ms
+Run time cloudsc_pattern_1_vectorized_static_veclen_8_no_cpy iter 7: 262.405 ms
+Run time cloudsc_pattern_1_vectorized_static_veclen_8_no_cpy iter 8: 263.273 ms
+Run time cloudsc_pattern_1_vectorized_static_veclen_8_no_cpy iter 9: 257.925 ms
+[can_be_applied] to if_385 is True
+[can_be_applied] to if_385 is True
+Changing __out = (__in1 / __in2) to have +1.7800590868057611e-307 to avoid NaN/inf floating-point exception in division!
+[can_be_applied] to if_391 is True
+Changing __out = (__in1 / __in2) to have +1.7800590868057611e-307 to avoid NaN/inf floating-point exception in division!
+Changing __out = (__in1 / __in2) to have +1.7800590868057611e-307 to avoid NaN/inf floating-point exception in division!
+Changing __out = log(__in1) to have (__in1) + 1.7800590868057611e-307 inside log() to avoid log(0) NaN!
+Changing __out = (__in1 / __in2) to have +1.7800590868057611e-307 to avoid NaN/inf floating-point exception in division!
+Changing __out = (__in1 / __in2) to have +1.7800590868057611e-307 to avoid NaN/inf floating-point exception in division!
+Changing __out = (__in1 / __in2) to have +1.7800590868057611e-307 to avoid NaN/inf floating-point exception in division!
+Changing __out = (__in1 / __in2) to have +1.7800590868057611e-307 to avoid NaN/inf floating-point exception in division!
+Changing __out = (__in1 / __in2) to have +1.7800590868057611e-307 to avoid NaN/inf floating-point exception in division!
+Changing __out = (__in1 / __in2) to have +1.7800590868057611e-307 to avoid NaN/inf floating-point exception in division!
+Changing __out = (__in1 / __in2) to have +1.7800590868057611e-307 to avoid NaN/inf floating-point exception in division!
+Changing __out = (__in1 / __in2) to have +1.7800590868057611e-307 to avoid NaN/inf floating-point exception in division!
+Run time cloudsc_pattern_1_vectorized_static_veclen_32_no_cpy iter 0: 248.826 ms
+Run time cloudsc_pattern_1_vectorized_static_veclen_32_no_cpy iter 1: 242.609 ms
+Run time cloudsc_pattern_1_vectorized_static_veclen_32_no_cpy iter 2: 239.837 ms
+Run time cloudsc_pattern_1_vectorized_static_veclen_32_no_cpy iter 3: 235.572 ms
+Run time cloudsc_pattern_1_vectorized_static_veclen_32_no_cpy iter 4: 236.901 ms
+Run time cloudsc_pattern_1_vectorized_static_veclen_32_no_cpy iter 5: 234.945 ms
+Run time cloudsc_pattern_1_vectorized_static_veclen_32_no_cpy iter 6: 238.670 ms
+Run time cloudsc_pattern_1_vectorized_static_veclen_32_no_cpy iter 7: 237.902 ms
+Run time cloudsc_pattern_1_vectorized_static_veclen_32_no_cpy iter 8: 237.920 ms
+Run time cloudsc_pattern_1_vectorized_static_veclen_32_no_cpy iter 9: 231.418 ms
+[can_be_applied] to if_385 is True
+[can_be_applied] to if_385 is True
+Changing __out = (__in1 / __in2) to have +1.7800590868057611e-307 to avoid NaN/inf floating-point exception in division!
+[can_be_applied] to if_391 is True
+Changing __out = (__in1 / __in2) to have +1.7800590868057611e-307 to avoid NaN/inf floating-point exception in division!
+Changing __out = (__in1 / __in2) to have +1.7800590868057611e-307 to avoid NaN/inf floating-point exception in division!
+Changing __out = (__in1 / __in2) to have +1.7800590868057611e-307 to avoid NaN/inf floating-point exception in division!
+Changing __out = (__in1 / __in2) to have +1.7800590868057611e-307 to avoid NaN/inf floating-point exception in division!
+Changing __out = (__in1 / __in2) to have +1.7800590868057611e-307 to avoid NaN/inf floating-point exception in division!
+Changing __out = (__in1 / __in2) to have +1.7800590868057611e-307 to avoid NaN/inf floating-point exception in division!
+Changing __out = (__in1 / __in2) to have +1.7800590868057611e-307 to avoid NaN/inf floating-point exception in division!
+Changing __out = log(__in1) to have (__in1) + 1.7800590868057611e-307 inside log() to avoid log(0) NaN!
+Changing __out = (__in1 / __in2) to have +1.7800590868057611e-307 to avoid NaN/inf floating-point exception in division!
+Changing __out = (__in1 / __in2) to have +1.7800590868057611e-307 to avoid NaN/inf floating-point exception in division!
+Changing __out = (__in1 / __in2) to have +1.7800590868057611e-307 to avoid NaN/inf floating-point exception in division!
+Run time cloudsc_pattern_1_vectorized_static_veclen_128_no_cpy iter 0: 235.547 ms
+Run time cloudsc_pattern_1_vectorized_static_veclen_128_no_cpy iter 1: 240.119 ms
+Run time cloudsc_pattern_1_vectorized_static_veclen_128_no_cpy iter 2: 240.732 ms
+Run time cloudsc_pattern_1_vectorized_static_veclen_128_no_cpy iter 3: 239.919 ms
+Run time cloudsc_pattern_1_vectorized_static_veclen_128_no_cpy iter 4: 240.640 ms
+Run time cloudsc_pattern_1_vectorized_static_veclen_128_no_cpy iter 5: 240.539 ms
+Run time cloudsc_pattern_1_vectorized_static_veclen_128_no_cpy iter 6: 241.804 ms
+Run time cloudsc_pattern_1_vectorized_static_veclen_128_no_cpy iter 7: 239.303 ms
+Run time cloudsc_pattern_1_vectorized_static_veclen_128_no_cpy iter 8: 239.033 ms
+Run time cloudsc_pattern_1_vectorized_static_veclen_128_no_cpy iter 9: 240.321 ms
+[can_be_applied] to if_385 is True
+[can_be_applied] to if_385 is True
+Changing __out = (__in1 / __in2) to have +1.7800590868057611e-307 to avoid NaN/inf floating-point exception in division!
+[can_be_applied] to if_391 is True
+Changing __out = (__in1 / __in2) to have +1.7800590868057611e-307 to avoid NaN/inf floating-point exception in division!
+Changing __out = log(__in1) to have (__in1) + 1.7800590868057611e-307 inside log() to avoid log(0) NaN!
+Changing __out = (__in1 / __in2) to have +1.7800590868057611e-307 to avoid NaN/inf floating-point exception in division!
+Changing __out = (__in1 / __in2) to have +1.7800590868057611e-307 to avoid NaN/inf floating-point exception in division!
+Changing __out = (__in1 / __in2) to have +1.7800590868057611e-307 to avoid NaN/inf floating-point exception in division!
+Changing __out = (__in1 / __in2) to have +1.7800590868057611e-307 to avoid NaN/inf floating-point exception in division!
+Changing __out = (__in1 / __in2) to have +1.7800590868057611e-307 to avoid NaN/inf floating-point exception in division!
+Changing __out = (__in1 / __in2) to have +1.7800590868057611e-307 to avoid NaN/inf floating-point exception in division!
+Changing __out = (__in1 / __in2) to have +1.7800590868057611e-307 to avoid NaN/inf floating-point exception in division!
+Changing __out = (__in1 / __in2) to have +1.7800590868057611e-307 to avoid NaN/inf floating-point exception in division!
+Changing __out = (__in1 / __in2) to have +1.7800590868057611e-307 to avoid NaN/inf floating-point exception in division!
+Run time cloudsc_pattern_1_vectorized_static_veclen_512_no_cpy iter 0: 289.644 ms
+Run time cloudsc_pattern_1_vectorized_static_veclen_512_no_cpy iter 1: 287.469 ms
+Run time cloudsc_pattern_1_vectorized_static_veclen_512_no_cpy iter 2: 287.677 ms
+Run time cloudsc_pattern_1_vectorized_static_veclen_512_no_cpy iter 3: 285.054 ms
+Run time cloudsc_pattern_1_vectorized_static_veclen_512_no_cpy iter 4: 284.092 ms
+Run time cloudsc_pattern_1_vectorized_static_veclen_512_no_cpy iter 5: 286.312 ms
+Run time cloudsc_pattern_1_vectorized_static_veclen_512_no_cpy iter 6: 284.350 ms
+Run time cloudsc_pattern_1_vectorized_static_veclen_512_no_cpy iter 7: 288.840 ms
+Run time cloudsc_pattern_1_vectorized_static_veclen_512_no_cpy iter 8: 281.063 ms
+Run time cloudsc_pattern_1_vectorized_static_veclen_512_no_cpy iter 9: 285.539 ms
+Saved timing results to cloudsc_pattern_1_timings_1_core.csv.csv
+Run time cloudsc_pattern_1 iter 0: 508.616 ms
+Run time cloudsc_pattern_1 iter 1: 512.477 ms
+Run time cloudsc_pattern_1 iter 2: 518.685 ms
+Run time cloudsc_pattern_1 iter 3: 516.776 ms
+Run time cloudsc_pattern_1 iter 4: 519.314 ms
+Run time cloudsc_pattern_1 iter 5: 515.366 ms
+Run time cloudsc_pattern_1 iter 6: 519.939 ms
+Run time cloudsc_pattern_1 iter 7: 514.459 ms
+Run time cloudsc_pattern_1 iter 8: 514.431 ms
+Run time cloudsc_pattern_1 iter 9: 517.442 ms
+[can_be_applied] to if_385 is True
+[can_be_applied] to if_385 is True
+Changing __out = (__in1 / __in2) to have +1.7800590868057611e-307 to avoid NaN/inf floating-point exception in division!
+[can_be_applied] to if_391 is True
+Changing __out = (__in1 / __in2) to have +1.7800590868057611e-307 to avoid NaN/inf floating-point exception in division!
+Changing __out = (__in1 / __in2) to have +1.7800590868057611e-307 to avoid NaN/inf floating-point exception in division!
+Changing __out = (__in1 / __in2) to have +1.7800590868057611e-307 to avoid NaN/inf floating-point exception in division!
+Changing __out = log(__in1) to have (__in1) + 1.7800590868057611e-307 inside log() to avoid log(0) NaN!
+Changing __out = (__in1 / __in2) to have +1.7800590868057611e-307 to avoid NaN/inf floating-point exception in division!
+Changing __out = (__in1 / __in2) to have +1.7800590868057611e-307 to avoid NaN/inf floating-point exception in division!
+Changing __out = (__in1 / __in2) to have +1.7800590868057611e-307 to avoid NaN/inf floating-point exception in division!
+Changing __out = (__in1 / __in2) to have +1.7800590868057611e-307 to avoid NaN/inf floating-point exception in division!
+Changing __out = (__in1 / __in2) to have +1.7800590868057611e-307 to avoid NaN/inf floating-point exception in division!
+Changing __out = (__in1 / __in2) to have +1.7800590868057611e-307 to avoid NaN/inf floating-point exception in division!
+Changing __out = (__in1 / __in2) to have +1.7800590868057611e-307 to avoid NaN/inf floating-point exception in division!
+Run time cloudsc_pattern_1_vectorized_static_veclen_2_no_cpy iter 0: 973.722 ms
+Run time cloudsc_pattern_1_vectorized_static_veclen_2_no_cpy iter 1: 961.664 ms
+Run time cloudsc_pattern_1_vectorized_static_veclen_2_no_cpy iter 2: 1006.096 ms
+Run time cloudsc_pattern_1_vectorized_static_veclen_2_no_cpy iter 3: 977.097 ms
+Run time cloudsc_pattern_1_vectorized_static_veclen_2_no_cpy iter 4: 975.942 ms
+Run time cloudsc_pattern_1_vectorized_static_veclen_2_no_cpy iter 5: 957.624 ms
+Run time cloudsc_pattern_1_vectorized_static_veclen_2_no_cpy iter 6: 957.566 ms
+Run time cloudsc_pattern_1_vectorized_static_veclen_2_no_cpy iter 7: 964.090 ms
+Run time cloudsc_pattern_1_vectorized_static_veclen_2_no_cpy iter 8: 989.329 ms
+Run time cloudsc_pattern_1_vectorized_static_veclen_2_no_cpy iter 9: 958.613 ms
+[can_be_applied] to if_385 is True
+[can_be_applied] to if_385 is True
+Changing __out = (__in1 / __in2) to have +1.7800590868057611e-307 to avoid NaN/inf floating-point exception in division!
+[can_be_applied] to if_391 is True
+Changing __out = (__in1 / __in2) to have +1.7800590868057611e-307 to avoid NaN/inf floating-point exception in division!
+Changing __out = (__in1 / __in2) to have +1.7800590868057611e-307 to avoid NaN/inf floating-point exception in division!
+Changing __out = log(__in1) to have (__in1) + 1.7800590868057611e-307 inside log() to avoid log(0) NaN!
+Changing __out = (__in1 / __in2) to have +1.7800590868057611e-307 to avoid NaN/inf floating-point exception in division!
+Changing __out = (__in1 / __in2) to have +1.7800590868057611e-307 to avoid NaN/inf floating-point exception in division!
+Changing __out = (__in1 / __in2) to have +1.7800590868057611e-307 to avoid NaN/inf floating-point exception in division!
+Changing __out = (__in1 / __in2) to have +1.7800590868057611e-307 to avoid NaN/inf floating-point exception in division!
+Changing __out = (__in1 / __in2) to have +1.7800590868057611e-307 to avoid NaN/inf floating-point exception in division!
+Changing __out = (__in1 / __in2) to have +1.7800590868057611e-307 to avoid NaN/inf floating-point exception in division!
+Changing __out = (__in1 / __in2) to have +1.7800590868057611e-307 to avoid NaN/inf floating-point exception in division!
+Changing __out = (__in1 / __in2) to have +1.7800590868057611e-307 to avoid NaN/inf floating-point exception in division!
+Run time cloudsc_pattern_1_vectorized_static_veclen_4_no_cpy iter 0: 748.647 ms
+Run time cloudsc_pattern_1_vectorized_static_veclen_4_no_cpy iter 1: 747.594 ms
+Run time cloudsc_pattern_1_vectorized_static_veclen_4_no_cpy iter 2: 754.212 ms
+Run time cloudsc_pattern_1_vectorized_static_veclen_4_no_cpy iter 3: 753.425 ms
+Run time cloudsc_pattern_1_vectorized_static_veclen_4_no_cpy iter 4: 742.047 ms
+Run time cloudsc_pattern_1_vectorized_static_veclen_4_no_cpy iter 5: 725.950 ms
+Run time cloudsc_pattern_1_vectorized_static_veclen_4_no_cpy iter 6: 751.898 ms
+Run time cloudsc_pattern_1_vectorized_static_veclen_4_no_cpy iter 7: 734.263 ms
+Run time cloudsc_pattern_1_vectorized_static_veclen_4_no_cpy iter 8: 734.479 ms
+Run time cloudsc_pattern_1_vectorized_static_veclen_4_no_cpy iter 9: 750.870 ms
+[can_be_applied] to if_385 is True
+[can_be_applied] to if_385 is True
+Changing __out = (__in1 / __in2) to have +1.7800590868057611e-307 to avoid NaN/inf floating-point exception in division!
+[can_be_applied] to if_391 is True
+Changing __out = (__in1 / __in2) to have +1.7800590868057611e-307 to avoid NaN/inf floating-point exception in division!
+Changing __out = (__in1 / __in2) to have +1.7800590868057611e-307 to avoid NaN/inf floating-point exception in division!
+Changing __out = (__in1 / __in2) to have +1.7800590868057611e-307 to avoid NaN/inf floating-point exception in division!
+Changing __out = (__in1 / __in2) to have +1.7800590868057611e-307 to avoid NaN/inf floating-point exception in division!
+Changing __out = (__in1 / __in2) to have +1.7800590868057611e-307 to avoid NaN/inf floating-point exception in division!
+Changing __out = (__in1 / __in2) to have +1.7800590868057611e-307 to avoid NaN/inf floating-point exception in division!
+Changing __out = (__in1 / __in2) to have +1.7800590868057611e-307 to avoid NaN/inf floating-point exception in division!
+Changing __out = (__in1 / __in2) to have +1.7800590868057611e-307 to avoid NaN/inf floating-point exception in division!
+Changing __out = log(__in1) to have (__in1) + 1.7800590868057611e-307 inside log() to avoid log(0) NaN!
+Changing __out = (__in1 / __in2) to have +1.7800590868057611e-307 to avoid NaN/inf floating-point exception in division!
+Changing __out = (__in1 / __in2) to have +1.7800590868057611e-307 to avoid NaN/inf floating-point exception in division!
+Run time cloudsc_pattern_1_vectorized_static_veclen_8_no_cpy iter 0: 1076.124 ms
+Run time cloudsc_pattern_1_vectorized_static_veclen_8_no_cpy iter 1: 1072.213 ms
+Run time cloudsc_pattern_1_vectorized_static_veclen_8_no_cpy iter 2: 1093.205 ms
+Run time cloudsc_pattern_1_vectorized_static_veclen_8_no_cpy iter 3: 1080.479 ms
+Run time cloudsc_pattern_1_vectorized_static_veclen_8_no_cpy iter 4: 1088.895 ms
+Run time cloudsc_pattern_1_vectorized_static_veclen_8_no_cpy iter 5: 1109.241 ms
+Run time cloudsc_pattern_1_vectorized_static_veclen_8_no_cpy iter 6: 1082.404 ms
+Run time cloudsc_pattern_1_vectorized_static_veclen_8_no_cpy iter 7: 1082.179 ms
+Run time cloudsc_pattern_1_vectorized_static_veclen_8_no_cpy iter 8: 1098.725 ms
+Run time cloudsc_pattern_1_vectorized_static_veclen_8_no_cpy iter 9: 1073.909 ms
+[can_be_applied] to if_385 is True
+[can_be_applied] to if_385 is True
+Changing __out = (__in1 / __in2) to have +1.7800590868057611e-307 to avoid NaN/inf floating-point exception in division!
+[can_be_applied] to if_391 is True
+Changing __out = (__in1 / __in2) to have +1.7800590868057611e-307 to avoid NaN/inf floating-point exception in division!
+Changing __out = (__in1 / __in2) to have +1.7800590868057611e-307 to avoid NaN/inf floating-point exception in division!
+Changing __out = (__in1 / __in2) to have +1.7800590868057611e-307 to avoid NaN/inf floating-point exception in division!
+Changing __out = log(__in1) to have (__in1) + 1.7800590868057611e-307 inside log() to avoid log(0) NaN!
+Changing __out = (__in1 / __in2) to have +1.7800590868057611e-307 to avoid NaN/inf floating-point exception in division!
+Changing __out = (__in1 / __in2) to have +1.7800590868057611e-307 to avoid NaN/inf floating-point exception in division!
+Changing __out = (__in1 / __in2) to have +1.7800590868057611e-307 to avoid NaN/inf floating-point exception in division!
+Changing __out = (__in1 / __in2) to have +1.7800590868057611e-307 to avoid NaN/inf floating-point exception in division!
+Changing __out = (__in1 / __in2) to have +1.7800590868057611e-307 to avoid NaN/inf floating-point exception in division!
+Changing __out = (__in1 / __in2) to have +1.7800590868057611e-307 to avoid NaN/inf floating-point exception in division!
+Changing __out = (__in1 / __in2) to have +1.7800590868057611e-307 to avoid NaN/inf floating-point exception in division!
+Run time cloudsc_pattern_1_vectorized_static_veclen_32_no_cpy iter 0: 1112.143 ms
+Run time cloudsc_pattern_1_vectorized_static_veclen_32_no_cpy iter 1: 1101.463 ms
+Run time cloudsc_pattern_1_vectorized_static_veclen_32_no_cpy iter 2: 1112.373 ms
+Run time cloudsc_pattern_1_vectorized_static_veclen_32_no_cpy iter 3: 1104.042 ms
+Run time cloudsc_pattern_1_vectorized_static_veclen_32_no_cpy iter 4: 1100.333 ms
+Run time cloudsc_pattern_1_vectorized_static_veclen_32_no_cpy iter 5: 1081.113 ms
+Run time cloudsc_pattern_1_vectorized_static_veclen_32_no_cpy iter 6: 1106.076 ms
+Run time cloudsc_pattern_1_vectorized_static_veclen_32_no_cpy iter 7: 1091.198 ms
+Run time cloudsc_pattern_1_vectorized_static_veclen_32_no_cpy iter 8: 1118.689 ms
+Run time cloudsc_pattern_1_vectorized_static_veclen_32_no_cpy iter 9: 1101.437 ms
+[can_be_applied] to if_385 is True
+[can_be_applied] to if_385 is True
+Changing __out = (__in1 / __in2) to have +1.7800590868057611e-307 to avoid NaN/inf floating-point exception in division!
+[can_be_applied] to if_391 is True
+Changing __out = (__in1 / __in2) to have +1.7800590868057611e-307 to avoid NaN/inf floating-point exception in division!
+Changing __out = (__in1 / __in2) to have +1.7800590868057611e-307 to avoid NaN/inf floating-point exception in division!
+Changing __out = log(__in1) to have (__in1) + 1.7800590868057611e-307 inside log() to avoid log(0) NaN!
+Changing __out = (__in1 / __in2) to have +1.7800590868057611e-307 to avoid NaN/inf floating-point exception in division!
+Changing __out = (__in1 / __in2) to have +1.7800590868057611e-307 to avoid NaN/inf floating-point exception in division!
+Changing __out = (__in1 / __in2) to have +1.7800590868057611e-307 to avoid NaN/inf floating-point exception in division!
+Changing __out = (__in1 / __in2) to have +1.7800590868057611e-307 to avoid NaN/inf floating-point exception in division!
+Changing __out = (__in1 / __in2) to have +1.7800590868057611e-307 to avoid NaN/inf floating-point exception in division!
+Changing __out = (__in1 / __in2) to have +1.7800590868057611e-307 to avoid NaN/inf floating-point exception in division!
+Changing __out = (__in1 / __in2) to have +1.7800590868057611e-307 to avoid NaN/inf floating-point exception in division!
+Changing __out = (__in1 / __in2) to have +1.7800590868057611e-307 to avoid NaN/inf floating-point exception in division!
+Run time cloudsc_pattern_1_vectorized_static_veclen_128_no_cpy iter 0: 989.513 ms
+Run time cloudsc_pattern_1_vectorized_static_veclen_128_no_cpy iter 1: 991.202 ms
+Run time cloudsc_pattern_1_vectorized_static_veclen_128_no_cpy iter 2: 998.136 ms
+Run time cloudsc_pattern_1_vectorized_static_veclen_128_no_cpy iter 3: 982.819 ms
+Run time cloudsc_pattern_1_vectorized_static_veclen_128_no_cpy iter 4: 982.441 ms
+Run time cloudsc_pattern_1_vectorized_static_veclen_128_no_cpy iter 5: 986.099 ms
+Run time cloudsc_pattern_1_vectorized_static_veclen_128_no_cpy iter 6: 984.307 ms
+Run time cloudsc_pattern_1_vectorized_static_veclen_128_no_cpy iter 7: 983.633 ms
+Run time cloudsc_pattern_1_vectorized_static_veclen_128_no_cpy iter 8: 988.544 ms
+Run time cloudsc_pattern_1_vectorized_static_veclen_128_no_cpy iter 9: 976.840 ms
+[can_be_applied] to if_385 is True
+[can_be_applied] to if_385 is True
+Changing __out = (__in1 / __in2) to have +1.7800590868057611e-307 to avoid NaN/inf floating-point exception in division!
+[can_be_applied] to if_391 is True
+Changing __out = (__in1 / __in2) to have +1.7800590868057611e-307 to avoid NaN/inf floating-point exception in division!
+Changing __out = (__in1 / __in2) to have +1.7800590868057611e-307 to avoid NaN/inf floating-point exception in division!
+Changing __out = (__in1 / __in2) to have +1.7800590868057611e-307 to avoid NaN/inf floating-point exception in division!
+Changing __out = (__in1 / __in2) to have +1.7800590868057611e-307 to avoid NaN/inf floating-point exception in division!
+Changing __out = (__in1 / __in2) to have +1.7800590868057611e-307 to avoid NaN/inf floating-point exception in division!
+Changing __out = (__in1 / __in2) to have +1.7800590868057611e-307 to avoid NaN/inf floating-point exception in division!
+Changing __out = (__in1 / __in2) to have +1.7800590868057611e-307 to avoid NaN/inf floating-point exception in division!
+Changing __out = (__in1 / __in2) to have +1.7800590868057611e-307 to avoid NaN/inf floating-point exception in division!
+Changing __out = (__in1 / __in2) to have +1.7800590868057611e-307 to avoid NaN/inf floating-point exception in division!
+Changing __out = log(__in1) to have (__in1) + 1.7800590868057611e-307 inside log() to avoid log(0) NaN!
+Changing __out = (__in1 / __in2) to have +1.7800590868057611e-307 to avoid NaN/inf floating-point exception in division!
+Run time cloudsc_pattern_1_vectorized_static_veclen_512_no_cpy iter 0: 1192.343 ms
+Run time cloudsc_pattern_1_vectorized_static_veclen_512_no_cpy iter 1: 1184.523 ms
+Run time cloudsc_pattern_1_vectorized_static_veclen_512_no_cpy iter 2: 1192.137 ms
+Run time cloudsc_pattern_1_vectorized_static_veclen_512_no_cpy iter 3: 1196.040 ms
+Run time cloudsc_pattern_1_vectorized_static_veclen_512_no_cpy iter 4: 1190.478 ms
+Run time cloudsc_pattern_1_vectorized_static_veclen_512_no_cpy iter 5: 1186.543 ms
+Run time cloudsc_pattern_1_vectorized_static_veclen_512_no_cpy iter 6: 1186.308 ms
+Run time cloudsc_pattern_1_vectorized_static_veclen_512_no_cpy iter 7: 1189.983 ms
+Run time cloudsc_pattern_1_vectorized_static_veclen_512_no_cpy iter 8: 1187.201 ms
+Run time cloudsc_pattern_1_vectorized_static_veclen_512_no_cpy iter 9: 1168.789 ms
+Saved timing results to cloudsc_pattern_1_timings_1_core.csv.csv
+Run time cloudsc_pattern_1 iter 0: 1035.325 ms
+Run time cloudsc_pattern_1 iter 1: 1024.132 ms
+Run time cloudsc_pattern_1 iter 2: 1035.330 ms
+Run time cloudsc_pattern_1 iter 3: 1034.455 ms
+Run time cloudsc_pattern_1 iter 4: 1033.086 ms
+Run time cloudsc_pattern_1 iter 5: 1027.689 ms
+Run time cloudsc_pattern_1 iter 6: 1035.661 ms
+Run time cloudsc_pattern_1 iter 7: 1033.245 ms
+Run time cloudsc_pattern_1 iter 8: 1036.451 ms
+Run time cloudsc_pattern_1 iter 9: 1046.203 ms
+[can_be_applied] to if_385 is True
+[can_be_applied] to if_385 is True
+Changing __out = (__in1 / __in2) to have +1.7800590868057611e-307 to avoid NaN/inf floating-point exception in division!
+[can_be_applied] to if_391 is True
+Changing __out = (__in1 / __in2) to have +1.7800590868057611e-307 to avoid NaN/inf floating-point exception in division!
+Changing __out = (__in1 / __in2) to have +1.7800590868057611e-307 to avoid NaN/inf floating-point exception in division!
+Changing __out = (__in1 / __in2) to have +1.7800590868057611e-307 to avoid NaN/inf floating-point exception in division!
+Changing __out = (__in1 / __in2) to have +1.7800590868057611e-307 to avoid NaN/inf floating-point exception in division!
+Changing __out = (__in1 / __in2) to have +1.7800590868057611e-307 to avoid NaN/inf floating-point exception in division!
+Changing __out = (__in1 / __in2) to have +1.7800590868057611e-307 to avoid NaN/inf floating-point exception in division!
+Changing __out = (__in1 / __in2) to have +1.7800590868057611e-307 to avoid NaN/inf floating-point exception in division!
+Changing __out = (__in1 / __in2) to have +1.7800590868057611e-307 to avoid NaN/inf floating-point exception in division!
+Changing __out = log(__in1) to have (__in1) + 1.7800590868057611e-307 inside log() to avoid log(0) NaN!
+Changing __out = (__in1 / __in2) to have +1.7800590868057611e-307 to avoid NaN/inf floating-point exception in division!
+Changing __out = (__in1 / __in2) to have +1.7800590868057611e-307 to avoid NaN/inf floating-point exception in division!
+Run time cloudsc_pattern_1_vectorized_static_veclen_2_no_cpy iter 0: 1935.225 ms
+Run time cloudsc_pattern_1_vectorized_static_veclen_2_no_cpy iter 1: 1947.056 ms
+Run time cloudsc_pattern_1_vectorized_static_veclen_2_no_cpy iter 2: 1953.325 ms
+Run time cloudsc_pattern_1_vectorized_static_veclen_2_no_cpy iter 3: 1955.491 ms
+Run time cloudsc_pattern_1_vectorized_static_veclen_2_no_cpy iter 4: 1921.244 ms
+Run time cloudsc_pattern_1_vectorized_static_veclen_2_no_cpy iter 5: 1938.675 ms
+Run time cloudsc_pattern_1_vectorized_static_veclen_2_no_cpy iter 6: 1943.014 ms
+Run time cloudsc_pattern_1_vectorized_static_veclen_2_no_cpy iter 7: 1951.135 ms
+Run time cloudsc_pattern_1_vectorized_static_veclen_2_no_cpy iter 8: 1916.111 ms
+Run time cloudsc_pattern_1_vectorized_static_veclen_2_no_cpy iter 9: 1953.436 ms
+[can_be_applied] to if_385 is True
+[can_be_applied] to if_385 is True
+Changing __out = (__in1 / __in2) to have +1.7800590868057611e-307 to avoid NaN/inf floating-point exception in division!
+[can_be_applied] to if_391 is True
+Changing __out = log(__in1) to have (__in1) + 1.7800590868057611e-307 inside log() to avoid log(0) NaN!
+Changing __out = (__in1 / __in2) to have +1.7800590868057611e-307 to avoid NaN/inf floating-point exception in division!
+Changing __out = (__in1 / __in2) to have +1.7800590868057611e-307 to avoid NaN/inf floating-point exception in division!
+Changing __out = (__in1 / __in2) to have +1.7800590868057611e-307 to avoid NaN/inf floating-point exception in division!
+Changing __out = (__in1 / __in2) to have +1.7800590868057611e-307 to avoid NaN/inf floating-point exception in division!
+Changing __out = (__in1 / __in2) to have +1.7800590868057611e-307 to avoid NaN/inf floating-point exception in division!
+Changing __out = (__in1 / __in2) to have +1.7800590868057611e-307 to avoid NaN/inf floating-point exception in division!
+Changing __out = (__in1 / __in2) to have +1.7800590868057611e-307 to avoid NaN/inf floating-point exception in division!
+Changing __out = (__in1 / __in2) to have +1.7800590868057611e-307 to avoid NaN/inf floating-point exception in division!
+Changing __out = (__in1 / __in2) to have +1.7800590868057611e-307 to avoid NaN/inf floating-point exception in division!
+Changing __out = (__in1 / __in2) to have +1.7800590868057611e-307 to avoid NaN/inf floating-point exception in division!
+Run time cloudsc_pattern_1_vectorized_static_veclen_4_no_cpy iter 0: 1495.824 ms
+Run time cloudsc_pattern_1_vectorized_static_veclen_4_no_cpy iter 1: 1474.367 ms
+Run time cloudsc_pattern_1_vectorized_static_veclen_4_no_cpy iter 2: 1508.792 ms
+Run time cloudsc_pattern_1_vectorized_static_veclen_4_no_cpy iter 3: 1500.369 ms
+Run time cloudsc_pattern_1_vectorized_static_veclen_4_no_cpy iter 4: 1496.923 ms
+Run time cloudsc_pattern_1_vectorized_static_veclen_4_no_cpy iter 5: 1511.026 ms
+Run time cloudsc_pattern_1_vectorized_static_veclen_4_no_cpy iter 6: 1503.728 ms
+Run time cloudsc_pattern_1_vectorized_static_veclen_4_no_cpy iter 7: 1479.925 ms
+Run time cloudsc_pattern_1_vectorized_static_veclen_4_no_cpy iter 8: 1509.876 ms
+Run time cloudsc_pattern_1_vectorized_static_veclen_4_no_cpy iter 9: 1490.675 ms
+[can_be_applied] to if_385 is True
+[can_be_applied] to if_385 is True
+Changing __out = (__in1 / __in2) to have +1.7800590868057611e-307 to avoid NaN/inf floating-point exception in division!
+[can_be_applied] to if_391 is True
+Changing __out = (__in1 / __in2) to have +1.7800590868057611e-307 to avoid NaN/inf floating-point exception in division!
+Changing __out = (__in1 / __in2) to have +1.7800590868057611e-307 to avoid NaN/inf floating-point exception in division!
+Changing __out = (__in1 / __in2) to have +1.7800590868057611e-307 to avoid NaN/inf floating-point exception in division!
+Changing __out = (__in1 / __in2) to have +1.7800590868057611e-307 to avoid NaN/inf floating-point exception in division!
+Changing __out = (__in1 / __in2) to have +1.7800590868057611e-307 to avoid NaN/inf floating-point exception in division!
+Changing __out = log(__in1) to have (__in1) + 1.7800590868057611e-307 inside log() to avoid log(0) NaN!
+Changing __out = (__in1 / __in2) to have +1.7800590868057611e-307 to avoid NaN/inf floating-point exception in division!
+Changing __out = (__in1 / __in2) to have +1.7800590868057611e-307 to avoid NaN/inf floating-point exception in division!
+Changing __out = (__in1 / __in2) to have +1.7800590868057611e-307 to avoid NaN/inf floating-point exception in division!
+Changing __out = (__in1 / __in2) to have +1.7800590868057611e-307 to avoid NaN/inf floating-point exception in division!
+Changing __out = (__in1 / __in2) to have +1.7800590868057611e-307 to avoid NaN/inf floating-point exception in division!
+Run time cloudsc_pattern_1_vectorized_static_veclen_8_no_cpy iter 0: 2131.347 ms
+Run time cloudsc_pattern_1_vectorized_static_veclen_8_no_cpy iter 1: 2157.737 ms
+Run time cloudsc_pattern_1_vectorized_static_veclen_8_no_cpy iter 2: 2183.241 ms
+Run time cloudsc_pattern_1_vectorized_static_veclen_8_no_cpy iter 3: 2204.878 ms
+Run time cloudsc_pattern_1_vectorized_static_veclen_8_no_cpy iter 4: 2151.842 ms
+Run time cloudsc_pattern_1_vectorized_static_veclen_8_no_cpy iter 5: 2143.522 ms
+Run time cloudsc_pattern_1_vectorized_static_veclen_8_no_cpy iter 6: 2160.227 ms
+Run time cloudsc_pattern_1_vectorized_static_veclen_8_no_cpy iter 7: 2179.634 ms
+Run time cloudsc_pattern_1_vectorized_static_veclen_8_no_cpy iter 8: 2119.470 ms
+Run time cloudsc_pattern_1_vectorized_static_veclen_8_no_cpy iter 9: 2149.041 ms
+[can_be_applied] to if_385 is True
+[can_be_applied] to if_385 is True
+Changing __out = (__in1 / __in2) to have +1.7800590868057611e-307 to avoid NaN/inf floating-point exception in division!
+[can_be_applied] to if_391 is True
+Changing __out = (__in1 / __in2) to have +1.7800590868057611e-307 to avoid NaN/inf floating-point exception in division!
+Changing __out = (__in1 / __in2) to have +1.7800590868057611e-307 to avoid NaN/inf floating-point exception in division!
+Changing __out = (__in1 / __in2) to have +1.7800590868057611e-307 to avoid NaN/inf floating-point exception in division!
+Changing __out = (__in1 / __in2) to have +1.7800590868057611e-307 to avoid NaN/inf floating-point exception in division!
+Changing __out = (__in1 / __in2) to have +1.7800590868057611e-307 to avoid NaN/inf floating-point exception in division!
+Changing __out = (__in1 / __in2) to have +1.7800590868057611e-307 to avoid NaN/inf floating-point exception in division!
+Changing __out = (__in1 / __in2) to have +1.7800590868057611e-307 to avoid NaN/inf floating-point exception in division!
+Changing __out = (__in1 / __in2) to have +1.7800590868057611e-307 to avoid NaN/inf floating-point exception in division!
+Changing __out = log(__in1) to have (__in1) + 1.7800590868057611e-307 inside log() to avoid log(0) NaN!
+Changing __out = (__in1 / __in2) to have +1.7800590868057611e-307 to avoid NaN/inf floating-point exception in division!
+Changing __out = (__in1 / __in2) to have +1.7800590868057611e-307 to avoid NaN/inf floating-point exception in division!
+Run time cloudsc_pattern_1_vectorized_static_veclen_32_no_cpy iter 0: 2153.541 ms
+Run time cloudsc_pattern_1_vectorized_static_veclen_32_no_cpy iter 1: 2148.890 ms
+Run time cloudsc_pattern_1_vectorized_static_veclen_32_no_cpy iter 2: 2149.374 ms
+Run time cloudsc_pattern_1_vectorized_static_veclen_32_no_cpy iter 3: 2157.220 ms
+Run time cloudsc_pattern_1_vectorized_static_veclen_32_no_cpy iter 4: 2152.040 ms
+Run time cloudsc_pattern_1_vectorized_static_veclen_32_no_cpy iter 5: 2149.519 ms
+Run time cloudsc_pattern_1_vectorized_static_veclen_32_no_cpy iter 6: 2158.120 ms
+Run time cloudsc_pattern_1_vectorized_static_veclen_32_no_cpy iter 7: 2145.644 ms
+Run time cloudsc_pattern_1_vectorized_static_veclen_32_no_cpy iter 8: 2174.275 ms
+Run time cloudsc_pattern_1_vectorized_static_veclen_32_no_cpy iter 9: 2151.211 ms
+[can_be_applied] to if_385 is True
+[can_be_applied] to if_385 is True
+Changing __out = (__in1 / __in2) to have +1.7800590868057611e-307 to avoid NaN/inf floating-point exception in division!
+[can_be_applied] to if_391 is True
+Changing __out = (__in1 / __in2) to have +1.7800590868057611e-307 to avoid NaN/inf floating-point exception in division!
+Changing __out = (__in1 / __in2) to have +1.7800590868057611e-307 to avoid NaN/inf floating-point exception in division!
+Changing __out = (__in1 / __in2) to have +1.7800590868057611e-307 to avoid NaN/inf floating-point exception in division!
+Changing __out = (__in1 / __in2) to have +1.7800590868057611e-307 to avoid NaN/inf floating-point exception in division!
+Changing __out = (__in1 / __in2) to have +1.7800590868057611e-307 to avoid NaN/inf floating-point exception in division!
+Changing __out = log(__in1) to have (__in1) + 1.7800590868057611e-307 inside log() to avoid log(0) NaN!
+Changing __out = (__in1 / __in2) to have +1.7800590868057611e-307 to avoid NaN/inf floating-point exception in division!
+Changing __out = (__in1 / __in2) to have +1.7800590868057611e-307 to avoid NaN/inf floating-point exception in division!
+Changing __out = (__in1 / __in2) to have +1.7800590868057611e-307 to avoid NaN/inf floating-point exception in division!
+Changing __out = (__in1 / __in2) to have +1.7800590868057611e-307 to avoid NaN/inf floating-point exception in division!
+Changing __out = (__in1 / __in2) to have +1.7800590868057611e-307 to avoid NaN/inf floating-point exception in division!
+Run time cloudsc_pattern_1_vectorized_static_veclen_128_no_cpy iter 0: 1985.207 ms
+Run time cloudsc_pattern_1_vectorized_static_veclen_128_no_cpy iter 1: 1981.245 ms
+Run time cloudsc_pattern_1_vectorized_static_veclen_128_no_cpy iter 2: 1981.169 ms
+Run time cloudsc_pattern_1_vectorized_static_veclen_128_no_cpy iter 3: 1983.528 ms
+Run time cloudsc_pattern_1_vectorized_static_veclen_128_no_cpy iter 4: 1981.564 ms
+Run time cloudsc_pattern_1_vectorized_static_veclen_128_no_cpy iter 5: 1973.702 ms
+Run time cloudsc_pattern_1_vectorized_static_veclen_128_no_cpy iter 6: 1975.531 ms
+Run time cloudsc_pattern_1_vectorized_static_veclen_128_no_cpy iter 7: 1938.312 ms
+Run time cloudsc_pattern_1_vectorized_static_veclen_128_no_cpy iter 8: 1957.885 ms
+Run time cloudsc_pattern_1_vectorized_static_veclen_128_no_cpy iter 9: 1973.966 ms
+[can_be_applied] to if_385 is True
+[can_be_applied] to if_385 is True
+Changing __out = (__in1 / __in2) to have +1.7800590868057611e-307 to avoid NaN/inf floating-point exception in division!
+[can_be_applied] to if_391 is True
+Changing __out = log(__in1) to have (__in1) + 1.7800590868057611e-307 inside log() to avoid log(0) NaN!
+Changing __out = (__in1 / __in2) to have +1.7800590868057611e-307 to avoid NaN/inf floating-point exception in division!
+Changing __out = (__in1 / __in2) to have +1.7800590868057611e-307 to avoid NaN/inf floating-point exception in division!
+Changing __out = (__in1 / __in2) to have +1.7800590868057611e-307 to avoid NaN/inf floating-point exception in division!
+Changing __out = (__in1 / __in2) to have +1.7800590868057611e-307 to avoid NaN/inf floating-point exception in division!
+Changing __out = (__in1 / __in2) to have +1.7800590868057611e-307 to avoid NaN/inf floating-point exception in division!
+Changing __out = (__in1 / __in2) to have +1.7800590868057611e-307 to avoid NaN/inf floating-point exception in division!
+Changing __out = (__in1 / __in2) to have +1.7800590868057611e-307 to avoid NaN/inf floating-point exception in division!
+Changing __out = (__in1 / __in2) to have +1.7800590868057611e-307 to avoid NaN/inf floating-point exception in division!
+Changing __out = (__in1 / __in2) to have +1.7800590868057611e-307 to avoid NaN/inf floating-point exception in division!
+Changing __out = (__in1 / __in2) to have +1.7800590868057611e-307 to avoid NaN/inf floating-point exception in division!
+Run time cloudsc_pattern_1_vectorized_static_veclen_512_no_cpy iter 0: 2382.025 ms
+Run time cloudsc_pattern_1_vectorized_static_veclen_512_no_cpy iter 1: 2372.954 ms
+Run time cloudsc_pattern_1_vectorized_static_veclen_512_no_cpy iter 2: 2375.173 ms
+Run time cloudsc_pattern_1_vectorized_static_veclen_512_no_cpy iter 3: 2370.644 ms
+Run time cloudsc_pattern_1_vectorized_static_veclen_512_no_cpy iter 4: 2377.732 ms
+Run time cloudsc_pattern_1_vectorized_static_veclen_512_no_cpy iter 5: 2374.338 ms
+Run time cloudsc_pattern_1_vectorized_static_veclen_512_no_cpy iter 6: 2390.522 ms
+Run time cloudsc_pattern_1_vectorized_static_veclen_512_no_cpy iter 7: 2397.891 ms
+Run time cloudsc_pattern_1_vectorized_static_veclen_512_no_cpy iter 8: 2414.412 ms
+Run time cloudsc_pattern_1_vectorized_static_veclen_512_no_cpy iter 9: 2401.465 ms
+Saved timing results to cloudsc_pattern_1_timings_1_core.csv.csv
+Run time cloudsc_pattern_1 iter 0: 2080.701 ms
+Run time cloudsc_pattern_1 iter 1: 2069.127 ms
+Run time cloudsc_pattern_1 iter 2: 2067.158 ms
+Run time cloudsc_pattern_1 iter 3: 2055.302 ms
+Run time cloudsc_pattern_1 iter 4: 2066.890 ms
+Run time cloudsc_pattern_1 iter 5: 2067.332 ms
+Run time cloudsc_pattern_1 iter 6: 2074.332 ms
+Run time cloudsc_pattern_1 iter 7: 2043.473 ms
+Run time cloudsc_pattern_1 iter 8: 2075.843 ms
+Run time cloudsc_pattern_1 iter 9: 2070.390 ms
+[can_be_applied] to if_385 is True
+[can_be_applied] to if_385 is True
+Changing __out = (__in1 / __in2) to have +1.7800590868057611e-307 to avoid NaN/inf floating-point exception in division!
+[can_be_applied] to if_391 is True
+Changing __out = (__in1 / __in2) to have +1.7800590868057611e-307 to avoid NaN/inf floating-point exception in division!
+Changing __out = (__in1 / __in2) to have +1.7800590868057611e-307 to avoid NaN/inf floating-point exception in division!
+Changing __out = (__in1 / __in2) to have +1.7800590868057611e-307 to avoid NaN/inf floating-point exception in division!
+Changing __out = (__in1 / __in2) to have +1.7800590868057611e-307 to avoid NaN/inf floating-point exception in division!
+Changing __out = (__in1 / __in2) to have +1.7800590868057611e-307 to avoid NaN/inf floating-point exception in division!
+Changing __out = (__in1 / __in2) to have +1.7800590868057611e-307 to avoid NaN/inf floating-point exception in division!
+Changing __out = (__in1 / __in2) to have +1.7800590868057611e-307 to avoid NaN/inf floating-point exception in division!
+Changing __out = (__in1 / __in2) to have +1.7800590868057611e-307 to avoid NaN/inf floating-point exception in division!
+Changing __out = (__in1 / __in2) to have +1.7800590868057611e-307 to avoid NaN/inf floating-point exception in division!
+Changing __out = log(__in1) to have (__in1) + 1.7800590868057611e-307 inside log() to avoid log(0) NaN!
+Changing __out = (__in1 / __in2) to have +1.7800590868057611e-307 to avoid NaN/inf floating-point exception in division!
+Run time cloudsc_pattern_1_vectorized_static_veclen_2_no_cpy iter 0: 3854.910 ms
+Run time cloudsc_pattern_1_vectorized_static_veclen_2_no_cpy iter 1: 3869.736 ms
+Run time cloudsc_pattern_1_vectorized_static_veclen_2_no_cpy iter 2: 3825.034 ms
+Run time cloudsc_pattern_1_vectorized_static_veclen_2_no_cpy iter 3: 3858.602 ms
+Run time cloudsc_pattern_1_vectorized_static_veclen_2_no_cpy iter 4: 3836.239 ms
+Run time cloudsc_pattern_1_vectorized_static_veclen_2_no_cpy iter 5: 3840.042 ms
+Run time cloudsc_pattern_1_vectorized_static_veclen_2_no_cpy iter 6: 3892.004 ms
+Run time cloudsc_pattern_1_vectorized_static_veclen_2_no_cpy iter 7: 3888.766 ms
+Run time cloudsc_pattern_1_vectorized_static_veclen_2_no_cpy iter 8: 3918.830 ms
+Run time cloudsc_pattern_1_vectorized_static_veclen_2_no_cpy iter 9: 3904.139 ms
+[can_be_applied] to if_385 is True
+[can_be_applied] to if_385 is True
+Changing __out = (__in1 / __in2) to have +1.7800590868057611e-307 to avoid NaN/inf floating-point exception in division!
+[can_be_applied] to if_391 is True
+Changing __out = (__in1 / __in2) to have +1.7800590868057611e-307 to avoid NaN/inf floating-point exception in division!
+Changing __out = (__in1 / __in2) to have +1.7800590868057611e-307 to avoid NaN/inf floating-point exception in division!
+Changing __out = (__in1 / __in2) to have +1.7800590868057611e-307 to avoid NaN/inf floating-point exception in division!
+Changing __out = (__in1 / __in2) to have +1.7800590868057611e-307 to avoid NaN/inf floating-point exception in division!
+Changing __out = log(__in1) to have (__in1) + 1.7800590868057611e-307 inside log() to avoid log(0) NaN!
+Changing __out = (__in1 / __in2) to have +1.7800590868057611e-307 to avoid NaN/inf floating-point exception in division!
+Changing __out = (__in1 / __in2) to have +1.7800590868057611e-307 to avoid NaN/inf floating-point exception in division!
+Changing __out = (__in1 / __in2) to have +1.7800590868057611e-307 to avoid NaN/inf floating-point exception in division!
+Changing __out = (__in1 / __in2) to have +1.7800590868057611e-307 to avoid NaN/inf floating-point exception in division!
+Changing __out = (__in1 / __in2) to have +1.7800590868057611e-307 to avoid NaN/inf floating-point exception in division!
+Changing __out = (__in1 / __in2) to have +1.7800590868057611e-307 to avoid NaN/inf floating-point exception in division!
+Run time cloudsc_pattern_1_vectorized_static_veclen_4_no_cpy iter 0: 2968.871 ms
+Run time cloudsc_pattern_1_vectorized_static_veclen_4_no_cpy iter 1: 2968.281 ms
+Run time cloudsc_pattern_1_vectorized_static_veclen_4_no_cpy iter 2: 3006.703 ms
+Run time cloudsc_pattern_1_vectorized_static_veclen_4_no_cpy iter 3: 2971.939 ms
+Run time cloudsc_pattern_1_vectorized_static_veclen_4_no_cpy iter 4: 2981.329 ms
+Run time cloudsc_pattern_1_vectorized_static_veclen_4_no_cpy iter 5: 3010.500 ms
+Run time cloudsc_pattern_1_vectorized_static_veclen_4_no_cpy iter 6: 2997.067 ms
+Run time cloudsc_pattern_1_vectorized_static_veclen_4_no_cpy iter 7: 2956.721 ms
+Run time cloudsc_pattern_1_vectorized_static_veclen_4_no_cpy iter 8: 2965.695 ms
+Run time cloudsc_pattern_1_vectorized_static_veclen_4_no_cpy iter 9: 2965.002 ms
+[can_be_applied] to if_385 is True
+[can_be_applied] to if_385 is True
+Changing __out = (__in1 / __in2) to have +1.7800590868057611e-307 to avoid NaN/inf floating-point exception in division!
+[can_be_applied] to if_391 is True
+Changing __out = (__in1 / __in2) to have +1.7800590868057611e-307 to avoid NaN/inf floating-point exception in division!
+Changing __out = (__in1 / __in2) to have +1.7800590868057611e-307 to avoid NaN/inf floating-point exception in division!
+Changing __out = (__in1 / __in2) to have +1.7800590868057611e-307 to avoid NaN/inf floating-point exception in division!
+Changing __out = (__in1 / __in2) to have +1.7800590868057611e-307 to avoid NaN/inf floating-point exception in division!
+Changing __out = (__in1 / __in2) to have +1.7800590868057611e-307 to avoid NaN/inf floating-point exception in division!
+Changing __out = (__in1 / __in2) to have +1.7800590868057611e-307 to avoid NaN/inf floating-point exception in division!
+Changing __out = (__in1 / __in2) to have +1.7800590868057611e-307 to avoid NaN/inf floating-point exception in division!
+Changing __out = log(__in1) to have (__in1) + 1.7800590868057611e-307 inside log() to avoid log(0) NaN!
+Changing __out = (__in1 / __in2) to have +1.7800590868057611e-307 to avoid NaN/inf floating-point exception in division!
+Changing __out = (__in1 / __in2) to have +1.7800590868057611e-307 to avoid NaN/inf floating-point exception in division!
+Changing __out = (__in1 / __in2) to have +1.7800590868057611e-307 to avoid NaN/inf floating-point exception in division!
+Run time cloudsc_pattern_1_vectorized_static_veclen_8_no_cpy iter 0: 4288.596 ms
+Run time cloudsc_pattern_1_vectorized_static_veclen_8_no_cpy iter 1: 4295.017 ms
+Run time cloudsc_pattern_1_vectorized_static_veclen_8_no_cpy iter 2: 4301.039 ms
+Run time cloudsc_pattern_1_vectorized_static_veclen_8_no_cpy iter 3: 4326.703 ms
+Run time cloudsc_pattern_1_vectorized_static_veclen_8_no_cpy iter 4: 4299.967 ms
+Run time cloudsc_pattern_1_vectorized_static_veclen_8_no_cpy iter 5: 4328.743 ms
+Run time cloudsc_pattern_1_vectorized_static_veclen_8_no_cpy iter 6: 4296.532 ms
+Run time cloudsc_pattern_1_vectorized_static_veclen_8_no_cpy iter 7: 4306.457 ms
+Run time cloudsc_pattern_1_vectorized_static_veclen_8_no_cpy iter 8: 4310.653 ms
+Run time cloudsc_pattern_1_vectorized_static_veclen_8_no_cpy iter 9: 4309.519 ms
+[can_be_applied] to if_385 is True
+[can_be_applied] to if_385 is True
+Changing __out = (__in1 / __in2) to have +1.7800590868057611e-307 to avoid NaN/inf floating-point exception in division!
+[can_be_applied] to if_391 is True
+Changing __out = (__in1 / __in2) to have +1.7800590868057611e-307 to avoid NaN/inf floating-point exception in division!
+Changing __out = (__in1 / __in2) to have +1.7800590868057611e-307 to avoid NaN/inf floating-point exception in division!
+Changing __out = (__in1 / __in2) to have +1.7800590868057611e-307 to avoid NaN/inf floating-point exception in division!
+Changing __out = (__in1 / __in2) to have +1.7800590868057611e-307 to avoid NaN/inf floating-point exception in division!
+Changing __out = (__in1 / __in2) to have +1.7800590868057611e-307 to avoid NaN/inf floating-point exception in division!
+Changing __out = (__in1 / __in2) to have +1.7800590868057611e-307 to avoid NaN/inf floating-point exception in division!
+Changing __out = (__in1 / __in2) to have +1.7800590868057611e-307 to avoid NaN/inf floating-point exception in division!
+Changing __out = (__in1 / __in2) to have +1.7800590868057611e-307 to avoid NaN/inf floating-point exception in division!
+Changing __out = log(__in1) to have (__in1) + 1.7800590868057611e-307 inside log() to avoid log(0) NaN!
+Changing __out = (__in1 / __in2) to have +1.7800590868057611e-307 to avoid NaN/inf floating-point exception in division!
+Changing __out = (__in1 / __in2) to have +1.7800590868057611e-307 to avoid NaN/inf floating-point exception in division!
+Run time cloudsc_pattern_1_vectorized_static_veclen_32_no_cpy iter 0: 4291.474 ms
+Run time cloudsc_pattern_1_vectorized_static_veclen_32_no_cpy iter 1: 4290.611 ms
+Run time cloudsc_pattern_1_vectorized_static_veclen_32_no_cpy iter 2: 4325.612 ms
+Run time cloudsc_pattern_1_vectorized_static_veclen_32_no_cpy iter 3: 4331.973 ms
+Run time cloudsc_pattern_1_vectorized_static_veclen_32_no_cpy iter 4: 4308.240 ms
+Run time cloudsc_pattern_1_vectorized_static_veclen_32_no_cpy iter 5: 4290.945 ms
+Run time cloudsc_pattern_1_vectorized_static_veclen_32_no_cpy iter 6: 4306.263 ms
+Run time cloudsc_pattern_1_vectorized_static_veclen_32_no_cpy iter 7: 4288.413 ms
+Run time cloudsc_pattern_1_vectorized_static_veclen_32_no_cpy iter 8: 4283.211 ms
+Run time cloudsc_pattern_1_vectorized_static_veclen_32_no_cpy iter 9: 4301.888 ms
+[can_be_applied] to if_385 is True
+[can_be_applied] to if_385 is True
+Changing __out = (__in1 / __in2) to have +1.7800590868057611e-307 to avoid NaN/inf floating-point exception in division!
+[can_be_applied] to if_391 is True
+Changing __out = (__in1 / __in2) to have +1.7800590868057611e-307 to avoid NaN/inf floating-point exception in division!
+Changing __out = (__in1 / __in2) to have +1.7800590868057611e-307 to avoid NaN/inf floating-point exception in division!
+Changing __out = (__in1 / __in2) to have +1.7800590868057611e-307 to avoid NaN/inf floating-point exception in division!
+Changing __out = (__in1 / __in2) to have +1.7800590868057611e-307 to avoid NaN/inf floating-point exception in division!
+Changing __out = (__in1 / __in2) to have +1.7800590868057611e-307 to avoid NaN/inf floating-point exception in division!
+Changing __out = (__in1 / __in2) to have +1.7800590868057611e-307 to avoid NaN/inf floating-point exception in division!
+Changing __out = (__in1 / __in2) to have +1.7800590868057611e-307 to avoid NaN/inf floating-point exception in division!
+Changing __out = (__in1 / __in2) to have +1.7800590868057611e-307 to avoid NaN/inf floating-point exception in division!
+Changing __out = (__in1 / __in2) to have +1.7800590868057611e-307 to avoid NaN/inf floating-point exception in division!
+Changing __out = log(__in1) to have (__in1) + 1.7800590868057611e-307 inside log() to avoid log(0) NaN!
+Changing __out = (__in1 / __in2) to have +1.7800590868057611e-307 to avoid NaN/inf floating-point exception in division!
+Run time cloudsc_pattern_1_vectorized_static_veclen_128_no_cpy iter 0: 3958.744 ms
+Run time cloudsc_pattern_1_vectorized_static_veclen_128_no_cpy iter 1: 3991.855 ms
+Run time cloudsc_pattern_1_vectorized_static_veclen_128_no_cpy iter 2: 4026.674 ms
+Run time cloudsc_pattern_1_vectorized_static_veclen_128_no_cpy iter 3: 4012.081 ms
+Run time cloudsc_pattern_1_vectorized_static_veclen_128_no_cpy iter 4: 4022.550 ms
+Run time cloudsc_pattern_1_vectorized_static_veclen_128_no_cpy iter 5: 4017.660 ms
+Run time cloudsc_pattern_1_vectorized_static_veclen_128_no_cpy iter 6: 4000.347 ms
+Run time cloudsc_pattern_1_vectorized_static_veclen_128_no_cpy iter 7: 4010.918 ms
+Run time cloudsc_pattern_1_vectorized_static_veclen_128_no_cpy iter 8: 3968.568 ms
+Run time cloudsc_pattern_1_vectorized_static_veclen_128_no_cpy iter 9: 3973.245 ms
+[can_be_applied] to if_385 is True
+[can_be_applied] to if_385 is True
+Changing __out = (__in1 / __in2) to have +1.7800590868057611e-307 to avoid NaN/inf floating-point exception in division!
+[can_be_applied] to if_391 is True
+Changing __out = (__in1 / __in2) to have +1.7800590868057611e-307 to avoid NaN/inf floating-point exception in division!
+Changing __out = (__in1 / __in2) to have +1.7800590868057611e-307 to avoid NaN/inf floating-point exception in division!
+Changing __out = (__in1 / __in2) to have +1.7800590868057611e-307 to avoid NaN/inf floating-point exception in division!
+Changing __out = log(__in1) to have (__in1) + 1.7800590868057611e-307 inside log() to avoid log(0) NaN!
+Changing __out = (__in1 / __in2) to have +1.7800590868057611e-307 to avoid NaN/inf floating-point exception in division!
+Changing __out = (__in1 / __in2) to have +1.7800590868057611e-307 to avoid NaN/inf floating-point exception in division!
+Changing __out = (__in1 / __in2) to have +1.7800590868057611e-307 to avoid NaN/inf floating-point exception in division!
+Changing __out = (__in1 / __in2) to have +1.7800590868057611e-307 to avoid NaN/inf floating-point exception in division!
+Changing __out = (__in1 / __in2) to have +1.7800590868057611e-307 to avoid NaN/inf floating-point exception in division!
+Changing __out = (__in1 / __in2) to have +1.7800590868057611e-307 to avoid NaN/inf floating-point exception in division!
+Changing __out = (__in1 / __in2) to have +1.7800590868057611e-307 to avoid NaN/inf floating-point exception in division!
+Run time cloudsc_pattern_1_vectorized_static_veclen_512_no_cpy iter 0: 4708.573 ms
+Run time cloudsc_pattern_1_vectorized_static_veclen_512_no_cpy iter 1: 4755.100 ms
+Run time cloudsc_pattern_1_vectorized_static_veclen_512_no_cpy iter 2: 4792.471 ms
+Run time cloudsc_pattern_1_vectorized_static_veclen_512_no_cpy iter 3: 4746.465 ms
+Run time cloudsc_pattern_1_vectorized_static_veclen_512_no_cpy iter 4: 4754.724 ms
+Run time cloudsc_pattern_1_vectorized_static_veclen_512_no_cpy iter 5: 4758.712 ms
+Run time cloudsc_pattern_1_vectorized_static_veclen_512_no_cpy iter 6: 4731.484 ms
+Run time cloudsc_pattern_1_vectorized_static_veclen_512_no_cpy iter 7: 4718.636 ms
+Run time cloudsc_pattern_1_vectorized_static_veclen_512_no_cpy iter 8: 4746.741 ms
+Run time cloudsc_pattern_1_vectorized_static_veclen_512_no_cpy iter 9: 4750.870 ms
+Saved timing results to cloudsc_pattern_1_timings_1_core.csv.csv
+Run time cloudsc_pattern_1 iter 0: 4190.644 ms
+Run time cloudsc_pattern_1 iter 1: 4175.378 ms
+Run time cloudsc_pattern_1 iter 2: 4203.018 ms
+Run time cloudsc_pattern_1 iter 3: 4150.662 ms
+Run time cloudsc_pattern_1 iter 4: 4156.238 ms
+Run time cloudsc_pattern_1 iter 5: 4180.351 ms
+Run time cloudsc_pattern_1 iter 6: 4173.679 ms
+Run time cloudsc_pattern_1 iter 7: 4163.440 ms
+Run time cloudsc_pattern_1 iter 8: 4157.688 ms
+Run time cloudsc_pattern_1 iter 9: 4155.313 ms
+[can_be_applied] to if_385 is True
+[can_be_applied] to if_385 is True
+Changing __out = (__in1 / __in2) to have +1.7800590868057611e-307 to avoid NaN/inf floating-point exception in division!
+[can_be_applied] to if_391 is True
+Changing __out = (__in1 / __in2) to have +1.7800590868057611e-307 to avoid NaN/inf floating-point exception in division!
+Changing __out = (__in1 / __in2) to have +1.7800590868057611e-307 to avoid NaN/inf floating-point exception in division!
+Changing __out = (__in1 / __in2) to have +1.7800590868057611e-307 to avoid NaN/inf floating-point exception in division!
+Changing __out = (__in1 / __in2) to have +1.7800590868057611e-307 to avoid NaN/inf floating-point exception in division!
+Changing __out = (__in1 / __in2) to have +1.7800590868057611e-307 to avoid NaN/inf floating-point exception in division!
+Changing __out = (__in1 / __in2) to have +1.7800590868057611e-307 to avoid NaN/inf floating-point exception in division!
+Changing __out = (__in1 / __in2) to have +1.7800590868057611e-307 to avoid NaN/inf floating-point exception in division!
+Changing __out = (__in1 / __in2) to have +1.7800590868057611e-307 to avoid NaN/inf floating-point exception in division!
+Changing __out = (__in1 / __in2) to have +1.7800590868057611e-307 to avoid NaN/inf floating-point exception in division!
+Changing __out = log(__in1) to have (__in1) + 1.7800590868057611e-307 inside log() to avoid log(0) NaN!
+Changing __out = (__in1 / __in2) to have +1.7800590868057611e-307 to avoid NaN/inf floating-point exception in division!
+Run time cloudsc_pattern_1_vectorized_static_veclen_2_no_cpy iter 0: 7676.729 ms
+Run time cloudsc_pattern_1_vectorized_static_veclen_2_no_cpy iter 1: 7714.740 ms
+Run time cloudsc_pattern_1_vectorized_static_veclen_2_no_cpy iter 2: 7710.089 ms
+Run time cloudsc_pattern_1_vectorized_static_veclen_2_no_cpy iter 3: 7683.383 ms
+Run time cloudsc_pattern_1_vectorized_static_veclen_2_no_cpy iter 4: 7676.517 ms
+Run time cloudsc_pattern_1_vectorized_static_veclen_2_no_cpy iter 5: 7708.926 ms
+Run time cloudsc_pattern_1_vectorized_static_veclen_2_no_cpy iter 6: 7681.355 ms
+Run time cloudsc_pattern_1_vectorized_static_veclen_2_no_cpy iter 7: 7658.115 ms
+Run time cloudsc_pattern_1_vectorized_static_veclen_2_no_cpy iter 8: 7715.720 ms
+Run time cloudsc_pattern_1_vectorized_static_veclen_2_no_cpy iter 9: 7690.854 ms
+[can_be_applied] to if_385 is True
+[can_be_applied] to if_385 is True
+Changing __out = (__in1 / __in2) to have +1.7800590868057611e-307 to avoid NaN/inf floating-point exception in division!
+[can_be_applied] to if_391 is True
+Changing __out = (__in1 / __in2) to have +1.7800590868057611e-307 to avoid NaN/inf floating-point exception in division!
+Changing __out = (__in1 / __in2) to have +1.7800590868057611e-307 to avoid NaN/inf floating-point exception in division!
+Changing __out = (__in1 / __in2) to have +1.7800590868057611e-307 to avoid NaN/inf floating-point exception in division!
+Changing __out = (__in1 / __in2) to have +1.7800590868057611e-307 to avoid NaN/inf floating-point exception in division!
+Changing __out = (__in1 / __in2) to have +1.7800590868057611e-307 to avoid NaN/inf floating-point exception in division!
+Changing __out = log(__in1) to have (__in1) + 1.7800590868057611e-307 inside log() to avoid log(0) NaN!
+Changing __out = (__in1 / __in2) to have +1.7800590868057611e-307 to avoid NaN/inf floating-point exception in division!
+Changing __out = (__in1 / __in2) to have +1.7800590868057611e-307 to avoid NaN/inf floating-point exception in division!
+Changing __out = (__in1 / __in2) to have +1.7800590868057611e-307 to avoid NaN/inf floating-point exception in division!
+Changing __out = (__in1 / __in2) to have +1.7800590868057611e-307 to avoid NaN/inf floating-point exception in division!
+Changing __out = (__in1 / __in2) to have +1.7800590868057611e-307 to avoid NaN/inf floating-point exception in division!
+Run time cloudsc_pattern_1_vectorized_static_veclen_4_no_cpy iter 0: 5938.452 ms
+Run time cloudsc_pattern_1_vectorized_static_veclen_4_no_cpy iter 1: 5992.246 ms
+Run time cloudsc_pattern_1_vectorized_static_veclen_4_no_cpy iter 2: 5971.544 ms
+Run time cloudsc_pattern_1_vectorized_static_veclen_4_no_cpy iter 3: 5960.032 ms
+Run time cloudsc_pattern_1_vectorized_static_veclen_4_no_cpy iter 4: 5935.011 ms
+Run time cloudsc_pattern_1_vectorized_static_veclen_4_no_cpy iter 5: 5937.641 ms
+Run time cloudsc_pattern_1_vectorized_static_veclen_4_no_cpy iter 6: 5974.040 ms
+Run time cloudsc_pattern_1_vectorized_static_veclen_4_no_cpy iter 7: 5980.389 ms
+Run time cloudsc_pattern_1_vectorized_static_veclen_4_no_cpy iter 8: 5955.148 ms
+Run time cloudsc_pattern_1_vectorized_static_veclen_4_no_cpy iter 9: 5927.937 ms
+[can_be_applied] to if_385 is True
+[can_be_applied] to if_385 is True
+Changing __out = (__in1 / __in2) to have +1.7800590868057611e-307 to avoid NaN/inf floating-point exception in division!
+[can_be_applied] to if_391 is True
+Changing __out = (__in1 / __in2) to have +1.7800590868057611e-307 to avoid NaN/inf floating-point exception in division!
+Changing __out = (__in1 / __in2) to have +1.7800590868057611e-307 to avoid NaN/inf floating-point exception in division!
+Changing __out = (__in1 / __in2) to have +1.7800590868057611e-307 to avoid NaN/inf floating-point exception in division!
+Changing __out = (__in1 / __in2) to have +1.7800590868057611e-307 to avoid NaN/inf floating-point exception in division!
+Changing __out = (__in1 / __in2) to have +1.7800590868057611e-307 to avoid NaN/inf floating-point exception in division!
+Changing __out = (__in1 / __in2) to have +1.7800590868057611e-307 to avoid NaN/inf floating-point exception in division!
+Changing __out = log(__in1) to have (__in1) + 1.7800590868057611e-307 inside log() to avoid log(0) NaN!
+Changing __out = (__in1 / __in2) to have +1.7800590868057611e-307 to avoid NaN/inf floating-point exception in division!
+Changing __out = (__in1 / __in2) to have +1.7800590868057611e-307 to avoid NaN/inf floating-point exception in division!
+Changing __out = (__in1 / __in2) to have +1.7800590868057611e-307 to avoid NaN/inf floating-point exception in division!
+Changing __out = (__in1 / __in2) to have +1.7800590868057611e-307 to avoid NaN/inf floating-point exception in division!
+Run time cloudsc_pattern_1_vectorized_static_veclen_8_no_cpy iter 0: 8620.573 ms
+Run time cloudsc_pattern_1_vectorized_static_veclen_8_no_cpy iter 1: 8648.307 ms
+Run time cloudsc_pattern_1_vectorized_static_veclen_8_no_cpy iter 2: 8673.428 ms
+Run time cloudsc_pattern_1_vectorized_static_veclen_8_no_cpy iter 3: 8673.433 ms
+Run time cloudsc_pattern_1_vectorized_static_veclen_8_no_cpy iter 4: 8660.954 ms
+Run time cloudsc_pattern_1_vectorized_static_veclen_8_no_cpy iter 5: 8716.150 ms
+Run time cloudsc_pattern_1_vectorized_static_veclen_8_no_cpy iter 6: 8703.094 ms
+Run time cloudsc_pattern_1_vectorized_static_veclen_8_no_cpy iter 7: 8716.025 ms
+Run time cloudsc_pattern_1_vectorized_static_veclen_8_no_cpy iter 8: 8737.089 ms
+Run time cloudsc_pattern_1_vectorized_static_veclen_8_no_cpy iter 9: 8714.352 ms
+[can_be_applied] to if_385 is True
+[can_be_applied] to if_385 is True
+Changing __out = (__in1 / __in2) to have +1.7800590868057611e-307 to avoid NaN/inf floating-point exception in division!
+[can_be_applied] to if_391 is True
+Changing __out = (__in1 / __in2) to have +1.7800590868057611e-307 to avoid NaN/inf floating-point exception in division!
+Changing __out = (__in1 / __in2) to have +1.7800590868057611e-307 to avoid NaN/inf floating-point exception in division!
+Changing __out = (__in1 / __in2) to have +1.7800590868057611e-307 to avoid NaN/inf floating-point exception in division!
+Changing __out = (__in1 / __in2) to have +1.7800590868057611e-307 to avoid NaN/inf floating-point exception in division!
+Changing __out = (__in1 / __in2) to have +1.7800590868057611e-307 to avoid NaN/inf floating-point exception in division!
+Changing __out = (__in1 / __in2) to have +1.7800590868057611e-307 to avoid NaN/inf floating-point exception in division!
+Changing __out = (__in1 / __in2) to have +1.7800590868057611e-307 to avoid NaN/inf floating-point exception in division!
+Changing __out = log(__in1) to have (__in1) + 1.7800590868057611e-307 inside log() to avoid log(0) NaN!
+Changing __out = (__in1 / __in2) to have +1.7800590868057611e-307 to avoid NaN/inf floating-point exception in division!
+Changing __out = (__in1 / __in2) to have +1.7800590868057611e-307 to avoid NaN/inf floating-point exception in division!
+Changing __out = (__in1 / __in2) to have +1.7800590868057611e-307 to avoid NaN/inf floating-point exception in division!
+Run time cloudsc_pattern_1_vectorized_static_veclen_32_no_cpy iter 0: 8787.418 ms
+Run time cloudsc_pattern_1_vectorized_static_veclen_32_no_cpy iter 1: 8834.911 ms
+Run time cloudsc_pattern_1_vectorized_static_veclen_32_no_cpy iter 2: 8821.649 ms
+Run time cloudsc_pattern_1_vectorized_static_veclen_32_no_cpy iter 3: 8846.072 ms
+Run time cloudsc_pattern_1_vectorized_static_veclen_32_no_cpy iter 4: 8812.049 ms
+Run time cloudsc_pattern_1_vectorized_static_veclen_32_no_cpy iter 5: 8792.044 ms
+Run time cloudsc_pattern_1_vectorized_static_veclen_32_no_cpy iter 6: 8804.189 ms
+Run time cloudsc_pattern_1_vectorized_static_veclen_32_no_cpy iter 7: 8837.342 ms
+Run time cloudsc_pattern_1_vectorized_static_veclen_32_no_cpy iter 8: 8845.122 ms
+Run time cloudsc_pattern_1_vectorized_static_veclen_32_no_cpy iter 9: 8780.867 ms
+[can_be_applied] to if_385 is True
+[can_be_applied] to if_385 is True
+Changing __out = (__in1 / __in2) to have +1.7800590868057611e-307 to avoid NaN/inf floating-point exception in division!
+[can_be_applied] to if_391 is True
+Changing __out = (__in1 / __in2) to have +1.7800590868057611e-307 to avoid NaN/inf floating-point exception in division!
+Changing __out = log(__in1) to have (__in1) + 1.7800590868057611e-307 inside log() to avoid log(0) NaN!
+Changing __out = (__in1 / __in2) to have +1.7800590868057611e-307 to avoid NaN/inf floating-point exception in division!
+Changing __out = (__in1 / __in2) to have +1.7800590868057611e-307 to avoid NaN/inf floating-point exception in division!
+Changing __out = (__in1 / __in2) to have +1.7800590868057611e-307 to avoid NaN/inf floating-point exception in division!
+Changing __out = (__in1 / __in2) to have +1.7800590868057611e-307 to avoid NaN/inf floating-point exception in division!
+Changing __out = (__in1 / __in2) to have +1.7800590868057611e-307 to avoid NaN/inf floating-point exception in division!
+Changing __out = (__in1 / __in2) to have +1.7800590868057611e-307 to avoid NaN/inf floating-point exception in division!
+Changing __out = (__in1 / __in2) to have +1.7800590868057611e-307 to avoid NaN/inf floating-point exception in division!
+Changing __out = (__in1 / __in2) to have +1.7800590868057611e-307 to avoid NaN/inf floating-point exception in division!
+Changing __out = (__in1 / __in2) to have +1.7800590868057611e-307 to avoid NaN/inf floating-point exception in division!
+Run time cloudsc_pattern_1_vectorized_static_veclen_128_no_cpy iter 0: 7949.466 ms
+Run time cloudsc_pattern_1_vectorized_static_veclen_128_no_cpy iter 1: 7957.934 ms
+Run time cloudsc_pattern_1_vectorized_static_veclen_128_no_cpy iter 2: 7928.321 ms
+Run time cloudsc_pattern_1_vectorized_static_veclen_128_no_cpy iter 3: 7941.312 ms
+Run time cloudsc_pattern_1_vectorized_static_veclen_128_no_cpy iter 4: 7962.826 ms
+Run time cloudsc_pattern_1_vectorized_static_veclen_128_no_cpy iter 5: 7965.314 ms
+Run time cloudsc_pattern_1_vectorized_static_veclen_128_no_cpy iter 6: 7987.540 ms
+Run time cloudsc_pattern_1_vectorized_static_veclen_128_no_cpy iter 7: 7932.593 ms
+Run time cloudsc_pattern_1_vectorized_static_veclen_128_no_cpy iter 8: 8006.941 ms
+Run time cloudsc_pattern_1_vectorized_static_veclen_128_no_cpy iter 9: 7987.877 ms
+[can_be_applied] to if_385 is True
+[can_be_applied] to if_385 is True
+Changing __out = (__in1 / __in2) to have +1.7800590868057611e-307 to avoid NaN/inf floating-point exception in division!
+[can_be_applied] to if_391 is True
+Changing __out = log(__in1) to have (__in1) + 1.7800590868057611e-307 inside log() to avoid log(0) NaN!
+Changing __out = (__in1 / __in2) to have +1.7800590868057611e-307 to avoid NaN/inf floating-point exception in division!
+Changing __out = (__in1 / __in2) to have +1.7800590868057611e-307 to avoid NaN/inf floating-point exception in division!
+Changing __out = (__in1 / __in2) to have +1.7800590868057611e-307 to avoid NaN/inf floating-point exception in division!
+Changing __out = (__in1 / __in2) to have +1.7800590868057611e-307 to avoid NaN/inf floating-point exception in division!
+Changing __out = (__in1 / __in2) to have +1.7800590868057611e-307 to avoid NaN/inf floating-point exception in division!
+Changing __out = (__in1 / __in2) to have +1.7800590868057611e-307 to avoid NaN/inf floating-point exception in division!
+Changing __out = (__in1 / __in2) to have +1.7800590868057611e-307 to avoid NaN/inf floating-point exception in division!
+Changing __out = (__in1 / __in2) to have +1.7800590868057611e-307 to avoid NaN/inf floating-point exception in division!
+Changing __out = (__in1 / __in2) to have +1.7800590868057611e-307 to avoid NaN/inf floating-point exception in division!
+Changing __out = (__in1 / __in2) to have +1.7800590868057611e-307 to avoid NaN/inf floating-point exception in division!
+Run time cloudsc_pattern_1_vectorized_static_veclen_512_no_cpy iter 0: 9595.842 ms
+Run time cloudsc_pattern_1_vectorized_static_veclen_512_no_cpy iter 1: 9609.071 ms
+Run time cloudsc_pattern_1_vectorized_static_veclen_512_no_cpy iter 2: 9580.417 ms
+Run time cloudsc_pattern_1_vectorized_static_veclen_512_no_cpy iter 3: 9566.307 ms
+Run time cloudsc_pattern_1_vectorized_static_veclen_512_no_cpy iter 4: 9479.326 ms
+Run time cloudsc_pattern_1_vectorized_static_veclen_512_no_cpy iter 5: 9572.753 ms
+Run time cloudsc_pattern_1_vectorized_static_veclen_512_no_cpy iter 6: 9561.225 ms
+Run time cloudsc_pattern_1_vectorized_static_veclen_512_no_cpy iter 7: 9575.571 ms
+Run time cloudsc_pattern_1_vectorized_static_veclen_512_no_cpy iter 8: 9565.053 ms
+Run time cloudsc_pattern_1_vectorized_static_veclen_512_no_cpy iter 9: 9558.815 ms
+Saved timing results to cloudsc_pattern_1_timings_1_core.csv.csv

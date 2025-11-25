@@ -1,0 +1,75 @@
+Traceback (most recent call last):
+  File "/capstor/scratch/cscs/ybudanaz/dace/dace/codegen/compiler.py", line 224, in configure_and_compile
+    _run_liveoutput(cmake_command, shell=True, cwd=build_folder, output_stream=output_stream)
+    ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/capstor/scratch/cscs/ybudanaz/dace/dace/codegen/compiler.py", line 429, in _run_liveoutput
+    raise subprocess.CalledProcessError(process.returncode, command, output.getvalue())
+subprocess.CalledProcessError: Command 'cmake  "/capstor/scratch/cscs/ybudanaz/dace/dace/codegen" -DDACE_SRC_DIR="/capstor/scratch/cscs/ybudanaz/data_must_flow_artifacts/division_by_zero/llvm/arm/.dacecache/division_by_zero/src" -DDACE_FILES="cpu/division_by_zero.cpp" -DDACE_PROGRAM_NAME=division_by_zero -DDACE_ENV_CMAKE_FILES="" -DDACE_ENV_COMPILE_FLAGS="" -DDACE_ENV_INCLUDES="" -DDACE_ENV_LIBRARIES="" -DDACE_ENV_MINIMUM_VERSION=0 -DDACE_ENV_PACKAGES="" -DDACE_ENV_VAR_KEYS="" -DDACE_ENV_VAR_VALUES="" -DCMAKE_CXX_FLAGS="-mcpu=neoverse-v2 -march=aarch64 -fopenmp -std=c++17 -faligned-new -fPIC -Wall -Wextra -O3 -ffast-math -Wno-unused-parameter -Wno-unused-label" -DDACE_LIBS="" -DCMAKE_BUILD_TYPE=RelWithDebInfo -DCMAKE_SHARED_LINKER_FLAGS="-Wl,--disable-new-dtags"' returned non-zero exit status 1.
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/capstor/scratch/cscs/ybudanaz/dace/dace/codegen/compiler.py", line 232, in configure_and_compile
+    _run_liveoutput(cmake_command, shell=True, cwd=build_folder, output_stream=output_stream)
+    ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/capstor/scratch/cscs/ybudanaz/dace/dace/codegen/compiler.py", line 429, in _run_liveoutput
+    raise subprocess.CalledProcessError(process.returncode, command, output.getvalue())
+subprocess.CalledProcessError: Command 'cmake  "/capstor/scratch/cscs/ybudanaz/dace/dace/codegen" -DDACE_SRC_DIR="/capstor/scratch/cscs/ybudanaz/data_must_flow_artifacts/division_by_zero/llvm/arm/.dacecache/division_by_zero/src" -DDACE_FILES="cpu/division_by_zero.cpp" -DDACE_PROGRAM_NAME=division_by_zero -DDACE_ENV_CMAKE_FILES="" -DDACE_ENV_COMPILE_FLAGS="" -DDACE_ENV_INCLUDES="" -DDACE_ENV_LIBRARIES="" -DDACE_ENV_MINIMUM_VERSION=0 -DDACE_ENV_PACKAGES="" -DDACE_ENV_VAR_KEYS="" -DDACE_ENV_VAR_VALUES="" -DCMAKE_CXX_FLAGS="-mcpu=neoverse-v2 -march=aarch64 -fopenmp -std=c++17 -faligned-new -fPIC -Wall -Wextra -O3 -ffast-math -Wno-unused-parameter -Wno-unused-label" -DDACE_LIBS="" -DCMAKE_BUILD_TYPE=RelWithDebInfo -DCMAKE_SHARED_LINKER_FLAGS="-Wl,--disable-new-dtags"' returned non-zero exit status 1.
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/capstor/scratch/cscs/ybudanaz/data_must_flow_artifacts/division_by_zero/llvm/arm/benchmark_division_by_zero.py", line 217, in <module>
+    all_timings["division_by_zero", S] = run_sdfg_multiple_times(
+                                         ~~~~~~~~~~~~~~~~~~~~~~~^
+        sdfg=division_by_zero_sdfg,
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ...<2 lines>...
+        num_runs=NUM_REPS,
+        ^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "/capstor/scratch/cscs/ybudanaz/data_must_flow_artifacts/division_by_zero/llvm/arm/benchmark_division_by_zero.py", line 136, in run_sdfg_multiple_times
+    compiled = sdfg.compile()
+  File "/capstor/scratch/cscs/ybudanaz/dace/dace/sdfg/sdfg.py", line 2436, in compile
+    shared_library = compiler.configure_and_compile(program_folder, sdfg.name)
+  File "/capstor/scratch/cscs/ybudanaz/dace/dace/codegen/compiler.py", line 238, in configure_and_compile
+    raise cgx.CompilerConfigurationError('Configuration failure:\n' + ex.output)
+dace.codegen.exceptions.CompilerConfigurationError: Configuration failure:
+-- The C compiler identification is unknown
+-- The CXX compiler identification is unknown
+-- Detecting C compiler ABI info
+-- Detecting C compiler ABI info - failed
+-- Check for working C compiler: /capstor/scratch/cscs/ybudanaz/bin/clang
+-- Check for working C compiler: /capstor/scratch/cscs/ybudanaz/bin/clang - broken
+CMake Error at /users/ybudanaz/spack/opt/spack/linux-neoverse_v2/cmake-3.31.8-53faq3e7cxxh2fcih7aqfivnnswyqe5x/share/cmake-3.31/Modules/CMakeTestCCompiler.cmake:67 (message):
+  The C compiler
+    "/capstor/scratch/cscs/ybudanaz/bin/clang"
+
+  is not able to compile a simple test program.
+
+  It fails with the following output:
+
+    Change Dir: '/capstor/scratch/cscs/ybudanaz/data_must_flow_artifacts/division_by_zero/llvm/arm/.dacecache/division_by_zero/build/CMakeFiles/CMakeScratch/TryCompile-NXZuUl'
+    
+    Run Build Command(s): /users/ybudanaz/spack/opt/spack/linux-neoverse_v2/cmake-3.31.8-53faq3e7cxxh2fcih7aqfivnnswyqe5x/bin/cmake -E env VERBOSE=1 /users/ybudanaz/spack/opt/spack/linux-neoverse_v2/gmake-4.4.1-kpelobm3n3axadyblhj775u4qve6lfad/bin/gmake -f Makefile cmTC_4d5c6/fast
+    /users/ybudanaz/spack/opt/spack/linux-neoverse_v2/gmake-4.4.1-kpelobm3n3axadyblhj775u4qve6lfad/bin/gmake  -f CMakeFiles/cmTC_4d5c6.dir/build.make CMakeFiles/cmTC_4d5c6.dir/build
+    gmake[1]: Entering directory '/capstor/scratch/cscs/ybudanaz/data_must_flow_artifacts/division_by_zero/llvm/arm/.dacecache/division_by_zero/build/CMakeFiles/CMakeScratch/TryCompile-NXZuUl'
+    Building C object CMakeFiles/cmTC_4d5c6.dir/testCCompiler.c.o
+    /capstor/scratch/cscs/ybudanaz/bin/clang    -o CMakeFiles/cmTC_4d5c6.dir/testCCompiler.c.o -c /capstor/scratch/cscs/ybudanaz/data_must_flow_artifacts/division_by_zero/llvm/arm/.dacecache/division_by_zero/build/CMakeFiles/CMakeScratch/TryCompile-NXZuUl/testCCompiler.c
+    error: unknown target triple 'unknown'
+    gmake[1]: *** [CMakeFiles/cmTC_4d5c6.dir/build.make:81: CMakeFiles/cmTC_4d5c6.dir/testCCompiler.c.o] Error 1
+    gmake[1]: Leaving directory '/capstor/scratch/cscs/ybudanaz/data_must_flow_artifacts/division_by_zero/llvm/arm/.dacecache/division_by_zero/build/CMakeFiles/CMakeScratch/TryCompile-NXZuUl'
+    gmake: *** [Makefile:134: cmTC_4d5c6/fast] Error 2
+    
+    
+
+  
+
+  CMake will not be able to correctly generate this project.
+Call Stack (most recent call first):
+  CMakeLists.txt:3 (project)
+
+
+-- Configuring incomplete, errors occurred!
+
