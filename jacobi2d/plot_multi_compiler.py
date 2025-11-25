@@ -195,8 +195,8 @@ for l, k, v in [("w_cpy", "jacobi2d_vectorized_static_veclen_8_cpy", "Auto + DaC
     ax.set_yscale("log")
     ax.set_xlabel("Size")
     ax.set_ylabel("Median Runtime (s)")
-    ax.set_title(f"Median Runtime: Elementwise Op. w. Predicate + DaCe Vectorization Hints + " + 
-                 "Explicit Copy" if l == "w_cpy" else f"Median Runtime: Elementwise Op. w. Predicate + DaCe Vectorization Hints + " + "No Copy")
+    ax.set_title(f"Median Runtime: Jacobi2D + DaCe Vectorization Hints + " + 
+                 "Explicit Copy" if l == "w_cpy" else f"Jacobi2D + DaCe Vectorization Hints + " + "No Copy")
 
     ax.legend(
         title="Variant + SDFG",
