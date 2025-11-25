@@ -38,6 +38,25 @@ def bootstrap_error(data, n_bootstrap=1000, func=np.median):
 # Convert milliseconds to seconds
 df['time_seconds'] = df['time_seconds'].astype(float) / 1000.0
 
+colors = plt.get_cmap("tab20").colors
+color_map = {
+'csr_spmv': colors[0],
+'csr_spmv_vectorized_static_veclen_8_no_cpy': colors[1],
+'csr_spmv_vectorized_static_veclen_8_cpy': colors[2],
+'csr_spmv_vectorized_static_veclen_16_no_cpy': colors[3],
+'csr_spmv_vectorized_static_veclen_16_cpy': colors[4],
+'csr_spmv_vectorized_static_veclen_32_no_cpy': colors[5],
+'csr_spmv_vectorized_static_veclen_32_cpy': colors[6],
+'csr_spmv_vectorized_static_veclen_64_no_cpy': colors[7],
+'csr_spmv_vectorized_static_veclen_64_cpy': colors[8],
+'csr_spmv_vectorized_static_veclen_128_no_cpy': colors[9],
+'csr_spmv_vectorized_static_veclen_128_cpy': colors[10],
+'csr_spmv_vectorized_static_veclen_256_no_cpy': colors[11],
+'csr_spmv_vectorized_static_veclen_256_cpy': colors[12],
+'csr_spmv_vectorized_static_veclen_512_no_cpy': colors[13],
+'csr_spmv_vectorized_static_veclen_512_cpy': colors[14],
+}
+
 # Compute median + error per sdfg_name and size
 summary = df.groupby(['sdfg_name', 'size'])['time_seconds'].agg(
     median=np.median,
@@ -54,7 +73,7 @@ n_names = len(names)
 
 width = 0.8 / n_names
 x = np.arange(n_sizes)
-colors = plt.get_cmap("tab20").colors
+
 
 fig, ax = plt.subplots(figsize=(12,8))
 bar_heights = {}
@@ -69,23 +88,20 @@ for i, name in enumerate(names):
         yerr=data['error'],
         capsize=5,
         label=name,
-        color=colors[i % len(colors)]
+        color=color_map[name]
     )
     bar_heights[name] = data['median'].values
 
 # Annotate speedup over jacobi2d
 for j, size in enumerate(sizes):
-    heights = {name: bar_heights[name][j] for name in names}
+    heights = {name: bar_heights[name][j] for name in names if name != base_name}
+    base_heights = {name: bar_heights[name][j] for name in names if name == base_name}
     fastest_name = min(heights, key=heights.get)
     fastest_time = heights[fastest_name]
-    jacobi_time = heights.get(base_name, None)
-    if jacobi_time is not None and fastest_name != base_name:
+    jacobi_time = base_heights.get(base_name, None)
+    if jacobi_time is not None:
         speedup = jacobi_time / fastest_time
         xpos = x[j] + list(names).index(fastest_name) * width
-        for i, name in enumerate(names):
-            if name == fastest_name:
-                ci = i
-                break
         ax.text(
             xpos,
             fastest_time * 1.05,
@@ -94,7 +110,7 @@ for j, size in enumerate(sizes):
             va='bottom',
             fontsize=10,
             fontweight='bold',
-            color=colors[ci % len(colors)]
+            color=color_map[fastest_name]
         )
 
 # X-axis, labels, grid
