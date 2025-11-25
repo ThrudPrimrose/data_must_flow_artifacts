@@ -75,11 +75,12 @@ for i, name in enumerate(names):
 
 # Annotate speedup over jacobi2d
 for j, size in enumerate(sizes):
-    heights = {name: bar_heights[name][j] for name in names}
+    heights = {name: bar_heights[name][j] for name in names if name != base_name}
+    base_heights = {name: bar_heights[name][j] for name in names if name == base_name}
     fastest_name = min(heights, key=heights.get)
     fastest_time = heights[fastest_name]
-    jacobi_time = heights.get(base_name, None)
-    if jacobi_time is not None and fastest_name != base_name:
+    jacobi_time = base_heights.get(base_name, None)
+    if jacobi_time is not None:
         speedup = jacobi_time / fastest_time
         xpos = x[j] + list(names).index(fastest_name) * width
         for i, name in enumerate(names):
@@ -101,7 +102,7 @@ for j, size in enumerate(sizes):
 #ax.yaxis.set_major_locator(MultipleLocator(100))
 ax.set_xticks(x + width*(n_names-1)/2)
 ax.set_xticklabels(sizes)
-ax.set_ylim(1,15000)
+ax.set_ylim(1,18000)
 ax.set_yscale("log")
 ax.set_xlabel("Size")
 ax.set_ylabel("Median Runtime (ms)")
