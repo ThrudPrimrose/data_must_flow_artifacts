@@ -18,20 +18,20 @@ base_name = args.base_name
 # Load 4 CSVs
 # ------------------------
 paths = [
-    ("gcc",  "amd_epyc",   "gcc/amd_epyc/jacobi2d_timings_jacobi2d_timings_amd_epyc_gcc_1_core.csv"),
-    ("gcc",  "intel_xeon", "gcc/intel_xeon/jacobi2d_timings_jacobi2d_timings_intel_xeon_gcc_1_core.csv"),
-    #("gcc",  "arm", "gcc/arm/jacobi2d_timings.csv"),
-    ("llvm", "amd_epyc",   "llvm/amd_epyc/jacobi2d_timings_jacobi2d_timings_amd_epyc_llvm_1_core.csv"),
-    ("llvm", "intel_xeon", "llvm/intel_xeon/jacobi2d_timings_jacobi2d_timings_intel_xeon_llvm_1_core.csv"),
-    #("llvm", "arm", "llvm/arm/jacobi2d_timings.csv"),
+    ("gcc",  "amd_epyc",   "gcc/amd_epyc/division_by_zero_timings_1_core.csv"),
+    ("gcc",  "intel_xeon", "gcc/intel_xeon/division_by_zero_timings_1_core.csv"),
+    #("gcc",  "arm", "gcc/arm/division_by_zero_timings.csv"),
+    ("llvm", "amd_epyc",   "llvm/amd_epyc/division_by_zero_timings_1_core.csv"),
+    ("llvm", "intel_xeon", "llvm/intel_xeon/division_by_zero_timings_1_core.csv"),
+    #("llvm", "arm", "llvm/arm/division_by_zero_timings.csv"),
 ]
 
-for l, k, v in [("w_cpy", "jacobi2d_vectorized_static_veclen_8_cpy", "Auto + DaCe Vectorized (veclen=8, expl. copy)"),
-             ("no_cpy", "jacobi2d_vectorized_static_veclen_8_no_cpy", "Auto + DaCe Vectorized (veclen=8, no. copy)")]:
+for l, k, v in [("w_cpy", "division_by_zero_vectorized_static_veclen_8_cpy", "Auto + DaCe Vectorized (veclen=8, expl. copy)"),
+             ("no_cpy", "division_by_zero_vectorized_static_veclen_8_no_cpy", "Auto + DaCe Vectorized (veclen=8, no. copy)")]:
 
 
     label_map = {
-        "jacobi2d": "Auto Vectorized",
+        "division_by_zero": "Auto Vectorized",
         k: v, 
     }
 
@@ -64,7 +64,7 @@ for l, k, v in [("w_cpy", "jacobi2d_vectorized_static_veclen_8_cpy", "Auto + DaC
     # ------------------------
     # SDFGs to include
     # ------------------------
-    alt_name = base_name + k[len("jacobi2d"):]
+    alt_name = base_name + k[len("division_by_zero"):]
     selected_names = [base_name, alt_name]
     df = df[df["sdfg_name"].isin(selected_names)]
     # ------------------------
@@ -77,14 +77,14 @@ for l, k, v in [("w_cpy", "jacobi2d_vectorized_static_veclen_8_cpy", "Auto + DaC
 
     colors = plt.get_cmap("tab20").colors
     color_map = {
-    'jacobi2d': colors[1],
-    'jacobi2d_vectorized_static_veclen_8_no_cpy': colors[1],
-    'jacobi2d_vectorized_static_veclen_8_cpy': colors[2],
-    'jacobi2d_vectorized_static_veclen_16_no_cpy': colors[3],
-    'jacobi2d_vectorized_static_veclen_16_cpy': colors[4],
-    'jacobi2d_vectorized_static_veclen_32_no_cpy': colors[5],
-    'jacobi2d_vectorized_static_veclen_32_cpy': colors[6],
-    'jacobi2d_vectorized_static_veclen_4_no_cpy': colors[7],
+    'division_by_zero': colors[1],
+    'division_by_zero_vectorized_static_veclen_8_no_cpy': colors[1],
+    'division_by_zero_vectorized_static_veclen_8_cpy': colors[2],
+    'division_by_zero_vectorized_static_veclen_16_no_cpy': colors[3],
+    'division_by_zero_vectorized_static_veclen_16_cpy': colors[4],
+    'division_by_zero_vectorized_static_veclen_32_no_cpy': colors[5],
+    'division_by_zero_vectorized_static_veclen_32_cpy': colors[6],
+    'division_by_zero_vectorized_static_veclen_4_no_cpy': colors[7],
     }
 
     sizes = sorted(summary["size"].unique())
@@ -195,8 +195,8 @@ for l, k, v in [("w_cpy", "jacobi2d_vectorized_static_veclen_8_cpy", "Auto + DaC
     ax.set_yscale("log")
     ax.set_xlabel("Size")
     ax.set_ylabel("Median Runtime (s)")
-    ax.set_title(f"Median Runtime: Jacobi2D + DaCe Vectorization Hints + " + 
-                 "Explicit Copy" if l == "w_cpy" else f"Jacobi2D + DaCe Vectorization Hints + " + "No Copy")
+    ax.set_title(f"Median Runtime: Elementwise Op. w. Predicate + DaCe Vectorization Hints + " + 
+                 "Explicit Copy" if l == "w_cpy" else f"Median Runtime: Elementwise Op. w. Predicate + DaCe Vectorization Hints + " + "No Copy")
 
     ax.legend(
         title="Variant + SDFG",
