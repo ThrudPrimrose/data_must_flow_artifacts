@@ -1,0 +1,8 @@
+python plot.py gcc/amd_epyc/cloudsc_pattern_1_timings_1_core.csv  cloudsc_pattern_one_timings_1_core_amd_epyc_gcc.png cloudsc_pattern_1 gcc amd_epyc_7742
+python plot.py llvm/amd_epyc/cloudsc_pattern_1_timings_1_core.csv  cloudsc_pattern_one_timings_1_core_amd_epyc_llvm.png cloudsc_pattern_1 llvm amd_epyc_7742
+
+python plot.py gcc/intel_xeon/cloudsc_pattern_1_timings_1_core.csv  cloudsc_pattern_one_timings_1_core_intel_xeon_gcc.png cloudsc_pattern_1 gcc intel_xeon_gold
+python plot.py llvm/intel_xeon/cloudsc_pattern_1_timings_1_core.csv  cloudsc_pattern_one_timings_1_core_intel_xeon_llvm.png cloudsc_pattern_1 llvm intel_xeon_gold
+
+python plot.py gcc/arm/cloudsc_pattern_1_timings_1_core.csv  cloudsc_pattern_one_timings_1_core_arm_gcc.png cloudsc_pattern_1 gcc arm_neoverse_v2
+python plot.py llvm/arm/cloudsc_pattern_1_timings_1_core.csv  cloudsc_pattern_one_timings_1_core_arm_llvm.png cloudsc_pattern_1 llvm arm_neoverse_v2
