@@ -165,7 +165,7 @@ def test_pattern_one():
     nnz = len(data)
 
     @dace.program
-    def spmv_csr(indptr: dace.int64[n + 1], indices: dace.int64[nnz], data: dace.float64[nnz], x: dace.float64[m],
+    def csr_spmv(indptr: dace.int64[n + 1], indices: dace.int64[nnz], data: dace.float64[nnz], x: dace.float64[m],
                 y: dace.float64[n]):
         n_rows = len(indptr) - 1
 
@@ -179,8 +179,8 @@ def test_pattern_one():
             y[i] = tmp
 
 
-    sdfg = spmv_csr.to_sdfg()
-    sdfg.name = f"spmv_csr"
+    sdfg = csr_spmv.to_sdfg()
+    sdfg.name = f"csr_spmv"
     sdfg.validate()
     #it_23: dace.int64, it_47: dace.int64
     sdfg.validate()
@@ -192,7 +192,7 @@ def test_pattern_one():
     # Apply transformation
     copy_sdfg = copy.deepcopy(sdfg)
     VectorizeCPU(vector_width=8, insert_copies=False).apply_pass(copy_sdfg, {})
-    copy_sdfg.name = f"spmv_csr_vectorized"
+    copy_sdfg.name = f"csr_spmv_vectorized"
 
     sdfg(data=data, indices=indices, indptr=indptr, x=x, y=y_orig, n=_N, nnz=_nnz)
     copy_sdfg(data=data, indices=indices, indptr=indptr, x=x, y=y_vec, n=_N, nnz=_nnz)
@@ -307,7 +307,7 @@ if __name__ == "__main__":
         }
 
         @dace.program
-        def spmv_csr(indptr: dace.int64[n + 1], indices: dace.int64[nnz], data: dace.float64[nnz], x: dace.float64[m],
+        def csr_spmv(indptr: dace.int64[n + 1], indices: dace.int64[nnz], data: dace.float64[nnz], x: dace.float64[m],
                     y: dace.float64[n]):
             n_rows = len(indptr) - 1
 
@@ -320,9 +320,9 @@ if __name__ == "__main__":
                     tmp = tmp + data[idx] * x[j]
                 y[i] = tmp
 
-        sdfg = spmv_csr.to_sdfg()
+        sdfg = csr_spmv.to_sdfg()
         # Run baseline
-        all_timings["spmv_csr", size] = run_sdfg_multiple_times(
+        all_timings["csr_spmv", size] = run_sdfg_multiple_times(
             sdfg=sdfg,
             arrays=datadict,
             params=dict(),
