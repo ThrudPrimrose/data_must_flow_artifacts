@@ -8,9 +8,27 @@ from dace.transformation.passes.vectorization.vectorize_cpu import VectorizeCPU
 from dace.sdfg import utils as sdutil
 from dace.transformation.passes.vectorization.tasklet_preprocessing_passes import ReplaceSTDLogWithDaCeLog
 from math import log
-
+import shlex
 
 import subprocess
+
+# Base compilation flags
+base_flags = [
+    '-fopenmp', '-fstrict-aliasing', '-std=c++17', '-faligned-new',
+    '-fPIC', '-Wall', '-Wextra', '-O3', '-march=native', '-ffast-math',
+    '-Wno-unused-parameter', '-Wno-unused-label'
+]
+
+# Architecture / compiler specific extra flags
+env_flags_str = os.environ.get('EXTRA_FLAGS', '')
+base_flags_str = ' '.join(base_flags)
+
+flags = base_flags_str + " " + env_flags_str if env_flags_str != '' else base_flags_str
+dace.config.Config.set("compiler", "cpu", "args", value=flags)
+
+env_suffix_str = os.environ.get('SUFFIX', '')
+if env_suffix_str != '':
+    env_suffix_str = "_" + env_suffix_str
 
 def get_physical_cores():
     # Use lscpu and parse "Core(s) per socket" and "Socket(s)"
@@ -169,13 +187,13 @@ def save_timings_to_csv(filename, i, isize, timings_dict):
 # Helpers
 # -------------------------------------------------------
 
-def build_vectorized_sdfg(base_sdfg, vec_width, insert_copies, suffix):
+def build_vectorized_sdfg(base_sdfg, vec_width, insert_copies, suffix, base_name):
     sdfg = copy.deepcopy(base_sdfg)
     VectorizeCPU(vector_width=vec_width, insert_copies=insert_copies).apply_pass(sdfg, {})
-    name = f"_static_veclen_{vec_width}_{suffix}"
-    sdfg.name += name
+    name = f"{base_name}_static_veclen_{vec_width}_{suffix}"
+    sdfg.name = name
     sdfg.instrument = dace.dtypes.InstrumentationType.Timer
-    return sdfg, name
+    return sdfg, sdfg.name
 
 
 
@@ -232,7 +250,8 @@ if __name__ == "__main__":
         for l in [8, 16, 32, 64]:
             # std no-copy version
             sdfg_vec, name = build_vectorized_sdfg(
-                log_implementations_std_sdfg, vec_width=l, insert_copies=False, suffix="no_cpy"
+                log_implementations_std_sdfg, vec_width=l, insert_copies=False, suffix="no_cpy",
+                base_name="log_implementations_std"
             )
             all_timings[name, S] = run_sdfg_multiple_times(
                 sdfg=sdfg_vec, arrays=base_arrays, params=params, num_runs=NUM_REPS
@@ -240,7 +259,8 @@ if __name__ == "__main__":
 
             # std copy version
             sdfg_vec_cpy, name = build_vectorized_sdfg(
-                log_implementations_std_sdfg, vec_width=l, insert_copies=True, suffix="cpy"
+                log_implementations_std_sdfg, vec_width=l, insert_copies=True, suffix="cpy",
+                base_name="log_implementations_std"
             )
             all_timings[name, S] = run_sdfg_multiple_times(
                 sdfg=sdfg_vec_cpy, arrays=base_arrays, params=params, num_runs=NUM_REPS
@@ -248,7 +268,8 @@ if __name__ == "__main__":
 
             # dace copy version
             sdfg_vec_cpy, name = build_vectorized_sdfg(
-                log_implementations_dace_sdfg, vec_width=l, insert_copies=True, suffix="cpy"
+                log_implementations_dace_sdfg, vec_width=l, insert_copies=True, suffix="cpy",
+                base_name="log_implementations_dace"
             )
             all_timings[name, S] = run_sdfg_multiple_times(
                 sdfg=sdfg_vec_cpy, arrays=base_arrays, params=params, num_runs=NUM_REPS
@@ -256,7 +277,8 @@ if __name__ == "__main__":
 
             # dace no-copy version
             sdfg_vec_cpy, name = build_vectorized_sdfg(
-                log_implementations_dace_sdfg, vec_width=l, insert_copies=False, suffix="no_cpy"
+                log_implementations_dace_sdfg, vec_width=l, insert_copies=False, suffix="no_cpy",
+                base_name="log_implementations_dace"
             )
             all_timings[name, S] = run_sdfg_multiple_times(
                 sdfg=sdfg_vec_cpy, arrays=base_arrays, params=params, num_runs=NUM_REPS
@@ -265,5 +287,5 @@ if __name__ == "__main__":
         # -------------------------------------------------------
         # CSV output
         # -------------------------------------------------------
-        save_timings_to_csv("log_implementations_timings_1_core.csv", i, S, all_timings)
-        print("Saved timing results to log_implementations_timings.csv")
+        save_timings_to_csv(f"log_implementations_timings_1_core{env_suffix_str}.csv", i, S, all_timings)
+        print(f"Saved timing results to log_implementations_timings_1_core{env_suffix_str}.csv")
