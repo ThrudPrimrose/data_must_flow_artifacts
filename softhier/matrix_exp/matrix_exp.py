@@ -306,7 +306,7 @@ def create_data_and_handlers(M_val, N_val, hw_config: HardwareConfig):
 
     # Now generate your arrays
     A_host = np.random.uniform(0.5, 1.0, (M_val, N_val)).astype(DTYPE_INPUT)
-    B_host = np.random.uniform(0.5, 1.0, (M_val, N_val)).astype(DTYPE_INPUT)
+    B_host = np.ones((M_val, N_val)).astype(DTYPE_INPUT)
 
     A_handler = InterleaveHandler(array=A_host, block_shape=(M_val, N_val), cluster_dims=hardware_thread_group_dims)
     A_handler.split_to_blocks(tile_dims=(M_val,N_val))
