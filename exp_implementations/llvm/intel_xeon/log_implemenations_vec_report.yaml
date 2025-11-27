@@ -1,0 +1,57 @@
+--- !Analysis
+Pass:            prologepilog
+Name:            StackSize
+DebugLoc:        { File: '/usr/share/cmake-3.31/Modules/CMakeCXXCompilerABI.cpp', 
+                   Line: 8, Column: 0 }
+Function:        main
+Args:
+  - NumStackBytes:   '0'
+  - String:          ' stack bytes in function '''
+  - Function:        main
+  - String:          ''''
+...
+--- !Analysis
+Pass:            asm-printer
+Name:            InstructionMix
+DebugLoc:        { File: '/usr/share/cmake-3.31/Modules/CMakeCXXCompilerABI.cpp', 
+                   Line: 10, Column: 14 }
+Function:        main
+Args:
+  - String:          'BasicBlock: '
+  - BasicBlock:      ''
+  - String:          "\n"
+  - String:          LEA64r
+  - String:          ': '
+  - INST_LEA64r:     '4'
+  - String:          "\n"
+  - String:          ADD32rr
+  - String:          ': '
+  - INST_ADD32rr:    '3'
+  - String:          "\n"
+  - String:          MOVSX32rm8
+  - String:          ': '
+  - INST_MOVSX32rm8: '2'
+  - String:          "\n"
+  - String:          MOVZX32rm16
+  - String:          ': '
+  - INST_MOVZX32rm16: '2'
+  - String:          "\n"
+  - String:          MOVSX64rr32
+  - String:          ': '
+  - INST_MOVSX64rr32: '1'
+  - String:          "\n"
+  - String:          RET64
+  - String:          ': '
+  - INST_RET64:      '1'
+  - String:          "\n"
+...
+--- !Analysis
+Pass:            asm-printer
+Name:            InstructionCount
+DebugLoc:        { File: '/usr/share/cmake-3.31/Modules/CMakeCXXCompilerABI.cpp', 
+                   Line: 8, Column: 0 }
+Function:        main
+Args:
+  - NumInstructions: '13'
+  - String:          ' instructions in function'
+...
