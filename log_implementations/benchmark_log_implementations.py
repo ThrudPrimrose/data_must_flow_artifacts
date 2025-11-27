@@ -26,6 +26,9 @@ base_flags_str = ' '.join(base_flags)
 flags = base_flags_str + " " + env_flags_str if env_flags_str != '' else base_flags_str
 dace.config.Config.set("compiler", "cpu", "args", value=flags)
 
+compiler_exec = os.environ.get('CXX', 'c++')
+dace.config.Config.set("compiler", "cpu", "executable", value=compiler_exec)
+
 env_suffix_str = os.environ.get('SUFFIX', '')
 if env_suffix_str != '':
     env_suffix_str = "_" + env_suffix_str
@@ -108,25 +111,31 @@ def run_vectorization_test(
     print(copy_sdfg.get_instrumentation_reports()[-1])
 
 
-def test_log_implementations():
+def verify_log_implementations():
     # S = dace.symbol("S")
     S = 64  # Ensure divisibility for vectorization
 
-    A = np.random.random((S, S))
-    B = np.random.random((S, S))
+    A = np.random.random((S, ))
+    B1 = np.random.random((S, ))
+    B2 = np.random.random((S, ))
 
     @dace.program
     def log_implementations(A: dace.float64[S], B: dace.float64[S]):
         for i in dace.map[0:S]:
             B[i] = log(A[i])
 
-    run_vectorization_test(
-        dace_func=log_implementations,
-        arrays={"A": A, "B": B},
-        params={},
-        vector_width=8,
-        sdfg_name="log_implementations",
-    )
+    sdfg = log_implementations.to_sdfg()
+
+    dace_impl_sdfg = copy.deepcopy(sdfg)
+    dace_impl_sdfg.name = sdfg.name + "_dace_log"
+    ReplaceSTDLogWithDaCeLog().apply_pass(dace_impl_sdfg, {})
+
+    sdfg(A=A, B=B1)
+    dace_impl_sdfg(A=A, B=B2)
+
+    assert np.allclose(B1, B2)
+
+    #print(f"Verification passed, different: {B1 - B2}")
 
 
 def run_sdfg_multiple_times(
@@ -204,9 +213,10 @@ def build_vectorized_sdfg(base_sdfg, vec_width, insert_copies, suffix, base_name
 if __name__ == "__main__":
     NUM_REPS = 20
     all_timings = {}
+    verify_log_implementations()
 
     # S = dace.symbol("S")
-    for i, S in enumerate([8192 * 64, 8192 * 256, 8192 * 512, 8192 * 1024, 8192 * 2048, 8192 * 4096, 8192 * 8192]):
+    for i, S in enumerate([8192 * 64, ]): 
         @dace.program
         def log_implementations(A: dace.float64[S], B: dace.float64[S]):
             for i in dace.map[0:S]:
@@ -222,6 +232,13 @@ if __name__ == "__main__":
         ReplaceSTDLogWithDaCeLog().apply_pass(log_implementations_dace_sdfg, {})
         log_implementations_dace_sdfg.name = "log_implementations_dace"
         log_implementations_dace_sdfg.instrument = dace.dtypes.InstrumentationType.Timer
+
+        log_implementations_dace_safe_sdfg = log_implementations.to_sdfg()
+        dpass = ReplaceSTDLogWithDaCeLog()
+        dpass.use_safe_impl = True
+        dpass.apply_pass(log_implementations_dace_safe_sdfg, {})
+        log_implementations_dace_safe_sdfg.name = "log_implementations_safe_dace"
+        log_implementations_dace_safe_sdfg.instrument = dace.dtypes.InstrumentationType.Timer
 
         # Baseline arrays
         A = np.random.random((S, ))
@@ -243,7 +260,13 @@ if __name__ == "__main__":
             params=params,
             num_runs=NUM_REPS,
         )
-
+        # Run baseline 1
+        all_timings["log_implementations_safe_dace", S] = run_sdfg_multiple_times(
+            sdfg=log_implementations_dace_safe_sdfg,
+            arrays=base_arrays,
+            params=params,
+            num_runs=NUM_REPS,
+        )
         # -------------------------------------------------------
         # Vectorized versions
         # -------------------------------------------------------
@@ -279,6 +302,24 @@ if __name__ == "__main__":
             sdfg_vec_cpy, name = build_vectorized_sdfg(
                 log_implementations_dace_sdfg, vec_width=l, insert_copies=False, suffix="no_cpy",
                 base_name="log_implementations_dace"
+            )
+            all_timings[name, S] = run_sdfg_multiple_times(
+                sdfg=sdfg_vec_cpy, arrays=base_arrays, params=params, num_runs=NUM_REPS
+            )
+
+            # safe dace copy version
+            sdfg_vec_cpy, name = build_vectorized_sdfg(
+                log_implementations_dace_safe_sdfg, vec_width=l, insert_copies=True, suffix="cpy",
+                base_name="log_implementations_dace_safe"
+            )
+            all_timings[name, S] = run_sdfg_multiple_times(
+                sdfg=sdfg_vec_cpy, arrays=base_arrays, params=params, num_runs=NUM_REPS
+            )
+
+            # safe dace no-copy version
+            sdfg_vec_cpy, name = build_vectorized_sdfg(
+                log_implementations_dace_safe_sdfg, vec_width=l, insert_copies=False, suffix="no_cpy",
+                base_name="log_implementations_dace_safe"
             )
             all_timings[name, S] = run_sdfg_multiple_times(
                 sdfg=sdfg_vec_cpy, arrays=base_arrays, params=params, num_runs=NUM_REPS

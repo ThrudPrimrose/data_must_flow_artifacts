@@ -15,10 +15,19 @@ alias cxx=clang++
 export CC=clang
 export CXX=clang++
 
+# Absolute path to this script
+SCRIPT_PATH="$(realpath "${BASH_SOURCE[0]}")"
+
+# Directory containing this script
+SCRIPT_DIR="$(dirname "$SCRIPT_PATH")"
+
+echo "Script path: $SCRIPT_PATH"
+echo "Script dir:  $SCRIPT_DIR"
+
 # Define configurations: each element is "EXTRA_FLAGS SUFFIX"
 configs=(
-    "" ""                                   # first run: no extra flags, no suffix
-    "-mprefer-vector-width=512" "force_width_512"  # second run
+    #"" ""                                   # first run: no extra flags, no suffix
+    "-mprefer-vector-width=512  -Rpass=loop-vectorize -Rpass-analysis=loop-vectorize -Rpass-missed=loop-vectorize -Rpass=slp-vectorize -fsave-optimization-record -foptimization-record-file=${SCRIPT_DIR}/log_implemenations_vec_report.yaml" "force_width_512"   # second run
 )
 
 for ((i=0; i<${#configs[@]}; i+=2)); do
