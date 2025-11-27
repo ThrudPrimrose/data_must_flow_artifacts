@@ -1,0 +1,13 @@
+
+
+WP2 - DaCe transformations for data movement operations
+WP2 - Transformation for DMA engines. No access to Ascend
+
+M1-WP2 - Explicit Data movement and use DMA engines in SDFGs
+
+M2-WP2 - GEMM using DMA
+
+M3-WP2 - Back end code generation for biggers apps
+
+M4-WP1-WP2 - CloudSC / LULESH / ML app and performance study
+

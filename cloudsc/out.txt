@@ -1,0 +1,1081 @@
+Making ptare_var_0 into scalar
+Making rtt_var_1 into scalar
+Making foedelta__ret into scalar
+Automatically expanded library node "memsetLib_pfsqlf_2" with implementation "pure".
+Automatically expanded library node "memsetLib_pfsqif_3" with implementation "pure".
+Automatically expanded library node "memsetLib_pfsqrf_4" with implementation "pure".
+Automatically expanded library node "memsetLib_pfsqsf_5" with implementation "pure".
+Automatically expanded library node "memsetLib_pfcqlng_6" with implementation "pure".
+Automatically expanded library node "memsetLib_pfcqnng_7" with implementation "pure".
+Automatically expanded library node "memsetLib_pfcqrng_8" with implementation "pure".
+Automatically expanded library node "memsetLib_pfcqsng_9" with implementation "pure".
+Automatically expanded library node "memsetLib_pfsqltur_10" with implementation "pure".
+Automatically expanded library node "memsetLib_pfsqitur_11" with implementation "pure".
+Automatically expanded library node "memsetLib_zcldtopdist_12" with implementation "pure".
+Automatically expanded library node "memsetLib_zcovptot_17" with implementation "pure".
+Automatically expanded library node "memsetLib_zcovpmax_35" with implementation "pure".
+Automatically expanded library node "memsetLib_zanewm1_38" with implementation "pure".
+Automatically expanded library node "memsetLib_zcovpclr_40" with implementation "pure".
+Automatically expanded library node "memsetLib_zda_43" with implementation "pure".
+Automatically expanded library node "memsetLib_zlneg_0" with implementation "pure".
+Automatically expanded library node "memsetLib_zqxn2d_16" with implementation "pure".
+Automatically expanded library node "memsetLib_prainfrac_toprfz_36" with implementation "pure".
+Automatically expanded library node "memsetLib_zpfplsx_39" with implementation "pure".
+Automatically expanded library node "copyLib_zcovptot_pcovptot_32" with implementation "pure".
+Automatically expanded library node "memsetLib_zsinksum_25" with implementation "pure".
+Automatically expanded library node "memsetLib_zlcond1_1" with implementation "pure".
+Automatically expanded library node "memsetLib_zpsupsatsrce_13" with implementation "pure".
+Automatically expanded library node "memsetLib_zconvsink_14" with implementation "pure".
+Automatically expanded library node "memsetLib_zratio_15" with implementation "pure".
+Automatically expanded library node "memsetLib_zlfinalsum_18" with implementation "pure".
+Automatically expanded library node "memsetLib_zldefr_19" with implementation "pure".
+Automatically expanded library node "memsetLib_zfallsink_20" with implementation "pure".
+Automatically expanded library node "memsetLib_zicetot_21" with implementation "pure".
+Automatically expanded library node "memsetLib_zsolab_22" with implementation "pure".
+Automatically expanded library node "memsetLib_zlicld_23" with implementation "pure".
+Automatically expanded library node "memsetLib_zacust_24" with implementation "pure".
+Automatically expanded library node "memsetLib_zfallsrce_26" with implementation "pure".
+Automatically expanded library node "memsetLib_zrainacc_27" with implementation "pure".
+Automatically expanded library node "memsetLib_zqpretot_28" with implementation "pure".
+Automatically expanded library node "memsetLib_zlcond2_29" with implementation "pure".
+Automatically expanded library node "memsetLib_zconvsrce_30" with implementation "pure".
+Automatically expanded library node "memsetLib_zrainaut_31" with implementation "pure".
+Automatically expanded library node "memsetLib_zsupsat_33" with implementation "pure".
+Automatically expanded library node "memsetLib_zsolac_34" with implementation "pure".
+Automatically expanded library node "memsetLib_zsnowaut_37" with implementation "pure".
+Automatically expanded library node "memsetLib_zsolqb_41" with implementation "pure".
+Automatically expanded library node "memsetLib_zsolqa_42" with implementation "pure".
+[ 25%] Building CXX object CMakeFiles/cloudsc_stage6.dir/home/primrose/Work/Scratchpad/softhier_dace_artifacts/softhier_dace_artifacts/cloudsc/.dacecache/cloudsc_stage6/src/cpu/cloudsc_stage6.cpp.o
+/home/primrose/Work/Scratchpad/softhier_dace_artifacts/softhier_dace_artifacts/cloudsc/.dacecache/cloudsc_stage6/src/cpu/cloudsc_stage6.cpp: In function ‘void loop_body_4_13_0(cloudsc_stage6_state_t*, double*, double*, const double&, const double&, const double&, const double&, const double&, const double&, const double&, const double&, const double&, const double&, const double&, const double&, const double&, double*, double*, double*, double*, double*, double*, double*, double*, double*, double*, double*, double*, double*, double*, double*, double*, double*, double*, double*, double*, double*, double*, int, int, int, int)’:
+/home/primrose/Work/Scratchpad/softhier_dace_artifacts/softhier_dace_artifacts/cloudsc/.dacecache/cloudsc_stage6/src/cpu/cloudsc_stage6.cpp:3715:16: warning: variable ‘zcor’ set but not used [-Wunused-but-set-variable]
+ 3715 |         double zcor;
+      |                ^~~~
+/home/primrose/Work/Scratchpad/softhier_dace_artifacts/softhier_dace_artifacts/cloudsc/.dacecache/cloudsc_stage6/src/cpu/cloudsc_stage6.cpp: In function ‘void loop_body_4_16_40(cloudsc_stage6_state_t*, double*, double*, const double&, const double&, const double&, const double&, double*, double*, double*, double*, double*, double*, double*, double*, double*, double*, double*, int, int, int, int)’:
+/home/primrose/Work/Scratchpad/softhier_dace_artifacts/softhier_dace_artifacts/cloudsc/.dacecache/cloudsc_stage6/src/cpu/cloudsc_stage6.cpp:14463:16: warning: variable ‘tmp_ieassign_8’ set but not used [-Wunused-but-set-variable]
+14463 |         double tmp_ieassign_8;
+      |                ^~~~~~~~~~~~~~
+/home/primrose/Work/Scratchpad/softhier_dace_artifacts/softhier_dace_artifacts/cloudsc/.dacecache/cloudsc_stage6/src/cpu/cloudsc_stage6.cpp: In function ‘void __program_cloudsc_stage6_internal(cloudsc_stage6_state_t*, int*, int*, double*, double*, double*, double*, double*, double*, double*, double*, double*, double*, double*, double*, double*, double*, double*, double*, double*, double*, double*, double*, double*, double*, double*, double*, double*, double*, double*, double*, double*, double*, double*, double*, double*, double*, double*, double*, double*, double*, double*, double*, double*, double*, double*, double*, double*, double*, double*, double*, double*, double*, double*, double*, double*, double*, double*, double*, double*, double*, double*, double*, double*, double*, double*, double*, double*, int, int, int, int, int, int, int, int, int, int, int, int, int, int, int, int, int, int, double, double, double, double, double, double, double, double, double, double, double, double, double, double, double, double, double, double, double, double, double, double, double, double, double, double, double, double, double, double, double, double, double, double, double, double, double, double, double, double, double, double, double, double, double, double, double, double, double, double, double, double, double, double, double, double, double, double, double, double, double, double, double, double, double, double, double, double, double, double, double, double, double, double, double, double, double, double, double, double, double, double, double, double, double, double, double, double, double, double, double, double, double, double, double)’:
+/home/primrose/Work/Scratchpad/softhier_dace_artifacts/softhier_dace_artifacts/cloudsc/.dacecache/cloudsc_stage6/src/cpu/cloudsc_stage6.cpp:33159:45: warning: ‘new’ of type ‘double’ with extended alignment 64 [-Waligned-new=]
+33159 |     zlcond1 = new double DACE_ALIGN(64)[klon];
+      |                                             ^
+/home/primrose/Work/Scratchpad/softhier_dace_artifacts/softhier_dace_artifacts/cloudsc/.dacecache/cloudsc_stage6/src/cpu/cloudsc_stage6.cpp:33159:45: note: uses ‘void* operator new [](std::size_t)’, which does not have an alignment parameter
+/home/primrose/Work/Scratchpad/softhier_dace_artifacts/softhier_dace_artifacts/cloudsc/.dacecache/cloudsc_stage6/src/cpu/cloudsc_stage6.cpp:33159:45: note: use ‘-faligned-new’ to enable C++17 over-aligned new support
+/home/primrose/Work/Scratchpad/softhier_dace_artifacts/softhier_dace_artifacts/cloudsc/.dacecache/cloudsc_stage6/src/cpu/cloudsc_stage6.cpp:33161:45: warning: ‘new’ of type ‘double’ with extended alignment 64 [-Waligned-new=]
+33161 |     zlcond2 = new double DACE_ALIGN(64)[klon];
+      |                                             ^
+/home/primrose/Work/Scratchpad/softhier_dace_artifacts/softhier_dace_artifacts/cloudsc/.dacecache/cloudsc_stage6/src/cpu/cloudsc_stage6.cpp:33161:45: note: uses ‘void* operator new [](std::size_t)’, which does not have an alignment parameter
+/home/primrose/Work/Scratchpad/softhier_dace_artifacts/softhier_dace_artifacts/cloudsc/.dacecache/cloudsc_stage6/src/cpu/cloudsc_stage6.cpp:33161:45: note: use ‘-faligned-new’ to enable C++17 over-aligned new support
+/home/primrose/Work/Scratchpad/softhier_dace_artifacts/softhier_dace_artifacts/cloudsc/.dacecache/cloudsc_stage6/src/cpu/cloudsc_stage6.cpp:33163:46: warning: ‘new’ of type ‘double’ with extended alignment 64 [-Waligned-new=]
+33163 |     zrainaut = new double DACE_ALIGN(64)[klon];
+      |                                              ^
+/home/primrose/Work/Scratchpad/softhier_dace_artifacts/softhier_dace_artifacts/cloudsc/.dacecache/cloudsc_stage6/src/cpu/cloudsc_stage6.cpp:33163:46: note: uses ‘void* operator new [](std::size_t)’, which does not have an alignment parameter
+/home/primrose/Work/Scratchpad/softhier_dace_artifacts/softhier_dace_artifacts/cloudsc/.dacecache/cloudsc_stage6/src/cpu/cloudsc_stage6.cpp:33163:46: note: use ‘-faligned-new’ to enable C++17 over-aligned new support
+/home/primrose/Work/Scratchpad/softhier_dace_artifacts/softhier_dace_artifacts/cloudsc/.dacecache/cloudsc_stage6/src/cpu/cloudsc_stage6.cpp:33165:46: warning: ‘new’ of type ‘double’ with extended alignment 64 [-Waligned-new=]
+33165 |     zsnowaut = new double DACE_ALIGN(64)[klon];
+      |                                              ^
+/home/primrose/Work/Scratchpad/softhier_dace_artifacts/softhier_dace_artifacts/cloudsc/.dacecache/cloudsc_stage6/src/cpu/cloudsc_stage6.cpp:33165:46: note: uses ‘void* operator new [](std::size_t)’, which does not have an alignment parameter
+/home/primrose/Work/Scratchpad/softhier_dace_artifacts/softhier_dace_artifacts/cloudsc/.dacecache/cloudsc_stage6/src/cpu/cloudsc_stage6.cpp:33165:46: note: use ‘-faligned-new’ to enable C++17 over-aligned new support
+/home/primrose/Work/Scratchpad/softhier_dace_artifacts/softhier_dace_artifacts/cloudsc/.dacecache/cloudsc_stage6/src/cpu/cloudsc_stage6.cpp:33167:45: warning: ‘new’ of type ‘double’ with extended alignment 64 [-Waligned-new=]
+33167 |     zliqcld = new double DACE_ALIGN(64)[klon];
+      |                                             ^
+/home/primrose/Work/Scratchpad/softhier_dace_artifacts/softhier_dace_artifacts/cloudsc/.dacecache/cloudsc_stage6/src/cpu/cloudsc_stage6.cpp:33167:45: note: uses ‘void* operator new [](std::size_t)’, which does not have an alignment parameter
+/home/primrose/Work/Scratchpad/softhier_dace_artifacts/softhier_dace_artifacts/cloudsc/.dacecache/cloudsc_stage6/src/cpu/cloudsc_stage6.cpp:33167:45: note: use ‘-faligned-new’ to enable C++17 over-aligned new support
+/home/primrose/Work/Scratchpad/softhier_dace_artifacts/softhier_dace_artifacts/cloudsc/.dacecache/cloudsc_stage6/src/cpu/cloudsc_stage6.cpp:33169:45: warning: ‘new’ of type ‘double’ with extended alignment 64 [-Waligned-new=]
+33169 |     zicecld = new double DACE_ALIGN(64)[klon];
+      |                                             ^
+/home/primrose/Work/Scratchpad/softhier_dace_artifacts/softhier_dace_artifacts/cloudsc/.dacecache/cloudsc_stage6/src/cpu/cloudsc_stage6.cpp:33169:45: note: uses ‘void* operator new [](std::size_t)’, which does not have an alignment parameter
+/home/primrose/Work/Scratchpad/softhier_dace_artifacts/softhier_dace_artifacts/cloudsc/.dacecache/cloudsc_stage6/src/cpu/cloudsc_stage6.cpp:33169:45: note: use ‘-faligned-new’ to enable C++17 over-aligned new support
+/home/primrose/Work/Scratchpad/softhier_dace_artifacts/softhier_dace_artifacts/cloudsc/.dacecache/cloudsc_stage6/src/cpu/cloudsc_stage6.cpp:33171:45: warning: ‘new’ of type ‘double’ with extended alignment 64 [-Waligned-new=]
+33171 |     zfokoop = new double DACE_ALIGN(64)[klon];
+      |                                             ^
+/home/primrose/Work/Scratchpad/softhier_dace_artifacts/softhier_dace_artifacts/cloudsc/.dacecache/cloudsc_stage6/src/cpu/cloudsc_stage6.cpp:33171:45: note: uses ‘void* operator new [](std::size_t)’, which does not have an alignment parameter
+/home/primrose/Work/Scratchpad/softhier_dace_artifacts/softhier_dace_artifacts/cloudsc/.dacecache/cloudsc_stage6/src/cpu/cloudsc_stage6.cpp:33171:45: note: use ‘-faligned-new’ to enable C++17 over-aligned new support
+/home/primrose/Work/Scratchpad/softhier_dace_artifacts/softhier_dace_artifacts/cloudsc/.dacecache/cloudsc_stage6/src/cpu/cloudsc_stage6.cpp:33173:64: warning: ‘new’ of type ‘double’ with extended alignment 64 [-Waligned-new=]
+33173 |     zfoealfa = new double DACE_ALIGN(64)[((klev * klon) + klon)];
+      |                                                                ^
+/home/primrose/Work/Scratchpad/softhier_dace_artifacts/softhier_dace_artifacts/cloudsc/.dacecache/cloudsc_stage6/src/cpu/cloudsc_stage6.cpp:33173:64: note: uses ‘void* operator new [](std::size_t)’, which does not have an alignment parameter
+/home/primrose/Work/Scratchpad/softhier_dace_artifacts/softhier_dace_artifacts/cloudsc/.dacecache/cloudsc_stage6/src/cpu/cloudsc_stage6.cpp:33173:64: note: use ‘-faligned-new’ to enable C++17 over-aligned new support
+/home/primrose/Work/Scratchpad/softhier_dace_artifacts/softhier_dace_artifacts/cloudsc/.dacecache/cloudsc_stage6/src/cpu/cloudsc_stage6.cpp:33175:48: warning: ‘new’ of type ‘double’ with extended alignment 64 [-Waligned-new=]
+33175 |     zicenuclei = new double DACE_ALIGN(64)[klon];
+      |                                                ^
+/home/primrose/Work/Scratchpad/softhier_dace_artifacts/softhier_dace_artifacts/cloudsc/.dacecache/cloudsc_stage6/src/cpu/cloudsc_stage6.cpp:33175:48: note: uses ‘void* operator new [](std::size_t)’, which does not have an alignment parameter
+/home/primrose/Work/Scratchpad/softhier_dace_artifacts/softhier_dace_artifacts/cloudsc/.dacecache/cloudsc_stage6/src/cpu/cloudsc_stage6.cpp:33175:48: note: use ‘-faligned-new’ to enable C++17 over-aligned new support
+/home/primrose/Work/Scratchpad/softhier_dace_artifacts/softhier_dace_artifacts/cloudsc/.dacecache/cloudsc_stage6/src/cpu/cloudsc_stage6.cpp:33177:44: warning: ‘new’ of type ‘double’ with extended alignment 64 [-Waligned-new=]
+33177 |     zlicld = new double DACE_ALIGN(64)[klon];
+      |                                            ^
+/home/primrose/Work/Scratchpad/softhier_dace_artifacts/softhier_dace_artifacts/cloudsc/.dacecache/cloudsc_stage6/src/cpu/cloudsc_stage6.cpp:33177:44: note: uses ‘void* operator new [](std::size_t)’, which does not have an alignment parameter
+/home/primrose/Work/Scratchpad/softhier_dace_artifacts/softhier_dace_artifacts/cloudsc/.dacecache/cloudsc_stage6/src/cpu/cloudsc_stage6.cpp:33177:44: note: use ‘-faligned-new’ to enable C++17 over-aligned new support
+/home/primrose/Work/Scratchpad/softhier_dace_artifacts/softhier_dace_artifacts/cloudsc/.dacecache/cloudsc_stage6/src/cpu/cloudsc_stage6.cpp:33179:48: warning: ‘new’ of type ‘double’ with extended alignment 64 [-Waligned-new=]
+33179 |     zlfinalsum = new double DACE_ALIGN(64)[klon];
+      |                                                ^
+/home/primrose/Work/Scratchpad/softhier_dace_artifacts/softhier_dace_artifacts/cloudsc/.dacecache/cloudsc_stage6/src/cpu/cloudsc_stage6.cpp:33179:48: note: uses ‘void* operator new [](std::size_t)’, which does not have an alignment parameter
+/home/primrose/Work/Scratchpad/softhier_dace_artifacts/softhier_dace_artifacts/cloudsc/.dacecache/cloudsc_stage6/src/cpu/cloudsc_stage6.cpp:33179:48: note: use ‘-faligned-new’ to enable C++17 over-aligned new support
+/home/primrose/Work/Scratchpad/softhier_dace_artifacts/softhier_dace_artifacts/cloudsc/.dacecache/cloudsc_stage6/src/cpu/cloudsc_stage6.cpp:33181:42: warning: ‘new’ of type ‘double’ with extended alignment 64 [-Waligned-new=]
+33181 |     zdqs = new double DACE_ALIGN(64)[klon];
+      |                                          ^
+/home/primrose/Work/Scratchpad/softhier_dace_artifacts/softhier_dace_artifacts/cloudsc/.dacecache/cloudsc_stage6/src/cpu/cloudsc_stage6.cpp:33181:42: note: uses ‘void* operator new [](std::size_t)’, which does not have an alignment parameter
+/home/primrose/Work/Scratchpad/softhier_dace_artifacts/softhier_dace_artifacts/cloudsc/.dacecache/cloudsc_stage6/src/cpu/cloudsc_stage6.cpp:33181:42: note: use ‘-faligned-new’ to enable C++17 over-aligned new support
+/home/primrose/Work/Scratchpad/softhier_dace_artifacts/softhier_dace_artifacts/cloudsc/.dacecache/cloudsc_stage6/src/cpu/cloudsc_stage6.cpp:33183:43: warning: ‘new’ of type ‘double’ with extended alignment 64 [-Waligned-new=]
+33183 |     ztold = new double DACE_ALIGN(64)[klon];
+      |                                           ^
+/home/primrose/Work/Scratchpad/softhier_dace_artifacts/softhier_dace_artifacts/cloudsc/.dacecache/cloudsc_stage6/src/cpu/cloudsc_stage6.cpp:33183:43: note: uses ‘void* operator new [](std::size_t)’, which does not have an alignment parameter
+/home/primrose/Work/Scratchpad/softhier_dace_artifacts/softhier_dace_artifacts/cloudsc/.dacecache/cloudsc_stage6/src/cpu/cloudsc_stage6.cpp:33183:43: note: use ‘-faligned-new’ to enable C++17 over-aligned new support
+/home/primrose/Work/Scratchpad/softhier_dace_artifacts/softhier_dace_artifacts/cloudsc/.dacecache/cloudsc_stage6/src/cpu/cloudsc_stage6.cpp:33185:43: warning: ‘new’ of type ‘double’ with extended alignment 64 [-Waligned-new=]
+33185 |     zqold = new double DACE_ALIGN(64)[klon];
+      |                                           ^
+/home/primrose/Work/Scratchpad/softhier_dace_artifacts/softhier_dace_artifacts/cloudsc/.dacecache/cloudsc_stage6/src/cpu/cloudsc_stage6.cpp:33185:43: note: uses ‘void* operator new [](std::size_t)’, which does not have an alignment parameter
+/home/primrose/Work/Scratchpad/softhier_dace_artifacts/softhier_dace_artifacts/cloudsc/.dacecache/cloudsc_stage6/src/cpu/cloudsc_stage6.cpp:33185:43: note: use ‘-faligned-new’ to enable C++17 over-aligned new support
+/home/primrose/Work/Scratchpad/softhier_dace_artifacts/softhier_dace_artifacts/cloudsc/.dacecache/cloudsc_stage6/src/cpu/cloudsc_stage6.cpp:33187:44: warning: ‘new’ of type ‘double’ with extended alignment 64 [-Waligned-new=]
+33187 |     zdtgdp = new double DACE_ALIGN(64)[klon];
+      |                                            ^
+/home/primrose/Work/Scratchpad/softhier_dace_artifacts/softhier_dace_artifacts/cloudsc/.dacecache/cloudsc_stage6/src/cpu/cloudsc_stage6.cpp:33187:44: note: uses ‘void* operator new [](std::size_t)’, which does not have an alignment parameter
+/home/primrose/Work/Scratchpad/softhier_dace_artifacts/softhier_dace_artifacts/cloudsc/.dacecache/cloudsc_stage6/src/cpu/cloudsc_stage6.cpp:33187:44: note: use ‘-faligned-new’ to enable C++17 over-aligned new support
+/home/primrose/Work/Scratchpad/softhier_dace_artifacts/softhier_dace_artifacts/cloudsc/.dacecache/cloudsc_stage6/src/cpu/cloudsc_stage6.cpp:33189:45: warning: ‘new’ of type ‘double’ with extended alignment 64 [-Waligned-new=]
+33189 |     zrdtgdp = new double DACE_ALIGN(64)[klon];
+      |                                             ^
+/home/primrose/Work/Scratchpad/softhier_dace_artifacts/softhier_dace_artifacts/cloudsc/.dacecache/cloudsc_stage6/src/cpu/cloudsc_stage6.cpp:33189:45: note: uses ‘void* operator new [](std::size_t)’, which does not have an alignment parameter
+/home/primrose/Work/Scratchpad/softhier_dace_artifacts/softhier_dace_artifacts/cloudsc/.dacecache/cloudsc_stage6/src/cpu/cloudsc_stage6.cpp:33189:45: note: use ‘-faligned-new’ to enable C++17 over-aligned new support
+/home/primrose/Work/Scratchpad/softhier_dace_artifacts/softhier_dace_artifacts/cloudsc/.dacecache/cloudsc_stage6/src/cpu/cloudsc_stage6.cpp:33191:46: warning: ‘new’ of type ‘double’ with extended alignment 64 [-Waligned-new=]
+33191 |     zcovpclr = new double DACE_ALIGN(64)[klon];
+      |                                              ^
+/home/primrose/Work/Scratchpad/softhier_dace_artifacts/softhier_dace_artifacts/cloudsc/.dacecache/cloudsc_stage6/src/cpu/cloudsc_stage6.cpp:33191:46: note: uses ‘void* operator new [](std::size_t)’, which does not have an alignment parameter
+/home/primrose/Work/Scratchpad/softhier_dace_artifacts/softhier_dace_artifacts/cloudsc/.dacecache/cloudsc_stage6/src/cpu/cloudsc_stage6.cpp:33191:46: note: use ‘-faligned-new’ to enable C++17 over-aligned new support
+/home/primrose/Work/Scratchpad/softhier_dace_artifacts/softhier_dace_artifacts/cloudsc/.dacecache/cloudsc_stage6/src/cpu/cloudsc_stage6.cpp:33193:46: warning: ‘new’ of type ‘double’ with extended alignment 64 [-Waligned-new=]
+33193 |     zcovptot = new double DACE_ALIGN(64)[klon];
+      |                                              ^
+/home/primrose/Work/Scratchpad/softhier_dace_artifacts/softhier_dace_artifacts/cloudsc/.dacecache/cloudsc_stage6/src/cpu/cloudsc_stage6.cpp:33193:46: note: uses ‘void* operator new [](std::size_t)’, which does not have an alignment parameter
+/home/primrose/Work/Scratchpad/softhier_dace_artifacts/softhier_dace_artifacts/cloudsc/.dacecache/cloudsc_stage6/src/cpu/cloudsc_stage6.cpp:33193:46: note: use ‘-faligned-new’ to enable C++17 over-aligned new support
+/home/primrose/Work/Scratchpad/softhier_dace_artifacts/softhier_dace_artifacts/cloudsc/.dacecache/cloudsc_stage6/src/cpu/cloudsc_stage6.cpp:33195:46: warning: ‘new’ of type ‘double’ with extended alignment 64 [-Waligned-new=]
+33195 |     zcovpmax = new double DACE_ALIGN(64)[klon];
+      |                                              ^
+/home/primrose/Work/Scratchpad/softhier_dace_artifacts/softhier_dace_artifacts/cloudsc/.dacecache/cloudsc_stage6/src/cpu/cloudsc_stage6.cpp:33195:46: note: uses ‘void* operator new [](std::size_t)’, which does not have an alignment parameter
+/home/primrose/Work/Scratchpad/softhier_dace_artifacts/softhier_dace_artifacts/cloudsc/.dacecache/cloudsc_stage6/src/cpu/cloudsc_stage6.cpp:33195:46: note: use ‘-faligned-new’ to enable C++17 over-aligned new support
+/home/primrose/Work/Scratchpad/softhier_dace_artifacts/softhier_dace_artifacts/cloudsc/.dacecache/cloudsc_stage6/src/cpu/cloudsc_stage6.cpp:33197:46: warning: ‘new’ of type ‘double’ with extended alignment 64 [-Waligned-new=]
+33197 |     zqpretot = new double DACE_ALIGN(64)[klon];
+      |                                              ^
+/home/primrose/Work/Scratchpad/softhier_dace_artifacts/softhier_dace_artifacts/cloudsc/.dacecache/cloudsc_stage6/src/cpu/cloudsc_stage6.cpp:33197:46: note: uses ‘void* operator new [](std::size_t)’, which does not have an alignment parameter
+/home/primrose/Work/Scratchpad/softhier_dace_artifacts/softhier_dace_artifacts/cloudsc/.dacecache/cloudsc_stage6/src/cpu/cloudsc_stage6.cpp:33197:46: note: use ‘-faligned-new’ to enable C++17 over-aligned new support
+/home/primrose/Work/Scratchpad/softhier_dace_artifacts/softhier_dace_artifacts/cloudsc/.dacecache/cloudsc_stage6/src/cpu/cloudsc_stage6.cpp:33199:66: warning: ‘new’ of type ‘double’ with extended alignment 64 [-Waligned-new=]
+33199 |     ztp1 = new double DACE_ALIGN(64)[((klon * (klev - 1)) + klon)];
+      |                                                                  ^
+/home/primrose/Work/Scratchpad/softhier_dace_artifacts/softhier_dace_artifacts/cloudsc/.dacecache/cloudsc_stage6/src/cpu/cloudsc_stage6.cpp:33199:66: note: uses ‘void* operator new [](std::size_t)’, which does not have an alignment parameter
+/home/primrose/Work/Scratchpad/softhier_dace_artifacts/softhier_dace_artifacts/cloudsc/.dacecache/cloudsc_stage6/src/cpu/cloudsc_stage6.cpp:33199:66: note: use ‘-faligned-new’ to enable C++17 over-aligned new support
+/home/primrose/Work/Scratchpad/softhier_dace_artifacts/softhier_dace_artifacts/cloudsc/.dacecache/cloudsc_stage6/src/cpu/cloudsc_stage6.cpp:33201:44: warning: ‘new’ of type ‘double’ with extended alignment 64 [-Waligned-new=]
+33201 |     zldefr = new double DACE_ALIGN(64)[klon];
+      |                                            ^
+/home/primrose/Work/Scratchpad/softhier_dace_artifacts/softhier_dace_artifacts/cloudsc/.dacecache/cloudsc_stage6/src/cpu/cloudsc_stage6.cpp:33201:44: note: uses ‘void* operator new [](std::size_t)’, which does not have an alignment parameter
+/home/primrose/Work/Scratchpad/softhier_dace_artifacts/softhier_dace_artifacts/cloudsc/.dacecache/cloudsc_stage6/src/cpu/cloudsc_stage6.cpp:33201:44: note: use ‘-faligned-new’ to enable C++17 over-aligned new support
+/home/primrose/Work/Scratchpad/softhier_dace_artifacts/softhier_dace_artifacts/cloudsc/.dacecache/cloudsc_stage6/src/cpu/cloudsc_stage6.cpp:33203:45: warning: ‘new’ of type ‘double’ with extended alignment 64 [-Waligned-new=]
+33203 |     zldifdt = new double DACE_ALIGN(64)[klon];
+      |                                             ^
+/home/primrose/Work/Scratchpad/softhier_dace_artifacts/softhier_dace_artifacts/cloudsc/.dacecache/cloudsc_stage6/src/cpu/cloudsc_stage6.cpp:33203:45: note: uses ‘void* operator new [](std::size_t)’, which does not have an alignment parameter
+/home/primrose/Work/Scratchpad/softhier_dace_artifacts/softhier_dace_artifacts/cloudsc/.dacecache/cloudsc_stage6/src/cpu/cloudsc_stage6.cpp:33203:45: note: use ‘-faligned-new’ to enable C++17 over-aligned new support
+/home/primrose/Work/Scratchpad/softhier_dace_artifacts/softhier_dace_artifacts/cloudsc/.dacecache/cloudsc_stage6/src/cpu/cloudsc_stage6.cpp:33205:50: warning: ‘new’ of type ‘double’ with extended alignment 64 [-Waligned-new=]
+33205 |     zlcust = new double DACE_ALIGN(64)[(5 * klon)];
+      |                                                  ^
+/home/primrose/Work/Scratchpad/softhier_dace_artifacts/softhier_dace_artifacts/cloudsc/.dacecache/cloudsc_stage6/src/cpu/cloudsc_stage6.cpp:33205:50: note: uses ‘void* operator new [](std::size_t)’, which does not have an alignment parameter
+/home/primrose/Work/Scratchpad/softhier_dace_artifacts/softhier_dace_artifacts/cloudsc/.dacecache/cloudsc_stage6/src/cpu/cloudsc_stage6.cpp:33205:50: note: use ‘-faligned-new’ to enable C++17 over-aligned new support
+/home/primrose/Work/Scratchpad/softhier_dace_artifacts/softhier_dace_artifacts/cloudsc/.dacecache/cloudsc_stage6/src/cpu/cloudsc_stage6.cpp:33207:44: warning: ‘new’ of type ‘double’ with extended alignment 64 [-Waligned-new=]
+33207 |     zacust = new double DACE_ALIGN(64)[klon];
+      |                                            ^
+/home/primrose/Work/Scratchpad/softhier_dace_artifacts/softhier_dace_artifacts/cloudsc/.dacecache/cloudsc_stage6/src/cpu/cloudsc_stage6.cpp:33207:44: note: uses ‘void* operator new [](std::size_t)’, which does not have an alignment parameter
+/home/primrose/Work/Scratchpad/softhier_dace_artifacts/softhier_dace_artifacts/cloudsc/.dacecache/cloudsc_stage6/src/cpu/cloudsc_stage6.cpp:33207:44: note: use ‘-faligned-new’ to enable C++17 over-aligned new support
+/home/primrose/Work/Scratchpad/softhier_dace_artifacts/softhier_dace_artifacts/cloudsc/.dacecache/cloudsc_stage6/src/cpu/cloudsc_stage6.cpp:33209:41: warning: ‘new’ of type ‘double’ with extended alignment 64 [-Waligned-new=]
+33209 |     zmf = new double DACE_ALIGN(64)[klon];
+      |                                         ^
+/home/primrose/Work/Scratchpad/softhier_dace_artifacts/softhier_dace_artifacts/cloudsc/.dacecache/cloudsc_stage6/src/cpu/cloudsc_stage6.cpp:33209:41: note: uses ‘void* operator new [](std::size_t)’, which does not have an alignment parameter
+/home/primrose/Work/Scratchpad/softhier_dace_artifacts/softhier_dace_artifacts/cloudsc/.dacecache/cloudsc_stage6/src/cpu/cloudsc_stage6.cpp:33209:41: note: use ‘-faligned-new’ to enable C++17 over-aligned new support
+/home/primrose/Work/Scratchpad/softhier_dace_artifacts/softhier_dace_artifacts/cloudsc/.dacecache/cloudsc_stage6/src/cpu/cloudsc_stage6.cpp:33211:42: warning: ‘new’ of type ‘double’ with extended alignment 64 [-Waligned-new=]
+33211 |     zrho = new double DACE_ALIGN(64)[klon];
+      |                                          ^
+/home/primrose/Work/Scratchpad/softhier_dace_artifacts/softhier_dace_artifacts/cloudsc/.dacecache/cloudsc_stage6/src/cpu/cloudsc_stage6.cpp:33211:42: note: uses ‘void* operator new [](std::size_t)’, which does not have an alignment parameter
+/home/primrose/Work/Scratchpad/softhier_dace_artifacts/softhier_dace_artifacts/cloudsc/.dacecache/cloudsc_stage6/src/cpu/cloudsc_stage6.cpp:33211:42: note: use ‘-faligned-new’ to enable C++17 over-aligned new support
+/home/primrose/Work/Scratchpad/softhier_dace_artifacts/softhier_dace_artifacts/cloudsc/.dacecache/cloudsc_stage6/src/cpu/cloudsc_stage6.cpp:33213:44: warning: ‘new’ of type ‘double’ with extended alignment 64 [-Waligned-new=]
+33213 |     zsolab = new double DACE_ALIGN(64)[klon];
+      |                                            ^
+/home/primrose/Work/Scratchpad/softhier_dace_artifacts/softhier_dace_artifacts/cloudsc/.dacecache/cloudsc_stage6/src/cpu/cloudsc_stage6.cpp:33213:44: note: uses ‘void* operator new [](std::size_t)’, which does not have an alignment parameter
+/home/primrose/Work/Scratchpad/softhier_dace_artifacts/softhier_dace_artifacts/cloudsc/.dacecache/cloudsc_stage6/src/cpu/cloudsc_stage6.cpp:33213:44: note: use ‘-faligned-new’ to enable C++17 over-aligned new support
+/home/primrose/Work/Scratchpad/softhier_dace_artifacts/softhier_dace_artifacts/cloudsc/.dacecache/cloudsc_stage6/src/cpu/cloudsc_stage6.cpp:33215:44: warning: ‘new’ of type ‘double’ with extended alignment 64 [-Waligned-new=]
+33215 |     zsolac = new double DACE_ALIGN(64)[klon];
+      |                                            ^
+/home/primrose/Work/Scratchpad/softhier_dace_artifacts/softhier_dace_artifacts/cloudsc/.dacecache/cloudsc_stage6/src/cpu/cloudsc_stage6.cpp:33215:44: note: uses ‘void* operator new [](std::size_t)’, which does not have an alignment parameter
+/home/primrose/Work/Scratchpad/softhier_dace_artifacts/softhier_dace_artifacts/cloudsc/.dacecache/cloudsc_stage6/src/cpu/cloudsc_stage6.cpp:33215:44: note: use ‘-faligned-new’ to enable C++17 over-aligned new support
+/home/primrose/Work/Scratchpad/softhier_dace_artifacts/softhier_dace_artifacts/cloudsc/.dacecache/cloudsc_stage6/src/cpu/cloudsc_stage6.cpp:33217:45: warning: ‘new’ of type ‘double’ with extended alignment 64 [-Waligned-new=]
+33217 |     zanewm1 = new double DACE_ALIGN(64)[klon];
+      |                                             ^
+/home/primrose/Work/Scratchpad/softhier_dace_artifacts/softhier_dace_artifacts/cloudsc/.dacecache/cloudsc_stage6/src/cpu/cloudsc_stage6.cpp:33217:45: note: uses ‘void* operator new [](std::size_t)’, which does not have an alignment parameter
+/home/primrose/Work/Scratchpad/softhier_dace_artifacts/softhier_dace_artifacts/cloudsc/.dacecache/cloudsc_stage6/src/cpu/cloudsc_stage6.cpp:33217:45: note: use ‘-faligned-new’ to enable C++17 over-aligned new support
+/home/primrose/Work/Scratchpad/softhier_dace_artifacts/softhier_dace_artifacts/cloudsc/.dacecache/cloudsc_stage6/src/cpu/cloudsc_stage6.cpp:33219:42: warning: ‘new’ of type ‘double’ with extended alignment 64 [-Waligned-new=]
+33219 |     zgdp = new double DACE_ALIGN(64)[klon];
+      |                                          ^
+/home/primrose/Work/Scratchpad/softhier_dace_artifacts/softhier_dace_artifacts/cloudsc/.dacecache/cloudsc_stage6/src/cpu/cloudsc_stage6.cpp:33219:42: note: uses ‘void* operator new [](std::size_t)’, which does not have an alignment parameter
+/home/primrose/Work/Scratchpad/softhier_dace_artifacts/softhier_dace_artifacts/cloudsc/.dacecache/cloudsc_stage6/src/cpu/cloudsc_stage6.cpp:33219:42: note: use ‘-faligned-new’ to enable C++17 over-aligned new support
+/home/primrose/Work/Scratchpad/softhier_dace_artifacts/softhier_dace_artifacts/cloudsc/.dacecache/cloudsc_stage6/src/cpu/cloudsc_stage6.cpp:33221:41: warning: ‘new’ of type ‘double’ with extended alignment 64 [-Waligned-new=]
+33221 |     zda = new double DACE_ALIGN(64)[klon];
+      |                                         ^
+/home/primrose/Work/Scratchpad/softhier_dace_artifacts/softhier_dace_artifacts/cloudsc/.dacecache/cloudsc_stage6/src/cpu/cloudsc_stage6.cpp:33221:41: note: uses ‘void* operator new [](std::size_t)’, which does not have an alignment parameter
+/home/primrose/Work/Scratchpad/softhier_dace_artifacts/softhier_dace_artifacts/cloudsc/.dacecache/cloudsc_stage6/src/cpu/cloudsc_stage6.cpp:33221:41: note: use ‘-faligned-new’ to enable C++17 over-aligned new support
+/home/primrose/Work/Scratchpad/softhier_dace_artifacts/softhier_dace_artifacts/cloudsc/.dacecache/cloudsc_stage6/src/cpu/cloudsc_stage6.cpp:33223:65: warning: ‘new’ of type ‘double’ with extended alignment 64 [-Waligned-new=]
+33223 |     zli = new double DACE_ALIGN(64)[((klon * (klev - 1)) + klon)];
+      |                                                                 ^
+/home/primrose/Work/Scratchpad/softhier_dace_artifacts/softhier_dace_artifacts/cloudsc/.dacecache/cloudsc_stage6/src/cpu/cloudsc_stage6.cpp:33223:65: note: uses ‘void* operator new [](std::size_t)’, which does not have an alignment parameter
+/home/primrose/Work/Scratchpad/softhier_dace_artifacts/softhier_dace_artifacts/cloudsc/.dacecache/cloudsc_stage6/src/cpu/cloudsc_stage6.cpp:33223:65: note: use ‘-faligned-new’ to enable C++17 over-aligned new support
+/home/primrose/Work/Scratchpad/softhier_dace_artifacts/softhier_dace_artifacts/cloudsc/.dacecache/cloudsc_stage6/src/cpu/cloudsc_stage6.cpp:33225:64: warning: ‘new’ of type ‘double’ with extended alignment 64 [-Waligned-new=]
+33225 |     za = new double DACE_ALIGN(64)[((klon * (klev - 1)) + klon)];
+      |                                                                ^
+/home/primrose/Work/Scratchpad/softhier_dace_artifacts/softhier_dace_artifacts/cloudsc/.dacecache/cloudsc_stage6/src/cpu/cloudsc_stage6.cpp:33225:64: note: uses ‘void* operator new [](std::size_t)’, which does not have an alignment parameter
+/home/primrose/Work/Scratchpad/softhier_dace_artifacts/softhier_dace_artifacts/cloudsc/.dacecache/cloudsc_stage6/src/cpu/cloudsc_stage6.cpp:33225:64: note: use ‘-faligned-new’ to enable C++17 over-aligned new support
+/home/primrose/Work/Scratchpad/softhier_dace_artifacts/softhier_dace_artifacts/cloudsc/.dacecache/cloudsc_stage6/src/cpu/cloudsc_stage6.cpp:33227:68: warning: ‘new’ of type ‘double’ with extended alignment 64 [-Waligned-new=]
+33227 |     zaorig = new double DACE_ALIGN(64)[((klon * (klev - 1)) + klon)];
+      |                                                                    ^
+/home/primrose/Work/Scratchpad/softhier_dace_artifacts/softhier_dace_artifacts/cloudsc/.dacecache/cloudsc_stage6/src/cpu/cloudsc_stage6.cpp:33227:68: note: uses ‘void* operator new [](std::size_t)’, which does not have an alignment parameter
+/home/primrose/Work/Scratchpad/softhier_dace_artifacts/softhier_dace_artifacts/cloudsc/.dacecache/cloudsc_stage6/src/cpu/cloudsc_stage6.cpp:33227:68: note: use ‘-faligned-new’ to enable C++17 over-aligned new support
+/home/primrose/Work/Scratchpad/softhier_dace_artifacts/softhier_dace_artifacts/cloudsc/.dacecache/cloudsc_stage6/src/cpu/cloudsc_stage6.cpp:33229:41: warning: ‘new’ of type ‘double’ with extended alignment 64 [-Waligned-new=]
+33229 |     zdp = new double DACE_ALIGN(64)[klon];
+      |                                         ^
+/home/primrose/Work/Scratchpad/softhier_dace_artifacts/softhier_dace_artifacts/cloudsc/.dacecache/cloudsc_stage6/src/cpu/cloudsc_stage6.cpp:33229:41: note: uses ‘void* operator new [](std::size_t)’, which does not have an alignment parameter
+/home/primrose/Work/Scratchpad/softhier_dace_artifacts/softhier_dace_artifacts/cloudsc/.dacecache/cloudsc_stage6/src/cpu/cloudsc_stage6.cpp:33229:41: note: use ‘-faligned-new’ to enable C++17 over-aligned new support
+/home/primrose/Work/Scratchpad/softhier_dace_artifacts/softhier_dace_artifacts/cloudsc/.dacecache/cloudsc_stage6/src/cpu/cloudsc_stage6.cpp:33231:42: warning: ‘new’ of type ‘double’ with extended alignment 64 [-Waligned-new=]
+33231 |     zmin = new double DACE_ALIGN(64)[klon];
+      |                                          ^
+/home/primrose/Work/Scratchpad/softhier_dace_artifacts/softhier_dace_artifacts/cloudsc/.dacecache/cloudsc_stage6/src/cpu/cloudsc_stage6.cpp:33231:42: note: uses ‘void* operator new [](std::size_t)’, which does not have an alignment parameter
+/home/primrose/Work/Scratchpad/softhier_dace_artifacts/softhier_dace_artifacts/cloudsc/.dacecache/cloudsc_stage6/src/cpu/cloudsc_stage6.cpp:33231:42: note: use ‘-faligned-new’ to enable C++17 over-aligned new support
+/home/primrose/Work/Scratchpad/softhier_dace_artifacts/softhier_dace_artifacts/cloudsc/.dacecache/cloudsc_stage6/src/cpu/cloudsc_stage6.cpp:33236:45: warning: ‘new’ of type ‘double’ with extended alignment 64 [-Waligned-new=]
+33236 |     zsupsat = new double DACE_ALIGN(64)[klon];
+      |                                             ^
+/home/primrose/Work/Scratchpad/softhier_dace_artifacts/softhier_dace_artifacts/cloudsc/.dacecache/cloudsc_stage6/src/cpu/cloudsc_stage6.cpp:33236:45: note: uses ‘void* operator new [](std::size_t)’, which does not have an alignment parameter
+/home/primrose/Work/Scratchpad/softhier_dace_artifacts/softhier_dace_artifacts/cloudsc/.dacecache/cloudsc_stage6/src/cpu/cloudsc_stage6.cpp:33236:45: note: use ‘-faligned-new’ to enable C++17 over-aligned new support
+/home/primrose/Work/Scratchpad/softhier_dace_artifacts/softhier_dace_artifacts/cloudsc/.dacecache/cloudsc_stage6/src/cpu/cloudsc_stage6.cpp:33239:38: warning: ‘new’ of type ‘int’ with extended alignment 64 [-Waligned-new=]
+33239 |     iphase = new int DACE_ALIGN(64)[5];
+      |                                      ^
+/home/primrose/Work/Scratchpad/softhier_dace_artifacts/softhier_dace_artifacts/cloudsc/.dacecache/cloudsc_stage6/src/cpu/cloudsc_stage6.cpp:33239:38: note: uses ‘void* operator new [](std::size_t)’, which does not have an alignment parameter
+/home/primrose/Work/Scratchpad/softhier_dace_artifacts/softhier_dace_artifacts/cloudsc/.dacecache/cloudsc_stage6/src/cpu/cloudsc_stage6.cpp:33239:38: note: use ‘-faligned-new’ to enable C++17 over-aligned new support
+/home/primrose/Work/Scratchpad/softhier_dace_artifacts/softhier_dace_artifacts/cloudsc/.dacecache/cloudsc_stage6/src/cpu/cloudsc_stage6.cpp:33241:37: warning: ‘new’ of type ‘int’ with extended alignment 64 [-Waligned-new=]
+33241 |     imelt = new int DACE_ALIGN(64)[5];
+      |                                     ^
+/home/primrose/Work/Scratchpad/softhier_dace_artifacts/softhier_dace_artifacts/cloudsc/.dacecache/cloudsc_stage6/src/cpu/cloudsc_stage6.cpp:33241:37: note: uses ‘void* operator new [](std::size_t)’, which does not have an alignment parameter
+/home/primrose/Work/Scratchpad/softhier_dace_artifacts/softhier_dace_artifacts/cloudsc/.dacecache/cloudsc_stage6/src/cpu/cloudsc_stage6.cpp:33241:37: note: use ‘-faligned-new’ to enable C++17 over-aligned new support
+/home/primrose/Work/Scratchpad/softhier_dace_artifacts/softhier_dace_artifacts/cloudsc/.dacecache/cloudsc_stage6/src/cpu/cloudsc_stage6.cpp:33243:38: warning: ‘new’ of type ‘int’ with extended alignment 64 [-Waligned-new=]
+33243 |     llfall = new int DACE_ALIGN(64)[5];
+      |                                      ^
+/home/primrose/Work/Scratchpad/softhier_dace_artifacts/softhier_dace_artifacts/cloudsc/.dacecache/cloudsc_stage6/src/cpu/cloudsc_stage6.cpp:33243:38: note: uses ‘void* operator new [](std::size_t)’, which does not have an alignment parameter
+/home/primrose/Work/Scratchpad/softhier_dace_artifacts/softhier_dace_artifacts/cloudsc/.dacecache/cloudsc_stage6/src/cpu/cloudsc_stage6.cpp:33243:38: note: use ‘-faligned-new’ to enable C++17 over-aligned new support
+/home/primrose/Work/Scratchpad/softhier_dace_artifacts/softhier_dace_artifacts/cloudsc/.dacecache/cloudsc_stage6/src/cpu/cloudsc_stage6.cpp:33245:49: warning: ‘new’ of type ‘int’ with extended alignment 64 [-Waligned-new=]
+33245 |     llindex1 = new int DACE_ALIGN(64)[(5 * klon)];
+      |                                                 ^
+/home/primrose/Work/Scratchpad/softhier_dace_artifacts/softhier_dace_artifacts/cloudsc/.dacecache/cloudsc_stage6/src/cpu/cloudsc_stage6.cpp:33245:49: note: uses ‘void* operator new [](std::size_t)’, which does not have an alignment parameter
+/home/primrose/Work/Scratchpad/softhier_dace_artifacts/softhier_dace_artifacts/cloudsc/.dacecache/cloudsc_stage6/src/cpu/cloudsc_stage6.cpp:33245:49: note: use ‘-faligned-new’ to enable C++17 over-aligned new support
+/home/primrose/Work/Scratchpad/softhier_dace_artifacts/softhier_dace_artifacts/cloudsc/.dacecache/cloudsc_stage6/src/cpu/cloudsc_stage6.cpp:33247:50: warning: ‘new’ of type ‘int’ with extended alignment 64 [-Waligned-new=]
+33247 |     llindex3 = new int DACE_ALIGN(64)[(25 * klon)];
+      |                                                  ^
+/home/primrose/Work/Scratchpad/softhier_dace_artifacts/softhier_dace_artifacts/cloudsc/.dacecache/cloudsc_stage6/src/cpu/cloudsc_stage6.cpp:33247:50: note: uses ‘void* operator new [](std::size_t)’, which does not have an alignment parameter
+/home/primrose/Work/Scratchpad/softhier_dace_artifacts/softhier_dace_artifacts/cloudsc/.dacecache/cloudsc_stage6/src/cpu/cloudsc_stage6.cpp:33247:50: note: use ‘-faligned-new’ to enable C++17 over-aligned new support
+/home/primrose/Work/Scratchpad/softhier_dace_artifacts/softhier_dace_artifacts/cloudsc/.dacecache/cloudsc_stage6/src/cpu/cloudsc_stage6.cpp:33249:47: warning: ‘new’ of type ‘int’ with extended alignment 64 [-Waligned-new=]
+33249 |     iorder = new int DACE_ALIGN(64)[(5 * klon)];
+      |                                               ^
+/home/primrose/Work/Scratchpad/softhier_dace_artifacts/softhier_dace_artifacts/cloudsc/.dacecache/cloudsc_stage6/src/cpu/cloudsc_stage6.cpp:33249:47: note: uses ‘void* operator new [](std::size_t)’, which does not have an alignment parameter
+/home/primrose/Work/Scratchpad/softhier_dace_artifacts/softhier_dace_artifacts/cloudsc/.dacecache/cloudsc_stage6/src/cpu/cloudsc_stage6.cpp:33249:47: note: use ‘-faligned-new’ to enable C++17 over-aligned new support
+/home/primrose/Work/Scratchpad/softhier_dace_artifacts/softhier_dace_artifacts/cloudsc/.dacecache/cloudsc_stage6/src/cpu/cloudsc_stage6.cpp:33251:70: warning: ‘new’ of type ‘double’ with extended alignment 64 [-Waligned-new=]
+33251 |     zliqfrac = new double DACE_ALIGN(64)[((klon * (klev - 1)) + klon)];
+      |                                                                      ^
+/home/primrose/Work/Scratchpad/softhier_dace_artifacts/softhier_dace_artifacts/cloudsc/.dacecache/cloudsc_stage6/src/cpu/cloudsc_stage6.cpp:33251:70: note: uses ‘void* operator new [](std::size_t)’, which does not have an alignment parameter
+/home/primrose/Work/Scratchpad/softhier_dace_artifacts/softhier_dace_artifacts/cloudsc/.dacecache/cloudsc_stage6/src/cpu/cloudsc_stage6.cpp:33251:70: note: use ‘-faligned-new’ to enable C++17 over-aligned new support
+/home/primrose/Work/Scratchpad/softhier_dace_artifacts/softhier_dace_artifacts/cloudsc/.dacecache/cloudsc_stage6/src/cpu/cloudsc_stage6.cpp:33253:70: warning: ‘new’ of type ‘double’ with extended alignment 64 [-Waligned-new=]
+33253 |     zicefrac = new double DACE_ALIGN(64)[((klon * (klev - 1)) + klon)];
+      |                                                                      ^
+/home/primrose/Work/Scratchpad/softhier_dace_artifacts/softhier_dace_artifacts/cloudsc/.dacecache/cloudsc_stage6/src/cpu/cloudsc_stage6.cpp:33253:70: note: uses ‘void* operator new [](std::size_t)’, which does not have an alignment parameter
+/home/primrose/Work/Scratchpad/softhier_dace_artifacts/softhier_dace_artifacts/cloudsc/.dacecache/cloudsc_stage6/src/cpu/cloudsc_stage6.cpp:33253:70: note: use ‘-faligned-new’ to enable C++17 over-aligned new support
+/home/primrose/Work/Scratchpad/softhier_dace_artifacts/softhier_dace_artifacts/cloudsc/.dacecache/cloudsc_stage6/src/cpu/cloudsc_stage6.cpp:33255:89: warning: ‘new’ of type ‘double’ with extended alignment 64 [-Waligned-new=]
+33255 |     zqx = new double DACE_ALIGN(64)[((((4 * klev) * klon) + (klon * (klev - 1))) + klon)];
+      |                                                                                         ^
+/home/primrose/Work/Scratchpad/softhier_dace_artifacts/softhier_dace_artifacts/cloudsc/.dacecache/cloudsc_stage6/src/cpu/cloudsc_stage6.cpp:33255:89: note: uses ‘void* operator new [](std::size_t)’, which does not have an alignment parameter
+/home/primrose/Work/Scratchpad/softhier_dace_artifacts/softhier_dace_artifacts/cloudsc/.dacecache/cloudsc_stage6/src/cpu/cloudsc_stage6.cpp:33255:89: note: use ‘-faligned-new’ to enable C++17 over-aligned new support
+/home/primrose/Work/Scratchpad/softhier_dace_artifacts/softhier_dace_artifacts/cloudsc/.dacecache/cloudsc_stage6/src/cpu/cloudsc_stage6.cpp:33257:90: warning: ‘new’ of type ‘double’ with extended alignment 64 [-Waligned-new=]
+33257 |     zqx0 = new double DACE_ALIGN(64)[((((4 * klev) * klon) + (klon * (klev - 1))) + klon)];
+      |                                                                                          ^
+/home/primrose/Work/Scratchpad/softhier_dace_artifacts/softhier_dace_artifacts/cloudsc/.dacecache/cloudsc_stage6/src/cpu/cloudsc_stage6.cpp:33257:90: note: uses ‘void* operator new [](std::size_t)’, which does not have an alignment parameter
+/home/primrose/Work/Scratchpad/softhier_dace_artifacts/softhier_dace_artifacts/cloudsc/.dacecache/cloudsc_stage6/src/cpu/cloudsc_stage6.cpp:33257:90: note: use ‘-faligned-new’ to enable C++17 over-aligned new support
+/home/primrose/Work/Scratchpad/softhier_dace_artifacts/softhier_dace_artifacts/cloudsc/.dacecache/cloudsc_stage6/src/cpu/cloudsc_stage6.cpp:33259:48: warning: ‘new’ of type ‘double’ with extended alignment 64 [-Waligned-new=]
+33259 |     zqxn = new double DACE_ALIGN(64)[(5 * klon)];
+      |                                                ^
+/home/primrose/Work/Scratchpad/softhier_dace_artifacts/softhier_dace_artifacts/cloudsc/.dacecache/cloudsc_stage6/src/cpu/cloudsc_stage6.cpp:33259:48: note: uses ‘void* operator new [](std::size_t)’, which does not have an alignment parameter
+/home/primrose/Work/Scratchpad/softhier_dace_artifacts/softhier_dace_artifacts/cloudsc/.dacecache/cloudsc_stage6/src/cpu/cloudsc_stage6.cpp:33259:48: note: use ‘-faligned-new’ to enable C++17 over-aligned new support
+/home/primrose/Work/Scratchpad/softhier_dace_artifacts/softhier_dace_artifacts/cloudsc/.dacecache/cloudsc_stage6/src/cpu/cloudsc_stage6.cpp:33261:49: warning: ‘new’ of type ‘double’ with extended alignment 64 [-Waligned-new=]
+33261 |     zqxfg = new double DACE_ALIGN(64)[(5 * klon)];
+      |                                                 ^
+/home/primrose/Work/Scratchpad/softhier_dace_artifacts/softhier_dace_artifacts/cloudsc/.dacecache/cloudsc_stage6/src/cpu/cloudsc_stage6.cpp:33261:49: note: uses ‘void* operator new [](std::size_t)’, which does not have an alignment parameter
+/home/primrose/Work/Scratchpad/softhier_dace_artifacts/softhier_dace_artifacts/cloudsc/.dacecache/cloudsc_stage6/src/cpu/cloudsc_stage6.cpp:33261:49: note: use ‘-faligned-new’ to enable C++17 over-aligned new support
+/home/primrose/Work/Scratchpad/softhier_dace_artifacts/softhier_dace_artifacts/cloudsc/.dacecache/cloudsc_stage6/src/cpu/cloudsc_stage6.cpp:33263:50: warning: ‘new’ of type ‘double’ with extended alignment 64 [-Waligned-new=]
+33263 |     zqxnm1 = new double DACE_ALIGN(64)[(5 * klon)];
+      |                                                  ^
+/home/primrose/Work/Scratchpad/softhier_dace_artifacts/softhier_dace_artifacts/cloudsc/.dacecache/cloudsc_stage6/src/cpu/cloudsc_stage6.cpp:33263:50: note: uses ‘void* operator new [](std::size_t)’, which does not have an alignment parameter
+/home/primrose/Work/Scratchpad/softhier_dace_artifacts/softhier_dace_artifacts/cloudsc/.dacecache/cloudsc_stage6/src/cpu/cloudsc_stage6.cpp:33263:50: note: use ‘-faligned-new’ to enable C++17 over-aligned new support
+/home/primrose/Work/Scratchpad/softhier_dace_artifacts/softhier_dace_artifacts/cloudsc/.dacecache/cloudsc_stage6/src/cpu/cloudsc_stage6.cpp:33265:50: warning: ‘new’ of type ‘double’ with extended alignment 64 [-Waligned-new=]
+33265 |     zfluxq = new double DACE_ALIGN(64)[(5 * klon)];
+      |                                                  ^
+/home/primrose/Work/Scratchpad/softhier_dace_artifacts/softhier_dace_artifacts/cloudsc/.dacecache/cloudsc_stage6/src/cpu/cloudsc_stage6.cpp:33265:50: note: uses ‘void* operator new [](std::size_t)’, which does not have an alignment parameter
+/home/primrose/Work/Scratchpad/softhier_dace_artifacts/softhier_dace_artifacts/cloudsc/.dacecache/cloudsc_stage6/src/cpu/cloudsc_stage6.cpp:33265:50: note: use ‘-faligned-new’ to enable C++17 over-aligned new support
+/home/primrose/Work/Scratchpad/softhier_dace_artifacts/softhier_dace_artifacts/cloudsc/.dacecache/cloudsc_stage6/src/cpu/cloudsc_stage6.cpp:33267:93: warning: ‘new’ of type ‘double’ with extended alignment 64 [-Waligned-new=]
+33267 |     zpfplsx = new double DACE_ALIGN(64)[(((klev * klon) + ((4 * klon) * (klev + 1))) + klon)];
+      |                                                                                             ^
+/home/primrose/Work/Scratchpad/softhier_dace_artifacts/softhier_dace_artifacts/cloudsc/.dacecache/cloudsc_stage6/src/cpu/cloudsc_stage6.cpp:33267:93: note: uses ‘void* operator new [](std::size_t)’, which does not have an alignment parameter
+/home/primrose/Work/Scratchpad/softhier_dace_artifacts/softhier_dace_artifacts/cloudsc/.dacecache/cloudsc_stage6/src/cpu/cloudsc_stage6.cpp:33267:93: note: use ‘-faligned-new’ to enable C++17 over-aligned new support
+/home/primrose/Work/Scratchpad/softhier_dace_artifacts/softhier_dace_artifacts/cloudsc/.dacecache/cloudsc_stage6/src/cpu/cloudsc_stage6.cpp:33269:91: warning: ‘new’ of type ‘double’ with extended alignment 64 [-Waligned-new=]
+33269 |     zlneg = new double DACE_ALIGN(64)[((((4 * klev) * klon) + (klon * (klev - 1))) + klon)];
+      |                                                                                           ^
+/home/primrose/Work/Scratchpad/softhier_dace_artifacts/softhier_dace_artifacts/cloudsc/.dacecache/cloudsc_stage6/src/cpu/cloudsc_stage6.cpp:33269:91: note: uses ‘void* operator new [](std::size_t)’, which does not have an alignment parameter
+/home/primrose/Work/Scratchpad/softhier_dace_artifacts/softhier_dace_artifacts/cloudsc/.dacecache/cloudsc_stage6/src/cpu/cloudsc_stage6.cpp:33269:91: note: use ‘-faligned-new’ to enable C++17 over-aligned new support
+/home/primrose/Work/Scratchpad/softhier_dace_artifacts/softhier_dace_artifacts/cloudsc/.dacecache/cloudsc_stage6/src/cpu/cloudsc_stage6.cpp:33271:46: warning: ‘new’ of type ‘double’ with extended alignment 64 [-Waligned-new=]
+33271 |     zmeltmax = new double DACE_ALIGN(64)[klon];
+      |                                              ^
+/home/primrose/Work/Scratchpad/softhier_dace_artifacts/softhier_dace_artifacts/cloudsc/.dacecache/cloudsc_stage6/src/cpu/cloudsc_stage6.cpp:33271:46: note: uses ‘void* operator new [](std::size_t)’, which does not have an alignment parameter
+/home/primrose/Work/Scratchpad/softhier_dace_artifacts/softhier_dace_artifacts/cloudsc/.dacecache/cloudsc_stage6/src/cpu/cloudsc_stage6.cpp:33271:46: note: use ‘-faligned-new’ to enable C++17 over-aligned new support
+/home/primrose/Work/Scratchpad/softhier_dace_artifacts/softhier_dace_artifacts/cloudsc/.dacecache/cloudsc_stage6/src/cpu/cloudsc_stage6.cpp:33273:45: warning: ‘new’ of type ‘double’ with extended alignment 64 [-Waligned-new=]
+33273 |     zfrzmax = new double DACE_ALIGN(64)[klon];
+      |                                             ^
+/home/primrose/Work/Scratchpad/softhier_dace_artifacts/softhier_dace_artifacts/cloudsc/.dacecache/cloudsc_stage6/src/cpu/cloudsc_stage6.cpp:33273:45: note: uses ‘void* operator new [](std::size_t)’, which does not have an alignment parameter
+/home/primrose/Work/Scratchpad/softhier_dace_artifacts/softhier_dace_artifacts/cloudsc/.dacecache/cloudsc_stage6/src/cpu/cloudsc_stage6.cpp:33273:45: note: use ‘-faligned-new’ to enable C++17 over-aligned new support
+/home/primrose/Work/Scratchpad/softhier_dace_artifacts/softhier_dace_artifacts/cloudsc/.dacecache/cloudsc_stage6/src/cpu/cloudsc_stage6.cpp:33275:45: warning: ‘new’ of type ‘double’ with extended alignment 64 [-Waligned-new=]
+33275 |     zicetot = new double DACE_ALIGN(64)[klon];
+      |                                             ^
+/home/primrose/Work/Scratchpad/softhier_dace_artifacts/softhier_dace_artifacts/cloudsc/.dacecache/cloudsc_stage6/src/cpu/cloudsc_stage6.cpp:33275:45: note: uses ‘void* operator new [](std::size_t)’, which does not have an alignment parameter
+/home/primrose/Work/Scratchpad/softhier_dace_artifacts/softhier_dace_artifacts/cloudsc/.dacecache/cloudsc_stage6/src/cpu/cloudsc_stage6.cpp:33275:45: note: use ‘-faligned-new’ to enable C++17 over-aligned new support
+/home/primrose/Work/Scratchpad/softhier_dace_artifacts/softhier_dace_artifacts/cloudsc/.dacecache/cloudsc_stage6/src/cpu/cloudsc_stage6.cpp:33277:92: warning: ‘new’ of type ‘double’ with extended alignment 64 [-Waligned-new=]
+33277 |     zqxn2d = new double DACE_ALIGN(64)[((((4 * klev) * klon) + (klon * (klev - 1))) + klon)];
+      |                                                                                            ^
+/home/primrose/Work/Scratchpad/softhier_dace_artifacts/softhier_dace_artifacts/cloudsc/.dacecache/cloudsc_stage6/src/cpu/cloudsc_stage6.cpp:33277:92: note: uses ‘void* operator new [](std::size_t)’, which does not have an alignment parameter
+/home/primrose/Work/Scratchpad/softhier_dace_artifacts/softhier_dace_artifacts/cloudsc/.dacecache/cloudsc_stage6/src/cpu/cloudsc_stage6.cpp:33277:92: note: use ‘-faligned-new’ to enable C++17 over-aligned new support
+/home/primrose/Work/Scratchpad/softhier_dace_artifacts/softhier_dace_artifacts/cloudsc/.dacecache/cloudsc_stage6/src/cpu/cloudsc_stage6.cpp:33279:68: warning: ‘new’ of type ‘double’ with extended alignment 64 [-Waligned-new=]
+33279 |     zqsmix = new double DACE_ALIGN(64)[((klon * (klev - 1)) + klon)];
+      |                                                                    ^
+/home/primrose/Work/Scratchpad/softhier_dace_artifacts/softhier_dace_artifacts/cloudsc/.dacecache/cloudsc_stage6/src/cpu/cloudsc_stage6.cpp:33279:68: note: uses ‘void* operator new [](std::size_t)’, which does not have an alignment parameter
+/home/primrose/Work/Scratchpad/softhier_dace_artifacts/softhier_dace_artifacts/cloudsc/.dacecache/cloudsc_stage6/src/cpu/cloudsc_stage6.cpp:33279:68: note: use ‘-faligned-new’ to enable C++17 over-aligned new support
+/home/primrose/Work/Scratchpad/softhier_dace_artifacts/softhier_dace_artifacts/cloudsc/.dacecache/cloudsc_stage6/src/cpu/cloudsc_stage6.cpp:33281:68: warning: ‘new’ of type ‘double’ with extended alignment 64 [-Waligned-new=]
+33281 |     zqsliq = new double DACE_ALIGN(64)[((klon * (klev - 1)) + klon)];
+      |                                                                    ^
+/home/primrose/Work/Scratchpad/softhier_dace_artifacts/softhier_dace_artifacts/cloudsc/.dacecache/cloudsc_stage6/src/cpu/cloudsc_stage6.cpp:33281:68: note: uses ‘void* operator new [](std::size_t)’, which does not have an alignment parameter
+/home/primrose/Work/Scratchpad/softhier_dace_artifacts/softhier_dace_artifacts/cloudsc/.dacecache/cloudsc_stage6/src/cpu/cloudsc_stage6.cpp:33281:68: note: use ‘-faligned-new’ to enable C++17 over-aligned new support
+/home/primrose/Work/Scratchpad/softhier_dace_artifacts/softhier_dace_artifacts/cloudsc/.dacecache/cloudsc_stage6/src/cpu/cloudsc_stage6.cpp:33283:68: warning: ‘new’ of type ‘double’ with extended alignment 64 [-Waligned-new=]
+33283 |     zqsice = new double DACE_ALIGN(64)[((klon * (klev - 1)) + klon)];
+      |                                                                    ^
+/home/primrose/Work/Scratchpad/softhier_dace_artifacts/softhier_dace_artifacts/cloudsc/.dacecache/cloudsc_stage6/src/cpu/cloudsc_stage6.cpp:33283:68: note: uses ‘void* operator new [](std::size_t)’, which does not have an alignment parameter
+/home/primrose/Work/Scratchpad/softhier_dace_artifacts/softhier_dace_artifacts/cloudsc/.dacecache/cloudsc_stage6/src/cpu/cloudsc_stage6.cpp:33283:68: note: use ‘-faligned-new’ to enable C++17 over-aligned new support
+/home/primrose/Work/Scratchpad/softhier_dace_artifacts/softhier_dace_artifacts/cloudsc/.dacecache/cloudsc_stage6/src/cpu/cloudsc_stage6.cpp:33285:70: warning: ‘new’ of type ‘double’ with extended alignment 64 [-Waligned-new=]
+33285 |     zfoeewmt = new double DACE_ALIGN(64)[((klon * (klev - 1)) + klon)];
+      |                                                                      ^
+/home/primrose/Work/Scratchpad/softhier_dace_artifacts/softhier_dace_artifacts/cloudsc/.dacecache/cloudsc_stage6/src/cpu/cloudsc_stage6.cpp:33285:70: note: uses ‘void* operator new [](std::size_t)’, which does not have an alignment parameter
+/home/primrose/Work/Scratchpad/softhier_dace_artifacts/softhier_dace_artifacts/cloudsc/.dacecache/cloudsc_stage6/src/cpu/cloudsc_stage6.cpp:33285:70: note: use ‘-faligned-new’ to enable C++17 over-aligned new support
+/home/primrose/Work/Scratchpad/softhier_dace_artifacts/softhier_dace_artifacts/cloudsc/.dacecache/cloudsc_stage6/src/cpu/cloudsc_stage6.cpp:33287:68: warning: ‘new’ of type ‘double’ with extended alignment 64 [-Waligned-new=]
+33287 |     zfoeew = new double DACE_ALIGN(64)[((klon * (klev - 1)) + klon)];
+      |                                                                    ^
+/home/primrose/Work/Scratchpad/softhier_dace_artifacts/softhier_dace_artifacts/cloudsc/.dacecache/cloudsc_stage6/src/cpu/cloudsc_stage6.cpp:33287:68: note: uses ‘void* operator new [](std::size_t)’, which does not have an alignment parameter
+/home/primrose/Work/Scratchpad/softhier_dace_artifacts/softhier_dace_artifacts/cloudsc/.dacecache/cloudsc_stage6/src/cpu/cloudsc_stage6.cpp:33287:68: note: use ‘-faligned-new’ to enable C++17 over-aligned new support
+/home/primrose/Work/Scratchpad/softhier_dace_artifacts/softhier_dace_artifacts/cloudsc/.dacecache/cloudsc_stage6/src/cpu/cloudsc_stage6.cpp:33289:71: warning: ‘new’ of type ‘double’ with extended alignment 64 [-Waligned-new=]
+33289 |     zfoeeliqt = new double DACE_ALIGN(64)[((klon * (klev - 1)) + klon)];
+      |                                                                       ^
+/home/primrose/Work/Scratchpad/softhier_dace_artifacts/softhier_dace_artifacts/cloudsc/.dacecache/cloudsc_stage6/src/cpu/cloudsc_stage6.cpp:33289:71: note: uses ‘void* operator new [](std::size_t)’, which does not have an alignment parameter
+/home/primrose/Work/Scratchpad/softhier_dace_artifacts/softhier_dace_artifacts/cloudsc/.dacecache/cloudsc_stage6/src/cpu/cloudsc_stage6.cpp:33289:71: note: use ‘-faligned-new’ to enable C++17 over-aligned new support
+/home/primrose/Work/Scratchpad/softhier_dace_artifacts/softhier_dace_artifacts/cloudsc/.dacecache/cloudsc_stage6/src/cpu/cloudsc_stage6.cpp:33291:47: warning: ‘new’ of type ‘double’ with extended alignment 64 [-Waligned-new=]
+33291 |     zdqsicedt = new double DACE_ALIGN(64)[klon];
+      |                                               ^
+/home/primrose/Work/Scratchpad/softhier_dace_artifacts/softhier_dace_artifacts/cloudsc/.dacecache/cloudsc_stage6/src/cpu/cloudsc_stage6.cpp:33291:47: note: uses ‘void* operator new [](std::size_t)’, which does not have an alignment parameter
+/home/primrose/Work/Scratchpad/softhier_dace_artifacts/softhier_dace_artifacts/cloudsc/.dacecache/cloudsc_stage6/src/cpu/cloudsc_stage6.cpp:33291:47: note: use ‘-faligned-new’ to enable C++17 over-aligned new support
+/home/primrose/Work/Scratchpad/softhier_dace_artifacts/softhier_dace_artifacts/cloudsc/.dacecache/cloudsc_stage6/src/cpu/cloudsc_stage6.cpp:33293:47: warning: ‘new’ of type ‘double’ with extended alignment 64 [-Waligned-new=]
+33293 |     zdqsmixdt = new double DACE_ALIGN(64)[klon];
+      |                                               ^
+/home/primrose/Work/Scratchpad/softhier_dace_artifacts/softhier_dace_artifacts/cloudsc/.dacecache/cloudsc_stage6/src/cpu/cloudsc_stage6.cpp:33293:47: note: uses ‘void* operator new [](std::size_t)’, which does not have an alignment parameter
+/home/primrose/Work/Scratchpad/softhier_dace_artifacts/softhier_dace_artifacts/cloudsc/.dacecache/cloudsc_stage6/src/cpu/cloudsc_stage6.cpp:33293:47: note: use ‘-faligned-new’ to enable C++17 over-aligned new support
+/home/primrose/Work/Scratchpad/softhier_dace_artifacts/softhier_dace_artifacts/cloudsc/.dacecache/cloudsc_stage6/src/cpu/cloudsc_stage6.cpp:33295:47: warning: ‘new’ of type ‘double’ with extended alignment 64 [-Waligned-new=]
+33295 |     zcorqsice = new double DACE_ALIGN(64)[klon];
+      |                                               ^
+/home/primrose/Work/Scratchpad/softhier_dace_artifacts/softhier_dace_artifacts/cloudsc/.dacecache/cloudsc_stage6/src/cpu/cloudsc_stage6.cpp:33295:47: note: uses ‘void* operator new [](std::size_t)’, which does not have an alignment parameter
+/home/primrose/Work/Scratchpad/softhier_dace_artifacts/softhier_dace_artifacts/cloudsc/.dacecache/cloudsc_stage6/src/cpu/cloudsc_stage6.cpp:33295:47: note: use ‘-faligned-new’ to enable C++17 over-aligned new support
+/home/primrose/Work/Scratchpad/softhier_dace_artifacts/softhier_dace_artifacts/cloudsc/.dacecache/cloudsc_stage6/src/cpu/cloudsc_stage6.cpp:33297:47: warning: ‘new’ of type ‘double’ with extended alignment 64 [-Waligned-new=]
+33297 |     zcorqsmix = new double DACE_ALIGN(64)[klon];
+      |                                               ^
+/home/primrose/Work/Scratchpad/softhier_dace_artifacts/softhier_dace_artifacts/cloudsc/.dacecache/cloudsc_stage6/src/cpu/cloudsc_stage6.cpp:33297:47: note: uses ‘void* operator new [](std::size_t)’, which does not have an alignment parameter
+/home/primrose/Work/Scratchpad/softhier_dace_artifacts/softhier_dace_artifacts/cloudsc/.dacecache/cloudsc_stage6/src/cpu/cloudsc_stage6.cpp:33297:47: note: use ‘-faligned-new’ to enable C++17 over-aligned new support
+/home/primrose/Work/Scratchpad/softhier_dace_artifacts/softhier_dace_artifacts/cloudsc/.dacecache/cloudsc_stage6/src/cpu/cloudsc_stage6.cpp:33299:49: warning: ‘new’ of type ‘double’ with extended alignment 64 [-Waligned-new=]
+33299 |     zevaplimmix = new double DACE_ALIGN(64)[klon];
+      |                                                 ^
+/home/primrose/Work/Scratchpad/softhier_dace_artifacts/softhier_dace_artifacts/cloudsc/.dacecache/cloudsc_stage6/src/cpu/cloudsc_stage6.cpp:33299:49: note: uses ‘void* operator new [](std::size_t)’, which does not have an alignment parameter
+/home/primrose/Work/Scratchpad/softhier_dace_artifacts/softhier_dace_artifacts/cloudsc/.dacecache/cloudsc_stage6/src/cpu/cloudsc_stage6.cpp:33299:49: note: use ‘-faligned-new’ to enable C++17 over-aligned new support
+/home/primrose/Work/Scratchpad/softhier_dace_artifacts/softhier_dace_artifacts/cloudsc/.dacecache/cloudsc_stage6/src/cpu/cloudsc_stage6.cpp:33301:51: warning: ‘new’ of type ‘double’ with extended alignment 64 [-Waligned-new=]
+33301 |     zsolqa = new double DACE_ALIGN(64)[(25 * klon)];
+      |                                                   ^
+/home/primrose/Work/Scratchpad/softhier_dace_artifacts/softhier_dace_artifacts/cloudsc/.dacecache/cloudsc_stage6/src/cpu/cloudsc_stage6.cpp:33301:51: note: uses ‘void* operator new [](std::size_t)’, which does not have an alignment parameter
+/home/primrose/Work/Scratchpad/softhier_dace_artifacts/softhier_dace_artifacts/cloudsc/.dacecache/cloudsc_stage6/src/cpu/cloudsc_stage6.cpp:33301:51: note: use ‘-faligned-new’ to enable C++17 over-aligned new support
+/home/primrose/Work/Scratchpad/softhier_dace_artifacts/softhier_dace_artifacts/cloudsc/.dacecache/cloudsc_stage6/src/cpu/cloudsc_stage6.cpp:33303:51: warning: ‘new’ of type ‘double’ with extended alignment 64 [-Waligned-new=]
+33303 |     zsolqb = new double DACE_ALIGN(64)[(25 * klon)];
+      |                                                   ^
+/home/primrose/Work/Scratchpad/softhier_dace_artifacts/softhier_dace_artifacts/cloudsc/.dacecache/cloudsc_stage6/src/cpu/cloudsc_stage6.cpp:33303:51: note: uses ‘void* operator new [](std::size_t)’, which does not have an alignment parameter
+/home/primrose/Work/Scratchpad/softhier_dace_artifacts/softhier_dace_artifacts/cloudsc/.dacecache/cloudsc_stage6/src/cpu/cloudsc_stage6.cpp:33303:51: note: use ‘-faligned-new’ to enable C++17 over-aligned new support
+/home/primrose/Work/Scratchpad/softhier_dace_artifacts/softhier_dace_artifacts/cloudsc/.dacecache/cloudsc_stage6/src/cpu/cloudsc_stage6.cpp:33305:50: warning: ‘new’ of type ‘double’ with extended alignment 64 [-Waligned-new=]
+33305 |     zqlhs = new double DACE_ALIGN(64)[(25 * klon)];
+      |                                                  ^
+/home/primrose/Work/Scratchpad/softhier_dace_artifacts/softhier_dace_artifacts/cloudsc/.dacecache/cloudsc_stage6/src/cpu/cloudsc_stage6.cpp:33305:50: note: uses ‘void* operator new [](std::size_t)’, which does not have an alignment parameter
+/home/primrose/Work/Scratchpad/softhier_dace_artifacts/softhier_dace_artifacts/cloudsc/.dacecache/cloudsc_stage6/src/cpu/cloudsc_stage6.cpp:33305:50: note: use ‘-faligned-new’ to enable C++17 over-aligned new support
+/home/primrose/Work/Scratchpad/softhier_dace_artifacts/softhier_dace_artifacts/cloudsc/.dacecache/cloudsc_stage6/src/cpu/cloudsc_stage6.cpp:33307:39: warning: ‘new’ of type ‘double’ with extended alignment 64 [-Waligned-new=]
+33307 |     zvqx = new double DACE_ALIGN(64)[5];
+      |                                       ^
+/home/primrose/Work/Scratchpad/softhier_dace_artifacts/softhier_dace_artifacts/cloudsc/.dacecache/cloudsc_stage6/src/cpu/cloudsc_stage6.cpp:33307:39: note: uses ‘void* operator new [](std::size_t)’, which does not have an alignment parameter
+/home/primrose/Work/Scratchpad/softhier_dace_artifacts/softhier_dace_artifacts/cloudsc/.dacecache/cloudsc_stage6/src/cpu/cloudsc_stage6.cpp:33307:39: note: use ‘-faligned-new’ to enable C++17 over-aligned new support
+/home/primrose/Work/Scratchpad/softhier_dace_artifacts/softhier_dace_artifacts/cloudsc/.dacecache/cloudsc_stage6/src/cpu/cloudsc_stage6.cpp:33309:50: warning: ‘new’ of type ‘double’ with extended alignment 64 [-Waligned-new=]
+33309 |     zratio = new double DACE_ALIGN(64)[(5 * klon)];
+      |                                                  ^
+/home/primrose/Work/Scratchpad/softhier_dace_artifacts/softhier_dace_artifacts/cloudsc/.dacecache/cloudsc_stage6/src/cpu/cloudsc_stage6.cpp:33309:50: note: uses ‘void* operator new [](std::size_t)’, which does not have an alignment parameter
+/home/primrose/Work/Scratchpad/softhier_dace_artifacts/softhier_dace_artifacts/cloudsc/.dacecache/cloudsc_stage6/src/cpu/cloudsc_stage6.cpp:33309:50: note: use ‘-faligned-new’ to enable C++17 over-aligned new support
+/home/primrose/Work/Scratchpad/softhier_dace_artifacts/softhier_dace_artifacts/cloudsc/.dacecache/cloudsc_stage6/src/cpu/cloudsc_stage6.cpp:33311:52: warning: ‘new’ of type ‘double’ with extended alignment 64 [-Waligned-new=]
+33311 |     zsinksum = new double DACE_ALIGN(64)[(5 * klon)];
+      |                                                    ^
+/home/primrose/Work/Scratchpad/softhier_dace_artifacts/softhier_dace_artifacts/cloudsc/.dacecache/cloudsc_stage6/src/cpu/cloudsc_stage6.cpp:33311:52: note: uses ‘void* operator new [](std::size_t)’, which does not have an alignment parameter
+/home/primrose/Work/Scratchpad/softhier_dace_artifacts/softhier_dace_artifacts/cloudsc/.dacecache/cloudsc_stage6/src/cpu/cloudsc_stage6.cpp:33311:52: note: use ‘-faligned-new’ to enable C++17 over-aligned new support
+/home/primrose/Work/Scratchpad/softhier_dace_artifacts/softhier_dace_artifacts/cloudsc/.dacecache/cloudsc_stage6/src/cpu/cloudsc_stage6.cpp:33313:53: warning: ‘new’ of type ‘double’ with extended alignment 64 [-Waligned-new=]
+33313 |     zfallsink = new double DACE_ALIGN(64)[(5 * klon)];
+      |                                                     ^
+/home/primrose/Work/Scratchpad/softhier_dace_artifacts/softhier_dace_artifacts/cloudsc/.dacecache/cloudsc_stage6/src/cpu/cloudsc_stage6.cpp:33313:53: note: uses ‘void* operator new [](std::size_t)’, which does not have an alignment parameter
+/home/primrose/Work/Scratchpad/softhier_dace_artifacts/softhier_dace_artifacts/cloudsc/.dacecache/cloudsc_stage6/src/cpu/cloudsc_stage6.cpp:33313:53: note: use ‘-faligned-new’ to enable C++17 over-aligned new support
+/home/primrose/Work/Scratchpad/softhier_dace_artifacts/softhier_dace_artifacts/cloudsc/.dacecache/cloudsc_stage6/src/cpu/cloudsc_stage6.cpp:33315:53: warning: ‘new’ of type ‘double’ with extended alignment 64 [-Waligned-new=]
+33315 |     zfallsrce = new double DACE_ALIGN(64)[(5 * klon)];
+      |                                                     ^
+/home/primrose/Work/Scratchpad/softhier_dace_artifacts/softhier_dace_artifacts/cloudsc/.dacecache/cloudsc_stage6/src/cpu/cloudsc_stage6.cpp:33315:53: note: uses ‘void* operator new [](std::size_t)’, which does not have an alignment parameter
+/home/primrose/Work/Scratchpad/softhier_dace_artifacts/softhier_dace_artifacts/cloudsc/.dacecache/cloudsc_stage6/src/cpu/cloudsc_stage6.cpp:33315:53: note: use ‘-faligned-new’ to enable C++17 over-aligned new support
+/home/primrose/Work/Scratchpad/softhier_dace_artifacts/softhier_dace_artifacts/cloudsc/.dacecache/cloudsc_stage6/src/cpu/cloudsc_stage6.cpp:33317:53: warning: ‘new’ of type ‘double’ with extended alignment 64 [-Waligned-new=]
+33317 |     zconvsrce = new double DACE_ALIGN(64)[(5 * klon)];
+      |                                                     ^
+/home/primrose/Work/Scratchpad/softhier_dace_artifacts/softhier_dace_artifacts/cloudsc/.dacecache/cloudsc_stage6/src/cpu/cloudsc_stage6.cpp:33317:53: note: uses ‘void* operator new [](std::size_t)’, which does not have an alignment parameter
+/home/primrose/Work/Scratchpad/softhier_dace_artifacts/softhier_dace_artifacts/cloudsc/.dacecache/cloudsc_stage6/src/cpu/cloudsc_stage6.cpp:33317:53: note: use ‘-faligned-new’ to enable C++17 over-aligned new support
+/home/primrose/Work/Scratchpad/softhier_dace_artifacts/softhier_dace_artifacts/cloudsc/.dacecache/cloudsc_stage6/src/cpu/cloudsc_stage6.cpp:33319:53: warning: ‘new’ of type ‘double’ with extended alignment 64 [-Waligned-new=]
+33319 |     zconvsink = new double DACE_ALIGN(64)[(5 * klon)];
+      |                                                     ^
+/home/primrose/Work/Scratchpad/softhier_dace_artifacts/softhier_dace_artifacts/cloudsc/.dacecache/cloudsc_stage6/src/cpu/cloudsc_stage6.cpp:33319:53: note: uses ‘void* operator new [](std::size_t)’, which does not have an alignment parameter
+/home/primrose/Work/Scratchpad/softhier_dace_artifacts/softhier_dace_artifacts/cloudsc/.dacecache/cloudsc_stage6/src/cpu/cloudsc_stage6.cpp:33319:53: note: use ‘-faligned-new’ to enable C++17 over-aligned new support
+/home/primrose/Work/Scratchpad/softhier_dace_artifacts/softhier_dace_artifacts/cloudsc/.dacecache/cloudsc_stage6/src/cpu/cloudsc_stage6.cpp:33321:56: warning: ‘new’ of type ‘double’ with extended alignment 64 [-Waligned-new=]
+33321 |     zpsupsatsrce = new double DACE_ALIGN(64)[(5 * klon)];
+      |                                                        ^
+/home/primrose/Work/Scratchpad/softhier_dace_artifacts/softhier_dace_artifacts/cloudsc/.dacecache/cloudsc_stage6/src/cpu/cloudsc_stage6.cpp:33321:56: note: uses ‘void* operator new [](std::size_t)’, which does not have an alignment parameter
+/home/primrose/Work/Scratchpad/softhier_dace_artifacts/softhier_dace_artifacts/cloudsc/.dacecache/cloudsc_stage6/src/cpu/cloudsc_stage6.cpp:33321:56: note: use ‘-faligned-new’ to enable C++17 over-aligned new support
+/home/primrose/Work/Scratchpad/softhier_dace_artifacts/softhier_dace_artifacts/cloudsc/.dacecache/cloudsc_stage6/src/cpu/cloudsc_stage6.cpp:33323:49: warning: ‘new’ of type ‘double’ with extended alignment 64 [-Waligned-new=]
+33323 |     zcldtopdist = new double DACE_ALIGN(64)[klon];
+      |                                                 ^
+/home/primrose/Work/Scratchpad/softhier_dace_artifacts/softhier_dace_artifacts/cloudsc/.dacecache/cloudsc_stage6/src/cpu/cloudsc_stage6.cpp:33323:49: note: uses ‘void* operator new [](std::size_t)’, which does not have an alignment parameter
+/home/primrose/Work/Scratchpad/softhier_dace_artifacts/softhier_dace_artifacts/cloudsc/.dacecache/cloudsc_stage6/src/cpu/cloudsc_stage6.cpp:33323:49: note: use ‘-faligned-new’ to enable C++17 over-aligned new support
+/home/primrose/Work/Scratchpad/softhier_dace_artifacts/softhier_dace_artifacts/cloudsc/.dacecache/cloudsc_stage6/src/cpu/cloudsc_stage6.cpp:33325:46: warning: ‘new’ of type ‘double’ with extended alignment 64 [-Waligned-new=]
+33325 |     zrainacc = new double DACE_ALIGN(64)[klon];
+      |                                              ^
+/home/primrose/Work/Scratchpad/softhier_dace_artifacts/softhier_dace_artifacts/cloudsc/.dacecache/cloudsc_stage6/src/cpu/cloudsc_stage6.cpp:33325:46: note: uses ‘void* operator new [](std::size_t)’, which does not have an alignment parameter
+/home/primrose/Work/Scratchpad/softhier_dace_artifacts/softhier_dace_artifacts/cloudsc/.dacecache/cloudsc_stage6/src/cpu/cloudsc_stage6.cpp:33325:46: note: use ‘-faligned-new’ to enable C++17 over-aligned new support
+/home/primrose/Work/Scratchpad/softhier_dace_artifacts/softhier_dace_artifacts/cloudsc/.dacecache/cloudsc_stage6/src/cpu/cloudsc_stage6.cpp:33327:46: warning: ‘new’ of type ‘double’ with extended alignment 64 [-Waligned-new=]
+33327 |     zraincld = new double DACE_ALIGN(64)[klon];
+      |                                              ^
+/home/primrose/Work/Scratchpad/softhier_dace_artifacts/softhier_dace_artifacts/cloudsc/.dacecache/cloudsc_stage6/src/cpu/cloudsc_stage6.cpp:33327:46: note: uses ‘void* operator new [](std::size_t)’, which does not have an alignment parameter
+/home/primrose/Work/Scratchpad/softhier_dace_artifacts/softhier_dace_artifacts/cloudsc/.dacecache/cloudsc_stage6/src/cpu/cloudsc_stage6.cpp:33327:46: note: use ‘-faligned-new’ to enable C++17 over-aligned new support
+/home/primrose/Work/Scratchpad/softhier_dace_artifacts/softhier_dace_artifacts/cloudsc/.dacecache/cloudsc_stage6/src/cpu/cloudsc_stage6.cpp:33329:47: warning: ‘new’ of type ‘double’ with extended alignment 64 [-Waligned-new=]
+33329 |     zsnowrime = new double DACE_ALIGN(64)[klon];
+      |                                               ^
+/home/primrose/Work/Scratchpad/softhier_dace_artifacts/softhier_dace_artifacts/cloudsc/.dacecache/cloudsc_stage6/src/cpu/cloudsc_stage6.cpp:33329:47: note: uses ‘void* operator new [](std::size_t)’, which does not have an alignment parameter
+/home/primrose/Work/Scratchpad/softhier_dace_artifacts/softhier_dace_artifacts/cloudsc/.dacecache/cloudsc_stage6/src/cpu/cloudsc_stage6.cpp:33329:47: note: use ‘-faligned-new’ to enable C++17 over-aligned new support
+/home/primrose/Work/Scratchpad/softhier_dace_artifacts/softhier_dace_artifacts/cloudsc/.dacecache/cloudsc_stage6/src/cpu/cloudsc_stage6.cpp:33331:46: warning: ‘new’ of type ‘double’ with extended alignment 64 [-Waligned-new=]
+33331 |     zsnowcld = new double DACE_ALIGN(64)[klon];
+      |                                              ^
+/home/primrose/Work/Scratchpad/softhier_dace_artifacts/softhier_dace_artifacts/cloudsc/.dacecache/cloudsc_stage6/src/cpu/cloudsc_stage6.cpp:33331:46: note: uses ‘void* operator new [](std::size_t)’, which does not have an alignment parameter
+/home/primrose/Work/Scratchpad/softhier_dace_artifacts/softhier_dace_artifacts/cloudsc/.dacecache/cloudsc_stage6/src/cpu/cloudsc_stage6.cpp:33331:46: note: use ‘-faligned-new’ to enable C++17 over-aligned new support
+/home/primrose/Work/Scratchpad/softhier_dace_artifacts/softhier_dace_artifacts/cloudsc/.dacecache/cloudsc_stage6/src/cpu/cloudsc_stage6.cpp:33333:44: warning: ‘new’ of type ‘int’ with extended alignment 64 [-Waligned-new=]
+33333 |     llrainliq = new int DACE_ALIGN(64)[klon];
+      |                                            ^
+/home/primrose/Work/Scratchpad/softhier_dace_artifacts/softhier_dace_artifacts/cloudsc/.dacecache/cloudsc_stage6/src/cpu/cloudsc_stage6.cpp:33333:44: note: uses ‘void* operator new [](std::size_t)’, which does not have an alignment parameter
+/home/primrose/Work/Scratchpad/softhier_dace_artifacts/softhier_dace_artifacts/cloudsc/.dacecache/cloudsc_stage6/src/cpu/cloudsc_stage6.cpp:33333:44: note: use ‘-faligned-new’ to enable C++17 over-aligned new support
+/home/primrose/Work/Scratchpad/softhier_dace_artifacts/softhier_dace_artifacts/cloudsc/.dacecache/cloudsc_stage6/src/cpu/cloudsc_stage6.cpp: In function ‘void loop_body_4_16_22(cloudsc_stage6_state_t*, const double&, const double&, const double&, const double&, const double&, const double&, const double&, const double&, const double&, const double&, double*, double*, double*, double*, double*, double*, double*, double*, int, int, int, int)’:
+/home/primrose/Work/Scratchpad/softhier_dace_artifacts/softhier_dace_artifacts/cloudsc/.dacecache/cloudsc_stage6/src/cpu/cloudsc_stage6.cpp:13047:20: warning: ‘zcdmax’ is used uninitialized [-Wuninitialized]
+13047 |             double _in_right = zcdmax;
+      |                    ^~~~~~~~~
+/home/primrose/Work/Scratchpad/softhier_dace_artifacts/softhier_dace_artifacts/cloudsc/.dacecache/cloudsc_stage6/src/cpu/cloudsc_stage6.cpp:12224:12: note: ‘zcdmax’ was declared here
+12224 |     double zcdmax;
+      |            ^~~~~~
+/home/primrose/Work/Scratchpad/softhier_dace_artifacts/softhier_dace_artifacts/cloudsc/.dacecache/cloudsc_stage6/src/cpu/cloudsc_stage6.cpp:13204:20: warning: ‘_if_cond_30’ is used uninitialized [-Wuninitialized]
+13204 |             double _in_right = _if_cond_30;
+      |                    ^~~~~~~~~
+/home/primrose/Work/Scratchpad/softhier_dace_artifacts/softhier_dace_artifacts/cloudsc/.dacecache/cloudsc_stage6/src/cpu/cloudsc_stage6.cpp:12223:12: note: ‘_if_cond_30’ was declared here
+12223 |     double _if_cond_30;
+      |            ^~~~~~~~~~~
+/home/primrose/Work/Scratchpad/softhier_dace_artifacts/softhier_dace_artifacts/cloudsc/.dacecache/cloudsc_stage6/src/cpu/cloudsc_stage6.cpp: In function ‘void loop_body_4_16_40(cloudsc_stage6_state_t*, double*, double*, const double&, const double&, const double&, const double&, double*, double*, double*, double*, double*, double*, double*, double*, double*, double*, double*, int, int, int, int)’:
+/home/primrose/Work/Scratchpad/softhier_dace_artifacts/softhier_dace_artifacts/cloudsc/.dacecache/cloudsc_stage6/src/cpu/cloudsc_stage6.cpp:14246:20: warning: ‘zrhc’ is used uninitialized [-Wuninitialized]
+14246 |             double _in_right = zrhc;
+      |                    ^~~~~~~~~
+/home/primrose/Work/Scratchpad/softhier_dace_artifacts/softhier_dace_artifacts/cloudsc/.dacecache/cloudsc_stage6/src/cpu/cloudsc_stage6.cpp:14195:12: note: ‘zrhc’ was declared here
+14195 |     double zrhc;
+      |            ^~~~
+/home/primrose/Work/Scratchpad/softhier_dace_artifacts/softhier_dace_artifacts/cloudsc/.dacecache/cloudsc_stage6/src/cpu/cloudsc_stage6.cpp:14675:20: warning: ‘zfac_FOR_l_731_c_731’ is used uninitialized [-Wuninitialized]
+14675 |             double _in_right = zfac_FOR_l_731_c_731;
+      |                    ^~~~~~~~~
+/home/primrose/Work/Scratchpad/softhier_dace_artifacts/softhier_dace_artifacts/cloudsc/.dacecache/cloudsc_stage6/src/cpu/cloudsc_stage6.cpp:14194:12: note: ‘zfac_FOR_l_731_c_731’ was declared here
+14194 |     double zfac_FOR_l_731_c_731;
+      |            ^~~~~~~~~~~~~~~~~~~~
+/home/primrose/Work/Scratchpad/softhier_dace_artifacts/softhier_dace_artifacts/cloudsc/.dacecache/cloudsc_stage6/src/cpu/cloudsc_stage6.cpp:14699:108: warning: ‘zqe_2’ is used uninitialized [-Wuninitialized]
+14699 |     _if_cond_39 = ((zqe_2 >= ((zrhc * zqsice[((_for_it_23 * klon) + _for_it_46)]) * zfac_FOR_l_731_c_731)) && (zqe_2 < (zqsice[((_for_it_23 * klon) + _for_it_46)] * zfac_FOR_l_731_c_731)));
+      |                   ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+/home/primrose/Work/Scratchpad/softhier_dace_artifacts/softhier_dace_artifacts/cloudsc/.dacecache/cloudsc_stage6/src/cpu/cloudsc_stage6.cpp:14190:12: note: ‘zqe_2’ was declared here
+14190 |     double zqe_2;
+      |            ^~~~~
+/home/primrose/Work/Scratchpad/softhier_dace_artifacts/softhier_dace_artifacts/cloudsc/.dacecache/cloudsc_stage6/src/cpu/cloudsc_stage6.cpp:15172:20: warning: ‘_if_cond_40’ is used uninitialized [-Wuninitialized]
+15172 |             double _in_right = _if_cond_40;
+      |                    ^~~~~~~~~
+/home/primrose/Work/Scratchpad/softhier_dace_artifacts/softhier_dace_artifacts/cloudsc/.dacecache/cloudsc_stage6/src/cpu/cloudsc_stage6.cpp:14193:12: note: ‘_if_cond_40’ was declared here
+14193 |     double _if_cond_40;
+      |            ^~~~~~~~~~~
+/home/primrose/Work/Scratchpad/softhier_dace_artifacts/softhier_dace_artifacts/cloudsc/.dacecache/cloudsc_stage6/src/cpu/cloudsc_stage6.cpp:15659:20: warning: ‘_if_cond_41’ is used uninitialized [-Wuninitialized]
+15659 |             double _in_right = _if_cond_41;
+      |                    ^~~~~~~~~
+/home/primrose/Work/Scratchpad/softhier_dace_artifacts/softhier_dace_artifacts/cloudsc/.dacecache/cloudsc_stage6/src/cpu/cloudsc_stage6.cpp:14191:12: note: ‘_if_cond_41’ was declared here
+14191 |     double _if_cond_41;
+      |            ^~~~~~~~~~~
+/home/primrose/Work/Scratchpad/softhier_dace_artifacts/softhier_dace_artifacts/cloudsc/.dacecache/cloudsc_stage6/src/cpu/cloudsc_stage6.cpp: In function ‘void loop_body_4_17_16(cloudsc_stage6_state_t*, const int&, double*, double*, double*, const double&, const double&, const double&, const double&, const double&, const double&, const double&, const double&, const double&, const double&, const double&, const double&, const double&, const double&, const double&, double*, double*, double*, double*, double*, double*, double*, double*, double*, double*, double*, int, int, int)’:
+/home/primrose/Work/Scratchpad/softhier_dace_artifacts/softhier_dace_artifacts/cloudsc/.dacecache/cloudsc_stage6/src/cpu/cloudsc_stage6.cpp:20872:20: warning: ‘zzco’ is used uninitialized [-Wuninitialized]
+20872 |             double _in_right = zzco;
+      |                    ^~~~~~~~~
+/home/primrose/Work/Scratchpad/softhier_dace_artifacts/softhier_dace_artifacts/cloudsc/.dacecache/cloudsc_stage6/src/cpu/cloudsc_stage6.cpp:20735:12: note: ‘zzco’ was declared here
+20735 |     double zzco;
+      |            ^~~~
+/home/primrose/Work/Scratchpad/softhier_dace_artifacts/softhier_dace_artifacts/cloudsc/.dacecache/cloudsc_stage6/src/cpu/cloudsc_stage6.cpp:21167:20: warning: ‘zlcrit’ is used uninitialized [-Wuninitialized]
+21167 |             double _in_right = zlcrit;
+      |                    ^~~~~~~~~
+/home/primrose/Work/Scratchpad/softhier_dace_artifacts/softhier_dace_artifacts/cloudsc/.dacecache/cloudsc_stage6/src/cpu/cloudsc_stage6.cpp:20738:12: note: ‘zlcrit’ was declared here
+20738 |     double zlcrit;
+      |            ^~~~~~
+/home/primrose/Work/Scratchpad/softhier_dace_artifacts/softhier_dace_artifacts/cloudsc/.dacecache/cloudsc_stage6/src/cpu/cloudsc_stage6.cpp:21840:20: warning: ‘zconst’ is used uninitialized [-Wuninitialized]
+21840 |             double _in_right = zconst;
+      |                    ^~~~~~~~~
+/home/primrose/Work/Scratchpad/softhier_dace_artifacts/softhier_dace_artifacts/cloudsc/.dacecache/cloudsc_stage6/src/cpu/cloudsc_stage6.cpp:20737:12: note: ‘zconst’ was declared here
+20737 |     double zconst;
+      |            ^~~~~~
+/home/primrose/Work/Scratchpad/softhier_dace_artifacts/softhier_dace_artifacts/cloudsc/.dacecache/cloudsc_stage6/src/cpu/cloudsc_stage6.cpp:22158:20: warning: ‘_if_cond_56’ is used uninitialized [-Wuninitialized]
+22158 |             double _in_right = _if_cond_56;
+      |                    ^~~~~~~~~
+/home/primrose/Work/Scratchpad/softhier_dace_artifacts/softhier_dace_artifacts/cloudsc/.dacecache/cloudsc_stage6/src/cpu/cloudsc_stage6.cpp:20734:12: note: ‘_if_cond_56’ was declared here
+20734 |     double _if_cond_56;
+      |            ^~~~~~~~~~~
+/home/primrose/Work/Scratchpad/softhier_dace_artifacts/softhier_dace_artifacts/cloudsc/.dacecache/cloudsc_stage6/src/cpu/cloudsc_stage6.cpp:22694:20: warning: ‘_if_cond_57’ is used uninitialized [-Wuninitialized]
+22694 |             double _in_right = _if_cond_57;
+      |                    ^~~~~~~~~
+/home/primrose/Work/Scratchpad/softhier_dace_artifacts/softhier_dace_artifacts/cloudsc/.dacecache/cloudsc_stage6/src/cpu/cloudsc_stage6.cpp:20736:12: note: ‘_if_cond_57’ was declared here
+20736 |     double _if_cond_57;
+      |            ^~~~~~~~~~~
+/home/primrose/Work/Scratchpad/softhier_dace_artifacts/softhier_dace_artifacts/cloudsc/.dacecache/cloudsc_stage6/src/cpu/cloudsc_stage6.cpp: In function ‘void loop_body_4_17_51(cloudsc_stage6_state_t*, const double&, const double&, const double&, const double&, const double&, const double&, double*, double*, double*, double*, double*, double*, double*, int, int, int)’:
+/home/primrose/Work/Scratchpad/softhier_dace_artifacts/softhier_dace_artifacts/cloudsc/.dacecache/cloudsc_stage6/src/cpu/cloudsc_stage6.cpp:24595:20: warning: ‘zfallcorr_1’ is used uninitialized [-Wuninitialized]
+24595 |             double _in_right = zfallcorr_1;
+      |                    ^~~~~~~~~
+/home/primrose/Work/Scratchpad/softhier_dace_artifacts/softhier_dace_artifacts/cloudsc/.dacecache/cloudsc_stage6/src/cpu/cloudsc_stage6.cpp:24486:12: note: ‘zfallcorr_1’ was declared here
+24486 |     double zfallcorr_1;
+      |            ^~~~~~~~~~~
+/home/primrose/Work/Scratchpad/softhier_dace_artifacts/softhier_dace_artifacts/cloudsc/.dacecache/cloudsc_stage6/src/cpu/cloudsc_stage6.cpp: In function ‘void loop_body_4_18_0(cloudsc_stage6_state_t*, const double&, const double&, const double&, const double&, const double&, const double&, const double&, const double&, double*, double*, const double&, double*, int*, double*, double*, double*, double*, int, int, int, int)’:
+/home/primrose/Work/Scratchpad/softhier_dace_artifacts/softhier_dace_artifacts/cloudsc/.dacecache/cloudsc_stage6/src/cpu/cloudsc_stage6.cpp:25586:20: warning: ‘_if_cond_66’ is used uninitialized [-Wuninitialized]
+25586 |             double _in_right = _if_cond_66;
+      |                    ^~~~~~~~~
+/home/primrose/Work/Scratchpad/softhier_dace_artifacts/softhier_dace_artifacts/cloudsc/.dacecache/cloudsc_stage6/src/cpu/cloudsc_stage6.cpp:25452:12: note: ‘_if_cond_66’ was declared here
+25452 |     double _if_cond_66;
+      |            ^~~~~~~~~~~
+/home/primrose/Work/Scratchpad/softhier_dace_artifacts/softhier_dace_artifacts/cloudsc/.dacecache/cloudsc_stage6/src/cpu/cloudsc_stage6.cpp: In function ‘void loop_body_4_19_51(cloudsc_stage6_state_t*, double*, double*, const double&, const double&, const double&, const double&, const double&, const double&, double*, double*, double*, double*, double*, double*, double*, double*, const double&, double*, double*, double*, int, int, int, int)’:
+/home/primrose/Work/Scratchpad/softhier_dace_artifacts/softhier_dace_artifacts/cloudsc/.dacecache/cloudsc_stage6/src/cpu/cloudsc_stage6.cpp:29192:20: warning: ‘tmp_call_99’ is used uninitialized [-Wuninitialized]
+29192 |             double _in_right = tmp_call_99;
+      |                    ^~~~~~~~~
+/home/primrose/Work/Scratchpad/softhier_dace_artifacts/softhier_dace_artifacts/cloudsc/.dacecache/cloudsc_stage6/src/cpu/cloudsc_stage6.cpp:28830:12: note: ‘tmp_call_99’ was declared here
+28830 |     double tmp_call_99;
+      |            ^~~~~~~~~~~
+/home/primrose/Work/Scratchpad/softhier_dace_artifacts/softhier_dace_artifacts/cloudsc/.dacecache/cloudsc_stage6/src/cpu/cloudsc_stage6.cpp:29370:20: warning: ‘tmp_call_94’ is used uninitialized [-Wuninitialized]
+29370 |             double _in_right = tmp_call_94;
+      |                    ^~~~~~~~~
+/home/primrose/Work/Scratchpad/softhier_dace_artifacts/softhier_dace_artifacts/cloudsc/.dacecache/cloudsc_stage6/src/cpu/cloudsc_stage6.cpp:28831:12: note: ‘tmp_call_94’ was declared here
+28831 |     double tmp_call_94;
+      |            ^~~~~~~~~~~
+[ 50%] Linking CXX shared library libcloudsc_stage6.so
+[ 50%] Built target cloudsc_stage6
+[ 75%] Building CXX object CMakeFiles/dacestub_cloudsc_stage6.dir/tools/dacestub.cpp.o
+[100%] Linking CXX shared library libdacestub_cloudsc_stage6.so
+[100%] Built target dacestub_cloudsc_stage6
+
+Memset Memcpy Debug
+Copying generated data
+Running SDFG1
+-- The C compiler identification is GNU 14.2.0
+-- The CXX compiler identification is GNU 14.2.0
+-- Detecting C compiler ABI info
+-- Detecting C compiler ABI info - done
+-- Check for working C compiler: /usr/bin/cc - skipped
+-- Detecting C compile features
+-- Detecting C compile features - done
+-- Detecting CXX compiler ABI info
+-- Detecting CXX compiler ABI info - done
+-- Check for working CXX compiler: /usr/bin/g++ - skipped
+-- Detecting CXX compile features
+-- Detecting CXX compile features - done
+-- Performing Test CMAKE_HAVE_LIBC_PTHREAD
+-- Performing Test CMAKE_HAVE_LIBC_PTHREAD - Success
+-- Found Threads: TRUE
+-- Found OpenMP_CXX: -fopenmp (found version "4.5")
+-- Found OpenMP: TRUE (found version "4.5") found components: CXX
+-- Configuring done (0.6s)
+-- Generating done (0.0s)
+-- Build files have been written to: /home/primrose/Work/Scratchpad/softhier_dace_artifacts/softhier_dace_artifacts/cloudsc/.dacecache/cloudsc/build
+
+[ 25%] Building CXX object CMakeFiles/cloudsc.dir/home/primrose/Work/Scratchpad/softhier_dace_artifacts/softhier_dace_artifacts/cloudsc/.dacecache/cloudsc/src/cpu/cloudsc.cpp.o
+/home/primrose/Work/Scratchpad/softhier_dace_artifacts/softhier_dace_artifacts/cloudsc/.dacecache/cloudsc/src/cpu/cloudsc.cpp: In function ‘void __program_cloudsc_internal(cloudsc_state_t*, int*, int*, double*, double*, double*, double*, double*, double*, double*, double*, double*, double*, double*, double*, double*, double*, double*, double*, double*, double*, double*, double*, double*, double*, double*, double*, double*, double*, double*, double*, double*, double*, double*, double*, double*, double*, double*, double*, double*, double*, double*, double*, double*, double*, double*, double*, double*, double*, double*, double*, double*, double*, double*, double*, double*, double*, double*, double*, double*, double*, double*, double*, double*, double*, double*, double*, double*, int, int, int, int, int, int, int, int, int, int, int, int, int, int, int, int, int, int, double, double, double, double, double, double, double, double, double, double, double, double, double, double, double, double, double, double, double, double, double, double, double, double, double, double, double, double, double, double, double, double, double, double, double, double, double, double, double, double, double, double, double, double, double, double, double, double, double, double, double, double, double, double, double, double, double, double, double, double, double, double, double, double, double, double, double, double, double, double, double, double, double, double, double, double, double, double, double, double, double, double, double, double, double, double, double, double, double, double, double, double, double, double, double, int)’:
+/home/primrose/Work/Scratchpad/softhier_dace_artifacts/softhier_dace_artifacts/cloudsc/.dacecache/cloudsc/src/cpu/cloudsc.cpp:75:45: warning: ‘new’ of type ‘double’ with extended alignment 64 [-Waligned-new=]
+   75 |     zlcond1 = new double DACE_ALIGN(64)[klon];
+      |                                             ^
+/home/primrose/Work/Scratchpad/softhier_dace_artifacts/softhier_dace_artifacts/cloudsc/.dacecache/cloudsc/src/cpu/cloudsc.cpp:75:45: note: uses ‘void* operator new [](std::size_t)’, which does not have an alignment parameter
+/home/primrose/Work/Scratchpad/softhier_dace_artifacts/softhier_dace_artifacts/cloudsc/.dacecache/cloudsc/src/cpu/cloudsc.cpp:75:45: note: use ‘-faligned-new’ to enable C++17 over-aligned new support
+/home/primrose/Work/Scratchpad/softhier_dace_artifacts/softhier_dace_artifacts/cloudsc/.dacecache/cloudsc/src/cpu/cloudsc.cpp:77:45: warning: ‘new’ of type ‘double’ with extended alignment 64 [-Waligned-new=]
+   77 |     zlcond2 = new double DACE_ALIGN(64)[klon];
+      |                                             ^
+/home/primrose/Work/Scratchpad/softhier_dace_artifacts/softhier_dace_artifacts/cloudsc/.dacecache/cloudsc/src/cpu/cloudsc.cpp:77:45: note: uses ‘void* operator new [](std::size_t)’, which does not have an alignment parameter
+/home/primrose/Work/Scratchpad/softhier_dace_artifacts/softhier_dace_artifacts/cloudsc/.dacecache/cloudsc/src/cpu/cloudsc.cpp:77:45: note: use ‘-faligned-new’ to enable C++17 over-aligned new support
+/home/primrose/Work/Scratchpad/softhier_dace_artifacts/softhier_dace_artifacts/cloudsc/.dacecache/cloudsc/src/cpu/cloudsc.cpp:79:46: warning: ‘new’ of type ‘double’ with extended alignment 64 [-Waligned-new=]
+   79 |     zrainaut = new double DACE_ALIGN(64)[klon];
+      |                                              ^
+/home/primrose/Work/Scratchpad/softhier_dace_artifacts/softhier_dace_artifacts/cloudsc/.dacecache/cloudsc/src/cpu/cloudsc.cpp:79:46: note: uses ‘void* operator new [](std::size_t)’, which does not have an alignment parameter
+/home/primrose/Work/Scratchpad/softhier_dace_artifacts/softhier_dace_artifacts/cloudsc/.dacecache/cloudsc/src/cpu/cloudsc.cpp:79:46: note: use ‘-faligned-new’ to enable C++17 over-aligned new support
+/home/primrose/Work/Scratchpad/softhier_dace_artifacts/softhier_dace_artifacts/cloudsc/.dacecache/cloudsc/src/cpu/cloudsc.cpp:81:46: warning: ‘new’ of type ‘double’ with extended alignment 64 [-Waligned-new=]
+   81 |     zsnowaut = new double DACE_ALIGN(64)[klon];
+      |                                              ^
+/home/primrose/Work/Scratchpad/softhier_dace_artifacts/softhier_dace_artifacts/cloudsc/.dacecache/cloudsc/src/cpu/cloudsc.cpp:81:46: note: uses ‘void* operator new [](std::size_t)’, which does not have an alignment parameter
+/home/primrose/Work/Scratchpad/softhier_dace_artifacts/softhier_dace_artifacts/cloudsc/.dacecache/cloudsc/src/cpu/cloudsc.cpp:81:46: note: use ‘-faligned-new’ to enable C++17 over-aligned new support
+/home/primrose/Work/Scratchpad/softhier_dace_artifacts/softhier_dace_artifacts/cloudsc/.dacecache/cloudsc/src/cpu/cloudsc.cpp:83:45: warning: ‘new’ of type ‘double’ with extended alignment 64 [-Waligned-new=]
+   83 |     zliqcld = new double DACE_ALIGN(64)[klon];
+      |                                             ^
+/home/primrose/Work/Scratchpad/softhier_dace_artifacts/softhier_dace_artifacts/cloudsc/.dacecache/cloudsc/src/cpu/cloudsc.cpp:83:45: note: uses ‘void* operator new [](std::size_t)’, which does not have an alignment parameter
+/home/primrose/Work/Scratchpad/softhier_dace_artifacts/softhier_dace_artifacts/cloudsc/.dacecache/cloudsc/src/cpu/cloudsc.cpp:83:45: note: use ‘-faligned-new’ to enable C++17 over-aligned new support
+/home/primrose/Work/Scratchpad/softhier_dace_artifacts/softhier_dace_artifacts/cloudsc/.dacecache/cloudsc/src/cpu/cloudsc.cpp:85:45: warning: ‘new’ of type ‘double’ with extended alignment 64 [-Waligned-new=]
+   85 |     zicecld = new double DACE_ALIGN(64)[klon];
+      |                                             ^
+/home/primrose/Work/Scratchpad/softhier_dace_artifacts/softhier_dace_artifacts/cloudsc/.dacecache/cloudsc/src/cpu/cloudsc.cpp:85:45: note: uses ‘void* operator new [](std::size_t)’, which does not have an alignment parameter
+/home/primrose/Work/Scratchpad/softhier_dace_artifacts/softhier_dace_artifacts/cloudsc/.dacecache/cloudsc/src/cpu/cloudsc.cpp:85:45: note: use ‘-faligned-new’ to enable C++17 over-aligned new support
+/home/primrose/Work/Scratchpad/softhier_dace_artifacts/softhier_dace_artifacts/cloudsc/.dacecache/cloudsc/src/cpu/cloudsc.cpp:87:45: warning: ‘new’ of type ‘double’ with extended alignment 64 [-Waligned-new=]
+   87 |     zfokoop = new double DACE_ALIGN(64)[klon];
+      |                                             ^
+/home/primrose/Work/Scratchpad/softhier_dace_artifacts/softhier_dace_artifacts/cloudsc/.dacecache/cloudsc/src/cpu/cloudsc.cpp:87:45: note: uses ‘void* operator new [](std::size_t)’, which does not have an alignment parameter
+/home/primrose/Work/Scratchpad/softhier_dace_artifacts/softhier_dace_artifacts/cloudsc/.dacecache/cloudsc/src/cpu/cloudsc.cpp:87:45: note: use ‘-faligned-new’ to enable C++17 over-aligned new support
+/home/primrose/Work/Scratchpad/softhier_dace_artifacts/softhier_dace_artifacts/cloudsc/.dacecache/cloudsc/src/cpu/cloudsc.cpp:89:64: warning: ‘new’ of type ‘double’ with extended alignment 64 [-Waligned-new=]
+   89 |     zfoealfa = new double DACE_ALIGN(64)[((klev * klon) + klon)];
+      |                                                                ^
+/home/primrose/Work/Scratchpad/softhier_dace_artifacts/softhier_dace_artifacts/cloudsc/.dacecache/cloudsc/src/cpu/cloudsc.cpp:89:64: note: uses ‘void* operator new [](std::size_t)’, which does not have an alignment parameter
+/home/primrose/Work/Scratchpad/softhier_dace_artifacts/softhier_dace_artifacts/cloudsc/.dacecache/cloudsc/src/cpu/cloudsc.cpp:89:64: note: use ‘-faligned-new’ to enable C++17 over-aligned new support
+/home/primrose/Work/Scratchpad/softhier_dace_artifacts/softhier_dace_artifacts/cloudsc/.dacecache/cloudsc/src/cpu/cloudsc.cpp:91:44: warning: ‘new’ of type ‘double’ with extended alignment 64 [-Waligned-new=]
+   91 |     zlicld = new double DACE_ALIGN(64)[klon];
+      |                                            ^
+/home/primrose/Work/Scratchpad/softhier_dace_artifacts/softhier_dace_artifacts/cloudsc/.dacecache/cloudsc/src/cpu/cloudsc.cpp:91:44: note: uses ‘void* operator new [](std::size_t)’, which does not have an alignment parameter
+/home/primrose/Work/Scratchpad/softhier_dace_artifacts/softhier_dace_artifacts/cloudsc/.dacecache/cloudsc/src/cpu/cloudsc.cpp:91:44: note: use ‘-faligned-new’ to enable C++17 over-aligned new support
+/home/primrose/Work/Scratchpad/softhier_dace_artifacts/softhier_dace_artifacts/cloudsc/.dacecache/cloudsc/src/cpu/cloudsc.cpp:94:48: warning: ‘new’ of type ‘double’ with extended alignment 64 [-Waligned-new=]
+   94 |     zlfinalsum = new double DACE_ALIGN(64)[klon];
+      |                                                ^
+/home/primrose/Work/Scratchpad/softhier_dace_artifacts/softhier_dace_artifacts/cloudsc/.dacecache/cloudsc/src/cpu/cloudsc.cpp:94:48: note: uses ‘void* operator new [](std::size_t)’, which does not have an alignment parameter
+/home/primrose/Work/Scratchpad/softhier_dace_artifacts/softhier_dace_artifacts/cloudsc/.dacecache/cloudsc/src/cpu/cloudsc.cpp:94:48: note: use ‘-faligned-new’ to enable C++17 over-aligned new support
+/home/primrose/Work/Scratchpad/softhier_dace_artifacts/softhier_dace_artifacts/cloudsc/.dacecache/cloudsc/src/cpu/cloudsc.cpp:96:42: warning: ‘new’ of type ‘double’ with extended alignment 64 [-Waligned-new=]
+   96 |     zdqs = new double DACE_ALIGN(64)[klon];
+      |                                          ^
+/home/primrose/Work/Scratchpad/softhier_dace_artifacts/softhier_dace_artifacts/cloudsc/.dacecache/cloudsc/src/cpu/cloudsc.cpp:96:42: note: uses ‘void* operator new [](std::size_t)’, which does not have an alignment parameter
+/home/primrose/Work/Scratchpad/softhier_dace_artifacts/softhier_dace_artifacts/cloudsc/.dacecache/cloudsc/src/cpu/cloudsc.cpp:96:42: note: use ‘-faligned-new’ to enable C++17 over-aligned new support
+/home/primrose/Work/Scratchpad/softhier_dace_artifacts/softhier_dace_artifacts/cloudsc/.dacecache/cloudsc/src/cpu/cloudsc.cpp:98:43: warning: ‘new’ of type ‘double’ with extended alignment 64 [-Waligned-new=]
+   98 |     ztold = new double DACE_ALIGN(64)[klon];
+      |                                           ^
+/home/primrose/Work/Scratchpad/softhier_dace_artifacts/softhier_dace_artifacts/cloudsc/.dacecache/cloudsc/src/cpu/cloudsc.cpp:98:43: note: uses ‘void* operator new [](std::size_t)’, which does not have an alignment parameter
+/home/primrose/Work/Scratchpad/softhier_dace_artifacts/softhier_dace_artifacts/cloudsc/.dacecache/cloudsc/src/cpu/cloudsc.cpp:98:43: note: use ‘-faligned-new’ to enable C++17 over-aligned new support
+/home/primrose/Work/Scratchpad/softhier_dace_artifacts/softhier_dace_artifacts/cloudsc/.dacecache/cloudsc/src/cpu/cloudsc.cpp:100:43: warning: ‘new’ of type ‘double’ with extended alignment 64 [-Waligned-new=]
+  100 |     zqold = new double DACE_ALIGN(64)[klon];
+      |                                           ^
+/home/primrose/Work/Scratchpad/softhier_dace_artifacts/softhier_dace_artifacts/cloudsc/.dacecache/cloudsc/src/cpu/cloudsc.cpp:100:43: note: uses ‘void* operator new [](std::size_t)’, which does not have an alignment parameter
+/home/primrose/Work/Scratchpad/softhier_dace_artifacts/softhier_dace_artifacts/cloudsc/.dacecache/cloudsc/src/cpu/cloudsc.cpp:100:43: note: use ‘-faligned-new’ to enable C++17 over-aligned new support
+/home/primrose/Work/Scratchpad/softhier_dace_artifacts/softhier_dace_artifacts/cloudsc/.dacecache/cloudsc/src/cpu/cloudsc.cpp:102:44: warning: ‘new’ of type ‘double’ with extended alignment 64 [-Waligned-new=]
+  102 |     zdtgdp = new double DACE_ALIGN(64)[klon];
+      |                                            ^
+/home/primrose/Work/Scratchpad/softhier_dace_artifacts/softhier_dace_artifacts/cloudsc/.dacecache/cloudsc/src/cpu/cloudsc.cpp:102:44: note: uses ‘void* operator new [](std::size_t)’, which does not have an alignment parameter
+/home/primrose/Work/Scratchpad/softhier_dace_artifacts/softhier_dace_artifacts/cloudsc/.dacecache/cloudsc/src/cpu/cloudsc.cpp:102:44: note: use ‘-faligned-new’ to enable C++17 over-aligned new support
+/home/primrose/Work/Scratchpad/softhier_dace_artifacts/softhier_dace_artifacts/cloudsc/.dacecache/cloudsc/src/cpu/cloudsc.cpp:104:45: warning: ‘new’ of type ‘double’ with extended alignment 64 [-Waligned-new=]
+  104 |     zrdtgdp = new double DACE_ALIGN(64)[klon];
+      |                                             ^
+/home/primrose/Work/Scratchpad/softhier_dace_artifacts/softhier_dace_artifacts/cloudsc/.dacecache/cloudsc/src/cpu/cloudsc.cpp:104:45: note: uses ‘void* operator new [](std::size_t)’, which does not have an alignment parameter
+/home/primrose/Work/Scratchpad/softhier_dace_artifacts/softhier_dace_artifacts/cloudsc/.dacecache/cloudsc/src/cpu/cloudsc.cpp:104:45: note: use ‘-faligned-new’ to enable C++17 over-aligned new support
+/home/primrose/Work/Scratchpad/softhier_dace_artifacts/softhier_dace_artifacts/cloudsc/.dacecache/cloudsc/src/cpu/cloudsc.cpp:106:46: warning: ‘new’ of type ‘double’ with extended alignment 64 [-Waligned-new=]
+  106 |     zcovpclr = new double DACE_ALIGN(64)[klon];
+      |                                              ^
+/home/primrose/Work/Scratchpad/softhier_dace_artifacts/softhier_dace_artifacts/cloudsc/.dacecache/cloudsc/src/cpu/cloudsc.cpp:106:46: note: uses ‘void* operator new [](std::size_t)’, which does not have an alignment parameter
+/home/primrose/Work/Scratchpad/softhier_dace_artifacts/softhier_dace_artifacts/cloudsc/.dacecache/cloudsc/src/cpu/cloudsc.cpp:106:46: note: use ‘-faligned-new’ to enable C++17 over-aligned new support
+/home/primrose/Work/Scratchpad/softhier_dace_artifacts/softhier_dace_artifacts/cloudsc/.dacecache/cloudsc/src/cpu/cloudsc.cpp:109:46: warning: ‘new’ of type ‘double’ with extended alignment 64 [-Waligned-new=]
+  109 |     zcovptot = new double DACE_ALIGN(64)[klon];
+      |                                              ^
+/home/primrose/Work/Scratchpad/softhier_dace_artifacts/softhier_dace_artifacts/cloudsc/.dacecache/cloudsc/src/cpu/cloudsc.cpp:109:46: note: uses ‘void* operator new [](std::size_t)’, which does not have an alignment parameter
+/home/primrose/Work/Scratchpad/softhier_dace_artifacts/softhier_dace_artifacts/cloudsc/.dacecache/cloudsc/src/cpu/cloudsc.cpp:109:46: note: use ‘-faligned-new’ to enable C++17 over-aligned new support
+/home/primrose/Work/Scratchpad/softhier_dace_artifacts/softhier_dace_artifacts/cloudsc/.dacecache/cloudsc/src/cpu/cloudsc.cpp:111:46: warning: ‘new’ of type ‘double’ with extended alignment 64 [-Waligned-new=]
+  111 |     zcovpmax = new double DACE_ALIGN(64)[klon];
+      |                                              ^
+/home/primrose/Work/Scratchpad/softhier_dace_artifacts/softhier_dace_artifacts/cloudsc/.dacecache/cloudsc/src/cpu/cloudsc.cpp:111:46: note: uses ‘void* operator new [](std::size_t)’, which does not have an alignment parameter
+/home/primrose/Work/Scratchpad/softhier_dace_artifacts/softhier_dace_artifacts/cloudsc/.dacecache/cloudsc/src/cpu/cloudsc.cpp:111:46: note: use ‘-faligned-new’ to enable C++17 over-aligned new support
+/home/primrose/Work/Scratchpad/softhier_dace_artifacts/softhier_dace_artifacts/cloudsc/.dacecache/cloudsc/src/cpu/cloudsc.cpp:113:46: warning: ‘new’ of type ‘double’ with extended alignment 64 [-Waligned-new=]
+  113 |     zqpretot = new double DACE_ALIGN(64)[klon];
+      |                                              ^
+/home/primrose/Work/Scratchpad/softhier_dace_artifacts/softhier_dace_artifacts/cloudsc/.dacecache/cloudsc/src/cpu/cloudsc.cpp:113:46: note: uses ‘void* operator new [](std::size_t)’, which does not have an alignment parameter
+/home/primrose/Work/Scratchpad/softhier_dace_artifacts/softhier_dace_artifacts/cloudsc/.dacecache/cloudsc/src/cpu/cloudsc.cpp:113:46: note: use ‘-faligned-new’ to enable C++17 over-aligned new support
+/home/primrose/Work/Scratchpad/softhier_dace_artifacts/softhier_dace_artifacts/cloudsc/.dacecache/cloudsc/src/cpu/cloudsc.cpp:117:66: warning: ‘new’ of type ‘double’ with extended alignment 64 [-Waligned-new=]
+  117 |     ztp1 = new double DACE_ALIGN(64)[((klon * (klev - 1)) + klon)];
+      |                                                                  ^
+/home/primrose/Work/Scratchpad/softhier_dace_artifacts/softhier_dace_artifacts/cloudsc/.dacecache/cloudsc/src/cpu/cloudsc.cpp:117:66: note: uses ‘void* operator new [](std::size_t)’, which does not have an alignment parameter
+/home/primrose/Work/Scratchpad/softhier_dace_artifacts/softhier_dace_artifacts/cloudsc/.dacecache/cloudsc/src/cpu/cloudsc.cpp:117:66: note: use ‘-faligned-new’ to enable C++17 over-aligned new support
+/home/primrose/Work/Scratchpad/softhier_dace_artifacts/softhier_dace_artifacts/cloudsc/.dacecache/cloudsc/src/cpu/cloudsc.cpp:119:44: warning: ‘new’ of type ‘double’ with extended alignment 64 [-Waligned-new=]
+  119 |     zldefr = new double DACE_ALIGN(64)[klon];
+      |                                            ^
+/home/primrose/Work/Scratchpad/softhier_dace_artifacts/softhier_dace_artifacts/cloudsc/.dacecache/cloudsc/src/cpu/cloudsc.cpp:119:44: note: uses ‘void* operator new [](std::size_t)’, which does not have an alignment parameter
+/home/primrose/Work/Scratchpad/softhier_dace_artifacts/softhier_dace_artifacts/cloudsc/.dacecache/cloudsc/src/cpu/cloudsc.cpp:119:44: note: use ‘-faligned-new’ to enable C++17 over-aligned new support
+/home/primrose/Work/Scratchpad/softhier_dace_artifacts/softhier_dace_artifacts/cloudsc/.dacecache/cloudsc/src/cpu/cloudsc.cpp:121:45: warning: ‘new’ of type ‘double’ with extended alignment 64 [-Waligned-new=]
+  121 |     zldifdt = new double DACE_ALIGN(64)[klon];
+      |                                             ^
+/home/primrose/Work/Scratchpad/softhier_dace_artifacts/softhier_dace_artifacts/cloudsc/.dacecache/cloudsc/src/cpu/cloudsc.cpp:121:45: note: uses ‘void* operator new [](std::size_t)’, which does not have an alignment parameter
+/home/primrose/Work/Scratchpad/softhier_dace_artifacts/softhier_dace_artifacts/cloudsc/.dacecache/cloudsc/src/cpu/cloudsc.cpp:121:45: note: use ‘-faligned-new’ to enable C++17 over-aligned new support
+/home/primrose/Work/Scratchpad/softhier_dace_artifacts/softhier_dace_artifacts/cloudsc/.dacecache/cloudsc/src/cpu/cloudsc.cpp:123:72: warning: ‘new’ of type ‘double’ with extended alignment 64 [-Waligned-new=]
+  123 |     zlcust = new double DACE_ALIGN(64)[((klon * (sym_nclv - 1)) + klon)];
+      |                                                                        ^
+/home/primrose/Work/Scratchpad/softhier_dace_artifacts/softhier_dace_artifacts/cloudsc/.dacecache/cloudsc/src/cpu/cloudsc.cpp:123:72: note: uses ‘void* operator new [](std::size_t)’, which does not have an alignment parameter
+/home/primrose/Work/Scratchpad/softhier_dace_artifacts/softhier_dace_artifacts/cloudsc/.dacecache/cloudsc/src/cpu/cloudsc.cpp:123:72: note: use ‘-faligned-new’ to enable C++17 over-aligned new support
+/home/primrose/Work/Scratchpad/softhier_dace_artifacts/softhier_dace_artifacts/cloudsc/.dacecache/cloudsc/src/cpu/cloudsc.cpp:125:44: warning: ‘new’ of type ‘double’ with extended alignment 64 [-Waligned-new=]
+  125 |     zacust = new double DACE_ALIGN(64)[klon];
+      |                                            ^
+/home/primrose/Work/Scratchpad/softhier_dace_artifacts/softhier_dace_artifacts/cloudsc/.dacecache/cloudsc/src/cpu/cloudsc.cpp:125:44: note: uses ‘void* operator new [](std::size_t)’, which does not have an alignment parameter
+/home/primrose/Work/Scratchpad/softhier_dace_artifacts/softhier_dace_artifacts/cloudsc/.dacecache/cloudsc/src/cpu/cloudsc.cpp:125:44: note: use ‘-faligned-new’ to enable C++17 over-aligned new support
+/home/primrose/Work/Scratchpad/softhier_dace_artifacts/softhier_dace_artifacts/cloudsc/.dacecache/cloudsc/src/cpu/cloudsc.cpp:127:41: warning: ‘new’ of type ‘double’ with extended alignment 64 [-Waligned-new=]
+  127 |     zmf = new double DACE_ALIGN(64)[klon];
+      |                                         ^
+/home/primrose/Work/Scratchpad/softhier_dace_artifacts/softhier_dace_artifacts/cloudsc/.dacecache/cloudsc/src/cpu/cloudsc.cpp:127:41: note: uses ‘void* operator new [](std::size_t)’, which does not have an alignment parameter
+/home/primrose/Work/Scratchpad/softhier_dace_artifacts/softhier_dace_artifacts/cloudsc/.dacecache/cloudsc/src/cpu/cloudsc.cpp:127:41: note: use ‘-faligned-new’ to enable C++17 over-aligned new support
+/home/primrose/Work/Scratchpad/softhier_dace_artifacts/softhier_dace_artifacts/cloudsc/.dacecache/cloudsc/src/cpu/cloudsc.cpp:129:42: warning: ‘new’ of type ‘double’ with extended alignment 64 [-Waligned-new=]
+  129 |     zrho = new double DACE_ALIGN(64)[klon];
+      |                                          ^
+/home/primrose/Work/Scratchpad/softhier_dace_artifacts/softhier_dace_artifacts/cloudsc/.dacecache/cloudsc/src/cpu/cloudsc.cpp:129:42: note: uses ‘void* operator new [](std::size_t)’, which does not have an alignment parameter
+/home/primrose/Work/Scratchpad/softhier_dace_artifacts/softhier_dace_artifacts/cloudsc/.dacecache/cloudsc/src/cpu/cloudsc.cpp:129:42: note: use ‘-faligned-new’ to enable C++17 over-aligned new support
+/home/primrose/Work/Scratchpad/softhier_dace_artifacts/softhier_dace_artifacts/cloudsc/.dacecache/cloudsc/src/cpu/cloudsc.cpp:131:44: warning: ‘new’ of type ‘double’ with extended alignment 64 [-Waligned-new=]
+  131 |     zsolab = new double DACE_ALIGN(64)[klon];
+      |                                            ^
+/home/primrose/Work/Scratchpad/softhier_dace_artifacts/softhier_dace_artifacts/cloudsc/.dacecache/cloudsc/src/cpu/cloudsc.cpp:131:44: note: uses ‘void* operator new [](std::size_t)’, which does not have an alignment parameter
+/home/primrose/Work/Scratchpad/softhier_dace_artifacts/softhier_dace_artifacts/cloudsc/.dacecache/cloudsc/src/cpu/cloudsc.cpp:131:44: note: use ‘-faligned-new’ to enable C++17 over-aligned new support
+/home/primrose/Work/Scratchpad/softhier_dace_artifacts/softhier_dace_artifacts/cloudsc/.dacecache/cloudsc/src/cpu/cloudsc.cpp:133:44: warning: ‘new’ of type ‘double’ with extended alignment 64 [-Waligned-new=]
+  133 |     zsolac = new double DACE_ALIGN(64)[klon];
+      |                                            ^
+/home/primrose/Work/Scratchpad/softhier_dace_artifacts/softhier_dace_artifacts/cloudsc/.dacecache/cloudsc/src/cpu/cloudsc.cpp:133:44: note: uses ‘void* operator new [](std::size_t)’, which does not have an alignment parameter
+/home/primrose/Work/Scratchpad/softhier_dace_artifacts/softhier_dace_artifacts/cloudsc/.dacecache/cloudsc/src/cpu/cloudsc.cpp:133:44: note: use ‘-faligned-new’ to enable C++17 over-aligned new support
+/home/primrose/Work/Scratchpad/softhier_dace_artifacts/softhier_dace_artifacts/cloudsc/.dacecache/cloudsc/src/cpu/cloudsc.cpp:136:45: warning: ‘new’ of type ‘double’ with extended alignment 64 [-Waligned-new=]
+  136 |     zanewm1 = new double DACE_ALIGN(64)[klon];
+      |                                             ^
+/home/primrose/Work/Scratchpad/softhier_dace_artifacts/softhier_dace_artifacts/cloudsc/.dacecache/cloudsc/src/cpu/cloudsc.cpp:136:45: note: uses ‘void* operator new [](std::size_t)’, which does not have an alignment parameter
+/home/primrose/Work/Scratchpad/softhier_dace_artifacts/softhier_dace_artifacts/cloudsc/.dacecache/cloudsc/src/cpu/cloudsc.cpp:136:45: note: use ‘-faligned-new’ to enable C++17 over-aligned new support
+/home/primrose/Work/Scratchpad/softhier_dace_artifacts/softhier_dace_artifacts/cloudsc/.dacecache/cloudsc/src/cpu/cloudsc.cpp:138:41: warning: ‘new’ of type ‘double’ with extended alignment 64 [-Waligned-new=]
+  138 |     zda = new double DACE_ALIGN(64)[klon];
+      |                                         ^
+/home/primrose/Work/Scratchpad/softhier_dace_artifacts/softhier_dace_artifacts/cloudsc/.dacecache/cloudsc/src/cpu/cloudsc.cpp:138:41: note: uses ‘void* operator new [](std::size_t)’, which does not have an alignment parameter
+/home/primrose/Work/Scratchpad/softhier_dace_artifacts/softhier_dace_artifacts/cloudsc/.dacecache/cloudsc/src/cpu/cloudsc.cpp:138:41: note: use ‘-faligned-new’ to enable C++17 over-aligned new support
+/home/primrose/Work/Scratchpad/softhier_dace_artifacts/softhier_dace_artifacts/cloudsc/.dacecache/cloudsc/src/cpu/cloudsc.cpp:140:65: warning: ‘new’ of type ‘double’ with extended alignment 64 [-Waligned-new=]
+  140 |     zli = new double DACE_ALIGN(64)[((klon * (klev - 1)) + klon)];
+      |                                                                 ^
+/home/primrose/Work/Scratchpad/softhier_dace_artifacts/softhier_dace_artifacts/cloudsc/.dacecache/cloudsc/src/cpu/cloudsc.cpp:140:65: note: uses ‘void* operator new [](std::size_t)’, which does not have an alignment parameter
+/home/primrose/Work/Scratchpad/softhier_dace_artifacts/softhier_dace_artifacts/cloudsc/.dacecache/cloudsc/src/cpu/cloudsc.cpp:140:65: note: use ‘-faligned-new’ to enable C++17 over-aligned new support
+/home/primrose/Work/Scratchpad/softhier_dace_artifacts/softhier_dace_artifacts/cloudsc/.dacecache/cloudsc/src/cpu/cloudsc.cpp:142:64: warning: ‘new’ of type ‘double’ with extended alignment 64 [-Waligned-new=]
+  142 |     za = new double DACE_ALIGN(64)[((klon * (klev - 1)) + klon)];
+      |                                                                ^
+/home/primrose/Work/Scratchpad/softhier_dace_artifacts/softhier_dace_artifacts/cloudsc/.dacecache/cloudsc/src/cpu/cloudsc.cpp:142:64: note: uses ‘void* operator new [](std::size_t)’, which does not have an alignment parameter
+/home/primrose/Work/Scratchpad/softhier_dace_artifacts/softhier_dace_artifacts/cloudsc/.dacecache/cloudsc/src/cpu/cloudsc.cpp:142:64: note: use ‘-faligned-new’ to enable C++17 over-aligned new support
+/home/primrose/Work/Scratchpad/softhier_dace_artifacts/softhier_dace_artifacts/cloudsc/.dacecache/cloudsc/src/cpu/cloudsc.cpp:144:68: warning: ‘new’ of type ‘double’ with extended alignment 64 [-Waligned-new=]
+  144 |     zaorig = new double DACE_ALIGN(64)[((klon * (klev - 1)) + klon)];
+      |                                                                    ^
+/home/primrose/Work/Scratchpad/softhier_dace_artifacts/softhier_dace_artifacts/cloudsc/.dacecache/cloudsc/src/cpu/cloudsc.cpp:144:68: note: uses ‘void* operator new [](std::size_t)’, which does not have an alignment parameter
+/home/primrose/Work/Scratchpad/softhier_dace_artifacts/softhier_dace_artifacts/cloudsc/.dacecache/cloudsc/src/cpu/cloudsc.cpp:144:68: note: use ‘-faligned-new’ to enable C++17 over-aligned new support
+/home/primrose/Work/Scratchpad/softhier_dace_artifacts/softhier_dace_artifacts/cloudsc/.dacecache/cloudsc/src/cpu/cloudsc.cpp:147:41: warning: ‘new’ of type ‘double’ with extended alignment 64 [-Waligned-new=]
+  147 |     zdp = new double DACE_ALIGN(64)[klon];
+      |                                         ^
+/home/primrose/Work/Scratchpad/softhier_dace_artifacts/softhier_dace_artifacts/cloudsc/.dacecache/cloudsc/src/cpu/cloudsc.cpp:147:41: note: uses ‘void* operator new [](std::size_t)’, which does not have an alignment parameter
+/home/primrose/Work/Scratchpad/softhier_dace_artifacts/softhier_dace_artifacts/cloudsc/.dacecache/cloudsc/src/cpu/cloudsc.cpp:147:41: note: use ‘-faligned-new’ to enable C++17 over-aligned new support
+/home/primrose/Work/Scratchpad/softhier_dace_artifacts/softhier_dace_artifacts/cloudsc/.dacecache/cloudsc/src/cpu/cloudsc.cpp:153:42: warning: ‘new’ of type ‘double’ with extended alignment 64 [-Waligned-new=]
+  153 |     zmin = new double DACE_ALIGN(64)[klon];
+      |                                          ^
+/home/primrose/Work/Scratchpad/softhier_dace_artifacts/softhier_dace_artifacts/cloudsc/.dacecache/cloudsc/src/cpu/cloudsc.cpp:153:42: note: uses ‘void* operator new [](std::size_t)’, which does not have an alignment parameter
+/home/primrose/Work/Scratchpad/softhier_dace_artifacts/softhier_dace_artifacts/cloudsc/.dacecache/cloudsc/src/cpu/cloudsc.cpp:153:42: note: use ‘-faligned-new’ to enable C++17 over-aligned new support
+/home/primrose/Work/Scratchpad/softhier_dace_artifacts/softhier_dace_artifacts/cloudsc/.dacecache/cloudsc/src/cpu/cloudsc.cpp:176:45: warning: ‘new’ of type ‘double’ with extended alignment 64 [-Waligned-new=]
+  176 |     zsupsat = new double DACE_ALIGN(64)[klon];
+      |                                             ^
+/home/primrose/Work/Scratchpad/softhier_dace_artifacts/softhier_dace_artifacts/cloudsc/.dacecache/cloudsc/src/cpu/cloudsc.cpp:176:45: note: uses ‘void* operator new [](std::size_t)’, which does not have an alignment parameter
+/home/primrose/Work/Scratchpad/softhier_dace_artifacts/softhier_dace_artifacts/cloudsc/.dacecache/cloudsc/src/cpu/cloudsc.cpp:176:45: note: use ‘-faligned-new’ to enable C++17 over-aligned new support
+/home/primrose/Work/Scratchpad/softhier_dace_artifacts/softhier_dace_artifacts/cloudsc/.dacecache/cloudsc/src/cpu/cloudsc.cpp:179:45: warning: ‘new’ of type ‘int’ with extended alignment 64 [-Waligned-new=]
+  179 |     iphase = new int DACE_ALIGN(64)[sym_nclv];
+      |                                             ^
+/home/primrose/Work/Scratchpad/softhier_dace_artifacts/softhier_dace_artifacts/cloudsc/.dacecache/cloudsc/src/cpu/cloudsc.cpp:179:45: note: uses ‘void* operator new [](std::size_t)’, which does not have an alignment parameter
+/home/primrose/Work/Scratchpad/softhier_dace_artifacts/softhier_dace_artifacts/cloudsc/.dacecache/cloudsc/src/cpu/cloudsc.cpp:179:45: note: use ‘-faligned-new’ to enable C++17 over-aligned new support
+/home/primrose/Work/Scratchpad/softhier_dace_artifacts/softhier_dace_artifacts/cloudsc/.dacecache/cloudsc/src/cpu/cloudsc.cpp:181:44: warning: ‘new’ of type ‘int’ with extended alignment 64 [-Waligned-new=]
+  181 |     imelt = new int DACE_ALIGN(64)[sym_nclv];
+      |                                            ^
+/home/primrose/Work/Scratchpad/softhier_dace_artifacts/softhier_dace_artifacts/cloudsc/.dacecache/cloudsc/src/cpu/cloudsc.cpp:181:44: note: uses ‘void* operator new [](std::size_t)’, which does not have an alignment parameter
+/home/primrose/Work/Scratchpad/softhier_dace_artifacts/softhier_dace_artifacts/cloudsc/.dacecache/cloudsc/src/cpu/cloudsc.cpp:181:44: note: use ‘-faligned-new’ to enable C++17 over-aligned new support
+/home/primrose/Work/Scratchpad/softhier_dace_artifacts/softhier_dace_artifacts/cloudsc/.dacecache/cloudsc/src/cpu/cloudsc.cpp:183:45: warning: ‘new’ of type ‘int’ with extended alignment 64 [-Waligned-new=]
+  183 |     llfall = new int DACE_ALIGN(64)[sym_nclv];
+      |                                             ^
+/home/primrose/Work/Scratchpad/softhier_dace_artifacts/softhier_dace_artifacts/cloudsc/.dacecache/cloudsc/src/cpu/cloudsc.cpp:183:45: note: uses ‘void* operator new [](std::size_t)’, which does not have an alignment parameter
+/home/primrose/Work/Scratchpad/softhier_dace_artifacts/softhier_dace_artifacts/cloudsc/.dacecache/cloudsc/src/cpu/cloudsc.cpp:183:45: note: use ‘-faligned-new’ to enable C++17 over-aligned new support
+/home/primrose/Work/Scratchpad/softhier_dace_artifacts/softhier_dace_artifacts/cloudsc/.dacecache/cloudsc/src/cpu/cloudsc.cpp:185:71: warning: ‘new’ of type ‘int’ with extended alignment 64 [-Waligned-new=]
+  185 |     llindex1 = new int DACE_ALIGN(64)[((klon * (sym_nclv - 1)) + klon)];
+      |                                                                       ^
+/home/primrose/Work/Scratchpad/softhier_dace_artifacts/softhier_dace_artifacts/cloudsc/.dacecache/cloudsc/src/cpu/cloudsc.cpp:185:71: note: uses ‘void* operator new [](std::size_t)’, which does not have an alignment parameter
+/home/primrose/Work/Scratchpad/softhier_dace_artifacts/softhier_dace_artifacts/cloudsc/.dacecache/cloudsc/src/cpu/cloudsc.cpp:185:71: note: use ‘-faligned-new’ to enable C++17 over-aligned new support
+/home/primrose/Work/Scratchpad/softhier_dace_artifacts/softhier_dace_artifacts/cloudsc/.dacecache/cloudsc/src/cpu/cloudsc.cpp:187:112: warning: ‘new’ of type ‘int’ with extended alignment 64 [-Waligned-new=]
+  187 |     llindex3 = new int DACE_ALIGN(64)[((((klon * sym_nclv) * (sym_nclv - 1)) + (klon * (sym_nclv - 1))) + klon)];
+      |                                                                                                                ^
+/home/primrose/Work/Scratchpad/softhier_dace_artifacts/softhier_dace_artifacts/cloudsc/.dacecache/cloudsc/src/cpu/cloudsc.cpp:187:112: note: uses ‘void* operator new [](std::size_t)’, which does not have an alignment parameter
+/home/primrose/Work/Scratchpad/softhier_dace_artifacts/softhier_dace_artifacts/cloudsc/.dacecache/cloudsc/src/cpu/cloudsc.cpp:187:112: note: use ‘-faligned-new’ to enable C++17 over-aligned new support
+/home/primrose/Work/Scratchpad/softhier_dace_artifacts/softhier_dace_artifacts/cloudsc/.dacecache/cloudsc/src/cpu/cloudsc.cpp:189:69: warning: ‘new’ of type ‘int’ with extended alignment 64 [-Waligned-new=]
+  189 |     iorder = new int DACE_ALIGN(64)[((klon * (sym_nclv - 1)) + klon)];
+      |                                                                     ^
+/home/primrose/Work/Scratchpad/softhier_dace_artifacts/softhier_dace_artifacts/cloudsc/.dacecache/cloudsc/src/cpu/cloudsc.cpp:189:69: note: uses ‘void* operator new [](std::size_t)’, which does not have an alignment parameter
+/home/primrose/Work/Scratchpad/softhier_dace_artifacts/softhier_dace_artifacts/cloudsc/.dacecache/cloudsc/src/cpu/cloudsc.cpp:189:69: note: use ‘-faligned-new’ to enable C++17 over-aligned new support
+/home/primrose/Work/Scratchpad/softhier_dace_artifacts/softhier_dace_artifacts/cloudsc/.dacecache/cloudsc/src/cpu/cloudsc.cpp:191:70: warning: ‘new’ of type ‘double’ with extended alignment 64 [-Waligned-new=]
+  191 |     zliqfrac = new double DACE_ALIGN(64)[((klon * (klev - 1)) + klon)];
+      |                                                                      ^
+/home/primrose/Work/Scratchpad/softhier_dace_artifacts/softhier_dace_artifacts/cloudsc/.dacecache/cloudsc/src/cpu/cloudsc.cpp:191:70: note: uses ‘void* operator new [](std::size_t)’, which does not have an alignment parameter
+/home/primrose/Work/Scratchpad/softhier_dace_artifacts/softhier_dace_artifacts/cloudsc/.dacecache/cloudsc/src/cpu/cloudsc.cpp:191:70: note: use ‘-faligned-new’ to enable C++17 over-aligned new support
+/home/primrose/Work/Scratchpad/softhier_dace_artifacts/softhier_dace_artifacts/cloudsc/.dacecache/cloudsc/src/cpu/cloudsc.cpp:193:70: warning: ‘new’ of type ‘double’ with extended alignment 64 [-Waligned-new=]
+  193 |     zicefrac = new double DACE_ALIGN(64)[((klon * (klev - 1)) + klon)];
+      |                                                                      ^
+/home/primrose/Work/Scratchpad/softhier_dace_artifacts/softhier_dace_artifacts/cloudsc/.dacecache/cloudsc/src/cpu/cloudsc.cpp:193:70: note: uses ‘void* operator new [](std::size_t)’, which does not have an alignment parameter
+/home/primrose/Work/Scratchpad/softhier_dace_artifacts/softhier_dace_artifacts/cloudsc/.dacecache/cloudsc/src/cpu/cloudsc.cpp:193:70: note: use ‘-faligned-new’ to enable C++17 over-aligned new support
+/home/primrose/Work/Scratchpad/softhier_dace_artifacts/softhier_dace_artifacts/cloudsc/.dacecache/cloudsc/src/cpu/cloudsc.cpp:195:102: warning: ‘new’ of type ‘double’ with extended alignment 64 [-Waligned-new=]
+  195 |     zqx = new double DACE_ALIGN(64)[((((klev * klon) * (sym_nclv - 1)) + (klon * (klev - 1))) + klon)];
+      |                                                                                                      ^
+/home/primrose/Work/Scratchpad/softhier_dace_artifacts/softhier_dace_artifacts/cloudsc/.dacecache/cloudsc/src/cpu/cloudsc.cpp:195:102: note: uses ‘void* operator new [](std::size_t)’, which does not have an alignment parameter
+/home/primrose/Work/Scratchpad/softhier_dace_artifacts/softhier_dace_artifacts/cloudsc/.dacecache/cloudsc/src/cpu/cloudsc.cpp:195:102: note: use ‘-faligned-new’ to enable C++17 over-aligned new support
+/home/primrose/Work/Scratchpad/softhier_dace_artifacts/softhier_dace_artifacts/cloudsc/.dacecache/cloudsc/src/cpu/cloudsc.cpp:197:103: warning: ‘new’ of type ‘double’ with extended alignment 64 [-Waligned-new=]
+  197 |     zqx0 = new double DACE_ALIGN(64)[((((klev * klon) * (sym_nclv - 1)) + (klon * (klev - 1))) + klon)];
+      |                                                                                                       ^
+/home/primrose/Work/Scratchpad/softhier_dace_artifacts/softhier_dace_artifacts/cloudsc/.dacecache/cloudsc/src/cpu/cloudsc.cpp:197:103: note: uses ‘void* operator new [](std::size_t)’, which does not have an alignment parameter
+/home/primrose/Work/Scratchpad/softhier_dace_artifacts/softhier_dace_artifacts/cloudsc/.dacecache/cloudsc/src/cpu/cloudsc.cpp:197:103: note: use ‘-faligned-new’ to enable C++17 over-aligned new support
+/home/primrose/Work/Scratchpad/softhier_dace_artifacts/softhier_dace_artifacts/cloudsc/.dacecache/cloudsc/src/cpu/cloudsc.cpp:199:70: warning: ‘new’ of type ‘double’ with extended alignment 64 [-Waligned-new=]
+  199 |     zqxn = new double DACE_ALIGN(64)[((klon * (sym_nclv - 1)) + klon)];
+      |                                                                      ^
+/home/primrose/Work/Scratchpad/softhier_dace_artifacts/softhier_dace_artifacts/cloudsc/.dacecache/cloudsc/src/cpu/cloudsc.cpp:199:70: note: uses ‘void* operator new [](std::size_t)’, which does not have an alignment parameter
+/home/primrose/Work/Scratchpad/softhier_dace_artifacts/softhier_dace_artifacts/cloudsc/.dacecache/cloudsc/src/cpu/cloudsc.cpp:199:70: note: use ‘-faligned-new’ to enable C++17 over-aligned new support
+/home/primrose/Work/Scratchpad/softhier_dace_artifacts/softhier_dace_artifacts/cloudsc/.dacecache/cloudsc/src/cpu/cloudsc.cpp:201:71: warning: ‘new’ of type ‘double’ with extended alignment 64 [-Waligned-new=]
+  201 |     zqxfg = new double DACE_ALIGN(64)[((klon * (sym_nclv - 1)) + klon)];
+      |                                                                       ^
+/home/primrose/Work/Scratchpad/softhier_dace_artifacts/softhier_dace_artifacts/cloudsc/.dacecache/cloudsc/src/cpu/cloudsc.cpp:201:71: note: uses ‘void* operator new [](std::size_t)’, which does not have an alignment parameter
+/home/primrose/Work/Scratchpad/softhier_dace_artifacts/softhier_dace_artifacts/cloudsc/.dacecache/cloudsc/src/cpu/cloudsc.cpp:201:71: note: use ‘-faligned-new’ to enable C++17 over-aligned new support
+/home/primrose/Work/Scratchpad/softhier_dace_artifacts/softhier_dace_artifacts/cloudsc/.dacecache/cloudsc/src/cpu/cloudsc.cpp:203:72: warning: ‘new’ of type ‘double’ with extended alignment 64 [-Waligned-new=]
+  203 |     zqxnm1 = new double DACE_ALIGN(64)[((klon * (sym_nclv - 1)) + klon)];
+      |                                                                        ^
+/home/primrose/Work/Scratchpad/softhier_dace_artifacts/softhier_dace_artifacts/cloudsc/.dacecache/cloudsc/src/cpu/cloudsc.cpp:203:72: note: uses ‘void* operator new [](std::size_t)’, which does not have an alignment parameter
+/home/primrose/Work/Scratchpad/softhier_dace_artifacts/softhier_dace_artifacts/cloudsc/.dacecache/cloudsc/src/cpu/cloudsc.cpp:203:72: note: use ‘-faligned-new’ to enable C++17 over-aligned new support
+/home/primrose/Work/Scratchpad/softhier_dace_artifacts/softhier_dace_artifacts/cloudsc/.dacecache/cloudsc/src/cpu/cloudsc.cpp:205:72: warning: ‘new’ of type ‘double’ with extended alignment 64 [-Waligned-new=]
+  205 |     zfluxq = new double DACE_ALIGN(64)[((klon * (sym_nclv - 1)) + klon)];
+      |                                                                        ^
+/home/primrose/Work/Scratchpad/softhier_dace_artifacts/softhier_dace_artifacts/cloudsc/.dacecache/cloudsc/src/cpu/cloudsc.cpp:205:72: note: uses ‘void* operator new [](std::size_t)’, which does not have an alignment parameter
+/home/primrose/Work/Scratchpad/softhier_dace_artifacts/softhier_dace_artifacts/cloudsc/.dacecache/cloudsc/src/cpu/cloudsc.cpp:205:72: note: use ‘-faligned-new’ to enable C++17 over-aligned new support
+/home/primrose/Work/Scratchpad/softhier_dace_artifacts/softhier_dace_artifacts/cloudsc/.dacecache/cloudsc/src/cpu/cloudsc.cpp:207:106: warning: ‘new’ of type ‘double’ with extended alignment 64 [-Waligned-new=]
+  207 |     zpfplsx = new double DACE_ALIGN(64)[(((klev * klon) + ((klon * (klev + 1)) * (sym_nclv - 1))) + klon)];
+      |                                                                                                          ^
+/home/primrose/Work/Scratchpad/softhier_dace_artifacts/softhier_dace_artifacts/cloudsc/.dacecache/cloudsc/src/cpu/cloudsc.cpp:207:106: note: uses ‘void* operator new [](std::size_t)’, which does not have an alignment parameter
+/home/primrose/Work/Scratchpad/softhier_dace_artifacts/softhier_dace_artifacts/cloudsc/.dacecache/cloudsc/src/cpu/cloudsc.cpp:207:106: note: use ‘-faligned-new’ to enable C++17 over-aligned new support
+/home/primrose/Work/Scratchpad/softhier_dace_artifacts/softhier_dace_artifacts/cloudsc/.dacecache/cloudsc/src/cpu/cloudsc.cpp:209:104: warning: ‘new’ of type ‘double’ with extended alignment 64 [-Waligned-new=]
+  209 |     zlneg = new double DACE_ALIGN(64)[((((klev * klon) * (sym_nclv - 1)) + (klon * (klev - 1))) + klon)];
+      |                                                                                                        ^
+/home/primrose/Work/Scratchpad/softhier_dace_artifacts/softhier_dace_artifacts/cloudsc/.dacecache/cloudsc/src/cpu/cloudsc.cpp:209:104: note: uses ‘void* operator new [](std::size_t)’, which does not have an alignment parameter
+/home/primrose/Work/Scratchpad/softhier_dace_artifacts/softhier_dace_artifacts/cloudsc/.dacecache/cloudsc/src/cpu/cloudsc.cpp:209:104: note: use ‘-faligned-new’ to enable C++17 over-aligned new support
+/home/primrose/Work/Scratchpad/softhier_dace_artifacts/softhier_dace_artifacts/cloudsc/.dacecache/cloudsc/src/cpu/cloudsc.cpp:211:46: warning: ‘new’ of type ‘double’ with extended alignment 64 [-Waligned-new=]
+  211 |     zmeltmax = new double DACE_ALIGN(64)[klon];
+      |                                              ^
+/home/primrose/Work/Scratchpad/softhier_dace_artifacts/softhier_dace_artifacts/cloudsc/.dacecache/cloudsc/src/cpu/cloudsc.cpp:211:46: note: uses ‘void* operator new [](std::size_t)’, which does not have an alignment parameter
+/home/primrose/Work/Scratchpad/softhier_dace_artifacts/softhier_dace_artifacts/cloudsc/.dacecache/cloudsc/src/cpu/cloudsc.cpp:211:46: note: use ‘-faligned-new’ to enable C++17 over-aligned new support
+/home/primrose/Work/Scratchpad/softhier_dace_artifacts/softhier_dace_artifacts/cloudsc/.dacecache/cloudsc/src/cpu/cloudsc.cpp:213:45: warning: ‘new’ of type ‘double’ with extended alignment 64 [-Waligned-new=]
+  213 |     zfrzmax = new double DACE_ALIGN(64)[klon];
+      |                                             ^
+/home/primrose/Work/Scratchpad/softhier_dace_artifacts/softhier_dace_artifacts/cloudsc/.dacecache/cloudsc/src/cpu/cloudsc.cpp:213:45: note: uses ‘void* operator new [](std::size_t)’, which does not have an alignment parameter
+/home/primrose/Work/Scratchpad/softhier_dace_artifacts/softhier_dace_artifacts/cloudsc/.dacecache/cloudsc/src/cpu/cloudsc.cpp:213:45: note: use ‘-faligned-new’ to enable C++17 over-aligned new support
+/home/primrose/Work/Scratchpad/softhier_dace_artifacts/softhier_dace_artifacts/cloudsc/.dacecache/cloudsc/src/cpu/cloudsc.cpp:215:45: warning: ‘new’ of type ‘double’ with extended alignment 64 [-Waligned-new=]
+  215 |     zicetot = new double DACE_ALIGN(64)[klon];
+      |                                             ^
+/home/primrose/Work/Scratchpad/softhier_dace_artifacts/softhier_dace_artifacts/cloudsc/.dacecache/cloudsc/src/cpu/cloudsc.cpp:215:45: note: uses ‘void* operator new [](std::size_t)’, which does not have an alignment parameter
+/home/primrose/Work/Scratchpad/softhier_dace_artifacts/softhier_dace_artifacts/cloudsc/.dacecache/cloudsc/src/cpu/cloudsc.cpp:215:45: note: use ‘-faligned-new’ to enable C++17 over-aligned new support
+/home/primrose/Work/Scratchpad/softhier_dace_artifacts/softhier_dace_artifacts/cloudsc/.dacecache/cloudsc/src/cpu/cloudsc.cpp:217:105: warning: ‘new’ of type ‘double’ with extended alignment 64 [-Waligned-new=]
+  217 |     zqxn2d = new double DACE_ALIGN(64)[((((klev * klon) * (sym_nclv - 1)) + (klon * (klev - 1))) + klon)];
+      |                                                                                                         ^
+/home/primrose/Work/Scratchpad/softhier_dace_artifacts/softhier_dace_artifacts/cloudsc/.dacecache/cloudsc/src/cpu/cloudsc.cpp:217:105: note: uses ‘void* operator new [](std::size_t)’, which does not have an alignment parameter
+/home/primrose/Work/Scratchpad/softhier_dace_artifacts/softhier_dace_artifacts/cloudsc/.dacecache/cloudsc/src/cpu/cloudsc.cpp:217:105: note: use ‘-faligned-new’ to enable C++17 over-aligned new support
+/home/primrose/Work/Scratchpad/softhier_dace_artifacts/softhier_dace_artifacts/cloudsc/.dacecache/cloudsc/src/cpu/cloudsc.cpp:219:68: warning: ‘new’ of type ‘double’ with extended alignment 64 [-Waligned-new=]
+  219 |     zqsmix = new double DACE_ALIGN(64)[((klon * (klev - 1)) + klon)];
+      |                                                                    ^
+/home/primrose/Work/Scratchpad/softhier_dace_artifacts/softhier_dace_artifacts/cloudsc/.dacecache/cloudsc/src/cpu/cloudsc.cpp:219:68: note: uses ‘void* operator new [](std::size_t)’, which does not have an alignment parameter
+/home/primrose/Work/Scratchpad/softhier_dace_artifacts/softhier_dace_artifacts/cloudsc/.dacecache/cloudsc/src/cpu/cloudsc.cpp:219:68: note: use ‘-faligned-new’ to enable C++17 over-aligned new support
+/home/primrose/Work/Scratchpad/softhier_dace_artifacts/softhier_dace_artifacts/cloudsc/.dacecache/cloudsc/src/cpu/cloudsc.cpp:221:68: warning: ‘new’ of type ‘double’ with extended alignment 64 [-Waligned-new=]
+  221 |     zqsliq = new double DACE_ALIGN(64)[((klon * (klev - 1)) + klon)];
+      |                                                                    ^
+/home/primrose/Work/Scratchpad/softhier_dace_artifacts/softhier_dace_artifacts/cloudsc/.dacecache/cloudsc/src/cpu/cloudsc.cpp:221:68: note: uses ‘void* operator new [](std::size_t)’, which does not have an alignment parameter
+/home/primrose/Work/Scratchpad/softhier_dace_artifacts/softhier_dace_artifacts/cloudsc/.dacecache/cloudsc/src/cpu/cloudsc.cpp:221:68: note: use ‘-faligned-new’ to enable C++17 over-aligned new support
+/home/primrose/Work/Scratchpad/softhier_dace_artifacts/softhier_dace_artifacts/cloudsc/.dacecache/cloudsc/src/cpu/cloudsc.cpp:223:68: warning: ‘new’ of type ‘double’ with extended alignment 64 [-Waligned-new=]
+  223 |     zqsice = new double DACE_ALIGN(64)[((klon * (klev - 1)) + klon)];
+      |                                                                    ^
+/home/primrose/Work/Scratchpad/softhier_dace_artifacts/softhier_dace_artifacts/cloudsc/.dacecache/cloudsc/src/cpu/cloudsc.cpp:223:68: note: uses ‘void* operator new [](std::size_t)’, which does not have an alignment parameter
+/home/primrose/Work/Scratchpad/softhier_dace_artifacts/softhier_dace_artifacts/cloudsc/.dacecache/cloudsc/src/cpu/cloudsc.cpp:223:68: note: use ‘-faligned-new’ to enable C++17 over-aligned new support
+/home/primrose/Work/Scratchpad/softhier_dace_artifacts/softhier_dace_artifacts/cloudsc/.dacecache/cloudsc/src/cpu/cloudsc.cpp:225:70: warning: ‘new’ of type ‘double’ with extended alignment 64 [-Waligned-new=]
+  225 |     zfoeewmt = new double DACE_ALIGN(64)[((klon * (klev - 1)) + klon)];
+      |                                                                      ^
+/home/primrose/Work/Scratchpad/softhier_dace_artifacts/softhier_dace_artifacts/cloudsc/.dacecache/cloudsc/src/cpu/cloudsc.cpp:225:70: note: uses ‘void* operator new [](std::size_t)’, which does not have an alignment parameter
+/home/primrose/Work/Scratchpad/softhier_dace_artifacts/softhier_dace_artifacts/cloudsc/.dacecache/cloudsc/src/cpu/cloudsc.cpp:225:70: note: use ‘-faligned-new’ to enable C++17 over-aligned new support
+/home/primrose/Work/Scratchpad/softhier_dace_artifacts/softhier_dace_artifacts/cloudsc/.dacecache/cloudsc/src/cpu/cloudsc.cpp:227:68: warning: ‘new’ of type ‘double’ with extended alignment 64 [-Waligned-new=]
+  227 |     zfoeew = new double DACE_ALIGN(64)[((klon * (klev - 1)) + klon)];
+      |                                                                    ^
+/home/primrose/Work/Scratchpad/softhier_dace_artifacts/softhier_dace_artifacts/cloudsc/.dacecache/cloudsc/src/cpu/cloudsc.cpp:227:68: note: uses ‘void* operator new [](std::size_t)’, which does not have an alignment parameter
+/home/primrose/Work/Scratchpad/softhier_dace_artifacts/softhier_dace_artifacts/cloudsc/.dacecache/cloudsc/src/cpu/cloudsc.cpp:227:68: note: use ‘-faligned-new’ to enable C++17 over-aligned new support
+/home/primrose/Work/Scratchpad/softhier_dace_artifacts/softhier_dace_artifacts/cloudsc/.dacecache/cloudsc/src/cpu/cloudsc.cpp:229:71: warning: ‘new’ of type ‘double’ with extended alignment 64 [-Waligned-new=]
+  229 |     zfoeeliqt = new double DACE_ALIGN(64)[((klon * (klev - 1)) + klon)];
+      |                                                                       ^
+/home/primrose/Work/Scratchpad/softhier_dace_artifacts/softhier_dace_artifacts/cloudsc/.dacecache/cloudsc/src/cpu/cloudsc.cpp:229:71: note: uses ‘void* operator new [](std::size_t)’, which does not have an alignment parameter
+/home/primrose/Work/Scratchpad/softhier_dace_artifacts/softhier_dace_artifacts/cloudsc/.dacecache/cloudsc/src/cpu/cloudsc.cpp:229:71: note: use ‘-faligned-new’ to enable C++17 over-aligned new support
+/home/primrose/Work/Scratchpad/softhier_dace_artifacts/softhier_dace_artifacts/cloudsc/.dacecache/cloudsc/src/cpu/cloudsc.cpp:231:47: warning: ‘new’ of type ‘double’ with extended alignment 64 [-Waligned-new=]
+  231 |     zdqsmixdt = new double DACE_ALIGN(64)[klon];
+      |                                               ^
+/home/primrose/Work/Scratchpad/softhier_dace_artifacts/softhier_dace_artifacts/cloudsc/.dacecache/cloudsc/src/cpu/cloudsc.cpp:231:47: note: uses ‘void* operator new [](std::size_t)’, which does not have an alignment parameter
+/home/primrose/Work/Scratchpad/softhier_dace_artifacts/softhier_dace_artifacts/cloudsc/.dacecache/cloudsc/src/cpu/cloudsc.cpp:231:47: note: use ‘-faligned-new’ to enable C++17 over-aligned new support
+/home/primrose/Work/Scratchpad/softhier_dace_artifacts/softhier_dace_artifacts/cloudsc/.dacecache/cloudsc/src/cpu/cloudsc.cpp:233:47: warning: ‘new’ of type ‘double’ with extended alignment 64 [-Waligned-new=]
+  233 |     zcorqsice = new double DACE_ALIGN(64)[klon];
+      |                                               ^
+/home/primrose/Work/Scratchpad/softhier_dace_artifacts/softhier_dace_artifacts/cloudsc/.dacecache/cloudsc/src/cpu/cloudsc.cpp:233:47: note: uses ‘void* operator new [](std::size_t)’, which does not have an alignment parameter
+/home/primrose/Work/Scratchpad/softhier_dace_artifacts/softhier_dace_artifacts/cloudsc/.dacecache/cloudsc/src/cpu/cloudsc.cpp:233:47: note: use ‘-faligned-new’ to enable C++17 over-aligned new support
+/home/primrose/Work/Scratchpad/softhier_dace_artifacts/softhier_dace_artifacts/cloudsc/.dacecache/cloudsc/src/cpu/cloudsc.cpp:235:49: warning: ‘new’ of type ‘double’ with extended alignment 64 [-Waligned-new=]
+  235 |     zevaplimmix = new double DACE_ALIGN(64)[klon];
+      |                                                 ^
+/home/primrose/Work/Scratchpad/softhier_dace_artifacts/softhier_dace_artifacts/cloudsc/.dacecache/cloudsc/src/cpu/cloudsc.cpp:235:49: note: uses ‘void* operator new [](std::size_t)’, which does not have an alignment parameter
+/home/primrose/Work/Scratchpad/softhier_dace_artifacts/softhier_dace_artifacts/cloudsc/.dacecache/cloudsc/src/cpu/cloudsc.cpp:235:49: note: use ‘-faligned-new’ to enable C++17 over-aligned new support
+/home/primrose/Work/Scratchpad/softhier_dace_artifacts/softhier_dace_artifacts/cloudsc/.dacecache/cloudsc/src/cpu/cloudsc.cpp:237:113: warning: ‘new’ of type ‘double’ with extended alignment 64 [-Waligned-new=]
+  237 |     zsolqa = new double DACE_ALIGN(64)[((((klon * sym_nclv) * (sym_nclv - 1)) + (klon * (sym_nclv - 1))) + klon)];
+      |                                                                                                                 ^
+/home/primrose/Work/Scratchpad/softhier_dace_artifacts/softhier_dace_artifacts/cloudsc/.dacecache/cloudsc/src/cpu/cloudsc.cpp:237:113: note: uses ‘void* operator new [](std::size_t)’, which does not have an alignment parameter
+/home/primrose/Work/Scratchpad/softhier_dace_artifacts/softhier_dace_artifacts/cloudsc/.dacecache/cloudsc/src/cpu/cloudsc.cpp:237:113: note: use ‘-faligned-new’ to enable C++17 over-aligned new support
+/home/primrose/Work/Scratchpad/softhier_dace_artifacts/softhier_dace_artifacts/cloudsc/.dacecache/cloudsc/src/cpu/cloudsc.cpp:239:113: warning: ‘new’ of type ‘double’ with extended alignment 64 [-Waligned-new=]
+  239 |     zsolqb = new double DACE_ALIGN(64)[((((klon * sym_nclv) * (sym_nclv - 1)) + (klon * (sym_nclv - 1))) + klon)];
+      |                                                                                                                 ^
+/home/primrose/Work/Scratchpad/softhier_dace_artifacts/softhier_dace_artifacts/cloudsc/.dacecache/cloudsc/src/cpu/cloudsc.cpp:239:113: note: uses ‘void* operator new [](std::size_t)’, which does not have an alignment parameter
+/home/primrose/Work/Scratchpad/softhier_dace_artifacts/softhier_dace_artifacts/cloudsc/.dacecache/cloudsc/src/cpu/cloudsc.cpp:239:113: note: use ‘-faligned-new’ to enable C++17 over-aligned new support
+/home/primrose/Work/Scratchpad/softhier_dace_artifacts/softhier_dace_artifacts/cloudsc/.dacecache/cloudsc/src/cpu/cloudsc.cpp:241:112: warning: ‘new’ of type ‘double’ with extended alignment 64 [-Waligned-new=]
+  241 |     zqlhs = new double DACE_ALIGN(64)[((((klon * sym_nclv) * (sym_nclv - 1)) + (klon * (sym_nclv - 1))) + klon)];
+      |                                                                                                                ^
+/home/primrose/Work/Scratchpad/softhier_dace_artifacts/softhier_dace_artifacts/cloudsc/.dacecache/cloudsc/src/cpu/cloudsc.cpp:241:112: note: uses ‘void* operator new [](std::size_t)’, which does not have an alignment parameter
+/home/primrose/Work/Scratchpad/softhier_dace_artifacts/softhier_dace_artifacts/cloudsc/.dacecache/cloudsc/src/cpu/cloudsc.cpp:241:112: note: use ‘-faligned-new’ to enable C++17 over-aligned new support
+/home/primrose/Work/Scratchpad/softhier_dace_artifacts/softhier_dace_artifacts/cloudsc/.dacecache/cloudsc/src/cpu/cloudsc.cpp:243:46: warning: ‘new’ of type ‘double’ with extended alignment 64 [-Waligned-new=]
+  243 |     zvqx = new double DACE_ALIGN(64)[sym_nclv];
+      |                                              ^
+/home/primrose/Work/Scratchpad/softhier_dace_artifacts/softhier_dace_artifacts/cloudsc/.dacecache/cloudsc/src/cpu/cloudsc.cpp:243:46: note: uses ‘void* operator new [](std::size_t)’, which does not have an alignment parameter
+/home/primrose/Work/Scratchpad/softhier_dace_artifacts/softhier_dace_artifacts/cloudsc/.dacecache/cloudsc/src/cpu/cloudsc.cpp:243:46: note: use ‘-faligned-new’ to enable C++17 over-aligned new support
+/home/primrose/Work/Scratchpad/softhier_dace_artifacts/softhier_dace_artifacts/cloudsc/.dacecache/cloudsc/src/cpu/cloudsc.cpp:246:72: warning: ‘new’ of type ‘double’ with extended alignment 64 [-Waligned-new=]
+  246 |     zratio = new double DACE_ALIGN(64)[((klon * (sym_nclv - 1)) + klon)];
+      |                                                                        ^
+/home/primrose/Work/Scratchpad/softhier_dace_artifacts/softhier_dace_artifacts/cloudsc/.dacecache/cloudsc/src/cpu/cloudsc.cpp:246:72: note: uses ‘void* operator new [](std::size_t)’, which does not have an alignment parameter
+/home/primrose/Work/Scratchpad/softhier_dace_artifacts/softhier_dace_artifacts/cloudsc/.dacecache/cloudsc/src/cpu/cloudsc.cpp:246:72: note: use ‘-faligned-new’ to enable C++17 over-aligned new support
+/home/primrose/Work/Scratchpad/softhier_dace_artifacts/softhier_dace_artifacts/cloudsc/.dacecache/cloudsc/src/cpu/cloudsc.cpp:248:74: warning: ‘new’ of type ‘double’ with extended alignment 64 [-Waligned-new=]
+  248 |     zsinksum = new double DACE_ALIGN(64)[((klon * (sym_nclv - 1)) + klon)];
+      |                                                                          ^
+/home/primrose/Work/Scratchpad/softhier_dace_artifacts/softhier_dace_artifacts/cloudsc/.dacecache/cloudsc/src/cpu/cloudsc.cpp:248:74: note: uses ‘void* operator new [](std::size_t)’, which does not have an alignment parameter
+/home/primrose/Work/Scratchpad/softhier_dace_artifacts/softhier_dace_artifacts/cloudsc/.dacecache/cloudsc/src/cpu/cloudsc.cpp:248:74: note: use ‘-faligned-new’ to enable C++17 over-aligned new support
+/home/primrose/Work/Scratchpad/softhier_dace_artifacts/softhier_dace_artifacts/cloudsc/.dacecache/cloudsc/src/cpu/cloudsc.cpp:250:75: warning: ‘new’ of type ‘double’ with extended alignment 64 [-Waligned-new=]
+  250 |     zfallsink = new double DACE_ALIGN(64)[((klon * (sym_nclv - 1)) + klon)];
+      |                                                                           ^
+/home/primrose/Work/Scratchpad/softhier_dace_artifacts/softhier_dace_artifacts/cloudsc/.dacecache/cloudsc/src/cpu/cloudsc.cpp:250:75: note: uses ‘void* operator new [](std::size_t)’, which does not have an alignment parameter
+/home/primrose/Work/Scratchpad/softhier_dace_artifacts/softhier_dace_artifacts/cloudsc/.dacecache/cloudsc/src/cpu/cloudsc.cpp:250:75: note: use ‘-faligned-new’ to enable C++17 over-aligned new support
+/home/primrose/Work/Scratchpad/softhier_dace_artifacts/softhier_dace_artifacts/cloudsc/.dacecache/cloudsc/src/cpu/cloudsc.cpp:252:75: warning: ‘new’ of type ‘double’ with extended alignment 64 [-Waligned-new=]
+  252 |     zfallsrce = new double DACE_ALIGN(64)[((klon * (sym_nclv - 1)) + klon)];
+      |                                                                           ^
+/home/primrose/Work/Scratchpad/softhier_dace_artifacts/softhier_dace_artifacts/cloudsc/.dacecache/cloudsc/src/cpu/cloudsc.cpp:252:75: note: uses ‘void* operator new [](std::size_t)’, which does not have an alignment parameter
+/home/primrose/Work/Scratchpad/softhier_dace_artifacts/softhier_dace_artifacts/cloudsc/.dacecache/cloudsc/src/cpu/cloudsc.cpp:252:75: note: use ‘-faligned-new’ to enable C++17 over-aligned new support
+/home/primrose/Work/Scratchpad/softhier_dace_artifacts/softhier_dace_artifacts/cloudsc/.dacecache/cloudsc/src/cpu/cloudsc.cpp:254:75: warning: ‘new’ of type ‘double’ with extended alignment 64 [-Waligned-new=]
+  254 |     zconvsrce = new double DACE_ALIGN(64)[((klon * (sym_nclv - 1)) + klon)];
+      |                                                                           ^
+/home/primrose/Work/Scratchpad/softhier_dace_artifacts/softhier_dace_artifacts/cloudsc/.dacecache/cloudsc/src/cpu/cloudsc.cpp:254:75: note: uses ‘void* operator new [](std::size_t)’, which does not have an alignment parameter
+/home/primrose/Work/Scratchpad/softhier_dace_artifacts/softhier_dace_artifacts/cloudsc/.dacecache/cloudsc/src/cpu/cloudsc.cpp:254:75: note: use ‘-faligned-new’ to enable C++17 over-aligned new support
+/home/primrose/Work/Scratchpad/softhier_dace_artifacts/softhier_dace_artifacts/cloudsc/.dacecache/cloudsc/src/cpu/cloudsc.cpp:256:75: warning: ‘new’ of type ‘double’ with extended alignment 64 [-Waligned-new=]
+  256 |     zconvsink = new double DACE_ALIGN(64)[((klon * (sym_nclv - 1)) + klon)];
+      |                                                                           ^
+/home/primrose/Work/Scratchpad/softhier_dace_artifacts/softhier_dace_artifacts/cloudsc/.dacecache/cloudsc/src/cpu/cloudsc.cpp:256:75: note: uses ‘void* operator new [](std::size_t)’, which does not have an alignment parameter
+/home/primrose/Work/Scratchpad/softhier_dace_artifacts/softhier_dace_artifacts/cloudsc/.dacecache/cloudsc/src/cpu/cloudsc.cpp:256:75: note: use ‘-faligned-new’ to enable C++17 over-aligned new support
+/home/primrose/Work/Scratchpad/softhier_dace_artifacts/softhier_dace_artifacts/cloudsc/.dacecache/cloudsc/src/cpu/cloudsc.cpp:258:78: warning: ‘new’ of type ‘double’ with extended alignment 64 [-Waligned-new=]
+  258 |     zpsupsatsrce = new double DACE_ALIGN(64)[((klon * (sym_nclv - 1)) + klon)];
+      |                                                                              ^
+/home/primrose/Work/Scratchpad/softhier_dace_artifacts/softhier_dace_artifacts/cloudsc/.dacecache/cloudsc/src/cpu/cloudsc.cpp:258:78: note: uses ‘void* operator new [](std::size_t)’, which does not have an alignment parameter
+/home/primrose/Work/Scratchpad/softhier_dace_artifacts/softhier_dace_artifacts/cloudsc/.dacecache/cloudsc/src/cpu/cloudsc.cpp:258:78: note: use ‘-faligned-new’ to enable C++17 over-aligned new support
+/home/primrose/Work/Scratchpad/softhier_dace_artifacts/softhier_dace_artifacts/cloudsc/.dacecache/cloudsc/src/cpu/cloudsc.cpp:261:49: warning: ‘new’ of type ‘double’ with extended alignment 64 [-Waligned-new=]
+  261 |     zcldtopdist = new double DACE_ALIGN(64)[klon];
+      |                                                 ^
+/home/primrose/Work/Scratchpad/softhier_dace_artifacts/softhier_dace_artifacts/cloudsc/.dacecache/cloudsc/src/cpu/cloudsc.cpp:261:49: note: uses ‘void* operator new [](std::size_t)’, which does not have an alignment parameter
+/home/primrose/Work/Scratchpad/softhier_dace_artifacts/softhier_dace_artifacts/cloudsc/.dacecache/cloudsc/src/cpu/cloudsc.cpp:261:49: note: use ‘-faligned-new’ to enable C++17 over-aligned new support
+/home/primrose/Work/Scratchpad/softhier_dace_artifacts/softhier_dace_artifacts/cloudsc/.dacecache/cloudsc/src/cpu/cloudsc.cpp:263:46: warning: ‘new’ of type ‘double’ with extended alignment 64 [-Waligned-new=]
+  263 |     zrainacc = new double DACE_ALIGN(64)[klon];
+      |                                              ^
+/home/primrose/Work/Scratchpad/softhier_dace_artifacts/softhier_dace_artifacts/cloudsc/.dacecache/cloudsc/src/cpu/cloudsc.cpp:263:46: note: uses ‘void* operator new [](std::size_t)’, which does not have an alignment parameter
+/home/primrose/Work/Scratchpad/softhier_dace_artifacts/softhier_dace_artifacts/cloudsc/.dacecache/cloudsc/src/cpu/cloudsc.cpp:263:46: note: use ‘-faligned-new’ to enable C++17 over-aligned new support
+/home/primrose/Work/Scratchpad/softhier_dace_artifacts/softhier_dace_artifacts/cloudsc/.dacecache/cloudsc/src/cpu/cloudsc.cpp:265:46: warning: ‘new’ of type ‘double’ with extended alignment 64 [-Waligned-new=]
+  265 |     zraincld = new double DACE_ALIGN(64)[klon];
+      |                                              ^
+/home/primrose/Work/Scratchpad/softhier_dace_artifacts/softhier_dace_artifacts/cloudsc/.dacecache/cloudsc/src/cpu/cloudsc.cpp:265:46: note: uses ‘void* operator new [](std::size_t)’, which does not have an alignment parameter
+/home/primrose/Work/Scratchpad/softhier_dace_artifacts/softhier_dace_artifacts/cloudsc/.dacecache/cloudsc/src/cpu/cloudsc.cpp:265:46: note: use ‘-faligned-new’ to enable C++17 over-aligned new support
+/home/primrose/Work/Scratchpad/softhier_dace_artifacts/softhier_dace_artifacts/cloudsc/.dacecache/cloudsc/src/cpu/cloudsc.cpp:267:46: warning: ‘new’ of type ‘double’ with extended alignment 64 [-Waligned-new=]
+  267 |     zsnowcld = new double DACE_ALIGN(64)[klon];
+      |                                              ^
+/home/primrose/Work/Scratchpad/softhier_dace_artifacts/softhier_dace_artifacts/cloudsc/.dacecache/cloudsc/src/cpu/cloudsc.cpp:267:46: note: uses ‘void* operator new [](std::size_t)’, which does not have an alignment parameter
+/home/primrose/Work/Scratchpad/softhier_dace_artifacts/softhier_dace_artifacts/cloudsc/.dacecache/cloudsc/src/cpu/cloudsc.cpp:267:46: note: use ‘-faligned-new’ to enable C++17 over-aligned new support
+/home/primrose/Work/Scratchpad/softhier_dace_artifacts/softhier_dace_artifacts/cloudsc/.dacecache/cloudsc/src/cpu/cloudsc.cpp:272:44: warning: ‘new’ of type ‘int’ with extended alignment 64 [-Waligned-new=]
+  272 |     llrainliq = new int DACE_ALIGN(64)[klon];
+      |                                            ^
+/home/primrose/Work/Scratchpad/softhier_dace_artifacts/softhier_dace_artifacts/cloudsc/.dacecache/cloudsc/src/cpu/cloudsc.cpp:272:44: note: uses ‘void* operator new [](std::size_t)’, which does not have an alignment parameter
+/home/primrose/Work/Scratchpad/softhier_dace_artifacts/softhier_dace_artifacts/cloudsc/.dacecache/cloudsc/src/cpu/cloudsc.cpp:272:44: note: use ‘-faligned-new’ to enable C++17 over-aligned new support
+/home/primrose/Work/Scratchpad/softhier_dace_artifacts/softhier_dace_artifacts/cloudsc/.dacecache/cloudsc/src/cpu/cloudsc.cpp:3136:54: warning: ‘new’ of type ‘double’ with extended alignment 64 [-Waligned-new=]
+ 3136 |                 zgdp = new double DACE_ALIGN(64)[klon];
+      |                                                      ^
+/home/primrose/Work/Scratchpad/softhier_dace_artifacts/softhier_dace_artifacts/cloudsc/.dacecache/cloudsc/src/cpu/cloudsc.cpp:3136:54: note: uses ‘void* operator new [](std::size_t)’, which does not have an alignment parameter
+/home/primrose/Work/Scratchpad/softhier_dace_artifacts/softhier_dace_artifacts/cloudsc/.dacecache/cloudsc/src/cpu/cloudsc.cpp:3136:54: note: use ‘-faligned-new’ to enable C++17 over-aligned new support
+/home/primrose/Work/Scratchpad/softhier_dace_artifacts/softhier_dace_artifacts/cloudsc/.dacecache/cloudsc/src/cpu/cloudsc.cpp:3258:59: warning: ‘new’ of type ‘double’ with extended alignment 64 [-Waligned-new=]
+ 3258 |                 zdqsicedt = new double DACE_ALIGN(64)[klon];
+      |                                                           ^
+/home/primrose/Work/Scratchpad/softhier_dace_artifacts/softhier_dace_artifacts/cloudsc/.dacecache/cloudsc/src/cpu/cloudsc.cpp:3258:59: note: uses ‘void* operator new [](std::size_t)’, which does not have an alignment parameter
+/home/primrose/Work/Scratchpad/softhier_dace_artifacts/softhier_dace_artifacts/cloudsc/.dacecache/cloudsc/src/cpu/cloudsc.cpp:3258:59: note: use ‘-faligned-new’ to enable C++17 over-aligned new support
+/home/primrose/Work/Scratchpad/softhier_dace_artifacts/softhier_dace_artifacts/cloudsc/.dacecache/cloudsc/src/cpu/cloudsc.cpp:3340:59: warning: ‘new’ of type ‘double’ with extended alignment 64 [-Waligned-new=]
+ 3340 |                 zcorqsmix = new double DACE_ALIGN(64)[klon];
+      |                                                           ^
+/home/primrose/Work/Scratchpad/softhier_dace_artifacts/softhier_dace_artifacts/cloudsc/.dacecache/cloudsc/src/cpu/cloudsc.cpp:3340:59: note: uses ‘void* operator new [](std::size_t)’, which does not have an alignment parameter
+/home/primrose/Work/Scratchpad/softhier_dace_artifacts/softhier_dace_artifacts/cloudsc/.dacecache/cloudsc/src/cpu/cloudsc.cpp:3340:59: note: use ‘-faligned-new’ to enable C++17 over-aligned new support
+/home/primrose/Work/Scratchpad/softhier_dace_artifacts/softhier_dace_artifacts/cloudsc/.dacecache/cloudsc/src/cpu/cloudsc.cpp:7978:64: warning: ‘new’ of type ‘double’ with extended alignment 64 [-Waligned-new=]
+ 7978 |                     zicenuclei = new double DACE_ALIGN(64)[klon];
+      |                                                                ^
+/home/primrose/Work/Scratchpad/softhier_dace_artifacts/softhier_dace_artifacts/cloudsc/.dacecache/cloudsc/src/cpu/cloudsc.cpp:7978:64: note: uses ‘void* operator new [](std::size_t)’, which does not have an alignment parameter
+/home/primrose/Work/Scratchpad/softhier_dace_artifacts/softhier_dace_artifacts/cloudsc/.dacecache/cloudsc/src/cpu/cloudsc.cpp:7978:64: note: use ‘-faligned-new’ to enable C++17 over-aligned new support
+/home/primrose/Work/Scratchpad/softhier_dace_artifacts/softhier_dace_artifacts/cloudsc/.dacecache/cloudsc/src/cpu/cloudsc.cpp:9437:67: warning: ‘new’ of type ‘double’ with extended alignment 64 [-Waligned-new=]
+ 9437 |                         zsnowrime = new double DACE_ALIGN(64)[klon];
+      |                                                                   ^
+/home/primrose/Work/Scratchpad/softhier_dace_artifacts/softhier_dace_artifacts/cloudsc/.dacecache/cloudsc/src/cpu/cloudsc.cpp:9437:67: note: uses ‘void* operator new [](std::size_t)’, which does not have an alignment parameter
+/home/primrose/Work/Scratchpad/softhier_dace_artifacts/softhier_dace_artifacts/cloudsc/.dacecache/cloudsc/src/cpu/cloudsc.cpp:9437:67: note: use ‘-faligned-new’ to enable C++17 over-aligned new support
+/home/primrose/Work/Scratchpad/softhier_dace_artifacts/softhier_dace_artifacts/cloudsc/.dacecache/cloudsc/src/cpu/cloudsc.cpp:7532:114: warning: ‘zqe’ may be used uninitialized [-Wmaybe-uninitialized]
+ 7532 |                 _if_cond_39 = ((zqe >= ((zrhc * zqsice[((_for_it_46 + (klon * (_for_it_23 - 1))) - 1)]) * zfac)) && (zqe < (zqsice[((_for_it_46 + (klon * (_for_it_23 - 1))) - 1)] * zfac)));
+      |                               ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+/home/primrose/Work/Scratchpad/softhier_dace_artifacts/softhier_dace_artifacts/cloudsc/.dacecache/cloudsc/src/cpu/cloudsc.cpp:161:12: note: ‘zqe’ was declared here
+  161 |     double zqe;
+      |            ^~~
+[ 50%] Linking CXX shared library libcloudsc.so
+[ 50%] Built target cloudsc
+[ 75%] Building CXX object CMakeFiles/dacestub_cloudsc.dir/tools/dacestub.cpp.o
+[100%] Linking CXX shared library libdacestub_cloudsc.so
+[100%] Built target dacestub_cloudsc
+
+Running SDFG2
+[ 50%] Built target cloudsc_stage6
+[100%] Built target dacestub_cloudsc_stage6
+
+Comparing Results
+Comparison done. No numerical differences found
+Memset Memcpy Debug
+Copying generated data
+Running SDFG1
+[ 50%] Built target cloudsc
+[100%] Built target dacestub_cloudsc
+
+Running SDFG2
+[ 50%] Built target cloudsc_stage6
+[100%] Built target dacestub_cloudsc_stage6
+
+Comparing Results
+Comparison done. No numerical differences found

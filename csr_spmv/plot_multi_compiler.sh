@@ -1,1 +1,1 @@
-python plot_multi_compiler.py cloudsc_pattern_1 cloudsc_pattern_1_multicompiler.png
+python plot_multi_compiler.py csr_spmv csr_spmv_multicompiler.png

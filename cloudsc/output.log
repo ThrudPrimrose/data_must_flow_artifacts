@@ -1,0 +1,1163 @@
+/home/primrose/Work/dace/dace/sdfg/validation.py:578: UserWarning: WARNING: Use of uninitialized transient "zfoeeliqt" in state "single_state_body_10_0"
+  warnings.warn('WARNING: Use of uninitialized transient "%s" in state "%s"' %
+/home/primrose/Work/dace/dace/sdfg/validation.py:578: UserWarning: WARNING: Use of uninitialized transient "zfoeew" in state "single_state_body_10_0"
+  warnings.warn('WARNING: Use of uninitialized transient "%s" in state "%s"' %
+/home/primrose/Work/dace/dace/sdfg/validation.py:578: UserWarning: WARNING: Use of uninitialized transient "zqsmix" in state "single_state_body_10_0"
+  warnings.warn('WARNING: Use of uninitialized transient "%s" in state "%s"' %
+/home/primrose/Work/dace/dace/sdfg/validation.py:578: UserWarning: WARNING: Use of uninitialized transient "zfoeewmt" in state "single_state_body_10_0"
+  warnings.warn('WARNING: Use of uninitialized transient "%s" in state "%s"' %
+/home/primrose/Work/dace/dace/sdfg/validation.py:578: UserWarning: WARNING: Use of uninitialized transient "zqsliq" in state "single_state_body_10_0"
+  warnings.warn('WARNING: Use of uninitialized transient "%s" in state "%s"' %
+/home/primrose/Work/dace/dace/sdfg/validation.py:578: UserWarning: WARNING: Use of uninitialized transient "zliqfrac" in state "single_state_body_10_0"
+  warnings.warn('WARNING: Use of uninitialized transient "%s" in state "%s"' %
+/home/primrose/Work/dace/dace/sdfg/validation.py:578: UserWarning: WARNING: Use of uninitialized transient "zli" in state "single_state_body_10_0"
+  warnings.warn('WARNING: Use of uninitialized transient "%s" in state "%s"' %
+/home/primrose/Work/dace/dace/sdfg/validation.py:578: UserWarning: WARNING: Use of uninitialized transient "zdp" in state "single_state_body_22"
+  warnings.warn('WARNING: Use of uninitialized transient "%s" in state "%s"' %
+/home/primrose/Work/dace/dace/sdfg/validation.py:578: UserWarning: WARNING: Use of uninitialized transient "zicecld" in state "single_state_body_22"
+  warnings.warn('WARNING: Use of uninitialized transient "%s" in state "%s"' %
+/home/primrose/Work/dace/dace/sdfg/validation.py:578: UserWarning: WARNING: Use of uninitialized transient "zdqsmixdt" in state "single_state_body_22"
+  warnings.warn('WARNING: Use of uninitialized transient "%s" in state "%s"' %
+/home/primrose/Work/dace/dace/sdfg/validation.py:578: UserWarning: WARNING: Use of uninitialized transient "zdqsicedt" in state "single_state_body_22"
+  warnings.warn('WARNING: Use of uninitialized transient "%s" in state "%s"' %
+/home/primrose/Work/dace/dace/sdfg/validation.py:578: UserWarning: WARNING: Use of uninitialized transient "zcorqsmix" in state "single_state_body_22"
+  warnings.warn('WARNING: Use of uninitialized transient "%s" in state "%s"' %
+/home/primrose/Work/dace/dace/sdfg/validation.py:578: UserWarning: WARNING: Use of uninitialized transient "zliqcld" in state "single_state_body_22"
+  warnings.warn('WARNING: Use of uninitialized transient "%s" in state "%s"' %
+/home/primrose/Work/dace/dace/sdfg/validation.py:578: UserWarning: WARNING: Use of uninitialized transient "zgdp" in state "single_state_body_22"
+  warnings.warn('WARNING: Use of uninitialized transient "%s" in state "%s"' %
+/home/primrose/Work/dace/dace/sdfg/validation.py:578: UserWarning: WARNING: Use of uninitialized transient "zmf" in state "single_state_body_23"
+  warnings.warn('WARNING: Use of uninitialized transient "%s" in state "%s"' %
+/home/primrose/Work/dace/dace/sdfg/validation.py:578: UserWarning: WARNING: Use of uninitialized transient "zlcust" in state "single_state_body_23"
+  warnings.warn('WARNING: Use of uninitialized transient "%s" in state "%s"' %
+/home/primrose/Work/dace/dace/sdfg/validation.py:578: UserWarning: WARNING: Use of uninitialized transient "zqxnm1" in state "single_state_body_23"
+  warnings.warn('WARNING: Use of uninitialized transient "%s" in state "%s"' %
+/home/primrose/Work/dace/dace/sdfg/validation.py:578: UserWarning: WARNING: Use of uninitialized transient "zldifdt" in state "single_state_body_25"
+  warnings.warn('WARNING: Use of uninitialized transient "%s" in state "%s"' %
+/home/primrose/Work/dace/dace/sdfg/validation.py:578: UserWarning: WARNING: Use of uninitialized transient "zqe_2" in state "_state_l755_c755_1"
+  warnings.warn('WARNING: Use of uninitialized transient "%s" in state "%s"' %
+/home/primrose/Work/dace/dace/sdfg/validation.py:578: UserWarning: WARNING: Use of uninitialized transient "zicenuclei" in state "single_state_body_30"
+  warnings.warn('WARNING: Use of uninitialized transient "%s" in state "%s"' %
+/home/primrose/Work/dace/dace/sdfg/validation.py:578: UserWarning: WARNING: Use of uninitialized transient "zsnowrime" in state "single_state_body_35"
+  warnings.warn('WARNING: Use of uninitialized transient "%s" in state "%s"' %
+/home/primrose/Work/dace/dace/sdfg/validation.py:578: UserWarning: WARNING: Use of uninitialized transient "zfrzmax" in state "single_state_body_39"
+  warnings.warn('WARNING: Use of uninitialized transient "%s" in state "%s"' %
+/home/primrose/Work/dace/dace/sdfg/validation.py:578: UserWarning: WARNING: Use of uninitialized transient "zqlhs" in state "single_state_body_51"
+  warnings.warn('WARNING: Use of uninitialized transient "%s" in state "%s"' %
+/home/primrose/Work/dace/dace/sdfg/validation.py:578: UserWarning: WARNING: Use of uninitialized transient "zqxnm1" in state "_state_l601_c601_4"
+  warnings.warn('WARNING: Use of uninitialized transient "%s" in state "%s"' %
+Loaded stage4.sdfgz (fallback)
+Copying generated data
+Running SDFG1
+[ 50%] Built target cloudsc
+[100%] Built target dacestub_cloudsc
+
+Running SDFG2
+[ 25%] Building CXX object CMakeFiles/cloudsc_fuse_branches.dir/home/primrose/Work/Scratchpad/softhier_dace_artifacts/softhier_dace_artifacts/cloudsc/.dacecache/cloudsc_fuse_branches/src/cpu/cloudsc_fuse_branches.cpp.o
+/home/primrose/Work/Scratchpad/softhier_dace_artifacts/softhier_dace_artifacts/cloudsc/.dacecache/cloudsc_fuse_branches/src/cpu/cloudsc_fuse_branches.cpp: In function ‘void loop_body_10_13_0(cloudsc_fuse_branches_state_t*, double*, double*, const double&, const double&, const double&, const double&, const double&, const double&, const double&, const double&, const double&, const double&, const double&, const double&, const double&, double*, double*, double*, double*, double*, double*, double*, double*, double*, double*, double*, double*, double*, double*, double*, double*, double*, double*, double*, double*, double*, double*, int, int, int, int)’:
+/home/primrose/Work/Scratchpad/softhier_dace_artifacts/softhier_dace_artifacts/cloudsc/.dacecache/cloudsc_fuse_branches/src/cpu/cloudsc_fuse_branches.cpp:1179:16: warning: variable ‘zcor’ set but not used [-Wunused-but-set-variable]
+ 1179 |         double zcor;
+      |                ^~~~
+In function ‘void loop_body_10_16_40(cloudsc_fuse_branches_state_t*, double*, double*, const double&, const double&, const double&, const double&, double*, double*, double*, double*, double*, double*, double*, double*, double*, double*, double*, int, int, int, int)’,
+    inlined from ‘_Z40__program_cloudsc_fuse_branches_internalP29cloudsc_fuse_branches_state_tPiS1_PdS2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_iiiiiiiiiiiiiiiiiiddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddd._omp_fn.60’ at /home/primrose/Work/Scratchpad/softhier_dace_artifacts/softhier_dace_artifacts/cloudsc/.dacecache/cloudsc_fuse_branches/src/cpu/cloudsc_fuse_branches.cpp:11766:39:
+/home/primrose/Work/Scratchpad/softhier_dace_artifacts/softhier_dace_artifacts/cloudsc/.dacecache/cloudsc_fuse_branches/src/cpu/cloudsc_fuse_branches.cpp:5223:112: warning: ‘zqe_2’ may be used uninitialized [-Wmaybe-uninitialized]
+ 5223 |         _if_cond_39 = ((zqe_2 >= ((zrhc * zqsice[((_for_it_23 * klon) + _for_it_46)]) * zfac_FOR_l_731_c_731)) && (zqe_2 < (zqsice[((_for_it_23 * klon) + _for_it_46)] * zfac_FOR_l_731_c_731)));
+      |                       ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+/home/primrose/Work/Scratchpad/softhier_dace_artifacts/softhier_dace_artifacts/cloudsc/.dacecache/cloudsc_fuse_branches/src/cpu/cloudsc_fuse_branches.cpp: In function ‘_Z40__program_cloudsc_fuse_branches_internalP29cloudsc_fuse_branches_state_tPiS1_PdS2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_iiiiiiiiiiiiiiiiiiddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddd._omp_fn.60’:
+/home/primrose/Work/Scratchpad/softhier_dace_artifacts/softhier_dace_artifacts/cloudsc/.dacecache/cloudsc_fuse_branches/src/cpu/cloudsc_fuse_branches.cpp:5061:12: note: ‘zqe_2’ was declared here
+ 5061 |     double zqe_2;
+      |            ^~~~~
+[ 50%] Linking CXX shared library libcloudsc_fuse_branches.so
+[ 50%] Built target cloudsc_fuse_branches
+[100%] Built target dacestub_cloudsc_fuse_branches
+
+Comparing Results
+Comparison done. No numerical differences found
+No parent scope for ConditionalBlock Conditional_l_361_c_361_0, skipping
+No parent scope for ConditionalBlock Conditional_l_361_c_361_1, skipping
+No parent scope for ConditionalBlock Conditional_l_361_c_361_2, skipping
+No parent scope for ConditionalBlock Conditional_l_361_c_361_3, skipping
+No parent scope for ConditionalBlock Conditional_l_361_c_361_4, skipping
+Parent scope found for block Conditional_l_0_c_0_25, attempting to apply FuseBranches
+[can_be_applied] All tasklets need to be top level. Not the case for body Conditional_l_0_c_0_if_body_41.
+Can apply FuseBranches? False
+Cannot apply FuseBranches to block Conditional_l_0_c_0_25
+Parent scope found for block Conditional_l_0_c_0_0_10, attempting to apply FuseBranches
+[can_be_applied] Single branch does not have exactly one SDFGState node.
+Can apply FuseBranches? False
+Cannot apply FuseBranches to block Conditional_l_0_c_0_0_10
+Parent scope found for block Conditional_l_0_c_0, attempting to apply FuseBranches
+[can_be_applied] All tasklets need to be top level. Not the case for body Conditional_l_0_c_0_if_body_18.
+Can apply FuseBranches? False
+Cannot apply FuseBranches to block Conditional_l_0_c_0
+Parent scope found for block Conditional_l_0_c_0_5, attempting to apply FuseBranches
+[can_be_applied] All tasklets need to be top level. Not the case for body Conditional_l_0_c_0_if_body.
+Can apply FuseBranches? False
+Cannot apply FuseBranches to block Conditional_l_0_c_0_5
+Parent scope found for block Conditional_l_0_c_0_30, attempting to apply FuseBranches
+[can_be_applied] Single branch does not have exactly one SDFGState node.
+Can apply FuseBranches? False
+Cannot apply FuseBranches to block Conditional_l_0_c_0_30
+Parent scope found for block Conditional_l_0_c_0_36, attempting to apply FuseBranches
+[can_be_applied] All tasklets need to be top level. Not the case for body Conditional_l_0_c_0_if_body_27.
+Can apply FuseBranches? False
+Cannot apply FuseBranches to block Conditional_l_0_c_0_36
+Parent scope found for block Conditional_l_0_c_0_15, attempting to apply FuseBranches
+[can_be_applied] All tasklets need to be top level. Not the case for body Conditional_l_0_c_0_if_body_39.
+Can apply FuseBranches? False
+Cannot apply FuseBranches to block Conditional_l_0_c_0_15
+Parent scope found for block Conditional_l_0_c_0_0_9, attempting to apply FuseBranches
+[can_be_applied] All tasklets need to be top level. Not the case for body Conditional_l_0_c_0_0_if_body_6.
+Can apply FuseBranches? False
+Cannot apply FuseBranches to block Conditional_l_0_c_0_0_9
+Parent scope found for block Conditional_l_0_c_0_10, attempting to apply FuseBranches
+[can_be_applied] Single branch does not have exactly one SDFGState node.
+Can apply FuseBranches? False
+Cannot apply FuseBranches to block Conditional_l_0_c_0_10
+Parent scope found for block Conditional_l_412_c_412, attempting to apply FuseBranches
+[can_be_applied] to Conditional_l_412_c_412 is True
+Can apply FuseBranches? True
+Applying FuseBranches to block Conditional_l_412_c_412
+Validating root SDFG after transformation...
+Running comparison with original SDFG...
+Copying generated data
+Running SDFG1
+[ 50%] Built target cloudsc
+[100%] Built target dacestub_cloudsc
+
+Running SDFG2
+[ 25%] Building CXX object CMakeFiles/cloudsc_fuse_branches.dir/home/primrose/Work/Scratchpad/softhier_dace_artifacts/softhier_dace_artifacts/cloudsc/.dacecache/cloudsc_fuse_branches/src/cpu/cloudsc_fuse_branches.cpp.o
+/home/primrose/Work/Scratchpad/softhier_dace_artifacts/softhier_dace_artifacts/cloudsc/.dacecache/cloudsc_fuse_branches/src/cpu/cloudsc_fuse_branches.cpp: In function ‘void loop_body_8_13_0(cloudsc_fuse_branches_state_t*, double*, double*, const double&, const double&, const double&, const double&, const double&, const double&, const double&, const double&, const double&, const double&, const double&, const double&, const double&, double*, double*, double*, double*, double*, double*, double*, double*, double*, double*, double*, double*, double*, double*, double*, double*, double*, double*, double*, double*, double*, double*, int, int, int, int)’:
+/home/primrose/Work/Scratchpad/softhier_dace_artifacts/softhier_dace_artifacts/cloudsc/.dacecache/cloudsc_fuse_branches/src/cpu/cloudsc_fuse_branches.cpp:1226:16: warning: variable ‘zcor’ set but not used [-Wunused-but-set-variable]
+ 1226 |         double zcor;
+      |                ^~~~
+In function ‘void loop_body_8_16_40(cloudsc_fuse_branches_state_t*, double*, double*, const double&, const double&, const double&, const double&, double*, double*, double*, double*, double*, double*, double*, double*, double*, double*, double*, int, int, int, int)’,
+    inlined from ‘_Z40__program_cloudsc_fuse_branches_internalP29cloudsc_fuse_branches_state_tPiS1_PdS2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_iiiiiiiiiiiiiiiiiiddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddd._omp_fn.60’ at /home/primrose/Work/Scratchpad/softhier_dace_artifacts/softhier_dace_artifacts/cloudsc/.dacecache/cloudsc_fuse_branches/src/cpu/cloudsc_fuse_branches.cpp:11813:38:
+/home/primrose/Work/Scratchpad/softhier_dace_artifacts/softhier_dace_artifacts/cloudsc/.dacecache/cloudsc_fuse_branches/src/cpu/cloudsc_fuse_branches.cpp:5270:112: warning: ‘zqe_2’ may be used uninitialized [-Wmaybe-uninitialized]
+ 5270 |         _if_cond_39 = ((zqe_2 >= ((zrhc * zqsice[((_for_it_23 * klon) + _for_it_46)]) * zfac_FOR_l_731_c_731)) && (zqe_2 < (zqsice[((_for_it_23 * klon) + _for_it_46)] * zfac_FOR_l_731_c_731)));
+      |                       ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+/home/primrose/Work/Scratchpad/softhier_dace_artifacts/softhier_dace_artifacts/cloudsc/.dacecache/cloudsc_fuse_branches/src/cpu/cloudsc_fuse_branches.cpp: In function ‘_Z40__program_cloudsc_fuse_branches_internalP29cloudsc_fuse_branches_state_tPiS1_PdS2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_iiiiiiiiiiiiiiiiiiddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddd._omp_fn.60’:
+/home/primrose/Work/Scratchpad/softhier_dace_artifacts/softhier_dace_artifacts/cloudsc/.dacecache/cloudsc_fuse_branches/src/cpu/cloudsc_fuse_branches.cpp:5108:12: note: ‘zqe_2’ was declared here
+ 5108 |     double zqe_2;
+      |            ^~~~~
+[ 50%] Linking CXX shared library libcloudsc_fuse_branches.so
+[ 50%] Built target cloudsc_fuse_branches
+[100%] Built target dacestub_cloudsc_fuse_branches
+
+Comparing Results
+Comparison done. No numerical differences found
+Copying generated data
+Running SDFG1
+[ 50%] Built target cloudsc
+[100%] Built target dacestub_cloudsc
+
+Running SDFG2
+[ 50%] Built target cloudsc_fuse_branches
+[100%] Built target dacestub_cloudsc_fuse_branches
+
+Comparing Results
+Comparison done. No numerical differences found
+Success: Transformation applied for Conditional_l_412_c_412
+Saved SDFG as stage5.sdfgz
+Parent scope found for block Conditional_l_413_c_413, attempting to apply FuseBranches
+[can_be_applied] to Conditional_l_413_c_413 is True
+Can apply FuseBranches? True
+Applying FuseBranches to block Conditional_l_413_c_413
+Validating root SDFG after transformation...
+Running comparison with original SDFG...
+Copying generated data
+Running SDFG1
+[ 50%] Built target cloudsc
+[100%] Built target dacestub_cloudsc
+
+Running SDFG2
+[ 25%] Building CXX object CMakeFiles/cloudsc_fuse_branches.dir/home/primrose/Work/Scratchpad/softhier_dace_artifacts/softhier_dace_artifacts/cloudsc/.dacecache/cloudsc_fuse_branches/src/cpu/cloudsc_fuse_branches.cpp.o
+/home/primrose/Work/Scratchpad/softhier_dace_artifacts/softhier_dace_artifacts/cloudsc/.dacecache/cloudsc_fuse_branches/src/cpu/cloudsc_fuse_branches.cpp: In function ‘void loop_body_6_13_0(cloudsc_fuse_branches_state_t*, double*, double*, const double&, const double&, const double&, const double&, const double&, const double&, const double&, const double&, const double&, const double&, const double&, const double&, const double&, double*, double*, double*, double*, double*, double*, double*, double*, double*, double*, double*, double*, double*, double*, double*, double*, double*, double*, double*, double*, double*, double*, int, int, int, int)’:
+/home/primrose/Work/Scratchpad/softhier_dace_artifacts/softhier_dace_artifacts/cloudsc/.dacecache/cloudsc_fuse_branches/src/cpu/cloudsc_fuse_branches.cpp:1273:16: warning: variable ‘zcor’ set but not used [-Wunused-but-set-variable]
+ 1273 |         double zcor;
+      |                ^~~~
+In function ‘void loop_body_6_16_40(cloudsc_fuse_branches_state_t*, double*, double*, const double&, const double&, const double&, const double&, double*, double*, double*, double*, double*, double*, double*, double*, double*, double*, double*, int, int, int, int)’,
+    inlined from ‘_Z40__program_cloudsc_fuse_branches_internalP29cloudsc_fuse_branches_state_tPiS1_PdS2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_iiiiiiiiiiiiiiiiiiddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddd._omp_fn.60’ at /home/primrose/Work/Scratchpad/softhier_dace_artifacts/softhier_dace_artifacts/cloudsc/.dacecache/cloudsc_fuse_branches/src/cpu/cloudsc_fuse_branches.cpp:11860:38:
+/home/primrose/Work/Scratchpad/softhier_dace_artifacts/softhier_dace_artifacts/cloudsc/.dacecache/cloudsc_fuse_branches/src/cpu/cloudsc_fuse_branches.cpp:5317:112: warning: ‘zqe_2’ may be used uninitialized [-Wmaybe-uninitialized]
+ 5317 |         _if_cond_39 = ((zqe_2 >= ((zrhc * zqsice[((_for_it_23 * klon) + _for_it_46)]) * zfac_FOR_l_731_c_731)) && (zqe_2 < (zqsice[((_for_it_23 * klon) + _for_it_46)] * zfac_FOR_l_731_c_731)));
+      |                       ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+/home/primrose/Work/Scratchpad/softhier_dace_artifacts/softhier_dace_artifacts/cloudsc/.dacecache/cloudsc_fuse_branches/src/cpu/cloudsc_fuse_branches.cpp: In function ‘_Z40__program_cloudsc_fuse_branches_internalP29cloudsc_fuse_branches_state_tPiS1_PdS2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_iiiiiiiiiiiiiiiiiiddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddd._omp_fn.60’:
+/home/primrose/Work/Scratchpad/softhier_dace_artifacts/softhier_dace_artifacts/cloudsc/.dacecache/cloudsc_fuse_branches/src/cpu/cloudsc_fuse_branches.cpp:5155:12: note: ‘zqe_2’ was declared here
+ 5155 |     double zqe_2;
+      |            ^~~~~
+[ 50%] Linking CXX shared library libcloudsc_fuse_branches.so
+[ 50%] Built target cloudsc_fuse_branches
+[100%] Built target dacestub_cloudsc_fuse_branches
+
+Comparing Results
+Comparison done. No numerical differences found
+Copying generated data
+Running SDFG1
+[ 50%] Built target cloudsc
+[100%] Built target dacestub_cloudsc
+
+Running SDFG2
+[ 50%] Built target cloudsc_fuse_branches
+[100%] Built target dacestub_cloudsc_fuse_branches
+
+Comparing Results
+Comparison done. No numerical differences found
+Success: Transformation applied for Conditional_l_413_c_413
+Saved SDFG as stage5.sdfgz
+Parent scope found for block Conditional_l_0_c_0_47, attempting to apply FuseBranches
+[can_be_applied] Branch 0 does not have exactly one SDFGState node.
+Can apply FuseBranches? False
+Cannot apply FuseBranches to block Conditional_l_0_c_0_47
+Parent scope found for block Conditional_l_590_c_590, attempting to apply FuseBranches
+[can_be_applied] to Conditional_l_590_c_590 is True
+Can apply FuseBranches? True
+Applying FuseBranches to block Conditional_l_590_c_590
+Validating root SDFG after transformation...
+Running comparison with original SDFG...
+Copying generated data
+Running SDFG1
+[ 50%] Built target cloudsc
+[100%] Built target dacestub_cloudsc
+
+Running SDFG2
+[ 25%] Building CXX object CMakeFiles/cloudsc_fuse_branches.dir/home/primrose/Work/Scratchpad/softhier_dace_artifacts/softhier_dace_artifacts/cloudsc/.dacecache/cloudsc_fuse_branches/src/cpu/cloudsc_fuse_branches.cpp.o
+/home/primrose/Work/Scratchpad/softhier_dace_artifacts/softhier_dace_artifacts/cloudsc/.dacecache/cloudsc_fuse_branches/src/cpu/cloudsc_fuse_branches.cpp: In function ‘void loop_body_6_13_0(cloudsc_fuse_branches_state_t*, double*, double*, const double&, const double&, const double&, const double&, const double&, const double&, const double&, const double&, const double&, const double&, const double&, const double&, const double&, double*, double*, double*, double*, double*, double*, double*, double*, double*, double*, double*, double*, double*, double*, double*, double*, double*, double*, double*, double*, double*, double*, int, int, int, int)’:
+/home/primrose/Work/Scratchpad/softhier_dace_artifacts/softhier_dace_artifacts/cloudsc/.dacecache/cloudsc_fuse_branches/src/cpu/cloudsc_fuse_branches.cpp:1273:16: warning: variable ‘zcor’ set but not used [-Wunused-but-set-variable]
+ 1273 |         double zcor;
+      |                ^~~~
+In function ‘void loop_body_6_16_40(cloudsc_fuse_branches_state_t*, double*, double*, const double&, const double&, const double&, const double&, double*, double*, double*, double*, double*, double*, double*, double*, double*, double*, double*, int, int, int, int)’,
+    inlined from ‘_Z40__program_cloudsc_fuse_branches_internalP29cloudsc_fuse_branches_state_tPiS1_PdS2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_iiiiiiiiiiiiiiiiiiddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddd._omp_fn.60’ at /home/primrose/Work/Scratchpad/softhier_dace_artifacts/softhier_dace_artifacts/cloudsc/.dacecache/cloudsc_fuse_branches/src/cpu/cloudsc_fuse_branches.cpp:11907:38:
+/home/primrose/Work/Scratchpad/softhier_dace_artifacts/softhier_dace_artifacts/cloudsc/.dacecache/cloudsc_fuse_branches/src/cpu/cloudsc_fuse_branches.cpp:5364:112: warning: ‘zqe_2’ may be used uninitialized [-Wmaybe-uninitialized]
+ 5364 |         _if_cond_39 = ((zqe_2 >= ((zrhc * zqsice[((_for_it_23 * klon) + _for_it_46)]) * zfac_FOR_l_731_c_731)) && (zqe_2 < (zqsice[((_for_it_23 * klon) + _for_it_46)] * zfac_FOR_l_731_c_731)));
+      |                       ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+/home/primrose/Work/Scratchpad/softhier_dace_artifacts/softhier_dace_artifacts/cloudsc/.dacecache/cloudsc_fuse_branches/src/cpu/cloudsc_fuse_branches.cpp: In function ‘_Z40__program_cloudsc_fuse_branches_internalP29cloudsc_fuse_branches_state_tPiS1_PdS2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_iiiiiiiiiiiiiiiiiiddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddd._omp_fn.60’:
+/home/primrose/Work/Scratchpad/softhier_dace_artifacts/softhier_dace_artifacts/cloudsc/.dacecache/cloudsc_fuse_branches/src/cpu/cloudsc_fuse_branches.cpp:5202:12: note: ‘zqe_2’ was declared here
+ 5202 |     double zqe_2;
+      |            ^~~~~
+[ 50%] Linking CXX shared library libcloudsc_fuse_branches.so
+[ 50%] Built target cloudsc_fuse_branches
+[100%] Built target dacestub_cloudsc_fuse_branches
+
+Comparing Results
+Comparison done. No numerical differences found
+Copying generated data
+Running SDFG1
+[ 50%] Built target cloudsc
+[100%] Built target dacestub_cloudsc
+
+Running SDFG2
+[ 50%] Built target cloudsc_fuse_branches
+[100%] Built target dacestub_cloudsc_fuse_branches
+
+Comparing Results
+Comparison done. No numerical differences found
+Success: Transformation applied for Conditional_l_590_c_590
+Saved SDFG as stage5.sdfgz
+Parent scope found for block Conditional_l_0_c_0_37, attempting to apply FuseBranches
+[can_be_applied] All tasklets need to be top level. Not the case for body Conditional_l_0_c_0_if_body_29.
+Can apply FuseBranches? False
+Cannot apply FuseBranches to block Conditional_l_0_c_0_37
+Parent scope found for block Conditional_l_625_c_625, attempting to apply FuseBranches
+[can_be_applied] to Conditional_l_625_c_625 is True
+Can apply FuseBranches? True
+Applying FuseBranches to block Conditional_l_625_c_625
+Validating root SDFG after transformation...
+Running comparison with original SDFG...
+Copying generated data
+Running SDFG1
+[ 50%] Built target cloudsc
+[100%] Built target dacestub_cloudsc
+
+Running SDFG2
+[ 25%] Building CXX object CMakeFiles/cloudsc_fuse_branches.dir/home/primrose/Work/Scratchpad/softhier_dace_artifacts/softhier_dace_artifacts/cloudsc/.dacecache/cloudsc_fuse_branches/src/cpu/cloudsc_fuse_branches.cpp.o
+/home/primrose/Work/Scratchpad/softhier_dace_artifacts/softhier_dace_artifacts/cloudsc/.dacecache/cloudsc_fuse_branches/src/cpu/cloudsc_fuse_branches.cpp: In function ‘void loop_body_6_13_0(cloudsc_fuse_branches_state_t*, double*, double*, const double&, const double&, const double&, const double&, const double&, const double&, const double&, const double&, const double&, const double&, const double&, const double&, const double&, double*, double*, double*, double*, double*, double*, double*, double*, double*, double*, double*, double*, double*, double*, double*, double*, double*, double*, double*, double*, double*, double*, int, int, int, int)’:
+/home/primrose/Work/Scratchpad/softhier_dace_artifacts/softhier_dace_artifacts/cloudsc/.dacecache/cloudsc_fuse_branches/src/cpu/cloudsc_fuse_branches.cpp:1273:16: warning: variable ‘zcor’ set but not used [-Wunused-but-set-variable]
+ 1273 |         double zcor;
+      |                ^~~~
+In function ‘void loop_body_6_16_40(cloudsc_fuse_branches_state_t*, double*, double*, const double&, const double&, const double&, const double&, double*, double*, double*, double*, double*, double*, double*, double*, double*, double*, double*, int, int, int, int)’,
+    inlined from ‘_Z40__program_cloudsc_fuse_branches_internalP29cloudsc_fuse_branches_state_tPiS1_PdS2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_iiiiiiiiiiiiiiiiiiddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddd._omp_fn.60’ at /home/primrose/Work/Scratchpad/softhier_dace_artifacts/softhier_dace_artifacts/cloudsc/.dacecache/cloudsc_fuse_branches/src/cpu/cloudsc_fuse_branches.cpp:11942:38:
+/home/primrose/Work/Scratchpad/softhier_dace_artifacts/softhier_dace_artifacts/cloudsc/.dacecache/cloudsc_fuse_branches/src/cpu/cloudsc_fuse_branches.cpp:5399:112: warning: ‘zqe_2’ may be used uninitialized [-Wmaybe-uninitialized]
+ 5399 |         _if_cond_39 = ((zqe_2 >= ((zrhc * zqsice[((_for_it_23 * klon) + _for_it_46)]) * zfac_FOR_l_731_c_731)) && (zqe_2 < (zqsice[((_for_it_23 * klon) + _for_it_46)] * zfac_FOR_l_731_c_731)));
+      |                       ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+/home/primrose/Work/Scratchpad/softhier_dace_artifacts/softhier_dace_artifacts/cloudsc/.dacecache/cloudsc_fuse_branches/src/cpu/cloudsc_fuse_branches.cpp: In function ‘_Z40__program_cloudsc_fuse_branches_internalP29cloudsc_fuse_branches_state_tPiS1_PdS2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_iiiiiiiiiiiiiiiiiiddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddd._omp_fn.60’:
+/home/primrose/Work/Scratchpad/softhier_dace_artifacts/softhier_dace_artifacts/cloudsc/.dacecache/cloudsc_fuse_branches/src/cpu/cloudsc_fuse_branches.cpp:5237:12: note: ‘zqe_2’ was declared here
+ 5237 |     double zqe_2;
+      |            ^~~~~
+[ 50%] Linking CXX shared library libcloudsc_fuse_branches.so
+[ 50%] Built target cloudsc_fuse_branches
+[100%] Built target dacestub_cloudsc_fuse_branches
+
+Comparing Results
+Comparison done. No numerical differences found
+Copying generated data
+Running SDFG1
+[ 50%] Built target cloudsc
+[100%] Built target dacestub_cloudsc
+
+Running SDFG2
+[ 50%] Built target cloudsc_fuse_branches
+[100%] Built target dacestub_cloudsc_fuse_branches
+
+Comparing Results
+Comparison done. No numerical differences found
+Success: Transformation applied for Conditional_l_625_c_625
+Saved SDFG as stage5.sdfgz
+Parent scope found for block Conditional_l_0_c_0_7, attempting to apply FuseBranches
+[can_be_applied] to Conditional_l_0_c_0_7 is True
+Can apply FuseBranches? True
+Applying FuseBranches to block Conditional_l_0_c_0_7
+Validating root SDFG after transformation...
+Running comparison with original SDFG...
+Copying generated data
+Running SDFG1
+[ 50%] Built target cloudsc
+[100%] Built target dacestub_cloudsc
+
+Running SDFG2
+[ 25%] Building CXX object CMakeFiles/cloudsc_fuse_branches.dir/home/primrose/Work/Scratchpad/softhier_dace_artifacts/softhier_dace_artifacts/cloudsc/.dacecache/cloudsc_fuse_branches/src/cpu/cloudsc_fuse_branches.cpp.o
+/home/primrose/Work/Scratchpad/softhier_dace_artifacts/softhier_dace_artifacts/cloudsc/.dacecache/cloudsc_fuse_branches/src/cpu/cloudsc_fuse_branches.cpp: In function ‘void loop_body_6_13_0(cloudsc_fuse_branches_state_t*, double*, double*, const double&, const double&, const double&, const double&, const double&, const double&, const double&, const double&, const double&, const double&, const double&, const double&, const double&, double*, double*, double*, double*, double*, double*, double*, double*, double*, double*, double*, double*, double*, double*, double*, double*, double*, double*, double*, double*, double*, double*, int, int, int, int)’:
+/home/primrose/Work/Scratchpad/softhier_dace_artifacts/softhier_dace_artifacts/cloudsc/.dacecache/cloudsc_fuse_branches/src/cpu/cloudsc_fuse_branches.cpp:1273:16: warning: variable ‘zcor’ set but not used [-Wunused-but-set-variable]
+ 1273 |         double zcor;
+      |                ^~~~
+/home/primrose/Work/Scratchpad/softhier_dace_artifacts/softhier_dace_artifacts/cloudsc/.dacecache/cloudsc_fuse_branches/src/cpu/cloudsc_fuse_branches.cpp: In function ‘void loop_body_27_0_0(cloudsc_fuse_branches_state_t*, const int&, double*, double*, double*, double*, double*, double*, double*, double*, double*, int, int, int, int, int)’:
+/home/primrose/Work/Scratchpad/softhier_dace_artifacts/softhier_dace_artifacts/cloudsc/.dacecache/cloudsc_fuse_branches/src/cpu/cloudsc_fuse_branches.cpp:6283:9: warning: variable ‘_if_cond_47’ set but not used [-Wunused-but-set-variable]
+ 6283 |     int _if_cond_47;
+      |         ^~~~~~~~~~~
+In function ‘void loop_body_6_16_40(cloudsc_fuse_branches_state_t*, double*, double*, const double&, const double&, const double&, const double&, double*, double*, double*, double*, double*, double*, double*, double*, double*, double*, double*, int, int, int, int)’,
+    inlined from ‘_Z40__program_cloudsc_fuse_branches_internalP29cloudsc_fuse_branches_state_tPiS1_PdS2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_iiiiiiiiiiiiiiiiiiddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddd._omp_fn.60’ at /home/primrose/Work/Scratchpad/softhier_dace_artifacts/softhier_dace_artifacts/cloudsc/.dacecache/cloudsc_fuse_branches/src/cpu/cloudsc_fuse_branches.cpp:12101:38:
+/home/primrose/Work/Scratchpad/softhier_dace_artifacts/softhier_dace_artifacts/cloudsc/.dacecache/cloudsc_fuse_branches/src/cpu/cloudsc_fuse_branches.cpp:5399:112: warning: ‘zqe_2’ may be used uninitialized [-Wmaybe-uninitialized]
+ 5399 |         _if_cond_39 = ((zqe_2 >= ((zrhc * zqsice[((_for_it_23 * klon) + _for_it_46)]) * zfac_FOR_l_731_c_731)) && (zqe_2 < (zqsice[((_for_it_23 * klon) + _for_it_46)] * zfac_FOR_l_731_c_731)));
+      |                       ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+/home/primrose/Work/Scratchpad/softhier_dace_artifacts/softhier_dace_artifacts/cloudsc/.dacecache/cloudsc_fuse_branches/src/cpu/cloudsc_fuse_branches.cpp: In function ‘_Z40__program_cloudsc_fuse_branches_internalP29cloudsc_fuse_branches_state_tPiS1_PdS2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_iiiiiiiiiiiiiiiiiiddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddd._omp_fn.60’:
+/home/primrose/Work/Scratchpad/softhier_dace_artifacts/softhier_dace_artifacts/cloudsc/.dacecache/cloudsc_fuse_branches/src/cpu/cloudsc_fuse_branches.cpp:5237:12: note: ‘zqe_2’ was declared here
+ 5237 |     double zqe_2;
+      |            ^~~~~
+[ 50%] Linking CXX shared library libcloudsc_fuse_branches.so
+[ 50%] Built target cloudsc_fuse_branches
+[100%] Built target dacestub_cloudsc_fuse_branches
+
+Comparing Results
+Comparison done. No numerical differences found
+Copying generated data
+Running SDFG1
+[ 50%] Built target cloudsc
+[100%] Built target dacestub_cloudsc
+
+Running SDFG2
+[ 50%] Built target cloudsc_fuse_branches
+[100%] Built target dacestub_cloudsc_fuse_branches
+
+Comparing Results
+Comparison done. No numerical differences found
+Success: Transformation applied for Conditional_l_0_c_0_7
+Saved SDFG as stage5.sdfgz
+Parent scope found for block Conditional_l_0_c_0_4, attempting to apply FuseBranches
+[can_be_applied] to Conditional_l_0_c_0_4 is True
+Can apply FuseBranches? True
+Applying FuseBranches to block Conditional_l_0_c_0_4
+Validating root SDFG after transformation...
+Running comparison with original SDFG...
+Copying generated data
+Running SDFG1
+[ 50%] Built target cloudsc
+[100%] Built target dacestub_cloudsc
+
+Running SDFG2
+[ 25%] Building CXX object CMakeFiles/cloudsc_fuse_branches.dir/home/primrose/Work/Scratchpad/softhier_dace_artifacts/softhier_dace_artifacts/cloudsc/.dacecache/cloudsc_fuse_branches/src/cpu/cloudsc_fuse_branches.cpp.o
+/home/primrose/Work/Scratchpad/softhier_dace_artifacts/softhier_dace_artifacts/cloudsc/.dacecache/cloudsc_fuse_branches/src/cpu/cloudsc_fuse_branches.cpp: In function ‘void loop_body_6_13_0(cloudsc_fuse_branches_state_t*, double*, double*, const double&, const double&, const double&, const double&, const double&, const double&, const double&, const double&, const double&, const double&, const double&, const double&, const double&, double*, double*, double*, double*, double*, double*, double*, double*, double*, double*, double*, double*, double*, double*, double*, double*, double*, double*, double*, double*, double*, double*, int, int, int, int)’:
+/home/primrose/Work/Scratchpad/softhier_dace_artifacts/softhier_dace_artifacts/cloudsc/.dacecache/cloudsc_fuse_branches/src/cpu/cloudsc_fuse_branches.cpp:1273:16: warning: variable ‘zcor’ set but not used [-Wunused-but-set-variable]
+ 1273 |         double zcor;
+      |                ^~~~
+/home/primrose/Work/Scratchpad/softhier_dace_artifacts/softhier_dace_artifacts/cloudsc/.dacecache/cloudsc_fuse_branches/src/cpu/cloudsc_fuse_branches.cpp: In function ‘void loop_body_27_0_0(cloudsc_fuse_branches_state_t*, const int&, double*, double*, double*, double*, double*, double*, double*, double*, double*, int, int, int, int, int)’:
+/home/primrose/Work/Scratchpad/softhier_dace_artifacts/softhier_dace_artifacts/cloudsc/.dacecache/cloudsc_fuse_branches/src/cpu/cloudsc_fuse_branches.cpp:6283:9: warning: variable ‘_if_cond_47’ set but not used [-Wunused-but-set-variable]
+ 6283 |     int _if_cond_47;
+      |         ^~~~~~~~~~~
+In function ‘void loop_body_6_16_40(cloudsc_fuse_branches_state_t*, double*, double*, const double&, const double&, const double&, const double&, double*, double*, double*, double*, double*, double*, double*, double*, double*, double*, double*, int, int, int, int)’,
+    inlined from ‘_Z40__program_cloudsc_fuse_branches_internalP29cloudsc_fuse_branches_state_tPiS1_PdS2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_iiiiiiiiiiiiiiiiiiddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddd._omp_fn.60’ at /home/primrose/Work/Scratchpad/softhier_dace_artifacts/softhier_dace_artifacts/cloudsc/.dacecache/cloudsc_fuse_branches/src/cpu/cloudsc_fuse_branches.cpp:12259:38:
+/home/primrose/Work/Scratchpad/softhier_dace_artifacts/softhier_dace_artifacts/cloudsc/.dacecache/cloudsc_fuse_branches/src/cpu/cloudsc_fuse_branches.cpp:5399:112: warning: ‘zqe_2’ may be used uninitialized [-Wmaybe-uninitialized]
+ 5399 |         _if_cond_39 = ((zqe_2 >= ((zrhc * zqsice[((_for_it_23 * klon) + _for_it_46)]) * zfac_FOR_l_731_c_731)) && (zqe_2 < (zqsice[((_for_it_23 * klon) + _for_it_46)] * zfac_FOR_l_731_c_731)));
+      |                       ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+/home/primrose/Work/Scratchpad/softhier_dace_artifacts/softhier_dace_artifacts/cloudsc/.dacecache/cloudsc_fuse_branches/src/cpu/cloudsc_fuse_branches.cpp: In function ‘_Z40__program_cloudsc_fuse_branches_internalP29cloudsc_fuse_branches_state_tPiS1_PdS2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_iiiiiiiiiiiiiiiiiiddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddd._omp_fn.60’:
+/home/primrose/Work/Scratchpad/softhier_dace_artifacts/softhier_dace_artifacts/cloudsc/.dacecache/cloudsc_fuse_branches/src/cpu/cloudsc_fuse_branches.cpp:5237:12: note: ‘zqe_2’ was declared here
+ 5237 |     double zqe_2;
+      |            ^~~~~
+[ 50%] Linking CXX shared library libcloudsc_fuse_branches.so
+[ 50%] Built target cloudsc_fuse_branches
+[100%] Built target dacestub_cloudsc_fuse_branches
+
+Comparing Results
+Comparison done. No numerical differences found
+Copying generated data
+Running SDFG1
+[ 50%] Built target cloudsc
+[100%] Built target dacestub_cloudsc
+
+Running SDFG2
+[ 50%] Built target cloudsc_fuse_branches
+[100%] Built target dacestub_cloudsc_fuse_branches
+
+Comparing Results
+Comparison done. No numerical differences found
+Success: Transformation applied for Conditional_l_0_c_0_4
+Saved SDFG as stage5.sdfgz
+Parent scope found for block Conditional_l_0_c_0_35, attempting to apply FuseBranches
+[can_be_applied] to Conditional_l_0_c_0_35 is True
+Can apply FuseBranches? True
+Applying FuseBranches to block Conditional_l_0_c_0_35
+Validating root SDFG after transformation...
+Running comparison with original SDFG...
+Copying generated data
+Running SDFG1
+[ 50%] Built target cloudsc
+[100%] Built target dacestub_cloudsc
+
+Running SDFG2
+[ 25%] Building CXX object CMakeFiles/cloudsc_fuse_branches.dir/home/primrose/Work/Scratchpad/softhier_dace_artifacts/softhier_dace_artifacts/cloudsc/.dacecache/cloudsc_fuse_branches/src/cpu/cloudsc_fuse_branches.cpp.o
+/home/primrose/Work/Scratchpad/softhier_dace_artifacts/softhier_dace_artifacts/cloudsc/.dacecache/cloudsc_fuse_branches/src/cpu/cloudsc_fuse_branches.cpp: In function ‘void loop_body_6_13_0(cloudsc_fuse_branches_state_t*, double*, double*, const double&, const double&, const double&, const double&, const double&, const double&, const double&, const double&, const double&, const double&, const double&, const double&, const double&, double*, double*, double*, double*, double*, double*, double*, double*, double*, double*, double*, double*, double*, double*, double*, double*, double*, double*, double*, double*, double*, double*, int, int, int, int)’:
+/home/primrose/Work/Scratchpad/softhier_dace_artifacts/softhier_dace_artifacts/cloudsc/.dacecache/cloudsc_fuse_branches/src/cpu/cloudsc_fuse_branches.cpp:1273:16: warning: variable ‘zcor’ set but not used [-Wunused-but-set-variable]
+ 1273 |         double zcor;
+      |                ^~~~
+/home/primrose/Work/Scratchpad/softhier_dace_artifacts/softhier_dace_artifacts/cloudsc/.dacecache/cloudsc_fuse_branches/src/cpu/cloudsc_fuse_branches.cpp: In function ‘void loop_body_27_0_0(cloudsc_fuse_branches_state_t*, const int&, double*, double*, double*, double*, double*, double*, double*, double*, double*, int, int, int, int, int)’:
+/home/primrose/Work/Scratchpad/softhier_dace_artifacts/softhier_dace_artifacts/cloudsc/.dacecache/cloudsc_fuse_branches/src/cpu/cloudsc_fuse_branches.cpp:6283:9: warning: variable ‘_if_cond_47’ set but not used [-Wunused-but-set-variable]
+ 6283 |     int _if_cond_47;
+      |         ^~~~~~~~~~~
+In function ‘void loop_body_6_16_40(cloudsc_fuse_branches_state_t*, double*, double*, const double&, const double&, const double&, const double&, double*, double*, double*, double*, double*, double*, double*, double*, double*, double*, double*, int, int, int, int)’,
+    inlined from ‘_Z40__program_cloudsc_fuse_branches_internalP29cloudsc_fuse_branches_state_tPiS1_PdS2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_iiiiiiiiiiiiiiiiiiddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddd._omp_fn.60’ at /home/primrose/Work/Scratchpad/softhier_dace_artifacts/softhier_dace_artifacts/cloudsc/.dacecache/cloudsc_fuse_branches/src/cpu/cloudsc_fuse_branches.cpp:12343:38:
+/home/primrose/Work/Scratchpad/softhier_dace_artifacts/softhier_dace_artifacts/cloudsc/.dacecache/cloudsc_fuse_branches/src/cpu/cloudsc_fuse_branches.cpp:5399:112: warning: ‘zqe_2’ may be used uninitialized [-Wmaybe-uninitialized]
+ 5399 |         _if_cond_39 = ((zqe_2 >= ((zrhc * zqsice[((_for_it_23 * klon) + _for_it_46)]) * zfac_FOR_l_731_c_731)) && (zqe_2 < (zqsice[((_for_it_23 * klon) + _for_it_46)] * zfac_FOR_l_731_c_731)));
+      |                       ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+/home/primrose/Work/Scratchpad/softhier_dace_artifacts/softhier_dace_artifacts/cloudsc/.dacecache/cloudsc_fuse_branches/src/cpu/cloudsc_fuse_branches.cpp: In function ‘_Z40__program_cloudsc_fuse_branches_internalP29cloudsc_fuse_branches_state_tPiS1_PdS2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_iiiiiiiiiiiiiiiiiiddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddd._omp_fn.60’:
+/home/primrose/Work/Scratchpad/softhier_dace_artifacts/softhier_dace_artifacts/cloudsc/.dacecache/cloudsc_fuse_branches/src/cpu/cloudsc_fuse_branches.cpp:5237:12: note: ‘zqe_2’ was declared here
+ 5237 |     double zqe_2;
+      |            ^~~~~
+[ 50%] Linking CXX shared library libcloudsc_fuse_branches.so
+[ 50%] Built target cloudsc_fuse_branches
+[100%] Built target dacestub_cloudsc_fuse_branches
+
+Comparing Results
+Comparison done. No numerical differences found
+Copying generated data
+Running SDFG1
+[ 50%] Built target cloudsc
+[100%] Built target dacestub_cloudsc
+
+Running SDFG2
+[ 50%] Built target cloudsc_fuse_branches
+[100%] Built target dacestub_cloudsc_fuse_branches
+
+Comparing Results
+Comparison done. No numerical differences found
+Success: Transformation applied for Conditional_l_0_c_0_35
+Saved SDFG as stage5.sdfgz
+Parent scope found for block Conditional_l_0_c_0_16, attempting to apply FuseBranches
+[can_be_applied] to Conditional_l_0_c_0_16 is True
+Can apply FuseBranches? True
+Applying FuseBranches to block Conditional_l_0_c_0_16
+IN {'cur_in_conn_name': 'IN_iorder_p', 'cur_out_conn_name': 'OUT_iorder_p', 'cur_name_set': True} {'IN_1': void, 'IN_2': void, 'IN_3': void, 'kfdia': void, 'kidia': void} {'OUT_1': void, 'OUT_2': void, 'OUT_3': void}
+DST {'cur_in_conn_name': 'IN_iorder_p', 'cur_out_conn_name': 'OUT_iorder_p', 'cur_name_set': True} {'IN_1': void, 'IN_2': void, 'IN_3': void, 'kfdia': void, 'kidia': void} {'OUT_1': void, 'OUT_2': void, 'OUT_3': void}
+IN {'cur_in_conn_name': 'IN_iorder_p', 'cur_out_conn_name': 'OUT_iorder_p', 'cur_name_set': True} {'IN_1': void, 'IN_2': void, 'IN_3': void, 'kfdia': void, 'kidia': void} {'OUT_1': void, 'OUT_2': void, 'OUT_3': void}
+IN {'cur_in_conn_name': 'IN_iorder_p', 'cur_out_conn_name': 'OUT_iorder_p', 'cur_name_set': True} {'IN_1': void, 'IN_2': void, 'IN_3': void, 'kfdia': void, 'kidia': void} {'OUT_1': void, 'OUT_2': void, 'OUT_3': void}
+DST {'cur_in_conn_name': 'IN_iorder_p', 'cur_out_conn_name': 'OUT_iorder_p', 'cur_name_set': True} {'llindex1': void, 'zmin': void, 'zratio': void} {'iorder': void, 'zmin': void}
+IN {'cur_in_conn_name': 'IN_iorder_p', 'cur_out_conn_name': 'OUT_iorder_p', 'cur_name_set': True} {'llindex1': void, 'zmin': void, 'zratio': void} {'iorder': void, 'zmin': void}
+DST {'cur_in_conn_name': 'IN_iorder_p', 'cur_out_conn_name': 'OUT_iorder_p', 'cur_name_set': True} {'llindex1': void, 'zmin': void, 'zratio': void} {'iorder': void, 'zmin': void}
+IN {'cur_in_conn_name': 'IN_iorder_p', 'cur_out_conn_name': 'OUT_iorder_p', 'cur_name_set': True} {'llindex1': void, 'zmin': void, 'zratio': void} {'iorder': void, 'zmin': void}
+Validating root SDFG after transformation...
+Running comparison with original SDFG...
+Copying generated data
+Running SDFG1
+[ 50%] Built target cloudsc
+[100%] Built target dacestub_cloudsc
+
+Running SDFG2
+[ 25%] Building CXX object CMakeFiles/cloudsc_fuse_branches.dir/home/primrose/Work/Scratchpad/softhier_dace_artifacts/softhier_dace_artifacts/cloudsc/.dacecache/cloudsc_fuse_branches/src/cpu/cloudsc_fuse_branches.cpp.o
+/home/primrose/Work/Scratchpad/softhier_dace_artifacts/softhier_dace_artifacts/cloudsc/.dacecache/cloudsc_fuse_branches/src/cpu/cloudsc_fuse_branches.cpp: In function ‘void loop_body_6_13_0(cloudsc_fuse_branches_state_t*, double*, double*, const double&, const double&, const double&, const double&, const double&, const double&, const double&, const double&, const double&, const double&, const double&, const double&, const double&, double*, double*, double*, double*, double*, double*, double*, double*, double*, double*, double*, double*, double*, double*, double*, double*, double*, double*, double*, double*, double*, double*, int, int, int, int)’:
+/home/primrose/Work/Scratchpad/softhier_dace_artifacts/softhier_dace_artifacts/cloudsc/.dacecache/cloudsc_fuse_branches/src/cpu/cloudsc_fuse_branches.cpp:1273:16: warning: variable ‘zcor’ set but not used [-Wunused-but-set-variable]
+ 1273 |         double zcor;
+      |                ^~~~
+/home/primrose/Work/Scratchpad/softhier_dace_artifacts/softhier_dace_artifacts/cloudsc/.dacecache/cloudsc_fuse_branches/src/cpu/cloudsc_fuse_branches.cpp: In function ‘void loop_body_27_0_0(cloudsc_fuse_branches_state_t*, const int&, double*, double*, double*, double*, double*, double*, double*, double*, double*, int, int, int, int, int)’:
+/home/primrose/Work/Scratchpad/softhier_dace_artifacts/softhier_dace_artifacts/cloudsc/.dacecache/cloudsc_fuse_branches/src/cpu/cloudsc_fuse_branches.cpp:6283:9: warning: variable ‘_if_cond_47’ set but not used [-Wunused-but-set-variable]
+ 6283 |     int _if_cond_47;
+      |         ^~~~~~~~~~~
+In function ‘void loop_body_6_16_40(cloudsc_fuse_branches_state_t*, double*, double*, const double&, const double&, const double&, const double&, double*, double*, double*, double*, double*, double*, double*, double*, double*, double*, double*, int, int, int, int)’,
+    inlined from ‘_Z40__program_cloudsc_fuse_branches_internalP29cloudsc_fuse_branches_state_tPiS1_PdS2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_iiiiiiiiiiiiiiiiiiddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddd._omp_fn.60’ at /home/primrose/Work/Scratchpad/softhier_dace_artifacts/softhier_dace_artifacts/cloudsc/.dacecache/cloudsc_fuse_branches/src/cpu/cloudsc_fuse_branches.cpp:12415:38:
+/home/primrose/Work/Scratchpad/softhier_dace_artifacts/softhier_dace_artifacts/cloudsc/.dacecache/cloudsc_fuse_branches/src/cpu/cloudsc_fuse_branches.cpp:5399:112: warning: ‘zqe_2’ may be used uninitialized [-Wmaybe-uninitialized]
+ 5399 |         _if_cond_39 = ((zqe_2 >= ((zrhc * zqsice[((_for_it_23 * klon) + _for_it_46)]) * zfac_FOR_l_731_c_731)) && (zqe_2 < (zqsice[((_for_it_23 * klon) + _for_it_46)] * zfac_FOR_l_731_c_731)));
+      |                       ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+/home/primrose/Work/Scratchpad/softhier_dace_artifacts/softhier_dace_artifacts/cloudsc/.dacecache/cloudsc_fuse_branches/src/cpu/cloudsc_fuse_branches.cpp: In function ‘_Z40__program_cloudsc_fuse_branches_internalP29cloudsc_fuse_branches_state_tPiS1_PdS2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_iiiiiiiiiiiiiiiiiiddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddd._omp_fn.60’:
+/home/primrose/Work/Scratchpad/softhier_dace_artifacts/softhier_dace_artifacts/cloudsc/.dacecache/cloudsc_fuse_branches/src/cpu/cloudsc_fuse_branches.cpp:5237:12: note: ‘zqe_2’ was declared here
+ 5237 |     double zqe_2;
+      |            ^~~~~
+[ 50%] Linking CXX shared library libcloudsc_fuse_branches.so
+[ 50%] Built target cloudsc_fuse_branches
+[100%] Built target dacestub_cloudsc_fuse_branches
+
+Comparing Results
+Comparison done. No numerical differences found
+Copying generated data
+Running SDFG1
+[ 50%] Built target cloudsc
+[100%] Built target dacestub_cloudsc
+
+Running SDFG2
+[ 50%] Built target cloudsc_fuse_branches
+[100%] Built target dacestub_cloudsc_fuse_branches
+
+Comparing Results
+Comparison done. No numerical differences found
+Success: Transformation applied for Conditional_l_0_c_0_16
+Saved SDFG as stage5.sdfgz
+Parent scope found for block FOR_l_1104_c_1104__for_it_900_Conditional_l_0_c_0_12, attempting to apply FuseBranches
+[can_be_applied] to FOR_l_1104_c_1104__for_it_900_Conditional_l_0_c_0_12 is True
+Can apply FuseBranches? True
+Applying FuseBranches to block FOR_l_1104_c_1104__for_it_900_Conditional_l_0_c_0_12
+Validating root SDFG after transformation...
+Running comparison with original SDFG...
+Copying generated data
+Running SDFG1
+[ 50%] Built target cloudsc
+[100%] Built target dacestub_cloudsc
+
+Running SDFG2
+[ 25%] Building CXX object CMakeFiles/cloudsc_fuse_branches.dir/home/primrose/Work/Scratchpad/softhier_dace_artifacts/softhier_dace_artifacts/cloudsc/.dacecache/cloudsc_fuse_branches/src/cpu/cloudsc_fuse_branches.cpp.o
+/home/primrose/Work/Scratchpad/softhier_dace_artifacts/softhier_dace_artifacts/cloudsc/.dacecache/cloudsc_fuse_branches/src/cpu/cloudsc_fuse_branches.cpp: In function ‘void loop_body_6_13_0(cloudsc_fuse_branches_state_t*, double*, double*, const double&, const double&, const double&, const double&, const double&, const double&, const double&, const double&, const double&, const double&, const double&, const double&, const double&, double*, double*, double*, double*, double*, double*, double*, double*, double*, double*, double*, double*, double*, double*, double*, double*, double*, double*, double*, double*, double*, double*, int, int, int, int)’:
+/home/primrose/Work/Scratchpad/softhier_dace_artifacts/softhier_dace_artifacts/cloudsc/.dacecache/cloudsc_fuse_branches/src/cpu/cloudsc_fuse_branches.cpp:1273:16: warning: variable ‘zcor’ set but not used [-Wunused-but-set-variable]
+ 1273 |         double zcor;
+      |                ^~~~
+/home/primrose/Work/Scratchpad/softhier_dace_artifacts/softhier_dace_artifacts/cloudsc/.dacecache/cloudsc_fuse_branches/src/cpu/cloudsc_fuse_branches.cpp: In function ‘void loop_body_27_0_0(cloudsc_fuse_branches_state_t*, const int&, double*, double*, double*, double*, double*, double*, double*, double*, double*, int, int, int, int, int)’:
+/home/primrose/Work/Scratchpad/softhier_dace_artifacts/softhier_dace_artifacts/cloudsc/.dacecache/cloudsc_fuse_branches/src/cpu/cloudsc_fuse_branches.cpp:6283:9: warning: variable ‘_if_cond_47’ set but not used [-Wunused-but-set-variable]
+ 6283 |     int _if_cond_47;
+      |         ^~~~~~~~~~~
+In function ‘void loop_body_6_16_40(cloudsc_fuse_branches_state_t*, double*, double*, const double&, const double&, const double&, const double&, double*, double*, double*, double*, double*, double*, double*, double*, double*, double*, double*, int, int, int, int)’,
+    inlined from ‘_Z40__program_cloudsc_fuse_branches_internalP29cloudsc_fuse_branches_state_tPiS1_PdS2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_iiiiiiiiiiiiiiiiiiddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddd._omp_fn.60’ at /home/primrose/Work/Scratchpad/softhier_dace_artifacts/softhier_dace_artifacts/cloudsc/.dacecache/cloudsc_fuse_branches/src/cpu/cloudsc_fuse_branches.cpp:12499:38:
+/home/primrose/Work/Scratchpad/softhier_dace_artifacts/softhier_dace_artifacts/cloudsc/.dacecache/cloudsc_fuse_branches/src/cpu/cloudsc_fuse_branches.cpp:5399:112: warning: ‘zqe_2’ may be used uninitialized [-Wmaybe-uninitialized]
+ 5399 |         _if_cond_39 = ((zqe_2 >= ((zrhc * zqsice[((_for_it_23 * klon) + _for_it_46)]) * zfac_FOR_l_731_c_731)) && (zqe_2 < (zqsice[((_for_it_23 * klon) + _for_it_46)] * zfac_FOR_l_731_c_731)));
+      |                       ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+/home/primrose/Work/Scratchpad/softhier_dace_artifacts/softhier_dace_artifacts/cloudsc/.dacecache/cloudsc_fuse_branches/src/cpu/cloudsc_fuse_branches.cpp: In function ‘_Z40__program_cloudsc_fuse_branches_internalP29cloudsc_fuse_branches_state_tPiS1_PdS2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_iiiiiiiiiiiiiiiiiiddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddd._omp_fn.60’:
+/home/primrose/Work/Scratchpad/softhier_dace_artifacts/softhier_dace_artifacts/cloudsc/.dacecache/cloudsc_fuse_branches/src/cpu/cloudsc_fuse_branches.cpp:5237:12: note: ‘zqe_2’ was declared here
+ 5237 |     double zqe_2;
+      |            ^~~~~
+[ 50%] Linking CXX shared library libcloudsc_fuse_branches.so
+[ 50%] Built target cloudsc_fuse_branches
+[100%] Built target dacestub_cloudsc_fuse_branches
+
+Comparing Results
+Comparison done. No numerical differences found
+Copying generated data
+Running SDFG1
+[ 50%] Built target cloudsc
+[100%] Built target dacestub_cloudsc
+
+Running SDFG2
+[ 50%] Built target cloudsc_fuse_branches
+[100%] Built target dacestub_cloudsc_fuse_branches
+
+Comparing Results
+Comparison done. No numerical differences found
+Success: Transformation applied for FOR_l_1104_c_1104__for_it_900_Conditional_l_0_c_0_12
+Saved SDFG as stage5.sdfgz
+Parent scope found for block FOR_l_1104_c_1104__for_it_901_Conditional_l_0_c_0_12, attempting to apply FuseBranches
+[can_be_applied] to FOR_l_1104_c_1104__for_it_901_Conditional_l_0_c_0_12 is True
+Can apply FuseBranches? True
+Applying FuseBranches to block FOR_l_1104_c_1104__for_it_901_Conditional_l_0_c_0_12
+Validating root SDFG after transformation...
+Running comparison with original SDFG...
+Copying generated data
+Running SDFG1
+[ 50%] Built target cloudsc
+[100%] Built target dacestub_cloudsc
+
+Running SDFG2
+[ 25%] Building CXX object CMakeFiles/cloudsc_fuse_branches.dir/home/primrose/Work/Scratchpad/softhier_dace_artifacts/softhier_dace_artifacts/cloudsc/.dacecache/cloudsc_fuse_branches/src/cpu/cloudsc_fuse_branches.cpp.o
+/home/primrose/Work/Scratchpad/softhier_dace_artifacts/softhier_dace_artifacts/cloudsc/.dacecache/cloudsc_fuse_branches/src/cpu/cloudsc_fuse_branches.cpp: In function ‘void loop_body_6_13_0(cloudsc_fuse_branches_state_t*, double*, double*, const double&, const double&, const double&, const double&, const double&, const double&, const double&, const double&, const double&, const double&, const double&, const double&, const double&, double*, double*, double*, double*, double*, double*, double*, double*, double*, double*, double*, double*, double*, double*, double*, double*, double*, double*, double*, double*, double*, double*, int, int, int, int)’:
+/home/primrose/Work/Scratchpad/softhier_dace_artifacts/softhier_dace_artifacts/cloudsc/.dacecache/cloudsc_fuse_branches/src/cpu/cloudsc_fuse_branches.cpp:1273:16: warning: variable ‘zcor’ set but not used [-Wunused-but-set-variable]
+ 1273 |         double zcor;
+      |                ^~~~
+/home/primrose/Work/Scratchpad/softhier_dace_artifacts/softhier_dace_artifacts/cloudsc/.dacecache/cloudsc_fuse_branches/src/cpu/cloudsc_fuse_branches.cpp: In function ‘void loop_body_27_0_0(cloudsc_fuse_branches_state_t*, const int&, double*, double*, double*, double*, double*, double*, double*, double*, double*, int, int, int, int, int)’:
+/home/primrose/Work/Scratchpad/softhier_dace_artifacts/softhier_dace_artifacts/cloudsc/.dacecache/cloudsc_fuse_branches/src/cpu/cloudsc_fuse_branches.cpp:6283:9: warning: variable ‘_if_cond_47’ set but not used [-Wunused-but-set-variable]
+ 6283 |     int _if_cond_47;
+      |         ^~~~~~~~~~~
+In function ‘void loop_body_6_16_40(cloudsc_fuse_branches_state_t*, double*, double*, const double&, const double&, const double&, const double&, double*, double*, double*, double*, double*, double*, double*, double*, double*, double*, double*, int, int, int, int)’,
+    inlined from ‘_Z40__program_cloudsc_fuse_branches_internalP29cloudsc_fuse_branches_state_tPiS1_PdS2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_iiiiiiiiiiiiiiiiiiddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddd._omp_fn.60’ at /home/primrose/Work/Scratchpad/softhier_dace_artifacts/softhier_dace_artifacts/cloudsc/.dacecache/cloudsc_fuse_branches/src/cpu/cloudsc_fuse_branches.cpp:12583:38:
+/home/primrose/Work/Scratchpad/softhier_dace_artifacts/softhier_dace_artifacts/cloudsc/.dacecache/cloudsc_fuse_branches/src/cpu/cloudsc_fuse_branches.cpp:5399:112: warning: ‘zqe_2’ may be used uninitialized [-Wmaybe-uninitialized]
+ 5399 |         _if_cond_39 = ((zqe_2 >= ((zrhc * zqsice[((_for_it_23 * klon) + _for_it_46)]) * zfac_FOR_l_731_c_731)) && (zqe_2 < (zqsice[((_for_it_23 * klon) + _for_it_46)] * zfac_FOR_l_731_c_731)));
+      |                       ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+/home/primrose/Work/Scratchpad/softhier_dace_artifacts/softhier_dace_artifacts/cloudsc/.dacecache/cloudsc_fuse_branches/src/cpu/cloudsc_fuse_branches.cpp: In function ‘_Z40__program_cloudsc_fuse_branches_internalP29cloudsc_fuse_branches_state_tPiS1_PdS2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_iiiiiiiiiiiiiiiiiiddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddd._omp_fn.60’:
+/home/primrose/Work/Scratchpad/softhier_dace_artifacts/softhier_dace_artifacts/cloudsc/.dacecache/cloudsc_fuse_branches/src/cpu/cloudsc_fuse_branches.cpp:5237:12: note: ‘zqe_2’ was declared here
+ 5237 |     double zqe_2;
+      |            ^~~~~
+[ 50%] Linking CXX shared library libcloudsc_fuse_branches.so
+[ 50%] Built target cloudsc_fuse_branches
+[100%] Built target dacestub_cloudsc_fuse_branches
+
+Comparing Results
+Comparison done. No numerical differences found
+Copying generated data
+Running SDFG1
+[ 50%] Built target cloudsc
+[100%] Built target dacestub_cloudsc
+
+Running SDFG2
+[ 50%] Built target cloudsc_fuse_branches
+[100%] Built target dacestub_cloudsc_fuse_branches
+
+Comparing Results
+Comparison done. No numerical differences found
+Success: Transformation applied for FOR_l_1104_c_1104__for_it_901_Conditional_l_0_c_0_12
+Saved SDFG as stage5.sdfgz
+Parent scope found for block FOR_l_1104_c_1104__for_it_902_Conditional_l_0_c_0_12, attempting to apply FuseBranches
+[can_be_applied] to FOR_l_1104_c_1104__for_it_902_Conditional_l_0_c_0_12 is True
+Can apply FuseBranches? True
+Applying FuseBranches to block FOR_l_1104_c_1104__for_it_902_Conditional_l_0_c_0_12
+Validating root SDFG after transformation...
+Running comparison with original SDFG...
+Copying generated data
+Running SDFG1
+[ 50%] Built target cloudsc
+[100%] Built target dacestub_cloudsc
+
+Running SDFG2
+[ 25%] Building CXX object CMakeFiles/cloudsc_fuse_branches.dir/home/primrose/Work/Scratchpad/softhier_dace_artifacts/softhier_dace_artifacts/cloudsc/.dacecache/cloudsc_fuse_branches/src/cpu/cloudsc_fuse_branches.cpp.o
+/home/primrose/Work/Scratchpad/softhier_dace_artifacts/softhier_dace_artifacts/cloudsc/.dacecache/cloudsc_fuse_branches/src/cpu/cloudsc_fuse_branches.cpp: In function ‘void loop_body_6_13_0(cloudsc_fuse_branches_state_t*, double*, double*, const double&, const double&, const double&, const double&, const double&, const double&, const double&, const double&, const double&, const double&, const double&, const double&, const double&, double*, double*, double*, double*, double*, double*, double*, double*, double*, double*, double*, double*, double*, double*, double*, double*, double*, double*, double*, double*, double*, double*, int, int, int, int)’:
+/home/primrose/Work/Scratchpad/softhier_dace_artifacts/softhier_dace_artifacts/cloudsc/.dacecache/cloudsc_fuse_branches/src/cpu/cloudsc_fuse_branches.cpp:1273:16: warning: variable ‘zcor’ set but not used [-Wunused-but-set-variable]
+ 1273 |         double zcor;
+      |                ^~~~
+/home/primrose/Work/Scratchpad/softhier_dace_artifacts/softhier_dace_artifacts/cloudsc/.dacecache/cloudsc_fuse_branches/src/cpu/cloudsc_fuse_branches.cpp: In function ‘void loop_body_27_0_0(cloudsc_fuse_branches_state_t*, const int&, double*, double*, double*, double*, double*, double*, double*, double*, double*, int, int, int, int, int)’:
+/home/primrose/Work/Scratchpad/softhier_dace_artifacts/softhier_dace_artifacts/cloudsc/.dacecache/cloudsc_fuse_branches/src/cpu/cloudsc_fuse_branches.cpp:6283:9: warning: variable ‘_if_cond_47’ set but not used [-Wunused-but-set-variable]
+ 6283 |     int _if_cond_47;
+      |         ^~~~~~~~~~~
+In function ‘void loop_body_6_16_40(cloudsc_fuse_branches_state_t*, double*, double*, const double&, const double&, const double&, const double&, double*, double*, double*, double*, double*, double*, double*, double*, double*, double*, double*, int, int, int, int)’,
+    inlined from ‘_Z40__program_cloudsc_fuse_branches_internalP29cloudsc_fuse_branches_state_tPiS1_PdS2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_iiiiiiiiiiiiiiiiiiddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddd._omp_fn.60’ at /home/primrose/Work/Scratchpad/softhier_dace_artifacts/softhier_dace_artifacts/cloudsc/.dacecache/cloudsc_fuse_branches/src/cpu/cloudsc_fuse_branches.cpp:12667:38:
+/home/primrose/Work/Scratchpad/softhier_dace_artifacts/softhier_dace_artifacts/cloudsc/.dacecache/cloudsc_fuse_branches/src/cpu/cloudsc_fuse_branches.cpp:5399:112: warning: ‘zqe_2’ may be used uninitialized [-Wmaybe-uninitialized]
+ 5399 |         _if_cond_39 = ((zqe_2 >= ((zrhc * zqsice[((_for_it_23 * klon) + _for_it_46)]) * zfac_FOR_l_731_c_731)) && (zqe_2 < (zqsice[((_for_it_23 * klon) + _for_it_46)] * zfac_FOR_l_731_c_731)));
+      |                       ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+/home/primrose/Work/Scratchpad/softhier_dace_artifacts/softhier_dace_artifacts/cloudsc/.dacecache/cloudsc_fuse_branches/src/cpu/cloudsc_fuse_branches.cpp: In function ‘_Z40__program_cloudsc_fuse_branches_internalP29cloudsc_fuse_branches_state_tPiS1_PdS2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_iiiiiiiiiiiiiiiiiiddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddd._omp_fn.60’:
+/home/primrose/Work/Scratchpad/softhier_dace_artifacts/softhier_dace_artifacts/cloudsc/.dacecache/cloudsc_fuse_branches/src/cpu/cloudsc_fuse_branches.cpp:5237:12: note: ‘zqe_2’ was declared here
+ 5237 |     double zqe_2;
+      |            ^~~~~
+[ 50%] Linking CXX shared library libcloudsc_fuse_branches.so
+[ 50%] Built target cloudsc_fuse_branches
+[100%] Built target dacestub_cloudsc_fuse_branches
+
+Comparing Results
+Comparison done. No numerical differences found
+Copying generated data
+Running SDFG1
+[ 50%] Built target cloudsc
+[100%] Built target dacestub_cloudsc
+
+Running SDFG2
+[ 50%] Built target cloudsc_fuse_branches
+[100%] Built target dacestub_cloudsc_fuse_branches
+
+Comparing Results
+Comparison done. No numerical differences found
+Success: Transformation applied for FOR_l_1104_c_1104__for_it_902_Conditional_l_0_c_0_12
+Saved SDFG as stage5.sdfgz
+Parent scope found for block FOR_l_1104_c_1104__for_it_903_Conditional_l_0_c_0_12, attempting to apply FuseBranches
+[can_be_applied] to FOR_l_1104_c_1104__for_it_903_Conditional_l_0_c_0_12 is True
+Can apply FuseBranches? True
+Applying FuseBranches to block FOR_l_1104_c_1104__for_it_903_Conditional_l_0_c_0_12
+Validating root SDFG after transformation...
+Running comparison with original SDFG...
+Copying generated data
+Running SDFG1
+[ 50%] Built target cloudsc
+[100%] Built target dacestub_cloudsc
+
+Running SDFG2
+[ 25%] Building CXX object CMakeFiles/cloudsc_fuse_branches.dir/home/primrose/Work/Scratchpad/softhier_dace_artifacts/softhier_dace_artifacts/cloudsc/.dacecache/cloudsc_fuse_branches/src/cpu/cloudsc_fuse_branches.cpp.o
+/home/primrose/Work/Scratchpad/softhier_dace_artifacts/softhier_dace_artifacts/cloudsc/.dacecache/cloudsc_fuse_branches/src/cpu/cloudsc_fuse_branches.cpp: In function ‘void loop_body_6_13_0(cloudsc_fuse_branches_state_t*, double*, double*, const double&, const double&, const double&, const double&, const double&, const double&, const double&, const double&, const double&, const double&, const double&, const double&, const double&, double*, double*, double*, double*, double*, double*, double*, double*, double*, double*, double*, double*, double*, double*, double*, double*, double*, double*, double*, double*, double*, double*, int, int, int, int)’:
+/home/primrose/Work/Scratchpad/softhier_dace_artifacts/softhier_dace_artifacts/cloudsc/.dacecache/cloudsc_fuse_branches/src/cpu/cloudsc_fuse_branches.cpp:1273:16: warning: variable ‘zcor’ set but not used [-Wunused-but-set-variable]
+ 1273 |         double zcor;
+      |                ^~~~
+/home/primrose/Work/Scratchpad/softhier_dace_artifacts/softhier_dace_artifacts/cloudsc/.dacecache/cloudsc_fuse_branches/src/cpu/cloudsc_fuse_branches.cpp: In function ‘void loop_body_27_0_0(cloudsc_fuse_branches_state_t*, const int&, double*, double*, double*, double*, double*, double*, double*, double*, double*, int, int, int, int, int)’:
+/home/primrose/Work/Scratchpad/softhier_dace_artifacts/softhier_dace_artifacts/cloudsc/.dacecache/cloudsc_fuse_branches/src/cpu/cloudsc_fuse_branches.cpp:6283:9: warning: variable ‘_if_cond_47’ set but not used [-Wunused-but-set-variable]
+ 6283 |     int _if_cond_47;
+      |         ^~~~~~~~~~~
+In function ‘void loop_body_6_16_40(cloudsc_fuse_branches_state_t*, double*, double*, const double&, const double&, const double&, const double&, double*, double*, double*, double*, double*, double*, double*, double*, double*, double*, double*, int, int, int, int)’,
+    inlined from ‘_Z40__program_cloudsc_fuse_branches_internalP29cloudsc_fuse_branches_state_tPiS1_PdS2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_iiiiiiiiiiiiiiiiiiddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddd._omp_fn.60’ at /home/primrose/Work/Scratchpad/softhier_dace_artifacts/softhier_dace_artifacts/cloudsc/.dacecache/cloudsc_fuse_branches/src/cpu/cloudsc_fuse_branches.cpp:12751:38:
+/home/primrose/Work/Scratchpad/softhier_dace_artifacts/softhier_dace_artifacts/cloudsc/.dacecache/cloudsc_fuse_branches/src/cpu/cloudsc_fuse_branches.cpp:5399:112: warning: ‘zqe_2’ may be used uninitialized [-Wmaybe-uninitialized]
+ 5399 |         _if_cond_39 = ((zqe_2 >= ((zrhc * zqsice[((_for_it_23 * klon) + _for_it_46)]) * zfac_FOR_l_731_c_731)) && (zqe_2 < (zqsice[((_for_it_23 * klon) + _for_it_46)] * zfac_FOR_l_731_c_731)));
+      |                       ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+/home/primrose/Work/Scratchpad/softhier_dace_artifacts/softhier_dace_artifacts/cloudsc/.dacecache/cloudsc_fuse_branches/src/cpu/cloudsc_fuse_branches.cpp: In function ‘_Z40__program_cloudsc_fuse_branches_internalP29cloudsc_fuse_branches_state_tPiS1_PdS2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_iiiiiiiiiiiiiiiiiiddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddd._omp_fn.60’:
+/home/primrose/Work/Scratchpad/softhier_dace_artifacts/softhier_dace_artifacts/cloudsc/.dacecache/cloudsc_fuse_branches/src/cpu/cloudsc_fuse_branches.cpp:5237:12: note: ‘zqe_2’ was declared here
+ 5237 |     double zqe_2;
+      |            ^~~~~
+[ 50%] Linking CXX shared library libcloudsc_fuse_branches.so
+[ 50%] Built target cloudsc_fuse_branches
+[100%] Built target dacestub_cloudsc_fuse_branches
+
+Comparing Results
+Comparison done. No numerical differences found
+Copying generated data
+Running SDFG1
+[ 50%] Built target cloudsc
+[100%] Built target dacestub_cloudsc
+
+Running SDFG2
+[ 50%] Built target cloudsc_fuse_branches
+[100%] Built target dacestub_cloudsc_fuse_branches
+
+Comparing Results
+Comparison done. No numerical differences found
+Success: Transformation applied for FOR_l_1104_c_1104__for_it_903_Conditional_l_0_c_0_12
+Saved SDFG as stage5.sdfgz
+Parent scope found for block FOR_l_1104_c_1104__for_it_904_Conditional_l_0_c_0_12, attempting to apply FuseBranches
+[can_be_applied] to FOR_l_1104_c_1104__for_it_904_Conditional_l_0_c_0_12 is True
+Can apply FuseBranches? True
+Applying FuseBranches to block FOR_l_1104_c_1104__for_it_904_Conditional_l_0_c_0_12
+Validating root SDFG after transformation...
+Running comparison with original SDFG...
+Copying generated data
+Running SDFG1
+[ 50%] Built target cloudsc
+[100%] Built target dacestub_cloudsc
+
+Running SDFG2
+[ 25%] Building CXX object CMakeFiles/cloudsc_fuse_branches.dir/home/primrose/Work/Scratchpad/softhier_dace_artifacts/softhier_dace_artifacts/cloudsc/.dacecache/cloudsc_fuse_branches/src/cpu/cloudsc_fuse_branches.cpp.o
+/home/primrose/Work/Scratchpad/softhier_dace_artifacts/softhier_dace_artifacts/cloudsc/.dacecache/cloudsc_fuse_branches/src/cpu/cloudsc_fuse_branches.cpp: In function ‘void loop_body_6_13_0(cloudsc_fuse_branches_state_t*, double*, double*, const double&, const double&, const double&, const double&, const double&, const double&, const double&, const double&, const double&, const double&, const double&, const double&, const double&, double*, double*, double*, double*, double*, double*, double*, double*, double*, double*, double*, double*, double*, double*, double*, double*, double*, double*, double*, double*, double*, double*, int, int, int, int)’:
+/home/primrose/Work/Scratchpad/softhier_dace_artifacts/softhier_dace_artifacts/cloudsc/.dacecache/cloudsc_fuse_branches/src/cpu/cloudsc_fuse_branches.cpp:1273:16: warning: variable ‘zcor’ set but not used [-Wunused-but-set-variable]
+ 1273 |         double zcor;
+      |                ^~~~
+/home/primrose/Work/Scratchpad/softhier_dace_artifacts/softhier_dace_artifacts/cloudsc/.dacecache/cloudsc_fuse_branches/src/cpu/cloudsc_fuse_branches.cpp: In function ‘void loop_body_27_0_0(cloudsc_fuse_branches_state_t*, const int&, double*, double*, double*, double*, double*, double*, double*, double*, double*, int, int, int, int, int)’:
+/home/primrose/Work/Scratchpad/softhier_dace_artifacts/softhier_dace_artifacts/cloudsc/.dacecache/cloudsc_fuse_branches/src/cpu/cloudsc_fuse_branches.cpp:6283:9: warning: variable ‘_if_cond_47’ set but not used [-Wunused-but-set-variable]
+ 6283 |     int _if_cond_47;
+      |         ^~~~~~~~~~~
+In function ‘void loop_body_6_16_40(cloudsc_fuse_branches_state_t*, double*, double*, const double&, const double&, const double&, const double&, double*, double*, double*, double*, double*, double*, double*, double*, double*, double*, double*, int, int, int, int)’,
+    inlined from ‘_Z40__program_cloudsc_fuse_branches_internalP29cloudsc_fuse_branches_state_tPiS1_PdS2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_iiiiiiiiiiiiiiiiiiddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddd._omp_fn.60’ at /home/primrose/Work/Scratchpad/softhier_dace_artifacts/softhier_dace_artifacts/cloudsc/.dacecache/cloudsc_fuse_branches/src/cpu/cloudsc_fuse_branches.cpp:12835:38:
+/home/primrose/Work/Scratchpad/softhier_dace_artifacts/softhier_dace_artifacts/cloudsc/.dacecache/cloudsc_fuse_branches/src/cpu/cloudsc_fuse_branches.cpp:5399:112: warning: ‘zqe_2’ may be used uninitialized [-Wmaybe-uninitialized]
+ 5399 |         _if_cond_39 = ((zqe_2 >= ((zrhc * zqsice[((_for_it_23 * klon) + _for_it_46)]) * zfac_FOR_l_731_c_731)) && (zqe_2 < (zqsice[((_for_it_23 * klon) + _for_it_46)] * zfac_FOR_l_731_c_731)));
+      |                       ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+/home/primrose/Work/Scratchpad/softhier_dace_artifacts/softhier_dace_artifacts/cloudsc/.dacecache/cloudsc_fuse_branches/src/cpu/cloudsc_fuse_branches.cpp: In function ‘_Z40__program_cloudsc_fuse_branches_internalP29cloudsc_fuse_branches_state_tPiS1_PdS2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_iiiiiiiiiiiiiiiiiiddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddd._omp_fn.60’:
+/home/primrose/Work/Scratchpad/softhier_dace_artifacts/softhier_dace_artifacts/cloudsc/.dacecache/cloudsc_fuse_branches/src/cpu/cloudsc_fuse_branches.cpp:5237:12: note: ‘zqe_2’ was declared here
+ 5237 |     double zqe_2;
+      |            ^~~~~
+[ 50%] Linking CXX shared library libcloudsc_fuse_branches.so
+[ 50%] Built target cloudsc_fuse_branches
+[100%] Built target dacestub_cloudsc_fuse_branches
+
+Comparing Results
+Comparison done. No numerical differences found
+Copying generated data
+Running SDFG1
+[ 50%] Built target cloudsc
+[100%] Built target dacestub_cloudsc
+
+Running SDFG2
+[ 50%] Built target cloudsc_fuse_branches
+[100%] Built target dacestub_cloudsc_fuse_branches
+
+Comparing Results
+Comparison done. No numerical differences found
+Success: Transformation applied for FOR_l_1104_c_1104__for_it_904_Conditional_l_0_c_0_12
+Saved SDFG as stage5.sdfgz
+Parent scope found for block Conditional_l_0_c_0_23, attempting to apply FuseBranches
+[can_be_applied] Single branch does not have exactly one SDFGState node.
+Can apply FuseBranches? False
+Cannot apply FuseBranches to block Conditional_l_0_c_0_23
+Parent scope found for block Conditional_l_0_c_0_2, attempting to apply FuseBranches
+[can_be_applied] to Conditional_l_0_c_0_2 is True
+Can apply FuseBranches? True
+Applying FuseBranches to block Conditional_l_0_c_0_2
+IN {'cur_in_conn_name': 'IN_zsolqa_p', 'cur_out_conn_name': 'OUT_zsolqa_p', 'cur_name_set': True} {'IN_1': void, 'IN_2': void, 'kfdia': void, 'kidia': void} {'OUT_1': void, 'OUT_2': void}
+DST {'cur_in_conn_name': 'IN_zsolqa_p', 'cur_out_conn_name': 'OUT_zsolqa_p', 'cur_name_set': True} {'IN_1': void, 'IN_2': void, 'kfdia': void, 'kidia': void} {'OUT_1': void, 'OUT_2': void}
+IN {'cur_in_conn_name': 'IN_zsolqa_p', 'cur_out_conn_name': 'OUT_zsolqa_p', 'cur_name_set': True} {'IN_1': void, 'IN_2': void, 'kfdia': void, 'kidia': void} {'OUT_1': void, 'OUT_2': void}
+IN {'cur_in_conn_name': 'IN_zsolqa_p', 'cur_out_conn_name': 'OUT_zsolqa_p', 'cur_name_set': True} {'IN_1': void, 'IN_2': void, 'kfdia': void, 'kidia': void} {'OUT_1': void, 'OUT_2': void}
+DST {'cur_in_conn_name': 'IN_zsolqa_p', 'cur_out_conn_name': 'OUT_zsolqa_p', 'cur_name_set': True} {'rlmin': void, 'zqx': void} {'zsolqa': void}
+IN {'cur_in_conn_name': 'IN_zsolqa_p', 'cur_out_conn_name': 'OUT_zsolqa_p', 'cur_name_set': True} {'rlmin': void, 'zqx': void} {'zsolqa': void}
+DST {'cur_in_conn_name': 'IN_zsolqa_p', 'cur_out_conn_name': 'OUT_zsolqa_p', 'cur_name_set': True} {'rlmin': void, 'zqx': void} {'zsolqa': void}
+IN {'cur_in_conn_name': 'IN_zsolqa_p', 'cur_out_conn_name': 'OUT_zsolqa_p', 'cur_name_set': True} {'rlmin': void, 'zqx': void} {'zsolqa': void}
+Validating root SDFG after transformation...
+Running comparison with original SDFG...
+Copying generated data
+Running SDFG1
+[ 50%] Built target cloudsc
+[100%] Built target dacestub_cloudsc
+
+Running SDFG2
+[ 25%] Building CXX object CMakeFiles/cloudsc_fuse_branches.dir/home/primrose/Work/Scratchpad/softhier_dace_artifacts/softhier_dace_artifacts/cloudsc/.dacecache/cloudsc_fuse_branches/src/cpu/cloudsc_fuse_branches.cpp.o
+/home/primrose/Work/Scratchpad/softhier_dace_artifacts/softhier_dace_artifacts/cloudsc/.dacecache/cloudsc_fuse_branches/src/cpu/cloudsc_fuse_branches.cpp: In function ‘void loop_body_6_13_0(cloudsc_fuse_branches_state_t*, double*, double*, const double&, const double&, const double&, const double&, const double&, const double&, const double&, const double&, const double&, const double&, const double&, const double&, const double&, double*, double*, double*, double*, double*, double*, double*, double*, double*, double*, double*, double*, double*, double*, double*, double*, double*, double*, double*, double*, double*, double*, int, int, int, int)’:
+/home/primrose/Work/Scratchpad/softhier_dace_artifacts/softhier_dace_artifacts/cloudsc/.dacecache/cloudsc_fuse_branches/src/cpu/cloudsc_fuse_branches.cpp:1273:16: warning: variable ‘zcor’ set but not used [-Wunused-but-set-variable]
+ 1273 |         double zcor;
+      |                ^~~~
+/home/primrose/Work/Scratchpad/softhier_dace_artifacts/softhier_dace_artifacts/cloudsc/.dacecache/cloudsc_fuse_branches/src/cpu/cloudsc_fuse_branches.cpp: In function ‘void loop_body_27_0_0(cloudsc_fuse_branches_state_t*, const int&, double*, double*, double*, double*, double*, double*, double*, double*, double*, int, int, int, int, int)’:
+/home/primrose/Work/Scratchpad/softhier_dace_artifacts/softhier_dace_artifacts/cloudsc/.dacecache/cloudsc_fuse_branches/src/cpu/cloudsc_fuse_branches.cpp:6367:9: warning: variable ‘_if_cond_47’ set but not used [-Wunused-but-set-variable]
+ 6367 |     int _if_cond_47;
+      |         ^~~~~~~~~~~
+In function ‘void loop_body_6_16_40(cloudsc_fuse_branches_state_t*, double*, double*, const double&, const double&, const double&, const double&, double*, double*, double*, double*, double*, double*, double*, double*, double*, double*, double*, int, int, int, int)’,
+    inlined from ‘_Z40__program_cloudsc_fuse_branches_internalP29cloudsc_fuse_branches_state_tPiS1_PdS2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_iiiiiiiiiiiiiiiiiiddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddd._omp_fn.60’ at /home/primrose/Work/Scratchpad/softhier_dace_artifacts/softhier_dace_artifacts/cloudsc/.dacecache/cloudsc_fuse_branches/src/cpu/cloudsc_fuse_branches.cpp:12919:38:
+/home/primrose/Work/Scratchpad/softhier_dace_artifacts/softhier_dace_artifacts/cloudsc/.dacecache/cloudsc_fuse_branches/src/cpu/cloudsc_fuse_branches.cpp:5483:112: warning: ‘zqe_2’ may be used uninitialized [-Wmaybe-uninitialized]
+ 5483 |         _if_cond_39 = ((zqe_2 >= ((zrhc * zqsice[((_for_it_23 * klon) + _for_it_46)]) * zfac_FOR_l_731_c_731)) && (zqe_2 < (zqsice[((_for_it_23 * klon) + _for_it_46)] * zfac_FOR_l_731_c_731)));
+      |                       ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+/home/primrose/Work/Scratchpad/softhier_dace_artifacts/softhier_dace_artifacts/cloudsc/.dacecache/cloudsc_fuse_branches/src/cpu/cloudsc_fuse_branches.cpp: In function ‘_Z40__program_cloudsc_fuse_branches_internalP29cloudsc_fuse_branches_state_tPiS1_PdS2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_iiiiiiiiiiiiiiiiiiddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddd._omp_fn.60’:
+/home/primrose/Work/Scratchpad/softhier_dace_artifacts/softhier_dace_artifacts/cloudsc/.dacecache/cloudsc_fuse_branches/src/cpu/cloudsc_fuse_branches.cpp:5321:12: note: ‘zqe_2’ was declared here
+ 5321 |     double zqe_2;
+      |            ^~~~~
+[ 50%] Linking CXX shared library libcloudsc_fuse_branches.so
+[ 50%] Built target cloudsc_fuse_branches
+[100%] Built target dacestub_cloudsc_fuse_branches
+
+Comparing Results
+Comparison done. No numerical differences found
+Copying generated data
+Running SDFG1
+[ 50%] Built target cloudsc
+[100%] Built target dacestub_cloudsc
+
+Running SDFG2
+[ 50%] Built target cloudsc_fuse_branches
+[100%] Built target dacestub_cloudsc_fuse_branches
+
+Comparing Results
+Comparison done. No numerical differences found
+Success: Transformation applied for Conditional_l_0_c_0_2
+Saved SDFG as stage5.sdfgz
+Parent scope found for block Conditional_l_0_c_0_0_1, attempting to apply FuseBranches
+[can_be_applied] to Conditional_l_0_c_0_0_1 is True
+Can apply FuseBranches? True
+Applying FuseBranches to block Conditional_l_0_c_0_0_1
+Validating root SDFG after transformation...
+Running comparison with original SDFG...
+Copying generated data
+Running SDFG1
+[ 50%] Built target cloudsc
+[100%] Built target dacestub_cloudsc
+
+Running SDFG2
+[ 25%] Building CXX object CMakeFiles/cloudsc_fuse_branches.dir/home/primrose/Work/Scratchpad/softhier_dace_artifacts/softhier_dace_artifacts/cloudsc/.dacecache/cloudsc_fuse_branches/src/cpu/cloudsc_fuse_branches.cpp.o
+/home/primrose/Work/Scratchpad/softhier_dace_artifacts/softhier_dace_artifacts/cloudsc/.dacecache/cloudsc_fuse_branches/src/cpu/cloudsc_fuse_branches.cpp: In function ‘void loop_body_6_13_0(cloudsc_fuse_branches_state_t*, double*, double*, const double&, const double&, const double&, const double&, const double&, const double&, const double&, const double&, const double&, const double&, const double&, const double&, const double&, double*, double*, double*, double*, double*, double*, double*, double*, double*, double*, double*, double*, double*, double*, double*, double*, double*, double*, double*, double*, double*, double*, int, int, int, int)’:
+/home/primrose/Work/Scratchpad/softhier_dace_artifacts/softhier_dace_artifacts/cloudsc/.dacecache/cloudsc_fuse_branches/src/cpu/cloudsc_fuse_branches.cpp:1273:16: warning: variable ‘zcor’ set but not used [-Wunused-but-set-variable]
+ 1273 |         double zcor;
+      |                ^~~~
+/home/primrose/Work/Scratchpad/softhier_dace_artifacts/softhier_dace_artifacts/cloudsc/.dacecache/cloudsc_fuse_branches/src/cpu/cloudsc_fuse_branches.cpp: In function ‘void loop_body_27_0_0(cloudsc_fuse_branches_state_t*, const int&, double*, double*, double*, double*, double*, double*, double*, double*, double*, int, int, int, int, int)’:
+/home/primrose/Work/Scratchpad/softhier_dace_artifacts/softhier_dace_artifacts/cloudsc/.dacecache/cloudsc_fuse_branches/src/cpu/cloudsc_fuse_branches.cpp:6451:9: warning: variable ‘_if_cond_47’ set but not used [-Wunused-but-set-variable]
+ 6451 |     int _if_cond_47;
+      |         ^~~~~~~~~~~
+In function ‘void loop_body_6_16_40(cloudsc_fuse_branches_state_t*, double*, double*, const double&, const double&, const double&, const double&, double*, double*, double*, double*, double*, double*, double*, double*, double*, double*, double*, int, int, int, int)’,
+    inlined from ‘_Z40__program_cloudsc_fuse_branches_internalP29cloudsc_fuse_branches_state_tPiS1_PdS2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_iiiiiiiiiiiiiiiiiiddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddd._omp_fn.60’ at /home/primrose/Work/Scratchpad/softhier_dace_artifacts/softhier_dace_artifacts/cloudsc/.dacecache/cloudsc_fuse_branches/src/cpu/cloudsc_fuse_branches.cpp:13003:38:
+/home/primrose/Work/Scratchpad/softhier_dace_artifacts/softhier_dace_artifacts/cloudsc/.dacecache/cloudsc_fuse_branches/src/cpu/cloudsc_fuse_branches.cpp:5567:112: warning: ‘zqe_2’ may be used uninitialized [-Wmaybe-uninitialized]
+ 5567 |         _if_cond_39 = ((zqe_2 >= ((zrhc * zqsice[((_for_it_23 * klon) + _for_it_46)]) * zfac_FOR_l_731_c_731)) && (zqe_2 < (zqsice[((_for_it_23 * klon) + _for_it_46)] * zfac_FOR_l_731_c_731)));
+      |                       ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+/home/primrose/Work/Scratchpad/softhier_dace_artifacts/softhier_dace_artifacts/cloudsc/.dacecache/cloudsc_fuse_branches/src/cpu/cloudsc_fuse_branches.cpp: In function ‘_Z40__program_cloudsc_fuse_branches_internalP29cloudsc_fuse_branches_state_tPiS1_PdS2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_iiiiiiiiiiiiiiiiiiddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddd._omp_fn.60’:
+/home/primrose/Work/Scratchpad/softhier_dace_artifacts/softhier_dace_artifacts/cloudsc/.dacecache/cloudsc_fuse_branches/src/cpu/cloudsc_fuse_branches.cpp:5405:12: note: ‘zqe_2’ was declared here
+ 5405 |     double zqe_2;
+      |            ^~~~~
+[ 50%] Linking CXX shared library libcloudsc_fuse_branches.so
+[ 50%] Built target cloudsc_fuse_branches
+[100%] Built target dacestub_cloudsc_fuse_branches
+
+Comparing Results
+Comparison done. No numerical differences found
+Copying generated data
+Running SDFG1
+[ 50%] Built target cloudsc
+[100%] Built target dacestub_cloudsc
+
+Running SDFG2
+[ 50%] Built target cloudsc_fuse_branches
+[100%] Built target dacestub_cloudsc_fuse_branches
+
+Comparing Results
+Comparison done. No numerical differences found
+Success: Transformation applied for Conditional_l_0_c_0_0_1
+Saved SDFG as stage5.sdfgz
+Parent scope found for block Conditional_l_0_c_0_3, attempting to apply FuseBranches
+[can_be_applied] to Conditional_l_0_c_0_3 is True
+Can apply FuseBranches? True
+Applying FuseBranches to block Conditional_l_0_c_0_3
+[can_be_applied] to Conditional_l_0_c_0_3 is True
+Validating root SDFG after transformation...
+Running comparison with original SDFG...
+Copying generated data
+Running SDFG1
+[ 50%] Built target cloudsc
+[100%] Built target dacestub_cloudsc
+
+Running SDFG2
+[ 25%] Building CXX object CMakeFiles/cloudsc_fuse_branches.dir/home/primrose/Work/Scratchpad/softhier_dace_artifacts/softhier_dace_artifacts/cloudsc/.dacecache/cloudsc_fuse_branches/src/cpu/cloudsc_fuse_branches.cpp.o
+/home/primrose/Work/Scratchpad/softhier_dace_artifacts/softhier_dace_artifacts/cloudsc/.dacecache/cloudsc_fuse_branches/src/cpu/cloudsc_fuse_branches.cpp: In function ‘void loop_body_6_13_0(cloudsc_fuse_branches_state_t*, double*, double*, const double&, const double&, const double&, const double&, const double&, const double&, const double&, const double&, const double&, const double&, const double&, const double&, const double&, double*, double*, double*, double*, double*, double*, double*, double*, double*, double*, double*, double*, double*, double*, double*, double*, double*, double*, double*, double*, double*, double*, int, int, int, int)’:
+/home/primrose/Work/Scratchpad/softhier_dace_artifacts/softhier_dace_artifacts/cloudsc/.dacecache/cloudsc_fuse_branches/src/cpu/cloudsc_fuse_branches.cpp:1273:16: warning: variable ‘zcor’ set but not used [-Wunused-but-set-variable]
+ 1273 |         double zcor;
+      |                ^~~~
+/home/primrose/Work/Scratchpad/softhier_dace_artifacts/softhier_dace_artifacts/cloudsc/.dacecache/cloudsc_fuse_branches/src/cpu/cloudsc_fuse_branches.cpp: In function ‘void loop_body_27_0_0(cloudsc_fuse_branches_state_t*, const int&, double*, double*, double*, double*, double*, double*, double*, double*, double*, int, int, int, int, int)’:
+/home/primrose/Work/Scratchpad/softhier_dace_artifacts/softhier_dace_artifacts/cloudsc/.dacecache/cloudsc_fuse_branches/src/cpu/cloudsc_fuse_branches.cpp:6484:9: warning: variable ‘_if_cond_47’ set but not used [-Wunused-but-set-variable]
+ 6484 |     int _if_cond_47;
+      |         ^~~~~~~~~~~
+In function ‘void loop_body_6_16_40(cloudsc_fuse_branches_state_t*, double*, double*, const double&, const double&, const double&, const double&, double*, double*, double*, double*, double*, double*, double*, double*, double*, double*, double*, int, int, int, int)’,
+    inlined from ‘_Z40__program_cloudsc_fuse_branches_internalP29cloudsc_fuse_branches_state_tPiS1_PdS2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_iiiiiiiiiiiiiiiiiiddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddd._omp_fn.60’ at /home/primrose/Work/Scratchpad/softhier_dace_artifacts/softhier_dace_artifacts/cloudsc/.dacecache/cloudsc_fuse_branches/src/cpu/cloudsc_fuse_branches.cpp:13036:38:
+/home/primrose/Work/Scratchpad/softhier_dace_artifacts/softhier_dace_artifacts/cloudsc/.dacecache/cloudsc_fuse_branches/src/cpu/cloudsc_fuse_branches.cpp:5600:112: warning: ‘zqe_2’ may be used uninitialized [-Wmaybe-uninitialized]
+ 5600 |         _if_cond_39 = ((zqe_2 >= ((zrhc * zqsice[((_for_it_23 * klon) + _for_it_46)]) * zfac_FOR_l_731_c_731)) && (zqe_2 < (zqsice[((_for_it_23 * klon) + _for_it_46)] * zfac_FOR_l_731_c_731)));
+      |                       ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+/home/primrose/Work/Scratchpad/softhier_dace_artifacts/softhier_dace_artifacts/cloudsc/.dacecache/cloudsc_fuse_branches/src/cpu/cloudsc_fuse_branches.cpp: In function ‘_Z40__program_cloudsc_fuse_branches_internalP29cloudsc_fuse_branches_state_tPiS1_PdS2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_iiiiiiiiiiiiiiiiiiddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddd._omp_fn.60’:
+/home/primrose/Work/Scratchpad/softhier_dace_artifacts/softhier_dace_artifacts/cloudsc/.dacecache/cloudsc_fuse_branches/src/cpu/cloudsc_fuse_branches.cpp:5438:12: note: ‘zqe_2’ was declared here
+ 5438 |     double zqe_2;
+      |            ^~~~~
+[ 50%] Linking CXX shared library libcloudsc_fuse_branches.so
+[ 50%] Built target cloudsc_fuse_branches
+[100%] Built target dacestub_cloudsc_fuse_branches
+
+Comparing Results
+Comparison done. No numerical differences found
+Copying generated data
+Running SDFG1
+[ 50%] Built target cloudsc
+[100%] Built target dacestub_cloudsc
+
+Running SDFG2
+[ 50%] Built target cloudsc_fuse_branches
+[100%] Built target dacestub_cloudsc_fuse_branches
+
+Comparing Results
+Comparison done. No numerical differences found
+Success: Transformation applied for Conditional_l_0_c_0_3
+Saved SDFG as stage5.sdfgz
+Parent scope found for block Conditional_l_0_c_0_0_0, attempting to apply FuseBranches
+[can_be_applied] to Conditional_l_0_c_0_0_0 is True
+Can apply FuseBranches? True
+Applying FuseBranches to block Conditional_l_0_c_0_0_0
+[can_be_applied] to Conditional_l_0_c_0_0_0 is True
+Validating root SDFG after transformation...
+Running comparison with original SDFG...
+Copying generated data
+Running SDFG1
+[ 50%] Built target cloudsc
+[100%] Built target dacestub_cloudsc
+
+Running SDFG2
+[ 25%] Building CXX object CMakeFiles/cloudsc_fuse_branches.dir/home/primrose/Work/Scratchpad/softhier_dace_artifacts/softhier_dace_artifacts/cloudsc/.dacecache/cloudsc_fuse_branches/src/cpu/cloudsc_fuse_branches.cpp.o
+/home/primrose/Work/Scratchpad/softhier_dace_artifacts/softhier_dace_artifacts/cloudsc/.dacecache/cloudsc_fuse_branches/src/cpu/cloudsc_fuse_branches.cpp: In function ‘void loop_body_6_13_0(cloudsc_fuse_branches_state_t*, double*, double*, const double&, const double&, const double&, const double&, const double&, const double&, const double&, const double&, const double&, const double&, const double&, const double&, const double&, double*, double*, double*, double*, double*, double*, double*, double*, double*, double*, double*, double*, double*, double*, double*, double*, double*, double*, double*, double*, double*, double*, int, int, int, int)’:
+/home/primrose/Work/Scratchpad/softhier_dace_artifacts/softhier_dace_artifacts/cloudsc/.dacecache/cloudsc_fuse_branches/src/cpu/cloudsc_fuse_branches.cpp:1273:16: warning: variable ‘zcor’ set but not used [-Wunused-but-set-variable]
+ 1273 |         double zcor;
+      |                ^~~~
+/home/primrose/Work/Scratchpad/softhier_dace_artifacts/softhier_dace_artifacts/cloudsc/.dacecache/cloudsc_fuse_branches/src/cpu/cloudsc_fuse_branches.cpp: In function ‘void loop_body_27_0_0(cloudsc_fuse_branches_state_t*, const int&, double*, double*, double*, double*, double*, double*, double*, double*, double*, int, int, int, int, int)’:
+/home/primrose/Work/Scratchpad/softhier_dace_artifacts/softhier_dace_artifacts/cloudsc/.dacecache/cloudsc_fuse_branches/src/cpu/cloudsc_fuse_branches.cpp:6515:9: warning: variable ‘_if_cond_47’ set but not used [-Wunused-but-set-variable]
+ 6515 |     int _if_cond_47;
+      |         ^~~~~~~~~~~
+In function ‘void loop_body_6_16_40(cloudsc_fuse_branches_state_t*, double*, double*, const double&, const double&, const double&, const double&, double*, double*, double*, double*, double*, double*, double*, double*, double*, double*, double*, int, int, int, int)’,
+    inlined from ‘_Z40__program_cloudsc_fuse_branches_internalP29cloudsc_fuse_branches_state_tPiS1_PdS2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_iiiiiiiiiiiiiiiiiiddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddd._omp_fn.60’ at /home/primrose/Work/Scratchpad/softhier_dace_artifacts/softhier_dace_artifacts/cloudsc/.dacecache/cloudsc_fuse_branches/src/cpu/cloudsc_fuse_branches.cpp:13067:38:
+/home/primrose/Work/Scratchpad/softhier_dace_artifacts/softhier_dace_artifacts/cloudsc/.dacecache/cloudsc_fuse_branches/src/cpu/cloudsc_fuse_branches.cpp:5631:112: warning: ‘zqe_2’ may be used uninitialized [-Wmaybe-uninitialized]
+ 5631 |         _if_cond_39 = ((zqe_2 >= ((zrhc * zqsice[((_for_it_23 * klon) + _for_it_46)]) * zfac_FOR_l_731_c_731)) && (zqe_2 < (zqsice[((_for_it_23 * klon) + _for_it_46)] * zfac_FOR_l_731_c_731)));
+      |                       ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+/home/primrose/Work/Scratchpad/softhier_dace_artifacts/softhier_dace_artifacts/cloudsc/.dacecache/cloudsc_fuse_branches/src/cpu/cloudsc_fuse_branches.cpp: In function ‘_Z40__program_cloudsc_fuse_branches_internalP29cloudsc_fuse_branches_state_tPiS1_PdS2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_iiiiiiiiiiiiiiiiiiddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddd._omp_fn.60’:
+/home/primrose/Work/Scratchpad/softhier_dace_artifacts/softhier_dace_artifacts/cloudsc/.dacecache/cloudsc_fuse_branches/src/cpu/cloudsc_fuse_branches.cpp:5469:12: note: ‘zqe_2’ was declared here
+ 5469 |     double zqe_2;
+      |            ^~~~~
+[ 50%] Linking CXX shared library libcloudsc_fuse_branches.so
+[ 50%] Built target cloudsc_fuse_branches
+[100%] Built target dacestub_cloudsc_fuse_branches
+
+Comparing Results
+Comparison done. No numerical differences found
+Copying generated data
+Running SDFG1
+[ 50%] Built target cloudsc
+[100%] Built target dacestub_cloudsc
+
+Running SDFG2
+[ 50%] Built target cloudsc_fuse_branches
+[100%] Built target dacestub_cloudsc_fuse_branches
+
+Comparing Results
+Comparison done. No numerical differences found
+Success: Transformation applied for Conditional_l_0_c_0_0_0
+Saved SDFG as stage5.sdfgz
+Parent scope found for block Conditional_l_0_c_0_1_1, attempting to apply FuseBranches
+[can_be_applied] Single branch does not have exactly one SDFGState node.
+Can apply FuseBranches? False
+Cannot apply FuseBranches to block Conditional_l_0_c_0_1_1
+Parent scope found for block Conditional_l_0_c_0_2_1, attempting to apply FuseBranches
+[can_be_applied] Single branch does not have exactly one SDFGState node.
+Can apply FuseBranches? False
+Cannot apply FuseBranches to block Conditional_l_0_c_0_2_1
+Parent scope found for block Conditional_l_0_c_0_41, attempting to apply FuseBranches
+[can_be_applied] to Conditional_l_0_c_0_41 is True
+Can apply FuseBranches? True
+Applying FuseBranches to block Conditional_l_0_c_0_41
+[can_be_applied] to Conditional_l_0_c_0_41 is True
+[can_be_applied] to Conditional_l_0_c_0_41 is True
+[can_be_applied] to Conditional_l_0_c_0_41_negated is True
+Validating root SDFG after transformation...
+Running comparison with original SDFG...
+Copying generated data
+Running SDFG1
+[ 50%] Built target cloudsc
+[100%] Built target dacestub_cloudsc
+
+Running SDFG2
+[ 25%] Building CXX object CMakeFiles/cloudsc_fuse_branches.dir/home/primrose/Work/Scratchpad/softhier_dace_artifacts/softhier_dace_artifacts/cloudsc/.dacecache/cloudsc_fuse_branches/src/cpu/cloudsc_fuse_branches.cpp.o
+/home/primrose/Work/Scratchpad/softhier_dace_artifacts/softhier_dace_artifacts/cloudsc/.dacecache/cloudsc_fuse_branches/src/cpu/cloudsc_fuse_branches.cpp: In function ‘void loop_body_6_13_0(cloudsc_fuse_branches_state_t*, double*, double*, const double&, const double&, const double&, const double&, const double&, const double&, const double&, const double&, const double&, const double&, const double&, const double&, const double&, double*, double*, double*, double*, double*, double*, double*, double*, double*, double*, double*, double*, double*, double*, double*, double*, double*, double*, double*, double*, double*, double*, int, int, int, int)’:
+/home/primrose/Work/Scratchpad/softhier_dace_artifacts/softhier_dace_artifacts/cloudsc/.dacecache/cloudsc_fuse_branches/src/cpu/cloudsc_fuse_branches.cpp:1273:16: warning: variable ‘zcor’ set but not used [-Wunused-but-set-variable]
+ 1273 |         double zcor;
+      |                ^~~~
+/home/primrose/Work/Scratchpad/softhier_dace_artifacts/softhier_dace_artifacts/cloudsc/.dacecache/cloudsc_fuse_branches/src/cpu/cloudsc_fuse_branches.cpp: In function ‘void loop_body_27_0_0(cloudsc_fuse_branches_state_t*, const int&, double*, double*, double*, double*, double*, double*, double*, double*, double*, int, int, int, int, int)’:
+/home/primrose/Work/Scratchpad/softhier_dace_artifacts/softhier_dace_artifacts/cloudsc/.dacecache/cloudsc_fuse_branches/src/cpu/cloudsc_fuse_branches.cpp:6758:9: warning: variable ‘_if_cond_47’ set but not used [-Wunused-but-set-variable]
+ 6758 |     int _if_cond_47;
+      |         ^~~~~~~~~~~
+In function ‘void loop_body_6_16_40(cloudsc_fuse_branches_state_t*, double*, double*, const double&, const double&, const double&, const double&, double*, double*, double*, double*, double*, double*, double*, double*, double*, double*, double*, int, int, int, int)’,
+    inlined from ‘_Z40__program_cloudsc_fuse_branches_internalP29cloudsc_fuse_branches_state_tPiS1_PdS2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_iiiiiiiiiiiiiiiiiiddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddd._omp_fn.60’ at /home/primrose/Work/Scratchpad/softhier_dace_artifacts/softhier_dace_artifacts/cloudsc/.dacecache/cloudsc_fuse_branches/src/cpu/cloudsc_fuse_branches.cpp:13310:38:
+/home/primrose/Work/Scratchpad/softhier_dace_artifacts/softhier_dace_artifacts/cloudsc/.dacecache/cloudsc_fuse_branches/src/cpu/cloudsc_fuse_branches.cpp:5874:112: warning: ‘zqe_2’ may be used uninitialized [-Wmaybe-uninitialized]
+ 5874 |         _if_cond_39 = ((zqe_2 >= ((zrhc * zqsice[((_for_it_23 * klon) + _for_it_46)]) * zfac_FOR_l_731_c_731)) && (zqe_2 < (zqsice[((_for_it_23 * klon) + _for_it_46)] * zfac_FOR_l_731_c_731)));
+      |                       ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+/home/primrose/Work/Scratchpad/softhier_dace_artifacts/softhier_dace_artifacts/cloudsc/.dacecache/cloudsc_fuse_branches/src/cpu/cloudsc_fuse_branches.cpp: In function ‘_Z40__program_cloudsc_fuse_branches_internalP29cloudsc_fuse_branches_state_tPiS1_PdS2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_iiiiiiiiiiiiiiiiiiddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddd._omp_fn.60’:
+/home/primrose/Work/Scratchpad/softhier_dace_artifacts/softhier_dace_artifacts/cloudsc/.dacecache/cloudsc_fuse_branches/src/cpu/cloudsc_fuse_branches.cpp:5712:12: note: ‘zqe_2’ was declared here
+ 5712 |     double zqe_2;
+      |            ^~~~~
+[ 50%] Linking CXX shared library libcloudsc_fuse_branches.so
+[ 50%] Built target cloudsc_fuse_branches
+[100%] Built target dacestub_cloudsc_fuse_branches
+
+Comparing Results
+Comparison done. No numerical differences found
+Copying generated data
+Running SDFG1
+[ 50%] Built target cloudsc
+[100%] Built target dacestub_cloudsc
+
+Running SDFG2
+[ 50%] Built target cloudsc_fuse_branches
+[100%] Built target dacestub_cloudsc_fuse_branches
+
+Comparing Results
+Comparison done. No numerical differences found
+Success: Transformation applied for Conditional_l_0_c_0_41
+Saved SDFG as stage5.sdfgz
+Parent scope found for block Conditional_l_0_c_0_40, attempting to apply FuseBranches
+[can_be_applied] to Conditional_l_0_c_0_40 is True
+Can apply FuseBranches? True
+Applying FuseBranches to block Conditional_l_0_c_0_40
+[can_be_applied] to Conditional_l_0_c_0_40 is True
+[can_be_applied] to Conditional_l_0_c_0_40 is True
+IN {'cur_in_conn_name': 'IN_zpsupsatsrce_p', 'cur_out_conn_name': 'OUT_zpsupsatsrce_p', 'cur_name_set': True} {'IN_1': void, 'IN_10': void, 'IN_11': void, 'IN_12': void, 'IN_13': void, 'IN_14': void, 'IN_15': void, 'IN_2': void, 'IN_3': void, 'IN_4': void, 'IN_5': void, 'IN_6': void, 'IN_7': void, 'IN_8': void, 'IN_9': void, 'kfdia': void, 'kidia': void} {'OUT_1': void, 'OUT_10': void, 'OUT_11': void, 'OUT_12': void, 'OUT_13': void, 'OUT_14': void, 'OUT_15': void, 'OUT_2': void, 'OUT_3': void, 'OUT_4': void, 'OUT_5': void, 'OUT_6': void, 'OUT_7': void, 'OUT_8': void, 'OUT_9': void}
+DST {'cur_in_conn_name': 'IN_zpsupsatsrce_p', 'cur_out_conn_name': 'OUT_zpsupsatsrce_p', 'cur_name_set': True} {'IN_1': void, 'IN_10': void, 'IN_11': void, 'IN_12': void, 'IN_13': void, 'IN_14': void, 'IN_15': void, 'IN_2': void, 'IN_3': void, 'IN_4': void, 'IN_5': void, 'IN_6': void, 'IN_7': void, 'IN_8': void, 'IN_9': void, 'kfdia': void, 'kidia': void} {'OUT_1': void, 'OUT_10': void, 'OUT_11': void, 'OUT_12': void, 'OUT_13': void, 'OUT_14': void, 'OUT_15': void, 'OUT_2': void, 'OUT_3': void, 'OUT_4': void, 'OUT_5': void, 'OUT_6': void, 'OUT_7': void, 'OUT_8': void, 'OUT_9': void}
+IN {'cur_in_conn_name': 'IN_zpsupsatsrce_p', 'cur_out_conn_name': 'OUT_zpsupsatsrce_p', 'cur_name_set': True} {'IN_1': void, 'IN_10': void, 'IN_11': void, 'IN_12': void, 'IN_13': void, 'IN_14': void, 'IN_15': void, 'IN_2': void, 'IN_3': void, 'IN_4': void, 'IN_5': void, 'IN_6': void, 'IN_7': void, 'IN_8': void, 'IN_9': void, 'kfdia': void, 'kidia': void} {'OUT_1': void, 'OUT_10': void, 'OUT_11': void, 'OUT_12': void, 'OUT_13': void, 'OUT_14': void, 'OUT_15': void, 'OUT_2': void, 'OUT_3': void, 'OUT_4': void, 'OUT_5': void, 'OUT_6': void, 'OUT_7': void, 'OUT_8': void, 'OUT_9': void}
+IN {'cur_in_conn_name': 'IN_zpsupsatsrce_p', 'cur_out_conn_name': 'OUT_zpsupsatsrce_p', 'cur_name_set': True} {'IN_1': void, 'IN_10': void, 'IN_11': void, 'IN_12': void, 'IN_13': void, 'IN_14': void, 'IN_15': void, 'IN_2': void, 'IN_3': void, 'IN_4': void, 'IN_5': void, 'IN_6': void, 'IN_7': void, 'IN_8': void, 'IN_9': void, 'kfdia': void, 'kidia': void} {'OUT_1': void, 'OUT_10': void, 'OUT_11': void, 'OUT_12': void, 'OUT_13': void, 'OUT_14': void, 'OUT_15': void, 'OUT_2': void, 'OUT_3': void, 'OUT_4': void, 'OUT_5': void, 'OUT_6': void, 'OUT_7': void, 'OUT_8': void, 'OUT_9': void}
+DST {'cur_in_conn_name': 'IN_zpsupsatsrce_p', 'cur_out_conn_name': 'OUT_zpsupsatsrce_p', 'cur_name_set': True} {'psupsat': void, 'ptsphy': void, 'ramin': void, 'rkooptau': void, 'rthomo': void, 'rtt': void, 'za': void, 'zcorqsice': void, 'zfokoop': void, 'zqsice': void, 'zqx': void, 'zqxfg': void, 'zsolqa': void, 'zsupsat': void, 'ztp1': void} {'zpsupsatsrce': void, 'zqxfg': void, 'zsolac': void, 'zsolqa': void, 'zsupsat': void}
+IN {'cur_in_conn_name': 'IN_zpsupsatsrce_p', 'cur_out_conn_name': 'OUT_zpsupsatsrce_p', 'cur_name_set': True} {'psupsat': void, 'ptsphy': void, 'ramin': void, 'rkooptau': void, 'rthomo': void, 'rtt': void, 'za': void, 'zcorqsice': void, 'zfokoop': void, 'zqsice': void, 'zqx': void, 'zqxfg': void, 'zsolqa': void, 'zsupsat': void, 'ztp1': void} {'zpsupsatsrce': void, 'zqxfg': void, 'zsolac': void, 'zsolqa': void, 'zsupsat': void}
+DST {'cur_in_conn_name': 'IN_zpsupsatsrce_p', 'cur_out_conn_name': 'OUT_zpsupsatsrce_p', 'cur_name_set': True} {'psupsat': void, 'ptsphy': void, 'ramin': void, 'rkooptau': void, 'rthomo': void, 'rtt': void, 'za': void, 'zcorqsice': void, 'zfokoop': void, 'zqsice': void, 'zqx': void, 'zqxfg': void, 'zsolqa': void, 'zsupsat': void, 'ztp1': void} {'zpsupsatsrce': void, 'zqxfg': void, 'zsolac': void, 'zsolqa': void, 'zsupsat': void}
+IN {'cur_in_conn_name': 'IN_zpsupsatsrce_p', 'cur_out_conn_name': 'OUT_zpsupsatsrce_p', 'cur_name_set': True} {'psupsat': void, 'ptsphy': void, 'ramin': void, 'rkooptau': void, 'rthomo': void, 'rtt': void, 'za': void, 'zcorqsice': void, 'zfokoop': void, 'zqsice': void, 'zqx': void, 'zqxfg': void, 'zsolqa': void, 'zsupsat': void, 'ztp1': void} {'zpsupsatsrce': void, 'zqxfg': void, 'zsolac': void, 'zsolqa': void, 'zsupsat': void}
+[can_be_applied] to Conditional_l_0_c_0_40_negated is True
+Validating root SDFG after transformation...
+Running comparison with original SDFG...
+Copying generated data
+Running SDFG1
+[ 50%] Built target cloudsc
+[100%] Built target dacestub_cloudsc
+
+Running SDFG2
+[ 25%] Building CXX object CMakeFiles/cloudsc_fuse_branches.dir/home/primrose/Work/Scratchpad/softhier_dace_artifacts/softhier_dace_artifacts/cloudsc/.dacecache/cloudsc_fuse_branches/src/cpu/cloudsc_fuse_branches.cpp.o
+/home/primrose/Work/Scratchpad/softhier_dace_artifacts/softhier_dace_artifacts/cloudsc/.dacecache/cloudsc_fuse_branches/src/cpu/cloudsc_fuse_branches.cpp: In function ‘void loop_body_6_13_0(cloudsc_fuse_branches_state_t*, double*, double*, const double&, const double&, const double&, const double&, const double&, const double&, const double&, const double&, const double&, const double&, const double&, const double&, const double&, double*, double*, double*, double*, double*, double*, double*, double*, double*, double*, double*, double*, double*, double*, double*, double*, double*, double*, double*, double*, double*, double*, int, int, int, int)’:
+/home/primrose/Work/Scratchpad/softhier_dace_artifacts/softhier_dace_artifacts/cloudsc/.dacecache/cloudsc_fuse_branches/src/cpu/cloudsc_fuse_branches.cpp:1273:16: warning: variable ‘zcor’ set but not used [-Wunused-but-set-variable]
+ 1273 |         double zcor;
+      |                ^~~~
+/home/primrose/Work/Scratchpad/softhier_dace_artifacts/softhier_dace_artifacts/cloudsc/.dacecache/cloudsc_fuse_branches/src/cpu/cloudsc_fuse_branches.cpp: In function ‘void loop_body_27_0_0(cloudsc_fuse_branches_state_t*, const int&, double*, double*, double*, double*, double*, double*, double*, double*, double*, int, int, int, int, int)’:
+/home/primrose/Work/Scratchpad/softhier_dace_artifacts/softhier_dace_artifacts/cloudsc/.dacecache/cloudsc_fuse_branches/src/cpu/cloudsc_fuse_branches.cpp:7001:9: warning: variable ‘_if_cond_47’ set but not used [-Wunused-but-set-variable]
+ 7001 |     int _if_cond_47;
+      |         ^~~~~~~~~~~
+In function ‘void loop_body_6_16_40(cloudsc_fuse_branches_state_t*, double*, double*, const double&, const double&, const double&, const double&, double*, double*, double*, double*, double*, double*, double*, double*, double*, double*, double*, int, int, int, int)’,
+    inlined from ‘_Z40__program_cloudsc_fuse_branches_internalP29cloudsc_fuse_branches_state_tPiS1_PdS2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_iiiiiiiiiiiiiiiiiiddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddd._omp_fn.60’ at /home/primrose/Work/Scratchpad/softhier_dace_artifacts/softhier_dace_artifacts/cloudsc/.dacecache/cloudsc_fuse_branches/src/cpu/cloudsc_fuse_branches.cpp:13553:38:
+/home/primrose/Work/Scratchpad/softhier_dace_artifacts/softhier_dace_artifacts/cloudsc/.dacecache/cloudsc_fuse_branches/src/cpu/cloudsc_fuse_branches.cpp:6117:112: warning: ‘zqe_2’ may be used uninitialized [-Wmaybe-uninitialized]
+ 6117 |         _if_cond_39 = ((zqe_2 >= ((zrhc * zqsice[((_for_it_23 * klon) + _for_it_46)]) * zfac_FOR_l_731_c_731)) && (zqe_2 < (zqsice[((_for_it_23 * klon) + _for_it_46)] * zfac_FOR_l_731_c_731)));
+      |                       ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+/home/primrose/Work/Scratchpad/softhier_dace_artifacts/softhier_dace_artifacts/cloudsc/.dacecache/cloudsc_fuse_branches/src/cpu/cloudsc_fuse_branches.cpp: In function ‘_Z40__program_cloudsc_fuse_branches_internalP29cloudsc_fuse_branches_state_tPiS1_PdS2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_iiiiiiiiiiiiiiiiiiddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddd._omp_fn.60’:
+/home/primrose/Work/Scratchpad/softhier_dace_artifacts/softhier_dace_artifacts/cloudsc/.dacecache/cloudsc_fuse_branches/src/cpu/cloudsc_fuse_branches.cpp:5955:12: note: ‘zqe_2’ was declared here
+ 5955 |     double zqe_2;
+      |            ^~~~~
+[ 50%] Linking CXX shared library libcloudsc_fuse_branches.so
+[ 50%] Built target cloudsc_fuse_branches
+[100%] Built target dacestub_cloudsc_fuse_branches
+
+Comparing Results
+Comparison done. No numerical differences found
+Copying generated data
+Running SDFG1
+[ 50%] Built target cloudsc
+[100%] Built target dacestub_cloudsc
+
+Running SDFG2
+[ 50%] Built target cloudsc_fuse_branches
+[100%] Built target dacestub_cloudsc_fuse_branches
+
+Comparing Results
+Comparison done. No numerical differences found
+Success: Transformation applied for Conditional_l_0_c_0_40
+Saved SDFG as stage5.sdfgz
+Parent scope found for block Conditional_l_0_c_0_45, attempting to apply FuseBranches
+[can_be_applied] to Conditional_l_0_c_0_45 is True
+Can apply FuseBranches? True
+Applying FuseBranches to block Conditional_l_0_c_0_45
+IN {'cur_in_conn_name': 'IN_zconvsink_p', 'cur_out_conn_name': 'OUT_zconvsink_p', 'cur_name_set': True} {'IN_1': void, 'IN_2': void, 'IN_3': void, 'IN_4': void, 'IN_5': void, 'kfdia': void, 'kidia': void} {'OUT_1': void, 'OUT_2': void, 'OUT_3': void, 'OUT_4': void, 'OUT_5': void}
+DST {'cur_in_conn_name': 'IN_zconvsink_p', 'cur_out_conn_name': 'OUT_zconvsink_p', 'cur_name_set': True} {'IN_1': void, 'IN_2': void, 'IN_3': void, 'IN_4': void, 'IN_5': void, 'kfdia': void, 'kidia': void} {'OUT_1': void, 'OUT_2': void, 'OUT_3': void, 'OUT_4': void, 'OUT_5': void}
+IN {'cur_in_conn_name': 'IN_zconvsink_p', 'cur_out_conn_name': 'OUT_zconvsink_p', 'cur_name_set': True} {'IN_1': void, 'IN_2': void, 'IN_3': void, 'IN_4': void, 'IN_5': void, 'kfdia': void, 'kidia': void} {'OUT_1': void, 'OUT_2': void, 'OUT_3': void, 'OUT_4': void, 'OUT_5': void}
+IN {'cur_in_conn_name': 'IN_zconvsink_p', 'cur_out_conn_name': 'OUT_zconvsink_p', 'cur_name_set': True} {'IN_1': void, 'IN_2': void, 'IN_3': void, 'IN_4': void, 'IN_5': void, 'kfdia': void, 'kidia': void} {'OUT_1': void, 'OUT_2': void, 'OUT_3': void, 'OUT_4': void, 'OUT_5': void}
+DST {'cur_in_conn_name': 'IN_zconvsink_p', 'cur_out_conn_name': 'OUT_zconvsink_p', 'cur_name_set': True} {'pmfd': void, 'pmfu': void, 'zdtgdp': void, 'zsolab': void, 'zsolqb': void} {'zconvsink': void, 'zsolab': void, 'zsolqb': void}
+IN {'cur_in_conn_name': 'IN_zconvsink_p', 'cur_out_conn_name': 'OUT_zconvsink_p', 'cur_name_set': True} {'pmfd': void, 'pmfu': void, 'zdtgdp': void, 'zsolab': void, 'zsolqb': void} {'zconvsink': void, 'zsolab': void, 'zsolqb': void}
+DST {'cur_in_conn_name': 'IN_zconvsink_p', 'cur_out_conn_name': 'OUT_zconvsink_p', 'cur_name_set': True} {'pmfd': void, 'pmfu': void, 'zdtgdp': void, 'zsolab': void, 'zsolqb': void} {'zconvsink': void, 'zsolab': void, 'zsolqb': void}
+IN {'cur_in_conn_name': 'IN_zconvsink_p', 'cur_out_conn_name': 'OUT_zconvsink_p', 'cur_name_set': True} {'pmfd': void, 'pmfu': void, 'zdtgdp': void, 'zsolab': void, 'zsolqb': void} {'zconvsink': void, 'zsolab': void, 'zsolqb': void}
+Validating root SDFG after transformation...
+Running comparison with original SDFG...
+Copying generated data
+Running SDFG1
+[ 50%] Built target cloudsc
+[100%] Built target dacestub_cloudsc
+
+Running SDFG2
+[ 25%] Building CXX object CMakeFiles/cloudsc_fuse_branches.dir/home/primrose/Work/Scratchpad/softhier_dace_artifacts/softhier_dace_artifacts/cloudsc/.dacecache/cloudsc_fuse_branches/src/cpu/cloudsc_fuse_branches.cpp.o
+/home/primrose/Work/Scratchpad/softhier_dace_artifacts/softhier_dace_artifacts/cloudsc/.dacecache/cloudsc_fuse_branches/src/cpu/cloudsc_fuse_branches.cpp: In function ‘void loop_body_6_13_0(cloudsc_fuse_branches_state_t*, double*, double*, const double&, const double&, const double&, const double&, const double&, const double&, const double&, const double&, const double&, const double&, const double&, const double&, const double&, double*, double*, double*, double*, double*, double*, double*, double*, double*, double*, double*, double*, double*, double*, double*, double*, double*, double*, double*, double*, double*, double*, int, int, int, int)’:
+/home/primrose/Work/Scratchpad/softhier_dace_artifacts/softhier_dace_artifacts/cloudsc/.dacecache/cloudsc_fuse_branches/src/cpu/cloudsc_fuse_branches.cpp:1273:16: warning: variable ‘zcor’ set but not used [-Wunused-but-set-variable]
+ 1273 |         double zcor;
+      |                ^~~~
+/home/primrose/Work/Scratchpad/softhier_dace_artifacts/softhier_dace_artifacts/cloudsc/.dacecache/cloudsc_fuse_branches/src/cpu/cloudsc_fuse_branches.cpp: In function ‘void loop_body_27_0_0(cloudsc_fuse_branches_state_t*, const int&, double*, double*, double*, double*, double*, double*, double*, double*, double*, int, int, int, int, int)’:
+/home/primrose/Work/Scratchpad/softhier_dace_artifacts/softhier_dace_artifacts/cloudsc/.dacecache/cloudsc_fuse_branches/src/cpu/cloudsc_fuse_branches.cpp:7196:9: warning: variable ‘_if_cond_47’ set but not used [-Wunused-but-set-variable]
+ 7196 |     int _if_cond_47;
+      |         ^~~~~~~~~~~
+In function ‘void loop_body_6_16_40(cloudsc_fuse_branches_state_t*, double*, double*, const double&, const double&, const double&, const double&, double*, double*, double*, double*, double*, double*, double*, double*, double*, double*, double*, int, int, int, int)’,
+    inlined from ‘_Z40__program_cloudsc_fuse_branches_internalP29cloudsc_fuse_branches_state_tPiS1_PdS2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_iiiiiiiiiiiiiiiiiiddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddd._omp_fn.60’ at /home/primrose/Work/Scratchpad/softhier_dace_artifacts/softhier_dace_artifacts/cloudsc/.dacecache/cloudsc_fuse_branches/src/cpu/cloudsc_fuse_branches.cpp:13748:38:
+/home/primrose/Work/Scratchpad/softhier_dace_artifacts/softhier_dace_artifacts/cloudsc/.dacecache/cloudsc_fuse_branches/src/cpu/cloudsc_fuse_branches.cpp:6312:112: warning: ‘zqe_2’ may be used uninitialized [-Wmaybe-uninitialized]
+ 6312 |         _if_cond_39 = ((zqe_2 >= ((zrhc * zqsice[((_for_it_23 * klon) + _for_it_46)]) * zfac_FOR_l_731_c_731)) && (zqe_2 < (zqsice[((_for_it_23 * klon) + _for_it_46)] * zfac_FOR_l_731_c_731)));
+      |                       ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+/home/primrose/Work/Scratchpad/softhier_dace_artifacts/softhier_dace_artifacts/cloudsc/.dacecache/cloudsc_fuse_branches/src/cpu/cloudsc_fuse_branches.cpp: In function ‘_Z40__program_cloudsc_fuse_branches_internalP29cloudsc_fuse_branches_state_tPiS1_PdS2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_S2_iiiiiiiiiiiiiiiiiiddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddd._omp_fn.60’:
+/home/primrose/Work/Scratchpad/softhier_dace_artifacts/softhier_dace_artifacts/cloudsc/.dacecache/cloudsc_fuse_branches/src/cpu/cloudsc_fuse_branches.cpp:6150:12: note: ‘zqe_2’ was declared here
+ 6150 |     double zqe_2;
+      |            ^~~~~
+[ 50%] Linking CXX shared library libcloudsc_fuse_branches.so
+[ 50%] Built target cloudsc_fuse_branches
+[100%] Built target dacestub_cloudsc_fuse_branches
+
+Comparing Results
+Comparison done. No numerical differences found
+Copying generated data
+Running SDFG1
+[ 50%] Built target cloudsc
+[100%] Built target dacestub_cloudsc
+
+Running SDFG2
+[ 50%] Built target cloudsc_fuse_branches
+[100%] Built target dacestub_cloudsc_fuse_branches
+
+Comparing Results
+Numerical differences found for tendency_loc_t
+tendency_loc_t: max diff = nan, avg diff = nan
+Numerical differences found for tendency_loc_q
+tendency_loc_q: max diff = nan, avg diff = nan
+Numerical differences found for tendency_loc_a
+tendency_loc_a: max diff = nan, avg diff = nan
+Numerical differences found for tendency_loc_cld
+tendency_loc_cld: max diff = nan, avg diff = nan
+Numerical differences found for pfsqlf
+pfsqlf: max diff = nan, avg diff = nan
+Numerical differences found for pfsqif
+pfsqif: max diff = nan, avg diff = nan
+Numerical differences found for pfsqrf
+pfsqrf: max diff = nan, avg diff = nan
+Numerical differences found for pfsqsf
+pfsqsf: max diff = nan, avg diff = nan
+Numerical differences found for pfplsl
+pfplsl: max diff = nan, avg diff = nan
+Numerical differences found for pfplsn
+pfplsn: max diff = nan, avg diff = nan
+Numerical differences found for pfhpsl
+pfhpsl: max diff = nan, avg diff = nan
+Numerical differences found for pfhpsn
+pfhpsn: max diff = nan, avg diff = nan
+Comparison done. Numerical differences found
+Failure: SDFG comparison failed after transforming Conditional_l_0_c_0_45 (2/2)

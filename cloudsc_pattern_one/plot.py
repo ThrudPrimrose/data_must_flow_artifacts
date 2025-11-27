@@ -47,12 +47,14 @@ color_map = {
  'cloudsc_pattern_1_vectorized_static_veclen_16_cpy': colors[4],
  'cloudsc_pattern_1_vectorized_static_veclen_32_no_cpy': colors[5],
  'cloudsc_pattern_1_vectorized_static_veclen_32_cpy': colors[6],
-'cloudsc_pattern_1_vectorized_static_veclen_4_no_cpy': colors[7],
- 'cloudsc_pattern_1_vectorized_static_veclen_8_no_cpy': colors[8],
- 'cloudsc_pattern_1_vectorized_static_veclen_32_no_cpy': colors[9],
- 'cloudsc_pattern_1_vectorized_static_veclen_128_no_cpy': colors[10],
- 'cloudsc_pattern_1_vectorized_static_veclen_512_no_cpy': colors[11],
- 'cloudsc_pattern_1_vectorized_static_veclen_2_no_cpy': colors[12],
+ 'cloudsc_pattern_1_vectorized_static_veclen_64_no_cpy': colors[7],
+ 'cloudsc_pattern_1_vectorized_static_veclen_64_cpy': colors[8],
+ 'cloudsc_pattern_1_vectorized_static_veclen_128_no_cpy': colors[9],
+ 'cloudsc_pattern_1_vectorized_static_veclen_128_cpy': colors[10],
+ 'cloudsc_pattern_1_vectorized_static_veclen_256_no_cpy': colors[11],
+ 'cloudsc_pattern_1_vectorized_static_veclen_256_cpy': colors[12],
+ 'cloudsc_pattern_1_vectorized_static_veclen_512_no_cpy': colors[12],
+ 'cloudsc_pattern_1_vectorized_static_veclen_512_cpy': colors[13],
 }
 
 # Compute median + error per sdfg_name and size

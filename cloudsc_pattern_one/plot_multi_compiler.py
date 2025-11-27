@@ -194,9 +194,9 @@ for l, k, v in [("w_cpy", "cloudsc_pattern_1_vectorized_static_veclen_8_cpy", "A
     ax.set_xticklabels(sizes)
     ax.set_yscale("log")
     ax.set_xlabel("Size")
-    ax.set_ylabel("Median Runtime (s)")
-    ax.set_title(f"Median Runtime: Elementwise Op. w. Predicate + DaCe Vectorization Hints + " + 
-                 "Explicit Copy" if l == "w_cpy" else f"Median Runtime: Elementwise Op. w. Predicate + DaCe Vectorization Hints + " + "No Copy")
+    ax.set_ylabel("Median Runtime (ms)")
+    ax.set_title(f"Median Runtime: CloudSC Pattern 1 + DaCe Vectorization Hints + " + 
+                 "Explicit Copy" if l == "w_cpy" else f"Median Runtime: CloudSC Pattern 1 + DaCe Vectorization Hints + " + "No Copy")
 
     ax.legend(
         title="Variant + SDFG",
