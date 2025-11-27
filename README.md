@@ -12,7 +12,7 @@ echo 'eval "$(pyenv init -)"' >> ~/.bashrc
 echo 'eval "$(pyenv virtualenv-init -)"' >> ~/.bashrc
 exec $SHELL
 pyenv install 3.12
-pyenv virtualenv 3.12.11 dace-env
+pyenv virtualenv 3.12 dace-env
 pyenv activate dace-env
 ```
 
