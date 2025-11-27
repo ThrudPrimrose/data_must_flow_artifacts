@@ -216,7 +216,7 @@ if __name__ == "__main__":
     verify_log_implementations()
 
     # S = dace.symbol("S")
-    for i, S in enumerate([8192 * 64, ]): 
+    for i, S in enumerate([8192 * 64, 8192 * 256, 8192 * 512, 8192 * 1024, 8192 * 2048, 8192 * 4096, 8192 * 8192]): 
         @dace.program
         def log_implementations(A: dace.float64[S], B: dace.float64[S]):
             for i in dace.map[0:S]:
