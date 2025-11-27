@@ -34,6 +34,7 @@ from dace.soft_hier.utils.run_e2e_verification import run_e2e_verification, Hard
 from functools import partial
 
 from dace.sdfg import infer_types
+from math import exp
 
 storage_dict = {
     dace.dtypes.StorageType.GPU_Global: dace.dtypes.StorageType.SoftHier_HBM,
@@ -130,24 +131,22 @@ NUM_BLOCKS_Y = dace.symbol("NUM_BLOCKS_Y")
 # Blocked version for SoftHier (Note: GPU names are used by the names will be moved be SoftHier compatible)
 # Dimensions should be Y, X but SDFG is generated in reverse order somehow
 @dace.program
-def matrix_addition(A: dace.float32[Y, X] @ dace.dtypes.StorageType.GPU_Global,
-                    B: dace.float32[Y, X] @ dace.dtypes.StorageType.GPU_Global,
-                    C: dace.float32[Y, X] @ dace.dtypes.StorageType.GPU_Global):
+def matrix_exponential(A: dace.float32[Y, X] @ dace.dtypes.StorageType.GPU_Global,
+                    B: dace.float32[Y, X] @ dace.dtypes.StorageType.GPU_Global):
     for i, j in dace.map[0:Y:(BLOCK_Y * CORES_Y * NUM_BLOCKS_Y),
                          0:X:(BLOCK_X * CORES_X * NUM_BLOCKS_X)] @ dace.dtypes.ScheduleType.GPU_Device:
         for c_i, c_j in dace.map[i:i + (BLOCK_Y * CORES_Y * NUM_BLOCKS_Y):(BLOCK_Y * NUM_BLOCKS_Y),
                                  j:j + (BLOCK_X * CORES_X * NUM_BLOCKS_X):(BLOCK_X * NUM_BLOCKS_X)] @ dace.dtypes.ScheduleType.GPU_ThreadBlock:
             for b_i, b_j in dace.map[c_i:c_i + (BLOCK_Y * NUM_BLOCKS_Y):1,
                                      c_j:c_j + (BLOCK_X * NUM_BLOCKS_X):1] @ dace.dtypes.ScheduleType.Sequential:
-                    C[b_i, b_j] = A[b_i, b_j] + B[b_i, b_j]
+                    B[b_i, b_j] = exp(A[b_i, b_j])
 
 @dace.program
-def matrix_addition_cpu(A: dace.float32[Y, X] @ dace.dtypes.StorageType.CPU_Heap,
-                        B: dace.float32[Y, X] @ dace.dtypes.StorageType.CPU_Heap,
-                        C: dace.float32[Y, X] @ dace.dtypes.StorageType.CPU_Heap):
+def matrix_exponential_cpu(A: dace.float32[Y, X] @ dace.dtypes.StorageType.CPU_Heap,
+                        B: dace.float32[Y, X] @ dace.dtypes.StorageType.CPU_Heap):
     for i, j in dace.map[0:Y:1,
                          0:X:1] @ dace.dtypes.ScheduleType.CPU_Multicore:
-        C[i, j] = A[i, j] + B[i, j]
+        B[i, j] = exp(A[i, j])
 
 def move_up(sdfg: dace.SDFG, prefix: str, offset_memlets: bool):
     for state in sdfg.all_states():
@@ -308,8 +307,6 @@ def create_data_and_handlers(M_val, N_val, hw_config: HardwareConfig):
     # Now generate your arrays
     A_host = np.random.uniform(0.5, 1.0, (M_val, N_val)).astype(DTYPE_INPUT)
     B_host = np.random.uniform(0.5, 1.0, (M_val, N_val)).astype(DTYPE_INPUT)
-    C_host = np.ones((M_val, N_val), dtype=DTYPE_OUTPUT)
-    print(C_host, C_host.shape)
 
     A_handler = InterleaveHandler(array=A_host, block_shape=(M_val, N_val), cluster_dims=hardware_thread_group_dims)
     A_handler.split_to_blocks(tile_dims=(M_val,N_val))
@@ -319,21 +316,15 @@ def create_data_and_handlers(M_val, N_val, hw_config: HardwareConfig):
     B_handler.split_to_blocks(tile_dims=(M_val,N_val))
     B_handler.place_to_range(place_range=(0, 0, 1))
 
-    C_handler = InterleaveHandler(array=C_host, block_shape=(M_val, N_val), cluster_dims=hardware_thread_group_dims)
-    C_handler.split_to_blocks(tile_dims=(M_val,N_val))
-    C_handler.place_to_range(place_range=(0, 0, 1))
-
     print("Create Data Handlers")
     return {
         "numpy_data": {
             "A": A_host,
             "B": B_host,
-            "C": C_host,
         },
         "interleavers": {
             "A": A_handler,
             "B": B_handler,
-            "C": C_handler,
         }
     }
 
@@ -349,7 +340,7 @@ def run_sdfg_in_tempdir(combo, interleavers: Dict[str, InterleaveHandler], hw_co
     log_file.close()
     execution_period_ns = None
 
-    interleaver_list = [interleavers["A"], interleavers["B"], interleavers["C"]]
+    interleaver_list = [interleavers["A"], interleavers["B"]]
     make_preload_elf_hbm_interleaved_new("output.elf",
                                          interleaver_list,
                                          KMN=None,
@@ -361,7 +352,7 @@ def run_sdfg_in_tempdir(combo, interleavers: Dict[str, InterleaveHandler], hw_co
     sdfg.validate()
 
     compiled_sdfg = sdfg.compile()
-    compiled_sdfg(A=host_data["A"], B=host_data["B"], C=host_data["C"], M=M_val, N=N_val,)
+    compiled_sdfg(A=host_data["A"], B=host_data["B"], M=M_val, N=N_val,)
     sys.stdout.flush()
     sys.stderr.flush()
 
@@ -403,7 +394,7 @@ def _get_softhier_sdfg() -> dace.SDFG:
     Y_val = BLOCK_Y_val * CORES_Y_val * NUM_BLOCKS_Y_val
 
     # Run DaCe SDFG
-    sdfg = matrix_addition.to_sdfg()
+    sdfg = matrix_exponential.to_sdfg()
     # Re-enable this with different parameters
     sdfg.replace_dict(
         repldict={
@@ -513,10 +504,10 @@ if __name__ == "__main__":
     data = data_and_interleavers["numpy_data"]
     interleavers = data_and_interleavers["interleavers"]
 
-    cpu_sdfg = matrix_addition_cpu.to_sdfg()
+    cpu_sdfg = matrix_exponential_cpu.to_sdfg()
     softhier_sdfg = _get_softhier_sdfg()
     cpu_sdfg.replace_dict({"X": 2048, "Y": 4})
-    run_numpy_fn = partial(cpu_sdfg, data["A"], data["B"], data["C"])
+    run_numpy_fn = partial(cpu_sdfg, data["A"], data["B"])
     run_sdfg_fn = partial(run_sdfg_in_tempdir, combo, interleavers, config, data, softhier_sdfg)
 
     print("[Pipeline Info] Start E2E Verification")
