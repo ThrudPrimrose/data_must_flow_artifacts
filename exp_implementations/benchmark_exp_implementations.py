@@ -6,7 +6,7 @@ import numpy as np
 import dace
 from dace.transformation.passes.vectorization.vectorize_cpu import VectorizeCPU
 from dace.sdfg import utils as sdutil
-from dace.transformation.passes.vectorization.tasklet_preprocessing_passes import ReplaceSTDLogWithDaCeLog
+from dace.transformation.passes.vectorization.tasklet_preprocessing_passes import ReplaceSTDExpWithDaCeExp
 from math import log, exp
 import shlex
 
@@ -128,14 +128,14 @@ def verify_exp_implementations():
 
     dace_impl_sdfg = copy.deepcopy(sdfg)
     dace_impl_sdfg.name = sdfg.name + "_dace_log"
-    ReplaceSTDLogWithDaCeLog().apply_pass(dace_impl_sdfg, {})
+    ReplaceSTDExpWithDaCeExp().apply_pass(dace_impl_sdfg, {})
 
     sdfg(A=A, B=B1)
     dace_impl_sdfg(A=A, B=B2)
 
     assert np.allclose(B1, B2)
 
-    #print(f"Verification passed, different: {B1 - B2}")
+    print(f"Verification passed, different: {B1 - B2}")
 
 
 def run_sdfg_multiple_times(
@@ -229,12 +229,12 @@ if __name__ == "__main__":
 
 
         exp_implementations_dace_sdfg = exp_implementations.to_sdfg()
-        ReplaceSTDLogWithDaCeLog().apply_pass(exp_implementations_dace_sdfg, {})
+        ReplaceSTDExpWithDaCeExp().apply_pass(exp_implementations_dace_sdfg, {})
         exp_implementations_dace_sdfg.name = "exp_implementations_dace"
         exp_implementations_dace_sdfg.instrument = dace.dtypes.InstrumentationType.Timer
 
         exp_implementations_dace_safe_sdfg = exp_implementations.to_sdfg()
-        dpass = ReplaceSTDLogWithDaCeLog()
+        dpass = ReplaceSTDExpWithDaCeExp()
         dpass.use_safe_impl = True
         dpass.apply_pass(exp_implementations_dace_safe_sdfg, {})
         exp_implementations_dace_safe_sdfg.name = "exp_implementations_safe_dace"
