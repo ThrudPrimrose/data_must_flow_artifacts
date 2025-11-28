@@ -1,0 +1,6 @@
+Running with EXTRA_FLAGS='-mprefer-vector-width=512', SUFFIX='force_width_512'
+Physical cores: 36
+Failing SDFG saved for inspection in /users/schandra/dace/data_must_flow_artifacts/log_implementations/gcc/intel_xeon/_dacegraphs/failing.sdfgz
+Running with EXTRA_FLAGS='', SUFFIX=''
+Physical cores: 36
+Failing SDFG saved for inspection in /users/schandra/dace/data_must_flow_artifacts/log_implementations/gcc/intel_xeon/_dacegraphs/failing.sdfgz

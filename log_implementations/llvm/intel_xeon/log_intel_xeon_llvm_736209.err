@@ -1,0 +1,21 @@
+/tmp/slurmd/job736209/slurm_script: line 10: spack: command not found
+Traceback (most recent call last):
+  File "/users/schandra/dace/data_must_flow_artifacts/log_implementations/llvm/intel_xeon/benchmark_log_implementations.py", line 6, in <module>
+    import dace
+  File "/users/schandra/dace/dace/__init__.py", line 4, in <module>
+    from .dtypes import *
+  File "/users/schandra/dace/dace/dtypes.py", line 3, in <module>
+    import ctypes
+  File "/users/schandra/.pyenv/versions/3.12.12/lib/python3.12/ctypes/__init__.py", line 8, in <module>
+    from _ctypes import Union, Structure, Array
+ModuleNotFoundError: No module named '_ctypes'
+Traceback (most recent call last):
+  File "/users/schandra/dace/data_must_flow_artifacts/log_implementations/llvm/intel_xeon/benchmark_log_implementations.py", line 6, in <module>
+    import dace
+  File "/users/schandra/dace/dace/__init__.py", line 4, in <module>
+    from .dtypes import *
+  File "/users/schandra/dace/dace/dtypes.py", line 3, in <module>
+    import ctypes
+  File "/users/schandra/.pyenv/versions/3.12.12/lib/python3.12/ctypes/__init__.py", line 8, in <module>
+    from _ctypes import Union, Structure, Array
+ModuleNotFoundError: No module named '_ctypes'
