@@ -4,6 +4,7 @@ import os
 
 import numpy as np
 import dace
+from dace.transformation.passes.split_tasklets import SplitTasklets
 from dace.transformation.passes.vectorization.vectorize_cpu import VectorizeCPU
 from dace.sdfg import utils as sdutil
 from dace.transformation.passes.vectorization.tasklet_preprocessing_passes import ReplaceSTDLogWithDaCeLog
@@ -229,11 +230,13 @@ if __name__ == "__main__":
 
 
         log_implementations_dace_sdfg = log_implementations.to_sdfg()
+        SplitTasklets().apply_pass(log_implementations_dace_sdfg, {})
         ReplaceSTDLogWithDaCeLog().apply_pass(log_implementations_dace_sdfg, {})
         log_implementations_dace_sdfg.name = "log_implementations_dace"
         log_implementations_dace_sdfg.instrument = dace.dtypes.InstrumentationType.Timer
 
         log_implementations_dace_safe_sdfg = log_implementations.to_sdfg()
+        SplitTasklets().apply_pass(log_implementations_dace_safe_sdfg, {})
         dpass = ReplaceSTDLogWithDaCeLog()
         dpass.use_safe_impl = True
         dpass.apply_pass(log_implementations_dace_safe_sdfg, {})
