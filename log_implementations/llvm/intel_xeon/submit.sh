@@ -5,7 +5,22 @@
 #SBATCH --time=01:00:00               # Walltime (hh:mm:ss)
 #SBATCH --output=%x_%j.out            # Standard output (%x=job name, %j=job ID)
 #SBATCH --error=%x_%j.err             # Standard error
-#SBATCH --workdir=.
+#SBATCH --chdir=.
+
+
+# Load modules required by pyenv-compiled Python
+module purge
+# module load gcc/14.2
+module load cmake
+module load libffi
+module load zlib
+
+# Enable pyenv
+export PYENV_ROOT="$HOME/.pyenv"
+export PATH="$PYENV_ROOT/bin:$PATH"
+eval "$(pyenv init -)"
+eval "$(pyenv virtualenv-init -)"
+pyenv activate dace-env
 
 spack load cmake
 

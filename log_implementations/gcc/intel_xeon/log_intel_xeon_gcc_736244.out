@@ -1,0 +1,2 @@
+Running with EXTRA_FLAGS='-mprefer-vector-width=512', SUFFIX='force_width_512'
+Running with EXTRA_FLAGS='', SUFFIX=''

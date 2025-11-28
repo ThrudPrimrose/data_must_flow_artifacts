@@ -7,8 +7,25 @@
 #SBATCH --error=%x_%j.err             # Standard error
 #SBATCH --chdir=.
 
+# Load modules required by pyenv-compiled Python
+module purge
+# module load gcc/14.2
+module load cmake
+module load libffi
+module load zlib
+
+# Enable pyenv
+export PYENV_ROOT="$HOME/.pyenv"
+export PATH="$PYENV_ROOT/bin:$PATH"
+echo $(pwd)
+eval "$(pyenv init -)"
+eval "$(pyenv virtualenv-init -)"
+# pyenv activate dace-env
+
 spack load cmake
 spack load gcc@14.2
+
+pyenv activate dace-env
 
 alias cc=gcc
 alias c++=g++
