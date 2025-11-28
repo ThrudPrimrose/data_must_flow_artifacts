@@ -296,6 +296,8 @@ config = HardwareConfig(
     dtype_output=np.float32,
     dace_input_type=dace.float32,
     dace_output_type=dace.float32,
+    spatz_num_vlsu_port=32,
+    spatz_num_function_unit=32
 )
 
 def create_data_and_handlers(M_val, N_val, hw_config: HardwareConfig):
