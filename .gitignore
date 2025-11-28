@@ -5,3 +5,7 @@ venv
 
 *.sdfg
 *.sdfgz
+
+out.txt
+log
+generated_arch.py

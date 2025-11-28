@@ -1,21 +1,18 @@
 #!/bin/bash
-#SBATCH --job-name=log_arm_gcc  # Job name
+#SBATCH --job-name=log_arm_llvm  # Job name
 #SBATCH --nodes=1                     # Number of nodes
 #SBATCH --partition=normal               # Partition/queue
 #SBATCH --time=00:30:00               # Walltime (hh:mm:ss)
 #SBATCH --output=%x_%j.out            # Standard output (%x=job name, %j=job ID)
 #SBATCH --error=%x_%j.err             # Standard error
-#SBATCH --chdir=.
+#SBATCH --workdir=.
 
 spack load cmake
-spack load gcc@14.2
-
-alias cc=gcc
-alias c++=g++
-alias cxx=g++
-export CC=gcc
-export CXX=g++
-
+alias cc="clang --target=aarch64-linux-gnu"
+alias c++="clang++ --target=aarch64-linux-gnu"
+alias cxx="clang++ --target=aarch64-linux-gnu"
+export CC="clang --target=aarch64-linux-gnu"
+export CXX="clang++ --target=aarch64-linux-gnu"
 
 # Define configurations: each element is "EXTRA_FLAGS SUFFIX"
 configs=(
@@ -32,11 +29,11 @@ for ((i=0; i<${#configs[@]}; i+=2)); do
     echo "Running with EXTRA_FLAGS='$EXTRA_FLAGS', SUFFIX='$SUFFIX'"
 
     # Copy benchmark script
-    cp ../../benchmark_log_implementations.py .
+    cp ../../benchmark_exp_implementations.py .
 
     # Run benchmark
-    python3 benchmark_log_implementations.py
+    python3 benchmark_exp_implementations.py
 
     # Remove script
-    rm benchmark_log_implementations.py
+    rm benchmark_exp_implementations.py
 done

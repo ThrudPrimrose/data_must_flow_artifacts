@@ -7,8 +7,8 @@ import dace
 from dace.transformation.passes.split_tasklets import SplitTasklets
 from dace.transformation.passes.vectorization.vectorize_cpu import VectorizeCPU
 from dace.sdfg import utils as sdutil
-from dace.transformation.passes.vectorization.tasklet_preprocessing_passes import ReplaceSTDLogWithDaCeLog
-from math import log
+from dace.transformation.passes.vectorization.tasklet_preprocessing_passes import ReplaceSTDExpWithDaCeExp
+from math import log, exp
 import shlex
 
 import subprocess
@@ -112,7 +112,7 @@ def run_vectorization_test(
     print(copy_sdfg.get_instrumentation_reports()[-1])
 
 
-def verify_log_implementations():
+def verify_exp_implementations():
     # S = dace.symbol("S")
     S = 64  # Ensure divisibility for vectorization
 
@@ -121,22 +121,22 @@ def verify_log_implementations():
     B2 = np.random.random((S, ))
 
     @dace.program
-    def log_implementations(A: dace.float64[S], B: dace.float64[S]):
+    def exp_implementations(A: dace.float64[S], B: dace.float64[S]):
         for i in dace.map[0:S]:
-            B[i] = log(A[i])
+            B[i] = exp(A[i])
 
-    sdfg = log_implementations.to_sdfg()
+    sdfg = exp_implementations.to_sdfg()
 
     dace_impl_sdfg = copy.deepcopy(sdfg)
     dace_impl_sdfg.name = sdfg.name + "_dace_log"
-    ReplaceSTDLogWithDaCeLog().apply_pass(dace_impl_sdfg, {})
+    ReplaceSTDExpWithDaCeExp().apply_pass(dace_impl_sdfg, {})
 
     sdfg(A=A, B=B1)
     dace_impl_sdfg(A=A, B=B2)
 
     assert np.allclose(B1, B2)
 
-    #print(f"Verification passed, different: {B1 - B2}")
+    print(f"Verification passed, different: {B1 - B2}")
 
 
 def run_sdfg_multiple_times(
@@ -214,34 +214,34 @@ def build_vectorized_sdfg(base_sdfg, vec_width, insert_copies, suffix, base_name
 if __name__ == "__main__":
     NUM_REPS = 20
     all_timings = {}
-    verify_log_implementations()
+    verify_exp_implementations()
 
     # S = dace.symbol("S")
     for i, S in enumerate([8192 * 64, 8192 * 256, 8192 * 512, 8192 * 1024, 8192 * 2048, 8192 * 4096, 8192 * 8192]): 
         @dace.program
-        def log_implementations(A: dace.float64[S], B: dace.float64[S]):
+        def exp_implementations(A: dace.float64[S], B: dace.float64[S]):
             for i in dace.map[0:S]:
-                B[i] = log(A[i])
+                B[i] = exp(A[i])
 
         # Baseline SDFG
-        log_implementations_std_sdfg = log_implementations.to_sdfg()
-        log_implementations_std_sdfg.name = "log_implementations_std"
-        log_implementations_std_sdfg.instrument = dace.dtypes.InstrumentationType.Timer
+        exp_implementations_std_sdfg = exp_implementations.to_sdfg()
+        exp_implementations_std_sdfg.name = "exp_implementations_std"
+        exp_implementations_std_sdfg.instrument = dace.dtypes.InstrumentationType.Timer
 
 
-        log_implementations_dace_sdfg = log_implementations.to_sdfg()
-        SplitTasklets().apply_pass(log_implementations_dace_sdfg, {})
-        ReplaceSTDLogWithDaCeLog().apply_pass(log_implementations_dace_sdfg, {})
-        log_implementations_dace_sdfg.name = "log_implementations_dace"
-        log_implementations_dace_sdfg.instrument = dace.dtypes.InstrumentationType.Timer
+        exp_implementations_dace_sdfg = exp_implementations.to_sdfg()
+        SplitTasklets().apply_pass(exp_implementations_dace_sdfg, {})
+        ReplaceSTDExpWithDaCeExp().apply_pass(exp_implementations_dace_sdfg, {})
+        exp_implementations_dace_sdfg.name = "exp_implementations_dace"
+        exp_implementations_dace_sdfg.instrument = dace.dtypes.InstrumentationType.Timer
 
-        log_implementations_dace_safe_sdfg = log_implementations.to_sdfg()
-        SplitTasklets().apply_pass(log_implementations_dace_safe_sdfg, {})
-        dpass = ReplaceSTDLogWithDaCeLog()
+        exp_implementations_dace_safe_sdfg = exp_implementations.to_sdfg()
+        SplitTasklets().apply_pass(exp_implementations_dace_sdfg, {})
+        dpass = ReplaceSTDExpWithDaCeExp()
         dpass.use_safe_impl = True
-        dpass.apply_pass(log_implementations_dace_safe_sdfg, {})
-        log_implementations_dace_safe_sdfg.name = "log_implementations_safe_dace"
-        log_implementations_dace_safe_sdfg.instrument = dace.dtypes.InstrumentationType.Timer
+        dpass.apply_pass(exp_implementations_dace_safe_sdfg, {})
+        exp_implementations_dace_safe_sdfg.name = "exp_implementations_safe_dace"
+        exp_implementations_dace_safe_sdfg.instrument = dace.dtypes.InstrumentationType.Timer
 
         # Baseline arrays
         A = np.random.random((S, ))
@@ -250,22 +250,22 @@ if __name__ == "__main__":
         params = {}
 
         # Run baseline 1
-        all_timings["log_implementations_std", S] = run_sdfg_multiple_times(
-            sdfg=log_implementations_std_sdfg,
+        all_timings["exp_implementations_std", S] = run_sdfg_multiple_times(
+            sdfg=exp_implementations_std_sdfg,
             arrays=base_arrays,
             params=params,
             num_runs=NUM_REPS,
         )
         # Run baseline 1
-        all_timings["log_implementations_dace", S] = run_sdfg_multiple_times(
-            sdfg=log_implementations_dace_sdfg,
+        all_timings["exp_implementations_dace", S] = run_sdfg_multiple_times(
+            sdfg=exp_implementations_dace_sdfg,
             arrays=base_arrays,
             params=params,
             num_runs=NUM_REPS,
         )
         # Run baseline 1
-        all_timings["log_implementations_safe_dace", S] = run_sdfg_multiple_times(
-            sdfg=log_implementations_dace_safe_sdfg,
+        all_timings["exp_implementations_safe_dace", S] = run_sdfg_multiple_times(
+            sdfg=exp_implementations_dace_safe_sdfg,
             arrays=base_arrays,
             params=params,
             num_runs=NUM_REPS,
@@ -276,8 +276,8 @@ if __name__ == "__main__":
         for l in [8, 16, 32, 64]:
             # std no-copy version
             sdfg_vec, name = build_vectorized_sdfg(
-                log_implementations_std_sdfg, vec_width=l, insert_copies=False, suffix="no_cpy",
-                base_name="log_implementations_std"
+                exp_implementations_std_sdfg, vec_width=l, insert_copies=False, suffix="no_cpy",
+                base_name="exp_implementations_std"
             )
             all_timings[name, S] = run_sdfg_multiple_times(
                 sdfg=sdfg_vec, arrays=base_arrays, params=params, num_runs=NUM_REPS
@@ -285,8 +285,8 @@ if __name__ == "__main__":
 
             # std copy version
             sdfg_vec_cpy, name = build_vectorized_sdfg(
-                log_implementations_std_sdfg, vec_width=l, insert_copies=True, suffix="cpy",
-                base_name="log_implementations_std"
+                exp_implementations_std_sdfg, vec_width=l, insert_copies=True, suffix="cpy",
+                base_name="exp_implementations_std"
             )
             all_timings[name, S] = run_sdfg_multiple_times(
                 sdfg=sdfg_vec_cpy, arrays=base_arrays, params=params, num_runs=NUM_REPS
@@ -294,8 +294,8 @@ if __name__ == "__main__":
 
             # dace copy version
             sdfg_vec_cpy, name = build_vectorized_sdfg(
-                log_implementations_dace_sdfg, vec_width=l, insert_copies=True, suffix="cpy",
-                base_name="log_implementations_dace"
+                exp_implementations_dace_sdfg, vec_width=l, insert_copies=True, suffix="cpy",
+                base_name="exp_implementations_dace"
             )
             all_timings[name, S] = run_sdfg_multiple_times(
                 sdfg=sdfg_vec_cpy, arrays=base_arrays, params=params, num_runs=NUM_REPS
@@ -303,8 +303,8 @@ if __name__ == "__main__":
 
             # dace no-copy version
             sdfg_vec_cpy, name = build_vectorized_sdfg(
-                log_implementations_dace_sdfg, vec_width=l, insert_copies=False, suffix="no_cpy",
-                base_name="log_implementations_dace"
+                exp_implementations_dace_sdfg, vec_width=l, insert_copies=False, suffix="no_cpy",
+                base_name="exp_implementations_dace"
             )
             all_timings[name, S] = run_sdfg_multiple_times(
                 sdfg=sdfg_vec_cpy, arrays=base_arrays, params=params, num_runs=NUM_REPS
@@ -312,8 +312,8 @@ if __name__ == "__main__":
 
             # safe dace copy version
             sdfg_vec_cpy, name = build_vectorized_sdfg(
-                log_implementations_dace_safe_sdfg, vec_width=l, insert_copies=True, suffix="cpy",
-                base_name="log_implementations_dace_safe"
+                exp_implementations_dace_safe_sdfg, vec_width=l, insert_copies=True, suffix="cpy",
+                base_name="exp_implementations_dace_safe"
             )
             all_timings[name, S] = run_sdfg_multiple_times(
                 sdfg=sdfg_vec_cpy, arrays=base_arrays, params=params, num_runs=NUM_REPS
@@ -321,8 +321,8 @@ if __name__ == "__main__":
 
             # safe dace no-copy version
             sdfg_vec_cpy, name = build_vectorized_sdfg(
-                log_implementations_dace_safe_sdfg, vec_width=l, insert_copies=False, suffix="no_cpy",
-                base_name="log_implementations_dace_safe"
+                exp_implementations_dace_safe_sdfg, vec_width=l, insert_copies=False, suffix="no_cpy",
+                base_name="exp_implementations_dace_safe"
             )
             all_timings[name, S] = run_sdfg_multiple_times(
                 sdfg=sdfg_vec_cpy, arrays=base_arrays, params=params, num_runs=NUM_REPS
@@ -331,5 +331,5 @@ if __name__ == "__main__":
         # -------------------------------------------------------
         # CSV output
         # -------------------------------------------------------
-        save_timings_to_csv(f"log_implementations_timings_1_core{env_suffix_str}.csv", i, S, all_timings)
-        print(f"Saved timing results to log_implementations_timings_1_core{env_suffix_str}.csv")
+        save_timings_to_csv(f"exp_implementations_timings_1_core{env_suffix_str}.csv", i, S, all_timings)
+        print(f"Saved timing results to exp_implementations_timings_1_core{env_suffix_str}.csv")

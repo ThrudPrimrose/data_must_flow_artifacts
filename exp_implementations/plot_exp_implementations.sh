@@ -1,0 +1,4 @@
+python plot.py gcc/amd_epyc/exp_implementations_timings_1_core.csv  exp_implementations_timings_1_core_amd_epyc_gcc.png exp_implementations gcc amd_epyc_7742
+python plot.py llvm/amd_epyc/exp_implementations_timings_1_core.csv  exp_implementations_timings_1_core_amd_epyc_llvm.png exp_implementations llvm amd_epyc_7742
+python plot.py gcc/intel_xeon/exp_implementations_timings_1_core.csv  exp_implementations_timings_1_core_intel_xeon_gcc.png exp_implementations gcc intel_xeon_gold
+python plot.py llvm/intel_xeon/exp_implementations_timings_1_core.csv  exp_implementations_timings_1_core_intel_xeon_llvm.png exp_implementations llvm intel_xeon_gold

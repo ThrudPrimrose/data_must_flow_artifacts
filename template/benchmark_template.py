@@ -22,6 +22,9 @@ base_flags_str = ' '.join(base_flags)
 flags = base_flags_str + " " + env_flags_str if env_flags_str != '' else base_flags_str
 dace.config.Config.set("compiler", "cpu", "args", value=flags)
 
+compiler_exec = os.environ.get('CXX', 'c++')
+dace.config.Config.set("compiler", "cpu", "executable", value=compiler_exec)
+
 env_suffix_str = os.environ.get('SUFFIX', '')
 if env_suffix_str != '':
     env_suffix_str = "_" + env_suffix_str

@@ -15,13 +15,10 @@ alias cxx=clang++
 export CC=clang
 export CXX=clang++
 
-echo "Script path: $SCRIPT_PATH"
-echo "Script dir:  $SCRIPT_DIR"
-
 # Define configurations: each element is "EXTRA_FLAGS SUFFIX"
 configs=(
-    #"" ""                                   # first run: no extra flags, no suffix
-    "-mprefer-vector-width=512  -Rpass=loop-vectorize -Rpass-analysis=loop-vectorize -Rpass-missed=loop-vectorize -Rpass=slp-vectorize -fsave-optimization-record -foptimization-record-file=${SCRIPT_DIR}/log_implemenations_vec_report.yaml" "force_width_512"   # second run
+    "" ""                                   # first run: no extra flags, no suffix
+    "-mprefer-vector-width=512" "force_width_512"  # second run
 )
 
 for ((i=0; i<${#configs[@]}; i+=2)); do
@@ -31,11 +28,11 @@ for ((i=0; i<${#configs[@]}; i+=2)); do
     echo "Running with EXTRA_FLAGS='$EXTRA_FLAGS', SUFFIX='$SUFFIX'"
 
     # Copy benchmark script
-    cp ../../benchmark_log_implementations.py .
+    cp ../../benchmark_exp_implementations.py .
 
     # Run benchmark
-    python3 benchmark_log_implementations.py
+    python3 benchmark_exp_implementations.py
 
     # Remove script
-    rm benchmark_log_implementations.py
+    rm benchmark_exp_implementations.py
 done
