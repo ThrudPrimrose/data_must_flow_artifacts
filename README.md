@@ -64,3 +64,14 @@ export CXX=clang++
 python3 benchmark_log_implementations.py
 ```
 
+## Building LLVM
+
+```bash
+# For AULT
+cmake -G Ninja ../llvm   -DCMAKE_BUILD_TYPE=RelWithDebInfo   -DCMAKE_INSTALL_PREFIX=$SCRATCH   -DLLVM_ENABLE_PROJECTS="clang" -DLLVM_ENABLE_RUNTIMES="openmp" -DLLVM_ENABLE_RTTI=ON  -DLLVM_USE_DEPSLOG=OFF -DLLVM_TARGETS_TO_BUILD="X86" -DLLVM_DEFAULT_TARGET_TRIPLE="x86-64-linux-gnu" -DLIBOMP_ARCH="x86_64"
+```
+
+```bash
+# For Daint.Alps / Clariden
+cmake -G Ninja ../llvm   -DCMAKE_BUILD_TYPE=RelWithDebInfo   -DCMAKE_INSTALL_PREFIX=$SCRATCH   -DLLVM_ENABLE_PROJECTS="clang" -DLLVM_ENABLE_RUNTIMES="openmp" -DLLVM_ENABLE_RTTI=ON  -DLLVM_USE_DEPSLOG=OFF -DLLVM_TARGETS_TO_BUILD="Aarch64" -DLLVM_DEFAULT_TARGET_TRIPLE="aarch64-linux-gnu"
+```
