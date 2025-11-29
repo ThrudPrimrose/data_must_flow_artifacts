@@ -7,6 +7,7 @@
 #SBATCH --error=%x_%j.err             # Standard error
 #SBATCH --chdir=.
 
+
 spack load cmake
 
 alias cc=clang

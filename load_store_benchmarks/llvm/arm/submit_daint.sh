@@ -5,7 +5,8 @@
 #SBATCH --time=02:00:00               # Walltime (hh:mm:ss)
 #SBATCH --output=%x_%j.out            # Standard output (%x=job name, %j=job ID)
 #SBATCH --error=%x_%j.err             # Standard error
-#SBATCH --workdir=.
+#SBATCH --chdir=.
+
 
 spack load cmake
 alias cc="clang --target=aarch64-linux-gnu"

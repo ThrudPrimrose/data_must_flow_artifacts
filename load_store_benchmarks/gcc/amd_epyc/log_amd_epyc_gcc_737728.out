@@ -1,0 +1,4 @@
+Running with EXTRA_FLAGS='', SUFFIX=''
+Physical cores: 128
+Running with EXTRA_FLAGS='-mprefer-vector-width=512', SUFFIX='force_width_512'
+Physical cores: 128
