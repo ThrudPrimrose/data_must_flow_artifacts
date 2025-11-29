@@ -1,12 +1,32 @@
-alias cc=clang
-alias c++=clang++
-export CC=clang
-export CXX=clang++
-rm -rf .dacecache
-rm intel_llvm_libdivision_by_zero_vectorized.asm
-rm intel_llvm_libdivision_by_zero.asm
-rm intel_llvm_libdivision_by_zero_vectorized_cpy.asm
-python gen_sdfgs.py
-objdump -d .dacecache/division_by_zero_vectorized/build/libdivision_by_zero_vectorized.so > intel_llvm_libdivision_by_zero_vectorized.asm
-objdump -d .dacecache/division_by_zero_vectorized_cpy/build/libdivision_by_zero_vectorized_cpy.so > intel_llvm_libdivision_by_zero_vectorized_cpy.asm
-objdump -d .dacecache/division_by_zero/build/libdivision_by_zero.so > intel_llvm_libdivision_by_zero.asm
+#!/usr/bin/env bash
+
+for sub in gcc/* llvm/*; do
+    [[ -d "$sub" ]] || continue
+
+    echo "Entering $sub"
+    cd "$sub" || continue
+
+    # Folder name without slash, e.g. gcc_amd_epyc
+    folder_name="${sub//\//_}"
+
+    if [[ -d ".dacecache" ]]; then
+        for dir in .dacecache/*/; do
+            name=$(basename "$dir")
+            so_file=".dacecache/$name/build/lib${name}.so"
+
+            if [[ -f "$so_file" ]]; then
+                # Output filename = folder + kernel
+                out_name="${folder_name}_${name}.asm"
+
+                echo "  Dumping $so_file → $out_name"
+                objdump -d "$so_file" > "../../asm/$out_name"
+            else
+                echo "  Skipping $name (no .so found)"
+            fi
+        done
+    else
+        echo "  No .dacecache in $sub"
+    fi
+
+    cd - >/dev/null || exit
+done
