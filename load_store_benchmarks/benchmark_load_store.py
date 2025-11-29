@@ -136,7 +136,7 @@ if __name__ == "__main__":
     all_timings = {}
 
     # S = dace.symbol("S")
-    for i, N in enumerate([8192,]):
+    for i, S in enumerate([8192 * 64, 8192 * 256, 8192 * 512, 8192 * 1024, 8192 * 2048, 8192 * 4096, 8192 * 8192, 8192 * 8192 * 2]):
         @dace.program
         def vecscale_unit_stride(src: dace.float64[N], dst: dace.float64[N], scale: dace.float64):
             for i, in dace.map[0:N:1]:
