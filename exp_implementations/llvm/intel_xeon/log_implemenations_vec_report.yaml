@@ -11427,632 +11427,55 @@ Args:
 --- !Passed
 Pass:            inline
 Name:            Inlined
-DebugLoc:        { File: 'dace/dace/codegen/../runtime/include/dace/copy.h', 
-                   Line: 110, Column: 21 }
-Function:        _ZN4dace6CopyNDIdLi1ELi0EJLi32EEE8ConstDstILi1EJEE4CopyIJEEEvPKdPdRKiDpRKT_
+DebugLoc:        { File: 'dace/dace/codegen/../runtime/include/dace/arith/exp.h', 
+                   Line: 206, Column: 13 }
+Function:        _ZL11fpfloor_f64d
 Args:
   - String:          ''''
-  - Callee:          _ZN4dace8CopyImplIdLi32ELi1ETnNSt9enable_ifIXsr3std21is_trivially_copyableIT_EE5valueEbE4typeELb1EEEvPKS2_PS2_
-    DebugLoc:        { File: 'dace/dace/codegen/../runtime/include/dace/copy.h', 
-                       Line: 31, Column: 0 }
+  - Callee:          _ZL15float_to_uint32f
   - String:          ''' inlined into '''
-  - Caller:          _ZN4dace6CopyNDIdLi1ELi0EJLi32EEE8ConstDstILi1EJEE4CopyIJEEEvPKdPdRKiDpRKT_
-    DebugLoc:        { File: 'dace/dace/codegen/../runtime/include/dace/copy.h', 
-                       Line: 106, Column: 0 }
+  - Caller:          _ZL11fpfloor_f64d
+    DebugLoc:        { File: 'dace/dace/codegen/../runtime/include/dace/arith/exp.h', 
+                       Line: 204, Column: 0 }
   - String:          ''''
   - String:          ' with '
   - String:          '(cost='
-  - Cost:            '-35'
-  - String:          ', threshold='
-  - Threshold:       '375'
-  - String:          ')'
-  - String:          ' at callsite '
-  - String:          'Copy<>'
-  - String:          ':'
-  - Line:            '5'
-  - String:          ':'
-  - Column:          '21'
-  - String:          ';'
-...
---- !Passed
-Pass:            inline
-Name:            Inlined
-DebugLoc:        { File: 'dace/dace/codegen/../runtime/include/dace/copy.h', 
-                   Line: 117, Column: 21 }
-Function:        _ZN4dace6CopyNDIdLi1ELi0EJLi32EEE8ConstDstILi1EJEE4CopyIJEEEvPKdPdRKiDpRKT_
-Args:
-  - String:          ''''
-  - Callee:          _ZN4dace6CopyNDIdLi1ELi0EJEE8ConstDstIJEE4CopyIdTnNSt9enable_ifIXsr3std21is_trivially_copyableIT_EE5valueEbE4typeELb1EEEvPKdPd
-    DebugLoc:        { File: 'dace/dace/codegen/../runtime/include/dace/copy.h', 
-                       Line: 240, Column: 0 }
-  - String:          ''' inlined into '''
-  - Caller:          _ZN4dace6CopyNDIdLi1ELi0EJLi32EEE8ConstDstILi1EJEE4CopyIJEEEvPKdPdRKiDpRKT_
-    DebugLoc:        { File: 'dace/dace/codegen/../runtime/include/dace/copy.h', 
-                       Line: 106, Column: 0 }
-  - String:          ''''
-  - String:          ' with '
-  - String:          '(cost='
-  - Cost:            '-30'
+  - Cost:            '-15035'
   - String:          ', threshold='
   - Threshold:       '487'
   - String:          ')'
   - String:          ' at callsite '
-  - String:          'Copy<>'
+  - String:          fpfloor_f64
   - String:          ':'
-  - Line:            '12'
+  - Line:            '2'
   - String:          ':'
-  - Column:          '21'
+  - Column:          '13'
   - String:          ';'
-...
---- !Passed
-Pass:            loop-unroll
-Name:            FullyUnrolled
-DebugLoc:        { File: 'dace/dace/codegen/../runtime/include/dace/copy.h', 
-                   Line: 116, Column: 17 }
-Function:        _ZN4dace6CopyNDIdLi1ELi0EJLi32EEE8ConstDstILi1EJEE4CopyIJEEEvPKdPdRKiDpRKT_
-Args:
-  - String:          'completely unrolled loop with '
-  - UnrollCount:     '32'
-  - String:          ' iterations'
-...
---- !Missed
-Pass:            gvn
-Name:            LoadClobbered
-DebugLoc:        { File: 'dace/dace/codegen/../runtime/include/dace/copy.h', 
-                   Line: 241, Column: 42 }
-Function:        _ZN4dace6CopyNDIdLi1ELi0EJLi32EEE8ConstDstILi1EJEE4CopyIJEEEvPKdPdRKiDpRKT_
-Args:
-  - String:          'load of type '
-  - Type:            double
-  - String:          ' not eliminated'
-  - String:          ' because it is clobbered by '
-  - ClobberedBy:     store
-    DebugLoc:        { File: 'dace/dace/codegen/../runtime/include/dace/copy.h', 
-                       Line: 241, Column: 40 }
-...
---- !Missed
-Pass:            gvn
-Name:            LoadClobbered
-DebugLoc:        { File: 'dace/dace/codegen/../runtime/include/dace/copy.h', 
-                   Line: 241, Column: 42 }
-Function:        _ZN4dace6CopyNDIdLi1ELi0EJLi32EEE8ConstDstILi1EJEE4CopyIJEEEvPKdPdRKiDpRKT_
-Args:
-  - String:          'load of type '
-  - Type:            double
-  - String:          ' not eliminated'
-  - String:          ' because it is clobbered by '
-  - ClobberedBy:     store
-    DebugLoc:        { File: 'dace/dace/codegen/../runtime/include/dace/copy.h', 
-                       Line: 241, Column: 40 }
-...
---- !Missed
-Pass:            gvn
-Name:            LoadClobbered
-DebugLoc:        { File: 'dace/dace/codegen/../runtime/include/dace/copy.h', 
-                   Line: 241, Column: 42 }
-Function:        _ZN4dace6CopyNDIdLi1ELi0EJLi32EEE8ConstDstILi1EJEE4CopyIJEEEvPKdPdRKiDpRKT_
-Args:
-  - String:          'load of type '
-  - Type:            double
-  - String:          ' not eliminated'
-  - String:          ' because it is clobbered by '
-  - ClobberedBy:     store
-    DebugLoc:        { File: 'dace/dace/codegen/../runtime/include/dace/copy.h', 
-                       Line: 241, Column: 40 }
-...
---- !Missed
-Pass:            gvn
-Name:            LoadClobbered
-DebugLoc:        { File: 'dace/dace/codegen/../runtime/include/dace/copy.h', 
-                   Line: 241, Column: 42 }
-Function:        _ZN4dace6CopyNDIdLi1ELi0EJLi32EEE8ConstDstILi1EJEE4CopyIJEEEvPKdPdRKiDpRKT_
-Args:
-  - String:          'load of type '
-  - Type:            double
-  - String:          ' not eliminated'
-  - String:          ' because it is clobbered by '
-  - ClobberedBy:     store
-    DebugLoc:        { File: 'dace/dace/codegen/../runtime/include/dace/copy.h', 
-                       Line: 241, Column: 40 }
-...
---- !Missed
-Pass:            gvn
-Name:            LoadClobbered
-DebugLoc:        { File: 'dace/dace/codegen/../runtime/include/dace/copy.h', 
-                   Line: 241, Column: 42 }
-Function:        _ZN4dace6CopyNDIdLi1ELi0EJLi32EEE8ConstDstILi1EJEE4CopyIJEEEvPKdPdRKiDpRKT_
-Args:
-  - String:          'load of type '
-  - Type:            double
-  - String:          ' not eliminated'
-  - String:          ' because it is clobbered by '
-  - ClobberedBy:     store
-    DebugLoc:        { File: 'dace/dace/codegen/../runtime/include/dace/copy.h', 
-                       Line: 241, Column: 40 }
-...
---- !Missed
-Pass:            gvn
-Name:            LoadClobbered
-DebugLoc:        { File: 'dace/dace/codegen/../runtime/include/dace/copy.h', 
-                   Line: 241, Column: 42 }
-Function:        _ZN4dace6CopyNDIdLi1ELi0EJLi32EEE8ConstDstILi1EJEE4CopyIJEEEvPKdPdRKiDpRKT_
-Args:
-  - String:          'load of type '
-  - Type:            double
-  - String:          ' not eliminated'
-  - String:          ' because it is clobbered by '
-  - ClobberedBy:     store
-    DebugLoc:        { File: 'dace/dace/codegen/../runtime/include/dace/copy.h', 
-                       Line: 241, Column: 40 }
-...
---- !Missed
-Pass:            gvn
-Name:            LoadClobbered
-DebugLoc:        { File: 'dace/dace/codegen/../runtime/include/dace/copy.h', 
-                   Line: 241, Column: 42 }
-Function:        _ZN4dace6CopyNDIdLi1ELi0EJLi32EEE8ConstDstILi1EJEE4CopyIJEEEvPKdPdRKiDpRKT_
-Args:
-  - String:          'load of type '
-  - Type:            double
-  - String:          ' not eliminated'
-  - String:          ' because it is clobbered by '
-  - ClobberedBy:     store
-    DebugLoc:        { File: 'dace/dace/codegen/../runtime/include/dace/copy.h', 
-                       Line: 241, Column: 40 }
-...
---- !Missed
-Pass:            gvn
-Name:            LoadClobbered
-DebugLoc:        { File: 'dace/dace/codegen/../runtime/include/dace/copy.h', 
-                   Line: 241, Column: 42 }
-Function:        _ZN4dace6CopyNDIdLi1ELi0EJLi32EEE8ConstDstILi1EJEE4CopyIJEEEvPKdPdRKiDpRKT_
-Args:
-  - String:          'load of type '
-  - Type:            double
-  - String:          ' not eliminated'
-  - String:          ' because it is clobbered by '
-  - ClobberedBy:     store
-    DebugLoc:        { File: 'dace/dace/codegen/../runtime/include/dace/copy.h', 
-                       Line: 241, Column: 40 }
-...
---- !Missed
-Pass:            gvn
-Name:            LoadClobbered
-DebugLoc:        { File: 'dace/dace/codegen/../runtime/include/dace/copy.h', 
-                   Line: 241, Column: 42 }
-Function:        _ZN4dace6CopyNDIdLi1ELi0EJLi32EEE8ConstDstILi1EJEE4CopyIJEEEvPKdPdRKiDpRKT_
-Args:
-  - String:          'load of type '
-  - Type:            double
-  - String:          ' not eliminated'
-  - String:          ' because it is clobbered by '
-  - ClobberedBy:     store
-    DebugLoc:        { File: 'dace/dace/codegen/../runtime/include/dace/copy.h', 
-                       Line: 241, Column: 40 }
-...
---- !Missed
-Pass:            gvn
-Name:            LoadClobbered
-DebugLoc:        { File: 'dace/dace/codegen/../runtime/include/dace/copy.h', 
-                   Line: 241, Column: 42 }
-Function:        _ZN4dace6CopyNDIdLi1ELi0EJLi32EEE8ConstDstILi1EJEE4CopyIJEEEvPKdPdRKiDpRKT_
-Args:
-  - String:          'load of type '
-  - Type:            double
-  - String:          ' not eliminated'
-  - String:          ' because it is clobbered by '
-  - ClobberedBy:     store
-    DebugLoc:        { File: 'dace/dace/codegen/../runtime/include/dace/copy.h', 
-                       Line: 241, Column: 40 }
-...
---- !Missed
-Pass:            gvn
-Name:            LoadClobbered
-DebugLoc:        { File: 'dace/dace/codegen/../runtime/include/dace/copy.h', 
-                   Line: 241, Column: 42 }
-Function:        _ZN4dace6CopyNDIdLi1ELi0EJLi32EEE8ConstDstILi1EJEE4CopyIJEEEvPKdPdRKiDpRKT_
-Args:
-  - String:          'load of type '
-  - Type:            double
-  - String:          ' not eliminated'
-  - String:          ' because it is clobbered by '
-  - ClobberedBy:     store
-    DebugLoc:        { File: 'dace/dace/codegen/../runtime/include/dace/copy.h', 
-                       Line: 241, Column: 40 }
-...
---- !Missed
-Pass:            gvn
-Name:            LoadClobbered
-DebugLoc:        { File: 'dace/dace/codegen/../runtime/include/dace/copy.h', 
-                   Line: 241, Column: 42 }
-Function:        _ZN4dace6CopyNDIdLi1ELi0EJLi32EEE8ConstDstILi1EJEE4CopyIJEEEvPKdPdRKiDpRKT_
-Args:
-  - String:          'load of type '
-  - Type:            double
-  - String:          ' not eliminated'
-  - String:          ' because it is clobbered by '
-  - ClobberedBy:     store
-    DebugLoc:        { File: 'dace/dace/codegen/../runtime/include/dace/copy.h', 
-                       Line: 241, Column: 40 }
-...
---- !Missed
-Pass:            gvn
-Name:            LoadClobbered
-DebugLoc:        { File: 'dace/dace/codegen/../runtime/include/dace/copy.h', 
-                   Line: 241, Column: 42 }
-Function:        _ZN4dace6CopyNDIdLi1ELi0EJLi32EEE8ConstDstILi1EJEE4CopyIJEEEvPKdPdRKiDpRKT_
-Args:
-  - String:          'load of type '
-  - Type:            double
-  - String:          ' not eliminated'
-  - String:          ' because it is clobbered by '
-  - ClobberedBy:     store
-    DebugLoc:        { File: 'dace/dace/codegen/../runtime/include/dace/copy.h', 
-                       Line: 241, Column: 40 }
-...
---- !Missed
-Pass:            gvn
-Name:            LoadClobbered
-DebugLoc:        { File: 'dace/dace/codegen/../runtime/include/dace/copy.h', 
-                   Line: 241, Column: 42 }
-Function:        _ZN4dace6CopyNDIdLi1ELi0EJLi32EEE8ConstDstILi1EJEE4CopyIJEEEvPKdPdRKiDpRKT_
-Args:
-  - String:          'load of type '
-  - Type:            double
-  - String:          ' not eliminated'
-  - String:          ' because it is clobbered by '
-  - ClobberedBy:     store
-    DebugLoc:        { File: 'dace/dace/codegen/../runtime/include/dace/copy.h', 
-                       Line: 241, Column: 40 }
-...
---- !Missed
-Pass:            gvn
-Name:            LoadClobbered
-DebugLoc:        { File: 'dace/dace/codegen/../runtime/include/dace/copy.h', 
-                   Line: 241, Column: 42 }
-Function:        _ZN4dace6CopyNDIdLi1ELi0EJLi32EEE8ConstDstILi1EJEE4CopyIJEEEvPKdPdRKiDpRKT_
-Args:
-  - String:          'load of type '
-  - Type:            double
-  - String:          ' not eliminated'
-  - String:          ' because it is clobbered by '
-  - ClobberedBy:     store
-    DebugLoc:        { File: 'dace/dace/codegen/../runtime/include/dace/copy.h', 
-                       Line: 241, Column: 40 }
-...
---- !Missed
-Pass:            gvn
-Name:            LoadClobbered
-DebugLoc:        { File: 'dace/dace/codegen/../runtime/include/dace/copy.h', 
-                   Line: 241, Column: 42 }
-Function:        _ZN4dace6CopyNDIdLi1ELi0EJLi32EEE8ConstDstILi1EJEE4CopyIJEEEvPKdPdRKiDpRKT_
-Args:
-  - String:          'load of type '
-  - Type:            double
-  - String:          ' not eliminated'
-  - String:          ' because it is clobbered by '
-  - ClobberedBy:     store
-    DebugLoc:        { File: 'dace/dace/codegen/../runtime/include/dace/copy.h', 
-                       Line: 241, Column: 40 }
-...
---- !Missed
-Pass:            gvn
-Name:            LoadClobbered
-DebugLoc:        { File: 'dace/dace/codegen/../runtime/include/dace/copy.h', 
-                   Line: 241, Column: 42 }
-Function:        _ZN4dace6CopyNDIdLi1ELi0EJLi32EEE8ConstDstILi1EJEE4CopyIJEEEvPKdPdRKiDpRKT_
-Args:
-  - String:          'load of type '
-  - Type:            double
-  - String:          ' not eliminated'
-  - String:          ' because it is clobbered by '
-  - ClobberedBy:     store
-    DebugLoc:        { File: 'dace/dace/codegen/../runtime/include/dace/copy.h', 
-                       Line: 241, Column: 40 }
-...
---- !Missed
-Pass:            gvn
-Name:            LoadClobbered
-DebugLoc:        { File: 'dace/dace/codegen/../runtime/include/dace/copy.h', 
-                   Line: 241, Column: 42 }
-Function:        _ZN4dace6CopyNDIdLi1ELi0EJLi32EEE8ConstDstILi1EJEE4CopyIJEEEvPKdPdRKiDpRKT_
-Args:
-  - String:          'load of type '
-  - Type:            double
-  - String:          ' not eliminated'
-  - String:          ' because it is clobbered by '
-  - ClobberedBy:     store
-    DebugLoc:        { File: 'dace/dace/codegen/../runtime/include/dace/copy.h', 
-                       Line: 241, Column: 40 }
-...
---- !Missed
-Pass:            gvn
-Name:            LoadClobbered
-DebugLoc:        { File: 'dace/dace/codegen/../runtime/include/dace/copy.h', 
-                   Line: 241, Column: 42 }
-Function:        _ZN4dace6CopyNDIdLi1ELi0EJLi32EEE8ConstDstILi1EJEE4CopyIJEEEvPKdPdRKiDpRKT_
-Args:
-  - String:          'load of type '
-  - Type:            double
-  - String:          ' not eliminated'
-  - String:          ' because it is clobbered by '
-  - ClobberedBy:     store
-    DebugLoc:        { File: 'dace/dace/codegen/../runtime/include/dace/copy.h', 
-                       Line: 241, Column: 40 }
-...
---- !Missed
-Pass:            gvn
-Name:            LoadClobbered
-DebugLoc:        { File: 'dace/dace/codegen/../runtime/include/dace/copy.h', 
-                   Line: 241, Column: 42 }
-Function:        _ZN4dace6CopyNDIdLi1ELi0EJLi32EEE8ConstDstILi1EJEE4CopyIJEEEvPKdPdRKiDpRKT_
-Args:
-  - String:          'load of type '
-  - Type:            double
-  - String:          ' not eliminated'
-  - String:          ' because it is clobbered by '
-  - ClobberedBy:     store
-    DebugLoc:        { File: 'dace/dace/codegen/../runtime/include/dace/copy.h', 
-                       Line: 241, Column: 40 }
-...
---- !Missed
-Pass:            gvn
-Name:            LoadClobbered
-DebugLoc:        { File: 'dace/dace/codegen/../runtime/include/dace/copy.h', 
-                   Line: 241, Column: 42 }
-Function:        _ZN4dace6CopyNDIdLi1ELi0EJLi32EEE8ConstDstILi1EJEE4CopyIJEEEvPKdPdRKiDpRKT_
-Args:
-  - String:          'load of type '
-  - Type:            double
-  - String:          ' not eliminated'
-  - String:          ' because it is clobbered by '
-  - ClobberedBy:     store
-    DebugLoc:        { File: 'dace/dace/codegen/../runtime/include/dace/copy.h', 
-                       Line: 241, Column: 40 }
-...
---- !Missed
-Pass:            gvn
-Name:            LoadClobbered
-DebugLoc:        { File: 'dace/dace/codegen/../runtime/include/dace/copy.h', 
-                   Line: 241, Column: 42 }
-Function:        _ZN4dace6CopyNDIdLi1ELi0EJLi32EEE8ConstDstILi1EJEE4CopyIJEEEvPKdPdRKiDpRKT_
-Args:
-  - String:          'load of type '
-  - Type:            double
-  - String:          ' not eliminated'
-  - String:          ' because it is clobbered by '
-  - ClobberedBy:     store
-    DebugLoc:        { File: 'dace/dace/codegen/../runtime/include/dace/copy.h', 
-                       Line: 241, Column: 40 }
-...
---- !Missed
-Pass:            gvn
-Name:            LoadClobbered
-DebugLoc:        { File: 'dace/dace/codegen/../runtime/include/dace/copy.h', 
-                   Line: 241, Column: 42 }
-Function:        _ZN4dace6CopyNDIdLi1ELi0EJLi32EEE8ConstDstILi1EJEE4CopyIJEEEvPKdPdRKiDpRKT_
-Args:
-  - String:          'load of type '
-  - Type:            double
-  - String:          ' not eliminated'
-  - String:          ' because it is clobbered by '
-  - ClobberedBy:     store
-    DebugLoc:        { File: 'dace/dace/codegen/../runtime/include/dace/copy.h', 
-                       Line: 241, Column: 40 }
-...
---- !Missed
-Pass:            gvn
-Name:            LoadClobbered
-DebugLoc:        { File: 'dace/dace/codegen/../runtime/include/dace/copy.h', 
-                   Line: 241, Column: 42 }
-Function:        _ZN4dace6CopyNDIdLi1ELi0EJLi32EEE8ConstDstILi1EJEE4CopyIJEEEvPKdPdRKiDpRKT_
-Args:
-  - String:          'load of type '
-  - Type:            double
-  - String:          ' not eliminated'
-  - String:          ' because it is clobbered by '
-  - ClobberedBy:     store
-    DebugLoc:        { File: 'dace/dace/codegen/../runtime/include/dace/copy.h', 
-                       Line: 241, Column: 40 }
-...
---- !Missed
-Pass:            gvn
-Name:            LoadClobbered
-DebugLoc:        { File: 'dace/dace/codegen/../runtime/include/dace/copy.h', 
-                   Line: 241, Column: 42 }
-Function:        _ZN4dace6CopyNDIdLi1ELi0EJLi32EEE8ConstDstILi1EJEE4CopyIJEEEvPKdPdRKiDpRKT_
-Args:
-  - String:          'load of type '
-  - Type:            double
-  - String:          ' not eliminated'
-  - String:          ' because it is clobbered by '
-  - ClobberedBy:     store
-    DebugLoc:        { File: 'dace/dace/codegen/../runtime/include/dace/copy.h', 
-                       Line: 241, Column: 40 }
-...
---- !Missed
-Pass:            gvn
-Name:            LoadClobbered
-DebugLoc:        { File: 'dace/dace/codegen/../runtime/include/dace/copy.h', 
-                   Line: 241, Column: 42 }
-Function:        _ZN4dace6CopyNDIdLi1ELi0EJLi32EEE8ConstDstILi1EJEE4CopyIJEEEvPKdPdRKiDpRKT_
-Args:
-  - String:          'load of type '
-  - Type:            double
-  - String:          ' not eliminated'
-  - String:          ' because it is clobbered by '
-  - ClobberedBy:     store
-    DebugLoc:        { File: 'dace/dace/codegen/../runtime/include/dace/copy.h', 
-                       Line: 241, Column: 40 }
-...
---- !Missed
-Pass:            gvn
-Name:            LoadClobbered
-DebugLoc:        { File: 'dace/dace/codegen/../runtime/include/dace/copy.h', 
-                   Line: 241, Column: 42 }
-Function:        _ZN4dace6CopyNDIdLi1ELi0EJLi32EEE8ConstDstILi1EJEE4CopyIJEEEvPKdPdRKiDpRKT_
-Args:
-  - String:          'load of type '
-  - Type:            double
-  - String:          ' not eliminated'
-  - String:          ' because it is clobbered by '
-  - ClobberedBy:     store
-    DebugLoc:        { File: 'dace/dace/codegen/../runtime/include/dace/copy.h', 
-                       Line: 241, Column: 40 }
-...
---- !Missed
-Pass:            gvn
-Name:            LoadClobbered
-DebugLoc:        { File: 'dace/dace/codegen/../runtime/include/dace/copy.h', 
-                   Line: 241, Column: 42 }
-Function:        _ZN4dace6CopyNDIdLi1ELi0EJLi32EEE8ConstDstILi1EJEE4CopyIJEEEvPKdPdRKiDpRKT_
-Args:
-  - String:          'load of type '
-  - Type:            double
-  - String:          ' not eliminated'
-  - String:          ' because it is clobbered by '
-  - ClobberedBy:     store
-    DebugLoc:        { File: 'dace/dace/codegen/../runtime/include/dace/copy.h', 
-                       Line: 241, Column: 40 }
-...
---- !Missed
-Pass:            gvn
-Name:            LoadClobbered
-DebugLoc:        { File: 'dace/dace/codegen/../runtime/include/dace/copy.h', 
-                   Line: 241, Column: 42 }
-Function:        _ZN4dace6CopyNDIdLi1ELi0EJLi32EEE8ConstDstILi1EJEE4CopyIJEEEvPKdPdRKiDpRKT_
-Args:
-  - String:          'load of type '
-  - Type:            double
-  - String:          ' not eliminated'
-  - String:          ' because it is clobbered by '
-  - ClobberedBy:     store
-    DebugLoc:        { File: 'dace/dace/codegen/../runtime/include/dace/copy.h', 
-                       Line: 241, Column: 40 }
-...
---- !Missed
-Pass:            gvn
-Name:            LoadClobbered
-DebugLoc:        { File: 'dace/dace/codegen/../runtime/include/dace/copy.h', 
-                   Line: 241, Column: 42 }
-Function:        _ZN4dace6CopyNDIdLi1ELi0EJLi32EEE8ConstDstILi1EJEE4CopyIJEEEvPKdPdRKiDpRKT_
-Args:
-  - String:          'load of type '
-  - Type:            double
-  - String:          ' not eliminated'
-  - String:          ' because it is clobbered by '
-  - ClobberedBy:     store
-    DebugLoc:        { File: 'dace/dace/codegen/../runtime/include/dace/copy.h', 
-                       Line: 241, Column: 40 }
-...
---- !Missed
-Pass:            gvn
-Name:            LoadClobbered
-DebugLoc:        { File: 'dace/dace/codegen/../runtime/include/dace/copy.h', 
-                   Line: 241, Column: 42 }
-Function:        _ZN4dace6CopyNDIdLi1ELi0EJLi32EEE8ConstDstILi1EJEE4CopyIJEEEvPKdPdRKiDpRKT_
-Args:
-  - String:          'load of type '
-  - Type:            double
-  - String:          ' not eliminated'
-  - String:          ' because it is clobbered by '
-  - ClobberedBy:     store
-    DebugLoc:        { File: 'dace/dace/codegen/../runtime/include/dace/copy.h', 
-                       Line: 241, Column: 40 }
-...
---- !Passed
-Pass:            loop-unroll
-Name:            FullyUnrolled
-DebugLoc:        { File: 'dace/dace/codegen/../runtime/include/dace/cpu_vectorizable_math.h', 
-                   Line: 117, Column: 5 }
-Function:        _Z10vector_expIdLi32EEvPT_PKS0_
-Args:
-  - String:          'completely unrolled loop with '
-  - UnrollCount:     '32'
-  - String:          ' iterations'
-...
---- !Passed
-Pass:            loop-idiom
-Name:            ProcessLoopStoreOfLoopLoad
-DebugLoc:        { File: 'dace/dace/codegen/../runtime/include/dace/cpu_vectorizable_math.h', 
-                   Line: 100, Column: 16 }
-Function:        _Z11vector_copyIdLi32EEvPT_PKS0_
-Args:
-  - String:          'Formed a call to '
-  - NewFunction:     llvm.memcpy.p0.p0.i64
-  - String:          '() intrinsic from '
-  - Inst:            load and store
-  - String:          ' instruction in '
-  - Function:        _Z11vector_copyIdLi32EEvPT_PKS0_
-    DebugLoc:        { File: 'dace/dace/codegen/../runtime/include/dace/cpu_vectorizable_math.h', 
-                       Line: 97, Column: 0 }
-  - String:          ' function'
-  - FromBlock:       ''
-  - ToBlock:         ''
-...
---- !Passed
-Pass:            loop-delete
-Name:            Invariant
-DebugLoc:        { File: 'dace/dace/codegen/../runtime/include/dace/cpu_vectorizable_math.h', 
-                   Line: 99, Column: 5 }
-Function:        _Z11vector_copyIdLi32EEvPT_PKS0_
-Args:
-  - String:          Loop deleted because it is invariant
-...
---- !Missed
-Pass:            inline
-Name:            NoDefinition
-DebugLoc:        { File: 'src/cpu/exp_implementations_std_static_veclen_32_cpy.cpp', 
-                   Line: 22, Column: 13 }
-Function:        _Z63__program_exp_implementations_std_static_veclen_32_cpy_internalP52exp_implementations_std_static_veclen_32_cpy_state_tPdS1_.omp_outlined
-Args:
-  - Callee:          __kmpc_for_static_init_4
-  - String:          ' will not be inlined into '
-  - Caller:          _Z63__program_exp_implementations_std_static_veclen_32_cpy_internalP52exp_implementations_std_static_veclen_32_cpy_state_tPdS1_.omp_outlined
-    DebugLoc:        { File: 'src/cpu/exp_implementations_std_static_veclen_32_cpy.cpp', 
-                       Line: 22, Column: 0 }
-  - String:          ' because its definition is unavailable'
-...
---- !Missed
-Pass:            inline
-Name:            NoDefinition
-DebugLoc:        { File: 'src/cpu/exp_implementations_std_static_veclen_32_cpy.cpp', 
-                   Line: 22, Column: 37 }
-Function:        _Z63__program_exp_implementations_std_static_veclen_32_cpy_internalP52exp_implementations_std_static_veclen_32_cpy_state_tPdS1_.omp_outlined
-Args:
-  - Callee:          __kmpc_for_static_fini
-  - String:          ' will not be inlined into '
-  - Caller:          _Z63__program_exp_implementations_std_static_veclen_32_cpy_internalP52exp_implementations_std_static_veclen_32_cpy_state_tPdS1_.omp_outlined
-    DebugLoc:        { File: 'src/cpu/exp_implementations_std_static_veclen_32_cpy.cpp', 
-                       Line: 22, Column: 0 }
-  - String:          ' because its definition is unavailable'
 ...
 --- !Passed
 Pass:            inline
 Name:            Inlined
-DebugLoc:        { File: 'src/cpu/exp_implementations_std_static_veclen_32_cpy.cpp', 
-                   Line: 28, Column: 17 }
-Function:        _Z63__program_exp_implementations_std_static_veclen_32_cpy_internalP52exp_implementations_std_static_veclen_32_cpy_state_tPdS1_.omp_outlined
+DebugLoc:        { File: 'dace/dace/codegen/../runtime/include/dace/arith/exp.h', 
+                   Line: 42, Column: 17 }
+Function:        _ZL10dace_exp_dd
 Args:
   - String:          ''''
-  - Callee:          _ZN4dace6CopyNDIdLi1ELi0EJLi32EEE8ConstDstILi1EJEE4CopyIJEEEvPKdPdRKiDpRKT_
-    DebugLoc:        { File: 'dace/dace/codegen/../runtime/include/dace/copy.h', 
-                       Line: 106, Column: 0 }
+  - Callee:          _ZL11fpfloor_f64d
   - String:          ''' inlined into '''
-  - Caller:          _Z63__program_exp_implementations_std_static_veclen_32_cpy_internalP52exp_implementations_std_static_veclen_32_cpy_state_tPdS1_.omp_outlined
-    DebugLoc:        { File: 'src/cpu/exp_implementations_std_static_veclen_32_cpy.cpp', 
-                       Line: 22, Column: 0 }
+  - Caller:          _ZL10dace_exp_dd
+    DebugLoc:        { File: 'dace/dace/codegen/../runtime/include/dace/arith/exp.h', 
+                       Line: 40, Column: 0 }
   - String:          ''''
   - String:          ' with '
   - String:          '(cost='
-  - Cost:            '280'
+  - Cost:            '-15010'
   - String:          ', threshold='
-  - Threshold:       '325'
+  - Threshold:       '487'
   - String:          ')'
   - String:          ' at callsite '
-  - String:          _Z63__program_exp_implementations_std_static_veclen_32_cpy_internalP52exp_implementations_std_static_veclen_32_cpy_state_tPdS1_.omp_outlined
+  - String:          dace_exp_d
   - String:          ':'
-  - Line:            '6'
+  - Line:            '2'
   - String:          ':'
   - Column:          '17'
   - String:          ';'
@@ -12060,98 +11483,100 @@ Args:
 --- !Passed
 Pass:            inline
 Name:            Inlined
-DebugLoc:        { File: 'src/cpu/exp_implementations_std_static_veclen_32_cpy.cpp', 
-                   Line: 35, Column: 21 }
-Function:        _Z63__program_exp_implementations_std_static_veclen_32_cpy_internalP52exp_implementations_std_static_veclen_32_cpy_state_tPdS1_.omp_outlined
+DebugLoc:        { File: 'dace/dace/codegen/../runtime/include/dace/arith/exp.h', 
+                   Line: 72, Column: 10 }
+Function:        _ZL10dace_exp_dd
 Args:
   - String:          ''''
-  - Callee:          _Z10vector_expIdLi32EEvPT_PKS0_
-    DebugLoc:        { File: 'dace/dace/codegen/../runtime/include/dace/cpu_vectorizable_math.h', 
-                       Line: 115, Column: 0 }
+  - Callee:          _ZL16uint64_to_doublem
   - String:          ''' inlined into '''
-  - Caller:          _Z63__program_exp_implementations_std_static_veclen_32_cpy_internalP52exp_implementations_std_static_veclen_32_cpy_state_tPdS1_.omp_outlined
-    DebugLoc:        { File: 'src/cpu/exp_implementations_std_static_veclen_32_cpy.cpp', 
-                       Line: 22, Column: 0 }
+  - Caller:          _ZL10dace_exp_dd
+    DebugLoc:        { File: 'dace/dace/codegen/../runtime/include/dace/arith/exp.h', 
+                       Line: 40, Column: 0 }
   - String:          ''''
   - String:          ' with '
   - String:          '(cost='
-  - Cost:            '120'
+  - Cost:            '-15035'
   - String:          ', threshold='
   - Threshold:       '487'
   - String:          ')'
   - String:          ' at callsite '
-  - String:          _Z63__program_exp_implementations_std_static_veclen_32_cpy_internalP52exp_implementations_std_static_veclen_32_cpy_state_tPdS1_.omp_outlined
+  - String:          dace_exp_d
   - String:          ':'
-  - Line:            '13'
+  - Line:            '32'
   - String:          ':'
-  - Column:          '21'
+  - Column:          '10'
   - String:          ';'
+...
+--- !Missed
+Pass:            inline
+Name:            NoDefinition
+DebugLoc:        { File: 'src/cpu/exp_implementations_safe_dace.cpp', Line: 21, 
+                   Column: 13 }
+Function:        _Z48__program_exp_implementations_safe_dace_internalP37exp_implementations_safe_dace_state_tPdS1_.omp_outlined
+Args:
+  - Callee:          __kmpc_for_static_init_4
+  - String:          ' will not be inlined into '
+  - Caller:          _Z48__program_exp_implementations_safe_dace_internalP37exp_implementations_safe_dace_state_tPdS1_.omp_outlined
+    DebugLoc:        { File: 'src/cpu/exp_implementations_safe_dace.cpp', 
+                       Line: 21, Column: 0 }
+  - String:          ' because its definition is unavailable'
+...
+--- !Missed
+Pass:            inline
+Name:            NoDefinition
+DebugLoc:        { File: 'src/cpu/exp_implementations_safe_dace.cpp', Line: 21, 
+                   Column: 37 }
+Function:        _Z48__program_exp_implementations_safe_dace_internalP37exp_implementations_safe_dace_state_tPdS1_.omp_outlined
+Args:
+  - Callee:          __kmpc_for_static_fini
+  - String:          ' will not be inlined into '
+  - Caller:          _Z48__program_exp_implementations_safe_dace_internalP37exp_implementations_safe_dace_state_tPdS1_.omp_outlined
+    DebugLoc:        { File: 'src/cpu/exp_implementations_safe_dace.cpp', 
+                       Line: 21, Column: 0 }
+  - String:          ' because its definition is unavailable'
 ...
 --- !Passed
 Pass:            inline
 Name:            Inlined
-DebugLoc:        { File: 'src/cpu/exp_implementations_std_static_veclen_32_cpy.cpp', 
-                   Line: 44, Column: 21 }
-Function:        _Z63__program_exp_implementations_std_static_veclen_32_cpy_internalP52exp_implementations_std_static_veclen_32_cpy_state_tPdS1_.omp_outlined
+DebugLoc:        { File: 'src/cpu/exp_implementations_safe_dace.cpp', Line: 30, 
+                   Column: 29 }
+Function:        _Z48__program_exp_implementations_safe_dace_internalP37exp_implementations_safe_dace_state_tPdS1_.omp_outlined
 Args:
   - String:          ''''
-  - Callee:          _Z11vector_copyIdLi32EEvPT_PKS0_
-    DebugLoc:        { File: 'dace/dace/codegen/../runtime/include/dace/cpu_vectorizable_math.h', 
-                       Line: 97, Column: 0 }
+  - Callee:          _ZL10dace_exp_dd
   - String:          ''' inlined into '''
-  - Caller:          _Z63__program_exp_implementations_std_static_veclen_32_cpy_internalP52exp_implementations_std_static_veclen_32_cpy_state_tPdS1_.omp_outlined
-    DebugLoc:        { File: 'src/cpu/exp_implementations_std_static_veclen_32_cpy.cpp', 
-                       Line: 22, Column: 0 }
+  - Caller:          _Z48__program_exp_implementations_safe_dace_internalP37exp_implementations_safe_dace_state_tPdS1_.omp_outlined
+    DebugLoc:        { File: 'src/cpu/exp_implementations_safe_dace.cpp', 
+                       Line: 21, Column: 0 }
   - String:          ''''
   - String:          ' with '
   - String:          '(cost='
-  - Cost:            '-35'
+  - Cost:            '-14895'
   - String:          ', threshold='
   - Threshold:       '487'
   - String:          ')'
   - String:          ' at callsite '
-  - String:          _Z63__program_exp_implementations_std_static_veclen_32_cpy_internalP52exp_implementations_std_static_veclen_32_cpy_state_tPdS1_.omp_outlined
+  - String:          _Z48__program_exp_implementations_safe_dace_internalP37exp_implementations_safe_dace_state_tPdS1_.omp_outlined
   - String:          ':'
-  - Line:            '22'
+  - Line:            '9'
   - String:          ':'
-  - Column:          '21'
+  - Column:          '29'
   - String:          ';'
 ...
 --- !Missed
 Pass:            inline
-Name:            TooCostly
-DebugLoc:        { File: 'src/cpu/exp_implementations_std_static_veclen_32_cpy.cpp', 
-                   Line: 49, Column: 17 }
-Function:        _Z63__program_exp_implementations_std_static_veclen_32_cpy_internalP52exp_implementations_std_static_veclen_32_cpy_state_tPdS1_.omp_outlined
-Args:
-  - String:          ''''
-  - Callee:          _ZN4dace6CopyNDIdLi1ELi0EJLi32EEE8ConstDstILi1EJEE4CopyIJEEEvPKdPdRKiDpRKT_
-    DebugLoc:        { File: 'dace/dace/codegen/../runtime/include/dace/copy.h', 
-                       Line: 106, Column: 0 }
-  - String:          ''' not inlined into '''
-  - Caller:          _Z63__program_exp_implementations_std_static_veclen_32_cpy_internalP52exp_implementations_std_static_veclen_32_cpy_state_tPdS1_.omp_outlined
-    DebugLoc:        { File: 'src/cpu/exp_implementations_std_static_veclen_32_cpy.cpp', 
-                       Line: 22, Column: 0 }
-  - String:          ''' because too costly to inline '
-  - String:          '(cost='
-  - Cost:            '440'
-  - String:          ', threshold='
-  - Threshold:       '325'
-  - String:          ')'
-...
---- !Missed
-Pass:            inline
 Name:            NeverInline
-DebugLoc:        { File: 'src/cpu/exp_implementations_std_static_veclen_32_cpy.cpp', 
-                   Line: 28, Column: 17 }
-Function:        _Z63__program_exp_implementations_std_static_veclen_32_cpy_internalP52exp_implementations_std_static_veclen_32_cpy_state_tPdS1_.omp_outlined
+DebugLoc:        { File: 'src/cpu/exp_implementations_safe_dace.cpp', Line: 30, 
+                   Column: 29 }
+Function:        _Z48__program_exp_implementations_safe_dace_internalP37exp_implementations_safe_dace_state_tPdS1_.omp_outlined
 Args:
   - String:          ''''
   - Callee:          __clang_call_terminate
   - String:          ''' not inlined into '''
-  - Caller:          _Z63__program_exp_implementations_std_static_veclen_32_cpy_internalP52exp_implementations_std_static_veclen_32_cpy_state_tPdS1_.omp_outlined
-    DebugLoc:        { File: 'src/cpu/exp_implementations_std_static_veclen_32_cpy.cpp', 
-                       Line: 22, Column: 0 }
+  - Caller:          _Z48__program_exp_implementations_safe_dace_internalP37exp_implementations_safe_dace_state_tPdS1_.omp_outlined
+    DebugLoc:        { File: 'src/cpu/exp_implementations_safe_dace.cpp', 
+                       Line: 21, Column: 0 }
   - String:          ''' because it should never be inlined '
   - String:          '(cost=never)'
   - String:          ': '
@@ -12159,613 +11584,167 @@ Args:
 ...
 --- !Missed
 Pass:            licm
-Name:            LoadWithLoopInvariantAddressInvalidated
-DebugLoc:        { File: 'src/cpu/exp_implementations_std_static_veclen_32_cpy.cpp', 
-                   Line: 23, Column: 18 }
-Function:        _Z63__program_exp_implementations_std_static_veclen_32_cpy_internalP52exp_implementations_std_static_veclen_32_cpy_state_tPdS1_.omp_outlined
+Name:            LoadWithLoopInvariantAddressCondExecuted
+DebugLoc:        { File: 'src/cpu/exp_implementations_safe_dace.cpp', Line: 25, 
+                   Column: 36 }
+Function:        _Z48__program_exp_implementations_safe_dace_internalP37exp_implementations_safe_dace_state_tPdS1_.omp_outlined
 Args:
-  - String:          failed to move load with loop-invariant address because the loop may invalidate its value
+  - String:          failed to hoist load with loop-invariant address because load is conditionally executed
 ...
 --- !Missed
 Pass:            licm
-Name:            LoadWithLoopInvariantAddressInvalidated
-DebugLoc:        { File: 'src/cpu/exp_implementations_std_static_veclen_32_cpy.cpp', 
-                   Line: 29, Column: 17 }
-Function:        _Z63__program_exp_implementations_std_static_veclen_32_cpy_internalP52exp_implementations_std_static_veclen_32_cpy_state_tPdS1_.omp_outlined
+Name:            LoadWithLoopInvariantAddressCondExecuted
+DebugLoc:        { File: 'src/cpu/exp_implementations_safe_dace.cpp', Line: 44, 
+                   Column: 21 }
+Function:        _Z48__program_exp_implementations_safe_dace_internalP37exp_implementations_safe_dace_state_tPdS1_.omp_outlined
 Args:
-  - String:          failed to move load with loop-invariant address because the loop may invalidate its value
-...
---- !Missed
-Pass:            licm
-Name:            LoadWithLoopInvariantAddressInvalidated
-DebugLoc:        { File: 'src/cpu/exp_implementations_std_static_veclen_32_cpy.cpp', 
-                   Line: 50, Column: 27 }
-Function:        _Z63__program_exp_implementations_std_static_veclen_32_cpy_internalP52exp_implementations_std_static_veclen_32_cpy_state_tPdS1_.omp_outlined
-Args:
-  - String:          failed to move load with loop-invariant address because the loop may invalidate its value
-...
---- !Missed
-Pass:            licm
-Name:            LoadWithLoopInvariantAddressInvalidated
-DebugLoc:        { File: 'src/cpu/exp_implementations_std_static_veclen_32_cpy.cpp', 
-                   Line: 29, Column: 17 }
-Function:        _Z63__program_exp_implementations_std_static_veclen_32_cpy_internalP52exp_implementations_std_static_veclen_32_cpy_state_tPdS1_.omp_outlined
-Args:
-  - String:          failed to move load with loop-invariant address because the loop may invalidate its value
+  - String:          failed to hoist load with loop-invariant address because load is conditionally executed
 ...
 --- !Passed
 Pass:            licm
 Name:            Hoisted
-DebugLoc:        { File: 'dace/dace/codegen/../runtime/include/dace/cpu_vectorizable_math.h', 
-                   Line: 100, Column: 16 }
-Function:        _Z63__program_exp_implementations_std_static_veclen_32_cpy_internalP52exp_implementations_std_static_veclen_32_cpy_state_tPdS1_.omp_outlined
+DebugLoc:        { File: 'src/cpu/exp_implementations_safe_dace.cpp', Line: 25, 
+                   Column: 36 }
+Function:        _Z48__program_exp_implementations_safe_dace_internalP37exp_implementations_safe_dace_state_tPdS1_.omp_outlined
 Args:
   - String:          'hoisting '
-  - Inst:            getelementptr
-    DebugLoc:        { File: 'dace/dace/codegen/../runtime/include/dace/cpu_vectorizable_math.h', 
-                       Line: 100, Column: 16 }
+  - Inst:            load
+    DebugLoc:        { File: 'src/cpu/exp_implementations_safe_dace.cpp', 
+                       Line: 25, Column: 36 }
 ...
 --- !Passed
 Pass:            licm
 Name:            Hoisted
-DebugLoc:        { File: 'dace/dace/codegen/../runtime/include/dace/cpu_vectorizable_math.h', 
-                   Line: 100, Column: 16 }
-Function:        _Z63__program_exp_implementations_std_static_veclen_32_cpy_internalP52exp_implementations_std_static_veclen_32_cpy_state_tPdS1_.omp_outlined
+DebugLoc:        { File: 'src/cpu/exp_implementations_safe_dace.cpp', Line: 44, 
+                   Column: 21 }
+Function:        _Z48__program_exp_implementations_safe_dace_internalP37exp_implementations_safe_dace_state_tPdS1_.omp_outlined
 Args:
   - String:          'hoisting '
-  - Inst:            getelementptr
-    DebugLoc:        { File: 'dace/dace/codegen/../runtime/include/dace/cpu_vectorizable_math.h', 
-                       Line: 100, Column: 16 }
-...
---- !Passed
-Pass:            licm
-Name:            Hoisted
-DebugLoc:        { File: 'dace/dace/codegen/../runtime/include/dace/cpu_vectorizable_math.h', 
-                   Line: 100, Column: 16 }
-Function:        _Z63__program_exp_implementations_std_static_veclen_32_cpy_internalP52exp_implementations_std_static_veclen_32_cpy_state_tPdS1_.omp_outlined
-Args:
-  - String:          'hoisting '
-  - Inst:            getelementptr
-    DebugLoc:        { File: 'dace/dace/codegen/../runtime/include/dace/cpu_vectorizable_math.h', 
-                       Line: 100, Column: 16 }
-...
---- !Passed
-Pass:            licm
-Name:            Hoisted
-DebugLoc:        { File: 'dace/dace/codegen/../runtime/include/dace/cpu_vectorizable_math.h', 
-                   Line: 100, Column: 16 }
-Function:        _Z63__program_exp_implementations_std_static_veclen_32_cpy_internalP52exp_implementations_std_static_veclen_32_cpy_state_tPdS1_.omp_outlined
-Args:
-  - String:          'hoisting '
-  - Inst:            getelementptr
-    DebugLoc:        { File: 'dace/dace/codegen/../runtime/include/dace/cpu_vectorizable_math.h', 
-                       Line: 100, Column: 16 }
-...
---- !Passed
-Pass:            licm
-Name:            Hoisted
-DebugLoc:        { File: 'dace/dace/codegen/../runtime/include/dace/cpu_vectorizable_math.h', 
-                   Line: 100, Column: 16 }
-Function:        _Z63__program_exp_implementations_std_static_veclen_32_cpy_internalP52exp_implementations_std_static_veclen_32_cpy_state_tPdS1_.omp_outlined
-Args:
-  - String:          'hoisting '
-  - Inst:            getelementptr
-    DebugLoc:        { File: 'dace/dace/codegen/../runtime/include/dace/cpu_vectorizable_math.h', 
-                       Line: 100, Column: 16 }
-...
---- !Passed
-Pass:            licm
-Name:            Hoisted
-DebugLoc:        { File: 'dace/dace/codegen/../runtime/include/dace/cpu_vectorizable_math.h', 
-                   Line: 100, Column: 16 }
-Function:        _Z63__program_exp_implementations_std_static_veclen_32_cpy_internalP52exp_implementations_std_static_veclen_32_cpy_state_tPdS1_.omp_outlined
-Args:
-  - String:          'hoisting '
-  - Inst:            getelementptr
-    DebugLoc:        { File: 'dace/dace/codegen/../runtime/include/dace/cpu_vectorizable_math.h', 
-                       Line: 100, Column: 16 }
-...
---- !Passed
-Pass:            licm
-Name:            Hoisted
-DebugLoc:        { File: 'dace/dace/codegen/../runtime/include/dace/cpu_vectorizable_math.h', 
-                   Line: 100, Column: 16 }
-Function:        _Z63__program_exp_implementations_std_static_veclen_32_cpy_internalP52exp_implementations_std_static_veclen_32_cpy_state_tPdS1_.omp_outlined
-Args:
-  - String:          'hoisting '
-  - Inst:            getelementptr
-    DebugLoc:        { File: 'dace/dace/codegen/../runtime/include/dace/cpu_vectorizable_math.h', 
-                       Line: 100, Column: 16 }
-...
---- !Passed
-Pass:            licm
-Name:            Hoisted
-DebugLoc:        { File: 'dace/dace/codegen/../runtime/include/dace/cpu_vectorizable_math.h', 
-                   Line: 100, Column: 16 }
-Function:        _Z63__program_exp_implementations_std_static_veclen_32_cpy_internalP52exp_implementations_std_static_veclen_32_cpy_state_tPdS1_.omp_outlined
-Args:
-  - String:          'hoisting '
-  - Inst:            getelementptr
-    DebugLoc:        { File: 'dace/dace/codegen/../runtime/include/dace/cpu_vectorizable_math.h', 
-                       Line: 100, Column: 16 }
-...
---- !Passed
-Pass:            licm
-Name:            Hoisted
-DebugLoc:        { File: 'dace/dace/codegen/../runtime/include/dace/cpu_vectorizable_math.h', 
-                   Line: 100, Column: 16 }
-Function:        _Z63__program_exp_implementations_std_static_veclen_32_cpy_internalP52exp_implementations_std_static_veclen_32_cpy_state_tPdS1_.omp_outlined
-Args:
-  - String:          'hoisting '
-  - Inst:            getelementptr
-    DebugLoc:        { File: 'dace/dace/codegen/../runtime/include/dace/cpu_vectorizable_math.h', 
-                       Line: 100, Column: 16 }
-...
---- !Passed
-Pass:            licm
-Name:            Hoisted
-DebugLoc:        { File: 'dace/dace/codegen/../runtime/include/dace/cpu_vectorizable_math.h', 
-                   Line: 100, Column: 16 }
-Function:        _Z63__program_exp_implementations_std_static_veclen_32_cpy_internalP52exp_implementations_std_static_veclen_32_cpy_state_tPdS1_.omp_outlined
-Args:
-  - String:          'hoisting '
-  - Inst:            getelementptr
-    DebugLoc:        { File: 'dace/dace/codegen/../runtime/include/dace/cpu_vectorizable_math.h', 
-                       Line: 100, Column: 16 }
-...
---- !Passed
-Pass:            licm
-Name:            Hoisted
-DebugLoc:        { File: 'dace/dace/codegen/../runtime/include/dace/cpu_vectorizable_math.h', 
-                   Line: 100, Column: 16 }
-Function:        _Z63__program_exp_implementations_std_static_veclen_32_cpy_internalP52exp_implementations_std_static_veclen_32_cpy_state_tPdS1_.omp_outlined
-Args:
-  - String:          'hoisting '
-  - Inst:            getelementptr
-    DebugLoc:        { File: 'dace/dace/codegen/../runtime/include/dace/cpu_vectorizable_math.h', 
-                       Line: 100, Column: 16 }
-...
---- !Passed
-Pass:            licm
-Name:            Hoisted
-DebugLoc:        { File: 'dace/dace/codegen/../runtime/include/dace/cpu_vectorizable_math.h', 
-                   Line: 100, Column: 16 }
-Function:        _Z63__program_exp_implementations_std_static_veclen_32_cpy_internalP52exp_implementations_std_static_veclen_32_cpy_state_tPdS1_.omp_outlined
-Args:
-  - String:          'hoisting '
-  - Inst:            getelementptr
-    DebugLoc:        { File: 'dace/dace/codegen/../runtime/include/dace/cpu_vectorizable_math.h', 
-                       Line: 100, Column: 16 }
-...
---- !Passed
-Pass:            licm
-Name:            Hoisted
-DebugLoc:        { File: 'dace/dace/codegen/../runtime/include/dace/cpu_vectorizable_math.h', 
-                   Line: 100, Column: 16 }
-Function:        _Z63__program_exp_implementations_std_static_veclen_32_cpy_internalP52exp_implementations_std_static_veclen_32_cpy_state_tPdS1_.omp_outlined
-Args:
-  - String:          'hoisting '
-  - Inst:            getelementptr
-    DebugLoc:        { File: 'dace/dace/codegen/../runtime/include/dace/cpu_vectorizable_math.h', 
-                       Line: 100, Column: 16 }
-...
---- !Passed
-Pass:            licm
-Name:            Hoisted
-DebugLoc:        { File: 'dace/dace/codegen/../runtime/include/dace/cpu_vectorizable_math.h', 
-                   Line: 100, Column: 16 }
-Function:        _Z63__program_exp_implementations_std_static_veclen_32_cpy_internalP52exp_implementations_std_static_veclen_32_cpy_state_tPdS1_.omp_outlined
-Args:
-  - String:          'hoisting '
-  - Inst:            getelementptr
-    DebugLoc:        { File: 'dace/dace/codegen/../runtime/include/dace/cpu_vectorizable_math.h', 
-                       Line: 100, Column: 16 }
-...
---- !Passed
-Pass:            licm
-Name:            Hoisted
-DebugLoc:        { File: 'dace/dace/codegen/../runtime/include/dace/cpu_vectorizable_math.h', 
-                   Line: 100, Column: 16 }
-Function:        _Z63__program_exp_implementations_std_static_veclen_32_cpy_internalP52exp_implementations_std_static_veclen_32_cpy_state_tPdS1_.omp_outlined
-Args:
-  - String:          'hoisting '
-  - Inst:            getelementptr
-    DebugLoc:        { File: 'dace/dace/codegen/../runtime/include/dace/cpu_vectorizable_math.h', 
-                       Line: 100, Column: 16 }
-...
---- !Passed
-Pass:            licm
-Name:            Hoisted
-DebugLoc:        { File: 'dace/dace/codegen/../runtime/include/dace/cpu_vectorizable_math.h', 
-                   Line: 100, Column: 16 }
-Function:        _Z63__program_exp_implementations_std_static_veclen_32_cpy_internalP52exp_implementations_std_static_veclen_32_cpy_state_tPdS1_.omp_outlined
-Args:
-  - String:          'hoisting '
-  - Inst:            getelementptr
-    DebugLoc:        { File: 'dace/dace/codegen/../runtime/include/dace/cpu_vectorizable_math.h', 
-                       Line: 100, Column: 16 }
-...
---- !Passed
-Pass:            licm
-Name:            Hoisted
-DebugLoc:        { File: 'dace/dace/codegen/../runtime/include/dace/cpu_vectorizable_math.h', 
-                   Line: 100, Column: 16 }
-Function:        _Z63__program_exp_implementations_std_static_veclen_32_cpy_internalP52exp_implementations_std_static_veclen_32_cpy_state_tPdS1_.omp_outlined
-Args:
-  - String:          'hoisting '
-  - Inst:            getelementptr
-    DebugLoc:        { File: 'dace/dace/codegen/../runtime/include/dace/cpu_vectorizable_math.h', 
-                       Line: 100, Column: 16 }
-...
---- !Passed
-Pass:            licm
-Name:            Hoisted
-DebugLoc:        { File: 'dace/dace/codegen/../runtime/include/dace/cpu_vectorizable_math.h', 
-                   Line: 100, Column: 16 }
-Function:        _Z63__program_exp_implementations_std_static_veclen_32_cpy_internalP52exp_implementations_std_static_veclen_32_cpy_state_tPdS1_.omp_outlined
-Args:
-  - String:          'hoisting '
-  - Inst:            getelementptr
-    DebugLoc:        { File: 'dace/dace/codegen/../runtime/include/dace/cpu_vectorizable_math.h', 
-                       Line: 100, Column: 16 }
-...
---- !Passed
-Pass:            licm
-Name:            Hoisted
-DebugLoc:        { File: 'dace/dace/codegen/../runtime/include/dace/cpu_vectorizable_math.h', 
-                   Line: 100, Column: 16 }
-Function:        _Z63__program_exp_implementations_std_static_veclen_32_cpy_internalP52exp_implementations_std_static_veclen_32_cpy_state_tPdS1_.omp_outlined
-Args:
-  - String:          'hoisting '
-  - Inst:            getelementptr
-    DebugLoc:        { File: 'dace/dace/codegen/../runtime/include/dace/cpu_vectorizable_math.h', 
-                       Line: 100, Column: 16 }
-...
---- !Passed
-Pass:            licm
-Name:            Hoisted
-DebugLoc:        { File: 'dace/dace/codegen/../runtime/include/dace/cpu_vectorizable_math.h', 
-                   Line: 100, Column: 16 }
-Function:        _Z63__program_exp_implementations_std_static_veclen_32_cpy_internalP52exp_implementations_std_static_veclen_32_cpy_state_tPdS1_.omp_outlined
-Args:
-  - String:          'hoisting '
-  - Inst:            getelementptr
-    DebugLoc:        { File: 'dace/dace/codegen/../runtime/include/dace/cpu_vectorizable_math.h', 
-                       Line: 100, Column: 16 }
-...
---- !Passed
-Pass:            licm
-Name:            Hoisted
-DebugLoc:        { File: 'dace/dace/codegen/../runtime/include/dace/cpu_vectorizable_math.h', 
-                   Line: 100, Column: 16 }
-Function:        _Z63__program_exp_implementations_std_static_veclen_32_cpy_internalP52exp_implementations_std_static_veclen_32_cpy_state_tPdS1_.omp_outlined
-Args:
-  - String:          'hoisting '
-  - Inst:            getelementptr
-    DebugLoc:        { File: 'dace/dace/codegen/../runtime/include/dace/cpu_vectorizable_math.h', 
-                       Line: 100, Column: 16 }
-...
---- !Passed
-Pass:            licm
-Name:            Hoisted
-DebugLoc:        { File: 'dace/dace/codegen/../runtime/include/dace/cpu_vectorizable_math.h', 
-                   Line: 100, Column: 16 }
-Function:        _Z63__program_exp_implementations_std_static_veclen_32_cpy_internalP52exp_implementations_std_static_veclen_32_cpy_state_tPdS1_.omp_outlined
-Args:
-  - String:          'hoisting '
-  - Inst:            getelementptr
-    DebugLoc:        { File: 'dace/dace/codegen/../runtime/include/dace/cpu_vectorizable_math.h', 
-                       Line: 100, Column: 16 }
-...
---- !Passed
-Pass:            licm
-Name:            Hoisted
-DebugLoc:        { File: 'dace/dace/codegen/../runtime/include/dace/cpu_vectorizable_math.h', 
-                   Line: 100, Column: 16 }
-Function:        _Z63__program_exp_implementations_std_static_veclen_32_cpy_internalP52exp_implementations_std_static_veclen_32_cpy_state_tPdS1_.omp_outlined
-Args:
-  - String:          'hoisting '
-  - Inst:            getelementptr
-    DebugLoc:        { File: 'dace/dace/codegen/../runtime/include/dace/cpu_vectorizable_math.h', 
-                       Line: 100, Column: 16 }
-...
---- !Passed
-Pass:            licm
-Name:            Hoisted
-DebugLoc:        { File: 'dace/dace/codegen/../runtime/include/dace/cpu_vectorizable_math.h', 
-                   Line: 100, Column: 16 }
-Function:        _Z63__program_exp_implementations_std_static_veclen_32_cpy_internalP52exp_implementations_std_static_veclen_32_cpy_state_tPdS1_.omp_outlined
-Args:
-  - String:          'hoisting '
-  - Inst:            getelementptr
-    DebugLoc:        { File: 'dace/dace/codegen/../runtime/include/dace/cpu_vectorizable_math.h', 
-                       Line: 100, Column: 16 }
-...
---- !Passed
-Pass:            licm
-Name:            Hoisted
-DebugLoc:        { File: 'dace/dace/codegen/../runtime/include/dace/cpu_vectorizable_math.h', 
-                   Line: 100, Column: 16 }
-Function:        _Z63__program_exp_implementations_std_static_veclen_32_cpy_internalP52exp_implementations_std_static_veclen_32_cpy_state_tPdS1_.omp_outlined
-Args:
-  - String:          'hoisting '
-  - Inst:            getelementptr
-    DebugLoc:        { File: 'dace/dace/codegen/../runtime/include/dace/cpu_vectorizable_math.h', 
-                       Line: 100, Column: 16 }
-...
---- !Passed
-Pass:            licm
-Name:            Hoisted
-DebugLoc:        { File: 'dace/dace/codegen/../runtime/include/dace/cpu_vectorizable_math.h', 
-                   Line: 100, Column: 16 }
-Function:        _Z63__program_exp_implementations_std_static_veclen_32_cpy_internalP52exp_implementations_std_static_veclen_32_cpy_state_tPdS1_.omp_outlined
-Args:
-  - String:          'hoisting '
-  - Inst:            getelementptr
-    DebugLoc:        { File: 'dace/dace/codegen/../runtime/include/dace/cpu_vectorizable_math.h', 
-                       Line: 100, Column: 16 }
-...
---- !Passed
-Pass:            licm
-Name:            Hoisted
-DebugLoc:        { File: 'dace/dace/codegen/../runtime/include/dace/cpu_vectorizable_math.h', 
-                   Line: 100, Column: 16 }
-Function:        _Z63__program_exp_implementations_std_static_veclen_32_cpy_internalP52exp_implementations_std_static_veclen_32_cpy_state_tPdS1_.omp_outlined
-Args:
-  - String:          'hoisting '
-  - Inst:            getelementptr
-    DebugLoc:        { File: 'dace/dace/codegen/../runtime/include/dace/cpu_vectorizable_math.h', 
-                       Line: 100, Column: 16 }
-...
---- !Passed
-Pass:            licm
-Name:            Hoisted
-DebugLoc:        { File: 'dace/dace/codegen/../runtime/include/dace/cpu_vectorizable_math.h', 
-                   Line: 100, Column: 16 }
-Function:        _Z63__program_exp_implementations_std_static_veclen_32_cpy_internalP52exp_implementations_std_static_veclen_32_cpy_state_tPdS1_.omp_outlined
-Args:
-  - String:          'hoisting '
-  - Inst:            getelementptr
-    DebugLoc:        { File: 'dace/dace/codegen/../runtime/include/dace/cpu_vectorizable_math.h', 
-                       Line: 100, Column: 16 }
-...
---- !Passed
-Pass:            licm
-Name:            Hoisted
-DebugLoc:        { File: 'dace/dace/codegen/../runtime/include/dace/cpu_vectorizable_math.h', 
-                   Line: 100, Column: 16 }
-Function:        _Z63__program_exp_implementations_std_static_veclen_32_cpy_internalP52exp_implementations_std_static_veclen_32_cpy_state_tPdS1_.omp_outlined
-Args:
-  - String:          'hoisting '
-  - Inst:            getelementptr
-    DebugLoc:        { File: 'dace/dace/codegen/../runtime/include/dace/cpu_vectorizable_math.h', 
-                       Line: 100, Column: 16 }
-...
---- !Passed
-Pass:            licm
-Name:            Hoisted
-DebugLoc:        { File: 'dace/dace/codegen/../runtime/include/dace/cpu_vectorizable_math.h', 
-                   Line: 100, Column: 16 }
-Function:        _Z63__program_exp_implementations_std_static_veclen_32_cpy_internalP52exp_implementations_std_static_veclen_32_cpy_state_tPdS1_.omp_outlined
-Args:
-  - String:          'hoisting '
-  - Inst:            getelementptr
-    DebugLoc:        { File: 'dace/dace/codegen/../runtime/include/dace/cpu_vectorizable_math.h', 
-                       Line: 100, Column: 16 }
-...
---- !Passed
-Pass:            licm
-Name:            Hoisted
-DebugLoc:        { File: 'dace/dace/codegen/../runtime/include/dace/cpu_vectorizable_math.h', 
-                   Line: 100, Column: 16 }
-Function:        _Z63__program_exp_implementations_std_static_veclen_32_cpy_internalP52exp_implementations_std_static_veclen_32_cpy_state_tPdS1_.omp_outlined
-Args:
-  - String:          'hoisting '
-  - Inst:            getelementptr
-    DebugLoc:        { File: 'dace/dace/codegen/../runtime/include/dace/cpu_vectorizable_math.h', 
-                       Line: 100, Column: 16 }
-...
---- !Missed
-Pass:            licm
-Name:            LoadWithLoopInvariantAddressInvalidated
-DebugLoc:        { File: 'src/cpu/exp_implementations_std_static_veclen_32_cpy.cpp', 
-                   Line: 50, Column: 27 }
-Function:        _Z63__program_exp_implementations_std_static_veclen_32_cpy_internalP52exp_implementations_std_static_veclen_32_cpy_state_tPdS1_.omp_outlined
-Args:
-  - String:          failed to move load with loop-invariant address because the loop may invalidate its value
-...
---- !Missed
-Pass:            licm
-Name:            LoadWithLoopInvariantAddressInvalidated
-DebugLoc:        { File: 'src/cpu/exp_implementations_std_static_veclen_32_cpy.cpp', 
-                   Line: 23, Column: 18 }
-Function:        _Z63__program_exp_implementations_std_static_veclen_32_cpy_internalP52exp_implementations_std_static_veclen_32_cpy_state_tPdS1_.omp_outlined
-Args:
-  - String:          failed to move load with loop-invariant address because the loop may invalidate its value
-...
---- !Passed
-Pass:            TTI
-Name:            DontUnroll
-DebugLoc:        { File: 'src/cpu/exp_implementations_std_static_veclen_32_cpy.cpp', 
-                   Line: 22, Column: 13 }
-Function:        _Z63__program_exp_implementations_std_static_veclen_32_cpy_internalP52exp_implementations_std_static_veclen_32_cpy_state_tPdS1_.omp_outlined
-Args:
-  - String:          'advising against unrolling the loop because it contains a '
-  - Call:            invoke
-    DebugLoc:        { File: 'src/cpu/exp_implementations_std_static_veclen_32_cpy.cpp', 
-                       Line: 49, Column: 17 }
+  - Inst:            load
+    DebugLoc:        { File: 'src/cpu/exp_implementations_safe_dace.cpp', 
+                       Line: 44, Column: 21 }
 ...
 --- !Missed
 Pass:            gvn
 Name:            LoadClobbered
-DebugLoc:        { File: 'src/cpu/exp_implementations_std_static_veclen_32_cpy.cpp', 
-                   Line: 23, Column: 18 }
-Function:        _Z63__program_exp_implementations_std_static_veclen_32_cpy_internalP52exp_implementations_std_static_veclen_32_cpy_state_tPdS1_.omp_outlined
+DebugLoc:        { File: 'src/cpu/exp_implementations_safe_dace.cpp', Line: 22, 
+                   Column: 18 }
+Function:        _Z48__program_exp_implementations_safe_dace_internalP37exp_implementations_safe_dace_state_tPdS1_.omp_outlined
 Args:
   - String:          'load of type '
   - Type:            i32
   - String:          ' not eliminated'
   - String:          ' in favor of '
   - OtherAccess:     store
-    DebugLoc:        { File: 'src/cpu/exp_implementations_std_static_veclen_32_cpy.cpp', 
-                       Line: 23, Column: 18 }
+    DebugLoc:        { File: 'src/cpu/exp_implementations_safe_dace.cpp', 
+                       Line: 22, Column: 18 }
   - String:          ' because it is clobbered by '
   - ClobberedBy:     call
-    DebugLoc:        { File: 'src/cpu/exp_implementations_std_static_veclen_32_cpy.cpp', 
-                       Line: 22, Column: 13 }
+    DebugLoc:        { File: 'src/cpu/exp_implementations_safe_dace.cpp', 
+                       Line: 21, Column: 13 }
 ...
 --- !Missed
 Pass:            gvn
 Name:            LoadClobbered
-DebugLoc:        { File: 'src/cpu/exp_implementations_std_static_veclen_32_cpy.cpp', 
-                   Line: 23, Column: 18 }
-Function:        _Z63__program_exp_implementations_std_static_veclen_32_cpy_internalP52exp_implementations_std_static_veclen_32_cpy_state_tPdS1_.omp_outlined
+DebugLoc:        { File: 'src/cpu/exp_implementations_safe_dace.cpp', Line: 22, 
+                   Column: 18 }
+Function:        _Z48__program_exp_implementations_safe_dace_internalP37exp_implementations_safe_dace_state_tPdS1_.omp_outlined
 Args:
   - String:          'load of type '
   - Type:            i32
   - String:          ' not eliminated'
   - String:          ' in favor of '
   - OtherAccess:     store
-    DebugLoc:        { File: 'src/cpu/exp_implementations_std_static_veclen_32_cpy.cpp', 
-                       Line: 23, Column: 18 }
+    DebugLoc:        { File: 'src/cpu/exp_implementations_safe_dace.cpp', 
+                       Line: 22, Column: 18 }
   - String:          ' because it is clobbered by '
   - ClobberedBy:     call
-    DebugLoc:        { File: 'src/cpu/exp_implementations_std_static_veclen_32_cpy.cpp', 
-                       Line: 22, Column: 13 }
+    DebugLoc:        { File: 'src/cpu/exp_implementations_safe_dace.cpp', 
+                       Line: 21, Column: 13 }
 ...
 --- !Missed
 Pass:            gvn
 Name:            LoadClobbered
-DebugLoc:        { File: 'src/cpu/exp_implementations_std_static_veclen_32_cpy.cpp', 
-                   Line: 29, Column: 17 }
-Function:        _Z63__program_exp_implementations_std_static_veclen_32_cpy_internalP52exp_implementations_std_static_veclen_32_cpy_state_tPdS1_.omp_outlined
-Args:
-  - String:          'load of type '
-  - Type:            ptr
-  - String:          ' not eliminated'
-  - String:          ' because it is clobbered by '
-  - ClobberedBy:     invoke
-    DebugLoc:        { File: 'src/cpu/exp_implementations_std_static_veclen_32_cpy.cpp', 
-                       Line: 49, Column: 17 }
-...
---- !Missed
-Pass:            gvn
-Name:            LoadClobbered
-DebugLoc:        { File: 'src/cpu/exp_implementations_std_static_veclen_32_cpy.cpp', 
-                   Line: 29, Column: 17 }
-Function:        _Z63__program_exp_implementations_std_static_veclen_32_cpy_internalP52exp_implementations_std_static_veclen_32_cpy_state_tPdS1_.omp_outlined
+Function:        _Z48__program_exp_implementations_safe_dace_internalP37exp_implementations_safe_dace_state_tPdS1_.omp_outlined
 Args:
   - String:          'load of type '
   - Type:            ptr
   - String:          ' not eliminated'
   - String:          ' because it is clobbered by '
   - ClobberedBy:     call
-    DebugLoc:        { File: 'src/cpu/exp_implementations_std_static_veclen_32_cpy.cpp', 
-                       Line: 22, Column: 13 }
+    DebugLoc:        { File: 'src/cpu/exp_implementations_safe_dace.cpp', 
+                       Line: 21, Column: 13 }
 ...
 --- !Missed
 Pass:            gvn
 Name:            LoadClobbered
-DebugLoc:        { File: 'src/cpu/exp_implementations_std_static_veclen_32_cpy.cpp', 
-                   Line: 23, Column: 18 }
-Function:        _Z63__program_exp_implementations_std_static_veclen_32_cpy_internalP52exp_implementations_std_static_veclen_32_cpy_state_tPdS1_.omp_outlined
+Function:        _Z48__program_exp_implementations_safe_dace_internalP37exp_implementations_safe_dace_state_tPdS1_.omp_outlined
 Args:
   - String:          'load of type '
-  - Type:            i32
+  - Type:            ptr
   - String:          ' not eliminated'
-  - String:          ' in favor of '
-  - OtherAccess:     store
-    DebugLoc:        { File: 'src/cpu/exp_implementations_std_static_veclen_32_cpy.cpp', 
-                       Line: 23, Column: 18 }
   - String:          ' because it is clobbered by '
-  - ClobberedBy:     invoke
-    DebugLoc:        { File: 'src/cpu/exp_implementations_std_static_veclen_32_cpy.cpp', 
-                       Line: 49, Column: 17 }
-...
---- !Missed
-Pass:            licm
-Name:            LoadWithLoopInvariantAddressInvalidated
-DebugLoc:        { File: 'src/cpu/exp_implementations_std_static_veclen_32_cpy.cpp', 
-                   Line: 29, Column: 17 }
-Function:        _Z63__program_exp_implementations_std_static_veclen_32_cpy_internalP52exp_implementations_std_static_veclen_32_cpy_state_tPdS1_.omp_outlined
-Args:
-  - String:          failed to move load with loop-invariant address because the loop may invalidate its value
-...
---- !Missed
-Pass:            licm
-Name:            LoadWithLoopInvariantAddressInvalidated
-DebugLoc:        { File: 'src/cpu/exp_implementations_std_static_veclen_32_cpy.cpp', 
-                   Line: 50, Column: 27 }
-Function:        _Z63__program_exp_implementations_std_static_veclen_32_cpy_internalP52exp_implementations_std_static_veclen_32_cpy_state_tPdS1_.omp_outlined
-Args:
-  - String:          failed to move load with loop-invariant address because the loop may invalidate its value
-...
---- !Missed
-Pass:            licm
-Name:            LoadWithLoopInvariantAddressInvalidated
-DebugLoc:        { File: 'src/cpu/exp_implementations_std_static_veclen_32_cpy.cpp', 
-                   Line: 23, Column: 18 }
-Function:        _Z63__program_exp_implementations_std_static_veclen_32_cpy_internalP52exp_implementations_std_static_veclen_32_cpy_state_tPdS1_.omp_outlined
-Args:
-  - String:          failed to move load with loop-invariant address because the loop may invalidate its value
+  - ClobberedBy:     call
+    DebugLoc:        { File: 'src/cpu/exp_implementations_safe_dace.cpp', 
+                       Line: 21, Column: 13 }
 ...
 --- !Missed
 Pass:            inline
 Name:            NoDefinition
-DebugLoc:        { File: 'src/cpu/exp_implementations_std_static_veclen_32_cpy.cpp', 
-                   Line: 17, Column: 28 }
-Function:        _Z63__program_exp_implementations_std_static_veclen_32_cpy_internalP52exp_implementations_std_static_veclen_32_cpy_state_tPdS1_
+DebugLoc:        { File: 'src/cpu/exp_implementations_safe_dace.cpp', Line: 16, 
+                   Column: 28 }
+Function:        _Z48__program_exp_implementations_safe_dace_internalP37exp_implementations_safe_dace_state_tPdS1_
 Args:
   - Callee:          _ZNSt6chrono3_V212system_clock3nowEv
   - String:          ' will not be inlined into '
-  - Caller:          _Z63__program_exp_implementations_std_static_veclen_32_cpy_internalP52exp_implementations_std_static_veclen_32_cpy_state_tPdS1_
-    DebugLoc:        { File: 'src/cpu/exp_implementations_std_static_veclen_32_cpy.cpp', 
-                       Line: 15, Column: 0 }
+  - Caller:          _Z48__program_exp_implementations_safe_dace_internalP37exp_implementations_safe_dace_state_tPdS1_
+    DebugLoc:        { File: 'src/cpu/exp_implementations_safe_dace.cpp', 
+                       Line: 14, Column: 0 }
   - String:          ' because its definition is unavailable'
 ...
 --- !Missed
 Pass:            inline
 Name:            NoDefinition
-DebugLoc:        { File: 'src/cpu/exp_implementations_std_static_veclen_32_cpy.cpp', 
-                   Line: 22, Column: 13 }
-Function:        _Z63__program_exp_implementations_std_static_veclen_32_cpy_internalP52exp_implementations_std_static_veclen_32_cpy_state_tPdS1_
+DebugLoc:        { File: 'src/cpu/exp_implementations_safe_dace.cpp', Line: 21, 
+                   Column: 13 }
+Function:        _Z48__program_exp_implementations_safe_dace_internalP37exp_implementations_safe_dace_state_tPdS1_
 Args:
   - Callee:          __kmpc_fork_call
   - String:          ' will not be inlined into '
-  - Caller:          _Z63__program_exp_implementations_std_static_veclen_32_cpy_internalP52exp_implementations_std_static_veclen_32_cpy_state_tPdS1_
-    DebugLoc:        { File: 'src/cpu/exp_implementations_std_static_veclen_32_cpy.cpp', 
-                       Line: 15, Column: 0 }
+  - Caller:          _Z48__program_exp_implementations_safe_dace_internalP37exp_implementations_safe_dace_state_tPdS1_
+    DebugLoc:        { File: 'src/cpu/exp_implementations_safe_dace.cpp', 
+                       Line: 14, Column: 0 }
   - String:          ' because its definition is unavailable'
 ...
 --- !Missed
 Pass:            inline
 Name:            NoDefinition
-DebugLoc:        { File: 'src/cpu/exp_implementations_std_static_veclen_32_cpy.cpp', 
-                   Line: 55, Column: 26 }
-Function:        _Z63__program_exp_implementations_std_static_veclen_32_cpy_internalP52exp_implementations_std_static_veclen_32_cpy_state_tPdS1_
+DebugLoc:        { File: 'src/cpu/exp_implementations_safe_dace.cpp', Line: 50, 
+                   Column: 26 }
+Function:        _Z48__program_exp_implementations_safe_dace_internalP37exp_implementations_safe_dace_state_tPdS1_
 Args:
   - Callee:          _ZNSt6chrono3_V212system_clock3nowEv
   - String:          ' will not be inlined into '
-  - Caller:          _Z63__program_exp_implementations_std_static_veclen_32_cpy_internalP52exp_implementations_std_static_veclen_32_cpy_state_tPdS1_
-    DebugLoc:        { File: 'src/cpu/exp_implementations_std_static_veclen_32_cpy.cpp', 
-                       Line: 15, Column: 0 }
+  - Caller:          _Z48__program_exp_implementations_safe_dace_internalP37exp_implementations_safe_dace_state_tPdS1_
+    DebugLoc:        { File: 'src/cpu/exp_implementations_safe_dace.cpp', 
+                       Line: 14, Column: 0 }
   - String:          ' because its definition is unavailable'
 ...
 --- !Missed
 Pass:            inline
 Name:            TooCostly
-DebugLoc:        { File: 'src/cpu/exp_implementations_std_static_veclen_32_cpy.cpp', 
-                   Line: 16, Column: 21 }
-Function:        _Z63__program_exp_implementations_std_static_veclen_32_cpy_internalP52exp_implementations_std_static_veclen_32_cpy_state_tPdS1_
+DebugLoc:        { File: 'src/cpu/exp_implementations_safe_dace.cpp', Line: 15, 
+                   Column: 21 }
+Function:        _Z48__program_exp_implementations_safe_dace_internalP37exp_implementations_safe_dace_state_tPdS1_
 Args:
   - String:          ''''
   - Callee:          _ZN4dace4perf6Report5resetEv
     DebugLoc:        { File: 'dace/dace/codegen/../runtime/include/dace/perf/reporting.h', 
                        Line: 60, Column: 0 }
   - String:          ''' not inlined into '''
-  - Caller:          _Z63__program_exp_implementations_std_static_veclen_32_cpy_internalP52exp_implementations_std_static_veclen_32_cpy_state_tPdS1_
-    DebugLoc:        { File: 'src/cpu/exp_implementations_std_static_veclen_32_cpy.cpp', 
-                       Line: 15, Column: 0 }
+  - Caller:          _Z48__program_exp_implementations_safe_dace_internalP37exp_implementations_safe_dace_state_tPdS1_
+    DebugLoc:        { File: 'src/cpu/exp_implementations_safe_dace.cpp', 
+                       Line: 14, Column: 0 }
   - String:          ''' because too costly to inline '
   - String:          '(cost='
   - Cost:            '270'
@@ -12776,18 +11755,18 @@ Args:
 --- !Passed
 Pass:            inline
 Name:            Inlined
-DebugLoc:        { File: 'src/cpu/exp_implementations_std_static_veclen_32_cpy.cpp', 
-                   Line: 56, Column: 113 }
-Function:        _Z63__program_exp_implementations_std_static_veclen_32_cpy_internalP52exp_implementations_std_static_veclen_32_cpy_state_tPdS1_
+DebugLoc:        { File: 'src/cpu/exp_implementations_safe_dace.cpp', Line: 51, 
+                   Column: 113 }
+Function:        _Z48__program_exp_implementations_safe_dace_internalP37exp_implementations_safe_dace_state_tPdS1_
 Args:
   - String:          ''''
   - Callee:          _ZNKSt6chrono10time_pointINS_3_V212system_clockENS_8durationIlSt5ratioILl1ELl1000000000EEEEE16time_since_epochEv
     DebugLoc:        { File: '/usr/lib/gcc/x86_64-linux-gnu/15/../../../../include/c++/15/bits/chrono.h', 
                        Line: 954, Column: 0 }
   - String:          ''' inlined into '''
-  - Caller:          _Z63__program_exp_implementations_std_static_veclen_32_cpy_internalP52exp_implementations_std_static_veclen_32_cpy_state_tPdS1_
-    DebugLoc:        { File: 'src/cpu/exp_implementations_std_static_veclen_32_cpy.cpp', 
-                       Line: 15, Column: 0 }
+  - Caller:          _Z48__program_exp_implementations_safe_dace_internalP37exp_implementations_safe_dace_state_tPdS1_
+    DebugLoc:        { File: 'src/cpu/exp_implementations_safe_dace.cpp', 
+                       Line: 14, Column: 0 }
   - String:          ''''
   - String:          ' with '
   - String:          '(cost='
@@ -12796,9 +11775,9 @@ Args:
   - Threshold:       '375'
   - String:          ')'
   - String:          ' at callsite '
-  - String:          __program_exp_implementations_std_static_veclen_32_cpy_internal
+  - String:          __program_exp_implementations_safe_dace_internal
   - String:          ':'
-  - Line:            '42'
+  - Line:            '38'
   - String:          ':'
   - Column:          '113'
   - String:          ';'
@@ -12806,18 +11785,18 @@ Args:
 --- !Passed
 Pass:            inline
 Name:            Inlined
-DebugLoc:        { File: 'src/cpu/exp_implementations_std_static_veclen_32_cpy.cpp', 
-                   Line: 56, Column: 43 }
-Function:        _Z63__program_exp_implementations_std_static_veclen_32_cpy_internalP52exp_implementations_std_static_veclen_32_cpy_state_tPdS1_
+DebugLoc:        { File: 'src/cpu/exp_implementations_safe_dace.cpp', Line: 51, 
+                   Column: 43 }
+Function:        _Z48__program_exp_implementations_safe_dace_internalP37exp_implementations_safe_dace_state_tPdS1_
 Args:
   - String:          ''''
   - Callee:          _ZNSt6chrono13duration_castINS_8durationIlSt5ratioILl1ELl1000000EEEElS2_ILl1ELl1000000000EEEENSt9enable_ifIXsr13__is_durationIT_EE5valueES7_E4typeERKNS1_IT0_T1_EE
     DebugLoc:        { File: '/usr/lib/gcc/x86_64-linux-gnu/15/../../../../include/c++/15/bits/chrono.h', 
                        Line: 280, Column: 0 }
   - String:          ''' inlined into '''
-  - Caller:          _Z63__program_exp_implementations_std_static_veclen_32_cpy_internalP52exp_implementations_std_static_veclen_32_cpy_state_tPdS1_
-    DebugLoc:        { File: 'src/cpu/exp_implementations_std_static_veclen_32_cpy.cpp', 
-                       Line: 15, Column: 0 }
+  - Caller:          _Z48__program_exp_implementations_safe_dace_internalP37exp_implementations_safe_dace_state_tPdS1_
+    DebugLoc:        { File: 'src/cpu/exp_implementations_safe_dace.cpp', 
+                       Line: 14, Column: 0 }
   - String:          ''''
   - String:          ' with '
   - String:          '(cost='
@@ -12826,9 +11805,9 @@ Args:
   - Threshold:       '375'
   - String:          ')'
   - String:          ' at callsite '
-  - String:          __program_exp_implementations_std_static_veclen_32_cpy_internal
+  - String:          __program_exp_implementations_safe_dace_internal
   - String:          ':'
-  - Line:            '42'
+  - Line:            '38'
   - String:          ':'
   - Column:          '43'
   - String:          ';'
@@ -12836,18 +11815,18 @@ Args:
 --- !Passed
 Pass:            inline
 Name:            Inlined
-DebugLoc:        { File: 'src/cpu/exp_implementations_std_static_veclen_32_cpy.cpp', 
-                   Line: 56, Column: 133 }
-Function:        _Z63__program_exp_implementations_std_static_veclen_32_cpy_internalP52exp_implementations_std_static_veclen_32_cpy_state_tPdS1_
+DebugLoc:        { File: 'src/cpu/exp_implementations_safe_dace.cpp', Line: 51, 
+                   Column: 133 }
+Function:        _Z48__program_exp_implementations_safe_dace_internalP37exp_implementations_safe_dace_state_tPdS1_
 Args:
   - String:          ''''
   - Callee:          _ZNKSt6chrono8durationIlSt5ratioILl1ELl1000000EEE5countEv
     DebugLoc:        { File: '/usr/lib/gcc/x86_64-linux-gnu/15/../../../../include/c++/15/bits/chrono.h', 
                        Line: 594, Column: 0 }
   - String:          ''' inlined into '''
-  - Caller:          _Z63__program_exp_implementations_std_static_veclen_32_cpy_internalP52exp_implementations_std_static_veclen_32_cpy_state_tPdS1_
-    DebugLoc:        { File: 'src/cpu/exp_implementations_std_static_veclen_32_cpy.cpp', 
-                       Line: 15, Column: 0 }
+  - Caller:          _Z48__program_exp_implementations_safe_dace_internalP37exp_implementations_safe_dace_state_tPdS1_
+    DebugLoc:        { File: 'src/cpu/exp_implementations_safe_dace.cpp', 
+                       Line: 14, Column: 0 }
   - String:          ''''
   - String:          ' with '
   - String:          '(cost='
@@ -12856,9 +11835,9 @@ Args:
   - Threshold:       '375'
   - String:          ')'
   - String:          ' at callsite '
-  - String:          __program_exp_implementations_std_static_veclen_32_cpy_internal
+  - String:          __program_exp_implementations_safe_dace_internal
   - String:          ':'
-  - Line:            '42'
+  - Line:            '38'
   - String:          ':'
   - Column:          '133'
   - String:          ';'
@@ -12866,18 +11845,18 @@ Args:
 --- !Passed
 Pass:            inline
 Name:            Inlined
-DebugLoc:        { File: 'src/cpu/exp_implementations_std_static_veclen_32_cpy.cpp', 
-                   Line: 57, Column: 109 }
-Function:        _Z63__program_exp_implementations_std_static_veclen_32_cpy_internalP52exp_implementations_std_static_veclen_32_cpy_state_tPdS1_
+DebugLoc:        { File: 'src/cpu/exp_implementations_safe_dace.cpp', Line: 52, 
+                   Column: 109 }
+Function:        _Z48__program_exp_implementations_safe_dace_internalP37exp_implementations_safe_dace_state_tPdS1_
 Args:
   - String:          ''''
   - Callee:          _ZNKSt6chrono10time_pointINS_3_V212system_clockENS_8durationIlSt5ratioILl1ELl1000000000EEEEE16time_since_epochEv
     DebugLoc:        { File: '/usr/lib/gcc/x86_64-linux-gnu/15/../../../../include/c++/15/bits/chrono.h', 
                        Line: 954, Column: 0 }
   - String:          ''' inlined into '''
-  - Caller:          _Z63__program_exp_implementations_std_static_veclen_32_cpy_internalP52exp_implementations_std_static_veclen_32_cpy_state_tPdS1_
-    DebugLoc:        { File: 'src/cpu/exp_implementations_std_static_veclen_32_cpy.cpp', 
-                       Line: 15, Column: 0 }
+  - Caller:          _Z48__program_exp_implementations_safe_dace_internalP37exp_implementations_safe_dace_state_tPdS1_
+    DebugLoc:        { File: 'src/cpu/exp_implementations_safe_dace.cpp', 
+                       Line: 14, Column: 0 }
   - String:          ''''
   - String:          ' with '
   - String:          '(cost='
@@ -12886,9 +11865,9 @@ Args:
   - Threshold:       '375'
   - String:          ')'
   - String:          ' at callsite '
-  - String:          __program_exp_implementations_std_static_veclen_32_cpy_internal
+  - String:          __program_exp_implementations_safe_dace_internal
   - String:          ':'
-  - Line:            '43'
+  - Line:            '39'
   - String:          ':'
   - Column:          '109'
   - String:          ';'
@@ -12896,18 +11875,18 @@ Args:
 --- !Passed
 Pass:            inline
 Name:            Inlined
-DebugLoc:        { File: 'src/cpu/exp_implementations_std_static_veclen_32_cpy.cpp', 
-                   Line: 57, Column: 41 }
-Function:        _Z63__program_exp_implementations_std_static_veclen_32_cpy_internalP52exp_implementations_std_static_veclen_32_cpy_state_tPdS1_
+DebugLoc:        { File: 'src/cpu/exp_implementations_safe_dace.cpp', Line: 52, 
+                   Column: 41 }
+Function:        _Z48__program_exp_implementations_safe_dace_internalP37exp_implementations_safe_dace_state_tPdS1_
 Args:
   - String:          ''''
   - Callee:          _ZNSt6chrono13duration_castINS_8durationIlSt5ratioILl1ELl1000000EEEElS2_ILl1ELl1000000000EEEENSt9enable_ifIXsr13__is_durationIT_EE5valueES7_E4typeERKNS1_IT0_T1_EE
     DebugLoc:        { File: '/usr/lib/gcc/x86_64-linux-gnu/15/../../../../include/c++/15/bits/chrono.h', 
                        Line: 280, Column: 0 }
   - String:          ''' inlined into '''
-  - Caller:          _Z63__program_exp_implementations_std_static_veclen_32_cpy_internalP52exp_implementations_std_static_veclen_32_cpy_state_tPdS1_
-    DebugLoc:        { File: 'src/cpu/exp_implementations_std_static_veclen_32_cpy.cpp', 
-                       Line: 15, Column: 0 }
+  - Caller:          _Z48__program_exp_implementations_safe_dace_internalP37exp_implementations_safe_dace_state_tPdS1_
+    DebugLoc:        { File: 'src/cpu/exp_implementations_safe_dace.cpp', 
+                       Line: 14, Column: 0 }
   - String:          ''''
   - String:          ' with '
   - String:          '(cost='
@@ -12916,9 +11895,9 @@ Args:
   - Threshold:       '375'
   - String:          ')'
   - String:          ' at callsite '
-  - String:          __program_exp_implementations_std_static_veclen_32_cpy_internal
+  - String:          __program_exp_implementations_safe_dace_internal
   - String:          ':'
-  - Line:            '43'
+  - Line:            '39'
   - String:          ':'
   - Column:          '41'
   - String:          ';'
@@ -12926,18 +11905,18 @@ Args:
 --- !Passed
 Pass:            inline
 Name:            Inlined
-DebugLoc:        { File: 'src/cpu/exp_implementations_std_static_veclen_32_cpy.cpp', 
-                   Line: 57, Column: 129 }
-Function:        _Z63__program_exp_implementations_std_static_veclen_32_cpy_internalP52exp_implementations_std_static_veclen_32_cpy_state_tPdS1_
+DebugLoc:        { File: 'src/cpu/exp_implementations_safe_dace.cpp', Line: 52, 
+                   Column: 129 }
+Function:        _Z48__program_exp_implementations_safe_dace_internalP37exp_implementations_safe_dace_state_tPdS1_
 Args:
   - String:          ''''
   - Callee:          _ZNKSt6chrono8durationIlSt5ratioILl1ELl1000000EEE5countEv
     DebugLoc:        { File: '/usr/lib/gcc/x86_64-linux-gnu/15/../../../../include/c++/15/bits/chrono.h', 
                        Line: 594, Column: 0 }
   - String:          ''' inlined into '''
-  - Caller:          _Z63__program_exp_implementations_std_static_veclen_32_cpy_internalP52exp_implementations_std_static_veclen_32_cpy_state_tPdS1_
-    DebugLoc:        { File: 'src/cpu/exp_implementations_std_static_veclen_32_cpy.cpp', 
-                       Line: 15, Column: 0 }
+  - Caller:          _Z48__program_exp_implementations_safe_dace_internalP37exp_implementations_safe_dace_state_tPdS1_
+    DebugLoc:        { File: 'src/cpu/exp_implementations_safe_dace.cpp', 
+                       Line: 14, Column: 0 }
   - String:          ''''
   - String:          ' with '
   - String:          '(cost='
@@ -12946,9 +11925,9 @@ Args:
   - Threshold:       '375'
   - String:          ')'
   - String:          ' at callsite '
-  - String:          __program_exp_implementations_std_static_veclen_32_cpy_internal
+  - String:          __program_exp_implementations_safe_dace_internal
   - String:          ':'
-  - Line:            '43'
+  - Line:            '39'
   - String:          ':'
   - Column:          '129'
   - String:          ';'
@@ -12956,18 +11935,18 @@ Args:
 --- !Passed
 Pass:            inline
 Name:            Inlined
-DebugLoc:        { File: 'src/cpu/exp_implementations_std_static_veclen_32_cpy.cpp', 
-                   Line: 58, Column: 21 }
-Function:        _Z63__program_exp_implementations_std_static_veclen_32_cpy_internalP52exp_implementations_std_static_veclen_32_cpy_state_tPdS1_
+DebugLoc:        { File: 'src/cpu/exp_implementations_safe_dace.cpp', Line: 53, 
+                   Column: 21 }
+Function:        _Z48__program_exp_implementations_safe_dace_internalP37exp_implementations_safe_dace_state_tPdS1_
 Args:
   - String:          ''''
   - Callee:          _ZN4dace4perf6Report14add_completionEPKcS3_mmiii
     DebugLoc:        { File: 'dace/dace/codegen/../runtime/include/dace/perf/reporting.h', 
                        Line: 128, Column: 0 }
   - String:          ''' inlined into '''
-  - Caller:          _Z63__program_exp_implementations_std_static_veclen_32_cpy_internalP52exp_implementations_std_static_veclen_32_cpy_state_tPdS1_
-    DebugLoc:        { File: 'src/cpu/exp_implementations_std_static_veclen_32_cpy.cpp', 
-                       Line: 15, Column: 0 }
+  - Caller:          _Z48__program_exp_implementations_safe_dace_internalP37exp_implementations_safe_dace_state_tPdS1_
+    DebugLoc:        { File: 'src/cpu/exp_implementations_safe_dace.cpp', 
+                       Line: 14, Column: 0 }
   - String:          ''''
   - String:          ' with '
   - String:          '(cost='
@@ -12976,9 +11955,9 @@ Args:
   - Threshold:       '250'
   - String:          ')'
   - String:          ' at callsite '
-  - String:          __program_exp_implementations_std_static_veclen_32_cpy_internal
+  - String:          __program_exp_implementations_safe_dace_internal
   - String:          ':'
-  - Line:            '44'
+  - Line:            '40'
   - String:          ':'
   - Column:          '21'
   - String:          ';'
@@ -12986,18 +11965,18 @@ Args:
 --- !Missed
 Pass:            inline
 Name:            TooCostly
-DebugLoc:        { File: 'src/cpu/exp_implementations_std_static_veclen_32_cpy.cpp', 
-                   Line: 59, Column: 21 }
-Function:        _Z63__program_exp_implementations_std_static_veclen_32_cpy_internalP52exp_implementations_std_static_veclen_32_cpy_state_tPdS1_
+DebugLoc:        { File: 'src/cpu/exp_implementations_safe_dace.cpp', Line: 54, 
+                   Column: 21 }
+Function:        _Z48__program_exp_implementations_safe_dace_internalP37exp_implementations_safe_dace_state_tPdS1_
 Args:
   - String:          ''''
   - Callee:          _ZN4dace4perf6Report4saveEPKcS3_
     DebugLoc:        { File: 'dace/dace/codegen/../runtime/include/dace/perf/reporting.h', 
                        Line: 167, Column: 0 }
   - String:          ''' not inlined into '''
-  - Caller:          _Z63__program_exp_implementations_std_static_veclen_32_cpy_internalP52exp_implementations_std_static_veclen_32_cpy_state_tPdS1_
-    DebugLoc:        { File: 'src/cpu/exp_implementations_std_static_veclen_32_cpy.cpp', 
-                       Line: 15, Column: 0 }
+  - Caller:          _Z48__program_exp_implementations_safe_dace_internalP37exp_implementations_safe_dace_state_tPdS1_
+    DebugLoc:        { File: 'src/cpu/exp_implementations_safe_dace.cpp', 
+                       Line: 14, Column: 0 }
   - String:          ''' because too costly to inline '
   - String:          '(cost='
   - Cost:            '625'
@@ -13010,16 +11989,16 @@ Pass:            inline
 Name:            TooCostly
 DebugLoc:        { File: 'dace/dace/codegen/../runtime/include/dace/perf/reporting.h', 
                    Line: 131, Column: 13 }
-Function:        _Z63__program_exp_implementations_std_static_veclen_32_cpy_internalP52exp_implementations_std_static_veclen_32_cpy_state_tPdS1_
+Function:        _Z48__program_exp_implementations_safe_dace_internalP37exp_implementations_safe_dace_state_tPdS1_
 Args:
   - String:          ''''
   - Callee:          _ZN4dace4perf6Report14add_completionEPKcS3_mmmiii
     DebugLoc:        { File: 'dace/dace/codegen/../runtime/include/dace/perf/reporting.h', 
                        Line: 143, Column: 0 }
   - String:          ''' not inlined into '''
-  - Caller:          _Z63__program_exp_implementations_std_static_veclen_32_cpy_internalP52exp_implementations_std_static_veclen_32_cpy_state_tPdS1_
-    DebugLoc:        { File: 'src/cpu/exp_implementations_std_static_veclen_32_cpy.cpp', 
-                       Line: 15, Column: 0 }
+  - Caller:          _Z48__program_exp_implementations_safe_dace_internalP37exp_implementations_safe_dace_state_tPdS1_
+    DebugLoc:        { File: 'src/cpu/exp_implementations_safe_dace.cpp', 
+                       Line: 14, Column: 0 }
   - String:          ''' because too costly to inline '
   - String:          '(cost='
   - Cost:            '470'
@@ -13032,14 +12011,14 @@ Pass:            inline
 Name:            NeverInline
 DebugLoc:        { File: '/usr/lib/gcc/x86_64-linux-gnu/15/../../../../include/c++/15/bits/std_thread.h', 
                    Line: 354, Column: 16 }
-Function:        _Z63__program_exp_implementations_std_static_veclen_32_cpy_internalP52exp_implementations_std_static_veclen_32_cpy_state_tPdS1_
+Function:        _Z48__program_exp_implementations_safe_dace_internalP37exp_implementations_safe_dace_state_tPdS1_
 Args:
   - String:          ''''
   - Callee:          __clang_call_terminate
   - String:          ''' not inlined into '''
-  - Caller:          _Z63__program_exp_implementations_std_static_veclen_32_cpy_internalP52exp_implementations_std_static_veclen_32_cpy_state_tPdS1_
-    DebugLoc:        { File: 'src/cpu/exp_implementations_std_static_veclen_32_cpy.cpp', 
-                       Line: 15, Column: 0 }
+  - Caller:          _Z48__program_exp_implementations_safe_dace_internalP37exp_implementations_safe_dace_state_tPdS1_
+    DebugLoc:        { File: 'src/cpu/exp_implementations_safe_dace.cpp', 
+                       Line: 14, Column: 0 }
   - String:          ''' because it should never be inlined '
   - String:          '(cost=never)'
   - String:          ': '
@@ -13050,25 +12029,25 @@ Pass:            tailcallelim
 Name:            tailcall-readnone
 DebugLoc:        { File: '/usr/lib/gcc/x86_64-linux-gnu/15/../../../../include/c++/15/bits/std_thread.h', 
                    Line: 366, Column: 25 }
-Function:        _Z63__program_exp_implementations_std_static_veclen_32_cpy_internalP52exp_implementations_std_static_veclen_32_cpy_state_tPdS1_
+Function:        _Z48__program_exp_implementations_safe_dace_internalP37exp_implementations_safe_dace_state_tPdS1_
 Args:
   - String:          'marked as tail call candidate (readnone)'
 ...
 --- !Missed
 Pass:            inline
 Name:            TooCostly
-DebugLoc:        { File: 'src/cpu/exp_implementations_std_static_veclen_32_cpy.cpp', 
-                   Line: 64, Column: 5 }
-Function:        __program_exp_implementations_std_static_veclen_32_cpy
+DebugLoc:        { File: 'src/cpu/exp_implementations_safe_dace.cpp', Line: 59, 
+                   Column: 5 }
+Function:        __program_exp_implementations_safe_dace
 Args:
   - String:          ''''
-  - Callee:          _Z63__program_exp_implementations_std_static_veclen_32_cpy_internalP52exp_implementations_std_static_veclen_32_cpy_state_tPdS1_
-    DebugLoc:        { File: 'src/cpu/exp_implementations_std_static_veclen_32_cpy.cpp', 
-                       Line: 15, Column: 0 }
+  - Callee:          _Z48__program_exp_implementations_safe_dace_internalP37exp_implementations_safe_dace_state_tPdS1_
+    DebugLoc:        { File: 'src/cpu/exp_implementations_safe_dace.cpp', 
+                       Line: 14, Column: 0 }
   - String:          ''' not inlined into '''
-  - Caller:          __program_exp_implementations_std_static_veclen_32_cpy
-    DebugLoc:        { File: 'src/cpu/exp_implementations_std_static_veclen_32_cpy.cpp', 
-                       Line: 63, Column: 0 }
+  - Caller:          __program_exp_implementations_safe_dace
+    DebugLoc:        { File: 'src/cpu/exp_implementations_safe_dace.cpp', 
+                       Line: 58, Column: 0 }
   - String:          ''' because too costly to inline '
   - String:          '(cost='
   - Cost:            '380'
@@ -13259,17 +12238,17 @@ Args:
 --- !Passed
 Pass:            inline
 Name:            Inlined
-DebugLoc:        { File: 'src/cpu/exp_implementations_std_static_veclen_32_cpy.cpp', 
-                   Line: 5, Column: 8 }
-Function:        _ZN52exp_implementations_std_static_veclen_32_cpy_state_tC2Ev
+DebugLoc:        { File: 'src/cpu/exp_implementations_safe_dace.cpp', Line: 5, 
+                   Column: 8 }
+Function:        _ZN37exp_implementations_safe_dace_state_tC2Ev
 Args:
   - String:          ''''
   - Callee:          _ZN4dace4perf6ReportC2Ev
     DebugLoc:        { File: 'dace/dace/codegen/../runtime/include/dace/perf/reporting.h', 
                        Line: 50, Column: 0 }
   - String:          ''' inlined into '''
-  - Caller:          _ZN52exp_implementations_std_static_veclen_32_cpy_state_tC2Ev
-    DebugLoc:        { File: 'src/cpu/exp_implementations_std_static_veclen_32_cpy.cpp', 
+  - Caller:          _ZN37exp_implementations_safe_dace_state_tC2Ev
+    DebugLoc:        { File: 'src/cpu/exp_implementations_safe_dace.cpp', 
                        Line: 5, Column: 0 }
   - String:          ''''
   - String:          ' with '
@@ -13279,7 +12258,7 @@ Args:
   - Threshold:       '487'
   - String:          ')'
   - String:          ' at callsite '
-  - String:          exp_implementations_std_static_veclen_32_cpy_state_t
+  - String:          exp_implementations_safe_dace_state_t
   - String:          ':'
   - Line:            '0'
   - String:          ':'
@@ -13289,32 +12268,32 @@ Args:
 --- !Missed
 Pass:            inline
 Name:            NoDefinition
-DebugLoc:        { File: 'src/cpu/exp_implementations_std_static_veclen_32_cpy.cpp', 
-                   Line: 70, Column: 69 }
-Function:        __dace_init_exp_implementations_std_static_veclen_32_cpy
+DebugLoc:        { File: 'src/cpu/exp_implementations_safe_dace.cpp', Line: 65, 
+                   Column: 54 }
+Function:        __dace_init_exp_implementations_safe_dace
 Args:
   - Callee:          _Znwm
   - String:          ' will not be inlined into '
-  - Caller:          __dace_init_exp_implementations_std_static_veclen_32_cpy
-    DebugLoc:        { File: 'src/cpu/exp_implementations_std_static_veclen_32_cpy.cpp', 
-                       Line: 68, Column: 0 }
+  - Caller:          __dace_init_exp_implementations_safe_dace
+    DebugLoc:        { File: 'src/cpu/exp_implementations_safe_dace.cpp', 
+                       Line: 63, Column: 0 }
   - String:          ' because its definition is unavailable'
 ...
 --- !Passed
 Pass:            inline
 Name:            Inlined
-DebugLoc:        { File: 'src/cpu/exp_implementations_std_static_veclen_32_cpy.cpp', 
-                   Line: 70, Column: 73 }
-Function:        __dace_init_exp_implementations_std_static_veclen_32_cpy
+DebugLoc:        { File: 'src/cpu/exp_implementations_safe_dace.cpp', Line: 65, 
+                   Column: 58 }
+Function:        __dace_init_exp_implementations_safe_dace
 Args:
   - String:          ''''
-  - Callee:          _ZN52exp_implementations_std_static_veclen_32_cpy_state_tC2Ev
-    DebugLoc:        { File: 'src/cpu/exp_implementations_std_static_veclen_32_cpy.cpp', 
+  - Callee:          _ZN37exp_implementations_safe_dace_state_tC2Ev
+    DebugLoc:        { File: 'src/cpu/exp_implementations_safe_dace.cpp', 
                        Line: 5, Column: 0 }
   - String:          ''' inlined into '''
-  - Caller:          __dace_init_exp_implementations_std_static_veclen_32_cpy
-    DebugLoc:        { File: 'src/cpu/exp_implementations_std_static_veclen_32_cpy.cpp', 
-                       Line: 68, Column: 0 }
+  - Caller:          __dace_init_exp_implementations_safe_dace
+    DebugLoc:        { File: 'src/cpu/exp_implementations_safe_dace.cpp', 
+                       Line: 63, Column: 0 }
   - String:          ''''
   - String:          ' with '
   - String:          '(cost='
@@ -13323,11 +12302,11 @@ Args:
   - Threshold:       '487'
   - String:          ')'
   - String:          ' at callsite '
-  - String:          __dace_init_exp_implementations_std_static_veclen_32_cpy
+  - String:          __dace_init_exp_implementations_safe_dace
   - String:          ':'
   - Line:            '3'
   - String:          ':'
-  - Column:          '73'
+  - Column:          '58'
   - String:          ';'
 ...
 --- !Passed
@@ -13555,17 +12534,17 @@ Args:
 --- !Passed
 Pass:            inline
 Name:            Inlined
-DebugLoc:        { File: 'src/cpu/exp_implementations_std_static_veclen_32_cpy.cpp', 
-                   Line: 5, Column: 8 }
-Function:        _ZN52exp_implementations_std_static_veclen_32_cpy_state_tD2Ev
+DebugLoc:        { File: 'src/cpu/exp_implementations_safe_dace.cpp', Line: 5, 
+                   Column: 8 }
+Function:        _ZN37exp_implementations_safe_dace_state_tD2Ev
 Args:
   - String:          ''''
   - Callee:          _ZN4dace4perf6ReportD2Ev
     DebugLoc:        { File: 'dace/dace/codegen/../runtime/include/dace/perf/reporting.h', 
                        Line: 55, Column: 0 }
   - String:          ''' inlined into '''
-  - Caller:          _ZN52exp_implementations_std_static_veclen_32_cpy_state_tD2Ev
-    DebugLoc:        { File: 'src/cpu/exp_implementations_std_static_veclen_32_cpy.cpp', 
+  - Caller:          _ZN37exp_implementations_safe_dace_state_tD2Ev
+    DebugLoc:        { File: 'src/cpu/exp_implementations_safe_dace.cpp', 
                        Line: 5, Column: 0 }
   - String:          ''''
   - String:          ' with '
@@ -13575,7 +12554,7 @@ Args:
   - Threshold:       '250'
   - String:          ')'
   - String:          ' at callsite '
-  - String:          '~exp_implementations_std_static_veclen_32_cpy_state_t'
+  - String:          '~exp_implementations_safe_dace_state_t'
   - String:          ':'
   - Line:            '0'
   - String:          ':'
@@ -13585,32 +12564,32 @@ Args:
 --- !Missed
 Pass:            inline
 Name:            NoDefinition
-DebugLoc:        { File: 'src/cpu/exp_implementations_std_static_veclen_32_cpy.cpp', 
-                   Line: 84, Column: 5 }
-Function:        __dace_exit_exp_implementations_std_static_veclen_32_cpy
+DebugLoc:        { File: 'src/cpu/exp_implementations_safe_dace.cpp', Line: 79, 
+                   Column: 5 }
+Function:        __dace_exit_exp_implementations_safe_dace
 Args:
   - Callee:          _ZdlPvm
   - String:          ' will not be inlined into '
-  - Caller:          __dace_exit_exp_implementations_std_static_veclen_32_cpy
-    DebugLoc:        { File: 'src/cpu/exp_implementations_std_static_veclen_32_cpy.cpp', 
-                       Line: 82, Column: 0 }
+  - Caller:          __dace_exit_exp_implementations_safe_dace
+    DebugLoc:        { File: 'src/cpu/exp_implementations_safe_dace.cpp', 
+                       Line: 77, Column: 0 }
   - String:          ' because its definition is unavailable'
 ...
 --- !Passed
 Pass:            inline
 Name:            Inlined
-DebugLoc:        { File: 'src/cpu/exp_implementations_std_static_veclen_32_cpy.cpp', 
-                   Line: 84, Column: 5 }
-Function:        __dace_exit_exp_implementations_std_static_veclen_32_cpy
+DebugLoc:        { File: 'src/cpu/exp_implementations_safe_dace.cpp', Line: 79, 
+                   Column: 5 }
+Function:        __dace_exit_exp_implementations_safe_dace
 Args:
   - String:          ''''
-  - Callee:          _ZN52exp_implementations_std_static_veclen_32_cpy_state_tD2Ev
-    DebugLoc:        { File: 'src/cpu/exp_implementations_std_static_veclen_32_cpy.cpp', 
+  - Callee:          _ZN37exp_implementations_safe_dace_state_tD2Ev
+    DebugLoc:        { File: 'src/cpu/exp_implementations_safe_dace.cpp', 
                        Line: 5, Column: 0 }
   - String:          ''' inlined into '''
-  - Caller:          __dace_exit_exp_implementations_std_static_veclen_32_cpy
-    DebugLoc:        { File: 'src/cpu/exp_implementations_std_static_veclen_32_cpy.cpp', 
-                       Line: 82, Column: 0 }
+  - Caller:          __dace_exit_exp_implementations_safe_dace
+    DebugLoc:        { File: 'src/cpu/exp_implementations_safe_dace.cpp', 
+                       Line: 77, Column: 0 }
   - String:          ''''
   - String:          ' with '
   - String:          '(cost='
@@ -13619,7 +12598,7 @@ Args:
   - Threshold:       '325'
   - String:          ')'
   - String:          ' at callsite '
-  - String:          __dace_exit_exp_implementations_std_static_veclen_32_cpy
+  - String:          __dace_exit_exp_implementations_safe_dace
   - String:          ':'
   - Line:            '3'
   - String:          ':'
@@ -13674,117 +12653,94 @@ Args:
 ...
 --- !Analysis
 Pass:            loop-vectorize
-Name:            LoopContainsUnsupportedTerminator
-DebugLoc:        { File: 'src/cpu/exp_implementations_std_static_veclen_32_cpy.cpp', 
-                   Line: 49, Column: 17 }
-Function:        _Z63__program_exp_implementations_std_static_veclen_32_cpy_internalP52exp_implementations_std_static_veclen_32_cpy_state_tPdS1_.omp_outlined
+Name:            InterleavingNotBeneficial
+DebugLoc:        { File: 'src/cpu/exp_implementations_safe_dace.cpp', Line: 21, 
+                   Column: 13 }
+Function:        _Z48__program_exp_implementations_safe_dace_internalP37exp_implementations_safe_dace_state_tPdS1_.omp_outlined
 Args:
-  - String:          'loop not vectorized: '
-  - String:          Loop contains an unsupported terminator
-...
---- !Analysis
-Pass:            loop-vectorize
-Name:            TooManyUncountableEarlyExits
-DebugLoc:        { File: 'src/cpu/exp_implementations_std_static_veclen_32_cpy.cpp', 
-                   Line: 22, Column: 13 }
-Function:        _Z63__program_exp_implementations_std_static_veclen_32_cpy_internalP52exp_implementations_std_static_veclen_32_cpy_state_tPdS1_.omp_outlined
-Args:
-  - String:          'loop not vectorized: '
-  - String:          Cannot vectorize early exit loop with more than one early exit
-...
---- !Analysis
-Pass:            loop-vectorize
-Name:            CantVectorizeInstruction
-DebugLoc:        { File: 'src/cpu/exp_implementations_std_static_veclen_32_cpy.cpp', 
-                   Line: 22, Column: 13 }
-Function:        _Z63__program_exp_implementations_std_static_veclen_32_cpy_internalP52exp_implementations_std_static_veclen_32_cpy_state_tPdS1_.omp_outlined
-Args:
-  - String:          'loop not vectorized: '
-  - String:          instruction cannot be vectorized
-...
---- !Missed
-Pass:            loop-vectorize
-Name:            MissedDetails
-DebugLoc:        { File: 'src/cpu/exp_implementations_std_static_veclen_32_cpy.cpp', 
-                   Line: 22, Column: 13 }
-Function:        _Z63__program_exp_implementations_std_static_veclen_32_cpy_internalP52exp_implementations_std_static_veclen_32_cpy_state_tPdS1_.omp_outlined
-Args:
-  - String:          loop not vectorized
+  - String:          the cost-model indicates that interleaving is not beneficial
 ...
 --- !Passed
-Pass:            TTI
-Name:            DontUnroll
-DebugLoc:        { File: 'src/cpu/exp_implementations_std_static_veclen_32_cpy.cpp', 
-                   Line: 22, Column: 13 }
-Function:        _Z63__program_exp_implementations_std_static_veclen_32_cpy_internalP52exp_implementations_std_static_veclen_32_cpy_state_tPdS1_.omp_outlined
+Pass:            loop-vectorize
+Name:            Vectorized
+DebugLoc:        { File: 'src/cpu/exp_implementations_safe_dace.cpp', Line: 21, 
+                   Column: 13 }
+Function:        _Z48__program_exp_implementations_safe_dace_internalP37exp_implementations_safe_dace_state_tPdS1_.omp_outlined
 Args:
-  - String:          'advising against unrolling the loop because it contains a '
-  - Call:            invoke
-    DebugLoc:        { File: 'src/cpu/exp_implementations_std_static_veclen_32_cpy.cpp', 
-                       Line: 49, Column: 17 }
-...
---- !Missed
-Pass:            licm
-Name:            LoadWithLoopInvariantAddressInvalidated
-DebugLoc:        { File: 'src/cpu/exp_implementations_std_static_veclen_32_cpy.cpp', 
-                   Line: 29, Column: 17 }
-Function:        _Z63__program_exp_implementations_std_static_veclen_32_cpy_internalP52exp_implementations_std_static_veclen_32_cpy_state_tPdS1_.omp_outlined
-Args:
-  - String:          failed to move load with loop-invariant address because the loop may invalidate its value
-...
---- !Missed
-Pass:            licm
-Name:            LoadWithLoopInvariantAddressInvalidated
-DebugLoc:        { File: 'src/cpu/exp_implementations_std_static_veclen_32_cpy.cpp', 
-                   Line: 50, Column: 27 }
-Function:        _Z63__program_exp_implementations_std_static_veclen_32_cpy_internalP52exp_implementations_std_static_veclen_32_cpy_state_tPdS1_.omp_outlined
-Args:
-  - String:          failed to move load with loop-invariant address because the loop may invalidate its value
-...
---- !Missed
-Pass:            licm
-Name:            LoadWithLoopInvariantAddressInvalidated
-DebugLoc:        { File: 'src/cpu/exp_implementations_std_static_veclen_32_cpy.cpp', 
-                   Line: 23, Column: 18 }
-Function:        _Z63__program_exp_implementations_std_static_veclen_32_cpy_internalP52exp_implementations_std_static_veclen_32_cpy_state_tPdS1_.omp_outlined
-Args:
-  - String:          failed to move load with loop-invariant address because the loop may invalidate its value
+  - String:          'vectorized '
+  - String:          ''
+  - String:          'loop (vectorization width: '
+  - VectorizationFactor: '8'
+  - String:          ', interleaved count: '
+  - InterleaveCount: '1'
+  - String:          ')'
 ...
 --- !Missed
 Pass:            slp-vectorizer
 Name:            NotBeneficial
-DebugLoc:        { File: 'dace/dace/codegen/../runtime/include/dace/copy.h', 
-                   Line: 118, Column: 29 }
-Function:        _ZN4dace6CopyNDIdLi1ELi0EJLi32EEE8ConstDstILi1EJEE4CopyIJEEEvPKdPdRKiDpRKT_
+DebugLoc:        { File: 'dace/dace/codegen/../runtime/include/dace/arith/exp.h', 
+                   Line: 69, Column: 19 }
+Function:        _Z48__program_exp_implementations_safe_dace_internalP37exp_implementations_safe_dace_state_tPdS1_.omp_outlined
 Args:
   - String:          'List vectorization was possible but not beneficial with cost '
   - Cost:            '0'
   - String:          ' >= '
   - Treshold:        '0'
 ...
+--- !Passed
+Pass:            slp-vectorizer
+Name:            VectorizedList
+DebugLoc:        { File: 'dace/dace/codegen/../runtime/include/dace/arith/exp.h', 
+                   Line: 64, Column: 8 }
+Function:        _Z48__program_exp_implementations_safe_dace_internalP37exp_implementations_safe_dace_state_tPdS1_.omp_outlined
+Args:
+  - String:          'SLP vectorized with cost '
+  - Cost:            '-2'
+  - String:          ' and with tree size '
+  - TreeSize:        '11'
+...
+--- !Missed
+Pass:            slp-vectorizer
+Name:            NotPossible
+DebugLoc:        { File: 'dace/dace/codegen/../runtime/include/dace/arith/exp.h', 
+                   Line: 46, Column: 7 }
+Function:        _Z48__program_exp_implementations_safe_dace_internalP37exp_implementations_safe_dace_state_tPdS1_.omp_outlined
+Args:
+  - String:          'Cannot SLP vectorize list: vectorization was impossible'
+  - String:          ' with available vectorization factors'
+...
+--- !Missed
+Pass:            slp-vectorizer
+Name:            NotPossible
+DebugLoc:        { File: 'dace/dace/codegen/../runtime/include/dace/arith/exp.h', 
+                   Line: 46, Column: 7 }
+Function:        _Z48__program_exp_implementations_safe_dace_internalP37exp_implementations_safe_dace_state_tPdS1_.omp_outlined
+Args:
+  - String:          'Cannot SLP vectorize list: vectorization was impossible'
+  - String:          ' with available vectorization factors'
+...
 --- !Missed
 Pass:            slp-vectorizer
 Name:            NotBeneficial
-DebugLoc:        { File: 'dace/dace/codegen/../runtime/include/dace/copy.h', 
-                   Line: 118, Column: 29 }
-Function:        _ZN4dace6CopyNDIdLi1ELi0EJLi32EEE8ConstDstILi1EJEE4CopyIJEEEvPKdPdRKiDpRKT_
+DebugLoc:        { File: 'src/cpu/exp_implementations_safe_dace.cpp', Line: 21, 
+                   Column: 13 }
+Function:        _Z48__program_exp_implementations_safe_dace_internalP37exp_implementations_safe_dace_state_tPdS1_.omp_outlined
 Args:
   - String:          'List vectorization was possible but not beneficial with cost '
   - Cost:            '0'
   - String:          ' >= '
   - Treshold:        '0'
 ...
---- !Missed
-Pass:            slp-vectorizer
-Name:            NotBeneficial
-DebugLoc:        { File: 'dace/dace/codegen/../runtime/include/dace/copy.h', 
-                   Line: 118, Column: 29 }
-Function:        _ZN4dace6CopyNDIdLi1ELi0EJLi32EEE8ConstDstILi1EJEE4CopyIJEEEvPKdPdRKiDpRKT_
+--- !Passed
+Pass:            loop-unroll
+Name:            PartialUnrolled
+DebugLoc:        { File: 'src/cpu/exp_implementations_safe_dace.cpp', Line: 21, 
+                   Column: 13 }
+Function:        _Z48__program_exp_implementations_safe_dace_internalP37exp_implementations_safe_dace_state_tPdS1_.omp_outlined
 Args:
-  - String:          'List vectorization was possible but not beneficial with cost '
-  - Cost:            '0'
-  - String:          ' >= '
-  - Treshold:        '0'
+  - String:          'unrolled loop by a factor of '
+  - UnrollCount:     '2'
+  - String:          ' with run-time trip count'
 ...
 --- !Analysis
 Pass:            loop-vectorize
@@ -13962,7 +12918,7 @@ Pass:            slp-vectorizer
 Name:            NotBeneficial
 DebugLoc:        { File: '/usr/lib/gcc/x86_64-linux-gnu/15/../../../../include/c++/15/bits/stl_vector.h', 
                    Line: 376, Column: 35 }
-Function:        __dace_exit_exp_implementations_std_static_veclen_32_cpy
+Function:        __dace_exit_exp_implementations_safe_dace
 Args:
   - String:          'List vectorization was possible but not beneficial with cost '
   - Cost:            '0'
@@ -13972,9 +12928,9 @@ Args:
 --- !Missed
 Pass:            regalloc
 Name:            SpillReloadCopies
-DebugLoc:        { File: 'src/cpu/exp_implementations_std_static_veclen_32_cpy.cpp', 
-                   Line: 14, Column: 1 }
-Function:        _Z63__program_exp_implementations_std_static_veclen_32_cpy_internalP52exp_implementations_std_static_veclen_32_cpy_state_tPdS1_
+DebugLoc:        { File: 'src/cpu/exp_implementations_safe_dace.cpp', Line: 13, 
+                   Column: 1 }
+Function:        _Z48__program_exp_implementations_safe_dace_internalP37exp_implementations_safe_dace_state_tPdS1_
 Args:
   - NumVRCopies:     '13'
   - String:          ' virtual registers copies '
@@ -13985,19 +12941,19 @@ Args:
 --- !Analysis
 Pass:            prologepilog
 Name:            StackSize
-DebugLoc:        { File: 'src/cpu/exp_implementations_std_static_veclen_32_cpy.cpp', 
-                   Line: 15, Column: 0 }
-Function:        _Z63__program_exp_implementations_std_static_veclen_32_cpy_internalP52exp_implementations_std_static_veclen_32_cpy_state_tPdS1_
+DebugLoc:        { File: 'src/cpu/exp_implementations_safe_dace.cpp', Line: 14, 
+                   Column: 0 }
+Function:        _Z48__program_exp_implementations_safe_dace_internalP37exp_implementations_safe_dace_state_tPdS1_
 Args:
   - NumStackBytes:   '56'
   - String:          ' stack bytes in function '''
-  - Function:        _Z63__program_exp_implementations_std_static_veclen_32_cpy_internalP52exp_implementations_std_static_veclen_32_cpy_state_tPdS1_
+  - Function:        _Z48__program_exp_implementations_safe_dace_internalP37exp_implementations_safe_dace_state_tPdS1_
   - String:          ''''
 ...
 --- !Analysis
 Pass:            asm-printer
 Name:            InstructionMix
-Function:        _Z63__program_exp_implementations_std_static_veclen_32_cpy_internalP52exp_implementations_std_static_veclen_32_cpy_state_tPdS1_
+Function:        _Z48__program_exp_implementations_safe_dace_internalP37exp_implementations_safe_dace_state_tPdS1_
 Args:
   - String:          'BasicBlock: '
   - BasicBlock:      ''
@@ -14038,7 +12994,7 @@ Args:
 --- !Analysis
 Pass:            asm-printer
 Name:            InstructionMix
-Function:        _Z63__program_exp_implementations_std_static_veclen_32_cpy_internalP52exp_implementations_std_static_veclen_32_cpy_state_tPdS1_
+Function:        _Z48__program_exp_implementations_safe_dace_internalP37exp_implementations_safe_dace_state_tPdS1_
 Args:
   - String:          'BasicBlock: '
   - BasicBlock:      ''
@@ -14099,7 +13055,7 @@ Args:
 --- !Analysis
 Pass:            asm-printer
 Name:            InstructionMix
-Function:        _Z63__program_exp_implementations_std_static_veclen_32_cpy_internalP52exp_implementations_std_static_veclen_32_cpy_state_tPdS1_
+Function:        _Z48__program_exp_implementations_safe_dace_internalP37exp_implementations_safe_dace_state_tPdS1_
 Args:
   - String:          'BasicBlock: '
   - BasicBlock:      ''
@@ -14116,9 +13072,9 @@ Args:
 --- !Analysis
 Pass:            asm-printer
 Name:            InstructionCount
-DebugLoc:        { File: 'src/cpu/exp_implementations_std_static_veclen_32_cpy.cpp', 
-                   Line: 15, Column: 0 }
-Function:        _Z63__program_exp_implementations_std_static_veclen_32_cpy_internalP52exp_implementations_std_static_veclen_32_cpy_state_tPdS1_
+DebugLoc:        { File: 'src/cpu/exp_implementations_safe_dace.cpp', Line: 14, 
+                   Column: 0 }
+Function:        _Z48__program_exp_implementations_safe_dace_internalP37exp_implementations_safe_dace_state_tPdS1_
 Args:
   - NumInstructions: '60'
   - String:          ' instructions in function'
@@ -14398,68 +13354,61 @@ Args:
 --- !Missed
 Pass:            regalloc
 Name:            LoopSpillReloadCopies
-DebugLoc:        { File: 'src/cpu/exp_implementations_std_static_veclen_32_cpy.cpp', 
-                   Line: 22, Column: 13 }
-Function:        _Z63__program_exp_implementations_std_static_veclen_32_cpy_internalP52exp_implementations_std_static_veclen_32_cpy_state_tPdS1_.omp_outlined
+DebugLoc:        { File: 'src/cpu/exp_implementations_safe_dace.cpp', Line: 21, 
+                   Column: 13 }
+Function:        _Z48__program_exp_implementations_safe_dace_internalP37exp_implementations_safe_dace_state_tPdS1_.omp_outlined
 Args:
-  - NumSpills:       '62'
-  - String:          ' spills '
-  - TotalSpillsCost: '9.919707e+02'
-  - String:          ' total spills cost '
-  - NumReloads:      '62'
-  - String:          ' reloads '
-  - TotalReloadsCost: '9.919707e+02'
-  - String:          ' total reloads cost '
-  - NumVRCopies:     '1'
+  - NumVRCopies:     '4'
   - String:          ' virtual registers copies '
-  - TotalCopiesCost: '1.599953e+01'
+  - TotalCopiesCost: '2.400000e+01'
+  - String:          ' total copies cost '
+  - String:          generated in loop
+...
+--- !Missed
+Pass:            regalloc
+Name:            LoopSpillReloadCopies
+DebugLoc:        { File: 'src/cpu/exp_implementations_safe_dace.cpp', Line: 21, 
+                   Column: 13 }
+Function:        _Z48__program_exp_implementations_safe_dace_internalP37exp_implementations_safe_dace_state_tPdS1_.omp_outlined
+Args:
+  - NumVRCopies:     '3'
+  - String:          ' virtual registers copies '
+  - TotalCopiesCost: '2.400000e+01'
   - String:          ' total copies cost '
   - String:          generated in loop
 ...
 --- !Missed
 Pass:            regalloc
 Name:            SpillReloadCopies
-DebugLoc:        { File: 'src/cpu/exp_implementations_std_static_veclen_32_cpy.cpp', 
-                   Line: 22, Column: 1 }
-Function:        _Z63__program_exp_implementations_std_static_veclen_32_cpy_internalP52exp_implementations_std_static_veclen_32_cpy_state_tPdS1_.omp_outlined
+DebugLoc:        { File: 'src/cpu/exp_implementations_safe_dace.cpp', Line: 21, 
+                   Column: 1 }
+Function:        _Z48__program_exp_implementations_safe_dace_internalP37exp_implementations_safe_dace_state_tPdS1_.omp_outlined
 Args:
-  - NumSpills:       '63'
-  - String:          ' spills '
-  - TotalSpillsCost: '9.929707e+02'
-  - String:          ' total spills cost '
-  - NumReloads:      '63'
-  - String:          ' reloads '
-  - TotalReloadsCost: '9.929707e+02'
-  - String:          ' total reloads cost '
-  - NumVRCopies:     '4'
+  - NumVRCopies:     '16'
   - String:          ' virtual registers copies '
-  - TotalCopiesCost: '1.799954e+01'
+  - TotalCopiesCost: '5.362500e+01'
   - String:          ' total copies cost '
   - String:          generated in function
 ...
 --- !Analysis
 Pass:            prologepilog
 Name:            StackSize
-DebugLoc:        { File: 'src/cpu/exp_implementations_std_static_veclen_32_cpy.cpp', 
-                   Line: 22, Column: 0 }
-Function:        _Z63__program_exp_implementations_std_static_veclen_32_cpy_internalP52exp_implementations_std_static_veclen_32_cpy_state_tPdS1_.omp_outlined
+DebugLoc:        { File: 'src/cpu/exp_implementations_safe_dace.cpp', Line: 21, 
+                   Column: 0 }
+Function:        _Z48__program_exp_implementations_safe_dace_internalP37exp_implementations_safe_dace_state_tPdS1_.omp_outlined
 Args:
-  - NumStackBytes:   '632'
+  - NumStackBytes:   '40'
   - String:          ' stack bytes in function '''
-  - Function:        _Z63__program_exp_implementations_std_static_veclen_32_cpy_internalP52exp_implementations_std_static_veclen_32_cpy_state_tPdS1_.omp_outlined
+  - Function:        _Z48__program_exp_implementations_safe_dace_internalP37exp_implementations_safe_dace_state_tPdS1_.omp_outlined
   - String:          ''''
 ...
 --- !Analysis
 Pass:            asm-printer
 Name:            InstructionMix
-Function:        _Z63__program_exp_implementations_std_static_veclen_32_cpy_internalP52exp_implementations_std_static_veclen_32_cpy_state_tPdS1_.omp_outlined
+Function:        _Z48__program_exp_implementations_safe_dace_internalP37exp_implementations_safe_dace_state_tPdS1_.omp_outlined
 Args:
   - String:          'BasicBlock: '
   - BasicBlock:      ''
-  - String:          "\n"
-  - String:          PUSH64r
-  - String:          ': '
-  - INST_PUSH64r:    '7'
   - String:          "\n"
   - String:          LEA64r
   - String:          ': '
@@ -14469,13 +13418,9 @@ Args:
   - String:          ': '
   - INST_MOV32mi:    '4'
   - String:          "\n"
-  - String:          MOV64rr
+  - String:          PUSH64r
   - String:          ': '
-  - INST_MOV64rr:    '3'
-  - String:          "\n"
-  - String:          MOV32mr
-  - String:          ': '
-  - INST_MOV32mr:    '2'
+  - INST_PUSH64r:    '4'
   - String:          "\n"
   - String:          MOV32ri
   - String:          ': '
@@ -14484,6 +13429,10 @@ Args:
   - String:          MOV32rm
   - String:          ': '
   - INST_MOV32rm:    '2'
+  - String:          "\n"
+  - String:          MOV64rr
+  - String:          ': '
+  - INST_MOV64rr:    '2'
   - String:          "\n"
   - String:          PUSH64i32
   - String:          ': '
@@ -14496,10 +13445,6 @@ Args:
   - String:          ADD64ri32
   - String:          ': '
   - INST_ADD64ri32:  '1'
-  - String:          "\n"
-  - String:          AND64ri32
-  - String:          ': '
-  - INST_AND64ri32:  '1'
   - String:          "\n"
   - String:          CALL64pcrel32
   - String:          ': '
@@ -14521,6 +13466,14 @@ Args:
   - String:          ': '
   - INST_JCC_1:      '1'
   - String:          "\n"
+  - String:          MOV32mr
+  - String:          ': '
+  - INST_MOV32mr:    '1'
+  - String:          "\n"
+  - String:          MOV32rr
+  - String:          ': '
+  - INST_MOV32rr:    '1'
+  - String:          "\n"
   - String:          MOVSX64rm32
   - String:          ': '
   - INST_MOVSX64rm32: '1'
@@ -14529,188 +13482,22 @@ Args:
 --- !Analysis
 Pass:            asm-printer
 Name:            InstructionMix
-DebugLoc:        { File: 'src/cpu/exp_implementations_std_static_veclen_32_cpy.cpp', 
-                   Line: 22, Column: 13 }
-Function:        _Z63__program_exp_implementations_std_static_veclen_32_cpy_internalP52exp_implementations_std_static_veclen_32_cpy_state_tPdS1_.omp_outlined
+Function:        _Z48__program_exp_implementations_safe_dace_internalP37exp_implementations_safe_dace_state_tPdS1_.omp_outlined
 Args:
   - String:          'BasicBlock: '
   - BasicBlock:      ''
-  - String:          "\n"
-  - String:          LEA64r
-  - String:          ': '
-  - INST_LEA64r:     '2'
-  - String:          "\n"
-  - String:          SHL64ri
-  - String:          ': '
-  - INST_SHL64ri:    '1'
-  - String:          "\n"
-...
---- !Analysis
-Pass:            asm-printer
-Name:            InstructionMix
-DebugLoc:        { File: 'src/cpu/exp_implementations_std_static_veclen_32_cpy.cpp', 
-                   Line: 29, Column: 17 }
-Function:        _Z63__program_exp_implementations_std_static_veclen_32_cpy_internalP52exp_implementations_std_static_veclen_32_cpy_state_tPdS1_.omp_outlined
-Args:
-  - String:          'BasicBlock: '
-  - BasicBlock:      ''
-  - String:          "\n"
-  - String:          VMOVSDmr
-  - String:          ': '
-  - INST_VMOVSDmr:   '94'
-  - String:          "\n"
-  - String:          VMOVSDrm_alt
-  - String:          ': '
-  - INST_VMOVSDrm_alt: '94'
-  - String:          "\n"
-  - String:          CALL64pcrel32
-  - String:          ': '
-  - INST_CALL64pcrel32: '33'
   - String:          "\n"
   - String:          MOV64rm
   - String:          ': '
   - INST_MOV64rm:    '2'
   - String:          "\n"
-  - String:          ADD64rr
+  - String:          SETCCr
   - String:          ': '
-  - INST_ADD64rr:    '1'
+  - INST_SETCCr:     '2'
   - String:          "\n"
-  - String:          LEA64r
+  - String:          CMP32ri
   - String:          ': '
-  - INST_LEA64r:     '1'
-  - String:          "\n"
-  - String:          MOV32mi
-  - String:          ': '
-  - INST_MOV32mi:    '1'
-  - String:          "\n"
-  - String:          MOV64rr
-  - String:          ': '
-  - INST_MOV64rr:    '1'
-  - String:          "\n"
-...
---- !Analysis
-Pass:            asm-printer
-Name:            InstructionMix
-DebugLoc:        { File: 'src/cpu/exp_implementations_std_static_veclen_32_cpy.cpp', 
-                   Line: 23, Column: 18 }
-Function:        _Z63__program_exp_implementations_std_static_veclen_32_cpy_internalP52exp_implementations_std_static_veclen_32_cpy_state_tPdS1_.omp_outlined
-Args:
-  - String:          'BasicBlock: '
-  - BasicBlock:      ''
-  - String:          "\n"
-  - String:          ADD64ri32
-  - String:          ': '
-  - INST_ADD64ri32:  '1'
-  - String:          "\n"
-  - String:          CMP64rr
-  - String:          ': '
-  - INST_CMP64rr:    '1'
-  - String:          "\n"
-  - String:          INC64r
-  - String:          ': '
-  - INST_INC64r:     '1'
-  - String:          "\n"
-  - String:          JCC_1
-  - String:          ': '
-  - INST_JCC_1:      '1'
-  - String:          "\n"
-  - String:          MOVSX64rm32
-  - String:          ': '
-  - INST_MOVSX64rm32: '1'
-  - String:          "\n"
-...
---- !Analysis
-Pass:            asm-printer
-Name:            InstructionMix
-DebugLoc:        { File: 'src/cpu/exp_implementations_std_static_veclen_32_cpy.cpp', 
-                   Line: 22, Column: 37 }
-Function:        _Z63__program_exp_implementations_std_static_veclen_32_cpy_internalP52exp_implementations_std_static_veclen_32_cpy_state_tPdS1_.omp_outlined
-Args:
-  - String:          'BasicBlock: '
-  - BasicBlock:      ''
-  - String:          "\n"
-  - String:          POP64r
-  - String:          ': '
-  - INST_POP64r:     '6'
-  - String:          "\n"
-  - String:          LEA64r
-  - String:          ': '
-  - INST_LEA64r:     '2'
-  - String:          "\n"
-  - String:          CALL64pcrel32
-  - String:          ': '
-  - INST_CALL64pcrel32: '1'
-  - String:          "\n"
-  - String:          MOV32rm
-  - String:          ': '
-  - INST_MOV32rm:    '1'
-  - String:          "\n"
-  - String:          RET64
-  - String:          ': '
-  - INST_RET64:      '1'
-  - String:          "\n"
-...
---- !Analysis
-Pass:            asm-printer
-Name:            InstructionMix
-Function:        _Z63__program_exp_implementations_std_static_veclen_32_cpy_internalP52exp_implementations_std_static_veclen_32_cpy_state_tPdS1_.omp_outlined
-Args:
-  - String:          'BasicBlock: '
-  - BasicBlock:      ''
-  - String:          "\n"
-  - String:          CALL64pcrel32
-  - String:          ': '
-  - INST_CALL64pcrel32: '1'
-  - String:          "\n"
-  - String:          MOV64rr
-  - String:          ': '
-  - INST_MOV64rr:    '1'
-  - String:          "\n"
-...
---- !Analysis
-Pass:            asm-printer
-Name:            InstructionCount
-DebugLoc:        { File: 'src/cpu/exp_implementations_std_static_veclen_32_cpy.cpp', 
-                   Line: 22, Column: 0 }
-Function:        _Z63__program_exp_implementations_std_static_veclen_32_cpy_internalP52exp_implementations_std_static_veclen_32_cpy_state_tPdS1_.omp_outlined
-Args:
-  - NumInstructions: '285'
-  - String:          ' instructions in function'
-...
---- !Missed
-Pass:            regalloc
-Name:            SpillReloadCopies
-DebugLoc:        { File: 'dace/dace/codegen/../runtime/include/dace/copy.h', 
-                   Line: 105, Column: 1 }
-Function:        _ZN4dace6CopyNDIdLi1ELi0EJLi32EEE8ConstDstILi1EJEE4CopyIJEEEvPKdPdRKiDpRKT_
-Args:
-  - NumVRCopies:     '7'
-  - String:          ' virtual registers copies '
-  - TotalCopiesCost: '3.500000e+00'
-  - String:          ' total copies cost '
-  - String:          generated in function
-...
---- !Analysis
-Pass:            prologepilog
-Name:            StackSize
-DebugLoc:        { File: 'dace/dace/codegen/../runtime/include/dace/copy.h', 
-                   Line: 106, Column: 0 }
-Function:        _ZN4dace6CopyNDIdLi1ELi0EJLi32EEE8ConstDstILi1EJEE4CopyIJEEEvPKdPdRKiDpRKT_
-Args:
-  - NumStackBytes:   '0'
-  - String:          ' stack bytes in function '''
-  - Function:        _ZN4dace6CopyNDIdLi1ELi0EJLi32EEE8ConstDstILi1EJEE4CopyIJEEEvPKdPdRKiDpRKT_
-  - String:          ''''
-...
---- !Analysis
-Pass:            asm-printer
-Name:            InstructionMix
-DebugLoc:        { File: 'dace/dace/codegen/../runtime/include/dace/copy.h', 
-                   Line: 109, Column: 55 }
-Function:        _ZN4dace6CopyNDIdLi1ELi0EJLi32EEE8ConstDstILi1EJEE4CopyIJEEEvPKdPdRKiDpRKT_
-Args:
-  - String:          'BasicBlock: '
-  - BasicBlock:      ''
+  - INST_CMP32ri:    '1'
   - String:          "\n"
   - String:          CMP64ri32
   - String:          ': '
@@ -14720,28 +13507,532 @@ Args:
   - String:          ': '
   - INST_JCC_1:      '1'
   - String:          "\n"
-  - String:          MOVSX64rm32
+  - String:          MOV32rr
   - String:          ': '
-  - INST_MOVSX64rm32: '1'
+  - INST_MOV32rr:    '1'
+  - String:          "\n"
+  - String:          MOV64rr
+  - String:          ': '
+  - INST_MOV64rr:    '1'
+  - String:          "\n"
+  - String:          OR8rr
+  - String:          ': '
+  - INST_OR8rr:      '1'
+  - String:          "\n"
+  - String:          SUB32rr
+  - String:          ': '
+  - INST_SUB32rr:    '1'
+  - String:          "\n"
+  - String:          SUB64rr
+  - String:          ': '
+  - INST_SUB64rr:    '1'
   - String:          "\n"
 ...
 --- !Analysis
 Pass:            asm-printer
 Name:            InstructionMix
-DebugLoc:        { File: 'dace/dace/codegen/../runtime/include/dace/copy.h', 
-                   Line: 32, Column: 9 }
-Function:        _ZN4dace6CopyNDIdLi1ELi0EJLi32EEE8ConstDstILi1EJEE4CopyIJEEEvPKdPdRKiDpRKT_
+Function:        _Z48__program_exp_implementations_safe_dace_internalP37exp_implementations_safe_dace_state_tPdS1_.omp_outlined
 Args:
   - String:          'BasicBlock: '
   - BasicBlock:      ''
   - String:          "\n"
-  - String:          VMOVUPSZmr
+  - String:          VBROADCASTSDZrm
   - String:          ': '
-  - INST_VMOVUPSZmr: '4'
+  - INST_VBROADCASTSDZrm: '9'
   - String:          "\n"
-  - String:          VMOVUPSZrm
+  - String:          LEA64r
   - String:          ': '
-  - INST_VMOVUPSZrm: '4'
+  - INST_LEA64r:     '2'
+  - String:          "\n"
+  - String:          ADD64rr
+  - String:          ': '
+  - INST_ADD64rr:    '1'
+  - String:          "\n"
+  - String:          AND64ri32
+  - String:          ': '
+  - INST_AND64ri32:  '1'
+  - String:          "\n"
+  - String:          INC64r
+  - String:          ': '
+  - INST_INC64r:     '1'
+  - String:          "\n"
+  - String:          MOV64rr
+  - String:          ': '
+  - INST_MOV64rr:    '1'
+  - String:          "\n"
+  - String:          VPBROADCASTQZrm
+  - String:          ': '
+  - INST_VPBROADCASTQZrm: '1'
+  - String:          "\n"
+  - String:          XOR32rr
+  - String:          ': '
+  - INST_XOR32rr:    '1'
+  - String:          "\n"
+...
+--- !Analysis
+Pass:            asm-printer
+Name:            InstructionMix
+DebugLoc:        { File: 'src/cpu/exp_implementations_safe_dace.cpp', Line: 25, 
+                   Column: 36 }
+Function:        _Z48__program_exp_implementations_safe_dace_internalP37exp_implementations_safe_dace_state_tPdS1_.omp_outlined
+Args:
+  - String:          'BasicBlock: '
+  - BasicBlock:      ''
+  - String:          "\n"
+  - String:          VFMADD213PDZr
+  - String:          ': '
+  - INST_VFMADD213PDZr: '7'
+  - String:          "\n"
+  - String:          VMOVAPDZrr
+  - String:          ': '
+  - INST_VMOVAPDZrr: '3'
+  - String:          "\n"
+  - String:          VMULPDZrr
+  - String:          ': '
+  - INST_VMULPDZrr:  '2'
+  - String:          "\n"
+  - String:          ADD64ri32
+  - String:          ': '
+  - INST_ADD64ri32:  '1'
+  - String:          "\n"
+  - String:          CMP64rr
+  - String:          ': '
+  - INST_CMP64rr:    '1'
+  - String:          "\n"
+  - String:          JCC_1
+  - String:          ': '
+  - INST_JCC_1:      '1'
+  - String:          "\n"
+  - String:          VADDPDZrr
+  - String:          ': '
+  - INST_VADDPDZrr:  '1'
+  - String:          "\n"
+  - String:          VCVTDQ2PDZrr
+  - String:          ': '
+  - INST_VCVTDQ2PDZrr: '1'
+  - String:          "\n"
+  - String:          VCVTPD2PSZrr
+  - String:          ': '
+  - INST_VCVTPD2PSZrr: '1'
+  - String:          "\n"
+  - String:          VCVTTPD2DQZrr
+  - String:          ': '
+  - INST_VCVTTPD2DQZrr: '1'
+  - String:          "\n"
+  - String:          VDIVPDZrr
+  - String:          ': '
+  - INST_VDIVPDZrr:  '1'
+  - String:          "\n"
+  - String:          VFMADD132PDZr
+  - String:          ': '
+  - INST_VFMADD132PDZr: '1'
+  - String:          "\n"
+  - String:          VMOVUPDZmr
+  - String:          ': '
+  - INST_VMOVUPDZmr: '1'
+  - String:          "\n"
+  - String:          VMOVUPDZrm
+  - String:          ': '
+  - INST_VMOVUPDZrm: '1'
+  - String:          "\n"
+  - String:          VPADDDYrr
+  - String:          ': '
+  - INST_VPADDDYrr:  '1'
+  - String:          "\n"
+  - String:          VPADDQZrr
+  - String:          ': '
+  - INST_VPADDQZrr:  '1'
+  - String:          "\n"
+  - String:          VPMOVZXDQZrr
+  - String:          ': '
+  - INST_VPMOVZXDQZrr: '1'
+  - String:          "\n"
+  - String:          VPSLLQZri
+  - String:          ': '
+  - INST_VPSLLQZri:  '1'
+  - String:          "\n"
+  - String:          VPSRADYri
+  - String:          ': '
+  - INST_VPSRADYri:  '1'
+  - String:          "\n"
+  - String:          VSUBPDZrr
+  - String:          ': '
+  - INST_VSUBPDZrr:  '1'
+  - String:          "\n"
+...
+--- !Analysis
+Pass:            asm-printer
+Name:            InstructionMix
+DebugLoc:        { File: 'src/cpu/exp_implementations_safe_dace.cpp', Line: 21, 
+                   Column: 13 }
+Function:        _Z48__program_exp_implementations_safe_dace_internalP37exp_implementations_safe_dace_state_tPdS1_.omp_outlined
+Args:
+  - String:          'BasicBlock: '
+  - BasicBlock:      ''
+  - String:          "\n"
+  - String:          CMP64rr
+  - String:          ': '
+  - INST_CMP64rr:    '1'
+  - String:          "\n"
+  - String:          JCC_1
+  - String:          ': '
+  - INST_JCC_1:      '1'
+  - String:          "\n"
+...
+--- !Analysis
+Pass:            asm-printer
+Name:            InstructionMix
+Function:        _Z48__program_exp_implementations_safe_dace_internalP37exp_implementations_safe_dace_state_tPdS1_.omp_outlined
+Args:
+  - String:          'BasicBlock: '
+  - BasicBlock:      ''
+  - String:          "\n"
+  - String:          JCC_1
+  - String:          ': '
+  - INST_JCC_1:      '1'
+  - String:          "\n"
+  - String:          LEA64_32r
+  - String:          ': '
+  - INST_LEA64_32r:  '1'
+  - String:          "\n"
+  - String:          MOV64ri
+  - String:          ': '
+  - INST_MOV64ri:    '1'
+  - String:          "\n"
+  - String:          TEST8ri
+  - String:          ': '
+  - INST_TEST8ri:    '1'
+  - String:          "\n"
+...
+--- !Analysis
+Pass:            asm-printer
+Name:            InstructionMix
+DebugLoc:        { File: 'src/cpu/exp_implementations_safe_dace.cpp', Line: 25, 
+                   Column: 36 }
+Function:        _Z48__program_exp_implementations_safe_dace_internalP37exp_implementations_safe_dace_state_tPdS1_.omp_outlined
+Args:
+  - String:          'BasicBlock: '
+  - BasicBlock:      ''
+  - String:          "\n"
+  - String:          VFMADD213PDm
+  - String:          ': '
+  - INST_VFMADD213PDm: '2'
+  - String:          "\n"
+  - String:          VMOVSDrm_alt
+  - String:          ': '
+  - INST_VMOVSDrm_alt: '2'
+  - String:          "\n"
+  - String:          ADD64rr
+  - String:          ': '
+  - INST_ADD64rr:    '1'
+  - String:          "\n"
+  - String:          AND32ri
+  - String:          ': '
+  - INST_AND32ri:    '1'
+  - String:          "\n"
+  - String:          CMP32rr
+  - String:          ': '
+  - INST_CMP32rr:    '1'
+  - String:          "\n"
+  - String:          INC64r
+  - String:          ': '
+  - INST_INC64r:     '1'
+  - String:          "\n"
+  - String:          JCC_1
+  - String:          ': '
+  - INST_JCC_1:      '1'
+  - String:          "\n"
+  - String:          JMP_1
+  - String:          ': '
+  - INST_JMP_1:      '1'
+  - String:          "\n"
+  - String:          MOV64rr
+  - String:          ': '
+  - INST_MOV64rr:    '1'
+  - String:          "\n"
+  - String:          SHL64ri
+  - String:          ': '
+  - INST_SHL64ri:    '1'
+  - String:          "\n"
+  - String:          SUB32rr
+  - String:          ': '
+  - INST_SUB32rr:    '1'
+  - String:          "\n"
+  - String:          VADDSDrm
+  - String:          ': '
+  - INST_VADDSDrm:   '1'
+  - String:          "\n"
+  - String:          VADDSDrr
+  - String:          ': '
+  - INST_VADDSDrr:   '1'
+  - String:          "\n"
+  - String:          VCVTSD2SSrr
+  - String:          ': '
+  - INST_VCVTSD2SSrr: '1'
+  - String:          "\n"
+  - String:          VCVTSI2SDrr
+  - String:          ': '
+  - INST_VCVTSI2SDrr: '1'
+  - String:          "\n"
+  - String:          VCVTTSD2SIrr
+  - String:          ': '
+  - INST_VCVTTSD2SIrr: '1'
+  - String:          "\n"
+  - String:          VDIVSDrr
+  - String:          ': '
+  - INST_VDIVSDrr:   '1'
+  - String:          "\n"
+  - String:          VFMADD132SDm
+  - String:          ': '
+  - INST_VFMADD132SDm: '1'
+  - String:          "\n"
+  - String:          VFMADD213SDm
+  - String:          ': '
+  - INST_VFMADD213SDm: '1'
+  - String:          "\n"
+  - String:          VFMADD213SDr
+  - String:          ': '
+  - INST_VFMADD213SDr: '1'
+  - String:          "\n"
+  - String:          VMOV64toSDrr
+  - String:          ': '
+  - INST_VMOV64toSDrr: '1'
+  - String:          "\n"
+  - String:          VMOVAPDrm
+  - String:          ': '
+  - INST_VMOVAPDrm:  '1'
+  - String:          "\n"
+  - String:          VMOVDDUPrr
+  - String:          ': '
+  - INST_VMOVDDUPrr: '1'
+  - String:          "\n"
+  - String:          VMOVMSKPSrr
+  - String:          ': '
+  - INST_VMOVMSKPSrr: '1'
+  - String:          "\n"
+  - String:          VMOVSDmr
+  - String:          ': '
+  - INST_VMOVSDmr:   '1'
+  - String:          "\n"
+  - String:          VMULPDrr
+  - String:          ': '
+  - INST_VMULPDrr:   '1'
+  - String:          "\n"
+  - String:          VMULSDrr
+  - String:          ': '
+  - INST_VMULSDrr:   '1'
+  - String:          "\n"
+  - String:          VSHUFPDrri
+  - String:          ': '
+  - INST_VSHUFPDrri: '1'
+  - String:          "\n"
+  - String:          VSUBSDrr
+  - String:          ': '
+  - INST_VSUBSDrr:   '1'
+  - String:          "\n"
+  - String:          VUNPCKLPDrr
+  - String:          ': '
+  - INST_VUNPCKLPDrr: '1'
+  - String:          "\n"
+...
+--- !Analysis
+Pass:            asm-printer
+Name:            InstructionMix
+Function:        _Z48__program_exp_implementations_safe_dace_internalP37exp_implementations_safe_dace_state_tPdS1_.omp_outlined
+Args:
+  - String:          'BasicBlock: '
+  - BasicBlock:      ''
+  - String:          "\n"
+  - String:          CMP32rr
+  - String:          ': '
+  - INST_CMP32rr:    '1'
+  - String:          "\n"
+  - String:          JCC_1
+  - String:          ': '
+  - INST_JCC_1:      '1'
+  - String:          "\n"
+  - String:          MOV64rr
+  - String:          ': '
+  - INST_MOV64rr:    '1'
+  - String:          "\n"
+...
+--- !Analysis
+Pass:            asm-printer
+Name:            InstructionMix
+Function:        _Z48__program_exp_implementations_safe_dace_internalP37exp_implementations_safe_dace_state_tPdS1_.omp_outlined
+Args:
+  - String:          'BasicBlock: '
+  - BasicBlock:      ''
+  - String:          "\n"
+  - String:          VMOVSDrm_alt
+  - String:          ': '
+  - INST_VMOVSDrm_alt: '4'
+  - String:          "\n"
+  - String:          VMOVAPDrm
+  - String:          ': '
+  - INST_VMOVAPDrm:  '3'
+  - String:          "\n"
+  - String:          LEA64r
+  - String:          ': '
+  - INST_LEA64r:     '2'
+  - String:          "\n"
+  - String:          INC32r
+  - String:          ': '
+  - INST_INC32r:     '1'
+  - String:          "\n"
+  - String:          SUB32rr
+  - String:          ': '
+  - INST_SUB32rr:    '1'
+  - String:          "\n"
+  - String:          XOR32rr
+  - String:          ': '
+  - INST_XOR32rr:    '1'
+  - String:          "\n"
+...
+--- !Analysis
+Pass:            asm-printer
+Name:            InstructionMix
+DebugLoc:        { File: 'src/cpu/exp_implementations_safe_dace.cpp', Line: 25, 
+                   Column: 36 }
+Function:        _Z48__program_exp_implementations_safe_dace_internalP37exp_implementations_safe_dace_state_tPdS1_.omp_outlined
+Args:
+  - String:          'BasicBlock: '
+  - BasicBlock:      ''
+  - String:          "\n"
+  - String:          VADDSDrr
+  - String:          ': '
+  - INST_VADDSDrr:   '4'
+  - String:          "\n"
+  - String:          VFMADD213PDr
+  - String:          ': '
+  - INST_VFMADD213PDr: '4'
+  - String:          "\n"
+  - String:          VFMADD213SDr
+  - String:          ': '
+  - INST_VFMADD213SDr: '4'
+  - String:          "\n"
+  - String:          VMOVAPDrr
+  - String:          ': '
+  - INST_VMOVAPDrr:  '4'
+  - String:          "\n"
+  - String:          ADD64rr
+  - String:          ': '
+  - INST_ADD64rr:    '2'
+  - String:          "\n"
+  - String:          AND32ri
+  - String:          ': '
+  - INST_AND32ri:    '2'
+  - String:          "\n"
+  - String:          SHL64ri
+  - String:          ': '
+  - INST_SHL64ri:    '2'
+  - String:          "\n"
+  - String:          SUB32rr
+  - String:          ': '
+  - INST_SUB32rr:    '2'
+  - String:          "\n"
+  - String:          VCVTSD2SSrr
+  - String:          ': '
+  - INST_VCVTSD2SSrr: '2'
+  - String:          "\n"
+  - String:          VCVTSI2SDrr
+  - String:          ': '
+  - INST_VCVTSI2SDrr: '2'
+  - String:          "\n"
+  - String:          VCVTTSD2SIrr
+  - String:          ': '
+  - INST_VCVTTSD2SIrr: '2'
+  - String:          "\n"
+  - String:          VDIVSDrr
+  - String:          ': '
+  - INST_VDIVSDrr:   '2'
+  - String:          "\n"
+  - String:          VFNMADD213SDr
+  - String:          ': '
+  - INST_VFNMADD213SDr: '2'
+  - String:          "\n"
+  - String:          VMOV64toSDrr
+  - String:          ': '
+  - INST_VMOV64toSDrr: '2'
+  - String:          "\n"
+  - String:          VMOVDDUPrr
+  - String:          ': '
+  - INST_VMOVDDUPrr: '2'
+  - String:          "\n"
+  - String:          VMOVMSKPSrr
+  - String:          ': '
+  - INST_VMOVMSKPSrr: '2'
+  - String:          "\n"
+  - String:          VMOVSDmr
+  - String:          ': '
+  - INST_VMOVSDmr:   '2'
+  - String:          "\n"
+  - String:          VMOVSDrm_alt
+  - String:          ': '
+  - INST_VMOVSDrm_alt: '2'
+  - String:          "\n"
+  - String:          VMULPDrr
+  - String:          ': '
+  - INST_VMULPDrr:   '2'
+  - String:          "\n"
+  - String:          VMULSDrr
+  - String:          ': '
+  - INST_VMULSDrr:   '2'
+  - String:          "\n"
+  - String:          VSHUFPDrri
+  - String:          ': '
+  - INST_VSHUFPDrri: '2'
+  - String:          "\n"
+  - String:          VSUBSDrr
+  - String:          ': '
+  - INST_VSUBSDrr:   '2'
+  - String:          "\n"
+  - String:          VUNPCKLPDrr
+  - String:          ': '
+  - INST_VUNPCKLPDrr: '2'
+  - String:          "\n"
+  - String:          ADD64ri32
+  - String:          ': '
+  - INST_ADD64ri32:  '1'
+  - String:          "\n"
+  - String:          CMP32rr
+  - String:          ': '
+  - INST_CMP32rr:    '1'
+  - String:          "\n"
+  - String:          JCC_1
+  - String:          ': '
+  - INST_JCC_1:      '1'
+  - String:          "\n"
+...
+--- !Analysis
+Pass:            asm-printer
+Name:            InstructionMix
+DebugLoc:        { File: 'src/cpu/exp_implementations_safe_dace.cpp', Line: 21, 
+                   Column: 37 }
+Function:        _Z48__program_exp_implementations_safe_dace_internalP37exp_implementations_safe_dace_state_tPdS1_.omp_outlined
+Args:
+  - String:          'BasicBlock: '
+  - BasicBlock:      ''
+  - String:          "\n"
+  - String:          POP64r
+  - String:          ': '
+  - INST_POP64r:     '3'
+  - String:          "\n"
+  - String:          ADD64ri32
+  - String:          ': '
+  - INST_ADD64ri32:  '1'
+  - String:          "\n"
+  - String:          CALL64pcrel32
+  - String:          ': '
+  - INST_CALL64pcrel32: '1'
+  - String:          "\n"
+  - String:          LEA64r
+  - String:          ': '
+  - INST_LEA64r:     '1'
+  - String:          "\n"
+  - String:          MOV32rr
+  - String:          ': '
+  - INST_MOV32rr:    '1'
   - String:          "\n"
   - String:          RET64
   - String:          ': '
@@ -14754,51 +14045,12 @@ Args:
 ...
 --- !Analysis
 Pass:            asm-printer
-Name:            InstructionMix
-DebugLoc:        { File: 'dace/dace/codegen/../runtime/include/dace/copy.h', 
-                   Line: 241, Column: 42 }
-Function:        _ZN4dace6CopyNDIdLi1ELi0EJLi32EEE8ConstDstILi1EJEE4CopyIJEEEvPKdPdRKiDpRKT_
-Args:
-  - String:          'BasicBlock: '
-  - BasicBlock:      ''
-  - String:          "\n"
-  - String:          VMOVSDmr
-  - String:          ': '
-  - INST_VMOVSDmr:   '32'
-  - String:          "\n"
-  - String:          VMOVSDrm_alt
-  - String:          ': '
-  - INST_VMOVSDrm_alt: '32'
-  - String:          "\n"
-  - String:          IMUL64rri32
-  - String:          ': '
-  - INST_IMUL64rri32: '16'
-  - String:          "\n"
-  - String:          SHL64ri
-  - String:          ': '
-  - INST_SHL64ri:    '10'
-  - String:          "\n"
-  - String:          MOV64rr
-  - String:          ': '
-  - INST_MOV64rr:    '7'
-  - String:          "\n"
-  - String:          LEA64r
-  - String:          ': '
-  - INST_LEA64r:     '4'
-  - String:          "\n"
-  - String:          RET64
-  - String:          ': '
-  - INST_RET64:      '1'
-  - String:          "\n"
-...
---- !Analysis
-Pass:            asm-printer
 Name:            InstructionCount
-DebugLoc:        { File: 'dace/dace/codegen/../runtime/include/dace/copy.h', 
-                   Line: 106, Column: 0 }
-Function:        _ZN4dace6CopyNDIdLi1ELi0EJLi32EEE8ConstDstILi1EJEE4CopyIJEEEvPKdPdRKiDpRKT_
+DebugLoc:        { File: 'src/cpu/exp_implementations_safe_dace.cpp', Line: 21, 
+                   Column: 0 }
+Function:        _Z48__program_exp_implementations_safe_dace_internalP37exp_implementations_safe_dace_state_tPdS1_.omp_outlined
 Args:
-  - NumInstructions: '115'
+  - NumInstructions: '209'
   - String:          ' instructions in function'
 ...
 --- !Analysis
@@ -18563,21 +17815,21 @@ Args:
 --- !Analysis
 Pass:            prologepilog
 Name:            StackSize
-DebugLoc:        { File: 'src/cpu/exp_implementations_std_static_veclen_32_cpy.cpp', 
-                   Line: 63, Column: 0 }
-Function:        __program_exp_implementations_std_static_veclen_32_cpy
+DebugLoc:        { File: 'src/cpu/exp_implementations_safe_dace.cpp', Line: 58, 
+                   Column: 0 }
+Function:        __program_exp_implementations_safe_dace
 Args:
   - NumStackBytes:   '0'
   - String:          ' stack bytes in function '''
-  - Function:        __program_exp_implementations_std_static_veclen_32_cpy
+  - Function:        __program_exp_implementations_safe_dace
   - String:          ''''
 ...
 --- !Analysis
 Pass:            asm-printer
 Name:            InstructionMix
-DebugLoc:        { File: 'src/cpu/exp_implementations_std_static_veclen_32_cpy.cpp', 
-                   Line: 64, Column: 5 }
-Function:        __program_exp_implementations_std_static_veclen_32_cpy
+DebugLoc:        { File: 'src/cpu/exp_implementations_safe_dace.cpp', Line: 59, 
+                   Column: 5 }
+Function:        __program_exp_implementations_safe_dace
 Args:
   - String:          'BasicBlock: '
   - BasicBlock:      ''
@@ -18590,9 +17842,9 @@ Args:
 --- !Analysis
 Pass:            asm-printer
 Name:            InstructionCount
-DebugLoc:        { File: 'src/cpu/exp_implementations_std_static_veclen_32_cpy.cpp', 
-                   Line: 63, Column: 0 }
-Function:        __program_exp_implementations_std_static_veclen_32_cpy
+DebugLoc:        { File: 'src/cpu/exp_implementations_safe_dace.cpp', Line: 58, 
+                   Column: 0 }
+Function:        __program_exp_implementations_safe_dace
 Args:
   - NumInstructions: '1'
   - String:          ' instructions in function'
@@ -18600,19 +17852,19 @@ Args:
 --- !Analysis
 Pass:            prologepilog
 Name:            StackSize
-DebugLoc:        { File: 'src/cpu/exp_implementations_std_static_veclen_32_cpy.cpp', 
-                   Line: 68, Column: 0 }
-Function:        __dace_init_exp_implementations_std_static_veclen_32_cpy
+DebugLoc:        { File: 'src/cpu/exp_implementations_safe_dace.cpp', Line: 63, 
+                   Column: 0 }
+Function:        __dace_init_exp_implementations_safe_dace
 Args:
   - NumStackBytes:   '8'
   - String:          ' stack bytes in function '''
-  - Function:        __dace_init_exp_implementations_std_static_veclen_32_cpy
+  - Function:        __dace_init_exp_implementations_safe_dace
   - String:          ''''
 ...
 --- !Analysis
 Pass:            asm-printer
 Name:            InstructionMix
-Function:        __dace_init_exp_implementations_std_static_veclen_32_cpy
+Function:        __dace_init_exp_implementations_safe_dace
 Args:
   - String:          'BasicBlock: '
   - BasicBlock:      ''
@@ -18653,9 +17905,9 @@ Args:
 --- !Analysis
 Pass:            asm-printer
 Name:            InstructionCount
-DebugLoc:        { File: 'src/cpu/exp_implementations_std_static_veclen_32_cpy.cpp', 
-                   Line: 68, Column: 0 }
-Function:        __dace_init_exp_implementations_std_static_veclen_32_cpy
+DebugLoc:        { File: 'src/cpu/exp_implementations_safe_dace.cpp', Line: 63, 
+                   Column: 0 }
+Function:        __dace_init_exp_implementations_safe_dace
 Args:
   - NumInstructions: '8'
   - String:          ' instructions in function'
@@ -18663,9 +17915,9 @@ Args:
 --- !Missed
 Pass:            regalloc
 Name:            SpillReloadCopies
-DebugLoc:        { File: 'src/cpu/exp_implementations_std_static_veclen_32_cpy.cpp', 
-                   Line: 81, Column: 1 }
-Function:        __dace_exit_exp_implementations_std_static_veclen_32_cpy
+DebugLoc:        { File: 'src/cpu/exp_implementations_safe_dace.cpp', Line: 76, 
+                   Column: 1 }
+Function:        __dace_exit_exp_implementations_safe_dace
 Args:
   - NumVRCopies:     '3'
   - String:          ' virtual registers copies '
@@ -18676,21 +17928,21 @@ Args:
 --- !Analysis
 Pass:            prologepilog
 Name:            StackSize
-DebugLoc:        { File: 'src/cpu/exp_implementations_std_static_veclen_32_cpy.cpp', 
-                   Line: 82, Column: 0 }
-Function:        __dace_exit_exp_implementations_std_static_veclen_32_cpy
+DebugLoc:        { File: 'src/cpu/exp_implementations_safe_dace.cpp', Line: 77, 
+                   Column: 0 }
+Function:        __dace_exit_exp_implementations_safe_dace
 Args:
   - NumStackBytes:   '8'
   - String:          ' stack bytes in function '''
-  - Function:        __dace_exit_exp_implementations_std_static_veclen_32_cpy
+  - Function:        __dace_exit_exp_implementations_safe_dace
   - String:          ''''
 ...
 --- !Analysis
 Pass:            asm-printer
 Name:            InstructionMix
-DebugLoc:        { File: 'src/cpu/exp_implementations_std_static_veclen_32_cpy.cpp', 
-                   Line: 84, Column: 5 }
-Function:        __dace_exit_exp_implementations_std_static_veclen_32_cpy
+DebugLoc:        { File: 'src/cpu/exp_implementations_safe_dace.cpp', Line: 79, 
+                   Column: 5 }
+Function:        __dace_exit_exp_implementations_safe_dace
 Args:
   - String:          'BasicBlock: '
   - BasicBlock:      ''
@@ -18709,7 +17961,7 @@ Pass:            asm-printer
 Name:            InstructionMix
 DebugLoc:        { File: '/usr/lib/gcc/x86_64-linux-gnu/15/../../../../include/c++/15/bits/stl_vector.h', 
                    Line: 375, Column: 24 }
-Function:        __dace_exit_exp_implementations_std_static_veclen_32_cpy
+Function:        __dace_exit_exp_implementations_safe_dace
 Args:
   - String:          'BasicBlock: '
   - BasicBlock:      ''
@@ -18736,7 +17988,7 @@ Pass:            asm-printer
 Name:            InstructionMix
 DebugLoc:        { File: '/usr/lib/gcc/x86_64-linux-gnu/15/../../../../include/c++/15/bits/stl_vector.h', 
                    Line: 376, Column: 17 }
-Function:        __dace_exit_exp_implementations_std_static_veclen_32_cpy
+Function:        __dace_exit_exp_implementations_safe_dace
 Args:
   - String:          'BasicBlock: '
   - BasicBlock:      ''
@@ -18761,9 +18013,9 @@ Args:
 --- !Analysis
 Pass:            asm-printer
 Name:            InstructionMix
-DebugLoc:        { File: 'src/cpu/exp_implementations_std_static_veclen_32_cpy.cpp', 
-                   Line: 84, Column: 5 }
-Function:        __dace_exit_exp_implementations_std_static_veclen_32_cpy
+DebugLoc:        { File: 'src/cpu/exp_implementations_safe_dace.cpp', Line: 79, 
+                   Column: 5 }
+Function:        __dace_exit_exp_implementations_safe_dace
 Args:
   - String:          'BasicBlock: '
   - BasicBlock:      ''
@@ -18784,9 +18036,9 @@ Args:
 --- !Analysis
 Pass:            asm-printer
 Name:            InstructionMix
-DebugLoc:        { File: 'src/cpu/exp_implementations_std_static_veclen_32_cpy.cpp', 
-                   Line: 85, Column: 5 }
-Function:        __dace_exit_exp_implementations_std_static_veclen_32_cpy
+DebugLoc:        { File: 'src/cpu/exp_implementations_safe_dace.cpp', Line: 80, 
+                   Column: 5 }
+Function:        __dace_exit_exp_implementations_safe_dace
 Args:
   - String:          'BasicBlock: '
   - BasicBlock:      ''
@@ -18803,9 +18055,9 @@ Args:
 --- !Analysis
 Pass:            asm-printer
 Name:            InstructionCount
-DebugLoc:        { File: 'src/cpu/exp_implementations_std_static_veclen_32_cpy.cpp', 
-                   Line: 82, Column: 0 }
-Function:        __dace_exit_exp_implementations_std_static_veclen_32_cpy
+DebugLoc:        { File: 'src/cpu/exp_implementations_safe_dace.cpp', Line: 77, 
+                   Column: 0 }
+Function:        __dace_exit_exp_implementations_safe_dace
 Args:
   - NumInstructions: '17'
   - String:          ' instructions in function'
