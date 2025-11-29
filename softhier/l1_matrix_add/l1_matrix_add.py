@@ -47,13 +47,13 @@ import argparse
 def parse_args():
     parser = argparse.ArgumentParser(description="SoftHier benchmark configuration")
 
-    parser.add_argument("--X_VAL", type=int, default=4096,
+    parser.add_argument("--X_VAL", type=int, default=8192,
                         help="Size parameter X (power of 2 recommended)")
 
     parser.add_argument("--Y_VAL", type=int, default=4,
                         help="Size parameter Y (power of 2 recommended)")
 
-    parser.add_argument("--VECTOR_LENGTH", type=int, default=4096,
+    parser.add_argument("--VECTOR_LENGTH", type=int, default=8192,
                         help="Vector length")
 
     parser.add_argument("--SPATZ_NUM_VLSU_PORT", type=int, default=32,
@@ -62,6 +62,11 @@ def parse_args():
     parser.add_argument("--SPATZ_NUM_FUNCTION_UNIT", type=int, default=32,
                         help="Number of function units")
 
+    parser.add_argument("--TCDM_BANK_WIDTH", type=int, default=64,
+                        help="TCDM Bank width")
+
+    parser.add_argument("--TCDM_BANK_NB", type=int, default=256,
+                        help="TCDM Bank NB")
     return parser.parse_args()
 
 # ------------------------------------------------------------
@@ -78,6 +83,8 @@ Y_VAL = args.Y_VAL
 VECTOR_LENGTH = args.VECTOR_LENGTH
 SPATZ_NUM_VLSU_PORT = args.SPATZ_NUM_VLSU_PORT
 SPATZ_NUM_FUNCTION_UNIT = args.SPATZ_NUM_FUNCTION_UNIT
+TCDM_BANK_WIDTH = args.TCDM_BANK_WIDTH
+TCDM_BANK_NB = args.TCDM_BANK_NB
 
 SAVE_SDFG = False
 
@@ -330,7 +337,7 @@ config = HardwareConfig(
     hardware_thread_group_dims=(1, 1),
     hbm_addr_base=0xc0000000,
     hbm_addr_space=0x08000000,
-    tcdm_size=0x00100000,
+    tcdm_size=0x00400000,
     redmule_ce_height=64,
     redmule_ce_width=64,
     redmule_ce_pipe=1,
@@ -343,7 +350,9 @@ config = HardwareConfig(
     dace_input_type=dace.float32,
     dace_output_type=dace.float32,
     spatz_num_vlsu_port=SPATZ_NUM_VLSU_PORT,
-    spatz_num_function_unit=SPATZ_NUM_FUNCTION_UNIT
+    spatz_num_function_unit=SPATZ_NUM_FUNCTION_UNIT,
+    cluster_tcdm_bank_nb=TCDM_BANK_NB,
+    cluster_tcdm_bank_width=TCDM_BANK_WIDTH,
 )
 
 def create_data_and_handlers(M_val, N_val, hw_config: HardwareConfig):
@@ -615,15 +624,17 @@ def plot_roofline(hw_config: HardwareConfig, kernel_flops: int, kernel_bytes: in
         # Hardware configuration
         default_clock_freq = 1e9  # 1 GHz
         
-        # TCDM bandwidth (bytes/s)
-        tcdm_bandwidth = float(hw_config.spatz_num_vlsu_port) * 4.0 * default_clock_freq
-        
+        # VECTOR bandwidth (bytes/s)
+        vector_bandwidth = float(hw_config.spatz_num_vlsu_port) * 4.0 * default_clock_freq
+        # tcdm_bandwidth = (float(hw_config.cluster_tcdm_bank_width) / 8.0) * float(hw_config.cluster_tcdm_bank_nb) * default_clock_freq
+
         # Vector FLOPs/s (assuming FP32)
+        #vector_flops_s = float(hw_config.spatz_num_function_unit) * (64 / 32) * default_clock_freq
         vector_flops_s = float(hw_config.spatz_num_function_unit) * (64 / 32) * default_clock_freq
         
         # Convert to GFLOPs/s and GB/s
         peak_perf_gflops = vector_flops_s / 1e9
-        peak_bandwidth_gbs = tcdm_bandwidth / 1e9
+        peak_bandwidth_gbs = vector_bandwidth / 1e9
         
         # Calculate kernel metrics
         execution_time_s = execution_period_ns / 1e9
