@@ -2,12 +2,13 @@
 #SBATCH --job-name=log_intel_xeon_llvm  # Job name
 #SBATCH --nodes=1                     # Number of nodes
 #SBATCH --partition=intel               # Partition/queue
-#SBATCH --time=02:00:00               # Walltime (hh:mm:ss)
+#SBATCH --time=04:00:00               # Walltime (hh:mm:ss)
 #SBATCH --output=%x_%j.out            # Standard output (%x=job name, %j=job ID)
 #SBATCH --error=%x_%j.err             # Standard error
 #SBATCH --chdir=.
 
 spack load cmake
+spack load gcc@14.2
 
 alias cc=clang
 alias c++=clang++
@@ -18,6 +19,7 @@ export CXX=clang++
 echo "Script path: $SCRIPT_PATH"
 echo "Script dir:  $SCRIPT_DIR"
 
+export LD_PRELOAD=/scratch/ybudanaz/lib/x86_64-unknown-linux-gnu/libomp.so
 # Define configurations: each element is "EXTRA_FLAGS SUFFIX"
 configs=(
     "" ""                                   # first run: no extra flags, no suffix
