@@ -64,3 +64,15 @@ export CXX=clang++
 python3 benchmark_log_implementations.py
 ```
 
+## Building LLVM
+
+
+For x86:
+```bash
+cmake -G Ninja ../llvm   -DCMAKE_BUILD_TYPE=RelWithDebInfo   -DCMAKE_INSTALL_PREFIX=$SCRATCH   -DLLVM_ENABLE_PROJECTS="clang" -DLLVM_ENABLE_RUNTIMES="openmp"  -DLLVM_ENABLE_RTTI=ON  -DLLVM_USE_DEPSLOG=OFF
+```
+
+For ARM:
+```bash
+cmake -G Ninja ../llvm   -DCMAKE_BUILD_TYPE=RelWithDebInfo   -DCMAKE_INSTALL_PREFIX=$SCRATCH   -DLLVM_ENABLE_PROJECTS="clang" -DLLVM_ENABLE_RUNTIMES="openmp"   -DLLVM_ENABLE_RTTI=ON   -DLLVM_TARGETS_TO_BUILD="AArch64;ARM" -DLLVM_USE_DEPSLOG=OFF -DLLVM_DEFAULT_TARGET_TRIPLE="aarch64-linux-gnu"
+```

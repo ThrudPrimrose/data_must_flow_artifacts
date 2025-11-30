@@ -1,4 +1,5 @@
 import copy
+import io
 import dace
 from typing import Set, Tuple
 from dace.libraries.standard.nodes.copy_node import CopyLibraryNode
@@ -34,6 +35,58 @@ from dace.soft_hier.utils.run_e2e_verification import run_e2e_verification, Hard
 from functools import partial
 
 from dace.sdfg import infer_types
+import re
+import numpy as np
+import matplotlib.pyplot as plt
+import csv
+import argparse
+
+# ------------------------------------------------------------
+# Parse command-line arguments
+# ------------------------------------------------------------
+def parse_args():
+    parser = argparse.ArgumentParser(description="SoftHier benchmark configuration")
+
+    parser.add_argument("--X_VAL", type=int, default=8192,
+                        help="Size parameter X (power of 2 recommended)")
+
+    parser.add_argument("--Y_VAL", type=int, default=4,
+                        help="Size parameter Y (power of 2 recommended)")
+
+    parser.add_argument("--VECTOR_LENGTH", type=int, default=8192,
+                        help="Vector length")
+
+    parser.add_argument("--SPATZ_NUM_VLSU_PORT", type=int, default=32,
+                        help="Number of VLSU ports")
+
+    parser.add_argument("--SPATZ_NUM_FUNCTION_UNIT", type=int, default=32,
+                        help="Number of function units")
+
+    parser.add_argument("--TCDM_BANK_WIDTH", type=int, default=64,
+                        help="TCDM Bank width")
+
+    parser.add_argument("--TCDM_BANK_NB", type=int, default=256,
+                        help="TCDM Bank NB")
+    return parser.parse_args()
+
+# ------------------------------------------------------------
+# Load arguments globally
+# ------------------------------------------------------------
+args = parse_args()
+
+# Keep this fixed; user requested no CLI exposure
+NUM_REPS = 1000
+
+# Replace these throughout your code
+X_VAL = args.X_VAL
+Y_VAL = args.Y_VAL
+VECTOR_LENGTH = args.VECTOR_LENGTH
+SPATZ_NUM_VLSU_PORT = args.SPATZ_NUM_VLSU_PORT
+SPATZ_NUM_FUNCTION_UNIT = args.SPATZ_NUM_FUNCTION_UNIT
+TCDM_BANK_WIDTH = args.TCDM_BANK_WIDTH
+TCDM_BANK_NB = args.TCDM_BANK_NB
+
+SAVE_SDFG = False
 
 storage_dict = {
     dace.dtypes.StorageType.GPU_Global: dace.dtypes.StorageType.SoftHier_HBM,
@@ -135,7 +188,7 @@ def matrix_addition(A: dace.float32[Y, X] @ dace.dtypes.StorageType.GPU_Global,
                     C: dace.float32[Y, X] @ dace.dtypes.StorageType.GPU_Global):
     for i, j in dace.map[0:Y:(BLOCK_Y * CORES_Y * NUM_BLOCKS_Y),
                          0:X:(BLOCK_X * CORES_X * NUM_BLOCKS_X)] @ dace.dtypes.ScheduleType.GPU_Device:
-            for k in dace.map[0:500] @ dace.dtypes.ScheduleType.Sequential:
+            for k in dace.map[0:NUM_REPS] @ dace.dtypes.ScheduleType.Sequential:
                 for c_i, c_j in dace.map[i:i + (BLOCK_Y * CORES_Y * NUM_BLOCKS_Y):(BLOCK_Y * NUM_BLOCKS_Y),
                                         j:j + (BLOCK_X * CORES_X * NUM_BLOCKS_X):(BLOCK_X * NUM_BLOCKS_X)] @ dace.dtypes.ScheduleType.GPU_ThreadBlock:
                     for b_i, b_j in dace.map[c_i:c_i + (BLOCK_Y * NUM_BLOCKS_Y):1,
@@ -284,7 +337,7 @@ config = HardwareConfig(
     hardware_thread_group_dims=(1, 1),
     hbm_addr_base=0xc0000000,
     hbm_addr_space=0x08000000,
-    tcdm_size=0x00100000,
+    tcdm_size=0x00400000,
     redmule_ce_height=64,
     redmule_ce_width=64,
     redmule_ce_pipe=1,
@@ -296,8 +349,10 @@ config = HardwareConfig(
     dtype_output=np.float32,
     dace_input_type=dace.float32,
     dace_output_type=dace.float32,
-    spatz_num_vlsu_port=32,
-    spatz_num_function_unit=32
+    spatz_num_vlsu_port=SPATZ_NUM_VLSU_PORT,
+    spatz_num_function_unit=SPATZ_NUM_FUNCTION_UNIT,
+    cluster_tcdm_bank_nb=TCDM_BANK_NB,
+    cluster_tcdm_bank_width=TCDM_BANK_WIDTH,
 )
 
 def create_data_and_handlers(M_val, N_val, hw_config: HardwareConfig):
@@ -345,11 +400,11 @@ def run_sdfg_in_tempdir(combo, interleavers: Dict[str, InterleaveHandler], hw_co
                         host_data: Dict[str, np.ndarray], softhier_sdfg: dace.SDFG):
     """
     Each call uses the SLOT environment variable set in init_worker.
-    Returns a dict of the relevant parameters plus the measured execution_period_ns.
+    Returns a dict of the relevant parameters plus the measured execution_period_ns
+    and captured stdout/stderr as log_str.
     """
-    (M_val, N_val, ) = combo
-    log_file = open("./log", "a")
-    log_file.close()
+    (M_val, N_val) = combo
+
     execution_period_ns = None
 
     interleaver_list = [interleavers["local_A"], interleavers["local_B"], interleavers["local_C"]]
@@ -367,32 +422,35 @@ def run_sdfg_in_tempdir(combo, interleavers: Dict[str, InterleaveHandler], hw_co
     offset_A = 0
     offset_B = host_data["local_A"].nbytes
     offset_C = offset_B + host_data["local_B"].nbytes
-    compiled_sdfg(local_A=host_data["local_A"], local_B=host_data["local_B"], local_C=host_data["local_C"], M=M_val, N=N_val,)
-    sys.stdout.flush()
-    sys.stderr.flush()
 
-    with open("./log", "r") as log_file:
-        for line in log_file:
-            match = re.search(r"\[Performance Counter\]: Execution period is (\d+) ns", line)
-            if match:
-                execution_period_ns = int(match.group(1))
-                break
-            else:
-                execution_period_ns = None
+    # Capture stdout/stderr
+    log_capture = io.StringIO()
+    log_err_capture = io.StringIO()
+    from contextlib import redirect_stdout, redirect_stderr
+    with redirect_stdout(log_capture), redirect_stderr(log_err_capture):
+        compiled_sdfg(local_A=host_data["local_A"],
+                      local_B=host_data["local_B"],
+                      local_C=host_data["local_C"],
+                      M=M_val, N=N_val)
 
-    log_file = open("./log", "a")
-    log_file.close()
+    log_str = log_capture.getvalue()
+    log_err_str = log_err_capture.getvalue()
+
+    # Parse execution period from captured output
+    match = re.search(r"\[Performance Counter\]: Execution period is (\d+) ns", log_str)
+    if match:
+        execution_period_ns = int(match.group(1))
 
     # Return all relevant info in a dictionary
-    if not execution_period_ns:
-        return {"sdfg": sdfg}
-    else:
-        return {
-            "M": M_val,
-            "N": N_val,
-            "execution_period_ns": execution_period_ns,
-            "sdfg": sdfg
-        }
+    result = {
+        "M": M_val,
+        "N": N_val,
+        "execution_period_ns": execution_period_ns,
+        "sdfg": sdfg,
+        "log_str": log_str,
+        "log_err_str": log_err_str,
+    }
+    return result
 
 def _hbm_to_l1(sdfg: dace.SDFG):
     name_dict = {arr_name: "local_" + arr_name for arr_name, arr in sdfg.arrays.items() if arr.storage == dace.dtypes.StorageType.SoftHier_HBM}
@@ -402,14 +460,33 @@ def _hbm_to_l1(sdfg: dace.SDFG):
             arr.storage = dace.dtypes.StorageType.SoftHier_TCDM
 
 
+def rm_tasklet_access_node_to_map_exit_pattern(sdfg: dace.SDFG):
+    for state in sdfg.all_states():
+        for node in state.nodes():
+            if isinstance(node, dace.nodes.AccessNode):
+                ies = state.in_edges(node)
+                oes = state.out_edges(node)
+                if len(ies) == 1 and len(oes) == 1:
+                    srcs = {ie.src for ie in ies}
+                    dsts = {oe.dst for oe in oes}
+                    ie = ies[0]
+                    oe = oes[0]
+                    if len(srcs) == 1 and len(dsts) == 1:
+                        src = srcs.pop()
+                        dst = dsts.pop()
+                        if isinstance(src, dace.nodes.Tasklet) and isinstance(dst, dace.nodes.MapExit):
+                            state.remove_node(node)
+                            state.add_edge(ie.src, ie.src_conn, oe.dst, oe.dst_conn,
+                                           dace.memlet.Memlet(data=oe.data.data, subset=oe.data.subset))
+
 def _get_softhier_sdfg() -> dace.SDFG:
     #cp.cuda.Device(0).use()  # Explicitly set the GPU
     #cp.zeros((1,), dtype=cp.float64)  # Force context creation
     # Parameters
     CORES_X_val = 1
     CORES_Y_val = 1
-    BLOCK_X_val = 2048
-    BLOCK_Y_val = 4
+    BLOCK_X_val = X_VAL
+    BLOCK_Y_val = Y_VAL
     NUM_BLOCKS_X_val = 1
     NUM_BLOCKS_Y_val = 1
     X_val = BLOCK_X_val * CORES_X_val * NUM_BLOCKS_X_val 
@@ -430,7 +507,8 @@ def _get_softhier_sdfg() -> dace.SDFG:
             "NUM_BLOCKS_X": NUM_BLOCKS_X_val,
         }
     )
-    sdfg.save("s0.sdfg")
+    if SAVE_SDFG:
+        sdfg.save("s0.sdfg")
     sdfg.validate()
 
     copy_sdfg = copy.deepcopy(sdfg)
@@ -438,17 +516,20 @@ def _get_softhier_sdfg() -> dace.SDFG:
                   src_fptype=dace.float64,
                   dst_fptype=dace.float32,
                   cast_in_and_out_data=False)
-    copy_sdfg.save("s1.sdfg")
+    if SAVE_SDFG:
+        copy_sdfg.save("s1.sdfg")
 
     _gpu_to_softhier(copy_sdfg)
     _set_softhier_map(copy_sdfg, copy_sdfg)
     copy_sdfg.validate()
-    copy_sdfg.save("s2.sdfg")
+    if SAVE_SDFG:
+        copy_sdfg.save("s2.sdfg")
 
     _hbm_to_l1(copy_sdfg)
 
-    VectorizeSoftHier(vector_width=2048, insert_copies=False, eliminate_trivial_vector_map=True).apply_pass(copy_sdfg, {})
-    copy_sdfg.save("s3.sdfg")
+    VectorizeSoftHier(vector_width=X_VAL, insert_copies=False, eliminate_trivial_vector_map=True).apply_pass(copy_sdfg, {})
+    if SAVE_SDFG:
+        copy_sdfg.save("s3.sdfg")
 
     # You can play around moving up when data is moved from HBM to TCDM
     # First moveup/movedown require offsetting memelts
@@ -459,12 +540,14 @@ def _get_softhier_sdfg() -> dace.SDFG:
 
     _gpu_to_softhier(copy_sdfg)
     copy_sdfg.validate()
-    copy_sdfg.save("s4.sdfg")
+    if SAVE_SDFG:
+        copy_sdfg.save("s4.sdfg")
 
     move_down(copy_sdfg, "C_vec", True)
     move_down(copy_sdfg, "C_vec", False)
     copy_sdfg.validate()
-    copy_sdfg.save("s5.sdfg")
+    if SAVE_SDFG:
+        copy_sdfg.save("s5.sdfg")
 
 
     # Offset TBlock map (Make sure you run this before Remove assignment tasklets)
@@ -484,7 +567,8 @@ def _get_softhier_sdfg() -> dace.SDFG:
         normalize_loops=False,
         squeeze_maps=True,
     ).apply_pass(copy_sdfg, {})
-    copy_sdfg.save("s6.sdfg")
+    if SAVE_SDFG:
+        copy_sdfg.save("s6.sdfg")
 
     # Match TCDM names to be local_<HBM_name>
     # Make sure everything is fp16
@@ -500,7 +584,8 @@ def _get_softhier_sdfg() -> dace.SDFG:
 
     # Vectorization should do it
     #DetectAndRenameSoftHierTasklets().apply_pass(sdfg=copy_sdfg, pipeline_results={})
-    copy_sdfg.save("s7.sdfg")
+    if SAVE_SDFG:
+        copy_sdfg.save("s7.sdfg")
     copy2_sdfg = copy.deepcopy(copy_sdfg)
 
     try_dealias_map_connectors(
@@ -508,19 +593,157 @@ def _get_softhier_sdfg() -> dace.SDFG:
         var_1=True
     )
     copy_sdfg.validate()
-    copy_sdfg.save("s8.sdfg")
+    if SAVE_SDFG:
+        copy_sdfg.save("s8.sdfg")
 
     rm_assignment_tasklets(copy_sdfg)
+    rm_tasklet_access_node_to_map_exit_pattern(copy_sdfg)
     copy_sdfg.validate()
-    copy_sdfg.save("s9.sdfg")
+    if SAVE_SDFG:
+        copy_sdfg.save("s9.sdfg")
 
     copy_sdfg.compile()
     return copy_sdfg
 
+
+
+def plot_roofline(hw_config: HardwareConfig, kernel_flops: int, kernel_bytes: int):
+    with open("./log", "r") as f:
+        log_str = f.read()
+
+    match = re.search(r"\[Performance Counter\]: Execution period is (\d+) ns", log_str)
+
+    csv_filename = f"roofline_metrics_l1_matrix_add_spatz_num_function_units_{hw_config.spatz_num_function_unit}_spatz_num_vlsu_port_{hw_config.spatz_num_vlsu_port}.csv"
+    file_exists = os.path.exists(csv_filename)
+    print(f"File exists {csv_filename}? {file_exists}")
+
+    if match:
+        execution_period_ns = int(match.group(1))
+        print(f"Execution period: {execution_period_ns} ns")
+        
+        # Hardware configuration
+        default_clock_freq = 1e9  # 1 GHz
+        
+        # VECTOR bandwidth (bytes/s)
+        vector_bandwidth = float(hw_config.spatz_num_vlsu_port) * 4.0 * default_clock_freq
+        # tcdm_bandwidth = (float(hw_config.cluster_tcdm_bank_width) / 8.0) * float(hw_config.cluster_tcdm_bank_nb) * default_clock_freq
+
+        # Vector FLOPs/s (assuming FP32)
+        #vector_flops_s = float(hw_config.spatz_num_function_unit) * (64 / 32) * default_clock_freq
+        vector_flops_s = float(hw_config.spatz_num_function_unit) * (64 / 32) * default_clock_freq
+        
+        # Convert to GFLOPs/s and GB/s
+        peak_perf_gflops = vector_flops_s / 1e9
+        peak_bandwidth_gbs = vector_bandwidth / 1e9
+        
+        # Calculate kernel metrics
+        execution_time_s = execution_period_ns / 1e9
+        achieved_gflops = (kernel_flops / execution_time_s) / 1e9
+        achieved_bandwidth_gbs = (kernel_bytes / execution_time_s) / 1e9
+        
+        # Operational intensity (FLOPs/byte)
+        op_intensity = kernel_flops / kernel_bytes
+        peak_roofline = min(peak_perf_gflops, op_intensity * peak_bandwidth_gbs)
+        
+        # Percentage of peak
+        perf_percentage = (achieved_gflops / peak_roofline) * 100
+        bandwidth_percentage = (achieved_bandwidth_gbs / peak_bandwidth_gbs) * 100
+
+        print(f"Peak Performance: {peak_perf_gflops:.2f} GFLOP/s")
+        print(f"Peak Bandwidth: {peak_bandwidth_gbs:.2f} GB/s")
+        print(f"Achieved Performance: {achieved_gflops:.2f} GFLOP/s ({perf_percentage:.1f}% of peak)")
+        print(f"Achieved Bandwidth: {achieved_bandwidth_gbs:.2f} GB/s ({bandwidth_percentage:.1f}% of peak)")
+        print(f"Operational Intensity: {op_intensity:.2f} FLOP/byte")
+        
+        # Save to CSV
+        with open(csv_filename, 'a' if file_exists else 'w', newline='') as csvfile:
+            writer = csv.writer(csvfile)
+            # Header row
+            if not file_exists:
+                writer.writerow(['Kernel Name', 'VLSU Ports', 'Function Units',
+                       'Peak Performance (GFLOP/s)', 'Peak Bandwidth (GB/s)', 
+                       'Achieved Performance (GFLOP/s)', 'Achieved Bandwidth (GB/s)',
+                       'Performance % of Peak', 'Bandwidth % of Peak',
+                       'Operational Intensity (FLOP/byte)', 'Execution Time (us)',
+                       'Total FLOPs', 'Total Bytes'])
+            # Data row
+            writer.writerow(['l1_matrix_add', hw_config.spatz_num_vlsu_port, hw_config.spatz_num_function_unit,
+                        f'{peak_perf_gflops:.4f}', f'{peak_bandwidth_gbs:.4f}',
+                        f'{achieved_gflops:.4f}', f'{achieved_bandwidth_gbs:.4f}',
+                        f'{perf_percentage:.2f}', f'{bandwidth_percentage:.2f}',
+                        f'{op_intensity:.4f}', f'{execution_time_s*1e6:.4f}',
+                        f'{kernel_flops}', f'{kernel_bytes}'])
+        
+        print(f"\nMetrics saved to {csv_filename}")
+        
+        # Create roofline plot
+        fig, ax = plt.subplots(figsize=(10, 7))
+        
+        # Operational intensity range for plotting
+        oi_range = np.logspace(-2, 2, 1000)
+        
+        # Ridge point (where memory and compute bound regions meet)
+        ridge_point = peak_perf_gflops / peak_bandwidth_gbs
+        
+        # Memory-bound region
+        memory_bound = peak_bandwidth_gbs * oi_range
+        
+        # Compute-bound region
+        compute_bound = np.full_like(oi_range, peak_perf_gflops)
+        
+        # Roofline is the minimum of both
+        roofline = np.minimum(memory_bound, compute_bound)
+        
+        # Plot roofline
+        ax.loglog(oi_range, roofline, 'k-', linewidth=2, label='Roofline')
+        
+        # Plot kernel performance
+        ax.loglog(op_intensity, achieved_gflops, 'ro', markersize=10, 
+                 label=f'Kernel ({achieved_gflops:.2f} GFLOP/s, {perf_percentage:.1f}% peak)')
+        
+        # Add annotations
+        ax.axhline(y=peak_perf_gflops, color='b', linestyle='--', alpha=0.5, label='Peak Performance')
+        ax.axvline(x=ridge_point, color='g', linestyle='--', alpha=0.5, label='Ridge Point')
+        
+        # Labels and formatting
+        ax.set_xlabel('Operational Intensity (FLOP/byte)', fontsize=12)
+        ax.set_ylabel('Performance (GFLOP/s)', fontsize=12)
+        ax.set_title('Roofline Model', fontsize=14, fontweight='bold')
+        ax.grid(True, which="both", ls="-", alpha=0.3)
+        ax.legend(loc='best', fontsize=10)
+        
+        # Set reasonable axis limits
+        ax.set_xlim([0.01, 100])
+        ax.set_ylim([0.1, peak_perf_gflops * 2])
+
+        plt.tight_layout()
+        plt.savefig(f'roofline_metrics_l1_matrix_add_spatz_num_function_units_{hw_config.spatz_num_function_unit}_spatz_num_vlsu_port_{hw_config.spatz_num_vlsu_port}_veclen_{VECTOR_LENGTH}.png', dpi=300, bbox_inches='tight')
+        print("Roofline plot saved to roofline_plot.png")
+        
+        return {
+            'peak_perf_gflops': peak_perf_gflops,
+            'peak_bandwidth_gbs': peak_bandwidth_gbs,
+            'achieved_gflops': achieved_gflops,
+            'achieved_bandwidth_gbs': achieved_bandwidth_gbs,
+            'op_intensity': op_intensity,
+            'perf_percentage': perf_percentage,
+            'bandwidth_percentage': bandwidth_percentage
+        }
+    else:
+        print("Could not find execution period in log file")
+        return None
+
 if __name__ == "__main__":
+    log_path = "./log"
+    if os.path.exists(log_path):
+        os.remove(log_path)
+    config_path = "./generated_arch.py"
+    if os.path.exists(config_path):
+        os.remove(config_path)
+
     setup_hw_env_dace(config)
 
-    M, N = 4, 2048
+    M, N = Y_VAL, X_VAL
     combo = (M, N, )
     print("Create Data Handlers")
     data_and_interleavers = create_data_and_handlers(M, N, config)
@@ -530,14 +753,34 @@ if __name__ == "__main__":
 
     cpu_sdfg = matrix_addition_cpu.to_sdfg()
     softhier_sdfg = _get_softhier_sdfg()
-    cpu_sdfg.replace_dict({"X": 2048, "Y": 4})
+    cpu_sdfg.replace_dict({"X": X_VAL, "Y": Y_VAL})
     run_numpy_fn = partial(cpu_sdfg, data["local_A"], data["local_B"], data["local_C"])
     run_sdfg_fn = partial(run_sdfg_in_tempdir, combo, interleavers, config, data, softhier_sdfg)
 
     print("[Pipeline Info] Start E2E Verification")
-    run_e2e_verification(hw_config=config,
-                         data=data,
-                         interleave_handlers=interleavers,
-                         numpy_fn=run_numpy_fn,
-                         sdfg_fn=run_sdfg_fn,
-                         skip_numerical_verification=True)
+    ret_val = run_e2e_verification(hw_config=config,
+                                    data=data,
+                                    interleave_handlers=interleavers,
+                                    numpy_fn=run_numpy_fn,
+                                    sdfg_fn=run_sdfg_fn,
+                                    skip_numerical_verification=True)
+
+    """
+    def matrix_addition(A: dace.float32[Y, X] @ dace.dtypes.StorageType.GPU_Global,
+                        B: dace.float32[Y, X] @ dace.dtypes.StorageType.GPU_Global,
+                        C: dace.float32[Y, X] @ dace.dtypes.StorageType.GPU_Global):
+        for i, j in dace.map[0:Y:(BLOCK_Y * CORES_Y * NUM_BLOCKS_Y),
+                            0:X:(BLOCK_X * CORES_X * NUM_BLOCKS_X)] @ dace.dtypes.ScheduleType.GPU_Device:
+                for k in dace.map[0:500] @ dace.dtypes.ScheduleType.Sequential:
+                    for c_i, c_j in dace.map[i:i + (BLOCK_Y * CORES_Y * NUM_BLOCKS_Y):(BLOCK_Y * NUM_BLOCKS_Y),
+                                            j:j + (BLOCK_X * CORES_X * NUM_BLOCKS_X):(BLOCK_X * NUM_BLOCKS_X)] @ dace.dtypes.ScheduleType.GPU_ThreadBlock:
+                        for b_i, b_j in dace.map[c_i:c_i + (BLOCK_Y * NUM_BLOCKS_Y):1,
+                                                c_j:c_j + (BLOCK_X * NUM_BLOCKS_X):1] @ dace.dtypes.ScheduleType.Sequential:
+                                    C[b_i, b_j] = A[b_i, b_j] + B[b_i, b_j]
+    """
+
+    kernel_flops = NUM_REPS * X_VAL * Y_VAL # 500 times num elements flops
+    kernel_bytes = NUM_REPS * X_VAL * Y_VAL * 3 * 4 # Read A, B, write C (all of size 2048*4), 500 times, 4 bytes for fp32
+
+    print("[Pipeline Info] Plot Roofline")
+    plot_roofline(hw_config=config, kernel_flops=kernel_flops, kernel_bytes=kernel_bytes)
