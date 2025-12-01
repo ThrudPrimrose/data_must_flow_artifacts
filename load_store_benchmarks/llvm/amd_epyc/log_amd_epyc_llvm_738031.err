@@ -1,0 +1,2 @@
+/tmp/slurmd/job738031/slurm_script: line 44: 2791820 Killed                  python3 benchmark_load_store.py
+slurmstepd: error: Detected 1 oom-kill event(s) in StepId=738031.batch cgroup. Some of your processes may have been killed by the cgroup out-of-memory handler.

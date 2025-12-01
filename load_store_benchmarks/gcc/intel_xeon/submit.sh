@@ -2,7 +2,7 @@
 #SBATCH --job-name=log_intel_xeon_gcc  # Job name
 #SBATCH --nodes=1                     # Number of nodes
 #SBATCH --partition=intel               # Partition/queue
-#SBATCH --time=02:00:00               # Walltime (hh:mm:ss)
+#SBATCH --time=04:00:00               # Walltime (hh:mm:ss)
 #SBATCH --output=%x_%j.out            # Standard output (%x=job name, %j=job ID)
 #SBATCH --error=%x_%j.err             # Standard error
 #SBATCH --chdir=.
@@ -16,6 +16,8 @@ alias cxx=g++
 export CC=gcc
 export CXX=g++
 
+
+unset LD_PRELOAD
 
 # Define configurations: each element is "EXTRA_FLAGS SUFFIX"
 configs=(

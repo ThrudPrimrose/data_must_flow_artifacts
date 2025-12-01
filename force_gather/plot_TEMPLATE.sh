@@ -1,0 +1,4 @@
+python plot.py gcc/amd_epyc/load_store_benchmarks_timings_1_core.csv  load_store_benchmarks_timings_1_core_amd_epyc_gcc.png load_store_benchmarks gcc amd_epyc
+python plot.py llvm/amd_epyc/load_store_benchmarks_timings_1_core.csv  load_store_benchmarks_timings_1_core_amd_epyc_llvm.png load_store_benchmarks llvm amd_epyc
+python plot.py gcc/intel_xeon/load_store_benchmarks_timings_1_core.csv  load_store_benchmarks_timings_1_core_intel_xeon_gcc.png load_store_benchmarks gcc intel_xeon
+python plot.py llvm/intel_xeon/load_store_benchmarks_timings_1_core.csv  load_store_benchmarks_timings_1_core_intel_xeon_llvm.png load_store_benchmarks llvm intel_xeon

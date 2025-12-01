@@ -1,0 +1,48 @@
+Running with EXTRA_FLAGS='', SUFFIX=''
+Physical cores: 128
+Run time gather_load iter 0: 1.048 ms
+Run time gather_load iter 1: 1.068 ms
+Run time gather_load iter 2: 1.038 ms
+Run time gather_load iter 3: 1.147 ms
+Run time gather_load iter 4: 0.981 ms
+Run time gather_load iter 5: 0.902 ms
+Run time gather_load iter 6: 0.914 ms
+Run time gather_load iter 7: 0.885 ms
+Run time gather_load iter 8: 0.886 ms
+Run time gather_load iter 9: 0.960 ms
+Run time gather_load iter 10: 0.888 ms
+Run time gather_load iter 11: 0.893 ms
+Run time gather_load iter 12: 0.886 ms
+Run time gather_load iter 13: 0.922 ms
+Run time gather_load iter 14: 0.981 ms
+Run time gather_load iter 15: 0.899 ms
+Run time gather_load iter 16: 0.935 ms
+Run time gather_load iter 17: 0.836 ms
+Run time gather_load iter 18: 0.884 ms
+Run time gather_load iter 19: 0.909 ms
+Gather load detected for node __tmp_144_17_r_packed, tasklets: [4, 5, 2, 6, 3, 7, 0, 1]
+[Tasklet (assign_0), Tasklet (assign_1), Tasklet (assign_2), Tasklet (assign_3), Tasklet (assign_4), Tasklet (assign_5), Tasklet (assign_6), Tasklet (assign_7)]
+Running with EXTRA_FLAGS='-mprefer-vector-width=512', SUFFIX='force_width_512'
+Physical cores: 128
+Run time gather_load_force_width_512 iter 0: 1.048 ms
+Run time gather_load_force_width_512 iter 1: 0.934 ms
+Run time gather_load_force_width_512 iter 2: 0.898 ms
+Run time gather_load_force_width_512 iter 3: 0.897 ms
+Run time gather_load_force_width_512 iter 4: 1.039 ms
+Run time gather_load_force_width_512 iter 5: 1.019 ms
+Run time gather_load_force_width_512 iter 6: 1.125 ms
+Run time gather_load_force_width_512 iter 7: 1.019 ms
+Run time gather_load_force_width_512 iter 8: 0.954 ms
+Run time gather_load_force_width_512 iter 9: 0.993 ms
+Run time gather_load_force_width_512 iter 10: 1.072 ms
+Run time gather_load_force_width_512 iter 11: 1.443 ms
+Run time gather_load_force_width_512 iter 12: 1.248 ms
+Run time gather_load_force_width_512 iter 13: 1.131 ms
+Run time gather_load_force_width_512 iter 14: 1.190 ms
+Run time gather_load_force_width_512 iter 15: 1.206 ms
+Run time gather_load_force_width_512 iter 16: 1.147 ms
+Run time gather_load_force_width_512 iter 17: 1.374 ms
+Run time gather_load_force_width_512 iter 18: 1.281 ms
+Run time gather_load_force_width_512 iter 19: 1.264 ms
+Gather load detected for node __tmp_144_17_r_packed, tasklets: [1, 2, 4, 7, 3, 0, 6, 5]
+[Tasklet (assign_0), Tasklet (assign_1), Tasklet (assign_2), Tasklet (assign_3), Tasklet (assign_4), Tasklet (assign_5), Tasklet (assign_6), Tasklet (assign_7)]

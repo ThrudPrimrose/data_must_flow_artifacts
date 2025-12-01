@@ -1,6 +1,0 @@
-Script path: 
-Script dir:  
-Running with EXTRA_FLAGS='', SUFFIX=''
-Physical cores: 128
-Running with EXTRA_FLAGS='-mprefer-vector-width=512  -Rpass=loop-vectorize -Rpass-analysis=loop-vectorize -Rpass-missed=loop-vectorize -Rpass=slp-vectorize -fsave-optimization-record -foptimization-record-file=log_implemenations_vec_report.yaml', SUFFIX='force_width_512'
-Physical cores: 128
