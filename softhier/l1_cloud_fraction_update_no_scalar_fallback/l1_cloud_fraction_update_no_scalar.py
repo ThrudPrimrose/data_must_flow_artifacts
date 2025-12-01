@@ -1005,7 +1005,7 @@ def plot_roofline(hw_config: HardwareConfig, kernel_flops: int, kernel_bytes: in
             writer = csv.writer(csvfile)
             # Header row
             if not file_exists:
-                writer.writerow(['Kernel Name', 'VLSU Ports', 'Function Units', 'Vector Length', 'X_dim', 'Y_dim'
+                writer.writerow(['Kernel Name', 'VLSU Ports', 'Function Units', 'Vector Length', 'X_dim', 'Y_dim',
                        'Peak Performance (GFLOP/s)', 'Peak Bandwidth (GB/s)', 
                        'Achieved Performance (GFLOP/s)', 'Achieved Bandwidth (GB/s)',
                        'Performance % of Peak', 'Bandwidth % of Peak',
