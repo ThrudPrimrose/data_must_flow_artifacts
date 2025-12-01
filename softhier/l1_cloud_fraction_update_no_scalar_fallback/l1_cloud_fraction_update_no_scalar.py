@@ -1,4 +1,7 @@
 
+import os
+os.environ["SOFTHIER_SKIP_SCALAR_FALLBACK"] = "1"
+
 import copy
 import io
 import dace
@@ -347,7 +350,7 @@ def _get_gvsoc_path() -> str:
 
 _get_gvsoc_path()
 os.environ["SOFTHIER_NUM_CORE_PER_CLUSTER"] = str(NUM_CORE_PER_CLUSTER)
-os.environ["SOFTHIER_SKIP_SCALAR_FALLBACK"] = "0"
+
 
 # Configuration
 config = HardwareConfig(
@@ -955,7 +958,7 @@ def plot_roofline(hw_config: HardwareConfig, kernel_flops: int, kernel_bytes: in
 
     match = re.search(r"\[Performance Counter\]: Execution period is (\d+) ns", log_str)
 
-    csv_filename = f"roofline_metrics_l1_cloud_fraction_update_spatz_num_function_units_{hw_config.spatz_num_function_unit}_spatz_num_vlsu_port_{hw_config.spatz_num_vlsu_port}.csv"
+    csv_filename = f"roofline_metrics_l1_cloud_fraction_update_no_scalar_spatz_num_function_units_{hw_config.spatz_num_function_unit}_spatz_num_vlsu_port_{hw_config.spatz_num_vlsu_port}.csv"
     file_exists = os.path.exists(csv_filename)
     print(f"File exists {csv_filename}? {file_exists}")
 
@@ -1009,7 +1012,7 @@ def plot_roofline(hw_config: HardwareConfig, kernel_flops: int, kernel_bytes: in
                        'Operational Intensity (FLOP/byte)', 'Execution Time (us)',
                        'Total FLOPs', 'Total Bytes'])
             # Data row
-            writer.writerow(['l1_cloud_fraction_update', hw_config.spatz_num_vlsu_port, hw_config.spatz_num_function_unit,
+            writer.writerow(['l1_cloud_fraction_update_no_scalar', hw_config.spatz_num_vlsu_port, hw_config.spatz_num_function_unit,
                         VECTOR_LENGTH, X_VAL, Y_VAL,
                         f'{peak_perf_gflops:.4f}', f'{peak_bandwidth_gbs:.4f}',
                         f'{achieved_gflops:.4f}', f'{achieved_bandwidth_gbs:.4f}',
@@ -1060,7 +1063,7 @@ def plot_roofline(hw_config: HardwareConfig, kernel_flops: int, kernel_bytes: in
         ax.set_ylim([0.1, peak_perf_gflops * 2])
 
         plt.tight_layout()
-        plt.savefig(f'roofline_metrics_l1_cloud_fraction_update_spatz_num_function_units_{hw_config.spatz_num_function_unit}_spatz_num_vlsu_port_{hw_config.spatz_num_vlsu_port}_veclen_{VECTOR_LENGTH}.png', dpi=300, bbox_inches='tight')
+        plt.savefig(f'roofline_metrics_l1_cloud_fraction_update_no_scalar_spatz_num_function_units_{hw_config.spatz_num_function_unit}_spatz_num_vlsu_port_{hw_config.spatz_num_vlsu_port}_veclen_{VECTOR_LENGTH}.png', dpi=300, bbox_inches='tight')
         print("Roofline plot saved to roofline_plot.png")
         
         return {
