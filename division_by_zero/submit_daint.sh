@@ -2,8 +2,8 @@ cd gcc/arm
 sbatch submit_daint.sh
 cd ../..
 cd llvm/arm
-cd ../..
 sbatch submit_daint.sh
+cd ../..
 cd graceclang/arm
 sbatch submit_daint.sh
 cd ../..

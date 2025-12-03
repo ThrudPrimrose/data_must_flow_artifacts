@@ -65,7 +65,7 @@ def init_openmp():
     ncores = get_physical_cores()
 
     # Set OpenMP environment
-    os.environ["OMP_NUM_THREADS"] = core_count
+    os.environ["OMP_NUM_THREADS"] = str(core_count)
     os.environ["OMP_PLACES"] = "cores"
     os.environ["OMP_PROC_BIND"] = "true"
 

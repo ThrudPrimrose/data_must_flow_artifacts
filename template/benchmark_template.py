@@ -8,12 +8,17 @@ from math import log
 
 import subprocess
 
+cpu_name = os.environ.get('CPU_NAME', 'amd_epyc')
+
 # Base compilation flags
 base_flags = [
     '-fopenmp', '-fstrict-aliasing', '-std=c++17', '-faligned-new',
     '-fPIC', '-Wall', '-Wextra', '-O3', '-march=native', '-ffast-math',
     '-Wno-unused-parameter', '-Wno-unused-label'
 ]
+
+if cpu_name == "arm":
+    base_flags.remove("-march=native")
 
 # Architecture / compiler specific extra flags
 env_flags_str = os.environ.get('EXTRA_FLAGS', '')
@@ -28,7 +33,6 @@ dace.config.Config.set("compiler", "cpu", "executable", value=compiler_exec)
 multi_core = int(os.environ.get('RUN_MULTICORE', '0')) == 1
 core_count = 1
 
-cpu_name = os.environ.get('CPU_NAME', 'amd_epyc')
 
 multicore_suffix = '' if core_count == 1 else '_multicore'
 
@@ -65,7 +69,7 @@ def init_openmp():
     ncores = get_physical_cores()
 
     # Set OpenMP environment
-    os.environ["OMP_NUM_THREADS"] = core_count
+    os.environ["OMP_NUM_THREADS"] = str(core_count)
     os.environ["OMP_PLACES"] = "cores"
     os.environ["OMP_PROC_BIND"] = "true"
 
@@ -215,7 +219,11 @@ def build_vectorized_sdfg(base_sdfg, vec_width, insert_copies, cpy_suffix, base_
     sdfg = copy.deepcopy(base_sdfg)
     VectorizeCPU(vector_width=vec_width, insert_copies=insert_copies).apply_pass(sdfg, {})
     # Naming scheme: based sdfg name + compiler name + flag suffix read from env + vector length + copy suffix
-    name = f"{base_name}_{compiler_exec.replace("+","")}_{env_suffix_str}_veclen_{vec_width}_{cpy_suffix}"
+    if "/" in compiler_exec and "clang" in compiler_exec:
+        cname = "graceclang"
+    else:
+        cname = compiler_exec.replace("+","").replace("/", "_")
+    name = f"{base_name}_{cname}_{env_suffix_str}_veclen_{vec_width}_{cpy_suffix}"
     sdfg.name = name
     sdfg.instrument = dace.dtypes.InstrumentationType.Timer
     return sdfg, sdfg.name

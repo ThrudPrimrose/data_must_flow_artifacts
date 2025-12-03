@@ -8,11 +8,11 @@
 #SBATCH --chdir=.
 
 spack load cmake
-alias cc="clang --target=aarch64-linux-gnu"
-alias c++="clang++ --target=aarch64-linux-gnu"
-alias cxx="clang++ --target=aarch64-linux-gnu"
-export CC="clang --target=aarch64-linux-gnu"
-export CXX="clang++ --target=aarch64-linux-gnu"
+alias cc="/users/ybudanaz/clang-grace-toolchain-21.25.10/bin/clang"
+alias c++="/users/ybudanaz/clang-grace-toolchain-21.25.10/bin/clang++"
+alias cxx="/users/ybudanaz/clang-grace-toolchain-21.25.10/bin/clang++"
+export CC="/users/ybudanaz/clang-grace-toolchain-21.25.10/bin/clang"
+export CXX="/users/ybudanaz/clang-grace-toolchain-21.25.10/bin/clang++"
 
 export CPU_NAME="arm"
 
