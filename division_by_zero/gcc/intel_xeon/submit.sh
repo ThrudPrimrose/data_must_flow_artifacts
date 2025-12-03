@@ -2,7 +2,7 @@
 #SBATCH --job-name=divzero_intel_xeon_gcc  # Job name
 #SBATCH --nodes=1                     # Number of nodes
 #SBATCH --partition=intel               # Partition/queue
-#SBATCH --time=01:00:00               # Walltime (hh:mm:ss)
+#SBATCH --time=02:30:00               # Walltime (hh:mm:ss)
 #SBATCH --output=%x_%j.out            # Standard output (%x=job name, %j=job ID)
 #SBATCH --error=%x_%j.err             # Standard error
 #SBATCH --chdir=/scratch/ybudanaz/data_must_flow_artifacts/division_by_zero/gcc/intel_xeon
@@ -21,8 +21,9 @@ export CPU_NAME="intel_xeon"
 # Define configurations: each element is "EXTRA_FLAGS SUFFIX"
 configs=(
     "" ""                                   # first run: no extra flags, no suffix
+    "-D__DACE_USE_INTRINSICS=1" "dace_intrinsics"
     "-mprefer-vector-width=512" "force_width_512"  # second run
-    "-fno-vectorize" "no_vectorize"
+    "-fno-tree-vectorize -fno-tree-slp-vectorize" "no-vectorize"
 )
 
 for RUNMULTI in 0 1; do

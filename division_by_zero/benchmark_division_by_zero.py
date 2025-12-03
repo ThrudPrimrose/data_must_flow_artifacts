@@ -49,9 +49,14 @@ if multi_core:
     elif cpu_name == "amd_epyc":
         core_count = 64
 
+# lvm of 18, 72 and 64 is 
+# 576
+lcd = 576
+
 env_suffix_str = os.environ.get('SUFFIX', '')
 if env_suffix_str != '':
     env_suffix_str = "_" + env_suffix_str
+print(f"Running with suffix: {env_suffix_str}")
 
 def get_physical_cores():
     # Use lscpu and parse "Core(s) per socket" and "Socket(s)"
@@ -80,6 +85,11 @@ def init_openmp():
 
 # Call before loading OpenMP-linked C++ libs
 init_openmp()
+
+print(f"Running with #{core_count} cores")
+print(f"Running with base flags: {base_flags_str}")
+print(f"Running with env flags: {env_flags_str}")
+print(f"Running with flags: {flags}")
 
 def init_openmp():
     # Get physical core count
@@ -244,7 +254,7 @@ if __name__ == "__main__":
     all_timings = {}
 
     # S = dace.symbol("S")
-    for i, S in enumerate([8192 * 64, 8192 * 256, 8192 * 512, 8192 * 1024, 8192 * 2048, 8192 * 4096, 8192 * 8192]):
+    for i, S in enumerate([8192 * 576, 8192 * 2 * 576, 8192 * 4 * 576, 8192 * 8 * 576]):
         @dace.program
         def division_by_zero(A: dace.float64[S], B: dace.float64[S]):
             for i in dace.map[0:S]:

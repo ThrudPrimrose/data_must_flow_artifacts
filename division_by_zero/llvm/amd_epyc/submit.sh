@@ -2,7 +2,7 @@
 #SBATCH --job-name=divzero_amd_epyc_llvm  # Job name
 #SBATCH --nodes=1                     # Number of nodes
 #SBATCH --partition=amd               # Partition/queue
-#SBATCH --time=01:00:00               # Walltime (hh:mm:ss)
+#SBATCH --time=02:30:00               # Walltime (hh:mm:ss)
 #SBATCH --output=%x_%j.out            # Standard output (%x=job name, %j=job ID)
 #SBATCH --error=%x_%j.err             # Standard error
 #SBATCH --chdir=.
@@ -23,6 +23,7 @@ export CPU_NAME="amd_epyc"
 # Define configurations: each element is "EXTRA_FLAGS SUFFIX"
 configs=(
     "" ""                                   # first run: no extra flags, no suffix
+    "-D__DACE_USE_INTRINSICS=1" "dace_intrinsics"
     "-mprefer-vector-width=512  -Rpass=loop-vectorize -Rpass-analysis=loop-vectorize -Rpass-missed=loop-vectorize -Rpass=slp-vectorize -fsave-optimization-record -foptimization-record-file=${SCRIPT_DIR}/log_implemenations_vec_report.yaml" "force_width_512"   # second run
     "-mprefer-vector-width=256  -Rpass=loop-vectorize -Rpass-analysis=loop-vectorize -Rpass-missed=loop-vectorize -Rpass=slp-vectorize -fsave-optimization-record -foptimization-record-file=${SCRIPT_DIR}/log_implemenations_vec_report.yaml" "force_width_256"   # second run
     "-fno-vectorize" "no_vectorize"
