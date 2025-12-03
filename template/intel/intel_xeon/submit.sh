@@ -24,7 +24,7 @@ echo "Script dir:  $SCRIPT_DIR"
 # Define configurations: each element is "EXTRA_FLAGS SUFFIX"
 configs=(
     "" ""                                   # first run: no extra flags, no suffix
-    "-mprefer-vector-width=512  -Rpass=loop-vectorize -Rpass-analysis=loop-vectorize -Rpass-missed=loop-vectorize -Rpass=slp-vectorize -fsave-optimization-record -foptimization-record-file=${SCRIPT_DIR}/log_implemenations_vec_report.yaml" "force_width_512"   # second run
+    "-qopt-zmm-usage=high -diag-enable=vec -qopt-report=5 -qopt-report-phase=vec -qopt-report-file=${SCRIPT_DIR}/TEMPLATE_vec_report.optrpt" "force_width_512"
     "-no-vec" "no_vectorize"
 )
 
@@ -37,12 +37,12 @@ for RUNMULTI in 0 1; do
         echo "Running with EXTRA_FLAGS='$EXTRA_FLAGS', SUFFIX='$SUFFIX'"
 
         # Copy benchmark script
-        cp ../../benchmark_log_implementations.py .
+        cp ../../benchmark_TEMPLATE.py .
 
         # Run benchmark
-        python3 benchmark_log_implementations.py
+        python3 benchmark_TEMPLATE.py
 
         # Remove script
-        rm benchmark_log_implementations.py
+        rm benchmark_TEMPLATE.py
     done
 done

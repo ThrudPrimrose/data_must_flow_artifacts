@@ -33,12 +33,12 @@ for RUNMULTI in 0 1; do
         echo "Running with EXTRA_FLAGS='$EXTRA_FLAGS', SUFFIX='$SUFFIX'"
 
         # Copy benchmark script
-        cp ../../benchmark_log_implementations.py .
+        cp ../../benchmark_TEMPLATE.py .
 
         # Run benchmark
-        python3 benchmark_log_implementations.py
+        python3 benchmark_TEMPLATE.py
 
         # Remove script
-        rm benchmark_log_implementations.py
+        rm benchmark_TEMPLATE.py
     done
 done

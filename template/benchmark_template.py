@@ -23,7 +23,7 @@ base_flags = [
 if cpu_name == "arm":
     base_flags.remove("-march=native")
 
-if compiler_exec == "icpx:"
+if compiler_exec == "icpx":
     base_flags.remove("-fopenmp")
     base_flags.append("-qopenmp")
 
