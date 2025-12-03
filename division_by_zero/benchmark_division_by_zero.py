@@ -215,7 +215,11 @@ def build_vectorized_sdfg(base_sdfg, vec_width, insert_copies, cpy_suffix, base_
     sdfg = copy.deepcopy(base_sdfg)
     VectorizeCPU(vector_width=vec_width, insert_copies=insert_copies).apply_pass(sdfg, {})
     # Naming scheme: based sdfg name + compiler name + flag suffix read from env + vector length + copy suffix
-    name = f"{base_name}_{compiler_exec.replace("+","")}_{env_suffix_str}_veclen_{vec_width}_{cpy_suffix}"
+    if "/" in compiler_exec and "clang" in compiler_exec:
+        cname = "graceclang"
+    else:
+        cname = compiler_exec.replace("+","").replace("/", "_")
+    name = f"{base_name}_{cname}_{env_suffix_str}_veclen_{vec_width}_{cpy_suffix}"
     sdfg.name = name
     sdfg.instrument = dace.dtypes.InstrumentationType.Timer
     return sdfg, sdfg.name

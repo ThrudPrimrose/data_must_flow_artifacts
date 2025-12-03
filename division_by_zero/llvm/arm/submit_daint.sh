@@ -2,7 +2,7 @@
 #SBATCH --job-name=div_arm_llvm  # Job name
 #SBATCH --nodes=1                     # Number of nodes
 #SBATCH --partition=normal               # Partition/queue
-#SBATCH --time=00:30:00               # Walltime (hh:mm:ss)
+#SBATCH --time=01:00:00               # Walltime (hh:mm:ss)
 #SBATCH --output=%x_%j.out            # Standard output (%x=job name, %j=job ID)
 #SBATCH --error=%x_%j.err             # Standard error
 #SBATCH --chdir=/capstor/scratch/cscs/ybudanaz/data_must_flow_artifacts/division_by_zero/llvm/arm
@@ -38,12 +38,12 @@ for RUNMULTI in 0 1; do
         echo "Running with EXTRA_FLAGS='$EXTRA_FLAGS', SUFFIX='$SUFFIX'"
 
         # Copy benchmark script
-        cp ../../benchmark_log_implementations.py .
+        cp ../../benchmark_division_by_zero.py .
 
         # Run benchmark
-        python3 benchmark_log_implementations.py
+        python3 benchmark_division_by_zero.py
 
         # Remove script
-        rm benchmark_log_implementations.py
+        rm benchmark_division_by_zero.py
     done
 done

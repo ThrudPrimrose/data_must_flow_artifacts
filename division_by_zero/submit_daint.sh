@@ -1,2 +1,9 @@
-sbatch gcc/arm/submit_daint.sh
-sbatch llvm/arm/submit_daint.sh
+cd gcc/arm
+sbatch submit_daint.sh
+cd ../..
+cd llvm/arm
+cd ../..
+sbatch submit_daint.sh
+cd graceclang/arm
+sbatch submit_daint.sh
+cd ../..

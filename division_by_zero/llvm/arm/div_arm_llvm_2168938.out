@@ -1,0 +1,10 @@
+Script path: 
+Script dir:  
+Running with EXTRA_FLAGS='', SUFFIX=''
+Running with EXTRA_FLAGS='-march=armv9-a+simd -mcpu=neoverse-v2', SUFFIX='neon'
+Running with EXTRA_FLAGS='-march=armv9-a+sve2 -mcpu=neoverse-v2', SUFFIX='sve'
+Running with EXTRA_FLAGS='-fno-vectorize', SUFFIX='no_vectorize'
+Running with EXTRA_FLAGS='', SUFFIX=''
+Running with EXTRA_FLAGS='-march=armv9-a+simd -mcpu=neoverse-v2', SUFFIX='neon'
+Running with EXTRA_FLAGS='-march=armv9-a+sve2 -mcpu=neoverse-v2', SUFFIX='sve'
+Running with EXTRA_FLAGS='-fno-vectorize', SUFFIX='no_vectorize'

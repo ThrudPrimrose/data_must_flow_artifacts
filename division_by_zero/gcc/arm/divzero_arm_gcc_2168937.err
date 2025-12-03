@@ -1,0 +1,80 @@
+Traceback (most recent call last):
+  File "/capstor/scratch/cscs/ybudanaz/data_must_flow_artifacts/division_by_zero/gcc/arm/benchmark_division_by_zero.py", line 73, in <module>
+    init_openmp()
+    ~~~~~~~~~~~^^
+  File "/capstor/scratch/cscs/ybudanaz/data_must_flow_artifacts/division_by_zero/gcc/arm/benchmark_division_by_zero.py", line 68, in init_openmp
+    os.environ["OMP_NUM_THREADS"] = core_count
+    ~~~~~~~~~~^^^^^^^^^^^^^^^^^^^
+  File "<frozen os>", line 722, in __setitem__
+  File "<frozen os>", line 796, in encode
+TypeError: str expected, not int
+Traceback (most recent call last):
+  File "/capstor/scratch/cscs/ybudanaz/data_must_flow_artifacts/division_by_zero/gcc/arm/benchmark_division_by_zero.py", line 73, in <module>
+    init_openmp()
+    ~~~~~~~~~~~^^
+  File "/capstor/scratch/cscs/ybudanaz/data_must_flow_artifacts/division_by_zero/gcc/arm/benchmark_division_by_zero.py", line 68, in init_openmp
+    os.environ["OMP_NUM_THREADS"] = core_count
+    ~~~~~~~~~~^^^^^^^^^^^^^^^^^^^
+  File "<frozen os>", line 722, in __setitem__
+  File "<frozen os>", line 796, in encode
+TypeError: str expected, not int
+Traceback (most recent call last):
+  File "/capstor/scratch/cscs/ybudanaz/data_must_flow_artifacts/division_by_zero/gcc/arm/benchmark_division_by_zero.py", line 73, in <module>
+    init_openmp()
+    ~~~~~~~~~~~^^
+  File "/capstor/scratch/cscs/ybudanaz/data_must_flow_artifacts/division_by_zero/gcc/arm/benchmark_division_by_zero.py", line 68, in init_openmp
+    os.environ["OMP_NUM_THREADS"] = core_count
+    ~~~~~~~~~~^^^^^^^^^^^^^^^^^^^
+  File "<frozen os>", line 722, in __setitem__
+  File "<frozen os>", line 796, in encode
+TypeError: str expected, not int
+Traceback (most recent call last):
+  File "/capstor/scratch/cscs/ybudanaz/data_must_flow_artifacts/division_by_zero/gcc/arm/benchmark_division_by_zero.py", line 73, in <module>
+    init_openmp()
+    ~~~~~~~~~~~^^
+  File "/capstor/scratch/cscs/ybudanaz/data_must_flow_artifacts/division_by_zero/gcc/arm/benchmark_division_by_zero.py", line 68, in init_openmp
+    os.environ["OMP_NUM_THREADS"] = core_count
+    ~~~~~~~~~~^^^^^^^^^^^^^^^^^^^
+  File "<frozen os>", line 722, in __setitem__
+  File "<frozen os>", line 796, in encode
+TypeError: str expected, not int
+Traceback (most recent call last):
+  File "/capstor/scratch/cscs/ybudanaz/data_must_flow_artifacts/division_by_zero/gcc/arm/benchmark_division_by_zero.py", line 73, in <module>
+    init_openmp()
+    ~~~~~~~~~~~^^
+  File "/capstor/scratch/cscs/ybudanaz/data_must_flow_artifacts/division_by_zero/gcc/arm/benchmark_division_by_zero.py", line 68, in init_openmp
+    os.environ["OMP_NUM_THREADS"] = core_count
+    ~~~~~~~~~~^^^^^^^^^^^^^^^^^^^
+  File "<frozen os>", line 722, in __setitem__
+  File "<frozen os>", line 796, in encode
+TypeError: str expected, not int
+Traceback (most recent call last):
+  File "/capstor/scratch/cscs/ybudanaz/data_must_flow_artifacts/division_by_zero/gcc/arm/benchmark_division_by_zero.py", line 73, in <module>
+    init_openmp()
+    ~~~~~~~~~~~^^
+  File "/capstor/scratch/cscs/ybudanaz/data_must_flow_artifacts/division_by_zero/gcc/arm/benchmark_division_by_zero.py", line 68, in init_openmp
+    os.environ["OMP_NUM_THREADS"] = core_count
+    ~~~~~~~~~~^^^^^^^^^^^^^^^^^^^
+  File "<frozen os>", line 722, in __setitem__
+  File "<frozen os>", line 796, in encode
+TypeError: str expected, not int
+Traceback (most recent call last):
+  File "/capstor/scratch/cscs/ybudanaz/data_must_flow_artifacts/division_by_zero/gcc/arm/benchmark_division_by_zero.py", line 73, in <module>
+    init_openmp()
+    ~~~~~~~~~~~^^
+  File "/capstor/scratch/cscs/ybudanaz/data_must_flow_artifacts/division_by_zero/gcc/arm/benchmark_division_by_zero.py", line 68, in init_openmp
+    os.environ["OMP_NUM_THREADS"] = core_count
+    ~~~~~~~~~~^^^^^^^^^^^^^^^^^^^
+  File "<frozen os>", line 722, in __setitem__
+  File "<frozen os>", line 796, in encode
+TypeError: str expected, not int
+Traceback (most recent call last):
+  File "/capstor/scratch/cscs/ybudanaz/data_must_flow_artifacts/division_by_zero/gcc/arm/benchmark_division_by_zero.py", line 73, in <module>
+    init_openmp()
+    ~~~~~~~~~~~^^
+  File "/capstor/scratch/cscs/ybudanaz/data_must_flow_artifacts/division_by_zero/gcc/arm/benchmark_division_by_zero.py", line 68, in init_openmp
+    os.environ["OMP_NUM_THREADS"] = core_count
+    ~~~~~~~~~~^^^^^^^^^^^^^^^^^^^
+  File "<frozen os>", line 722, in __setitem__
+  File "<frozen os>", line 796, in encode
+TypeError: str expected, not int
