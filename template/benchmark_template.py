@@ -259,7 +259,14 @@ if __name__ == "__main__":
         # -------------------------------------------------------
         # Vectorized versions
         # -------------------------------------------------------
-        for l in [8, 16, 32, 64]:
+        if cpu_name == "intel_xeon":
+            vlens = [8, 16, 32, 64]
+        elif cpu_name == "amd_epyc":
+            vlens = [4, 8, 16, 32, 64]
+        else:
+            vlens = [2, 4, 8, 16, 32, 64]
+
+        for l in vlens:
             # std no-copy version
             sdfg_vec, name = build_vectorized_sdfg(
                 TEMPLATE_std_sdfg, vec_width=l, insert_copies=False, cpy_suffix="no_cpy",
@@ -281,5 +288,5 @@ if __name__ == "__main__":
         # -------------------------------------------------------
         # CSV output
         # -------------------------------------------------------
-        save_timings_to_csv(f"TEMPLATE_timings_1_core{env_suffix_str}{multicore_suffix}.csv", i, S, all_timings)
-        print(f"Saved timing results to TEMPLATE_timings_1_core{env_suffix_str}{multicore_suffix}.csv")
+        save_timings_to_csv(f"TEMPLATE_timings_{env_suffix_str}{multicore_suffix}.csv", i, S, all_timings)
+        print(f"Saved timing results to TEMPLATE_timings_{env_suffix_str}{multicore_suffix}.csv")
