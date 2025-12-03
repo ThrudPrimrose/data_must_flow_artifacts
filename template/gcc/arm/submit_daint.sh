@@ -16,6 +16,7 @@ alias cxx=g++
 export CC=gcc
 export CXX=g++
 
+export CPU_NAME="arm"
 
 # Define configurations: each element is "EXTRA_FLAGS SUFFIX"
 configs=(
@@ -25,18 +26,22 @@ configs=(
     "-fvectorize" "neon"
 )
 
-for ((i=0; i<${#configs[@]}; i+=2)); do
-    export EXTRA_FLAGS="${configs[i]}"
-    export SUFFIX="${configs[i+1]}"
+for RUNMULTI in 0 1; do
+    export RUN_MULTICORE="$RUNMULTI"
+    for ((i=0; i<${#configs[@]}; i+=2)); do
+        export EXTRA_FLAGS="${configs[i]}"
+        export SUFFIX="${configs[i+1]}"
 
-    echo "Running with EXTRA_FLAGS='$EXTRA_FLAGS', SUFFIX='$SUFFIX'"
+        echo "Running with EXTRA_FLAGS='$EXTRA_FLAGS', SUFFIX='$SUFFIX'"
 
-    # Copy benchmark script
-    cp ../../benchmark_log_implementations.py .
+        # Copy benchmark script
+        cp ../../benchmark_log_implementations.py .
 
-    # Run benchmark
-    python3 benchmark_log_implementations.py
+        # Run benchmark
+        python3 benchmark_log_implementations.py
 
-    # Remove script
-    rm benchmark_log_implementations.py
+        # Remove script
+        rm benchmark_log_implementations.py
+    done
 done
+

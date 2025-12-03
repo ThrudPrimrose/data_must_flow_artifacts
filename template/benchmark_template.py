@@ -25,6 +25,21 @@ dace.config.Config.set("compiler", "cpu", "args", value=flags)
 compiler_exec = os.environ.get('CXX', 'c++')
 dace.config.Config.set("compiler", "cpu", "executable", value=compiler_exec)
 
+multi_core = int(os.environ.get('RUN_MULTICORE', '0')) == 1
+core_count = 1
+
+cpu_name = os.environ.get('CPU_NAME', 'amd_epyc')
+
+multicore_suffix = '' if core_count == 1 else '_multicore'
+
+if multi_core:
+    if cpu_name == "arm":
+        core_count = 72
+    elif cpu_name == "intel_xeon":
+        core_count = 18
+    elif cpu_name == "amd_epyc":
+        core_count = 64
+
 env_suffix_str = os.environ.get('SUFFIX', '')
 if env_suffix_str != '':
     env_suffix_str = "_" + env_suffix_str
@@ -44,8 +59,18 @@ def get_physical_cores():
     # fallback
     return int(subprocess.check_output(["nproc", "--all"]).decode())
 
-ncores = get_physical_cores()
-print("Physical cores:", ncores)
+
+def init_openmp():
+    # Get physical core count
+    ncores = get_physical_cores()
+
+    # Set OpenMP environment
+    os.environ["OMP_NUM_THREADS"] = core_count
+    os.environ["OMP_PLACES"] = "cores"
+    os.environ["OMP_PROC_BIND"] = "true"
+
+# Call before loading OpenMP-linked C++ libs
+init_openmp()
 
 def init_openmp():
     # Get physical core count
@@ -186,10 +211,11 @@ def save_timings_to_csv(filename, i, isize, timings_dict):
 # Helpers
 # -------------------------------------------------------
 
-def build_vectorized_sdfg(base_sdfg, vec_width, insert_copies, suffix, base_name):
+def build_vectorized_sdfg(base_sdfg, vec_width, insert_copies, cpy_suffix, base_name):
     sdfg = copy.deepcopy(base_sdfg)
     VectorizeCPU(vector_width=vec_width, insert_copies=insert_copies).apply_pass(sdfg, {})
-    name = f"{base_name}_static_veclen_{vec_width}_{suffix}"
+    # Naming scheme: based sdfg name + compiler name + flag suffix read from env + vector length + copy suffix
+    name = f"{base_name}_{compiler_exec.replace("+","")}_{env_suffix_str}_veclen_{vec_width}_{cpy_suffix}"
     sdfg.name = name
     sdfg.instrument = dace.dtypes.InstrumentationType.Timer
     return sdfg, sdfg.name
@@ -229,13 +255,6 @@ if __name__ == "__main__":
             params=params,
             num_runs=NUM_REPS,
         )
-        # Run baseline 1
-        all_timings["TEMPLATE_dace", S] = run_sdfg_multiple_times(
-            sdfg=TEMPLATE_dace_sdfg,
-            arrays=base_arrays,
-            params=params,
-            num_runs=NUM_REPS,
-        )
 
         # -------------------------------------------------------
         # Vectorized versions
@@ -243,7 +262,7 @@ if __name__ == "__main__":
         for l in [8, 16, 32, 64]:
             # std no-copy version
             sdfg_vec, name = build_vectorized_sdfg(
-                TEMPLATE_std_sdfg, vec_width=l, insert_copies=False, suffix="no_cpy",
+                TEMPLATE_std_sdfg, vec_width=l, insert_copies=False, cpy_suffix="no_cpy",
                 base_name="TEMPLATE_std"
             )
             all_timings[name, S] = run_sdfg_multiple_times(
@@ -252,7 +271,7 @@ if __name__ == "__main__":
 
             # std copy version
             sdfg_vec_cpy, name = build_vectorized_sdfg(
-                TEMPLATE_std_sdfg, vec_width=l, insert_copies=True, suffix="cpy",
+                TEMPLATE_std_sdfg, vec_width=l, insert_copies=True, cpy_suffix="cpy",
                 base_name="TEMPLATE_std"
             )
             all_timings[name, S] = run_sdfg_multiple_times(
@@ -262,5 +281,5 @@ if __name__ == "__main__":
         # -------------------------------------------------------
         # CSV output
         # -------------------------------------------------------
-        save_timings_to_csv(f"TEMPLATE_timings_1_core{env_suffix_str}.csv", i, S, all_timings)
-        print(f"Saved timing results to TEMPLATE_timings_1_core{env_suffix_str}.csv")
+        save_timings_to_csv(f"TEMPLATE_timings_1_core{env_suffix_str}{multicore_suffix}.csv", i, S, all_timings)
+        print(f"Saved timing results to TEMPLATE_timings_1_core{env_suffix_str}{multicore_suffix}.csv")

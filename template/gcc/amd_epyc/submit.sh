@@ -16,6 +16,8 @@ alias cxx=g++
 export CC=gcc
 export CXX=g++
 
+export CPU_NAME="amd_epyc"
+
 # Define configurations: each element is "EXTRA_FLAGS SUFFIX"
 configs=(
     "" ""                                   # first run: no extra flags, no suffix
