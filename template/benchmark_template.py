@@ -9,6 +9,8 @@ from math import log
 import subprocess
 
 cpu_name = os.environ.get('CPU_NAME', 'amd_epyc')
+compiler_exec = os.environ.get('CXX', 'c++')
+dace.config.Config.set("compiler", "cpu", "executable", value=compiler_exec)
 
 # Base compilation flags
 base_flags = [
@@ -17,8 +19,13 @@ base_flags = [
     '-Wno-unused-parameter', '-Wno-unused-label'
 ]
 
+
 if cpu_name == "arm":
     base_flags.remove("-march=native")
+
+if compiler_exec == "icpx:"
+    base_flags.remove("-fopenmp")
+    base_flags.append("-qopenmp")
 
 # Architecture / compiler specific extra flags
 env_flags_str = os.environ.get('EXTRA_FLAGS', '')
@@ -27,8 +34,6 @@ base_flags_str = ' '.join(base_flags)
 flags = base_flags_str + " " + env_flags_str if env_flags_str != '' else base_flags_str
 dace.config.Config.set("compiler", "cpu", "args", value=flags)
 
-compiler_exec = os.environ.get('CXX', 'c++')
-dace.config.Config.set("compiler", "cpu", "executable", value=compiler_exec)
 
 multi_core = int(os.environ.get('RUN_MULTICORE', '0')) == 1
 core_count = 1
