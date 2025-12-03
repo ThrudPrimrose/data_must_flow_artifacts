@@ -1,3 +1,63 @@
+# Need to set env vars
+import os
+import argparse
+# ------------------------------------------------------------
+# Parse command-line arguments
+# ------------------------------------------------------------
+def parse_args():
+    parser = argparse.ArgumentParser(description="SoftHier benchmark configuration")
+
+    parser.add_argument("--X_VAL", type=int, default=16384,
+                        help="Size parameter X (power of 2 recommended)")
+
+    parser.add_argument("--Y_VAL", type=int, default=2,
+                        help="Size parameter Y (power of 2 recommended)")
+
+    parser.add_argument("--VECTOR_LENGTH", type=int, default=16384,
+                        help="Vector length")
+
+    parser.add_argument("--SPATZ_NUM_VLSU_PORT", type=int, default=64,
+                        help="Number of VLSU ports")
+
+    parser.add_argument("--SPATZ_NUM_FUNCTION_UNIT", type=int, default=64,
+                        help="Number of function units")
+
+    parser.add_argument("--TCDM_BANK_WIDTH", type=int, default=32,
+                        help="TCDM Bank width")
+
+    parser.add_argument("--TCDM_BANK_NB", type=int, default=32,
+                        help="TCDM Bank NB")
+
+    parser.add_argument("--NUM_CORE_PER_CLUSTER", type=int, default=4,
+                        help="NUM_CORE_PER_CLUSTER")
+
+    parser.add_argument("--NUM_VECTOR_UNITS", type=int, default=4,
+                        help="NUM_VECTOR_UNITS")
+    return parser.parse_args()
+
+# ------------------------------------------------------------
+# Load arguments globally
+# ------------------------------------------------------------
+args = parse_args()
+
+# Keep this fixed; user requested no CLI exposure
+NUM_REPS = 1000
+# Replace these throughout your code
+X_VAL = args.X_VAL
+Y_VAL = args.Y_VAL
+VECTOR_LENGTH = args.VECTOR_LENGTH
+SPATZ_NUM_VLSU_PORT = args.SPATZ_NUM_VLSU_PORT
+SPATZ_NUM_FUNCTION_UNIT = args.SPATZ_NUM_FUNCTION_UNIT
+TCDM_BANK_WIDTH = args.TCDM_BANK_WIDTH
+TCDM_BANK_NB = args.TCDM_BANK_NB
+NUM_CORE_PER_CLUSTER = args.NUM_CORE_PER_CLUSTER
+NUM_VECTOR_UNITS = args.NUM_VECTOR_UNITS
+SAVE_SDFG = False
+KLON_VAL = X_VAL
+KLEV_VAL = Y_VAL
+os.environ["SOFTHIER_NUM_CORE_PER_CLUSTER"] = str(NUM_CORE_PER_CLUSTER)
+os.environ["SOFTHIER_NUM_VECTOR_UNITS"] = str(NUM_VECTOR_UNITS)
+os.environ["SOFTHIER_SKIP_SCALAR_FALLBACK"] = "0"
 
 import copy
 import io
@@ -41,70 +101,11 @@ import re
 import numpy as np
 import matplotlib.pyplot as plt
 import csv
-import argparse
 
-# ------------------------------------------------------------
-# Parse command-line arguments
-# ------------------------------------------------------------
-def parse_args():
-    parser = argparse.ArgumentParser(description="SoftHier benchmark configuration")
-
-    parser.add_argument("--X_VAL", type=int, default=8192,
-                        help="Size parameter X (power of 2 recommended)")
-
-    parser.add_argument("--Y_VAL", type=int, default=4,
-                        help="Size parameter Y (power of 2 recommended)")
-
-    parser.add_argument("--VECTOR_LENGTH", type=int, default=8192,
-                        help="Vector length")
-
-    parser.add_argument("--SPATZ_NUM_VLSU_PORT", type=int, default=64,
-                        help="Number of VLSU ports")
-
-    parser.add_argument("--SPATZ_NUM_FUNCTION_UNIT", type=int, default=64,
-                        help="Number of function units")
-
-    parser.add_argument("--TCDM_BANK_WIDTH", type=int, default=32,
-                        help="TCDM Bank width")
-
-    parser.add_argument("--TCDM_BANK_NB", type=int, default=256,
-                        help="TCDM Bank NB")
-
-    parser.add_argument("--NUM_CORE_PER_CLUSTER", type=int, default=8,
-                        help="NUM_CORE_PER_CLUSTER")
-    return parser.parse_args()
-
-# ------------------------------------------------------------
-# Load arguments globally
-# ------------------------------------------------------------
-args = parse_args()
-
-# Keep this fixed; user requested no CLI exposure
-NUM_REPS = 50
-# Replace these throughout your code
-X_VAL = args.X_VAL
-Y_VAL = args.Y_VAL
-VECTOR_LENGTH = args.VECTOR_LENGTH
-SPATZ_NUM_VLSU_PORT = args.SPATZ_NUM_VLSU_PORT
-SPATZ_NUM_FUNCTION_UNIT = args.SPATZ_NUM_FUNCTION_UNIT
-TCDM_BANK_WIDTH = args.TCDM_BANK_WIDTH
-TCDM_BANK_NB = args.TCDM_BANK_NB
-Y = dace.symbol("Y")
-X = dace.symbol("X")
-CORES_X = dace.symbol("CORES_X")
-CORES_Y = dace.symbol("CORES_Y")
-BLOCK_X = dace.symbol("BLOCK_X")
-BLOCK_Y = dace.symbol("BLOCK_Y")
-NUM_BLOCKS_X = dace.symbol("NUM_BLOCKS_X")
-NUM_BLOCKS_Y = dace.symbol("NUM_BLOCKS_Y")
-SAVE_SDFG = True
 KLON = dace.symbol('KLON')
 KLEV = dace.symbol('KLEV')
 NCLDQL = dace.symbol('NCLDQL')
 NCLDQI = dace.symbol('NCLDQI')
-KLON_VAL = X_VAL
-KLEV_VAL = Y_VAL
-NUM_CORE_PER_CLUSTER = args.NUM_CORE_PER_CLUSTER
 
 @dace.program
 def cloud_fraction_update(
@@ -948,14 +949,13 @@ def _get_softhier_sdfg() -> dace.SDFG:
     return copy_sdfg
 
 
-
 def plot_roofline(hw_config: HardwareConfig, kernel_flops: int, kernel_bytes: int):
     with open("./log", "r") as f:
         log_str = f.read()
 
     match = re.search(r"\[Performance Counter\]: Execution period is (\d+) ns", log_str)
 
-    csv_filename = f"roofline_metrics_l1_cloud_fraction_update_spatz_num_function_units_{hw_config.spatz_num_function_unit}_spatz_num_vlsu_port_{hw_config.spatz_num_vlsu_port}.csv"
+    csv_filename = f"perf_w_num_cores/roofline_metrics_l1_cloud_fraction_update_spatz_num_function_units_{hw_config.spatz_num_function_unit}_spatz_num_vlsu_port_{hw_config.spatz_num_vlsu_port}_num_core_{hw_config.num_core_per_cluster}_num_vu_{hw_config.num_vector_units}.csv"
     file_exists = os.path.exists(csv_filename)
     print(f"File exists {csv_filename}? {file_exists}")
 
@@ -967,13 +967,17 @@ def plot_roofline(hw_config: HardwareConfig, kernel_flops: int, kernel_bytes: in
         default_clock_freq = 1e9  # 1 GHz
         
         # VECTOR bandwidth (bytes/s)
-        vector_bandwidth = float(hw_config.spatz_num_vlsu_port) * 4.0 * default_clock_freq
+        #vector_bandwidth = float(hw_config.spatz_num_vlsu_port) * 4.0 * default_clock_freq
         # tcdm_bandwidth = (float(hw_config.cluster_tcdm_bank_width) / 8.0) * float(hw_config.cluster_tcdm_bank_nb) * default_clock_freq
+        vector_bandwidth = min(
+            float(hw_config.num_vector_units) * float(hw_config.spatz_num_vlsu_port) * 4.0 * float(default_clock_freq),
+            (float(hw_config.cluster_tcdm_bank_width)/8.0) * float(hw_config.cluster_tcdm_bank_nb) * float(default_clock_freq)
+        )
 
         # Vector FLOPs/s (assuming FP32)
         #vector_flops_s = float(hw_config.spatz_num_function_unit) * (64 / 32) * default_clock_freq
-        vector_flops_s = float(hw_config.spatz_num_function_unit) * (64 / 32) * default_clock_freq
-        
+        vector_flops_s = hw_config.num_vector_units * float(hw_config.spatz_num_function_unit) * (64 / 32) * default_clock_freq
+    
         # Convert to GFLOPs/s and GB/s
         peak_perf_gflops = vector_flops_s / 1e9
         peak_bandwidth_gbs = vector_bandwidth / 1e9
@@ -1002,12 +1006,12 @@ def plot_roofline(hw_config: HardwareConfig, kernel_flops: int, kernel_bytes: in
             writer = csv.writer(csvfile)
             # Header row
             if not file_exists:
-                writer.writerow(['Kernel Name', 'VLSU Ports', 'Function Units', 'Vector Length', 'X_dim', 'Y_dim',
+                writer.writerow(['Kernel Name', 'VLSU Ports', 'Function Units', 'Vector Length', 'X_dim', 'Y_dim'
                        'Peak Performance (GFLOP/s)', 'Peak Bandwidth (GB/s)', 
                        'Achieved Performance (GFLOP/s)', 'Achieved Bandwidth (GB/s)',
                        'Performance % of Peak', 'Bandwidth % of Peak',
                        'Operational Intensity (FLOP/byte)', 'Execution Time (us)',
-                       'Total FLOPs', 'Total Bytes'])
+                       'Total FLOPs', 'Total Bytes', 'Num Core Per Cluster', 'Num Vector Unit Per Cluster'])
             # Data row
             writer.writerow(['l1_cloud_fraction_update', hw_config.spatz_num_vlsu_port, hw_config.spatz_num_function_unit,
                         VECTOR_LENGTH, X_VAL, Y_VAL,
@@ -1015,7 +1019,7 @@ def plot_roofline(hw_config: HardwareConfig, kernel_flops: int, kernel_bytes: in
                         f'{achieved_gflops:.4f}', f'{achieved_bandwidth_gbs:.4f}',
                         f'{perf_percentage:.2f}', f'{bandwidth_percentage:.2f}',
                         f'{op_intensity:.4f}', f'{execution_time_s*1e6:.4f}',
-                        f'{kernel_flops}', f'{kernel_bytes}'])
+                        f'{kernel_flops}', f'{kernel_bytes}', f'{NUM_CORE_PER_CLUSTER}', f'{NUM_VECTOR_UNITS}'])
         
         print(f"\nMetrics saved to {csv_filename}")
         
@@ -1060,8 +1064,8 @@ def plot_roofline(hw_config: HardwareConfig, kernel_flops: int, kernel_bytes: in
         ax.set_ylim([0.1, peak_perf_gflops * 2])
 
         plt.tight_layout()
-        plt.savefig(f'roofline_metrics_l1_cloud_fraction_update_spatz_num_function_units_{hw_config.spatz_num_function_unit}_spatz_num_vlsu_port_{hw_config.spatz_num_vlsu_port}_veclen_{VECTOR_LENGTH}.png', dpi=300, bbox_inches='tight')
-        print("Roofline plot saved to roofline_plot.png")
+        plt.savefig(f'perf_w_num_cores/roofline_metrics_l1_cloud_fraction_update_spatz_num_function_units_{hw_config.spatz_num_function_unit}_spatz_num_vlsu_port_{hw_config.spatz_num_vlsu_port}_num_core_{hw_config.num_core_per_cluster}_num_vu_{hw_config.num_vector_units}_veclen_{VECTOR_LENGTH}.png', dpi=300, bbox_inches='tight')
+        print("Roofline plot saved")
         
         return {
             'peak_perf_gflops': peak_perf_gflops,
