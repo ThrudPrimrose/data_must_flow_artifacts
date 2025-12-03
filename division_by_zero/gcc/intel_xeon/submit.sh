@@ -16,4 +16,30 @@ alias cxx=g++
 export CC=gcc
 export CXX=g++
 
-python3 benchmark_division_by_zero.py
+export CPU_NAME="intel_xeon"
+
+# Define configurations: each element is "EXTRA_FLAGS SUFFIX"
+configs=(
+    "" ""                                   # first run: no extra flags, no suffix
+    "-mprefer-vector-width=512" "force_width_512"  # second run
+    "-fno-vectorize" "no_vectorize"
+)
+
+for RUNMULTI in 0 1; do
+    export RUN_MULTICORE="$RUNMULTI"
+    for ((i=0; i<${#configs[@]}; i+=2)); do
+        export EXTRA_FLAGS="${configs[i]}"
+        export SUFFIX="${configs[i+1]}"
+
+        echo "Running with EXTRA_FLAGS='$EXTRA_FLAGS', SUFFIX='$SUFFIX'"
+
+        # Copy benchmark script
+        cp ../../benchmark_division_by_zero.py .
+
+        # Run benchmark
+        python3 benchmark_division_by_zero.py
+
+        # Remove script
+        rm benchmark_division_by_zero.py
+    done
+done

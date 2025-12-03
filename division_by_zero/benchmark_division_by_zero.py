@@ -1,15 +1,48 @@
 import copy
 import csv
 import os
-
 import numpy as np
 import dace
 from dace.transformation.passes.vectorization.vectorize_cpu import VectorizeCPU
-from dace.sdfg import utils as sdutil
-
-
+from math import log
 
 import subprocess
+
+# Base compilation flags
+base_flags = [
+    '-fopenmp', '-fstrict-aliasing', '-std=c++17', '-faligned-new',
+    '-fPIC', '-Wall', '-Wextra', '-O3', '-march=native', '-ffast-math',
+    '-Wno-unused-parameter', '-Wno-unused-label'
+]
+
+# Architecture / compiler specific extra flags
+env_flags_str = os.environ.get('EXTRA_FLAGS', '')
+base_flags_str = ' '.join(base_flags)
+
+flags = base_flags_str + " " + env_flags_str if env_flags_str != '' else base_flags_str
+dace.config.Config.set("compiler", "cpu", "args", value=flags)
+
+compiler_exec = os.environ.get('CXX', 'c++')
+dace.config.Config.set("compiler", "cpu", "executable", value=compiler_exec)
+
+multi_core = int(os.environ.get('RUN_MULTICORE', '0')) == 1
+core_count = 1
+
+cpu_name = os.environ.get('CPU_NAME', 'amd_epyc')
+
+multicore_suffix = '' if core_count == 1 else '_multicore'
+
+if multi_core:
+    if cpu_name == "arm":
+        core_count = 72
+    elif cpu_name == "intel_xeon":
+        core_count = 18
+    elif cpu_name == "amd_epyc":
+        core_count = 64
+
+env_suffix_str = os.environ.get('SUFFIX', '')
+if env_suffix_str != '':
+    env_suffix_str = "_" + env_suffix_str
 
 def get_physical_cores():
     # Use lscpu and parse "Core(s) per socket" and "Socket(s)"
@@ -26,8 +59,18 @@ def get_physical_cores():
     # fallback
     return int(subprocess.check_output(["nproc", "--all"]).decode())
 
-ncores = get_physical_cores()
-print("Physical cores:", ncores)
+
+def init_openmp():
+    # Get physical core count
+    ncores = get_physical_cores()
+
+    # Set OpenMP environment
+    os.environ["OMP_NUM_THREADS"] = core_count
+    os.environ["OMP_PLACES"] = "cores"
+    os.environ["OMP_PROC_BIND"] = "true"
+
+# Call before loading OpenMP-linked C++ libs
+init_openmp()
 
 def init_openmp():
     # Get physical core count
@@ -88,27 +131,23 @@ def run_vectorization_test(
     print(sdfg.get_instrumentation_reports()[-1])
     print(copy_sdfg.get_instrumentation_reports()[-1])
 
+
 def test_division_by_zero():
     # S = dace.symbol("S")
-    S = 8192 * 4 * 8  # Ensure divisibility for vectorization
+    S = 64  # Ensure divisibility for vectorization
 
     A = np.random.random((S, S))
     B = np.random.random((S, S))
 
     @dace.program
-    def division_by_zero(A: dace.float64[S], B: dace.float64[S], c: dace.float64):
+    def division_by_zero(A: dace.float64[S], B: dace.float64[S]):
         for i in dace.map[0:S]:
-            if A[i] > 0.0:
-                B[i] = c / A[i]
-            else:
-                B[i] = 0.0
+            B[i] = log(A[i])
 
     run_vectorization_test(
         dace_func=division_by_zero,
         arrays={"A": A, "B": B},
-        params={
-            "tsteps": 5,
-        },
+        params={},
         vector_width=8,
         sdfg_name="division_by_zero",
     )
@@ -153,16 +192,18 @@ def run_sdfg_multiple_times(
 
     return times
 
-def save_timings_to_csv(filename, timings_dict):
+def save_timings_to_csv(filename, i, isize, timings_dict):
     """
     Write:
         sdfg_name,rep_idx,time_in_seconds
     """
-    with open(filename, "w", newline="") as f:
+    with open(filename, "w" if i == 0 else "a", newline="") as f:
         writer = csv.writer(f)
         writer.writerow(["sdfg_name", "size", "rep", "time_seconds"])
 
         for (sdfg_name, size), times in timings_dict.items():
+            if isize != size:
+                continue
             for i, t in enumerate(times):
                 writer.writerow([sdfg_name, size, i, t])
 
@@ -170,14 +211,14 @@ def save_timings_to_csv(filename, timings_dict):
 # Helpers
 # -------------------------------------------------------
 
-def build_vectorized_sdfg(base_sdfg, vec_width, insert_copies, suffix):
+def build_vectorized_sdfg(base_sdfg, vec_width, insert_copies, cpy_suffix, base_name):
     sdfg = copy.deepcopy(base_sdfg)
     VectorizeCPU(vector_width=vec_width, insert_copies=insert_copies).apply_pass(sdfg, {})
-    name = f"division_by_zero_vectorized_static_veclen_{vec_width}_{suffix}"
+    # Naming scheme: based sdfg name + compiler name + flag suffix read from env + vector length + copy suffix
+    name = f"{base_name}_{compiler_exec.replace("+","")}_{env_suffix_str}_veclen_{vec_width}_{cpy_suffix}"
     sdfg.name = name
     sdfg.instrument = dace.dtypes.InstrumentationType.Timer
-    sdfg.save(f"{name}.sdfgz", compress=True)
-    return sdfg, name
+    return sdfg, sdfg.name
 
 
 
@@ -190,30 +231,26 @@ if __name__ == "__main__":
     all_timings = {}
 
     # S = dace.symbol("S")
-    for S in [8192 * 64, 8192 * 256, 8192 * 512, 8192 * 1024, 8192 * 2048, 8192 * 4096, 8192 * 8192]:
+    for i, S in enumerate([8192 * 64, 8192 * 256, 8192 * 512, 8192 * 1024, 8192 * 2048, 8192 * 4096, 8192 * 8192]):
         @dace.program
-        def division_by_zero(A: dace.float64[S], B: dace.float64[S], c: dace.float64):
+        def division_by_zero(A: dace.float64[S], B: dace.float64[S]):
             for i in dace.map[0:S]:
-                if A[i] > 0.0:
-                    B[i] = c / A[i]
-                else:
-                    B[i] = 0.0
+                B[i] = log(A[i])
 
         # Baseline SDFG
-        division_by_zero_sdfg = division_by_zero.to_sdfg()
-        division_by_zero_sdfg.name = "division_by_zero"
-        division_by_zero_sdfg.instrument = dace.dtypes.InstrumentationType.Timer
-        division_by_zero_sdfg.save("division_by_zero.sdfgz", compress=True)
+        division_by_zero_dace_sdfg = division_by_zero.to_sdfg()
+        division_by_zero_dace_sdfg.name = "division_by_zero_dace"
+        division_by_zero_dace_sdfg.instrument = dace.dtypes.InstrumentationType.Timer
 
         # Baseline arrays
         A = np.random.random((S, ))
         B = np.random.random((S, ))
         base_arrays = {"A": A, "B": B, }
-        params = {"c": np.float64(1.0), }
+        params = {}
 
-        # Run baseline
-        all_timings["division_by_zero", S] = run_sdfg_multiple_times(
-            sdfg=division_by_zero_sdfg,
+        # Run baseline 1
+        all_timings["division_by_zero_dace", S] = run_sdfg_multiple_times(
+            sdfg=division_by_zero_dace_sdfg,
             arrays=base_arrays,
             params=params,
             num_runs=NUM_REPS,
@@ -222,25 +259,34 @@ if __name__ == "__main__":
         # -------------------------------------------------------
         # Vectorized versions
         # -------------------------------------------------------
-        for l in [8, 16, 32, 64]:
-            # no-copy version
+        if cpu_name == "intel_xeon":
+            vlens = [8, 16, 32, 64]
+        elif cpu_name == "amd_epyc":
+            vlens = [4, 8, 16, 32, 64]
+        else:
+            vlens = [2, 4, 8, 16, 32, 64]
+
+        for l in vlens:
+            # std no-copy version
             sdfg_vec, name = build_vectorized_sdfg(
-                division_by_zero_sdfg, vec_width=l, insert_copies=False, suffix="no_cpy"
+                division_by_zero_dace_sdfg, vec_width=l, insert_copies=False, cpy_suffix="no_cpy",
+                base_name="division_by_zero_dace"
             )
             all_timings[name, S] = run_sdfg_multiple_times(
                 sdfg=sdfg_vec, arrays=base_arrays, params=params, num_runs=NUM_REPS
             )
 
-            # copy version
+            # std copy version
             sdfg_vec_cpy, name = build_vectorized_sdfg(
-                division_by_zero_sdfg, vec_width=l, insert_copies=True, suffix="cpy"
+                division_by_zero_dace_sdfg, vec_width=l, insert_copies=True, cpy_suffix="cpy",
+                base_name="division_by_zero_dace"
             )
             all_timings[name, S] = run_sdfg_multiple_times(
                 sdfg=sdfg_vec_cpy, arrays=base_arrays, params=params, num_runs=NUM_REPS
             )
 
-    # -------------------------------------------------------
-    # CSV output
-    # -------------------------------------------------------
-    save_timings_to_csv("division_by_zero_timings_1_core.csv", all_timings)
-    print("Saved timing results to division_by_zero_timings.csv")
+        # -------------------------------------------------------
+        # CSV output
+        # -------------------------------------------------------
+        save_timings_to_csv(f"division_by_zero_timings_{env_suffix_str}{multicore_suffix}.csv", i, S, all_timings)
+        print(f"Saved timing results to division_by_zero_timings_{env_suffix_str}{multicore_suffix}.csv")
