@@ -22,8 +22,9 @@ export CPU_NAME="amd_epyc"
 
 # Define configurations: each element is "EXTRA_FLAGS SUFFIX"
 configs=(
-    #"" ""                                   # first run: no extra flags, no suffix
+    "" ""                                   # first run: no extra flags, no suffix
     "-mprefer-vector-width=512  -Rpass=loop-vectorize -Rpass-analysis=loop-vectorize -Rpass-missed=loop-vectorize -Rpass=slp-vectorize -fsave-optimization-record -foptimization-record-file=${SCRIPT_DIR}/log_implemenations_vec_report.yaml" "force_width_512"   # second run
+    "-fno-vectorize" "no_vectorize"
 )
 
 for RUNMULTI in 0 1; do

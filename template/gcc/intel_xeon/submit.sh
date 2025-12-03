@@ -22,6 +22,7 @@ export CPU_NAME="intel_xeon"
 configs=(
     "-mprefer-vector-width=512" "force_width_512"
     "" ""                                   
+    "-fno-vectorize" "no_vectorize"
 )
 
 for RUNMULTI in 0 1; do
