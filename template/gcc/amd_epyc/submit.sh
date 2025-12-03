@@ -22,7 +22,7 @@ export CPU_NAME="amd_epyc"
 configs=(
     "" ""                                   # first run: no extra flags, no suffix
     "-mprefer-vector-width=512" "force_width_512"  # second run
-    "-fno-vectorize" "no_vectorize"
+    "-fno-tree-vectorize -fno-tree-slp-vectorize" "no-vectorize"
 )
 
 for RUNMULTI in 0 1; do

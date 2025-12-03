@@ -23,7 +23,7 @@ configs=(
     "" ""                                   # first run: no extra flags, no suffix
     "-march=armv9-a+simd -mcpu=neoverse-v2" "neon"  # second run
     "-march=armv9-a+sve2 -mcpu=neoverse-v2" "sve"  # second run
-    "-fno-vectorize" "no_vectorize"
+    "-fno-tree-vectorize -fno-tree-slp-vectorize" "no-vectorize"
 )
 
 for RUNMULTI in 0 1; do
