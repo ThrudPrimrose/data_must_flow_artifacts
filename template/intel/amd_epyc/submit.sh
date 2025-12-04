@@ -1,8 +1,8 @@
 #!/bin/bash
-#SBATCH --job-name=log_amd_epyc_intel  # Job name
+#SBATCH --job-name=TXN_amd_epyc_intel  # Job name
 #SBATCH --nodes=1                     # Number of nodes
 #SBATCH --partition=amd               # Partition/queue
-#SBATCH --time=00:30:00               # Walltime (hh:mm:ss)
+#SBATCH --time=02:30:00               # Walltime (hh:mm:ss)
 #SBATCH --output=%x_%j.out            # Standard output (%x=job name, %j=job ID)
 #SBATCH --error=%x_%j.err             # Standard error
 #SBATCH --chdir=.
@@ -20,6 +20,9 @@ echo "Script path: $SCRIPT_PATH"
 echo "Script dir:  $SCRIPT_DIR"
 
 export CPU_NAME="amd_epyc"
+export OMP_NUM_THREADS=64
+export OMP_PLACES=cores
+export OMP_PROC_BIND=spread
 
 # Define configurations: each element is "EXTRA_FLAGS SUFFIX"
 configs=(

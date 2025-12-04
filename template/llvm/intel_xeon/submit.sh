@@ -1,8 +1,8 @@
 #!/bin/bash
-#SBATCH --job-name=log_intel_xeon_llvm  # Job name
+#SBATCH --job-name=TXN_intel_xeon_llvm  # Job name
 #SBATCH --nodes=1                     # Number of nodes
 #SBATCH --partition=intel               # Partition/queue
-#SBATCH --time=01:00:00               # Walltime (hh:mm:ss)
+#SBATCH --time=02:30:00               # Walltime (hh:mm:ss)
 #SBATCH --output=%x_%j.out            # Standard output (%x=job name, %j=job ID)
 #SBATCH --error=%x_%j.err             # Standard error
 #SBATCH --chdir=.
@@ -19,12 +19,17 @@ export CPU_NAME="intel_xeon"
 
 echo "Script path: $SCRIPT_PATH"
 echo "Script dir:  $SCRIPT_DIR"
+export OMP_NUM_THREADS=64
+export OMP_PLACES=cores
+export OMP_PROC_BIND=spread
 
 # Define configurations: each element is "EXTRA_FLAGS SUFFIX"
 configs=(
     "" ""                                   # first run: no extra flags, no suffix
-    "-mprefer-vector-width=512  -Rpass=loop-vectorize -Rpass-analysis=loop-vectorize -Rpass-missed=loop-vectorize -Rpass=slp-vectorize -fsave-optimization-record -foptimization-record-file=${SCRIPT_DIR}/log_implemenations_vec_report.yaml" "force_width_512"   # second run
+    "-mprefer-vector-width=512" "force_width_512"   # second run
     "-fno-vectorize" "no_vectorize"
+    # Probably, disable below if not arithmetic function
+    "-fno-math-errno -fveclib=libmvec -mprefer-vector-width=512" "libmvec"
 )
 
 for RUNMULTI in 0 1; do

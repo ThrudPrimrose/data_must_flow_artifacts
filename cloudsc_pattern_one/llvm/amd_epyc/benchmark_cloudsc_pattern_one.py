@@ -1,31 +1,57 @@
 import copy
 import csv
 import os
-
 import numpy as np
 import dace
 from dace.transformation.passes.vectorization.vectorize_cpu import VectorizeCPU
-from dace.sdfg import utils as sdutil
-
-# S = dace.symbol("S")
-
+from math import log
 
 import subprocess
-import argparse
 
-# -----------------------------
-# Parse arguments
-# -----------------------------
-parser = argparse.ArgumentParser(description="Run cloudsc_pattern_1 DaCe benchmarks")
-parser.add_argument(
-    "--suffix",
-    type=str,
-    default="",
-    help="Suffix to append to the output CSV file"
-)
-args = parser.parse_args()
+cpu_name = os.environ.get('CPU_NAME', 'amd_epyc')
+compiler_exec = os.environ.get('CXX', 'c++')
+dace.config.Config.set("compiler", "cpu", "executable", value=compiler_exec)
 
-csv_filename = f"cloudsc_pattern_1_timings{('_' + args.suffix) if args.suffix else ''}_1_core.csv"
+# Base compilation flags
+base_flags = [
+    '-fopenmp', '-fstrict-aliasing', '-std=c++17', '-faligned-new',
+    '-fPIC', '-Wall', '-Wextra', '-O3', '-march=native', '-ffast-math',
+    '-Wno-unused-parameter', '-Wno-unused-label'
+]
+
+
+if cpu_name == "arm":
+    base_flags.remove("-march=native")
+
+if compiler_exec == "icpx":
+    base_flags.remove("-fopenmp")
+    base_flags.append("-qopenmp")
+
+# Architecture / compiler specific extra flags
+env_flags_str = os.environ.get('EXTRA_FLAGS', '')
+base_flags_str = ' '.join(base_flags)
+
+flags = base_flags_str + " " + env_flags_str if env_flags_str != '' else base_flags_str
+dace.config.Config.set("compiler", "cpu", "args", value=flags)
+
+
+multi_core = int(os.environ.get('RUN_MULTICORE', '0')) == 1
+core_count = 1
+
+
+multicore_suffix = '' if core_count == 1 else '_multicore'
+
+if multi_core:
+    if cpu_name == "arm":
+        core_count = 72
+    elif cpu_name == "intel_xeon":
+        core_count = 18
+    elif cpu_name == "amd_epyc":
+        core_count = 64
+
+env_suffix_str = os.environ.get('SUFFIX', '')
+if env_suffix_str != '':
+    env_suffix_str = "_" + env_suffix_str
 
 def get_physical_cores():
     # Use lscpu and parse "Core(s) per socket" and "Socket(s)"
@@ -42,22 +68,18 @@ def get_physical_cores():
     # fallback
     return int(subprocess.check_output(["nproc", "--all"]).decode())
 
-ncores = get_physical_cores()
-print("Physical cores:", ncores)
 
 def init_openmp():
     # Get physical core count
     ncores = get_physical_cores()
 
     # Set OpenMP environment
-    os.environ["OMP_NUM_THREADS"] = "1"
+    os.environ["OMP_NUM_THREADS"] = str(core_count)
     os.environ["OMP_PLACES"] = "cores"
     os.environ["OMP_PROC_BIND"] = "true"
 
 # Call before loading OpenMP-linked C++ libs
 init_openmp()
-
-
 
 
 def run_vectorization_test(
@@ -107,138 +129,26 @@ def run_vectorization_test(
     print(sdfg.get_instrumentation_reports()[-1])
     print(copy_sdfg.get_instrumentation_reports()[-1])
 
-def test_pattern_one():
-    N = 512  # Ensure divisibility for vectorization
+
+def test_cloudsc_pattern_one():
+    # S = dace.symbol("S")
+    S = 64  # Ensure divisibility for vectorization
+
+    A = np.random.random((S, S))
+    B = np.random.random((S, S))
 
     @dace.program
-    def pattern_one(pap: dace.float64[N], ptsphy: dace.float64, r2es: dace.float64, r3ies: dace.float64, r4ies: dace.float64,
-                rcldtopcf: dace.float64, rd: dace.float64, rdepliqrefdepth: dace.float64, rdepliqrefrate: dace.float64,
-                rg: dace.float64, riceinit: dace.float64, rlmin: dace.float64, rlstt: dace.float64, rtt: dace.float64,
-                rv: dace.float64, za: dace.float64[N], zdp: dace.float64[N], zfokoop: dace.float64[N],
-                zicecld: dace.float64[N], zrho: dace.float64[N], ztp1: dace.float64[N], zcldtopdist: dace.float64[N],
-                zicenuclei: dace.float64[N], zqxfg: dace.float64[N], zsolqa: dace.float64[N]):
-        for it_47 in dace.map[
-                0:N:1,
-        ]:
-            # Check if crossing cloud top threshold
-            if za[it_47] < rcldtopcf and za[it_47] >= rcldtopcf:
-                zcldtopdist[it_47] = 0.0
-            else:
-                zcldtopdist[it_47] = zcldtopdist[it_47] + (zdp[it_47] / (rg * zrho[it_47]))
+    def cloudsc_pattern_one(A: dace.float64[S], B: dace.float64[S]):
+        for i in dace.map[0:S]:
+            B[i] = log(A[i])
 
-            # Ice nucleation and deposition
-            if ztp1[it_47] < rtt and zqxfg[it_47] > rlmin:
-                # Calculate ice saturation vapor pressure
-                tmp_arg_72 = (r3ies * (ztp1[it_47] - rtt)) / (ztp1[it_47] - r4ies)
-                tmp_call_47 = r2es * np.exp(tmp_arg_72)
-                zvpice = (rv * tmp_call_47) / rd
-
-                # Calculate liquid vapor pressure
-                zvpliq = zfokoop[it_47] * np.log(zvpice)
-
-                # Ice nuclei concentration
-                tmp_arg_27 = -0.639 + ((-1.96 * zvpice + 1.96 * zvpliq) / zvpliq)
-                zicenuclei[it_47] = 1000.0 * np.exp(tmp_arg_27)
-
-                # Nucleation factor
-                zinfactor = min(1.0, 6.66666666666667e-05 * zicenuclei[it_47])
-
-                # Deposition calculation parameters
-                zadd = (1.6666666666667 * rlstt * (rlstt / (rv * ztp1[it_47]) - 1.0)) / ztp1[it_47]
-                zbdd = (0.452488687782805 * pap[it_47] * rv * ztp1[it_47]) / zvpice
-
-                tmp_call_49 = (zicenuclei[it_47] / zrho[it_47])
-                zcvds = (7.8 * tmp_call_49 * (zvpliq - zvpice)) / (zvpice * (zadd + zbdd))
-
-                # Initial ice content
-                zice0 = max(riceinit * zicenuclei[it_47] / zrho[it_47], zicecld[it_47])
-
-                # New ice after deposition
-                tmp_arg_30 = 0.666 * ptsphy * zcvds + zice0
-                zinew = tmp_arg_30**1.5
-
-                # Deposition amount
-                zdepos1 = max(0.0, za[it_47] * (zinew - zice0))
-                zdepos2 = min(zdepos1, 1.1)
-
-                # Apply nucleation factor and cloud top distance factor
-                tmp_arg_33 = zinfactor + (1.0 - zinfactor) * (rdepliqrefrate + zcldtopdist[it_47] / rdepliqrefdepth)
-                zdepos3 = zdepos2 * min(1.0, tmp_arg_33)
-
-                # Update mixing ratios
-                zqxfg[it_47] = zqxfg[it_47] + zdepos3
-                zsolqa[it_47] = zsolqa[it_47] + zdepos3
-
-
-    """Generate test data for the loop body function"""
-    eps_operator_type_for_log_and_div: str = "add"
-    _N = N
-    data = {
-        'ptsphy': np.float64(36.0),  # timestep (s)
-        'r2es': np.float64(6.11),  # saturation vapor pressure constant (hPa)
-        'r3ies': np.float64(12.0),  # ice saturation constant
-        'r4ies': np.float64(15.5),  # ice saturation constant
-        'rcldtopcf': np.float64(16.8),  # cloud top threshold
-        'rd': np.float64(287.0),  # gas constant for dry air (J/kg/K)
-        'rdepliqrefdepth': np.float64(20.0),  # reference depth
-        'rdepliqrefrate': np.float64(17.3),  # reference rate
-        'rg': np.float64(9.81),  # gravity (m/s²)
-        'riceinit': np.float64(5.3),  # initial ice content (kg/m³)
-        'rlmin': np.float64(3.9),  # minimum liquid water (kg/m³)
-        'rlstt': np.float64(2.5e6),  # latent heat (J/kg)
-        'rtt': np.float64(273.15),  # triple point temperature (K)
-        'rv': np.float64(461.5),  # gas constant for water vapor (J/kg/K)
-        'N': np.int64(_N),
-    }
-
-    # 1D arrays with safe ranges
-    rng = np.random.default_rng(0)
-
-    def safe_uniform(low, high, size):
-        """Avoid near-zero or extreme values that could cause NaN in log/div."""
-        return rng.uniform(low, high, size).astype(np.float64)
-
-    # State variables (N = grid size)
-    data['pap'] = safe_uniform(1.0, 2.0, (_N, ))  # pressure-like
-    data['za'] = safe_uniform(0.9, 1.5, (_N, ))  # altitude/cloud-top
-    data['ztp1'] = safe_uniform(260.0, 280.0, (_N, ))  # temperature near freezing
-    data['zqxfg'] = safe_uniform(5.0, 11.0, (_N, ))  # mixing ratios
-    data['zsolqa'] = safe_uniform(5.0, 11.0, (_N, ))  # ice tendencies
-
-    data['zdp'] = safe_uniform(0.5, 2.0, (_N, ))  # layer depth
-    data['zfokoop'] = safe_uniform(0.95, 1.05, (_N, ))  # correction factor
-    data['zicecld'] = safe_uniform(10.0, 11.0, (_N, ))  # cloud ice
-    data['zrho'] = safe_uniform(0.9, 1.2, (_N, ))  # density
-    data['zcldtopdist'] = safe_uniform(0.1, 1.0, (_N, ))  # distance to cloud top
-    data['zicenuclei'] = safe_uniform(1e2, 1e4, (_N, ))  # ice nuclei concentration
-
-    sdfg = pattern_one.to_sdfg()
-    sdfg.name = f"pattern_one_sdfg_with_log_exp_div_operator_{eps_operator_type_for_log_and_div}"
-    sdfg.validate()
-    #it_23: dace.int64, it_47: dace.int64
-    sdfg.validate()
-    sdfg.auto_optimize(dace.dtypes.DeviceType.CPU, True, True)
-    sdfg.validate()
-    out_no_fuse = {k: v.copy() for k, v in data.items()}
-    sdfg(**out_no_fuse)
-    sdfg.save(f"{sdfg.name}.sdfg")
-
-    # Apply transformation
-    copy_sdfg = copy.deepcopy(sdfg)
-    VectorizeCPU(vector_width=8, insert_copies=False).apply_pass(copy_sdfg, {})
-    copy_sdfg.name = f"pattern_one_sdfg_with_log_exp_div_operator_{eps_operator_type_for_log_and_div}_vectorized"
-    copy_sdfg.save(f"{copy_sdfg.name}.sdfg")
-
-    # Run SDFG version (with transformation)
-    out_fused = {k: v.copy() for k, v in data.items()}
-
-    copy_sdfg(**out_fused)
-
-    # Compare all arrays
-    for name in data.keys():
-        print(name)
-        print(out_fused[name] - out_no_fuse[name])
-        np.testing.assert_allclose(out_fused[name], out_no_fuse[name], atol=1e-12)
+    run_vectorization_test(
+        dace_func=cloudsc_pattern_one,
+        arrays={"A": A, "B": B},
+        params={},
+        vector_width=8,
+        sdfg_name="cloudsc_pattern_one",
+    )
 
 
 def run_sdfg_multiple_times(
@@ -280,17 +190,18 @@ def run_sdfg_multiple_times(
 
     return times
 
-def save_timings_to_csv(filename, timings_dict, i):
+def save_timings_to_csv(filename, i, isize, timings_dict):
     """
     Write:
         sdfg_name,rep_idx,time_in_seconds
     """
     with open(filename, "w" if i == 0 else "a", newline="") as f:
         writer = csv.writer(f)
-        if i == 0:
-            writer.writerow(["sdfg_name", "size", "rep", "time_seconds"])
+        writer.writerow(["sdfg_name", "size", "rep", "time_seconds"])
 
-        for (sdfg_name,size), times in timings_dict.items():
+        for (sdfg_name, size), times in timings_dict.items():
+            if isize != size:
+                continue
             for i, t in enumerate(times):
                 writer.writerow([sdfg_name, size, i, t])
 
@@ -298,36 +209,19 @@ def save_timings_to_csv(filename, timings_dict, i):
 # Helpers
 # -------------------------------------------------------
 
-def build_vectorized_sdfg(base_sdfg, vec_width, insert_copies, suffix):
+def build_vectorized_sdfg(base_sdfg, vec_width, insert_copies, cpy_suffix, base_name):
     sdfg = copy.deepcopy(base_sdfg)
     VectorizeCPU(vector_width=vec_width, insert_copies=insert_copies).apply_pass(sdfg, {})
-    name = f"cloudsc_pattern_1_vectorized_static_veclen_{vec_width}_{suffix}"
+    # Naming scheme: based sdfg name + compiler name + flag suffix read from env + vector length + copy suffix
+    if "/" in compiler_exec and "clang" in compiler_exec:
+        cname = "graceclang"
+    else:
+        cname = compiler_exec.replace("+","").replace("/", "_")
+    name = f"{base_name}_{cname}_{env_suffix_str}_veclen_{vec_width}_{cpy_suffix}"
     sdfg.name = name
     sdfg.instrument = dace.dtypes.InstrumentationType.Timer
-    sdfg.save(f"{name}.sdfgz", compress=True)
-    return sdfg, name
+    return sdfg, sdfg.name
 
-
-def build_aligned_arrays_and_sdfg(base_sdfg, S, vec_width):
-    S_stride = S + vec_width - 2
-    A = np.random.random((S, S_stride))
-    B = np.random.random((S, S_stride))
-    arrays = {"A": A, "B": B}
-
-    sdfg = copy.deepcopy(base_sdfg)
-    VectorizeCPU(vector_width=vec_width, insert_copies=False).apply_pass(sdfg, {})
-
-    name = f"cloudsc_pattern_1_vectorized_static_veclen_{vec_width}_no_cpy_aligned"
-    sdfg.name = name
-
-    # Fix strides
-    for arr in sdfg.arrays.values():
-        if isinstance(arr, dace.data.Array) and not arr.transient:
-            arr.strides = (S_stride, 1)
-
-    sdfg.instrument = dace.dtypes.InstrumentationType.Timer
-    sdfg.save(f"{name}.sdfgz", compress=True)
-    return sdfg, arrays, name
 
 
 # -------------------------------------------------------
@@ -335,18 +229,18 @@ def build_aligned_arrays_and_sdfg(base_sdfg, S, vec_width):
 # -------------------------------------------------------
 
 if __name__ == "__main__":
-    NUM_REPS = 10
+    NUM_REPS = 20
     all_timings = {}
 
-    for i, N in enumerate([8192, 8192 * 512, 8192 * 2048, 8192 * 4096, 8192 * 8192, 8192 * 8192 * 2]):
+    for i, N in enumerate([8192 * 576, 8192 * 576 * 2, 8192 * 576 * 4, 8192 * 576 * 8]):
         size = N
 
         @dace.program
-        def cloudsc_pattern_1(pap: dace.float64[N], ptsphy: dace.float64, r2es: dace.float64, r3ies: dace.float64, r4ies: dace.float64,
+        def cloudsc_pattern_one(pap: dace.float64[N], ptsphy: dace.float64, r2es: dace.float64, r3ies: dace.float64, r4ies: dace.float64,
                     rcldtopcf: dace.float64, rd: dace.float64, rdepliqrefdepth: dace.float64, rdepliqrefrate: dace.float64,
                     rg: dace.float64, riceinit: dace.float64, rlmin: dace.float64, rlstt: dace.float64, rtt: dace.float64,
                     rv: dace.float64, za: dace.float64[N], zdp: dace.float64[N], zfokoop: dace.float64[N],
-                    zicecld: dace.float64[N], zrho: dace.float64[N], ztp1: dace.float64[N], zcldtopdist: dace.float64[N],
+                    zicecld: dace.float64[N], zrho: dace.float64[N], ztp2: dace.float64[N], zcldtopdist: dace.float64[N],
                     zicenuclei: dace.float64[N], zqxfg: dace.float64[N], zsolqa: dace.float64[N]):
             for it_47 in dace.map[
                     0:N:1,
@@ -358,9 +252,9 @@ if __name__ == "__main__":
                     zcldtopdist[it_47] = zcldtopdist[it_47] + (zdp[it_47] / (rg * zrho[it_47]))
 
                 # Ice nucleation and deposition
-                if ztp1[it_47] < rtt and zqxfg[it_47] > rlmin:
+                if ztp2[it_47] < rtt and zqxfg[it_47] > rlmin:
                     # Calculate ice saturation vapor pressure
-                    tmp_arg_72 = (r3ies * (ztp1[it_47] - rtt)) / (ztp1[it_47] - r4ies)
+                    tmp_arg_72 = (r3ies * (ztp2[it_47] - rtt)) / (ztp2[it_47] - r4ies)
                     tmp_call_47 = r2es * np.exp(tmp_arg_72)
                     zvpice = (rv * tmp_call_47) / rd
 
@@ -375,8 +269,8 @@ if __name__ == "__main__":
                     zinfactor = min(1.0, 6.66666666666667e-05 * zicenuclei[it_47])
 
                     # Deposition calculation parameters
-                    zadd = (1.6666666666667 * rlstt * (rlstt / (rv * ztp1[it_47]) - 1.0)) / ztp1[it_47]
-                    zbdd = (0.452488687782805 * pap[it_47] * rv * ztp1[it_47]) / zvpice
+                    zadd = (1.6666666666667 * rlstt * (rlstt / (rv * ztp2[it_47]) - 1.0)) / ztp2[it_47]
+                    zbdd = (0.452488687782805 * pap[it_47] * rv * ztp2[it_47]) / zvpice
 
                     tmp_call_49 = (zicenuclei[it_47] / zrho[it_47])
                     zcvds = (7.8 * tmp_call_49 * (zvpliq - zvpice)) / (zvpice * (zadd + zbdd))
@@ -402,10 +296,10 @@ if __name__ == "__main__":
 
 
         # Baseline SDFG
-        cloudsc_pattern_1_sdfg = cloudsc_pattern_1.to_sdfg()
-        cloudsc_pattern_1_sdfg.name = "cloudsc_pattern_1"
-        cloudsc_pattern_1_sdfg.instrument = dace.dtypes.InstrumentationType.Timer
-        cloudsc_pattern_1_sdfg.save("cloudsc_pattern_1.sdfgz", compress=True)
+        cloudsc_pattern_one_sdfg = cloudsc_pattern_one.to_sdfg()
+        cloudsc_pattern_one_sdfg.name = "cloudsc_pattern_one"
+        cloudsc_pattern_one_sdfg.instrument = dace.dtypes.InstrumentationType.Timer
+        cloudsc_pattern_one_sdfg.save("cloudsc_pattern_one.sdfgz", compress=True)
 
         # Baseline arrays
         """Generate test data for the loop body function"""
@@ -439,7 +333,7 @@ if __name__ == "__main__":
         # State variables (N = grid size)
         data['pap'] = safe_uniform(1.0, 2.0, (_N, ))  # pressure-like
         data['za'] = safe_uniform(0.9, 1.5, (_N, ))  # altitude/cloud-top
-        data['ztp1'] = safe_uniform(260.0, 280.0, (_N, ))  # temperature near freezing
+        data['ztp2'] = safe_uniform(260.0, 280.0, (_N, ))  # temperature near freezing
         data['zqxfg'] = safe_uniform(5.0, 11.0, (_N, ))  # mixing ratios
         data['zsolqa'] = safe_uniform(5.0, 11.0, (_N, ))  # ice tendencies
 
@@ -451,8 +345,17 @@ if __name__ == "__main__":
         data['zicenuclei'] = safe_uniform(1e2, 1e4, (_N, ))  # ice nuclei concentration
 
         # Run baseline
-        all_timings["cloudsc_pattern_1", size] = run_sdfg_multiple_times(
-            sdfg=cloudsc_pattern_1_sdfg,
+        all_timings["cloudsc_pattern_one", size] = run_sdfg_multiple_times(
+            sdfg=cloudsc_pattern_one_sdfg,
+            arrays=data,
+            params=dict(),
+            num_runs=NUM_REPS,
+        )
+
+
+        # Run baseline 1
+        all_timings["cloudsc_pattern_one", size] = run_sdfg_multiple_times(
+            sdfg=cloudsc_pattern_one_sdfg,
             arrays=data,
             params=dict(),
             num_runs=NUM_REPS,
@@ -461,10 +364,18 @@ if __name__ == "__main__":
         # -------------------------------------------------------
         # Vectorized versions
         # -------------------------------------------------------
-        for l in [8, 16, 32]:
-            # no-copy version
+        if cpu_name == "intel_xeon":
+            vlens = [8, 16, 32, 64]
+        elif cpu_name == "amd_epyc":
+            vlens = [4, 8, 16, 32, 64]
+        else:
+            vlens = [2, 4, 8, 16, 32, 64]
+
+        for l in vlens:
+            # std no-copy version
             sdfg_vec, name = build_vectorized_sdfg(
-                cloudsc_pattern_1_sdfg, vec_width=l, insert_copies=False, suffix="no_cpy"
+                cloudsc_pattern_one_sdfg, vec_width=l, insert_copies=False, cpy_suffix="no_cpy",
+                base_name=cloudsc_pattern_one_sdfg.name
             )
             all_timings[name, size] = run_sdfg_multiple_times(
                 sdfg=sdfg_vec, arrays=data, params=dict(), num_runs=NUM_REPS
@@ -472,7 +383,8 @@ if __name__ == "__main__":
 
             # copy version
             sdfg_vec_cpy, name = build_vectorized_sdfg(
-                cloudsc_pattern_1_sdfg, vec_width=l, insert_copies=True, suffix="cpy"
+                cloudsc_pattern_one_sdfg, vec_width=l, insert_copies=True, cpy_suffix="cpy",
+                base_name=cloudsc_pattern_one_sdfg.name
             )
             all_timings[name, size] = run_sdfg_multiple_times(
                 sdfg=sdfg_vec_cpy, arrays=data, params=dict(), num_runs=NUM_REPS
@@ -482,5 +394,5 @@ if __name__ == "__main__":
         # -------------------------------------------------------
         # CSV output
         # -------------------------------------------------------
-        save_timings_to_csv(csv_filename, all_timings, i)
-        print(f"Saved timing results to {csv_filename}.csv")
+        save_timings_to_csv(f"cloudsc_pattern_one_timings_{env_suffix_str}{multicore_suffix}.csv", i, N, all_timings)
+        print(f"Saved timing results to cloudsc_pattern_one_timings_{env_suffix_str}{multicore_suffix}.csv")

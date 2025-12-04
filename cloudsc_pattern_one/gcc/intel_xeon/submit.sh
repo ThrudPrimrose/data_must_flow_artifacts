@@ -1,12 +1,12 @@
 #!/bin/bash
-#SBATCH --job-name=csc1_intel_gcc  # Job name
+#SBATCH --job-name=clsc1_intel_xeon_gcc  # Job name
 #SBATCH --nodes=1                     # Number of nodes
 #SBATCH --partition=intel               # Partition/queue
-#SBATCH --time=01:00:00               # Walltime (hh:mm:ss)
+#SBATCH --time=02:30:00               # Walltime (hh:mm:ss)
 #SBATCH --output=%x_%j.out            # Standard output (%x=job name, %j=job ID)
 #SBATCH --error=%x_%j.err             # Standard error
-#SBATCH --chdir=/scratch/ybudanaz/data_must_flow_artifacts/cloudsc_pattern_one/gcc/intel_xeon
-
+#SBATCH --chdir=.
+#SBATCH --exclusive
 spack load cmake
 spack load gcc@14.2
 
@@ -16,4 +16,30 @@ alias cxx=g++
 export CC=gcc
 export CXX=g++
 
-python3 benchmark_cloudsc_pattern_one.py
+export CPU_NAME="intel_xeon"
+
+# Define configurations: each element is "EXTRA_FLAGS SUFFIX"
+configs=(
+    "-mprefer-vector-width=512" "force_width_512"
+    "" ""                                   
+    "-fno-tree-vectorize -fno-tree-slp-vectorize" "no_vectorize"
+)
+
+for RUNMULTI in 0 1; do
+    export RUN_MULTICORE="$RUNMULTI"
+    for ((i=0; i<${#configs[@]}; i+=2)); do
+        export EXTRA_FLAGS="${configs[i]}"
+        export SUFFIX="${configs[i+1]}"
+
+        echo "Running with EXTRA_FLAGS='$EXTRA_FLAGS', SUFFIX='$SUFFIX'"
+
+        # Copy benchmark script
+        cp ../../benchmark_cloudsc_pattern_one.py .
+
+        # Run benchmark
+        python3 benchmark_cloudsc_pattern_one.py
+
+        # Remove script
+        rm benchmark_cloudsc_pattern_one.py
+    done
+done

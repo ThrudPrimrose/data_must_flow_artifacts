@@ -1,8 +1,8 @@
 #!/bin/bash
-#SBATCH --job-name=log_arm_llvm  # Job name
+#SBATCH --job-name=TXN_arm_llvm  # Job name
 #SBATCH --nodes=1                     # Number of nodes
 #SBATCH --partition=normal               # Partition/queue
-#SBATCH --time=00:30:00               # Walltime (hh:mm:ss)
+#SBATCH --time=02:30:00               # Walltime (hh:mm:ss)
 #SBATCH --output=%x_%j.out            # Standard output (%x=job name, %j=job ID)
 #SBATCH --error=%x_%j.err             # Standard error
 #SBATCH --chdir=.
@@ -15,13 +15,17 @@ export CC="/users/ybudanaz/clang-grace-toolchain-21.25.10/bin/clang"
 export CXX="/users/ybudanaz/clang-grace-toolchain-21.25.10/bin/clang++"
 
 export CPU_NAME="arm"
+export OMP_NUM_THREADS=72
+export OMP_PLACES=cores
+export OMP_PROC_BIND=spread
 
 # Define configurations: each element is "EXTRA_FLAGS SUFFIX"
 configs=(
-    "" ""                                   # first run: no extra flags, no suffix
-    "-march=armv9-a+simd -mcpu=neoverse-v2" "neon"  # second run
+    "-march=armv9-a+simd -mcpu=neoverse-v2 -mprefer-vector-width=128" "neon"  # second run
     "-march=armv9-a+sve2 -mcpu=neoverse-v2" "sve"  # second run
-    "-fno-vectorize" "no_vectorize"
+    "-march=armv9-a -mcpu=neoverse-v2 -fno-tree-vectorize -fno-tree-slp-vectorize" "no-vectorize"
+    # Probably, disable below if not arithmetic function
+    "-march=armv9-a+sve2+simd -mcpu=neoverse-v2 -fno-math-errno -fveclib=libarm -mprefer-vector-width=512" "libarm"
 )
 
 for RUNMULTI in 0 1; do

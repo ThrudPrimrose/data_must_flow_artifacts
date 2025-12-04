@@ -13,7 +13,9 @@ alias c++="/users/ybudanaz/clang-grace-toolchain-21.25.10/bin/clang++"
 alias cxx="/users/ybudanaz/clang-grace-toolchain-21.25.10/bin/clang++"
 export CC="/users/ybudanaz/clang-grace-toolchain-21.25.10/bin/clang"
 export CXX="/users/ybudanaz/clang-grace-toolchain-21.25.10/bin/clang++"
-
+export OMP_NUM_THREADS=72
+export OMP_PLACES=cores
+export OMP_PROC_BIND=spread
 export CPU_NAME="arm"
 
 # Define configurations: each element is "EXTRA_FLAGS SUFFIX"

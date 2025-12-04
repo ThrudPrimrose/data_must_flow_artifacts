@@ -13,7 +13,9 @@ alias c++="clang++ --target=aarch64-linux-gnu"
 alias cxx="clang++ --target=aarch64-linux-gnu"
 export CC="clang --target=aarch64-linux-gnu"
 export CXX="clang++ --target=aarch64-linux-gnu"
-
+export OMP_NUM_THREADS=72
+export OMP_PLACES=cores
+export OMP_PROC_BIND=spread
 export CPU_NAME="arm"
 
 # Define configurations: each element is "EXTRA_FLAGS SUFFIX"

@@ -15,7 +15,9 @@ alias c++=g++
 alias cxx=g++
 export CC=gcc
 export CXX=g++
-
+export OMP_NUM_THREADS=64
+export OMP_PLACES=cores
+export OMP_PROC_BIND=spread
 export CPU_NAME="amd_epyc"
 
 # Define configurations: each element is "EXTRA_FLAGS SUFFIX"
