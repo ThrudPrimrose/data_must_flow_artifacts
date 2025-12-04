@@ -8,11 +8,11 @@
 #SBATCH --chdir=.
 
 spack load cmake
-alias cc="clang --target=aarch64-linux-gnu"
-alias c++="clang++ --target=aarch64-linux-gnu"
-alias cxx="clang++ --target=aarch64-linux-gnu"
-export CC="clang --target=aarch64-linux-gnu"
-export CXX="clang++ --target=aarch64-linux-gnu"
+alias cc=clang
+alias c++=clang++
+alias cxx=clang++
+export CC=clang
+export CXX=clang++
 
 export CPU_NAME="arm"
 
@@ -20,8 +20,8 @@ export CPU_NAME="arm"
 configs=(
     "-march=armv9-a+sve2 -mcpu=neoverse-v2" ""                                   # first run: no extra flags, no suffix
     "-march=armv9-a+simd -mcpu=neoverse-v2 -mprefer-vector-width=128" "neon"  # second run
-    "-march=armv9-a+sve2 -no-simd -mcpu=neoverse-v2" "sve"  # second run
-    "-march=armv9-a+sve2 -no-simd -mcpu=neoverse-v2 -fno-tree-vectorize -fno-tree-slp-vectorize" "no-vectorize"
+    "-march=armv9-a+sve2 -mcpu=neoverse-v2" "sve"  # second run
+    "-march=armv9-a+sve2 -mcpu=neoverse-v2 -fno-tree-vectorize -fno-tree-slp-vectorize" "no-vectorize"
     # Probably, disable below if not arithmetic function
     "-march=armv9-a+sve2+simd -mcpu=neoverse-v2 -fno-math-errno -fveclib=libarm -mprefer-vector-width=512" "libarm"
 )
