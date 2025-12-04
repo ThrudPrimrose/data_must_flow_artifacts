@@ -1040,11 +1040,11 @@ def _get_softhier_sdfg() -> dace.SDFG:
     
     if SAVE_SDFG:
         copy_sdfg.save("s9.sdfg")
-    #for state in copy_sdfg.all_states():
-    #    for node in state.nodes():
-    #        if isinstance(node, dace.nodes.NestedSDFG):
-    #            node.sdfg.add_symbol("tile_jl", dace.int64)
-    #            node.symbol_mapping["tile_jl"] = "tile_jl"
+    for state in copy_sdfg.all_states():
+        for node in state.nodes():
+            if isinstance(node, dace.nodes.NestedSDFG):
+                node.sdfg.add_symbol("tile_j", dace.int64)
+                node.symbol_mapping["tile_j"] = "tile_j"
 
     copy_sdfg.compile()
     return copy_sdfg
@@ -1285,3 +1285,4 @@ if __name__ == "__main__":
     kernel_bytes = NUM_REPS * X_VAL * Y_VAL * num_edges * 4 # fp32
     print("[Pipeline Info] Plot Roofline")
     plot_roofline(hw_config=config, kernel_flops=kernel_flops, kernel_bytes=kernel_bytes)
+    

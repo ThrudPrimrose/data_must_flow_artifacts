@@ -1188,11 +1188,38 @@ if __name__ == "__main__":
 
     """
 
-    #kernel_flops = NUM_REPS * X_VAL * Y_VAL * 5
-    #kernel_bytes = NUM_REPS * X_VAL * Y_VAL * 13 * 4
-    
+    #count_tasklets_for_flops (skip vfill tasklets)
+    #count data movement through memlets in the nested SDFG
+    num_tasklets = 0
+    num_edges = 0
+    def count_tasklets(sdfg: dace.SDFG):
+        i = 0
+        for state in sdfg.all_states():
+            for node in state.nodes():
+                if isinstance(node, dace.nodes.Tasklet) and "vfill" not in node.code.as_string:
+                    i += 1
+        return i
+    def count_edges(sdfg: dace.SDFG):
+        i = 0
+        for state in sdfg.all_states():
+            for edge in state.edges():
+                if edge.data.data is not None:
+                    i += 1
+        return i
+
+    for state in softhier_sdfg.all_states():
+        for node in state.nodes():
+            if isinstance(node, dace.nodes.NestedSDFG):
+                num_tasklets += count_tasklets(node.sdfg)
+                num_edges += count_edges(node.sdfg)
+
     # After transforming
-    kernel_flops = NUM_REPS * X_VAL * Y_VAL * 9
-    kernel_bytes = NUM_REPS * X_VAL * Y_VAL * 22
+    kernel_flops = NUM_REPS * X_VAL * Y_VAL * num_tasklets
+    kernel_bytes = NUM_REPS * X_VAL * Y_VAL * num_edges * 4 # fp32
+
+    #print(num_tasklets)
+    #print(num_edges)
+    #raise Exception(num_taslets, num_edges)
+
     print("[Pipeline Info] Plot Roofline")
     plot_roofline(hw_config=config, kernel_flops=kernel_flops, kernel_bytes=kernel_bytes)

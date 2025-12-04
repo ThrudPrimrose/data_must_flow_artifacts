@@ -47,7 +47,7 @@ def main():
                                         #else:
                                         print(f"Running X={X} Y={Y} VL={VL} PORT={PORT} FU={FU}, NB={NB}, BW={BW}, NC={NC}, NVU={NVU}")
                                         cmd = [
-                                            "python3", "l1_cloud_fraction_update_no_scalar.py",
+                                            "python3", "l1_huge_cloudsc_loop_nest.py",
                                             "--X_VAL", str(X),
                                             "--Y_VAL", str(Y),
                                             "--VECTOR_LENGTH", str(VL),
