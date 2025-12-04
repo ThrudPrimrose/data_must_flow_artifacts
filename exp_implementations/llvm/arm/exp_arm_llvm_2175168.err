@@ -1,0 +1,600 @@
+/capstor/scratch/cscs/ybudanaz/dace/dace/codegen/targets/target.py:229: UserWarning: Could not find executable "clang++ --target=aarch64-linux-gnu"
+  warnings.warn("Could not find executable \"{}\"".format(path))
+Traceback (most recent call last):
+  File "/capstor/scratch/cscs/ybudanaz/dace/dace/codegen/compiler.py", line 224, in configure_and_compile
+    _run_liveoutput(cmake_command, shell=True, cwd=build_folder, output_stream=output_stream)
+    ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/capstor/scratch/cscs/ybudanaz/dace/dace/codegen/compiler.py", line 429, in _run_liveoutput
+    raise subprocess.CalledProcessError(process.returncode, command, output.getvalue())
+subprocess.CalledProcessError: Command 'cmake  "/capstor/scratch/cscs/ybudanaz/dace/dace/codegen" -DDACE_SRC_DIR="/capstor/scratch/cscs/ybudanaz/data_must_flow_artifacts/exp_implementations/llvm/arm/.dacecache/exp_implementations_dace/src" -DDACE_FILES="cpu/exp_implementations_dace.cpp" -DDACE_PROGRAM_NAME=exp_implementations_dace -DDACE_ENV_CMAKE_FILES="" -DDACE_ENV_COMPILE_FLAGS="" -DDACE_ENV_INCLUDES="" -DDACE_ENV_LIBRARIES="" -DDACE_ENV_MINIMUM_VERSION=0 -DDACE_ENV_PACKAGES="" -DDACE_ENV_VAR_KEYS="" -DDACE_ENV_VAR_VALUES="" -DCMAKE_CXX_COMPILER="clang++ --target=aarch64-linux-gnu" -DCMAKE_CXX_FLAGS="-fopenmp -fstrict-aliasing -std=c++17 -faligned-new -fPIC -Wall -Wextra -O3 -ffast-math -Wno-unused-parameter -Wno-unused-label -march=armv9-a+sve2 -mcpu=neoverse-v2" -DDACE_LIBS="" -DCMAKE_BUILD_TYPE=RelWithDebInfo -DCMAKE_SHARED_LINKER_FLAGS="-Wl,--disable-new-dtags"' returned non-zero exit status 1.
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/capstor/scratch/cscs/ybudanaz/dace/dace/codegen/compiler.py", line 232, in configure_and_compile
+    _run_liveoutput(cmake_command, shell=True, cwd=build_folder, output_stream=output_stream)
+    ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/capstor/scratch/cscs/ybudanaz/dace/dace/codegen/compiler.py", line 429, in _run_liveoutput
+    raise subprocess.CalledProcessError(process.returncode, command, output.getvalue())
+subprocess.CalledProcessError: Command 'cmake  "/capstor/scratch/cscs/ybudanaz/dace/dace/codegen" -DDACE_SRC_DIR="/capstor/scratch/cscs/ybudanaz/data_must_flow_artifacts/exp_implementations/llvm/arm/.dacecache/exp_implementations_dace/src" -DDACE_FILES="cpu/exp_implementations_dace.cpp" -DDACE_PROGRAM_NAME=exp_implementations_dace -DDACE_ENV_CMAKE_FILES="" -DDACE_ENV_COMPILE_FLAGS="" -DDACE_ENV_INCLUDES="" -DDACE_ENV_LIBRARIES="" -DDACE_ENV_MINIMUM_VERSION=0 -DDACE_ENV_PACKAGES="" -DDACE_ENV_VAR_KEYS="" -DDACE_ENV_VAR_VALUES="" -DCMAKE_CXX_COMPILER="clang++ --target=aarch64-linux-gnu" -DCMAKE_CXX_FLAGS="-fopenmp -fstrict-aliasing -std=c++17 -faligned-new -fPIC -Wall -Wextra -O3 -ffast-math -Wno-unused-parameter -Wno-unused-label -march=armv9-a+sve2 -mcpu=neoverse-v2" -DDACE_LIBS="" -DCMAKE_BUILD_TYPE=RelWithDebInfo -DCMAKE_SHARED_LINKER_FLAGS="-Wl,--disable-new-dtags"' returned non-zero exit status 1.
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/capstor/scratch/cscs/ybudanaz/data_must_flow_artifacts/exp_implementations/llvm/arm/benchmark_exp_implementations.py", line 265, in <module>
+    all_timings["exp_implementations_dace", S] = run_sdfg_multiple_times(
+                                                 ~~~~~~~~~~~~~~~~~~~~~~~^
+        sdfg=exp_implementations_dace_sdfg,
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ...<2 lines>...
+        num_runs=NUM_REPS,
+        ^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "/capstor/scratch/cscs/ybudanaz/data_must_flow_artifacts/exp_implementations/llvm/arm/benchmark_exp_implementations.py", line 182, in run_sdfg_multiple_times
+    compiled = sdfg.compile()
+  File "/capstor/scratch/cscs/ybudanaz/dace/dace/sdfg/sdfg.py", line 2436, in compile
+    shared_library = compiler.configure_and_compile(program_folder, sdfg.name)
+  File "/capstor/scratch/cscs/ybudanaz/dace/dace/codegen/compiler.py", line 238, in configure_and_compile
+    raise cgx.CompilerConfigurationError('Configuration failure:\n' + ex.output)
+dace.codegen.exceptions.CompilerConfigurationError: Configuration failure:
+-- The C compiler identification is Clang 21.1.6
+-- The CXX compiler identification is unknown
+-- Detecting C compiler ABI info
+-- Detecting C compiler ABI info - done
+-- Check for working C compiler: /capstor/scratch/cscs/ybudanaz/bin/clang - skipped
+-- Detecting C compile features
+-- Detecting C compile features - done
+CMake Error at CMakeLists.txt:3 (project):
+  The CMAKE_CXX_COMPILER:
+    clang++ --target=aarch64-linux-gnu
+
+  is not a full path and was not found in the PATH.
+
+  Tell CMake where to find the compiler by setting either the environment
+  variable "CXX" or the CMake cache entry CMAKE_CXX_COMPILER to the full path
+  to the compiler, or to the compiler name if it is in the PATH.
+
+
+-- Configuring incomplete, errors occurred!
+
+/capstor/scratch/cscs/ybudanaz/dace/dace/codegen/targets/target.py:229: UserWarning: Could not find executable "clang++ --target=aarch64-linux-gnu"
+  warnings.warn("Could not find executable \"{}\"".format(path))
+Traceback (most recent call last):
+  File "/capstor/scratch/cscs/ybudanaz/dace/dace/codegen/compiler.py", line 224, in configure_and_compile
+    _run_liveoutput(cmake_command, shell=True, cwd=build_folder, output_stream=output_stream)
+    ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/capstor/scratch/cscs/ybudanaz/dace/dace/codegen/compiler.py", line 429, in _run_liveoutput
+    raise subprocess.CalledProcessError(process.returncode, command, output.getvalue())
+subprocess.CalledProcessError: Command 'cmake  "/capstor/scratch/cscs/ybudanaz/dace/dace/codegen" -DDACE_SRC_DIR="/capstor/scratch/cscs/ybudanaz/data_must_flow_artifacts/exp_implementations/llvm/arm/.dacecache/exp_implementations_dace/src" -DDACE_FILES="cpu/exp_implementations_dace.cpp" -DDACE_PROGRAM_NAME=exp_implementations_dace -DDACE_ENV_CMAKE_FILES="" -DDACE_ENV_COMPILE_FLAGS="" -DDACE_ENV_INCLUDES="" -DDACE_ENV_LIBRARIES="" -DDACE_ENV_MINIMUM_VERSION=0 -DDACE_ENV_PACKAGES="" -DDACE_ENV_VAR_KEYS="" -DDACE_ENV_VAR_VALUES="" -DCMAKE_CXX_COMPILER="clang++ --target=aarch64-linux-gnu" -DCMAKE_CXX_FLAGS="-fopenmp -fstrict-aliasing -std=c++17 -faligned-new -fPIC -Wall -Wextra -O3 -ffast-math -Wno-unused-parameter -Wno-unused-label -march=armv9-a+simd -mcpu=neoverse-v2 -mprefer-vector-width=128" -DDACE_LIBS="" -DCMAKE_BUILD_TYPE=RelWithDebInfo -DCMAKE_SHARED_LINKER_FLAGS="-Wl,--disable-new-dtags"' returned non-zero exit status 1.
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/capstor/scratch/cscs/ybudanaz/dace/dace/codegen/compiler.py", line 232, in configure_and_compile
+    _run_liveoutput(cmake_command, shell=True, cwd=build_folder, output_stream=output_stream)
+    ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/capstor/scratch/cscs/ybudanaz/dace/dace/codegen/compiler.py", line 429, in _run_liveoutput
+    raise subprocess.CalledProcessError(process.returncode, command, output.getvalue())
+subprocess.CalledProcessError: Command 'cmake  "/capstor/scratch/cscs/ybudanaz/dace/dace/codegen" -DDACE_SRC_DIR="/capstor/scratch/cscs/ybudanaz/data_must_flow_artifacts/exp_implementations/llvm/arm/.dacecache/exp_implementations_dace/src" -DDACE_FILES="cpu/exp_implementations_dace.cpp" -DDACE_PROGRAM_NAME=exp_implementations_dace -DDACE_ENV_CMAKE_FILES="" -DDACE_ENV_COMPILE_FLAGS="" -DDACE_ENV_INCLUDES="" -DDACE_ENV_LIBRARIES="" -DDACE_ENV_MINIMUM_VERSION=0 -DDACE_ENV_PACKAGES="" -DDACE_ENV_VAR_KEYS="" -DDACE_ENV_VAR_VALUES="" -DCMAKE_CXX_COMPILER="clang++ --target=aarch64-linux-gnu" -DCMAKE_CXX_FLAGS="-fopenmp -fstrict-aliasing -std=c++17 -faligned-new -fPIC -Wall -Wextra -O3 -ffast-math -Wno-unused-parameter -Wno-unused-label -march=armv9-a+simd -mcpu=neoverse-v2 -mprefer-vector-width=128" -DDACE_LIBS="" -DCMAKE_BUILD_TYPE=RelWithDebInfo -DCMAKE_SHARED_LINKER_FLAGS="-Wl,--disable-new-dtags"' returned non-zero exit status 1.
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/capstor/scratch/cscs/ybudanaz/data_must_flow_artifacts/exp_implementations/llvm/arm/benchmark_exp_implementations.py", line 265, in <module>
+    all_timings["exp_implementations_dace", S] = run_sdfg_multiple_times(
+                                                 ~~~~~~~~~~~~~~~~~~~~~~~^
+        sdfg=exp_implementations_dace_sdfg,
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ...<2 lines>...
+        num_runs=NUM_REPS,
+        ^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "/capstor/scratch/cscs/ybudanaz/data_must_flow_artifacts/exp_implementations/llvm/arm/benchmark_exp_implementations.py", line 182, in run_sdfg_multiple_times
+    compiled = sdfg.compile()
+  File "/capstor/scratch/cscs/ybudanaz/dace/dace/sdfg/sdfg.py", line 2436, in compile
+    shared_library = compiler.configure_and_compile(program_folder, sdfg.name)
+  File "/capstor/scratch/cscs/ybudanaz/dace/dace/codegen/compiler.py", line 238, in configure_and_compile
+    raise cgx.CompilerConfigurationError('Configuration failure:\n' + ex.output)
+dace.codegen.exceptions.CompilerConfigurationError: Configuration failure:
+-- The C compiler identification is Clang 21.1.6
+-- The CXX compiler identification is unknown
+-- Detecting C compiler ABI info
+-- Detecting C compiler ABI info - done
+-- Check for working C compiler: /capstor/scratch/cscs/ybudanaz/bin/clang - skipped
+-- Detecting C compile features
+-- Detecting C compile features - done
+CMake Error at CMakeLists.txt:3 (project):
+  The CMAKE_CXX_COMPILER:
+    clang++ --target=aarch64-linux-gnu
+
+  is not a full path and was not found in the PATH.
+
+  Tell CMake where to find the compiler by setting either the environment
+  variable "CXX" or the CMake cache entry CMAKE_CXX_COMPILER to the full path
+  to the compiler, or to the compiler name if it is in the PATH.
+
+
+-- Configuring incomplete, errors occurred!
+
+/capstor/scratch/cscs/ybudanaz/dace/dace/codegen/targets/target.py:229: UserWarning: Could not find executable "clang++ --target=aarch64-linux-gnu"
+  warnings.warn("Could not find executable \"{}\"".format(path))
+Traceback (most recent call last):
+  File "/capstor/scratch/cscs/ybudanaz/dace/dace/codegen/compiler.py", line 224, in configure_and_compile
+    _run_liveoutput(cmake_command, shell=True, cwd=build_folder, output_stream=output_stream)
+    ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/capstor/scratch/cscs/ybudanaz/dace/dace/codegen/compiler.py", line 429, in _run_liveoutput
+    raise subprocess.CalledProcessError(process.returncode, command, output.getvalue())
+subprocess.CalledProcessError: Command 'cmake  "/capstor/scratch/cscs/ybudanaz/dace/dace/codegen" -DDACE_SRC_DIR="/capstor/scratch/cscs/ybudanaz/data_must_flow_artifacts/exp_implementations/llvm/arm/.dacecache/exp_implementations_dace/src" -DDACE_FILES="cpu/exp_implementations_dace.cpp" -DDACE_PROGRAM_NAME=exp_implementations_dace -DDACE_ENV_CMAKE_FILES="" -DDACE_ENV_COMPILE_FLAGS="" -DDACE_ENV_INCLUDES="" -DDACE_ENV_LIBRARIES="" -DDACE_ENV_MINIMUM_VERSION=0 -DDACE_ENV_PACKAGES="" -DDACE_ENV_VAR_KEYS="" -DDACE_ENV_VAR_VALUES="" -DCMAKE_CXX_COMPILER="clang++ --target=aarch64-linux-gnu" -DCMAKE_CXX_FLAGS="-fopenmp -fstrict-aliasing -std=c++17 -faligned-new -fPIC -Wall -Wextra -O3 -ffast-math -Wno-unused-parameter -Wno-unused-label -march=armv9-a+sve2 -no-simd -mcpu=neoverse-v2" -DDACE_LIBS="" -DCMAKE_BUILD_TYPE=RelWithDebInfo -DCMAKE_SHARED_LINKER_FLAGS="-Wl,--disable-new-dtags"' returned non-zero exit status 1.
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/capstor/scratch/cscs/ybudanaz/dace/dace/codegen/compiler.py", line 232, in configure_and_compile
+    _run_liveoutput(cmake_command, shell=True, cwd=build_folder, output_stream=output_stream)
+    ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/capstor/scratch/cscs/ybudanaz/dace/dace/codegen/compiler.py", line 429, in _run_liveoutput
+    raise subprocess.CalledProcessError(process.returncode, command, output.getvalue())
+subprocess.CalledProcessError: Command 'cmake  "/capstor/scratch/cscs/ybudanaz/dace/dace/codegen" -DDACE_SRC_DIR="/capstor/scratch/cscs/ybudanaz/data_must_flow_artifacts/exp_implementations/llvm/arm/.dacecache/exp_implementations_dace/src" -DDACE_FILES="cpu/exp_implementations_dace.cpp" -DDACE_PROGRAM_NAME=exp_implementations_dace -DDACE_ENV_CMAKE_FILES="" -DDACE_ENV_COMPILE_FLAGS="" -DDACE_ENV_INCLUDES="" -DDACE_ENV_LIBRARIES="" -DDACE_ENV_MINIMUM_VERSION=0 -DDACE_ENV_PACKAGES="" -DDACE_ENV_VAR_KEYS="" -DDACE_ENV_VAR_VALUES="" -DCMAKE_CXX_COMPILER="clang++ --target=aarch64-linux-gnu" -DCMAKE_CXX_FLAGS="-fopenmp -fstrict-aliasing -std=c++17 -faligned-new -fPIC -Wall -Wextra -O3 -ffast-math -Wno-unused-parameter -Wno-unused-label -march=armv9-a+sve2 -no-simd -mcpu=neoverse-v2" -DDACE_LIBS="" -DCMAKE_BUILD_TYPE=RelWithDebInfo -DCMAKE_SHARED_LINKER_FLAGS="-Wl,--disable-new-dtags"' returned non-zero exit status 1.
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/capstor/scratch/cscs/ybudanaz/data_must_flow_artifacts/exp_implementations/llvm/arm/benchmark_exp_implementations.py", line 265, in <module>
+    all_timings["exp_implementations_dace", S] = run_sdfg_multiple_times(
+                                                 ~~~~~~~~~~~~~~~~~~~~~~~^
+        sdfg=exp_implementations_dace_sdfg,
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ...<2 lines>...
+        num_runs=NUM_REPS,
+        ^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "/capstor/scratch/cscs/ybudanaz/data_must_flow_artifacts/exp_implementations/llvm/arm/benchmark_exp_implementations.py", line 182, in run_sdfg_multiple_times
+    compiled = sdfg.compile()
+  File "/capstor/scratch/cscs/ybudanaz/dace/dace/sdfg/sdfg.py", line 2436, in compile
+    shared_library = compiler.configure_and_compile(program_folder, sdfg.name)
+  File "/capstor/scratch/cscs/ybudanaz/dace/dace/codegen/compiler.py", line 238, in configure_and_compile
+    raise cgx.CompilerConfigurationError('Configuration failure:\n' + ex.output)
+dace.codegen.exceptions.CompilerConfigurationError: Configuration failure:
+-- The C compiler identification is Clang 21.1.6
+-- The CXX compiler identification is unknown
+-- Detecting C compiler ABI info
+-- Detecting C compiler ABI info - done
+-- Check for working C compiler: /capstor/scratch/cscs/ybudanaz/bin/clang - skipped
+-- Detecting C compile features
+-- Detecting C compile features - done
+CMake Error at CMakeLists.txt:3 (project):
+  The CMAKE_CXX_COMPILER:
+    clang++ --target=aarch64-linux-gnu
+
+  is not a full path and was not found in the PATH.
+
+  Tell CMake where to find the compiler by setting either the environment
+  variable "CXX" or the CMake cache entry CMAKE_CXX_COMPILER to the full path
+  to the compiler, or to the compiler name if it is in the PATH.
+
+
+-- Configuring incomplete, errors occurred!
+
+/capstor/scratch/cscs/ybudanaz/dace/dace/codegen/targets/target.py:229: UserWarning: Could not find executable "clang++ --target=aarch64-linux-gnu"
+  warnings.warn("Could not find executable \"{}\"".format(path))
+Traceback (most recent call last):
+  File "/capstor/scratch/cscs/ybudanaz/dace/dace/codegen/compiler.py", line 224, in configure_and_compile
+    _run_liveoutput(cmake_command, shell=True, cwd=build_folder, output_stream=output_stream)
+    ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/capstor/scratch/cscs/ybudanaz/dace/dace/codegen/compiler.py", line 429, in _run_liveoutput
+    raise subprocess.CalledProcessError(process.returncode, command, output.getvalue())
+subprocess.CalledProcessError: Command 'cmake  "/capstor/scratch/cscs/ybudanaz/dace/dace/codegen" -DDACE_SRC_DIR="/capstor/scratch/cscs/ybudanaz/data_must_flow_artifacts/exp_implementations/llvm/arm/.dacecache/exp_implementations_dace/src" -DDACE_FILES="cpu/exp_implementations_dace.cpp" -DDACE_PROGRAM_NAME=exp_implementations_dace -DDACE_ENV_CMAKE_FILES="" -DDACE_ENV_COMPILE_FLAGS="" -DDACE_ENV_INCLUDES="" -DDACE_ENV_LIBRARIES="" -DDACE_ENV_MINIMUM_VERSION=0 -DDACE_ENV_PACKAGES="" -DDACE_ENV_VAR_KEYS="" -DDACE_ENV_VAR_VALUES="" -DCMAKE_CXX_COMPILER="clang++ --target=aarch64-linux-gnu" -DCMAKE_CXX_FLAGS="-fopenmp -fstrict-aliasing -std=c++17 -faligned-new -fPIC -Wall -Wextra -O3 -ffast-math -Wno-unused-parameter -Wno-unused-label -march=armv9-a -mcpu=neoverse-v2 -fno-tree-vectorize -fno-tree-slp-vectorize" -DDACE_LIBS="" -DCMAKE_BUILD_TYPE=RelWithDebInfo -DCMAKE_SHARED_LINKER_FLAGS="-Wl,--disable-new-dtags"' returned non-zero exit status 1.
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/capstor/scratch/cscs/ybudanaz/dace/dace/codegen/compiler.py", line 232, in configure_and_compile
+    _run_liveoutput(cmake_command, shell=True, cwd=build_folder, output_stream=output_stream)
+    ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/capstor/scratch/cscs/ybudanaz/dace/dace/codegen/compiler.py", line 429, in _run_liveoutput
+    raise subprocess.CalledProcessError(process.returncode, command, output.getvalue())
+subprocess.CalledProcessError: Command 'cmake  "/capstor/scratch/cscs/ybudanaz/dace/dace/codegen" -DDACE_SRC_DIR="/capstor/scratch/cscs/ybudanaz/data_must_flow_artifacts/exp_implementations/llvm/arm/.dacecache/exp_implementations_dace/src" -DDACE_FILES="cpu/exp_implementations_dace.cpp" -DDACE_PROGRAM_NAME=exp_implementations_dace -DDACE_ENV_CMAKE_FILES="" -DDACE_ENV_COMPILE_FLAGS="" -DDACE_ENV_INCLUDES="" -DDACE_ENV_LIBRARIES="" -DDACE_ENV_MINIMUM_VERSION=0 -DDACE_ENV_PACKAGES="" -DDACE_ENV_VAR_KEYS="" -DDACE_ENV_VAR_VALUES="" -DCMAKE_CXX_COMPILER="clang++ --target=aarch64-linux-gnu" -DCMAKE_CXX_FLAGS="-fopenmp -fstrict-aliasing -std=c++17 -faligned-new -fPIC -Wall -Wextra -O3 -ffast-math -Wno-unused-parameter -Wno-unused-label -march=armv9-a -mcpu=neoverse-v2 -fno-tree-vectorize -fno-tree-slp-vectorize" -DDACE_LIBS="" -DCMAKE_BUILD_TYPE=RelWithDebInfo -DCMAKE_SHARED_LINKER_FLAGS="-Wl,--disable-new-dtags"' returned non-zero exit status 1.
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/capstor/scratch/cscs/ybudanaz/data_must_flow_artifacts/exp_implementations/llvm/arm/benchmark_exp_implementations.py", line 265, in <module>
+    all_timings["exp_implementations_dace", S] = run_sdfg_multiple_times(
+                                                 ~~~~~~~~~~~~~~~~~~~~~~~^
+        sdfg=exp_implementations_dace_sdfg,
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ...<2 lines>...
+        num_runs=NUM_REPS,
+        ^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "/capstor/scratch/cscs/ybudanaz/data_must_flow_artifacts/exp_implementations/llvm/arm/benchmark_exp_implementations.py", line 182, in run_sdfg_multiple_times
+    compiled = sdfg.compile()
+  File "/capstor/scratch/cscs/ybudanaz/dace/dace/sdfg/sdfg.py", line 2436, in compile
+    shared_library = compiler.configure_and_compile(program_folder, sdfg.name)
+  File "/capstor/scratch/cscs/ybudanaz/dace/dace/codegen/compiler.py", line 238, in configure_and_compile
+    raise cgx.CompilerConfigurationError('Configuration failure:\n' + ex.output)
+dace.codegen.exceptions.CompilerConfigurationError: Configuration failure:
+-- The C compiler identification is Clang 21.1.6
+-- The CXX compiler identification is unknown
+-- Detecting C compiler ABI info
+-- Detecting C compiler ABI info - done
+-- Check for working C compiler: /capstor/scratch/cscs/ybudanaz/bin/clang - skipped
+-- Detecting C compile features
+-- Detecting C compile features - done
+CMake Error at CMakeLists.txt:3 (project):
+  The CMAKE_CXX_COMPILER:
+    clang++ --target=aarch64-linux-gnu
+
+  is not a full path and was not found in the PATH.
+
+  Tell CMake where to find the compiler by setting either the environment
+  variable "CXX" or the CMake cache entry CMAKE_CXX_COMPILER to the full path
+  to the compiler, or to the compiler name if it is in the PATH.
+
+
+-- Configuring incomplete, errors occurred!
+
+/capstor/scratch/cscs/ybudanaz/dace/dace/codegen/targets/target.py:229: UserWarning: Could not find executable "clang++ --target=aarch64-linux-gnu"
+  warnings.warn("Could not find executable \"{}\"".format(path))
+Traceback (most recent call last):
+  File "/capstor/scratch/cscs/ybudanaz/dace/dace/codegen/compiler.py", line 224, in configure_and_compile
+    _run_liveoutput(cmake_command, shell=True, cwd=build_folder, output_stream=output_stream)
+    ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/capstor/scratch/cscs/ybudanaz/dace/dace/codegen/compiler.py", line 429, in _run_liveoutput
+    raise subprocess.CalledProcessError(process.returncode, command, output.getvalue())
+subprocess.CalledProcessError: Command 'cmake  "/capstor/scratch/cscs/ybudanaz/dace/dace/codegen" -DDACE_SRC_DIR="/capstor/scratch/cscs/ybudanaz/data_must_flow_artifacts/exp_implementations/llvm/arm/.dacecache/exp_implementations_dace/src" -DDACE_FILES="cpu/exp_implementations_dace.cpp" -DDACE_PROGRAM_NAME=exp_implementations_dace -DDACE_ENV_CMAKE_FILES="" -DDACE_ENV_COMPILE_FLAGS="" -DDACE_ENV_INCLUDES="" -DDACE_ENV_LIBRARIES="" -DDACE_ENV_MINIMUM_VERSION=0 -DDACE_ENV_PACKAGES="" -DDACE_ENV_VAR_KEYS="" -DDACE_ENV_VAR_VALUES="" -DCMAKE_CXX_COMPILER="clang++ --target=aarch64-linux-gnu" -DCMAKE_CXX_FLAGS="-fopenmp -fstrict-aliasing -std=c++17 -faligned-new -fPIC -Wall -Wextra -O3 -ffast-math -Wno-unused-parameter -Wno-unused-label -march=armv9-a+sve2+simd -mcpu=neoverse-v2 -fno-math-errno -fveclib=libarm -mprefer-vector-width=512" -DDACE_LIBS="" -DCMAKE_BUILD_TYPE=RelWithDebInfo -DCMAKE_SHARED_LINKER_FLAGS="-Wl,--disable-new-dtags"' returned non-zero exit status 1.
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/capstor/scratch/cscs/ybudanaz/dace/dace/codegen/compiler.py", line 232, in configure_and_compile
+    _run_liveoutput(cmake_command, shell=True, cwd=build_folder, output_stream=output_stream)
+    ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/capstor/scratch/cscs/ybudanaz/dace/dace/codegen/compiler.py", line 429, in _run_liveoutput
+    raise subprocess.CalledProcessError(process.returncode, command, output.getvalue())
+subprocess.CalledProcessError: Command 'cmake  "/capstor/scratch/cscs/ybudanaz/dace/dace/codegen" -DDACE_SRC_DIR="/capstor/scratch/cscs/ybudanaz/data_must_flow_artifacts/exp_implementations/llvm/arm/.dacecache/exp_implementations_dace/src" -DDACE_FILES="cpu/exp_implementations_dace.cpp" -DDACE_PROGRAM_NAME=exp_implementations_dace -DDACE_ENV_CMAKE_FILES="" -DDACE_ENV_COMPILE_FLAGS="" -DDACE_ENV_INCLUDES="" -DDACE_ENV_LIBRARIES="" -DDACE_ENV_MINIMUM_VERSION=0 -DDACE_ENV_PACKAGES="" -DDACE_ENV_VAR_KEYS="" -DDACE_ENV_VAR_VALUES="" -DCMAKE_CXX_COMPILER="clang++ --target=aarch64-linux-gnu" -DCMAKE_CXX_FLAGS="-fopenmp -fstrict-aliasing -std=c++17 -faligned-new -fPIC -Wall -Wextra -O3 -ffast-math -Wno-unused-parameter -Wno-unused-label -march=armv9-a+sve2+simd -mcpu=neoverse-v2 -fno-math-errno -fveclib=libarm -mprefer-vector-width=512" -DDACE_LIBS="" -DCMAKE_BUILD_TYPE=RelWithDebInfo -DCMAKE_SHARED_LINKER_FLAGS="-Wl,--disable-new-dtags"' returned non-zero exit status 1.
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/capstor/scratch/cscs/ybudanaz/data_must_flow_artifacts/exp_implementations/llvm/arm/benchmark_exp_implementations.py", line 265, in <module>
+    all_timings["exp_implementations_dace", S] = run_sdfg_multiple_times(
+                                                 ~~~~~~~~~~~~~~~~~~~~~~~^
+        sdfg=exp_implementations_dace_sdfg,
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ...<2 lines>...
+        num_runs=NUM_REPS,
+        ^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "/capstor/scratch/cscs/ybudanaz/data_must_flow_artifacts/exp_implementations/llvm/arm/benchmark_exp_implementations.py", line 182, in run_sdfg_multiple_times
+    compiled = sdfg.compile()
+  File "/capstor/scratch/cscs/ybudanaz/dace/dace/sdfg/sdfg.py", line 2436, in compile
+    shared_library = compiler.configure_and_compile(program_folder, sdfg.name)
+  File "/capstor/scratch/cscs/ybudanaz/dace/dace/codegen/compiler.py", line 238, in configure_and_compile
+    raise cgx.CompilerConfigurationError('Configuration failure:\n' + ex.output)
+dace.codegen.exceptions.CompilerConfigurationError: Configuration failure:
+-- The C compiler identification is Clang 21.1.6
+-- The CXX compiler identification is unknown
+-- Detecting C compiler ABI info
+-- Detecting C compiler ABI info - done
+-- Check for working C compiler: /capstor/scratch/cscs/ybudanaz/bin/clang - skipped
+-- Detecting C compile features
+-- Detecting C compile features - done
+CMake Error at CMakeLists.txt:3 (project):
+  The CMAKE_CXX_COMPILER:
+    clang++ --target=aarch64-linux-gnu
+
+  is not a full path and was not found in the PATH.
+
+  Tell CMake where to find the compiler by setting either the environment
+  variable "CXX" or the CMake cache entry CMAKE_CXX_COMPILER to the full path
+  to the compiler, or to the compiler name if it is in the PATH.
+
+
+-- Configuring incomplete, errors occurred!
+
+/capstor/scratch/cscs/ybudanaz/dace/dace/codegen/targets/target.py:229: UserWarning: Could not find executable "clang++ --target=aarch64-linux-gnu"
+  warnings.warn("Could not find executable \"{}\"".format(path))
+Traceback (most recent call last):
+  File "/capstor/scratch/cscs/ybudanaz/dace/dace/codegen/compiler.py", line 224, in configure_and_compile
+    _run_liveoutput(cmake_command, shell=True, cwd=build_folder, output_stream=output_stream)
+    ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/capstor/scratch/cscs/ybudanaz/dace/dace/codegen/compiler.py", line 429, in _run_liveoutput
+    raise subprocess.CalledProcessError(process.returncode, command, output.getvalue())
+subprocess.CalledProcessError: Command 'cmake  "/capstor/scratch/cscs/ybudanaz/dace/dace/codegen" -DDACE_SRC_DIR="/capstor/scratch/cscs/ybudanaz/data_must_flow_artifacts/exp_implementations/llvm/arm/.dacecache/exp_implementations_dace/src" -DDACE_FILES="cpu/exp_implementations_dace.cpp" -DDACE_PROGRAM_NAME=exp_implementations_dace -DDACE_ENV_CMAKE_FILES="" -DDACE_ENV_COMPILE_FLAGS="" -DDACE_ENV_INCLUDES="" -DDACE_ENV_LIBRARIES="" -DDACE_ENV_MINIMUM_VERSION=0 -DDACE_ENV_PACKAGES="" -DDACE_ENV_VAR_KEYS="" -DDACE_ENV_VAR_VALUES="" -DCMAKE_CXX_COMPILER="clang++ --target=aarch64-linux-gnu" -DCMAKE_CXX_FLAGS="-fopenmp -fstrict-aliasing -std=c++17 -faligned-new -fPIC -Wall -Wextra -O3 -ffast-math -Wno-unused-parameter -Wno-unused-label -march=armv9-a+sve2 -mcpu=neoverse-v2" -DDACE_LIBS="" -DCMAKE_BUILD_TYPE=RelWithDebInfo -DCMAKE_SHARED_LINKER_FLAGS="-Wl,--disable-new-dtags"' returned non-zero exit status 1.
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/capstor/scratch/cscs/ybudanaz/dace/dace/codegen/compiler.py", line 232, in configure_and_compile
+    _run_liveoutput(cmake_command, shell=True, cwd=build_folder, output_stream=output_stream)
+    ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/capstor/scratch/cscs/ybudanaz/dace/dace/codegen/compiler.py", line 429, in _run_liveoutput
+    raise subprocess.CalledProcessError(process.returncode, command, output.getvalue())
+subprocess.CalledProcessError: Command 'cmake  "/capstor/scratch/cscs/ybudanaz/dace/dace/codegen" -DDACE_SRC_DIR="/capstor/scratch/cscs/ybudanaz/data_must_flow_artifacts/exp_implementations/llvm/arm/.dacecache/exp_implementations_dace/src" -DDACE_FILES="cpu/exp_implementations_dace.cpp" -DDACE_PROGRAM_NAME=exp_implementations_dace -DDACE_ENV_CMAKE_FILES="" -DDACE_ENV_COMPILE_FLAGS="" -DDACE_ENV_INCLUDES="" -DDACE_ENV_LIBRARIES="" -DDACE_ENV_MINIMUM_VERSION=0 -DDACE_ENV_PACKAGES="" -DDACE_ENV_VAR_KEYS="" -DDACE_ENV_VAR_VALUES="" -DCMAKE_CXX_COMPILER="clang++ --target=aarch64-linux-gnu" -DCMAKE_CXX_FLAGS="-fopenmp -fstrict-aliasing -std=c++17 -faligned-new -fPIC -Wall -Wextra -O3 -ffast-math -Wno-unused-parameter -Wno-unused-label -march=armv9-a+sve2 -mcpu=neoverse-v2" -DDACE_LIBS="" -DCMAKE_BUILD_TYPE=RelWithDebInfo -DCMAKE_SHARED_LINKER_FLAGS="-Wl,--disable-new-dtags"' returned non-zero exit status 1.
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/capstor/scratch/cscs/ybudanaz/data_must_flow_artifacts/exp_implementations/llvm/arm/benchmark_exp_implementations.py", line 265, in <module>
+    all_timings["exp_implementations_dace", S] = run_sdfg_multiple_times(
+                                                 ~~~~~~~~~~~~~~~~~~~~~~~^
+        sdfg=exp_implementations_dace_sdfg,
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ...<2 lines>...
+        num_runs=NUM_REPS,
+        ^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "/capstor/scratch/cscs/ybudanaz/data_must_flow_artifacts/exp_implementations/llvm/arm/benchmark_exp_implementations.py", line 182, in run_sdfg_multiple_times
+    compiled = sdfg.compile()
+  File "/capstor/scratch/cscs/ybudanaz/dace/dace/sdfg/sdfg.py", line 2436, in compile
+    shared_library = compiler.configure_and_compile(program_folder, sdfg.name)
+  File "/capstor/scratch/cscs/ybudanaz/dace/dace/codegen/compiler.py", line 238, in configure_and_compile
+    raise cgx.CompilerConfigurationError('Configuration failure:\n' + ex.output)
+dace.codegen.exceptions.CompilerConfigurationError: Configuration failure:
+-- The C compiler identification is Clang 21.1.6
+-- The CXX compiler identification is unknown
+-- Detecting C compiler ABI info
+-- Detecting C compiler ABI info - done
+-- Check for working C compiler: /capstor/scratch/cscs/ybudanaz/bin/clang - skipped
+-- Detecting C compile features
+-- Detecting C compile features - done
+CMake Error at CMakeLists.txt:3 (project):
+  The CMAKE_CXX_COMPILER:
+    clang++ --target=aarch64-linux-gnu
+
+  is not a full path and was not found in the PATH.
+
+  Tell CMake where to find the compiler by setting either the environment
+  variable "CXX" or the CMake cache entry CMAKE_CXX_COMPILER to the full path
+  to the compiler, or to the compiler name if it is in the PATH.
+
+
+-- Configuring incomplete, errors occurred!
+
+/capstor/scratch/cscs/ybudanaz/dace/dace/codegen/targets/target.py:229: UserWarning: Could not find executable "clang++ --target=aarch64-linux-gnu"
+  warnings.warn("Could not find executable \"{}\"".format(path))
+Traceback (most recent call last):
+  File "/capstor/scratch/cscs/ybudanaz/dace/dace/codegen/compiler.py", line 224, in configure_and_compile
+    _run_liveoutput(cmake_command, shell=True, cwd=build_folder, output_stream=output_stream)
+    ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/capstor/scratch/cscs/ybudanaz/dace/dace/codegen/compiler.py", line 429, in _run_liveoutput
+    raise subprocess.CalledProcessError(process.returncode, command, output.getvalue())
+subprocess.CalledProcessError: Command 'cmake  "/capstor/scratch/cscs/ybudanaz/dace/dace/codegen" -DDACE_SRC_DIR="/capstor/scratch/cscs/ybudanaz/data_must_flow_artifacts/exp_implementations/llvm/arm/.dacecache/exp_implementations_dace/src" -DDACE_FILES="cpu/exp_implementations_dace.cpp" -DDACE_PROGRAM_NAME=exp_implementations_dace -DDACE_ENV_CMAKE_FILES="" -DDACE_ENV_COMPILE_FLAGS="" -DDACE_ENV_INCLUDES="" -DDACE_ENV_LIBRARIES="" -DDACE_ENV_MINIMUM_VERSION=0 -DDACE_ENV_PACKAGES="" -DDACE_ENV_VAR_KEYS="" -DDACE_ENV_VAR_VALUES="" -DCMAKE_CXX_COMPILER="clang++ --target=aarch64-linux-gnu" -DCMAKE_CXX_FLAGS="-fopenmp -fstrict-aliasing -std=c++17 -faligned-new -fPIC -Wall -Wextra -O3 -ffast-math -Wno-unused-parameter -Wno-unused-label -march=armv9-a+simd -mcpu=neoverse-v2 -mprefer-vector-width=128" -DDACE_LIBS="" -DCMAKE_BUILD_TYPE=RelWithDebInfo -DCMAKE_SHARED_LINKER_FLAGS="-Wl,--disable-new-dtags"' returned non-zero exit status 1.
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/capstor/scratch/cscs/ybudanaz/dace/dace/codegen/compiler.py", line 232, in configure_and_compile
+    _run_liveoutput(cmake_command, shell=True, cwd=build_folder, output_stream=output_stream)
+    ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/capstor/scratch/cscs/ybudanaz/dace/dace/codegen/compiler.py", line 429, in _run_liveoutput
+    raise subprocess.CalledProcessError(process.returncode, command, output.getvalue())
+subprocess.CalledProcessError: Command 'cmake  "/capstor/scratch/cscs/ybudanaz/dace/dace/codegen" -DDACE_SRC_DIR="/capstor/scratch/cscs/ybudanaz/data_must_flow_artifacts/exp_implementations/llvm/arm/.dacecache/exp_implementations_dace/src" -DDACE_FILES="cpu/exp_implementations_dace.cpp" -DDACE_PROGRAM_NAME=exp_implementations_dace -DDACE_ENV_CMAKE_FILES="" -DDACE_ENV_COMPILE_FLAGS="" -DDACE_ENV_INCLUDES="" -DDACE_ENV_LIBRARIES="" -DDACE_ENV_MINIMUM_VERSION=0 -DDACE_ENV_PACKAGES="" -DDACE_ENV_VAR_KEYS="" -DDACE_ENV_VAR_VALUES="" -DCMAKE_CXX_COMPILER="clang++ --target=aarch64-linux-gnu" -DCMAKE_CXX_FLAGS="-fopenmp -fstrict-aliasing -std=c++17 -faligned-new -fPIC -Wall -Wextra -O3 -ffast-math -Wno-unused-parameter -Wno-unused-label -march=armv9-a+simd -mcpu=neoverse-v2 -mprefer-vector-width=128" -DDACE_LIBS="" -DCMAKE_BUILD_TYPE=RelWithDebInfo -DCMAKE_SHARED_LINKER_FLAGS="-Wl,--disable-new-dtags"' returned non-zero exit status 1.
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/capstor/scratch/cscs/ybudanaz/data_must_flow_artifacts/exp_implementations/llvm/arm/benchmark_exp_implementations.py", line 265, in <module>
+    all_timings["exp_implementations_dace", S] = run_sdfg_multiple_times(
+                                                 ~~~~~~~~~~~~~~~~~~~~~~~^
+        sdfg=exp_implementations_dace_sdfg,
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ...<2 lines>...
+        num_runs=NUM_REPS,
+        ^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "/capstor/scratch/cscs/ybudanaz/data_must_flow_artifacts/exp_implementations/llvm/arm/benchmark_exp_implementations.py", line 182, in run_sdfg_multiple_times
+    compiled = sdfg.compile()
+  File "/capstor/scratch/cscs/ybudanaz/dace/dace/sdfg/sdfg.py", line 2436, in compile
+    shared_library = compiler.configure_and_compile(program_folder, sdfg.name)
+  File "/capstor/scratch/cscs/ybudanaz/dace/dace/codegen/compiler.py", line 238, in configure_and_compile
+    raise cgx.CompilerConfigurationError('Configuration failure:\n' + ex.output)
+dace.codegen.exceptions.CompilerConfigurationError: Configuration failure:
+-- The C compiler identification is Clang 21.1.6
+-- The CXX compiler identification is unknown
+-- Detecting C compiler ABI info
+-- Detecting C compiler ABI info - done
+-- Check for working C compiler: /capstor/scratch/cscs/ybudanaz/bin/clang - skipped
+-- Detecting C compile features
+-- Detecting C compile features - done
+CMake Error at CMakeLists.txt:3 (project):
+  The CMAKE_CXX_COMPILER:
+    clang++ --target=aarch64-linux-gnu
+
+  is not a full path and was not found in the PATH.
+
+  Tell CMake where to find the compiler by setting either the environment
+  variable "CXX" or the CMake cache entry CMAKE_CXX_COMPILER to the full path
+  to the compiler, or to the compiler name if it is in the PATH.
+
+
+-- Configuring incomplete, errors occurred!
+
+/capstor/scratch/cscs/ybudanaz/dace/dace/codegen/targets/target.py:229: UserWarning: Could not find executable "clang++ --target=aarch64-linux-gnu"
+  warnings.warn("Could not find executable \"{}\"".format(path))
+Traceback (most recent call last):
+  File "/capstor/scratch/cscs/ybudanaz/dace/dace/codegen/compiler.py", line 224, in configure_and_compile
+    _run_liveoutput(cmake_command, shell=True, cwd=build_folder, output_stream=output_stream)
+    ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/capstor/scratch/cscs/ybudanaz/dace/dace/codegen/compiler.py", line 429, in _run_liveoutput
+    raise subprocess.CalledProcessError(process.returncode, command, output.getvalue())
+subprocess.CalledProcessError: Command 'cmake  "/capstor/scratch/cscs/ybudanaz/dace/dace/codegen" -DDACE_SRC_DIR="/capstor/scratch/cscs/ybudanaz/data_must_flow_artifacts/exp_implementations/llvm/arm/.dacecache/exp_implementations_dace/src" -DDACE_FILES="cpu/exp_implementations_dace.cpp" -DDACE_PROGRAM_NAME=exp_implementations_dace -DDACE_ENV_CMAKE_FILES="" -DDACE_ENV_COMPILE_FLAGS="" -DDACE_ENV_INCLUDES="" -DDACE_ENV_LIBRARIES="" -DDACE_ENV_MINIMUM_VERSION=0 -DDACE_ENV_PACKAGES="" -DDACE_ENV_VAR_KEYS="" -DDACE_ENV_VAR_VALUES="" -DCMAKE_CXX_COMPILER="clang++ --target=aarch64-linux-gnu" -DCMAKE_CXX_FLAGS="-fopenmp -fstrict-aliasing -std=c++17 -faligned-new -fPIC -Wall -Wextra -O3 -ffast-math -Wno-unused-parameter -Wno-unused-label -march=armv9-a+sve2 -no-simd -mcpu=neoverse-v2" -DDACE_LIBS="" -DCMAKE_BUILD_TYPE=RelWithDebInfo -DCMAKE_SHARED_LINKER_FLAGS="-Wl,--disable-new-dtags"' returned non-zero exit status 1.
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/capstor/scratch/cscs/ybudanaz/dace/dace/codegen/compiler.py", line 232, in configure_and_compile
+    _run_liveoutput(cmake_command, shell=True, cwd=build_folder, output_stream=output_stream)
+    ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/capstor/scratch/cscs/ybudanaz/dace/dace/codegen/compiler.py", line 429, in _run_liveoutput
+    raise subprocess.CalledProcessError(process.returncode, command, output.getvalue())
+subprocess.CalledProcessError: Command 'cmake  "/capstor/scratch/cscs/ybudanaz/dace/dace/codegen" -DDACE_SRC_DIR="/capstor/scratch/cscs/ybudanaz/data_must_flow_artifacts/exp_implementations/llvm/arm/.dacecache/exp_implementations_dace/src" -DDACE_FILES="cpu/exp_implementations_dace.cpp" -DDACE_PROGRAM_NAME=exp_implementations_dace -DDACE_ENV_CMAKE_FILES="" -DDACE_ENV_COMPILE_FLAGS="" -DDACE_ENV_INCLUDES="" -DDACE_ENV_LIBRARIES="" -DDACE_ENV_MINIMUM_VERSION=0 -DDACE_ENV_PACKAGES="" -DDACE_ENV_VAR_KEYS="" -DDACE_ENV_VAR_VALUES="" -DCMAKE_CXX_COMPILER="clang++ --target=aarch64-linux-gnu" -DCMAKE_CXX_FLAGS="-fopenmp -fstrict-aliasing -std=c++17 -faligned-new -fPIC -Wall -Wextra -O3 -ffast-math -Wno-unused-parameter -Wno-unused-label -march=armv9-a+sve2 -no-simd -mcpu=neoverse-v2" -DDACE_LIBS="" -DCMAKE_BUILD_TYPE=RelWithDebInfo -DCMAKE_SHARED_LINKER_FLAGS="-Wl,--disable-new-dtags"' returned non-zero exit status 1.
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/capstor/scratch/cscs/ybudanaz/data_must_flow_artifacts/exp_implementations/llvm/arm/benchmark_exp_implementations.py", line 265, in <module>
+    all_timings["exp_implementations_dace", S] = run_sdfg_multiple_times(
+                                                 ~~~~~~~~~~~~~~~~~~~~~~~^
+        sdfg=exp_implementations_dace_sdfg,
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ...<2 lines>...
+        num_runs=NUM_REPS,
+        ^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "/capstor/scratch/cscs/ybudanaz/data_must_flow_artifacts/exp_implementations/llvm/arm/benchmark_exp_implementations.py", line 182, in run_sdfg_multiple_times
+    compiled = sdfg.compile()
+  File "/capstor/scratch/cscs/ybudanaz/dace/dace/sdfg/sdfg.py", line 2436, in compile
+    shared_library = compiler.configure_and_compile(program_folder, sdfg.name)
+  File "/capstor/scratch/cscs/ybudanaz/dace/dace/codegen/compiler.py", line 238, in configure_and_compile
+    raise cgx.CompilerConfigurationError('Configuration failure:\n' + ex.output)
+dace.codegen.exceptions.CompilerConfigurationError: Configuration failure:
+-- The C compiler identification is Clang 21.1.6
+-- The CXX compiler identification is unknown
+-- Detecting C compiler ABI info
+-- Detecting C compiler ABI info - done
+-- Check for working C compiler: /capstor/scratch/cscs/ybudanaz/bin/clang - skipped
+-- Detecting C compile features
+-- Detecting C compile features - done
+CMake Error at CMakeLists.txt:3 (project):
+  The CMAKE_CXX_COMPILER:
+    clang++ --target=aarch64-linux-gnu
+
+  is not a full path and was not found in the PATH.
+
+  Tell CMake where to find the compiler by setting either the environment
+  variable "CXX" or the CMake cache entry CMAKE_CXX_COMPILER to the full path
+  to the compiler, or to the compiler name if it is in the PATH.
+
+
+-- Configuring incomplete, errors occurred!
+
+/capstor/scratch/cscs/ybudanaz/dace/dace/codegen/targets/target.py:229: UserWarning: Could not find executable "clang++ --target=aarch64-linux-gnu"
+  warnings.warn("Could not find executable \"{}\"".format(path))
+Traceback (most recent call last):
+  File "/capstor/scratch/cscs/ybudanaz/dace/dace/codegen/compiler.py", line 224, in configure_and_compile
+    _run_liveoutput(cmake_command, shell=True, cwd=build_folder, output_stream=output_stream)
+    ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/capstor/scratch/cscs/ybudanaz/dace/dace/codegen/compiler.py", line 429, in _run_liveoutput
+    raise subprocess.CalledProcessError(process.returncode, command, output.getvalue())
+subprocess.CalledProcessError: Command 'cmake  "/capstor/scratch/cscs/ybudanaz/dace/dace/codegen" -DDACE_SRC_DIR="/capstor/scratch/cscs/ybudanaz/data_must_flow_artifacts/exp_implementations/llvm/arm/.dacecache/exp_implementations_dace/src" -DDACE_FILES="cpu/exp_implementations_dace.cpp" -DDACE_PROGRAM_NAME=exp_implementations_dace -DDACE_ENV_CMAKE_FILES="" -DDACE_ENV_COMPILE_FLAGS="" -DDACE_ENV_INCLUDES="" -DDACE_ENV_LIBRARIES="" -DDACE_ENV_MINIMUM_VERSION=0 -DDACE_ENV_PACKAGES="" -DDACE_ENV_VAR_KEYS="" -DDACE_ENV_VAR_VALUES="" -DCMAKE_CXX_COMPILER="clang++ --target=aarch64-linux-gnu" -DCMAKE_CXX_FLAGS="-fopenmp -fstrict-aliasing -std=c++17 -faligned-new -fPIC -Wall -Wextra -O3 -ffast-math -Wno-unused-parameter -Wno-unused-label -march=armv9-a -mcpu=neoverse-v2 -fno-tree-vectorize -fno-tree-slp-vectorize" -DDACE_LIBS="" -DCMAKE_BUILD_TYPE=RelWithDebInfo -DCMAKE_SHARED_LINKER_FLAGS="-Wl,--disable-new-dtags"' returned non-zero exit status 1.
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/capstor/scratch/cscs/ybudanaz/dace/dace/codegen/compiler.py", line 232, in configure_and_compile
+    _run_liveoutput(cmake_command, shell=True, cwd=build_folder, output_stream=output_stream)
+    ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/capstor/scratch/cscs/ybudanaz/dace/dace/codegen/compiler.py", line 429, in _run_liveoutput
+    raise subprocess.CalledProcessError(process.returncode, command, output.getvalue())
+subprocess.CalledProcessError: Command 'cmake  "/capstor/scratch/cscs/ybudanaz/dace/dace/codegen" -DDACE_SRC_DIR="/capstor/scratch/cscs/ybudanaz/data_must_flow_artifacts/exp_implementations/llvm/arm/.dacecache/exp_implementations_dace/src" -DDACE_FILES="cpu/exp_implementations_dace.cpp" -DDACE_PROGRAM_NAME=exp_implementations_dace -DDACE_ENV_CMAKE_FILES="" -DDACE_ENV_COMPILE_FLAGS="" -DDACE_ENV_INCLUDES="" -DDACE_ENV_LIBRARIES="" -DDACE_ENV_MINIMUM_VERSION=0 -DDACE_ENV_PACKAGES="" -DDACE_ENV_VAR_KEYS="" -DDACE_ENV_VAR_VALUES="" -DCMAKE_CXX_COMPILER="clang++ --target=aarch64-linux-gnu" -DCMAKE_CXX_FLAGS="-fopenmp -fstrict-aliasing -std=c++17 -faligned-new -fPIC -Wall -Wextra -O3 -ffast-math -Wno-unused-parameter -Wno-unused-label -march=armv9-a -mcpu=neoverse-v2 -fno-tree-vectorize -fno-tree-slp-vectorize" -DDACE_LIBS="" -DCMAKE_BUILD_TYPE=RelWithDebInfo -DCMAKE_SHARED_LINKER_FLAGS="-Wl,--disable-new-dtags"' returned non-zero exit status 1.
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/capstor/scratch/cscs/ybudanaz/data_must_flow_artifacts/exp_implementations/llvm/arm/benchmark_exp_implementations.py", line 265, in <module>
+    all_timings["exp_implementations_dace", S] = run_sdfg_multiple_times(
+                                                 ~~~~~~~~~~~~~~~~~~~~~~~^
+        sdfg=exp_implementations_dace_sdfg,
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ...<2 lines>...
+        num_runs=NUM_REPS,
+        ^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "/capstor/scratch/cscs/ybudanaz/data_must_flow_artifacts/exp_implementations/llvm/arm/benchmark_exp_implementations.py", line 182, in run_sdfg_multiple_times
+    compiled = sdfg.compile()
+  File "/capstor/scratch/cscs/ybudanaz/dace/dace/sdfg/sdfg.py", line 2436, in compile
+    shared_library = compiler.configure_and_compile(program_folder, sdfg.name)
+  File "/capstor/scratch/cscs/ybudanaz/dace/dace/codegen/compiler.py", line 238, in configure_and_compile
+    raise cgx.CompilerConfigurationError('Configuration failure:\n' + ex.output)
+dace.codegen.exceptions.CompilerConfigurationError: Configuration failure:
+-- The C compiler identification is Clang 21.1.6
+-- The CXX compiler identification is unknown
+-- Detecting C compiler ABI info
+-- Detecting C compiler ABI info - done
+-- Check for working C compiler: /capstor/scratch/cscs/ybudanaz/bin/clang - skipped
+-- Detecting C compile features
+-- Detecting C compile features - done
+CMake Error at CMakeLists.txt:3 (project):
+  The CMAKE_CXX_COMPILER:
+    clang++ --target=aarch64-linux-gnu
+
+  is not a full path and was not found in the PATH.
+
+  Tell CMake where to find the compiler by setting either the environment
+  variable "CXX" or the CMake cache entry CMAKE_CXX_COMPILER to the full path
+  to the compiler, or to the compiler name if it is in the PATH.
+
+
+-- Configuring incomplete, errors occurred!
+
+/capstor/scratch/cscs/ybudanaz/dace/dace/codegen/targets/target.py:229: UserWarning: Could not find executable "clang++ --target=aarch64-linux-gnu"
+  warnings.warn("Could not find executable \"{}\"".format(path))
+Traceback (most recent call last):
+  File "/capstor/scratch/cscs/ybudanaz/dace/dace/codegen/compiler.py", line 224, in configure_and_compile
+    _run_liveoutput(cmake_command, shell=True, cwd=build_folder, output_stream=output_stream)
+    ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/capstor/scratch/cscs/ybudanaz/dace/dace/codegen/compiler.py", line 429, in _run_liveoutput
+    raise subprocess.CalledProcessError(process.returncode, command, output.getvalue())
+subprocess.CalledProcessError: Command 'cmake  "/capstor/scratch/cscs/ybudanaz/dace/dace/codegen" -DDACE_SRC_DIR="/capstor/scratch/cscs/ybudanaz/data_must_flow_artifacts/exp_implementations/llvm/arm/.dacecache/exp_implementations_dace/src" -DDACE_FILES="cpu/exp_implementations_dace.cpp" -DDACE_PROGRAM_NAME=exp_implementations_dace -DDACE_ENV_CMAKE_FILES="" -DDACE_ENV_COMPILE_FLAGS="" -DDACE_ENV_INCLUDES="" -DDACE_ENV_LIBRARIES="" -DDACE_ENV_MINIMUM_VERSION=0 -DDACE_ENV_PACKAGES="" -DDACE_ENV_VAR_KEYS="" -DDACE_ENV_VAR_VALUES="" -DCMAKE_CXX_COMPILER="clang++ --target=aarch64-linux-gnu" -DCMAKE_CXX_FLAGS="-fopenmp -fstrict-aliasing -std=c++17 -faligned-new -fPIC -Wall -Wextra -O3 -ffast-math -Wno-unused-parameter -Wno-unused-label -march=armv9-a+sve2+simd -mcpu=neoverse-v2 -fno-math-errno -fveclib=libarm -mprefer-vector-width=512" -DDACE_LIBS="" -DCMAKE_BUILD_TYPE=RelWithDebInfo -DCMAKE_SHARED_LINKER_FLAGS="-Wl,--disable-new-dtags"' returned non-zero exit status 1.
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/capstor/scratch/cscs/ybudanaz/dace/dace/codegen/compiler.py", line 232, in configure_and_compile
+    _run_liveoutput(cmake_command, shell=True, cwd=build_folder, output_stream=output_stream)
+    ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/capstor/scratch/cscs/ybudanaz/dace/dace/codegen/compiler.py", line 429, in _run_liveoutput
+    raise subprocess.CalledProcessError(process.returncode, command, output.getvalue())
+subprocess.CalledProcessError: Command 'cmake  "/capstor/scratch/cscs/ybudanaz/dace/dace/codegen" -DDACE_SRC_DIR="/capstor/scratch/cscs/ybudanaz/data_must_flow_artifacts/exp_implementations/llvm/arm/.dacecache/exp_implementations_dace/src" -DDACE_FILES="cpu/exp_implementations_dace.cpp" -DDACE_PROGRAM_NAME=exp_implementations_dace -DDACE_ENV_CMAKE_FILES="" -DDACE_ENV_COMPILE_FLAGS="" -DDACE_ENV_INCLUDES="" -DDACE_ENV_LIBRARIES="" -DDACE_ENV_MINIMUM_VERSION=0 -DDACE_ENV_PACKAGES="" -DDACE_ENV_VAR_KEYS="" -DDACE_ENV_VAR_VALUES="" -DCMAKE_CXX_COMPILER="clang++ --target=aarch64-linux-gnu" -DCMAKE_CXX_FLAGS="-fopenmp -fstrict-aliasing -std=c++17 -faligned-new -fPIC -Wall -Wextra -O3 -ffast-math -Wno-unused-parameter -Wno-unused-label -march=armv9-a+sve2+simd -mcpu=neoverse-v2 -fno-math-errno -fveclib=libarm -mprefer-vector-width=512" -DDACE_LIBS="" -DCMAKE_BUILD_TYPE=RelWithDebInfo -DCMAKE_SHARED_LINKER_FLAGS="-Wl,--disable-new-dtags"' returned non-zero exit status 1.
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/capstor/scratch/cscs/ybudanaz/data_must_flow_artifacts/exp_implementations/llvm/arm/benchmark_exp_implementations.py", line 265, in <module>
+    all_timings["exp_implementations_dace", S] = run_sdfg_multiple_times(
+                                                 ~~~~~~~~~~~~~~~~~~~~~~~^
+        sdfg=exp_implementations_dace_sdfg,
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ...<2 lines>...
+        num_runs=NUM_REPS,
+        ^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "/capstor/scratch/cscs/ybudanaz/data_must_flow_artifacts/exp_implementations/llvm/arm/benchmark_exp_implementations.py", line 182, in run_sdfg_multiple_times
+    compiled = sdfg.compile()
+  File "/capstor/scratch/cscs/ybudanaz/dace/dace/sdfg/sdfg.py", line 2436, in compile
+    shared_library = compiler.configure_and_compile(program_folder, sdfg.name)
+  File "/capstor/scratch/cscs/ybudanaz/dace/dace/codegen/compiler.py", line 238, in configure_and_compile
+    raise cgx.CompilerConfigurationError('Configuration failure:\n' + ex.output)
+dace.codegen.exceptions.CompilerConfigurationError: Configuration failure:
+-- The C compiler identification is Clang 21.1.6
+-- The CXX compiler identification is unknown
+-- Detecting C compiler ABI info
+-- Detecting C compiler ABI info - done
+-- Check for working C compiler: /capstor/scratch/cscs/ybudanaz/bin/clang - skipped
+-- Detecting C compile features
+-- Detecting C compile features - done
+CMake Error at CMakeLists.txt:3 (project):
+  The CMAKE_CXX_COMPILER:
+    clang++ --target=aarch64-linux-gnu
+
+  is not a full path and was not found in the PATH.
+
+  Tell CMake where to find the compiler by setting either the environment
+  variable "CXX" or the CMake cache entry CMAKE_CXX_COMPILER to the full path
+  to the compiler, or to the compiler name if it is in the PATH.
+
+
+-- Configuring incomplete, errors occurred!
+

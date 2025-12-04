@@ -1,0 +1,50 @@
+Traceback (most recent call last):
+  File "/capstor/scratch/cscs/ybudanaz/data_must_flow_artifacts/exp_implementations/llvm/arm/benchmark_exp_implementations.py", line 257, in <module>
+    ReplaceSTDExpWithDaCeExp().apply_pass(exp_implementations_dace_sdfg, {})
+    ^^^^^^^^^^^^^^^^^^^^^^^^
+NameError: name 'ReplaceSTDExpWithDaCeExp' is not defined. Did you mean: 'ReplaceSTDLogWithDaCeLog'?
+Traceback (most recent call last):
+  File "/capstor/scratch/cscs/ybudanaz/data_must_flow_artifacts/exp_implementations/llvm/arm/benchmark_exp_implementations.py", line 257, in <module>
+    ReplaceSTDExpWithDaCeExp().apply_pass(exp_implementations_dace_sdfg, {})
+    ^^^^^^^^^^^^^^^^^^^^^^^^
+NameError: name 'ReplaceSTDExpWithDaCeExp' is not defined. Did you mean: 'ReplaceSTDLogWithDaCeLog'?
+Traceback (most recent call last):
+  File "/capstor/scratch/cscs/ybudanaz/data_must_flow_artifacts/exp_implementations/llvm/arm/benchmark_exp_implementations.py", line 257, in <module>
+    ReplaceSTDExpWithDaCeExp().apply_pass(exp_implementations_dace_sdfg, {})
+    ^^^^^^^^^^^^^^^^^^^^^^^^
+NameError: name 'ReplaceSTDExpWithDaCeExp' is not defined. Did you mean: 'ReplaceSTDLogWithDaCeLog'?
+Traceback (most recent call last):
+  File "/capstor/scratch/cscs/ybudanaz/data_must_flow_artifacts/exp_implementations/llvm/arm/benchmark_exp_implementations.py", line 257, in <module>
+    ReplaceSTDExpWithDaCeExp().apply_pass(exp_implementations_dace_sdfg, {})
+    ^^^^^^^^^^^^^^^^^^^^^^^^
+NameError: name 'ReplaceSTDExpWithDaCeExp' is not defined. Did you mean: 'ReplaceSTDLogWithDaCeLog'?
+Traceback (most recent call last):
+  File "/capstor/scratch/cscs/ybudanaz/data_must_flow_artifacts/exp_implementations/llvm/arm/benchmark_exp_implementations.py", line 257, in <module>
+    ReplaceSTDExpWithDaCeExp().apply_pass(exp_implementations_dace_sdfg, {})
+    ^^^^^^^^^^^^^^^^^^^^^^^^
+NameError: name 'ReplaceSTDExpWithDaCeExp' is not defined. Did you mean: 'ReplaceSTDLogWithDaCeLog'?
+Traceback (most recent call last):
+  File "/capstor/scratch/cscs/ybudanaz/data_must_flow_artifacts/exp_implementations/llvm/arm/benchmark_exp_implementations.py", line 257, in <module>
+    ReplaceSTDExpWithDaCeExp().apply_pass(exp_implementations_dace_sdfg, {})
+    ^^^^^^^^^^^^^^^^^^^^^^^^
+NameError: name 'ReplaceSTDExpWithDaCeExp' is not defined. Did you mean: 'ReplaceSTDLogWithDaCeLog'?
+Traceback (most recent call last):
+  File "/capstor/scratch/cscs/ybudanaz/data_must_flow_artifacts/exp_implementations/llvm/arm/benchmark_exp_implementations.py", line 257, in <module>
+    ReplaceSTDExpWithDaCeExp().apply_pass(exp_implementations_dace_sdfg, {})
+    ^^^^^^^^^^^^^^^^^^^^^^^^
+NameError: name 'ReplaceSTDExpWithDaCeExp' is not defined. Did you mean: 'ReplaceSTDLogWithDaCeLog'?
+Traceback (most recent call last):
+  File "/capstor/scratch/cscs/ybudanaz/data_must_flow_artifacts/exp_implementations/llvm/arm/benchmark_exp_implementations.py", line 257, in <module>
+    ReplaceSTDExpWithDaCeExp().apply_pass(exp_implementations_dace_sdfg, {})
+    ^^^^^^^^^^^^^^^^^^^^^^^^
+NameError: name 'ReplaceSTDExpWithDaCeExp' is not defined. Did you mean: 'ReplaceSTDLogWithDaCeLog'?
+Traceback (most recent call last):
+  File "/capstor/scratch/cscs/ybudanaz/data_must_flow_artifacts/exp_implementations/llvm/arm/benchmark_exp_implementations.py", line 257, in <module>
+    ReplaceSTDExpWithDaCeExp().apply_pass(exp_implementations_dace_sdfg, {})
+    ^^^^^^^^^^^^^^^^^^^^^^^^
+NameError: name 'ReplaceSTDExpWithDaCeExp' is not defined. Did you mean: 'ReplaceSTDLogWithDaCeLog'?
+Traceback (most recent call last):
+  File "/capstor/scratch/cscs/ybudanaz/data_must_flow_artifacts/exp_implementations/llvm/arm/benchmark_exp_implementations.py", line 257, in <module>
+    ReplaceSTDExpWithDaCeExp().apply_pass(exp_implementations_dace_sdfg, {})
+    ^^^^^^^^^^^^^^^^^^^^^^^^
+NameError: name 'ReplaceSTDExpWithDaCeExp' is not defined. Did you mean: 'ReplaceSTDLogWithDaCeLog'?

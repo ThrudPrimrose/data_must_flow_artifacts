@@ -21,8 +21,8 @@ export CPU_NAME="arm"
 # Define configurations: each element is "EXTRA_FLAGS SUFFIX"
 configs=(
     "" ""                                   # first run: no extra flags, no suffix
-    "-march=armv9-a+simd -no-simd -mcpu=neoverse-v2 -mprefer-vector-width=128" "neon"  # second run
-    "-march=armv9-a+sve2 -no-simd -mcpu=neoverse-v2" "sve"  # second run
+    "-march=armv9-a+simd -mcpu=neoverse-v2 -mprefer-vector-width=128" "neon"  # second run
+    "-march=armv9-a+sve2 mcpu=neoverse-v2" "sve"  # second run
     "-fno-tree-vectorize -fno-tree-slp-vectorize" "no-vectorize"
 )
 

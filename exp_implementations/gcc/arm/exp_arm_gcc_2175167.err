@@ -1,0 +1,115 @@
+Traceback (most recent call last):
+  File "/capstor/scratch/cscs/ybudanaz/dace/dace/codegen/compiler.py", line 245, in configure_and_compile
+    _run_liveoutput("cmake --build . --config %s" % (Config.get('compiler', 'build_type')),
+    ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+                    shell=True,
+                    ^^^^^^^^^^^
+                    cwd=build_folder,
+                    ^^^^^^^^^^^^^^^^^
+                    output_stream=output_stream)
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/capstor/scratch/cscs/ybudanaz/dace/dace/codegen/compiler.py", line 429, in _run_liveoutput
+    raise subprocess.CalledProcessError(process.returncode, command, output.getvalue())
+subprocess.CalledProcessError: Command 'cmake --build . --config RelWithDebInfo' returned non-zero exit status 2.
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/capstor/scratch/cscs/ybudanaz/data_must_flow_artifacts/exp_implementations/gcc/arm/benchmark_exp_implementations.py", line 265, in <module>
+    all_timings["exp_implementations_dace", S] = run_sdfg_multiple_times(
+                                                 ~~~~~~~~~~~~~~~~~~~~~~~^
+        sdfg=exp_implementations_dace_sdfg,
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ...<2 lines>...
+        num_runs=NUM_REPS,
+        ^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "/capstor/scratch/cscs/ybudanaz/data_must_flow_artifacts/exp_implementations/gcc/arm/benchmark_exp_implementations.py", line 182, in run_sdfg_multiple_times
+    compiled = sdfg.compile()
+  File "/capstor/scratch/cscs/ybudanaz/dace/dace/sdfg/sdfg.py", line 2436, in compile
+    shared_library = compiler.configure_and_compile(program_folder, sdfg.name)
+  File "/capstor/scratch/cscs/ybudanaz/dace/dace/codegen/compiler.py", line 254, in configure_and_compile
+    raise cgx.CompilationError('Compiler failure:\n' + ex.output)
+dace.codegen.exceptions.CompilationError: Compiler failure:
+[ 25%] Building CXX object CMakeFiles/exp_implementations_dace.dir/capstor/scratch/cscs/ybudanaz/data_must_flow_artifacts/exp_implementations/gcc/arm/.dacecache/exp_implementations_dace/src/cpu/exp_implementations_dace.cpp.o
+g++: error: unrecognized command-line option '-no-simd'
+g++: error: unrecognized command-line option '-mprefer-vector-width=128'; did you mean '-msve-vector-bits=128'?
+gmake[2]: *** [CMakeFiles/exp_implementations_dace.dir/build.make:79: CMakeFiles/exp_implementations_dace.dir/capstor/scratch/cscs/ybudanaz/data_must_flow_artifacts/exp_implementations/gcc/arm/.dacecache/exp_implementations_dace/src/cpu/exp_implementations_dace.cpp.o] Error 1
+gmake[1]: *** [CMakeFiles/Makefile2:90: CMakeFiles/exp_implementations_dace.dir/all] Error 2
+gmake: *** [Makefile:91: all] Error 2
+
+Traceback (most recent call last):
+  File "/capstor/scratch/cscs/ybudanaz/dace/dace/codegen/compiler.py", line 245, in configure_and_compile
+    _run_liveoutput("cmake --build . --config %s" % (Config.get('compiler', 'build_type')),
+    ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+                    shell=True,
+                    ^^^^^^^^^^^
+                    cwd=build_folder,
+                    ^^^^^^^^^^^^^^^^^
+                    output_stream=output_stream)
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/capstor/scratch/cscs/ybudanaz/dace/dace/codegen/compiler.py", line 429, in _run_liveoutput
+    raise subprocess.CalledProcessError(process.returncode, command, output.getvalue())
+subprocess.CalledProcessError: Command 'cmake --build . --config RelWithDebInfo' returned non-zero exit status 2.
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/capstor/scratch/cscs/ybudanaz/data_must_flow_artifacts/exp_implementations/gcc/arm/benchmark_exp_implementations.py", line 265, in <module>
+    all_timings["exp_implementations_dace", S] = run_sdfg_multiple_times(
+                                                 ~~~~~~~~~~~~~~~~~~~~~~~^
+        sdfg=exp_implementations_dace_sdfg,
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ...<2 lines>...
+        num_runs=NUM_REPS,
+        ^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "/capstor/scratch/cscs/ybudanaz/data_must_flow_artifacts/exp_implementations/gcc/arm/benchmark_exp_implementations.py", line 182, in run_sdfg_multiple_times
+    compiled = sdfg.compile()
+  File "/capstor/scratch/cscs/ybudanaz/dace/dace/sdfg/sdfg.py", line 2436, in compile
+    shared_library = compiler.configure_and_compile(program_folder, sdfg.name)
+  File "/capstor/scratch/cscs/ybudanaz/dace/dace/codegen/compiler.py", line 254, in configure_and_compile
+    raise cgx.CompilationError('Compiler failure:\n' + ex.output)
+dace.codegen.exceptions.CompilationError: Compiler failure:
+[ 25%] Building CXX object CMakeFiles/exp_implementations_dace.dir/capstor/scratch/cscs/ybudanaz/data_must_flow_artifacts/exp_implementations/gcc/arm/.dacecache/exp_implementations_dace/src/cpu/exp_implementations_dace.cpp.o
+g++: error: unrecognized command-line option '-no-simd'
+gmake[2]: *** [CMakeFiles/exp_implementations_dace.dir/build.make:79: CMakeFiles/exp_implementations_dace.dir/capstor/scratch/cscs/ybudanaz/data_must_flow_artifacts/exp_implementations/gcc/arm/.dacecache/exp_implementations_dace/src/cpu/exp_implementations_dace.cpp.o] Error 1
+gmake[1]: *** [CMakeFiles/Makefile2:90: CMakeFiles/exp_implementations_dace.dir/all] Error 2
+gmake: *** [Makefile:91: all] Error 2
+
+Traceback (most recent call last):
+  File "/capstor/scratch/cscs/ybudanaz/data_must_flow_artifacts/exp_implementations/gcc/arm/benchmark_exp_implementations.py", line 288, in <module>
+    all_timings[name, S] = run_sdfg_multiple_times(
+                           ~~~~~~~~~~~~~~~~~~~~~~~^
+        sdfg=sdfg_vec, arrays=base_arrays, params=params, num_runs=NUM_REPS
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "/capstor/scratch/cscs/ybudanaz/data_must_flow_artifacts/exp_implementations/gcc/arm/benchmark_exp_implementations.py", line 182, in run_sdfg_multiple_times
+    compiled = sdfg.compile()
+  File "/capstor/scratch/cscs/ybudanaz/dace/dace/sdfg/sdfg.py", line 2421, in compile
+    program_objects = codegen.generate_code(sdfg, validate=validate)
+  File "/capstor/scratch/cscs/ybudanaz/dace/dace/codegen/codegen.py", line 168, in generate_code
+    sdfg.validate()
+    ~~~~~~~~~~~~~^^
+  File "/capstor/scratch/cscs/ybudanaz/dace/dace/sdfg/sdfg.py", line 2551, in validate
+    validate_sdfg(self, references, **context)
+    ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/capstor/scratch/cscs/ybudanaz/dace/dace/sdfg/validation.py", line 245, in validate_sdfg
+    raise InvalidSDFGError("Invalid name", sdfg, None)
+dace.sdfg.validation.InvalidSDFGError: Invalid name
+Invalid SDFG saved for inspection in /capstor/scratch/cscs/ybudanaz/data_must_flow_artifacts/exp_implementations/gcc/arm/_dacegraphs/invalid.sdfgz
+Traceback (most recent call last):
+  File "/capstor/scratch/cscs/ybudanaz/data_must_flow_artifacts/exp_implementations/gcc/arm/benchmark_exp_implementations.py", line 7, in <module>
+    from dace.dace.transformation.passes.vectorization.tasklet_preprocessing_passes import ReplaceSTDLogWithDaCeLog
+ModuleNotFoundError: No module named 'dace.dace'
+Traceback (most recent call last):
+  File "/capstor/scratch/cscs/ybudanaz/data_must_flow_artifacts/exp_implementations/gcc/arm/benchmark_exp_implementations.py", line 7, in <module>
+    from dace.dace.transformation.passes.vectorization.tasklet_preprocessing_passes import ReplaceSTDLogWithDaCeLog
+ModuleNotFoundError: No module named 'dace.dace'
+Traceback (most recent call last):
+  File "/capstor/scratch/cscs/ybudanaz/data_must_flow_artifacts/exp_implementations/gcc/arm/benchmark_exp_implementations.py", line 7, in <module>
+    from dace.dace.transformation.passes.vectorization.tasklet_preprocessing_passes import ReplaceSTDLogWithDaCeLog
+ModuleNotFoundError: No module named 'dace.dace'
