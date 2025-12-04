@@ -39,8 +39,6 @@ multi_core = int(os.environ.get('RUN_MULTICORE', '0')) == 1
 core_count = 1
 
 
-multicore_suffix = '' if core_count == 1 else '_multicore'
-
 if multi_core:
     if cpu_name == "arm":
         core_count = 72
@@ -48,6 +46,9 @@ if multi_core:
         core_count = 18
     elif cpu_name == "amd_epyc":
         core_count = 64
+
+multicore_suffix = '_singlecore' if core_count == 1 else '_multicore'
+
 
 # lvm of 18, 72 and 64 is 
 # 576
@@ -159,13 +160,16 @@ def test_division_by_zero():
     B = np.random.random((S, S))
 
     @dace.program
-    def division_by_zero(A: dace.float64[S], B: dace.float64[S]):
+    def division_by_zero(A: dace.float64[S], B: dace.float64[S], c: dace.float64):
         for i in dace.map[0:S]:
-            B[i] = log(A[i])
+            if A[i] > 0.0:
+                B[i] = c / A[i]
+            else:
+                B[i] = 0.0
 
     run_vectorization_test(
         dace_func=division_by_zero,
-        arrays={"A": A, "B": B},
+        arrays={"A": A, "B": B, "c": 0.37},
         params={},
         vector_width=8,
         sdfg_name="division_by_zero",
@@ -252,13 +256,17 @@ def build_vectorized_sdfg(base_sdfg, vec_width, insert_copies, cpy_suffix, base_
 if __name__ == "__main__":
     NUM_REPS = 20
     all_timings = {}
+    test_division_by_zero()
 
     # S = dace.symbol("S")
     for i, S in enumerate([8192 * 576, 8192 * 2 * 576, 8192 * 4 * 576, 8192 * 8 * 576]):
         @dace.program
-        def division_by_zero(A: dace.float64[S], B: dace.float64[S]):
+        def division_by_zero(A: dace.float64[S], B: dace.float64[S], c: dace.float64):
             for i in dace.map[0:S]:
-                B[i] = log(A[i])
+                if A[i] > 0.0:
+                    B[i] = c / A[i]
+                else:
+                    B[i] = 0.0
 
         # Baseline SDFG
         division_by_zero_dace_sdfg = division_by_zero.to_sdfg()
@@ -268,7 +276,7 @@ if __name__ == "__main__":
         # Baseline arrays
         A = np.random.random((S, ))
         B = np.random.random((S, ))
-        base_arrays = {"A": A, "B": B, }
+        base_arrays = {"A": A, "B": B, "c": 0.37}
         params = {}
 
         # Run baseline 1
