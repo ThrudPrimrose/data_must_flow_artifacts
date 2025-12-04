@@ -1,0 +1,2 @@
+Kernel Name,VLSU Ports,Function Units,Vector Length,X_dim,Y_dim,Num Core Per Cluster,Num Vector Unit Per Cluster,Bank Width,Bank Num,Peak Performance (GFLOP/s),Peak Bandwidth (GB/s),Achieved Performance (GFLOP/s),Achieved Bandwidth (GB/s),Operational Intensity (FLOP/byte),Execution Time (us),Total FLOPs,Total Bytes
+l1_cloud_fraction_update_no_scalar_add,64,64,8192,8192,2,1,1,32,32,128.0000,128.0000,51.01,51.01,0.1012,10287.3540,67993600,671744000

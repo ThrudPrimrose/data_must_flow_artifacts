@@ -41,7 +41,7 @@ def parse_args():
 args = parse_args()
 
 # Keep this fixed; user requested no CLI exposure
-NUM_REPS = 1000
+NUM_REPS = 50
 # Replace these throughout your code
 X_VAL = args.X_VAL
 Y_VAL = args.Y_VAL
@@ -59,6 +59,7 @@ os.environ["SOFTHIER_NUM_CORE_PER_CLUSTER"] = str(NUM_CORE_PER_CLUSTER)
 os.environ["SOFTHIER_NUM_VECTOR_UNITS"] = str(NUM_VECTOR_UNITS)
 os.environ["SOFTHIER_SKIP_SCALAR_FALLBACK"] = "0"
 
+import shutil
 import copy
 import io
 import dace
@@ -945,6 +946,12 @@ def _get_softhier_sdfg() -> dace.SDFG:
     if SAVE_SDFG:
         copy_sdfg.save("s9.sdfg")
 
+    for state in copy_sdfg.all_states():
+        for node in state.nodes():
+            if isinstance(node, dace.nodes.NestedSDFG):
+                node.sdfg.add_symbol("tile_jl", dace.int64)
+                node.symbol_mapping["tile_jl"] = "tile_jl"
+
     copy_sdfg.compile()
     return copy_sdfg
 
@@ -955,7 +962,7 @@ def plot_roofline(hw_config: HardwareConfig, kernel_flops: int, kernel_bytes: in
 
     match = re.search(r"\[Performance Counter\]: Execution period is (\d+) ns", log_str)
 
-    csv_filename = f"perf_w_num_cores/roofline_metrics_l1_cloud_fraction_update_spatz_num_function_units_{hw_config.spatz_num_function_unit}_spatz_num_vlsu_port_{hw_config.spatz_num_vlsu_port}_num_core_{hw_config.num_core_per_cluster}_num_vu_{hw_config.num_vector_units}.csv"
+    csv_filename = f"perf_w_num_cores/roofline_metrics_l1_cloud_fraction_update_add.csv"
     file_exists = os.path.exists(csv_filename)
     print(f"File exists {csv_filename}? {file_exists}")
 
@@ -1006,20 +1013,20 @@ def plot_roofline(hw_config: HardwareConfig, kernel_flops: int, kernel_bytes: in
             writer = csv.writer(csvfile)
             # Header row
             if not file_exists:
-                writer.writerow(['Kernel Name', 'VLSU Ports', 'Function Units', 'Vector Length', 'X_dim', 'Y_dim'
-                       'Peak Performance (GFLOP/s)', 'Peak Bandwidth (GB/s)', 
+                writer.writerow(['Kernel Name', 'VLSU Ports', 'Function Units', 'Vector Length', 'X_dim', 'Y_dim',
+                       'Num Core Per Cluster', 'Num Vector Unit Per Cluster',
+                       'Bank Width', 'Bank Num', 'Peak Performance (GFLOP/s)', 'Peak Bandwidth (GB/s)', 
                        'Achieved Performance (GFLOP/s)', 'Achieved Bandwidth (GB/s)',
-                       'Performance % of Peak', 'Bandwidth % of Peak',
                        'Operational Intensity (FLOP/byte)', 'Execution Time (us)',
-                       'Total FLOPs', 'Total Bytes', 'Num Core Per Cluster', 'Num Vector Unit Per Cluster'])
+                       'Total FLOPs', 'Total Bytes'])
             # Data row
-            writer.writerow(['l1_cloud_fraction_update', hw_config.spatz_num_vlsu_port, hw_config.spatz_num_function_unit,
-                        VECTOR_LENGTH, X_VAL, Y_VAL,
+            writer.writerow(['l1_cloud_fraction_update_add', hw_config.spatz_num_vlsu_port, hw_config.spatz_num_function_unit,
+                        VECTOR_LENGTH, X_VAL, Y_VAL, f'{NUM_CORE_PER_CLUSTER}', f'{NUM_VECTOR_UNITS}',
+                        f'{TCDM_BANK_WIDTH}', f'{TCDM_BANK_NB}',
                         f'{peak_perf_gflops:.4f}', f'{peak_bandwidth_gbs:.4f}',
-                        f'{achieved_gflops:.4f}', f'{achieved_bandwidth_gbs:.4f}',
                         f'{perf_percentage:.2f}', f'{bandwidth_percentage:.2f}',
                         f'{op_intensity:.4f}', f'{execution_time_s*1e6:.4f}',
-                        f'{kernel_flops}', f'{kernel_bytes}', f'{NUM_CORE_PER_CLUSTER}', f'{NUM_VECTOR_UNITS}'])
+                        f'{kernel_flops}', f'{kernel_bytes}',])
         
         print(f"\nMetrics saved to {csv_filename}")
         
@@ -1064,7 +1071,7 @@ def plot_roofline(hw_config: HardwareConfig, kernel_flops: int, kernel_bytes: in
         ax.set_ylim([0.1, peak_perf_gflops * 2])
 
         plt.tight_layout()
-        plt.savefig(f'perf_w_num_cores/roofline_metrics_l1_cloud_fraction_update_spatz_num_function_units_{hw_config.spatz_num_function_unit}_spatz_num_vlsu_port_{hw_config.spatz_num_vlsu_port}_num_core_{hw_config.num_core_per_cluster}_num_vu_{hw_config.num_vector_units}_veclen_{VECTOR_LENGTH}.png', dpi=300, bbox_inches='tight')
+        plt.savefig(f'perf_w_num_cores/roofline_metrics_l1_cloud_fraction_update_add_spatz_num_function_units_{hw_config.spatz_num_function_unit}_spatz_num_vlsu_port_{hw_config.spatz_num_vlsu_port}_num_core_{hw_config.num_core_per_cluster}_num_vu_{hw_config.num_vector_units}_veclen_{VECTOR_LENGTH}.png', dpi=300, bbox_inches='tight')
         print("Roofline plot saved")
         
         return {
@@ -1087,7 +1094,9 @@ if __name__ == "__main__":
     config_path = "./generated_arch.py"
     if os.path.exists(config_path):
         os.remove(config_path)
-
+    cache_path = ".dacecache"
+    if os.path.exists(cache_path):
+        shutil.rmtree(cache_path)
     setup_hw_env_dace(config)
 
     M, N = Y_VAL, X_VAL
@@ -1179,7 +1188,7 @@ if __name__ == "__main__":
 
     """
 
-    kernel_flops = NUM_REPS * X_VAL * Y_VAL * 5
-    kernel_bytes = NUM_REPS * X_VAL * Y_VAL * 13 * 4
+    kernel_flops = NUM_REPS * X_VAL * Y_VAL * 9
+    kernel_bytes = NUM_REPS * X_VAL * Y_VAL * 22
     print("[Pipeline Info] Plot Roofline")
     plot_roofline(hw_config=config, kernel_flops=kernel_flops, kernel_bytes=kernel_bytes)

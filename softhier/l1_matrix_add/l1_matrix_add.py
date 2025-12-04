@@ -31,7 +31,7 @@ def parse_args():
     parser.add_argument("--NUM_CORE_PER_CLUSTER", type=int, default=4,
                         help="NUM_CORE_PER_CLUSTER")
 
-    parser.add_argument("--NUM_VECTOR_UNITS", type=int, default=4,
+    parser.add_argument("--NUM_VECTOR_UNITS", type=int, default=1,
                         help="NUM_VECTOR_UNITS")
     return parser.parse_args()
 
@@ -41,7 +41,7 @@ def parse_args():
 args = parse_args()
 
 # Keep this fixed; user requested no CLI exposure
-NUM_REPS = 1000
+NUM_REPS = 200
 # Replace these throughout your code
 X_VAL = args.X_VAL
 Y_VAL = args.Y_VAL
@@ -52,49 +52,28 @@ TCDM_BANK_WIDTH = args.TCDM_BANK_WIDTH
 TCDM_BANK_NB = args.TCDM_BANK_NB
 NUM_CORE_PER_CLUSTER = args.NUM_CORE_PER_CLUSTER
 NUM_VECTOR_UNITS = args.NUM_VECTOR_UNITS
-SAVE_SDFG = True
+SAVE_SDFG = False
 os.environ["SOFTHIER_NUM_CORE_PER_CLUSTER"] = str(NUM_CORE_PER_CLUSTER)
 os.environ["SOFTHIER_NUM_VECTOR_UNITS"] = str(NUM_VECTOR_UNITS)
 
 import copy
 import io
 import dace
-from typing import Set, Tuple
-from dace.libraries.standard.nodes.copy_node import CopyLibraryNode
-from dace.libraries.standard.nodes.memset_node import MemsetLibraryNode
-from dace.transformation.passes import ConstantPropagation, InlineSDFGs
-from dace.transformation.passes.detect_and_rename_softhier_tasklets import DetectAndRenameSoftHierTasklets
+from typing import Set, Dict
 from dace.transformation.passes.vectorization.vectorize_softhier import VectorizeSoftHier
 from dace.transformation.passes.offset_loop_and_maps import OffsetLoopsAndMaps
 import numpy as np
-
-#from dace.transformation.passes.remove_assignment_tasklets import RemoveAssignmentTasklets
 from dace.transformation.dataflow.move_alloc_up import move_access_node_up, move_exit_access_node_down, offset_tblock_param
-
 import dace.sdfg.construction_utils as cutil
 from dace.sdfg.fp_utils.change_fp_types import change_fptype
-
 from pathlib import Path
 import shutil
-import dace
-
-import numpy as np
-import subprocess
 import re
-import sys
-from typing import Dict, Iterable, List
 from dace.soft_hier.utils.interleave_handler import InterleaveHandler
-from dace.soft_hier.utils.generate_arch_config import generate_arg_cfg
 from dace.soft_hier.utils.preload import make_preload_elf_hbm_interleaved_new
-import ctypes
-from dace.soft_hier.utils.generate_sdfg import _my_gen_baseline_matmul_sdfg
-from dace.soft_hier.utils.read_from_dump_file import get_address_and_read_from_file
 from dace.soft_hier.utils.run_e2e_verification import run_e2e_verification, HardwareConfig, setup_hw_env_dace
 from functools import partial
-
 from dace.sdfg import infer_types
-import re
-import numpy as np
 import matplotlib.pyplot as plt
 import csv
 
@@ -626,7 +605,7 @@ def plot_roofline(hw_config: HardwareConfig, kernel_flops: int, kernel_bytes: in
 
     match = re.search(r"\[Performance Counter\]: Execution period is (\d+) ns", log_str)
 
-    csv_filename = f"perf_w_num_cores/roofline_metrics_l1_matrix_add_spatz_num_function_units_{hw_config.spatz_num_function_unit}_spatz_num_vlsu_port_{hw_config.spatz_num_vlsu_port}_num_core_{hw_config.num_core_per_cluster}_num_vu_{hw_config.num_vector_units}.csv"
+    csv_filename = f"perf_w_num_cores/roofline_metrics_l1_matrix_add.csv"
     file_exists = os.path.exists(csv_filename)
     print(f"File exists {csv_filename}? {file_exists}")
 
@@ -677,20 +656,20 @@ def plot_roofline(hw_config: HardwareConfig, kernel_flops: int, kernel_bytes: in
             writer = csv.writer(csvfile)
             # Header row
             if not file_exists:
-                writer.writerow(['Kernel Name', 'VLSU Ports', 'Function Units', 'Vector Length', 'X_dim', 'Y_dim'
-                       'Peak Performance (GFLOP/s)', 'Peak Bandwidth (GB/s)', 
+                writer.writerow(['Kernel Name', 'VLSU Ports', 'Function Units', 'Vector Length', 'X_dim', 'Y_dim',
+                       'Num Core Per Cluster', 'Num Vector Unit Per Cluster',
+                       'Bank Width', 'Bank Num', 'Peak Performance (GFLOP/s)', 'Peak Bandwidth (GB/s)', 
                        'Achieved Performance (GFLOP/s)', 'Achieved Bandwidth (GB/s)',
-                       'Performance % of Peak', 'Bandwidth % of Peak',
                        'Operational Intensity (FLOP/byte)', 'Execution Time (us)',
-                       'Total FLOPs', 'Total Bytes', 'Num Core Per Cluster', 'Num Vector Unit Per Cluster'])
+                       'Total FLOPs', 'Total Bytes'])
             # Data row
             writer.writerow(['l1_matrix_add', hw_config.spatz_num_vlsu_port, hw_config.spatz_num_function_unit,
-                        VECTOR_LENGTH, X_VAL, Y_VAL,
+                        VECTOR_LENGTH, X_VAL, Y_VAL, f'{NUM_CORE_PER_CLUSTER}', f'{NUM_VECTOR_UNITS}',
+                        f'{TCDM_BANK_WIDTH}', f'{TCDM_BANK_NB}',
                         f'{peak_perf_gflops:.4f}', f'{peak_bandwidth_gbs:.4f}',
-                        f'{achieved_gflops:.4f}', f'{achieved_bandwidth_gbs:.4f}',
                         f'{perf_percentage:.2f}', f'{bandwidth_percentage:.2f}',
                         f'{op_intensity:.4f}', f'{execution_time_s*1e6:.4f}',
-                        f'{kernel_flops}', f'{kernel_bytes}', f'{NUM_CORE_PER_CLUSTER}', f'{NUM_VECTOR_UNITS}'])
+                        f'{kernel_flops}', f'{kernel_bytes}',])
         
         print(f"\nMetrics saved to {csv_filename}")
         
