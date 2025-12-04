@@ -1,0 +1,869 @@
+Script path: 
+Script dir:  
+Running with EXTRA_FLAGS='', SUFFIX=''
+Running with suffix: 
+Running with #1 cores
+Running with base flags: -fopenmp -fstrict-aliasing -std=c++17 -faligned-new -fPIC -Wall -Wextra -O3 -march=native -ffast-math -Wno-unused-parameter -Wno-unused-label
+Running with env flags: 
+Running with flags: -fopenmp -fstrict-aliasing -std=c++17 -faligned-new -fPIC -Wall -Wextra -O3 -march=native -ffast-math -Wno-unused-parameter -Wno-unused-label
+[can_be_applied] to if_154 is True
+[can_be_applied] to if_154 is True
+Changing __out = (__in1 / __in2) to have +1.7800590868057611e-307 to avoid NaN/inf floating-point exception in division!
+[[0. 0. 0. ... 0. 0. 0.]
+ [0. 0. 0. ... 0. 0. 0.]
+ [0. 0. 0. ... 0. 0. 0.]
+ ...
+ [0. 0. 0. ... 0. 0. 0.]
+ [0. 0. 0. ... 0. 0. 0.]
+ [0. 0. 0. ... 0. 0. 0.]]
+[[0. 0. 0. ... 0. 0. 0.]
+ [0. 0. 0. ... 0. 0. 0.]
+ [0. 0. 0. ... 0. 0. 0.]
+ ...
+ [0. 0. 0. ... 0. 0. 0.]
+ [0. 0. 0. ... 0. 0. 0.]
+ [0. 0. 0. ... 0. 0. 0.]]
+0.0
+Instrumentation report
+SDFG Hash: e301b5940e5b2d31cf40cdb017e2ce31a5d620731d2380052b94a3edf13037b3
+---------------------------------------------------------------------------
+Element        Runtime (ms)   
+               Min            Mean           Median         Max            
+---------------------------------------------------------------------------
+SDFG (0)                                                                   
+|Thread 15441300571870626203:                                                            
+|              3.031          3.031          3.031          3.031          
+---------------------------------------------------------------------------
+
+Instrumentation report
+SDFG Hash: 7bee3b9c7d5987baf4c37fc7cffc602ad4f5191a5a5034b1eed7b7b25e72843a
+---------------------------------------------------------------------------
+Element        Runtime (ms)   
+               Min            Mean           Median         Max            
+---------------------------------------------------------------------------
+SDFG (0)                                                                   
+|Thread 15441300571870626203:                                                            
+|              0.014          0.014          0.014          0.014          
+---------------------------------------------------------------------------
+
+Run time division_by_zero_dace iter 0: 8.163 ms
+Run time division_by_zero_dace iter 1: 8.180 ms
+Run time division_by_zero_dace iter 2: 8.172 ms
+Run time division_by_zero_dace iter 3: 8.167 ms
+Run time division_by_zero_dace iter 4: 8.059 ms
+Run time division_by_zero_dace iter 5: 8.160 ms
+Run time division_by_zero_dace iter 6: 8.199 ms
+Run time division_by_zero_dace iter 7: 8.157 ms
+Run time division_by_zero_dace iter 8: 8.242 ms
+Run time division_by_zero_dace iter 9: 8.328 ms
+Run time division_by_zero_dace iter 10: 8.219 ms
+Run time division_by_zero_dace iter 11: 8.201 ms
+Run time division_by_zero_dace iter 12: 8.174 ms
+Run time division_by_zero_dace iter 13: 8.146 ms
+Run time division_by_zero_dace iter 14: 8.281 ms
+Run time division_by_zero_dace iter 15: 8.040 ms
+Run time division_by_zero_dace iter 16: 8.155 ms
+Run time division_by_zero_dace iter 17: 8.341 ms
+Run time division_by_zero_dace iter 18: 8.191 ms
+Run time division_by_zero_dace iter 19: 8.903 ms
+[can_be_applied] to if_255 is True
+[can_be_applied] to if_255 is True
+Changing __out = (__in1 / __in2) to have +1.7800590868057611e-307 to avoid NaN/inf floating-point exception in division!
+Run time division_by_zero_dace_clang__veclen_8_no_cpy iter 0: 11.472 ms
+Run time division_by_zero_dace_clang__veclen_8_no_cpy iter 1: 11.515 ms
+Run time division_by_zero_dace_clang__veclen_8_no_cpy iter 2: 11.602 ms
+Run time division_by_zero_dace_clang__veclen_8_no_cpy iter 3: 11.364 ms
+Run time division_by_zero_dace_clang__veclen_8_no_cpy iter 4: 12.509 ms
+Run time division_by_zero_dace_clang__veclen_8_no_cpy iter 5: 11.928 ms
+Run time division_by_zero_dace_clang__veclen_8_no_cpy iter 6: 11.682 ms
+Run time division_by_zero_dace_clang__veclen_8_no_cpy iter 7: 12.842 ms
+Run time division_by_zero_dace_clang__veclen_8_no_cpy iter 8: 11.938 ms
+Run time division_by_zero_dace_clang__veclen_8_no_cpy iter 9: 12.073 ms
+Run time division_by_zero_dace_clang__veclen_8_no_cpy iter 10: 11.389 ms
+Run time division_by_zero_dace_clang__veclen_8_no_cpy iter 11: 11.069 ms
+Run time division_by_zero_dace_clang__veclen_8_no_cpy iter 12: 12.996 ms
+Run time division_by_zero_dace_clang__veclen_8_no_cpy iter 13: 13.143 ms
+Run time division_by_zero_dace_clang__veclen_8_no_cpy iter 14: 11.898 ms
+Run time division_by_zero_dace_clang__veclen_8_no_cpy iter 15: 11.545 ms
+Run time division_by_zero_dace_clang__veclen_8_no_cpy iter 16: 11.798 ms
+Run time division_by_zero_dace_clang__veclen_8_no_cpy iter 17: 11.370 ms
+Run time division_by_zero_dace_clang__veclen_8_no_cpy iter 18: 11.242 ms
+Run time division_by_zero_dace_clang__veclen_8_no_cpy iter 19: 12.472 ms
+[can_be_applied] to if_255 is True
+[can_be_applied] to if_255 is True
+Changing __out = (__in1 / __in2) to have +1.7800590868057611e-307 to avoid NaN/inf floating-point exception in division!
+Run time division_by_zero_dace_clang__veclen_8_cpy iter 0: 8.276 ms
+Run time division_by_zero_dace_clang__veclen_8_cpy iter 1: 8.272 ms
+Run time division_by_zero_dace_clang__veclen_8_cpy iter 2: 7.965 ms
+Run time division_by_zero_dace_clang__veclen_8_cpy iter 3: 8.247 ms
+Run time division_by_zero_dace_clang__veclen_8_cpy iter 4: 7.962 ms
+Run time division_by_zero_dace_clang__veclen_8_cpy iter 5: 7.987 ms
+Run time division_by_zero_dace_clang__veclen_8_cpy iter 6: 8.368 ms
+Run time division_by_zero_dace_clang__veclen_8_cpy iter 7: 8.236 ms
+Run time division_by_zero_dace_clang__veclen_8_cpy iter 8: 8.339 ms
+Run time division_by_zero_dace_clang__veclen_8_cpy iter 9: 8.434 ms
+Run time division_by_zero_dace_clang__veclen_8_cpy iter 10: 8.649 ms
+Run time division_by_zero_dace_clang__veclen_8_cpy iter 11: 9.780 ms
+Run time division_by_zero_dace_clang__veclen_8_cpy iter 12: 9.949 ms
+Run time division_by_zero_dace_clang__veclen_8_cpy iter 13: 10.183 ms
+Run time division_by_zero_dace_clang__veclen_8_cpy iter 14: 8.606 ms
+Run time division_by_zero_dace_clang__veclen_8_cpy iter 15: 8.065 ms
+Run time division_by_zero_dace_clang__veclen_8_cpy iter 16: 8.254 ms
+Run time division_by_zero_dace_clang__veclen_8_cpy iter 17: 8.272 ms
+Run time division_by_zero_dace_clang__veclen_8_cpy iter 18: 8.239 ms
+Run time division_by_zero_dace_clang__veclen_8_cpy iter 19: 8.258 ms
+[can_be_applied] to if_255 is True
+[can_be_applied] to if_255 is True
+Changing __out = (__in1 / __in2) to have +1.7800590868057611e-307 to avoid NaN/inf floating-point exception in division!
+Run time division_by_zero_dace_clang__veclen_16_no_cpy iter 0: 13.414 ms
+Run time division_by_zero_dace_clang__veclen_16_no_cpy iter 1: 12.687 ms
+Run time division_by_zero_dace_clang__veclen_16_no_cpy iter 2: 13.688 ms
+Run time division_by_zero_dace_clang__veclen_16_no_cpy iter 3: 12.633 ms
+Run time division_by_zero_dace_clang__veclen_16_no_cpy iter 4: 12.578 ms
+Run time division_by_zero_dace_clang__veclen_16_no_cpy iter 5: 13.411 ms
+Run time division_by_zero_dace_clang__veclen_16_no_cpy iter 6: 12.877 ms
+Run time division_by_zero_dace_clang__veclen_16_no_cpy iter 7: 12.837 ms
+Run time division_by_zero_dace_clang__veclen_16_no_cpy iter 8: 12.711 ms
+Run time division_by_zero_dace_clang__veclen_16_no_cpy iter 9: 13.742 ms
+Run time division_by_zero_dace_clang__veclen_16_no_cpy iter 10: 14.212 ms
+Run time division_by_zero_dace_clang__veclen_16_no_cpy iter 11: 12.793 ms
+Run time division_by_zero_dace_clang__veclen_16_no_cpy iter 12: 13.542 ms
+Run time division_by_zero_dace_clang__veclen_16_no_cpy iter 13: 14.527 ms
+Run time division_by_zero_dace_clang__veclen_16_no_cpy iter 14: 14.152 ms
+Run time division_by_zero_dace_clang__veclen_16_no_cpy iter 15: 13.748 ms
+Run time division_by_zero_dace_clang__veclen_16_no_cpy iter 16: 13.181 ms
+Run time division_by_zero_dace_clang__veclen_16_no_cpy iter 17: 13.039 ms
+Run time division_by_zero_dace_clang__veclen_16_no_cpy iter 18: 12.888 ms
+Run time division_by_zero_dace_clang__veclen_16_no_cpy iter 19: 13.569 ms
+[can_be_applied] to if_255 is True
+[can_be_applied] to if_255 is True
+Changing __out = (__in1 / __in2) to have +1.7800590868057611e-307 to avoid NaN/inf floating-point exception in division!
+Run time division_by_zero_dace_clang__veclen_16_cpy iter 0: 7.980 ms
+Run time division_by_zero_dace_clang__veclen_16_cpy iter 1: 8.162 ms
+Run time division_by_zero_dace_clang__veclen_16_cpy iter 2: 8.636 ms
+Run time division_by_zero_dace_clang__veclen_16_cpy iter 3: 8.236 ms
+Run time division_by_zero_dace_clang__veclen_16_cpy iter 4: 8.222 ms
+Run time division_by_zero_dace_clang__veclen_16_cpy iter 5: 8.754 ms
+Run time division_by_zero_dace_clang__veclen_16_cpy iter 6: 7.869 ms
+Run time division_by_zero_dace_clang__veclen_16_cpy iter 7: 7.959 ms
+Run time division_by_zero_dace_clang__veclen_16_cpy iter 8: 7.947 ms
+Run time division_by_zero_dace_clang__veclen_16_cpy iter 9: 8.053 ms
+Run time division_by_zero_dace_clang__veclen_16_cpy iter 10: 8.161 ms
+Run time division_by_zero_dace_clang__veclen_16_cpy iter 11: 7.949 ms
+Run time division_by_zero_dace_clang__veclen_16_cpy iter 12: 7.941 ms
+Run time division_by_zero_dace_clang__veclen_16_cpy iter 13: 8.196 ms
+Run time division_by_zero_dace_clang__veclen_16_cpy iter 14: 8.160 ms
+Run time division_by_zero_dace_clang__veclen_16_cpy iter 15: 7.911 ms
+Run time division_by_zero_dace_clang__veclen_16_cpy iter 16: 8.117 ms
+Run time division_by_zero_dace_clang__veclen_16_cpy iter 17: 8.193 ms
+Run time division_by_zero_dace_clang__veclen_16_cpy iter 18: 7.981 ms
+Run time division_by_zero_dace_clang__veclen_16_cpy iter 19: 8.210 ms
+[can_be_applied] to if_255 is True
+[can_be_applied] to if_255 is True
+Changing __out = (__in1 / __in2) to have +1.7800590868057611e-307 to avoid NaN/inf floating-point exception in division!
+Run time division_by_zero_dace_clang__veclen_32_no_cpy iter 0: 8.456 ms
+Run time division_by_zero_dace_clang__veclen_32_no_cpy iter 1: 8.753 ms
+Run time division_by_zero_dace_clang__veclen_32_no_cpy iter 2: 8.851 ms
+Run time division_by_zero_dace_clang__veclen_32_no_cpy iter 3: 9.057 ms
+Run time division_by_zero_dace_clang__veclen_32_no_cpy iter 4: 8.447 ms
+Run time division_by_zero_dace_clang__veclen_32_no_cpy iter 5: 8.571 ms
+Run time division_by_zero_dace_clang__veclen_32_no_cpy iter 6: 10.996 ms
+Run time division_by_zero_dace_clang__veclen_32_no_cpy iter 7: 11.337 ms
+Run time division_by_zero_dace_clang__veclen_32_no_cpy iter 8: 10.762 ms
+Run time division_by_zero_dace_clang__veclen_32_no_cpy iter 9: 11.465 ms
+Run time division_by_zero_dace_clang__veclen_32_no_cpy iter 10: 8.534 ms
+Run time division_by_zero_dace_clang__veclen_32_no_cpy iter 11: 8.505 ms
+Run time division_by_zero_dace_clang__veclen_32_no_cpy iter 12: 8.578 ms
+Run time division_by_zero_dace_clang__veclen_32_no_cpy iter 13: 8.478 ms
+Run time division_by_zero_dace_clang__veclen_32_no_cpy iter 14: 8.506 ms
+Run time division_by_zero_dace_clang__veclen_32_no_cpy iter 15: 8.603 ms
+Run time division_by_zero_dace_clang__veclen_32_no_cpy iter 16: 8.392 ms
+Run time division_by_zero_dace_clang__veclen_32_no_cpy iter 17: 8.625 ms
+Run time division_by_zero_dace_clang__veclen_32_no_cpy iter 18: 8.655 ms
+Run time division_by_zero_dace_clang__veclen_32_no_cpy iter 19: 8.625 ms
+[can_be_applied] to if_255 is True
+[can_be_applied] to if_255 is True
+Changing __out = (__in1 / __in2) to have +1.7800590868057611e-307 to avoid NaN/inf floating-point exception in division!
+Run time division_by_zero_dace_clang__veclen_32_cpy iter 0: 11.603 ms
+Run time division_by_zero_dace_clang__veclen_32_cpy iter 1: 11.899 ms
+Run time division_by_zero_dace_clang__veclen_32_cpy iter 2: 10.715 ms
+Run time division_by_zero_dace_clang__veclen_32_cpy iter 3: 8.538 ms
+Run time division_by_zero_dace_clang__veclen_32_cpy iter 4: 8.946 ms
+Run time division_by_zero_dace_clang__veclen_32_cpy iter 5: 11.473 ms
+Run time division_by_zero_dace_clang__veclen_32_cpy iter 6: 11.537 ms
+Run time division_by_zero_dace_clang__veclen_32_cpy iter 7: 10.183 ms
+Run time division_by_zero_dace_clang__veclen_32_cpy iter 8: 11.668 ms
+Run time division_by_zero_dace_clang__veclen_32_cpy iter 9: 9.305 ms
+Run time division_by_zero_dace_clang__veclen_32_cpy iter 10: 8.580 ms
+Run time division_by_zero_dace_clang__veclen_32_cpy iter 11: 8.527 ms
+Run time division_by_zero_dace_clang__veclen_32_cpy iter 12: 8.870 ms
+Run time division_by_zero_dace_clang__veclen_32_cpy iter 13: 10.451 ms
+Run time division_by_zero_dace_clang__veclen_32_cpy iter 14: 9.401 ms
+Run time division_by_zero_dace_clang__veclen_32_cpy iter 15: 11.624 ms
+Run time division_by_zero_dace_clang__veclen_32_cpy iter 16: 11.517 ms
+Run time division_by_zero_dace_clang__veclen_32_cpy iter 17: 9.460 ms
+Run time division_by_zero_dace_clang__veclen_32_cpy iter 18: 11.627 ms
+Run time division_by_zero_dace_clang__veclen_32_cpy iter 19: 8.986 ms
+[can_be_applied] to if_255 is True
+[can_be_applied] to if_255 is True
+Changing __out = (__in1 / __in2) to have +1.7800590868057611e-307 to avoid NaN/inf floating-point exception in division!
+Run time division_by_zero_dace_clang__veclen_64_no_cpy iter 0: 9.657 ms
+Run time division_by_zero_dace_clang__veclen_64_no_cpy iter 1: 9.802 ms
+Run time division_by_zero_dace_clang__veclen_64_no_cpy iter 2: 10.571 ms
+Run time division_by_zero_dace_clang__veclen_64_no_cpy iter 3: 10.583 ms
+Run time division_by_zero_dace_clang__veclen_64_no_cpy iter 4: 10.540 ms
+Run time division_by_zero_dace_clang__veclen_64_no_cpy iter 5: 10.277 ms
+Run time division_by_zero_dace_clang__veclen_64_no_cpy iter 6: 10.147 ms
+Run time division_by_zero_dace_clang__veclen_64_no_cpy iter 7: 10.643 ms
+Run time division_by_zero_dace_clang__veclen_64_no_cpy iter 8: 8.885 ms
+Run time division_by_zero_dace_clang__veclen_64_no_cpy iter 9: 10.519 ms
+Run time division_by_zero_dace_clang__veclen_64_no_cpy iter 10: 10.361 ms
+Run time division_by_zero_dace_clang__veclen_64_no_cpy iter 11: 9.026 ms
+Run time division_by_zero_dace_clang__veclen_64_no_cpy iter 12: 9.167 ms
+Run time division_by_zero_dace_clang__veclen_64_no_cpy iter 13: 10.478 ms
+Run time division_by_zero_dace_clang__veclen_64_no_cpy iter 14: 10.364 ms
+Run time division_by_zero_dace_clang__veclen_64_no_cpy iter 15: 9.976 ms
+Run time division_by_zero_dace_clang__veclen_64_no_cpy iter 16: 9.938 ms
+Run time division_by_zero_dace_clang__veclen_64_no_cpy iter 17: 10.324 ms
+Run time division_by_zero_dace_clang__veclen_64_no_cpy iter 18: 10.428 ms
+Run time division_by_zero_dace_clang__veclen_64_no_cpy iter 19: 10.686 ms
+[can_be_applied] to if_255 is True
+[can_be_applied] to if_255 is True
+Changing __out = (__in1 / __in2) to have +1.7800590868057611e-307 to avoid NaN/inf floating-point exception in division!
+Run time division_by_zero_dace_clang__veclen_64_cpy iter 0: 9.711 ms
+Run time division_by_zero_dace_clang__veclen_64_cpy iter 1: 9.691 ms
+Run time division_by_zero_dace_clang__veclen_64_cpy iter 2: 10.360 ms
+Run time division_by_zero_dace_clang__veclen_64_cpy iter 3: 9.500 ms
+Run time division_by_zero_dace_clang__veclen_64_cpy iter 4: 10.702 ms
+Run time division_by_zero_dace_clang__veclen_64_cpy iter 5: 10.613 ms
+Run time division_by_zero_dace_clang__veclen_64_cpy iter 6: 10.266 ms
+Run time division_by_zero_dace_clang__veclen_64_cpy iter 7: 9.569 ms
+Run time division_by_zero_dace_clang__veclen_64_cpy iter 8: 10.318 ms
+Run time division_by_zero_dace_clang__veclen_64_cpy iter 9: 9.941 ms
+Run time division_by_zero_dace_clang__veclen_64_cpy iter 10: 9.499 ms
+Run time division_by_zero_dace_clang__veclen_64_cpy iter 11: 10.677 ms
+Run time division_by_zero_dace_clang__veclen_64_cpy iter 12: 8.477 ms
+Run time division_by_zero_dace_clang__veclen_64_cpy iter 13: 9.100 ms
+Run time division_by_zero_dace_clang__veclen_64_cpy iter 14: 8.463 ms
+Run time division_by_zero_dace_clang__veclen_64_cpy iter 15: 9.409 ms
+Run time division_by_zero_dace_clang__veclen_64_cpy iter 16: 10.098 ms
+Run time division_by_zero_dace_clang__veclen_64_cpy iter 17: 10.471 ms
+Run time division_by_zero_dace_clang__veclen_64_cpy iter 18: 8.747 ms
+Run time division_by_zero_dace_clang__veclen_64_cpy iter 19: 8.352 ms
+Saved timing results to division_by_zero_timings__singlecore.csv
+Run time division_by_zero_dace iter 0: 18.053 ms
+Run time division_by_zero_dace iter 1: 19.789 ms
+Run time division_by_zero_dace iter 2: 19.078 ms
+Run time division_by_zero_dace iter 3: 16.868 ms
+Run time division_by_zero_dace iter 4: 17.110 ms
+Run time division_by_zero_dace iter 5: 15.840 ms
+Run time division_by_zero_dace iter 6: 15.992 ms
+Run time division_by_zero_dace iter 7: 16.341 ms
+Run time division_by_zero_dace iter 8: 16.286 ms
+Run time division_by_zero_dace iter 9: 15.656 ms
+Run time division_by_zero_dace iter 10: 16.481 ms
+Run time division_by_zero_dace iter 11: 16.139 ms
+Run time division_by_zero_dace iter 12: 15.401 ms
+Run time division_by_zero_dace iter 13: 17.027 ms
+Run time division_by_zero_dace iter 14: 17.703 ms
+Run time division_by_zero_dace iter 15: 16.992 ms
+Run time division_by_zero_dace iter 16: 16.236 ms
+Run time division_by_zero_dace iter 17: 17.304 ms
+Run time division_by_zero_dace iter 18: 18.993 ms
+Run time division_by_zero_dace iter 19: 20.115 ms
+[can_be_applied] to if_255 is True
+[can_be_applied] to if_255 is True
+Changing __out = (__in1 / __in2) to have +1.7800590868057611e-307 to avoid NaN/inf floating-point exception in division!
+Run time division_by_zero_dace_clang__veclen_8_no_cpy iter 0: 21.016 ms
+Run time division_by_zero_dace_clang__veclen_8_no_cpy iter 1: 20.119 ms
+Run time division_by_zero_dace_clang__veclen_8_no_cpy iter 2: 21.150 ms
+Run time division_by_zero_dace_clang__veclen_8_no_cpy iter 3: 20.738 ms
+Run time division_by_zero_dace_clang__veclen_8_no_cpy iter 4: 20.852 ms
+Run time division_by_zero_dace_clang__veclen_8_no_cpy iter 5: 19.784 ms
+Run time division_by_zero_dace_clang__veclen_8_no_cpy iter 6: 20.570 ms
+Run time division_by_zero_dace_clang__veclen_8_no_cpy iter 7: 20.911 ms
+Run time division_by_zero_dace_clang__veclen_8_no_cpy iter 8: 19.822 ms
+Run time division_by_zero_dace_clang__veclen_8_no_cpy iter 9: 20.909 ms
+Run time division_by_zero_dace_clang__veclen_8_no_cpy iter 10: 21.050 ms
+Run time division_by_zero_dace_clang__veclen_8_no_cpy iter 11: 21.300 ms
+Run time division_by_zero_dace_clang__veclen_8_no_cpy iter 12: 20.792 ms
+Run time division_by_zero_dace_clang__veclen_8_no_cpy iter 13: 20.430 ms
+Run time division_by_zero_dace_clang__veclen_8_no_cpy iter 14: 20.755 ms
+Run time division_by_zero_dace_clang__veclen_8_no_cpy iter 15: 20.965 ms
+Run time division_by_zero_dace_clang__veclen_8_no_cpy iter 16: 21.070 ms
+Run time division_by_zero_dace_clang__veclen_8_no_cpy iter 17: 21.107 ms
+Run time division_by_zero_dace_clang__veclen_8_no_cpy iter 18: 20.425 ms
+Run time division_by_zero_dace_clang__veclen_8_no_cpy iter 19: 20.439 ms
+[can_be_applied] to if_255 is True
+[can_be_applied] to if_255 is True
+Changing __out = (__in1 / __in2) to have +1.7800590868057611e-307 to avoid NaN/inf floating-point exception in division!
+Run time division_by_zero_dace_clang__veclen_8_cpy iter 0: 15.317 ms
+Run time division_by_zero_dace_clang__veclen_8_cpy iter 1: 15.209 ms
+Run time division_by_zero_dace_clang__veclen_8_cpy iter 2: 15.738 ms
+Run time division_by_zero_dace_clang__veclen_8_cpy iter 3: 15.337 ms
+Run time division_by_zero_dace_clang__veclen_8_cpy iter 4: 15.753 ms
+Run time division_by_zero_dace_clang__veclen_8_cpy iter 5: 15.460 ms
+Run time division_by_zero_dace_clang__veclen_8_cpy iter 6: 15.285 ms
+Run time division_by_zero_dace_clang__veclen_8_cpy iter 7: 15.285 ms
+Run time division_by_zero_dace_clang__veclen_8_cpy iter 8: 15.461 ms
+Run time division_by_zero_dace_clang__veclen_8_cpy iter 9: 15.772 ms
+Run time division_by_zero_dace_clang__veclen_8_cpy iter 10: 15.567 ms
+Run time division_by_zero_dace_clang__veclen_8_cpy iter 11: 15.532 ms
+Run time division_by_zero_dace_clang__veclen_8_cpy iter 12: 15.472 ms
+Run time division_by_zero_dace_clang__veclen_8_cpy iter 13: 15.116 ms
+Run time division_by_zero_dace_clang__veclen_8_cpy iter 14: 16.346 ms
+Run time division_by_zero_dace_clang__veclen_8_cpy iter 15: 15.306 ms
+Run time division_by_zero_dace_clang__veclen_8_cpy iter 16: 15.643 ms
+Run time division_by_zero_dace_clang__veclen_8_cpy iter 17: 15.655 ms
+Run time division_by_zero_dace_clang__veclen_8_cpy iter 18: 15.235 ms
+Run time division_by_zero_dace_clang__veclen_8_cpy iter 19: 15.428 ms
+[can_be_applied] to if_255 is True
+[can_be_applied] to if_255 is True
+Changing __out = (__in1 / __in2) to have +1.7800590868057611e-307 to avoid NaN/inf floating-point exception in division!
+Run time division_by_zero_dace_clang__veclen_16_no_cpy iter 0: 24.396 ms
+Run time division_by_zero_dace_clang__veclen_16_no_cpy iter 1: 23.693 ms
+Run time division_by_zero_dace_clang__veclen_16_no_cpy iter 2: 22.585 ms
+Run time division_by_zero_dace_clang__veclen_16_no_cpy iter 3: 24.345 ms
+Run time division_by_zero_dace_clang__veclen_16_no_cpy iter 4: 21.744 ms
+Run time division_by_zero_dace_clang__veclen_16_no_cpy iter 5: 21.510 ms
+Run time division_by_zero_dace_clang__veclen_16_no_cpy iter 6: 22.021 ms
+Run time division_by_zero_dace_clang__veclen_16_no_cpy iter 7: 22.122 ms
+Run time division_by_zero_dace_clang__veclen_16_no_cpy iter 8: 21.976 ms
+Run time division_by_zero_dace_clang__veclen_16_no_cpy iter 9: 22.403 ms
+Run time division_by_zero_dace_clang__veclen_16_no_cpy iter 10: 23.022 ms
+Run time division_by_zero_dace_clang__veclen_16_no_cpy iter 11: 20.949 ms
+Run time division_by_zero_dace_clang__veclen_16_no_cpy iter 12: 21.549 ms
+Run time division_by_zero_dace_clang__veclen_16_no_cpy iter 13: 21.992 ms
+Run time division_by_zero_dace_clang__veclen_16_no_cpy iter 14: 20.825 ms
+Run time division_by_zero_dace_clang__veclen_16_no_cpy iter 15: 22.211 ms
+Run time division_by_zero_dace_clang__veclen_16_no_cpy iter 16: 21.436 ms
+Run time division_by_zero_dace_clang__veclen_16_no_cpy iter 17: 21.505 ms
+Run time division_by_zero_dace_clang__veclen_16_no_cpy iter 18: 21.761 ms
+Run time division_by_zero_dace_clang__veclen_16_no_cpy iter 19: 21.295 ms
+[can_be_applied] to if_255 is True
+[can_be_applied] to if_255 is True
+Changing __out = (__in1 / __in2) to have +1.7800590868057611e-307 to avoid NaN/inf floating-point exception in division!
+Run time division_by_zero_dace_clang__veclen_16_cpy iter 0: 16.074 ms
+Run time division_by_zero_dace_clang__veclen_16_cpy iter 1: 15.182 ms
+Run time division_by_zero_dace_clang__veclen_16_cpy iter 2: 15.382 ms
+Run time division_by_zero_dace_clang__veclen_16_cpy iter 3: 15.361 ms
+Run time division_by_zero_dace_clang__veclen_16_cpy iter 4: 15.235 ms
+Run time division_by_zero_dace_clang__veclen_16_cpy iter 5: 15.297 ms
+Run time division_by_zero_dace_clang__veclen_16_cpy iter 6: 15.381 ms
+Run time division_by_zero_dace_clang__veclen_16_cpy iter 7: 15.766 ms
+Run time division_by_zero_dace_clang__veclen_16_cpy iter 8: 16.249 ms
+Run time division_by_zero_dace_clang__veclen_16_cpy iter 9: 15.324 ms
+Run time division_by_zero_dace_clang__veclen_16_cpy iter 10: 16.298 ms
+Run time division_by_zero_dace_clang__veclen_16_cpy iter 11: 15.305 ms
+Run time division_by_zero_dace_clang__veclen_16_cpy iter 12: 16.532 ms
+Run time division_by_zero_dace_clang__veclen_16_cpy iter 13: 15.322 ms
+Run time division_by_zero_dace_clang__veclen_16_cpy iter 14: 16.036 ms
+Run time division_by_zero_dace_clang__veclen_16_cpy iter 15: 15.508 ms
+Run time division_by_zero_dace_clang__veclen_16_cpy iter 16: 15.584 ms
+Run time division_by_zero_dace_clang__veclen_16_cpy iter 17: 15.357 ms
+Run time division_by_zero_dace_clang__veclen_16_cpy iter 18: 15.265 ms
+Run time division_by_zero_dace_clang__veclen_16_cpy iter 19: 15.455 ms
+[can_be_applied] to if_255 is True
+[can_be_applied] to if_255 is True
+Changing __out = (__in1 / __in2) to have +1.7800590868057611e-307 to avoid NaN/inf floating-point exception in division!
+Run time division_by_zero_dace_clang__veclen_32_no_cpy iter 0: 16.903 ms
+Run time division_by_zero_dace_clang__veclen_32_no_cpy iter 1: 16.609 ms
+Run time division_by_zero_dace_clang__veclen_32_no_cpy iter 2: 16.426 ms
+Run time division_by_zero_dace_clang__veclen_32_no_cpy iter 3: 16.314 ms
+Run time division_by_zero_dace_clang__veclen_32_no_cpy iter 4: 16.293 ms
+Run time division_by_zero_dace_clang__veclen_32_no_cpy iter 5: 16.669 ms
+Run time division_by_zero_dace_clang__veclen_32_no_cpy iter 6: 16.791 ms
+Run time division_by_zero_dace_clang__veclen_32_no_cpy iter 7: 16.465 ms
+Run time division_by_zero_dace_clang__veclen_32_no_cpy iter 8: 16.463 ms
+Run time division_by_zero_dace_clang__veclen_32_no_cpy iter 9: 16.298 ms
+Run time division_by_zero_dace_clang__veclen_32_no_cpy iter 10: 16.966 ms
+Run time division_by_zero_dace_clang__veclen_32_no_cpy iter 11: 16.763 ms
+Run time division_by_zero_dace_clang__veclen_32_no_cpy iter 12: 17.883 ms
+Run time division_by_zero_dace_clang__veclen_32_no_cpy iter 13: 16.422 ms
+Run time division_by_zero_dace_clang__veclen_32_no_cpy iter 14: 16.333 ms
+Run time division_by_zero_dace_clang__veclen_32_no_cpy iter 15: 16.662 ms
+Run time division_by_zero_dace_clang__veclen_32_no_cpy iter 16: 16.982 ms
+Run time division_by_zero_dace_clang__veclen_32_no_cpy iter 17: 16.355 ms
+Run time division_by_zero_dace_clang__veclen_32_no_cpy iter 18: 16.386 ms
+Run time division_by_zero_dace_clang__veclen_32_no_cpy iter 19: 16.413 ms
+[can_be_applied] to if_255 is True
+[can_be_applied] to if_255 is True
+Changing __out = (__in1 / __in2) to have +1.7800590868057611e-307 to avoid NaN/inf floating-point exception in division!
+Run time division_by_zero_dace_clang__veclen_32_cpy iter 0: 16.810 ms
+Run time division_by_zero_dace_clang__veclen_32_cpy iter 1: 16.523 ms
+Run time division_by_zero_dace_clang__veclen_32_cpy iter 2: 16.760 ms
+Run time division_by_zero_dace_clang__veclen_32_cpy iter 3: 16.538 ms
+Run time division_by_zero_dace_clang__veclen_32_cpy iter 4: 16.502 ms
+Run time division_by_zero_dace_clang__veclen_32_cpy iter 5: 16.161 ms
+Run time division_by_zero_dace_clang__veclen_32_cpy iter 6: 16.302 ms
+Run time division_by_zero_dace_clang__veclen_32_cpy iter 7: 16.500 ms
+Run time division_by_zero_dace_clang__veclen_32_cpy iter 8: 16.744 ms
+Run time division_by_zero_dace_clang__veclen_32_cpy iter 9: 16.288 ms
+Run time division_by_zero_dace_clang__veclen_32_cpy iter 10: 16.507 ms
+Run time division_by_zero_dace_clang__veclen_32_cpy iter 11: 16.373 ms
+Run time division_by_zero_dace_clang__veclen_32_cpy iter 12: 16.422 ms
+Run time division_by_zero_dace_clang__veclen_32_cpy iter 13: 16.338 ms
+Run time division_by_zero_dace_clang__veclen_32_cpy iter 14: 16.601 ms
+Run time division_by_zero_dace_clang__veclen_32_cpy iter 15: 16.745 ms
+Run time division_by_zero_dace_clang__veclen_32_cpy iter 16: 16.389 ms
+Run time division_by_zero_dace_clang__veclen_32_cpy iter 17: 16.472 ms
+Run time division_by_zero_dace_clang__veclen_32_cpy iter 18: 16.574 ms
+Run time division_by_zero_dace_clang__veclen_32_cpy iter 19: 16.658 ms
+[can_be_applied] to if_255 is True
+[can_be_applied] to if_255 is True
+Changing __out = (__in1 / __in2) to have +1.7800590868057611e-307 to avoid NaN/inf floating-point exception in division!
+Run time division_by_zero_dace_clang__veclen_64_no_cpy iter 0: 15.801 ms
+Run time division_by_zero_dace_clang__veclen_64_no_cpy iter 1: 15.230 ms
+Run time division_by_zero_dace_clang__veclen_64_no_cpy iter 2: 15.375 ms
+Run time division_by_zero_dace_clang__veclen_64_no_cpy iter 3: 16.110 ms
+Run time division_by_zero_dace_clang__veclen_64_no_cpy iter 4: 15.287 ms
+Run time division_by_zero_dace_clang__veclen_64_no_cpy iter 5: 15.740 ms
+Run time division_by_zero_dace_clang__veclen_64_no_cpy iter 6: 15.360 ms
+Run time division_by_zero_dace_clang__veclen_64_no_cpy iter 7: 15.360 ms
+Run time division_by_zero_dace_clang__veclen_64_no_cpy iter 8: 15.636 ms
+Run time division_by_zero_dace_clang__veclen_64_no_cpy iter 9: 15.363 ms
+Run time division_by_zero_dace_clang__veclen_64_no_cpy iter 10: 15.199 ms
+Run time division_by_zero_dace_clang__veclen_64_no_cpy iter 11: 15.353 ms
+Run time division_by_zero_dace_clang__veclen_64_no_cpy iter 12: 15.963 ms
+Run time division_by_zero_dace_clang__veclen_64_no_cpy iter 13: 15.642 ms
+Run time division_by_zero_dace_clang__veclen_64_no_cpy iter 14: 15.933 ms
+Run time division_by_zero_dace_clang__veclen_64_no_cpy iter 15: 15.810 ms
+Run time division_by_zero_dace_clang__veclen_64_no_cpy iter 16: 15.317 ms
+Run time division_by_zero_dace_clang__veclen_64_no_cpy iter 17: 15.237 ms
+Run time division_by_zero_dace_clang__veclen_64_no_cpy iter 18: 15.374 ms
+Run time division_by_zero_dace_clang__veclen_64_no_cpy iter 19: 15.549 ms
+[can_be_applied] to if_255 is True
+[can_be_applied] to if_255 is True
+Changing __out = (__in1 / __in2) to have +1.7800590868057611e-307 to avoid NaN/inf floating-point exception in division!
+Run time division_by_zero_dace_clang__veclen_64_cpy iter 0: 15.561 ms
+Run time division_by_zero_dace_clang__veclen_64_cpy iter 1: 15.681 ms
+Run time division_by_zero_dace_clang__veclen_64_cpy iter 2: 15.725 ms
+Run time division_by_zero_dace_clang__veclen_64_cpy iter 3: 15.935 ms
+Run time division_by_zero_dace_clang__veclen_64_cpy iter 4: 15.555 ms
+Run time division_by_zero_dace_clang__veclen_64_cpy iter 5: 15.509 ms
+Run time division_by_zero_dace_clang__veclen_64_cpy iter 6: 15.971 ms
+Run time division_by_zero_dace_clang__veclen_64_cpy iter 7: 15.902 ms
+Run time division_by_zero_dace_clang__veclen_64_cpy iter 8: 15.931 ms
+Run time division_by_zero_dace_clang__veclen_64_cpy iter 9: 15.615 ms
+Run time division_by_zero_dace_clang__veclen_64_cpy iter 10: 15.510 ms
+Run time division_by_zero_dace_clang__veclen_64_cpy iter 11: 15.553 ms
+Run time division_by_zero_dace_clang__veclen_64_cpy iter 12: 15.794 ms
+Run time division_by_zero_dace_clang__veclen_64_cpy iter 13: 16.257 ms
+Run time division_by_zero_dace_clang__veclen_64_cpy iter 14: 16.308 ms
+Run time division_by_zero_dace_clang__veclen_64_cpy iter 15: 16.224 ms
+Run time division_by_zero_dace_clang__veclen_64_cpy iter 16: 15.711 ms
+Run time division_by_zero_dace_clang__veclen_64_cpy iter 17: 15.577 ms
+Run time division_by_zero_dace_clang__veclen_64_cpy iter 18: 15.463 ms
+Run time division_by_zero_dace_clang__veclen_64_cpy iter 19: 15.860 ms
+Saved timing results to division_by_zero_timings__singlecore.csv
+Run time division_by_zero_dace iter 0: 27.967 ms
+Run time division_by_zero_dace iter 1: 29.021 ms
+Run time division_by_zero_dace iter 2: 28.803 ms
+Run time division_by_zero_dace iter 3: 28.962 ms
+Run time division_by_zero_dace iter 4: 28.857 ms
+Run time division_by_zero_dace iter 5: 28.795 ms
+Run time division_by_zero_dace iter 6: 30.558 ms
+Run time division_by_zero_dace iter 7: 28.929 ms
+Run time division_by_zero_dace iter 8: 29.007 ms
+Run time division_by_zero_dace iter 9: 28.890 ms
+Run time division_by_zero_dace iter 10: 28.967 ms
+Run time division_by_zero_dace iter 11: 28.619 ms
+Run time division_by_zero_dace iter 12: 29.507 ms
+Run time division_by_zero_dace iter 13: 29.454 ms
+Run time division_by_zero_dace iter 14: 29.519 ms
+Run time division_by_zero_dace iter 15: 31.093 ms
+Run time division_by_zero_dace iter 16: 29.219 ms
+Run time division_by_zero_dace iter 17: 29.046 ms
+Run time division_by_zero_dace iter 18: 29.003 ms
+Run time division_by_zero_dace iter 19: 29.119 ms
+[can_be_applied] to if_255 is True
+[can_be_applied] to if_255 is True
+Changing __out = (__in1 / __in2) to have +1.7800590868057611e-307 to avoid NaN/inf floating-point exception in division!
+Run time division_by_zero_dace_clang__veclen_8_no_cpy iter 0: 35.703 ms
+Run time division_by_zero_dace_clang__veclen_8_no_cpy iter 1: 36.298 ms
+Run time division_by_zero_dace_clang__veclen_8_no_cpy iter 2: 35.638 ms
+Run time division_by_zero_dace_clang__veclen_8_no_cpy iter 3: 35.695 ms
+Run time division_by_zero_dace_clang__veclen_8_no_cpy iter 4: 36.429 ms
+Run time division_by_zero_dace_clang__veclen_8_no_cpy iter 5: 35.161 ms
+Run time division_by_zero_dace_clang__veclen_8_no_cpy iter 6: 35.143 ms
+Run time division_by_zero_dace_clang__veclen_8_no_cpy iter 7: 35.787 ms
+Run time division_by_zero_dace_clang__veclen_8_no_cpy iter 8: 34.949 ms
+Run time division_by_zero_dace_clang__veclen_8_no_cpy iter 9: 34.766 ms
+Run time division_by_zero_dace_clang__veclen_8_no_cpy iter 10: 36.447 ms
+Run time division_by_zero_dace_clang__veclen_8_no_cpy iter 11: 36.595 ms
+Run time division_by_zero_dace_clang__veclen_8_no_cpy iter 12: 35.749 ms
+Run time division_by_zero_dace_clang__veclen_8_no_cpy iter 13: 35.341 ms
+Run time division_by_zero_dace_clang__veclen_8_no_cpy iter 14: 35.546 ms
+Run time division_by_zero_dace_clang__veclen_8_no_cpy iter 15: 36.622 ms
+Run time division_by_zero_dace_clang__veclen_8_no_cpy iter 16: 35.851 ms
+Run time division_by_zero_dace_clang__veclen_8_no_cpy iter 17: 34.896 ms
+Run time division_by_zero_dace_clang__veclen_8_no_cpy iter 18: 35.330 ms
+Run time division_by_zero_dace_clang__veclen_8_no_cpy iter 19: 35.872 ms
+[can_be_applied] to if_255 is True
+[can_be_applied] to if_255 is True
+Changing __out = (__in1 / __in2) to have +1.7800590868057611e-307 to avoid NaN/inf floating-point exception in division!
+Run time division_by_zero_dace_clang__veclen_8_cpy iter 0: 29.623 ms
+Run time division_by_zero_dace_clang__veclen_8_cpy iter 1: 28.896 ms
+Run time division_by_zero_dace_clang__veclen_8_cpy iter 2: 28.890 ms
+Run time division_by_zero_dace_clang__veclen_8_cpy iter 3: 28.933 ms
+Run time division_by_zero_dace_clang__veclen_8_cpy iter 4: 29.228 ms
+Run time division_by_zero_dace_clang__veclen_8_cpy iter 5: 28.729 ms
+Run time division_by_zero_dace_clang__veclen_8_cpy iter 6: 28.803 ms
+Run time division_by_zero_dace_clang__veclen_8_cpy iter 7: 29.357 ms
+Run time division_by_zero_dace_clang__veclen_8_cpy iter 8: 28.892 ms
+Run time division_by_zero_dace_clang__veclen_8_cpy iter 9: 28.750 ms
+Run time division_by_zero_dace_clang__veclen_8_cpy iter 10: 28.622 ms
+Run time division_by_zero_dace_clang__veclen_8_cpy iter 11: 28.763 ms
+Run time division_by_zero_dace_clang__veclen_8_cpy iter 12: 29.472 ms
+Run time division_by_zero_dace_clang__veclen_8_cpy iter 13: 28.954 ms
+Run time division_by_zero_dace_clang__veclen_8_cpy iter 14: 28.623 ms
+Run time division_by_zero_dace_clang__veclen_8_cpy iter 15: 28.861 ms
+Run time division_by_zero_dace_clang__veclen_8_cpy iter 16: 28.855 ms
+Run time division_by_zero_dace_clang__veclen_8_cpy iter 17: 29.771 ms
+Run time division_by_zero_dace_clang__veclen_8_cpy iter 18: 28.932 ms
+Run time division_by_zero_dace_clang__veclen_8_cpy iter 19: 29.171 ms
+[can_be_applied] to if_255 is True
+[can_be_applied] to if_255 is True
+Changing __out = (__in1 / __in2) to have +1.7800590868057611e-307 to avoid NaN/inf floating-point exception in division!
+Run time division_by_zero_dace_clang__veclen_16_no_cpy iter 0: 37.592 ms
+Run time division_by_zero_dace_clang__veclen_16_no_cpy iter 1: 37.896 ms
+Run time division_by_zero_dace_clang__veclen_16_no_cpy iter 2: 37.714 ms
+Run time division_by_zero_dace_clang__veclen_16_no_cpy iter 3: 37.922 ms
+Run time division_by_zero_dace_clang__veclen_16_no_cpy iter 4: 37.555 ms
+Run time division_by_zero_dace_clang__veclen_16_no_cpy iter 5: 37.286 ms
+Run time division_by_zero_dace_clang__veclen_16_no_cpy iter 6: 38.232 ms
+Run time division_by_zero_dace_clang__veclen_16_no_cpy iter 7: 37.596 ms
+Run time division_by_zero_dace_clang__veclen_16_no_cpy iter 8: 36.993 ms
+Run time division_by_zero_dace_clang__veclen_16_no_cpy iter 9: 36.570 ms
+Run time division_by_zero_dace_clang__veclen_16_no_cpy iter 10: 38.052 ms
+Run time division_by_zero_dace_clang__veclen_16_no_cpy iter 11: 36.795 ms
+Run time division_by_zero_dace_clang__veclen_16_no_cpy iter 12: 37.391 ms
+Run time division_by_zero_dace_clang__veclen_16_no_cpy iter 13: 37.249 ms
+Run time division_by_zero_dace_clang__veclen_16_no_cpy iter 14: 36.838 ms
+Run time division_by_zero_dace_clang__veclen_16_no_cpy iter 15: 36.950 ms
+Run time division_by_zero_dace_clang__veclen_16_no_cpy iter 16: 38.365 ms
+Run time division_by_zero_dace_clang__veclen_16_no_cpy iter 17: 37.643 ms
+Run time division_by_zero_dace_clang__veclen_16_no_cpy iter 18: 37.094 ms
+Run time division_by_zero_dace_clang__veclen_16_no_cpy iter 19: 36.912 ms
+[can_be_applied] to if_255 is True
+[can_be_applied] to if_255 is True
+Changing __out = (__in1 / __in2) to have +1.7800590868057611e-307 to avoid NaN/inf floating-point exception in division!
+Run time division_by_zero_dace_clang__veclen_16_cpy iter 0: 29.506 ms
+Run time division_by_zero_dace_clang__veclen_16_cpy iter 1: 28.648 ms
+Run time division_by_zero_dace_clang__veclen_16_cpy iter 2: 28.877 ms
+Run time division_by_zero_dace_clang__veclen_16_cpy iter 3: 28.929 ms
+Run time division_by_zero_dace_clang__veclen_16_cpy iter 4: 28.789 ms
+Run time division_by_zero_dace_clang__veclen_16_cpy iter 5: 28.905 ms
+Run time division_by_zero_dace_clang__veclen_16_cpy iter 6: 28.742 ms
+Run time division_by_zero_dace_clang__veclen_16_cpy iter 7: 28.780 ms
+Run time division_by_zero_dace_clang__veclen_16_cpy iter 8: 29.413 ms
+Run time division_by_zero_dace_clang__veclen_16_cpy iter 9: 29.006 ms
+Run time division_by_zero_dace_clang__veclen_16_cpy iter 10: 28.679 ms
+Run time division_by_zero_dace_clang__veclen_16_cpy iter 11: 28.941 ms
+Run time division_by_zero_dace_clang__veclen_16_cpy iter 12: 29.258 ms
+Run time division_by_zero_dace_clang__veclen_16_cpy iter 13: 28.848 ms
+Run time division_by_zero_dace_clang__veclen_16_cpy iter 14: 29.459 ms
+Run time division_by_zero_dace_clang__veclen_16_cpy iter 15: 28.923 ms
+Run time division_by_zero_dace_clang__veclen_16_cpy iter 16: 28.694 ms
+Run time division_by_zero_dace_clang__veclen_16_cpy iter 17: 29.135 ms
+Run time division_by_zero_dace_clang__veclen_16_cpy iter 18: 28.686 ms
+Run time division_by_zero_dace_clang__veclen_16_cpy iter 19: 29.104 ms
+[can_be_applied] to if_255 is True
+[can_be_applied] to if_255 is True
+Changing __out = (__in1 / __in2) to have +1.7800590868057611e-307 to avoid NaN/inf floating-point exception in division!
+Run time division_by_zero_dace_clang__veclen_32_no_cpy iter 0: 31.922 ms
+Run time division_by_zero_dace_clang__veclen_32_no_cpy iter 1: 31.940 ms
+Run time division_by_zero_dace_clang__veclen_32_no_cpy iter 2: 32.671 ms
+Run time division_by_zero_dace_clang__veclen_32_no_cpy iter 3: 32.178 ms
+Run time division_by_zero_dace_clang__veclen_32_no_cpy iter 4: 32.335 ms
+Run time division_by_zero_dace_clang__veclen_32_no_cpy iter 5: 32.047 ms
+Run time division_by_zero_dace_clang__veclen_32_no_cpy iter 6: 32.160 ms
+Run time division_by_zero_dace_clang__veclen_32_no_cpy iter 7: 32.234 ms
+Run time division_by_zero_dace_clang__veclen_32_no_cpy iter 8: 32.071 ms
+Run time division_by_zero_dace_clang__veclen_32_no_cpy iter 9: 32.034 ms
+Run time division_by_zero_dace_clang__veclen_32_no_cpy iter 10: 31.947 ms
+Run time division_by_zero_dace_clang__veclen_32_no_cpy iter 11: 31.810 ms
+Run time division_by_zero_dace_clang__veclen_32_no_cpy iter 12: 32.222 ms
+Run time division_by_zero_dace_clang__veclen_32_no_cpy iter 13: 33.936 ms
+Run time division_by_zero_dace_clang__veclen_32_no_cpy iter 14: 32.572 ms
+Run time division_by_zero_dace_clang__veclen_32_no_cpy iter 15: 32.380 ms
+Run time division_by_zero_dace_clang__veclen_32_no_cpy iter 16: 32.668 ms
+Run time division_by_zero_dace_clang__veclen_32_no_cpy iter 17: 32.229 ms
+Run time division_by_zero_dace_clang__veclen_32_no_cpy iter 18: 33.674 ms
+Run time division_by_zero_dace_clang__veclen_32_no_cpy iter 19: 31.689 ms
+[can_be_applied] to if_255 is True
+[can_be_applied] to if_255 is True
+Changing __out = (__in1 / __in2) to have +1.7800590868057611e-307 to avoid NaN/inf floating-point exception in division!
+Run time division_by_zero_dace_clang__veclen_32_cpy iter 0: 32.344 ms
+Run time division_by_zero_dace_clang__veclen_32_cpy iter 1: 32.298 ms
+Run time division_by_zero_dace_clang__veclen_32_cpy iter 2: 32.401 ms
+Run time division_by_zero_dace_clang__veclen_32_cpy iter 3: 32.485 ms
+Run time division_by_zero_dace_clang__veclen_32_cpy iter 4: 32.303 ms
+Run time division_by_zero_dace_clang__veclen_32_cpy iter 5: 32.662 ms
+Run time division_by_zero_dace_clang__veclen_32_cpy iter 6: 33.245 ms
+Run time division_by_zero_dace_clang__veclen_32_cpy iter 7: 32.604 ms
+Run time division_by_zero_dace_clang__veclen_32_cpy iter 8: 32.484 ms
+Run time division_by_zero_dace_clang__veclen_32_cpy iter 9: 32.361 ms
+Run time division_by_zero_dace_clang__veclen_32_cpy iter 10: 32.823 ms
+Run time division_by_zero_dace_clang__veclen_32_cpy iter 11: 32.724 ms
+Run time division_by_zero_dace_clang__veclen_32_cpy iter 12: 32.275 ms
+Run time division_by_zero_dace_clang__veclen_32_cpy iter 13: 32.035 ms
+Run time division_by_zero_dace_clang__veclen_32_cpy iter 14: 32.621 ms
+Run time division_by_zero_dace_clang__veclen_32_cpy iter 15: 32.241 ms
+Run time division_by_zero_dace_clang__veclen_32_cpy iter 16: 32.950 ms
+Run time division_by_zero_dace_clang__veclen_32_cpy iter 17: 32.653 ms
+Run time division_by_zero_dace_clang__veclen_32_cpy iter 18: 32.914 ms
+Run time division_by_zero_dace_clang__veclen_32_cpy iter 19: 32.675 ms
+[can_be_applied] to if_255 is True
+[can_be_applied] to if_255 is True
+Changing __out = (__in1 / __in2) to have +1.7800590868057611e-307 to avoid NaN/inf floating-point exception in division!
+Run time division_by_zero_dace_clang__veclen_64_no_cpy iter 0: 29.213 ms
+Run time division_by_zero_dace_clang__veclen_64_no_cpy iter 1: 29.304 ms
+Run time division_by_zero_dace_clang__veclen_64_no_cpy iter 2: 29.394 ms
+Run time division_by_zero_dace_clang__veclen_64_no_cpy iter 3: 28.958 ms
+Run time division_by_zero_dace_clang__veclen_64_no_cpy iter 4: 29.270 ms
+Run time division_by_zero_dace_clang__veclen_64_no_cpy iter 5: 29.155 ms
+Run time division_by_zero_dace_clang__veclen_64_no_cpy iter 6: 28.845 ms
+Run time division_by_zero_dace_clang__veclen_64_no_cpy iter 7: 29.004 ms
+Run time division_by_zero_dace_clang__veclen_64_no_cpy iter 8: 28.829 ms
+Run time division_by_zero_dace_clang__veclen_64_no_cpy iter 9: 28.855 ms
+Run time division_by_zero_dace_clang__veclen_64_no_cpy iter 10: 29.423 ms
+Run time division_by_zero_dace_clang__veclen_64_no_cpy iter 11: 29.345 ms
+Run time division_by_zero_dace_clang__veclen_64_no_cpy iter 12: 29.082 ms
+Run time division_by_zero_dace_clang__veclen_64_no_cpy iter 13: 28.995 ms
+Run time division_by_zero_dace_clang__veclen_64_no_cpy iter 14: 29.143 ms
+Run time division_by_zero_dace_clang__veclen_64_no_cpy iter 15: 29.299 ms
+Run time division_by_zero_dace_clang__veclen_64_no_cpy iter 16: 29.364 ms
+Run time division_by_zero_dace_clang__veclen_64_no_cpy iter 17: 29.006 ms
+Run time division_by_zero_dace_clang__veclen_64_no_cpy iter 18: 29.322 ms
+Run time division_by_zero_dace_clang__veclen_64_no_cpy iter 19: 29.380 ms
+[can_be_applied] to if_255 is True
+[can_be_applied] to if_255 is True
+Changing __out = (__in1 / __in2) to have +1.7800590868057611e-307 to avoid NaN/inf floating-point exception in division!
+Run time division_by_zero_dace_clang__veclen_64_cpy iter 0: 29.516 ms
+Run time division_by_zero_dace_clang__veclen_64_cpy iter 1: 29.387 ms
+Run time division_by_zero_dace_clang__veclen_64_cpy iter 2: 29.032 ms
+Run time division_by_zero_dace_clang__veclen_64_cpy iter 3: 29.192 ms
+Run time division_by_zero_dace_clang__veclen_64_cpy iter 4: 28.882 ms
+Run time division_by_zero_dace_clang__veclen_64_cpy iter 5: 28.817 ms
+Run time division_by_zero_dace_clang__veclen_64_cpy iter 6: 29.266 ms
+Run time division_by_zero_dace_clang__veclen_64_cpy iter 7: 28.757 ms
+Run time division_by_zero_dace_clang__veclen_64_cpy iter 8: 28.921 ms
+Run time division_by_zero_dace_clang__veclen_64_cpy iter 9: 29.025 ms
+Run time division_by_zero_dace_clang__veclen_64_cpy iter 10: 29.080 ms
+Run time division_by_zero_dace_clang__veclen_64_cpy iter 11: 29.052 ms
+Run time division_by_zero_dace_clang__veclen_64_cpy iter 12: 29.049 ms
+Run time division_by_zero_dace_clang__veclen_64_cpy iter 13: 29.209 ms
+Run time division_by_zero_dace_clang__veclen_64_cpy iter 14: 29.298 ms
+Run time division_by_zero_dace_clang__veclen_64_cpy iter 15: 29.422 ms
+Run time division_by_zero_dace_clang__veclen_64_cpy iter 16: 29.114 ms
+Run time division_by_zero_dace_clang__veclen_64_cpy iter 17: 29.320 ms
+Run time division_by_zero_dace_clang__veclen_64_cpy iter 18: 29.476 ms
+Run time division_by_zero_dace_clang__veclen_64_cpy iter 19: 29.161 ms
+Saved timing results to division_by_zero_timings__singlecore.csv
+Run time division_by_zero_dace iter 0: 56.992 ms
+Run time division_by_zero_dace iter 1: 55.373 ms
+Run time division_by_zero_dace iter 2: 55.725 ms
+Run time division_by_zero_dace iter 3: 55.917 ms
+Run time division_by_zero_dace iter 4: 56.285 ms
+Run time division_by_zero_dace iter 5: 56.192 ms
+Run time division_by_zero_dace iter 6: 55.573 ms
+Run time division_by_zero_dace iter 7: 56.072 ms
+Run time division_by_zero_dace iter 8: 55.365 ms
+Run time division_by_zero_dace iter 9: 55.937 ms
+Run time division_by_zero_dace iter 10: 55.605 ms
+Run time division_by_zero_dace iter 11: 55.839 ms
+Run time division_by_zero_dace iter 12: 56.032 ms
+Run time division_by_zero_dace iter 13: 56.971 ms
+Run time division_by_zero_dace iter 14: 55.438 ms
+Run time division_by_zero_dace iter 15: 55.982 ms
+Run time division_by_zero_dace iter 16: 56.098 ms
+Run time division_by_zero_dace iter 17: 55.672 ms
+Run time division_by_zero_dace iter 18: 55.535 ms
+Run time division_by_zero_dace iter 19: 56.326 ms
+[can_be_applied] to if_255 is True
+[can_be_applied] to if_255 is True
+Changing __out = (__in1 / __in2) to have +1.7800590868057611e-307 to avoid NaN/inf floating-point exception in division!
+Run time division_by_zero_dace_clang__veclen_8_no_cpy iter 0: 65.357 ms
+Run time division_by_zero_dace_clang__veclen_8_no_cpy iter 1: 65.543 ms
+Run time division_by_zero_dace_clang__veclen_8_no_cpy iter 2: 66.043 ms
+Run time division_by_zero_dace_clang__veclen_8_no_cpy iter 3: 66.963 ms
+Run time division_by_zero_dace_clang__veclen_8_no_cpy iter 4: 65.619 ms
+Run time division_by_zero_dace_clang__veclen_8_no_cpy iter 5: 65.706 ms
+Run time division_by_zero_dace_clang__veclen_8_no_cpy iter 6: 66.321 ms
+Run time division_by_zero_dace_clang__veclen_8_no_cpy iter 7: 66.413 ms
+Run time division_by_zero_dace_clang__veclen_8_no_cpy iter 8: 64.687 ms
+Run time division_by_zero_dace_clang__veclen_8_no_cpy iter 9: 65.208 ms
+Run time division_by_zero_dace_clang__veclen_8_no_cpy iter 10: 65.388 ms
+Run time division_by_zero_dace_clang__veclen_8_no_cpy iter 11: 66.265 ms
+Run time division_by_zero_dace_clang__veclen_8_no_cpy iter 12: 66.282 ms
+Run time division_by_zero_dace_clang__veclen_8_no_cpy iter 13: 65.861 ms
+Run time division_by_zero_dace_clang__veclen_8_no_cpy iter 14: 64.365 ms
+Run time division_by_zero_dace_clang__veclen_8_no_cpy iter 15: 65.254 ms
+Run time division_by_zero_dace_clang__veclen_8_no_cpy iter 16: 65.563 ms
+Run time division_by_zero_dace_clang__veclen_8_no_cpy iter 17: 66.391 ms
+Run time division_by_zero_dace_clang__veclen_8_no_cpy iter 18: 65.504 ms
+Run time division_by_zero_dace_clang__veclen_8_no_cpy iter 19: 65.344 ms
+[can_be_applied] to if_255 is True
+[can_be_applied] to if_255 is True
+Changing __out = (__in1 / __in2) to have +1.7800590868057611e-307 to avoid NaN/inf floating-point exception in division!
+Run time division_by_zero_dace_clang__veclen_8_cpy iter 0: 56.225 ms
+Run time division_by_zero_dace_clang__veclen_8_cpy iter 1: 56.120 ms
+Run time division_by_zero_dace_clang__veclen_8_cpy iter 2: 56.279 ms
+Run time division_by_zero_dace_clang__veclen_8_cpy iter 3: 56.148 ms
+Run time division_by_zero_dace_clang__veclen_8_cpy iter 4: 55.861 ms
+Run time division_by_zero_dace_clang__veclen_8_cpy iter 5: 55.971 ms
+Run time division_by_zero_dace_clang__veclen_8_cpy iter 6: 55.452 ms
+Run time division_by_zero_dace_clang__veclen_8_cpy iter 7: 56.327 ms
+Run time division_by_zero_dace_clang__veclen_8_cpy iter 8: 56.438 ms
+Run time division_by_zero_dace_clang__veclen_8_cpy iter 9: 56.273 ms
+Run time division_by_zero_dace_clang__veclen_8_cpy iter 10: 56.155 ms
+Run time division_by_zero_dace_clang__veclen_8_cpy iter 11: 55.712 ms
+Run time division_by_zero_dace_clang__veclen_8_cpy iter 12: 56.043 ms
+Run time division_by_zero_dace_clang__veclen_8_cpy iter 13: 56.094 ms
+Run time division_by_zero_dace_clang__veclen_8_cpy iter 14: 55.659 ms
+Run time division_by_zero_dace_clang__veclen_8_cpy iter 15: 56.286 ms
+Run time division_by_zero_dace_clang__veclen_8_cpy iter 16: 55.855 ms
+Run time division_by_zero_dace_clang__veclen_8_cpy iter 17: 56.265 ms
+Run time division_by_zero_dace_clang__veclen_8_cpy iter 18: 55.991 ms
+Run time division_by_zero_dace_clang__veclen_8_cpy iter 19: 56.131 ms
+[can_be_applied] to if_255 is True
+[can_be_applied] to if_255 is True
+Changing __out = (__in1 / __in2) to have +1.7800590868057611e-307 to avoid NaN/inf floating-point exception in division!
+Run time division_by_zero_dace_clang__veclen_16_no_cpy iter 0: 67.381 ms
+Run time division_by_zero_dace_clang__veclen_16_no_cpy iter 1: 65.339 ms
+Run time division_by_zero_dace_clang__veclen_16_no_cpy iter 2: 65.849 ms
+Run time division_by_zero_dace_clang__veclen_16_no_cpy iter 3: 66.184 ms
+Run time division_by_zero_dace_clang__veclen_16_no_cpy iter 4: 65.446 ms
+Run time division_by_zero_dace_clang__veclen_16_no_cpy iter 5: 65.734 ms
+Run time division_by_zero_dace_clang__veclen_16_no_cpy iter 6: 65.506 ms
+Run time division_by_zero_dace_clang__veclen_16_no_cpy iter 7: 65.367 ms
+Run time division_by_zero_dace_clang__veclen_16_no_cpy iter 8: 66.333 ms
+Run time division_by_zero_dace_clang__veclen_16_no_cpy iter 9: 67.376 ms
+Run time division_by_zero_dace_clang__veclen_16_no_cpy iter 10: 65.393 ms
+Run time division_by_zero_dace_clang__veclen_16_no_cpy iter 11: 65.787 ms
+Run time division_by_zero_dace_clang__veclen_16_no_cpy iter 12: 71.091 ms
+Run time division_by_zero_dace_clang__veclen_16_no_cpy iter 13: 67.495 ms
+Run time division_by_zero_dace_clang__veclen_16_no_cpy iter 14: 65.778 ms
+Run time division_by_zero_dace_clang__veclen_16_no_cpy iter 15: 64.969 ms
+Run time division_by_zero_dace_clang__veclen_16_no_cpy iter 16: 65.471 ms
+Run time division_by_zero_dace_clang__veclen_16_no_cpy iter 17: 65.644 ms
+Run time division_by_zero_dace_clang__veclen_16_no_cpy iter 18: 68.617 ms
+Run time division_by_zero_dace_clang__veclen_16_no_cpy iter 19: 70.590 ms
+[can_be_applied] to if_255 is True
+[can_be_applied] to if_255 is True
+Changing __out = (__in1 / __in2) to have +1.7800590868057611e-307 to avoid NaN/inf floating-point exception in division!
+Run time division_by_zero_dace_clang__veclen_16_cpy iter 0: 56.442 ms
+Run time division_by_zero_dace_clang__veclen_16_cpy iter 1: 56.025 ms
+Run time division_by_zero_dace_clang__veclen_16_cpy iter 2: 56.124 ms
+Run time division_by_zero_dace_clang__veclen_16_cpy iter 3: 56.221 ms
+Run time division_by_zero_dace_clang__veclen_16_cpy iter 4: 56.733 ms
+Run time division_by_zero_dace_clang__veclen_16_cpy iter 5: 56.322 ms
+Run time division_by_zero_dace_clang__veclen_16_cpy iter 6: 56.166 ms
+Run time division_by_zero_dace_clang__veclen_16_cpy iter 7: 55.986 ms
+Run time division_by_zero_dace_clang__veclen_16_cpy iter 8: 55.857 ms
+Run time division_by_zero_dace_clang__veclen_16_cpy iter 9: 55.993 ms
+Run time division_by_zero_dace_clang__veclen_16_cpy iter 10: 55.878 ms
+Run time division_by_zero_dace_clang__veclen_16_cpy iter 11: 56.158 ms
+Run time division_by_zero_dace_clang__veclen_16_cpy iter 12: 56.174 ms
+Run time division_by_zero_dace_clang__veclen_16_cpy iter 13: 56.363 ms
+Run time division_by_zero_dace_clang__veclen_16_cpy iter 14: 56.084 ms
+Run time division_by_zero_dace_clang__veclen_16_cpy iter 15: 55.699 ms
+Run time division_by_zero_dace_clang__veclen_16_cpy iter 16: 56.010 ms
+Run time division_by_zero_dace_clang__veclen_16_cpy iter 17: 56.405 ms
+Run time division_by_zero_dace_clang__veclen_16_cpy iter 18: 55.515 ms
+Run time division_by_zero_dace_clang__veclen_16_cpy iter 19: 55.685 ms
+[can_be_applied] to if_255 is True
+[can_be_applied] to if_255 is True
+Changing __out = (__in1 / __in2) to have +1.7800590868057611e-307 to avoid NaN/inf floating-point exception in division!
+Run time division_by_zero_dace_clang__veclen_32_no_cpy iter 0: 64.028 ms
+Run time division_by_zero_dace_clang__veclen_32_no_cpy iter 1: 64.571 ms
+Run time division_by_zero_dace_clang__veclen_32_no_cpy iter 2: 65.452 ms
+Run time division_by_zero_dace_clang__veclen_32_no_cpy iter 3: 63.674 ms
+Run time division_by_zero_dace_clang__veclen_32_no_cpy iter 4: 64.088 ms
+Run time division_by_zero_dace_clang__veclen_32_no_cpy iter 5: 64.104 ms
+Run time division_by_zero_dace_clang__veclen_32_no_cpy iter 6: 65.431 ms
+Run time division_by_zero_dace_clang__veclen_32_no_cpy iter 7: 65.951 ms
+Run time division_by_zero_dace_clang__veclen_32_no_cpy iter 8: 64.718 ms
+Run time division_by_zero_dace_clang__veclen_32_no_cpy iter 9: 65.426 ms
+Run time division_by_zero_dace_clang__veclen_32_no_cpy iter 10: 64.076 ms
+Run time division_by_zero_dace_clang__veclen_32_no_cpy iter 11: 68.973 ms
+Run time division_by_zero_dace_clang__veclen_32_no_cpy iter 12: 64.632 ms
+Run time division_by_zero_dace_clang__veclen_32_no_cpy iter 13: 65.668 ms
+Run time division_by_zero_dace_clang__veclen_32_no_cpy iter 14: 65.680 ms
+Run time division_by_zero_dace_clang__veclen_32_no_cpy iter 15: 64.722 ms
+Run time division_by_zero_dace_clang__veclen_32_no_cpy iter 16: 65.948 ms
+Run time division_by_zero_dace_clang__veclen_32_no_cpy iter 17: 63.986 ms
+Run time division_by_zero_dace_clang__veclen_32_no_cpy iter 18: 64.192 ms
+Run time division_by_zero_dace_clang__veclen_32_no_cpy iter 19: 64.634 ms
+[can_be_applied] to if_255 is True
+[can_be_applied] to if_255 is True
+Changing __out = (__in1 / __in2) to have +1.7800590868057611e-307 to avoid NaN/inf floating-point exception in division!
+Run time division_by_zero_dace_clang__veclen_32_cpy iter 0: 64.616 ms
+Run time division_by_zero_dace_clang__veclen_32_cpy iter 1: 63.999 ms
+Run time division_by_zero_dace_clang__veclen_32_cpy iter 2: 64.205 ms
+Run time division_by_zero_dace_clang__veclen_32_cpy iter 3: 64.215 ms
+Run time division_by_zero_dace_clang__veclen_32_cpy iter 4: 65.971 ms
+Run time division_by_zero_dace_clang__veclen_32_cpy iter 5: 63.972 ms
+Run time division_by_zero_dace_clang__veclen_32_cpy iter 6: 62.733 ms
+Run time division_by_zero_dace_clang__veclen_32_cpy iter 7: 63.256 ms
+Run time division_by_zero_dace_clang__veclen_32_cpy iter 8: 64.378 ms
+Run time division_by_zero_dace_clang__veclen_32_cpy iter 9: 63.841 ms
+Run time division_by_zero_dace_clang__veclen_32_cpy iter 10: 64.199 ms
+Run time division_by_zero_dace_clang__veclen_32_cpy iter 11: 64.241 ms
+Run time division_by_zero_dace_clang__veclen_32_cpy iter 12: 64.150 ms
+Run time division_by_zero_dace_clang__veclen_32_cpy iter 13: 62.684 ms
+Run time division_by_zero_dace_clang__veclen_32_cpy iter 14: 63.302 ms
+Run time division_by_zero_dace_clang__veclen_32_cpy iter 15: 64.131 ms
+Run time division_by_zero_dace_clang__veclen_32_cpy iter 16: 63.722 ms
+Run time division_by_zero_dace_clang__veclen_32_cpy iter 17: 63.584 ms
+Run time division_by_zero_dace_clang__veclen_32_cpy iter 18: 63.440 ms
+Run time division_by_zero_dace_clang__veclen_32_cpy iter 19: 63.790 ms
+[can_be_applied] to if_255 is True
+[can_be_applied] to if_255 is True
+Changing __out = (__in1 / __in2) to have +1.7800590868057611e-307 to avoid NaN/inf floating-point exception in division!
+Run time division_by_zero_dace_clang__veclen_64_no_cpy iter 0: 56.437 ms
+Run time division_by_zero_dace_clang__veclen_64_no_cpy iter 1: 55.966 ms
+Run time division_by_zero_dace_clang__veclen_64_no_cpy iter 2: 56.734 ms
+Run time division_by_zero_dace_clang__veclen_64_no_cpy iter 3: 56.128 ms
+Run time division_by_zero_dace_clang__veclen_64_no_cpy iter 4: 56.252 ms
+Run time division_by_zero_dace_clang__veclen_64_no_cpy iter 5: 56.189 ms
+Run time division_by_zero_dace_clang__veclen_64_no_cpy iter 6: 56.048 ms
+Run time division_by_zero_dace_clang__veclen_64_no_cpy iter 7: 56.029 ms
+Run time division_by_zero_dace_clang__veclen_64_no_cpy iter 8: 56.085 ms
+Run time division_by_zero_dace_clang__veclen_64_no_cpy iter 9: 56.503 ms
+Run time division_by_zero_dace_clang__veclen_64_no_cpy iter 10: 56.804 ms
+Run time division_by_zero_dace_clang__veclen_64_no_cpy iter 11: 56.923 ms
+Run time division_by_zero_dace_clang__veclen_64_no_cpy iter 12: 56.999 ms
+Run time division_by_zero_dace_clang__veclen_64_no_cpy iter 13: 56.910 ms
+Run time division_by_zero_dace_clang__veclen_64_no_cpy iter 14: 56.661 ms
+Run time division_by_zero_dace_clang__veclen_64_no_cpy iter 15: 56.544 ms
+Run time division_by_zero_dace_clang__veclen_64_no_cpy iter 16: 56.735 ms
+Run time division_by_zero_dace_clang__veclen_64_no_cpy iter 17: 56.605 ms
+Run time division_by_zero_dace_clang__veclen_64_no_cpy iter 18: 56.330 ms
+Run time division_by_zero_dace_clang__veclen_64_no_cpy iter 19: 56.812 ms
+[can_be_applied] to if_255 is True
+[can_be_applied] to if_255 is True
+Changing __out = (__in1 / __in2) to have +1.7800590868057611e-307 to avoid NaN/inf floating-point exception in division!
+Run time division_by_zero_dace_clang__veclen_64_cpy iter 0: 57.210 ms
+Run time division_by_zero_dace_clang__veclen_64_cpy iter 1: 56.248 ms
+Run time division_by_zero_dace_clang__veclen_64_cpy iter 2: 56.021 ms
+Run time division_by_zero_dace_clang__veclen_64_cpy iter 3: 58.168 ms
+Run time division_by_zero_dace_clang__veclen_64_cpy iter 4: 56.093 ms
+Run time division_by_zero_dace_clang__veclen_64_cpy iter 5: 56.154 ms
+Run time division_by_zero_dace_clang__veclen_64_cpy iter 6: 55.979 ms
+Run time division_by_zero_dace_clang__veclen_64_cpy iter 7: 56.856 ms
+Run time division_by_zero_dace_clang__veclen_64_cpy iter 8: 59.920 ms
+Run time division_by_zero_dace_clang__veclen_64_cpy iter 9: 56.190 ms
+Run time division_by_zero_dace_clang__veclen_64_cpy iter 10: 59.460 ms
+Run time division_by_zero_dace_clang__veclen_64_cpy iter 11: 61.807 ms
+Run time division_by_zero_dace_clang__veclen_64_cpy iter 12: 64.563 ms
+Run time division_by_zero_dace_clang__veclen_64_cpy iter 13: 64.594 ms
+Run time division_by_zero_dace_clang__veclen_64_cpy iter 14: 55.960 ms
+Run time division_by_zero_dace_clang__veclen_64_cpy iter 15: 56.159 ms
+Run time division_by_zero_dace_clang__veclen_64_cpy iter 16: 56.144 ms
+Run time division_by_zero_dace_clang__veclen_64_cpy iter 17: 56.365 ms
+Run time division_by_zero_dace_clang__veclen_64_cpy iter 18: 56.525 ms
+Run time division_by_zero_dace_clang__veclen_64_cpy iter 19: 55.937 ms
+Saved timing results to division_by_zero_timings__singlecore.csv
+Running with EXTRA_FLAGS='-mprefer-vector-width=512 -D__DACE_USE_INTRINSICS=1', SUFFIX='dace_intrinsics'

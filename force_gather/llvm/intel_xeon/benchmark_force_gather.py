@@ -9,12 +9,24 @@ from math import log
 
 import subprocess
 
+cpu_name = os.environ.get('CPU_NAME', 'amd_epyc')
+
+compiler_exec = os.environ.get('CXX', 'c++')
+dace.config.Config.set("compiler", "cpu", "executable", value=compiler_exec)
+
 # Base compilation flags
 base_flags = [
     '-fopenmp', '-fstrict-aliasing', '-std=c++17', '-faligned-new',
     '-fPIC', '-Wall', '-Wextra', '-O3', '-march=native', '-ffast-math',
     '-Wno-unused-parameter', '-Wno-unused-label'
 ]
+
+if cpu_name == "arm":
+    base_flags.remove("-march=native")
+
+if compiler_exec == "icpx":
+    base_flags.remove("-fopenmp")
+    base_flags.append("-qopenmp")
 
 # Architecture / compiler specific extra flags
 env_flags_str = os.environ.get('EXTRA_FLAGS', '')
@@ -23,19 +35,37 @@ base_flags_str = ' '.join(base_flags)
 flags = base_flags_str + " " + env_flags_str if env_flags_str != '' else base_flags_str
 dace.config.Config.set("compiler", "cpu", "args", value=flags)
 
-compiler_exec = os.environ.get('CXX', 'c++')
-dace.config.Config.set("compiler", "cpu", "executable", value=compiler_exec)
+
+multi_core = int(os.environ.get('RUN_MULTICORE', '0')) == 1
+core_count = 1
+
+
+if multi_core:
+    if cpu_name == "arm":
+        core_count = 72
+    elif cpu_name == "intel_xeon":
+        core_count = 18
+    elif cpu_name == "amd_epyc":
+        core_count = 64
+
+multicore_suffix = '_singlecore' if core_count == 1 else '_multicore'
+
+
+# lvm of 18, 72 and 64 is 
+# 576
+lcd = 576
 
 env_suffix_str = os.environ.get('SUFFIX', '')
 if env_suffix_str != '':
     env_suffix_str = "_" + env_suffix_str
+print(f"Running with suffix: {env_suffix_str}")
 
 def get_physical_cores():
     # Use lscpu and parse "Core(s) per socket" and "Socket(s)"
-    lscpu_dst = subprocess.check_output(["lscpu"]).decode()
+    lscpu_out = subprocess.check_output(["lscpu"]).decode()
     cores_per_socket = None
     sockets = None
-    for line in lscpu_dst.splitlines():
+    for line in lscpu_out.splitlines():
         if "Core(s) per socket:" in line:
             cores_per_socket = int(line.split(":")[1])
         elif "Socket(s):" in line:
@@ -45,20 +75,24 @@ def get_physical_cores():
     # fallback
     return int(subprocess.check_output(["nproc", "--all"]).decode())
 
-ncores = get_physical_cores()
-print("Physical cores:", ncores)
 
 def init_openmp():
     # Get physical core count
     ncores = get_physical_cores()
 
     # Set OpenMP environment
-    os.environ["OMP_NUM_THREADS"] = "1"
+    os.environ["OMP_NUM_THREADS"] = str(core_count)
     os.environ["OMP_PLACES"] = "cores"
     os.environ["OMP_PROC_BIND"] = "true"
 
 # Call before loading OpenMP-linked C++ libs
 init_openmp()
+
+print(f"Running with #{core_count} cores")
+print(f"Running with base flags: {base_flags_str}")
+print(f"Running with env flags: {env_flags_str}")
+print(f"Running with flags: {flags}")
+
 
 
 def run_sdfg_multiple_times(
@@ -115,6 +149,7 @@ def save_timings_to_csv(filename, i, isize, timings_dict):
             for i, t in enumerate(times):
                 writer.writerow([sdfg_name, size, i, t])
 
+
 # -------------------------------------------------------
 # Helpers
 # -------------------------------------------------------
@@ -137,12 +172,11 @@ if __name__ == "__main__":
     NUM_REPS = 20
     all_timings = {}
 
-    for i, N in enumerate([8192 * 64, 8192 * 256, 8192 * 512, 8192 * 1024, 8192 * 2048, 8192 * 4096, 8192 * 8192, 8192 * 8192 * 2]):
+    for i, N in enumerate([8192 * 576, 8192 * 2 * 576, 8192 * 4 * 576, 8192 * 8 * 576]):
         @dace.program
         def gather_load(src: dace.float64[N], idx: dace.int64[N], dst: dace.float64[N], scale: dace.float64):
             for i, in dace.map[0:N:1]:
                 dst[i] = src[idx[i]] * scale
-
 
 
         all_funcs = [ # (function, kind, stride)
@@ -210,5 +244,5 @@ if __name__ == "__main__":
             # -------------------------------------------------------
             # CSV dstput
             # -------------------------------------------------------
-            save_timings_to_csv(f"load_store_benchmarks_timings_1_core{env_suffix_str}.csv", i, N, all_timings)
-            print(f"Saved timing results to load_store_benchmarks_timings_1_core{env_suffix_str}.csv")
+        save_timings_to_csv(f"force_gather_timings_{env_suffix_str}{multicore_suffix}.csv", i, S, all_timings)
+        print(f"Saved timing results to force_gather_timings_{env_suffix_str}{multicore_suffix}.csv")

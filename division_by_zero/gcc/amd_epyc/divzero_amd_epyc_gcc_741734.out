@@ -1,0 +1,48 @@
+Running with EXTRA_FLAGS='', SUFFIX=''
+Running with suffix: 
+Running with #1 cores
+Running with base flags: -fopenmp -fstrict-aliasing -std=c++17 -faligned-new -fPIC -Wall -Wextra -O3 -march=native -ffast-math -Wno-unused-parameter -Wno-unused-label
+Running with env flags: 
+Running with flags: -fopenmp -fstrict-aliasing -std=c++17 -faligned-new -fPIC -Wall -Wextra -O3 -march=native -ffast-math -Wno-unused-parameter -Wno-unused-label
+Running with EXTRA_FLAGS='-mprefer-vector-width=512', SUFFIX='force_width_512'
+Running with suffix: _force_width_512
+Running with #1 cores
+Running with base flags: -fopenmp -fstrict-aliasing -std=c++17 -faligned-new -fPIC -Wall -Wextra -O3 -march=native -ffast-math -Wno-unused-parameter -Wno-unused-label
+Running with env flags: -mprefer-vector-width=512
+Running with flags: -fopenmp -fstrict-aliasing -std=c++17 -faligned-new -fPIC -Wall -Wextra -O3 -march=native -ffast-math -Wno-unused-parameter -Wno-unused-label -mprefer-vector-width=512
+Running with EXTRA_FLAGS='-mprefer-vector-width=256', SUFFIX='force_width_256'
+Running with suffix: _force_width_256
+Running with #1 cores
+Running with base flags: -fopenmp -fstrict-aliasing -std=c++17 -faligned-new -fPIC -Wall -Wextra -O3 -march=native -ffast-math -Wno-unused-parameter -Wno-unused-label
+Running with env flags: -mprefer-vector-width=256
+Running with flags: -fopenmp -fstrict-aliasing -std=c++17 -faligned-new -fPIC -Wall -Wextra -O3 -march=native -ffast-math -Wno-unused-parameter -Wno-unused-label -mprefer-vector-width=256
+Running with EXTRA_FLAGS='-fno-tree-vectorize -fno-tree-slp-vectorize', SUFFIX='no-vectorize'
+Running with suffix: _no-vectorize
+Running with #1 cores
+Running with base flags: -fopenmp -fstrict-aliasing -std=c++17 -faligned-new -fPIC -Wall -Wextra -O3 -march=native -ffast-math -Wno-unused-parameter -Wno-unused-label
+Running with env flags: -fno-tree-vectorize -fno-tree-slp-vectorize
+Running with flags: -fopenmp -fstrict-aliasing -std=c++17 -faligned-new -fPIC -Wall -Wextra -O3 -march=native -ffast-math -Wno-unused-parameter -Wno-unused-label -fno-tree-vectorize -fno-tree-slp-vectorize
+Running with EXTRA_FLAGS='', SUFFIX=''
+Running with suffix: 
+Running with #64 cores
+Running with base flags: -fopenmp -fstrict-aliasing -std=c++17 -faligned-new -fPIC -Wall -Wextra -O3 -march=native -ffast-math -Wno-unused-parameter -Wno-unused-label
+Running with env flags: 
+Running with flags: -fopenmp -fstrict-aliasing -std=c++17 -faligned-new -fPIC -Wall -Wextra -O3 -march=native -ffast-math -Wno-unused-parameter -Wno-unused-label
+Running with EXTRA_FLAGS='-mprefer-vector-width=512', SUFFIX='force_width_512'
+Running with suffix: _force_width_512
+Running with #64 cores
+Running with base flags: -fopenmp -fstrict-aliasing -std=c++17 -faligned-new -fPIC -Wall -Wextra -O3 -march=native -ffast-math -Wno-unused-parameter -Wno-unused-label
+Running with env flags: -mprefer-vector-width=512
+Running with flags: -fopenmp -fstrict-aliasing -std=c++17 -faligned-new -fPIC -Wall -Wextra -O3 -march=native -ffast-math -Wno-unused-parameter -Wno-unused-label -mprefer-vector-width=512
+Running with EXTRA_FLAGS='-mprefer-vector-width=256', SUFFIX='force_width_256'
+Running with suffix: _force_width_256
+Running with #64 cores
+Running with base flags: -fopenmp -fstrict-aliasing -std=c++17 -faligned-new -fPIC -Wall -Wextra -O3 -march=native -ffast-math -Wno-unused-parameter -Wno-unused-label
+Running with env flags: -mprefer-vector-width=256
+Running with flags: -fopenmp -fstrict-aliasing -std=c++17 -faligned-new -fPIC -Wall -Wextra -O3 -march=native -ffast-math -Wno-unused-parameter -Wno-unused-label -mprefer-vector-width=256
+Running with EXTRA_FLAGS='-fno-tree-vectorize -fno-tree-slp-vectorize', SUFFIX='no-vectorize'
+Running with suffix: _no-vectorize
+Running with #64 cores
+Running with base flags: -fopenmp -fstrict-aliasing -std=c++17 -faligned-new -fPIC -Wall -Wextra -O3 -march=native -ffast-math -Wno-unused-parameter -Wno-unused-label
+Running with env flags: -fno-tree-vectorize -fno-tree-slp-vectorize
+Running with flags: -fopenmp -fstrict-aliasing -std=c++17 -faligned-new -fPIC -Wall -Wextra -O3 -march=native -ffast-math -Wno-unused-parameter -Wno-unused-label -fno-tree-vectorize -fno-tree-slp-vectorize

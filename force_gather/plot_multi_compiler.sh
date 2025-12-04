@@ -1,1 +1,1 @@
-python plot_multi_compiler.py TEMPLATE TEMPLATE_multicompiler.png
+python plot_multi_compiler.py force_gather force_gather_multicompiler.png

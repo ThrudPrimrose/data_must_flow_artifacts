@@ -1,4 +1,0 @@
-python plot.py  amd_epyc_7742/gcc_14_2/jacobi2d_timings_gcc_amd_epyc.csv  jacobi2d_amd_epyc_7742_gcc.png jacobi2d gcc amd_epyc_7742
-python plot.py  amd_epyc_7742/llvm_21_6/jacobi2d_timings_llvm_21_6_amd_epyc.csv  jacobi2d_amd_epyc_7742_llvm.png jacobi2d llvm amd_epyc_7742
-python plot.py intel_xeon_gold/gcc_14_2/jacobi2d_timings_gcc_intel_xeon.csv  jacobi2d_intel_xeon_gold_gcc.png jacobi2d gcc intel_xeon_gold
-python plot.py  intel_xeon_gold/llvm_21_6/jacobi2d_timings_llvm_21_6_intel_xeon.csv  jacobi2d_intel_xeon_gold_llvm.png jacobi2d llvm intel_xeon_gold

@@ -10,3 +10,9 @@ cd ../..
 cd llvm/intel_xeon
 sbatch submit.sh
 cd ../..
+cd intel/amd_epyc
+sbatch submit.sh
+cd ../..
+cd intel/intel_xeon
+sbatch submit.sh
+cd ../..

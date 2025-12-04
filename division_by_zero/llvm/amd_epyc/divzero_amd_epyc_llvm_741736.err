@@ -1,0 +1,242 @@
+Traceback (most recent call last):
+  File "/scratch/ybudanaz/dace/dace/codegen/compiled_sdfg.py", line 528, in _construct_args
+    arglist.append(kwargs[a])
+                   ~~~~~~^^^
+KeyError: 'c'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/scratch/ybudanaz/data_must_flow_artifacts/division_by_zero/llvm/amd_epyc/benchmark_division_by_zero.py", line 282, in <module>
+    all_timings["division_by_zero_dace", S] = run_sdfg_multiple_times(
+                                              ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/scratch/ybudanaz/data_must_flow_artifacts/division_by_zero/llvm/amd_epyc/benchmark_division_by_zero.py", line 197, in run_sdfg_multiple_times
+    compiled(**arrays, **params)  # Warm-up run
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/scratch/ybudanaz/dace/dace/codegen/compiled_sdfg.py", line 388, in __call__
+    argtuple, initargtuple = self._construct_args(kwargs)  # Missing arguments will be detected here.
+                             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/scratch/ybudanaz/dace/dace/codegen/compiled_sdfg.py", line 532, in _construct_args
+    raise KeyError("Missing program argument \"{}\"".format(a))
+KeyError: 'Missing program argument "c"'
+Traceback (most recent call last):
+  File "/scratch/ybudanaz/dace/dace/codegen/compiled_sdfg.py", line 528, in _construct_args
+    arglist.append(kwargs[a])
+                   ~~~~~~^^^
+KeyError: 'c'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/scratch/ybudanaz/data_must_flow_artifacts/division_by_zero/llvm/amd_epyc/benchmark_division_by_zero.py", line 282, in <module>
+    all_timings["division_by_zero_dace", S] = run_sdfg_multiple_times(
+                                              ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/scratch/ybudanaz/data_must_flow_artifacts/division_by_zero/llvm/amd_epyc/benchmark_division_by_zero.py", line 197, in run_sdfg_multiple_times
+    compiled(**arrays, **params)  # Warm-up run
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/scratch/ybudanaz/dace/dace/codegen/compiled_sdfg.py", line 388, in __call__
+    argtuple, initargtuple = self._construct_args(kwargs)  # Missing arguments will be detected here.
+                             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/scratch/ybudanaz/dace/dace/codegen/compiled_sdfg.py", line 532, in _construct_args
+    raise KeyError("Missing program argument \"{}\"".format(a))
+KeyError: 'Missing program argument "c"'
+Traceback (most recent call last):
+  File "/scratch/ybudanaz/dace/dace/codegen/compiler.py", line 245, in configure_and_compile
+    _run_liveoutput("cmake --build . --config %s" % (Config.get('compiler', 'build_type')),
+  File "/scratch/ybudanaz/dace/dace/codegen/compiler.py", line 429, in _run_liveoutput
+    raise subprocess.CalledProcessError(process.returncode, command, output.getvalue())
+subprocess.CalledProcessError: Command 'cmake --build . --config RelWithDebInfo' returned non-zero exit status 2.
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/scratch/ybudanaz/data_must_flow_artifacts/division_by_zero/llvm/amd_epyc/benchmark_division_by_zero.py", line 282, in <module>
+    all_timings["division_by_zero_dace", S] = run_sdfg_multiple_times(
+                                              ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/scratch/ybudanaz/data_must_flow_artifacts/division_by_zero/llvm/amd_epyc/benchmark_division_by_zero.py", line 196, in run_sdfg_multiple_times
+    compiled = sdfg.compile()
+               ^^^^^^^^^^^^^^
+  File "/scratch/ybudanaz/dace/dace/sdfg/sdfg.py", line 2436, in compile
+    shared_library = compiler.configure_and_compile(program_folder, sdfg.name)
+                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/scratch/ybudanaz/dace/dace/codegen/compiler.py", line 254, in configure_and_compile
+    raise cgx.CompilationError('Compiler failure:\n' + ex.output)
+dace.codegen.exceptions.CompilationError: Compiler failure:
+[ 25%] Building CXX object CMakeFiles/division_by_zero_dace.dir/scratch/ybudanaz/data_must_flow_artifacts/division_by_zero/llvm/amd_epyc/.dacecache/division_by_zero_dace/src/cpu/division_by_zero_dace.cpp.o
+fatal error: cannot open file '/log_implemenations_vec_report.yaml': Permission denied
+1 error generated.
+gmake[2]: *** [CMakeFiles/division_by_zero_dace.dir/build.make:79: CMakeFiles/division_by_zero_dace.dir/scratch/ybudanaz/data_must_flow_artifacts/division_by_zero/llvm/amd_epyc/.dacecache/division_by_zero_dace/src/cpu/division_by_zero_dace.cpp.o] Error 1
+gmake[1]: *** [CMakeFiles/Makefile2:90: CMakeFiles/division_by_zero_dace.dir/all] Error 2
+gmake: *** [Makefile:91: all] Error 2
+
+Traceback (most recent call last):
+  File "/scratch/ybudanaz/dace/dace/codegen/compiler.py", line 245, in configure_and_compile
+    _run_liveoutput("cmake --build . --config %s" % (Config.get('compiler', 'build_type')),
+  File "/scratch/ybudanaz/dace/dace/codegen/compiler.py", line 429, in _run_liveoutput
+    raise subprocess.CalledProcessError(process.returncode, command, output.getvalue())
+subprocess.CalledProcessError: Command 'cmake --build . --config RelWithDebInfo' returned non-zero exit status 2.
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/scratch/ybudanaz/data_must_flow_artifacts/division_by_zero/llvm/amd_epyc/benchmark_division_by_zero.py", line 282, in <module>
+    all_timings["division_by_zero_dace", S] = run_sdfg_multiple_times(
+                                              ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/scratch/ybudanaz/data_must_flow_artifacts/division_by_zero/llvm/amd_epyc/benchmark_division_by_zero.py", line 196, in run_sdfg_multiple_times
+    compiled = sdfg.compile()
+               ^^^^^^^^^^^^^^
+  File "/scratch/ybudanaz/dace/dace/sdfg/sdfg.py", line 2436, in compile
+    shared_library = compiler.configure_and_compile(program_folder, sdfg.name)
+                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/scratch/ybudanaz/dace/dace/codegen/compiler.py", line 254, in configure_and_compile
+    raise cgx.CompilationError('Compiler failure:\n' + ex.output)
+dace.codegen.exceptions.CompilationError: Compiler failure:
+[ 25%] Building CXX object CMakeFiles/division_by_zero_dace.dir/scratch/ybudanaz/data_must_flow_artifacts/division_by_zero/llvm/amd_epyc/.dacecache/division_by_zero_dace/src/cpu/division_by_zero_dace.cpp.o
+fatal error: cannot open file '/log_implemenations_vec_report.yaml': Permission denied
+1 error generated.
+gmake[2]: *** [CMakeFiles/division_by_zero_dace.dir/build.make:79: CMakeFiles/division_by_zero_dace.dir/scratch/ybudanaz/data_must_flow_artifacts/division_by_zero/llvm/amd_epyc/.dacecache/division_by_zero_dace/src/cpu/division_by_zero_dace.cpp.o] Error 1
+gmake[1]: *** [CMakeFiles/Makefile2:90: CMakeFiles/division_by_zero_dace.dir/all] Error 2
+gmake: *** [Makefile:91: all] Error 2
+
+Traceback (most recent call last):
+  File "/scratch/ybudanaz/dace/dace/codegen/compiled_sdfg.py", line 528, in _construct_args
+    arglist.append(kwargs[a])
+                   ~~~~~~^^^
+KeyError: 'c'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/scratch/ybudanaz/data_must_flow_artifacts/division_by_zero/llvm/amd_epyc/benchmark_division_by_zero.py", line 282, in <module>
+    all_timings["division_by_zero_dace", S] = run_sdfg_multiple_times(
+                                              ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/scratch/ybudanaz/data_must_flow_artifacts/division_by_zero/llvm/amd_epyc/benchmark_division_by_zero.py", line 197, in run_sdfg_multiple_times
+    compiled(**arrays, **params)  # Warm-up run
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/scratch/ybudanaz/dace/dace/codegen/compiled_sdfg.py", line 388, in __call__
+    argtuple, initargtuple = self._construct_args(kwargs)  # Missing arguments will be detected here.
+                             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/scratch/ybudanaz/dace/dace/codegen/compiled_sdfg.py", line 532, in _construct_args
+    raise KeyError("Missing program argument \"{}\"".format(a))
+KeyError: 'Missing program argument "c"'
+Traceback (most recent call last):
+  File "/scratch/ybudanaz/dace/dace/codegen/compiled_sdfg.py", line 528, in _construct_args
+    arglist.append(kwargs[a])
+                   ~~~~~~^^^
+KeyError: 'c'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/scratch/ybudanaz/data_must_flow_artifacts/division_by_zero/llvm/amd_epyc/benchmark_division_by_zero.py", line 282, in <module>
+    all_timings["division_by_zero_dace", S] = run_sdfg_multiple_times(
+                                              ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/scratch/ybudanaz/data_must_flow_artifacts/division_by_zero/llvm/amd_epyc/benchmark_division_by_zero.py", line 197, in run_sdfg_multiple_times
+    compiled(**arrays, **params)  # Warm-up run
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/scratch/ybudanaz/dace/dace/codegen/compiled_sdfg.py", line 388, in __call__
+    argtuple, initargtuple = self._construct_args(kwargs)  # Missing arguments will be detected here.
+                             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/scratch/ybudanaz/dace/dace/codegen/compiled_sdfg.py", line 532, in _construct_args
+    raise KeyError("Missing program argument \"{}\"".format(a))
+KeyError: 'Missing program argument "c"'
+Traceback (most recent call last):
+  File "/scratch/ybudanaz/dace/dace/codegen/compiled_sdfg.py", line 528, in _construct_args
+    arglist.append(kwargs[a])
+                   ~~~~~~^^^
+KeyError: 'c'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/scratch/ybudanaz/data_must_flow_artifacts/division_by_zero/llvm/amd_epyc/benchmark_division_by_zero.py", line 282, in <module>
+    all_timings["division_by_zero_dace", S] = run_sdfg_multiple_times(
+                                              ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/scratch/ybudanaz/data_must_flow_artifacts/division_by_zero/llvm/amd_epyc/benchmark_division_by_zero.py", line 197, in run_sdfg_multiple_times
+    compiled(**arrays, **params)  # Warm-up run
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/scratch/ybudanaz/dace/dace/codegen/compiled_sdfg.py", line 388, in __call__
+    argtuple, initargtuple = self._construct_args(kwargs)  # Missing arguments will be detected here.
+                             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/scratch/ybudanaz/dace/dace/codegen/compiled_sdfg.py", line 532, in _construct_args
+    raise KeyError("Missing program argument \"{}\"".format(a))
+KeyError: 'Missing program argument "c"'
+Traceback (most recent call last):
+  File "/scratch/ybudanaz/dace/dace/codegen/compiler.py", line 245, in configure_and_compile
+    _run_liveoutput("cmake --build . --config %s" % (Config.get('compiler', 'build_type')),
+  File "/scratch/ybudanaz/dace/dace/codegen/compiler.py", line 429, in _run_liveoutput
+    raise subprocess.CalledProcessError(process.returncode, command, output.getvalue())
+subprocess.CalledProcessError: Command 'cmake --build . --config RelWithDebInfo' returned non-zero exit status 2.
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/scratch/ybudanaz/data_must_flow_artifacts/division_by_zero/llvm/amd_epyc/benchmark_division_by_zero.py", line 282, in <module>
+    all_timings["division_by_zero_dace", S] = run_sdfg_multiple_times(
+                                              ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/scratch/ybudanaz/data_must_flow_artifacts/division_by_zero/llvm/amd_epyc/benchmark_division_by_zero.py", line 196, in run_sdfg_multiple_times
+    compiled = sdfg.compile()
+               ^^^^^^^^^^^^^^
+  File "/scratch/ybudanaz/dace/dace/sdfg/sdfg.py", line 2436, in compile
+    shared_library = compiler.configure_and_compile(program_folder, sdfg.name)
+                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/scratch/ybudanaz/dace/dace/codegen/compiler.py", line 254, in configure_and_compile
+    raise cgx.CompilationError('Compiler failure:\n' + ex.output)
+dace.codegen.exceptions.CompilationError: Compiler failure:
+[ 25%] Building CXX object CMakeFiles/division_by_zero_dace.dir/scratch/ybudanaz/data_must_flow_artifacts/division_by_zero/llvm/amd_epyc/.dacecache/division_by_zero_dace/src/cpu/division_by_zero_dace.cpp.o
+fatal error: cannot open file '/log_implemenations_vec_report.yaml': Permission denied
+1 error generated.
+gmake[2]: *** [CMakeFiles/division_by_zero_dace.dir/build.make:79: CMakeFiles/division_by_zero_dace.dir/scratch/ybudanaz/data_must_flow_artifacts/division_by_zero/llvm/amd_epyc/.dacecache/division_by_zero_dace/src/cpu/division_by_zero_dace.cpp.o] Error 1
+gmake[1]: *** [CMakeFiles/Makefile2:90: CMakeFiles/division_by_zero_dace.dir/all] Error 2
+gmake: *** [Makefile:91: all] Error 2
+
+Traceback (most recent call last):
+  File "/scratch/ybudanaz/dace/dace/codegen/compiler.py", line 245, in configure_and_compile
+    _run_liveoutput("cmake --build . --config %s" % (Config.get('compiler', 'build_type')),
+  File "/scratch/ybudanaz/dace/dace/codegen/compiler.py", line 429, in _run_liveoutput
+    raise subprocess.CalledProcessError(process.returncode, command, output.getvalue())
+subprocess.CalledProcessError: Command 'cmake --build . --config RelWithDebInfo' returned non-zero exit status 2.
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/scratch/ybudanaz/data_must_flow_artifacts/division_by_zero/llvm/amd_epyc/benchmark_division_by_zero.py", line 282, in <module>
+    all_timings["division_by_zero_dace", S] = run_sdfg_multiple_times(
+                                              ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/scratch/ybudanaz/data_must_flow_artifacts/division_by_zero/llvm/amd_epyc/benchmark_division_by_zero.py", line 196, in run_sdfg_multiple_times
+    compiled = sdfg.compile()
+               ^^^^^^^^^^^^^^
+  File "/scratch/ybudanaz/dace/dace/sdfg/sdfg.py", line 2436, in compile
+    shared_library = compiler.configure_and_compile(program_folder, sdfg.name)
+                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/scratch/ybudanaz/dace/dace/codegen/compiler.py", line 254, in configure_and_compile
+    raise cgx.CompilationError('Compiler failure:\n' + ex.output)
+dace.codegen.exceptions.CompilationError: Compiler failure:
+[ 25%] Building CXX object CMakeFiles/division_by_zero_dace.dir/scratch/ybudanaz/data_must_flow_artifacts/division_by_zero/llvm/amd_epyc/.dacecache/division_by_zero_dace/src/cpu/division_by_zero_dace.cpp.o
+fatal error: cannot open file '/log_implemenations_vec_report.yaml': Permission denied
+1 error generated.
+gmake[2]: *** [CMakeFiles/division_by_zero_dace.dir/build.make:79: CMakeFiles/division_by_zero_dace.dir/scratch/ybudanaz/data_must_flow_artifacts/division_by_zero/llvm/amd_epyc/.dacecache/division_by_zero_dace/src/cpu/division_by_zero_dace.cpp.o] Error 1
+gmake[1]: *** [CMakeFiles/Makefile2:90: CMakeFiles/division_by_zero_dace.dir/all] Error 2
+gmake: *** [Makefile:91: all] Error 2
+
+Traceback (most recent call last):
+  File "/scratch/ybudanaz/dace/dace/codegen/compiled_sdfg.py", line 528, in _construct_args
+    arglist.append(kwargs[a])
+                   ~~~~~~^^^
+KeyError: 'c'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/scratch/ybudanaz/data_must_flow_artifacts/division_by_zero/llvm/amd_epyc/benchmark_division_by_zero.py", line 282, in <module>
+    all_timings["division_by_zero_dace", S] = run_sdfg_multiple_times(
+                                              ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/scratch/ybudanaz/data_must_flow_artifacts/division_by_zero/llvm/amd_epyc/benchmark_division_by_zero.py", line 197, in run_sdfg_multiple_times
+    compiled(**arrays, **params)  # Warm-up run
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/scratch/ybudanaz/dace/dace/codegen/compiled_sdfg.py", line 388, in __call__
+    argtuple, initargtuple = self._construct_args(kwargs)  # Missing arguments will be detected here.
+                             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/scratch/ybudanaz/dace/dace/codegen/compiled_sdfg.py", line 532, in _construct_args
+    raise KeyError("Missing program argument \"{}\"".format(a))
+KeyError: 'Missing program argument "c"'

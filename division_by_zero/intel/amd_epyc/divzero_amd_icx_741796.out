@@ -1,0 +1,1735 @@
+Script path: 
+Script dir:  
+Running with EXTRA_FLAGS='', SUFFIX=''
+Running with suffix: 
+Running with #1 cores
+Running with base flags: -fstrict-aliasing -std=c++17 -faligned-new -fPIC -Wall -Wextra -O3 -march=native -ffast-math -Wno-unused-parameter -Wno-unused-label -qopenmp
+Running with env flags: 
+Running with flags: -fstrict-aliasing -std=c++17 -faligned-new -fPIC -Wall -Wextra -O3 -march=native -ffast-math -Wno-unused-parameter -Wno-unused-label -qopenmp
+[can_be_applied] to if_154 is True
+[can_be_applied] to if_154 is True
+Changing __out = (__in1 / __in2) to have +1.7800590868057611e-307 to avoid NaN/inf floating-point exception in division!
+[[0. 0. 0. ... 0. 0. 0.]
+ [0. 0. 0. ... 0. 0. 0.]
+ [0. 0. 0. ... 0. 0. 0.]
+ ...
+ [0. 0. 0. ... 0. 0. 0.]
+ [0. 0. 0. ... 0. 0. 0.]
+ [0. 0. 0. ... 0. 0. 0.]]
+[[0. 0. 0. ... 0. 0. 0.]
+ [0. 0. 0. ... 0. 0. 0.]
+ [0. 0. 0. ... 0. 0. 0.]
+ ...
+ [0. 0. 0. ... 0. 0. 0.]
+ [0. 0. 0. ... 0. 0. 0.]
+ [0. 0. 0. ... 0. 0. 0.]]
+0.0
+Instrumentation report
+SDFG Hash: f870e292a5d1275c7fa6c49d3dad7e4d88bb0262c5100a0ff2f11f8485fceefd
+---------------------------------------------------------------------------
+Element        Runtime (ms)   
+               Min            Mean           Median         Max            
+---------------------------------------------------------------------------
+SDFG (0)                                                                   
+|Thread 6423066134202926218:                                                            
+|              2.145          2.145          2.145          2.145          
+---------------------------------------------------------------------------
+
+Instrumentation report
+SDFG Hash: fe35428a2f9e36eecb13dd210e8370248aff2ae4f9fdc9639f3e33099efe249b
+---------------------------------------------------------------------------
+Element        Runtime (ms)   
+               Min            Mean           Median         Max            
+---------------------------------------------------------------------------
+SDFG (0)                                                                   
+|Thread 6423066134202926218:                                                            
+|              0.005          0.005          0.005          0.005          
+---------------------------------------------------------------------------
+
+Run time division_by_zero_dace iter 0: 3.464 ms
+Run time division_by_zero_dace iter 1: 3.522 ms
+Run time division_by_zero_dace iter 2: 3.415 ms
+Run time division_by_zero_dace iter 3: 3.449 ms
+Run time division_by_zero_dace iter 4: 3.507 ms
+Run time division_by_zero_dace iter 5: 3.444 ms
+Run time division_by_zero_dace iter 6: 3.560 ms
+Run time division_by_zero_dace iter 7: 3.533 ms
+Run time division_by_zero_dace iter 8: 3.487 ms
+Run time division_by_zero_dace iter 9: 3.478 ms
+Run time division_by_zero_dace iter 10: 3.404 ms
+Run time division_by_zero_dace iter 11: 3.581 ms
+Run time division_by_zero_dace iter 12: 3.476 ms
+Run time division_by_zero_dace iter 13: 3.481 ms
+Run time division_by_zero_dace iter 14: 3.490 ms
+Run time division_by_zero_dace iter 15: 3.405 ms
+Run time division_by_zero_dace iter 16: 4.031 ms
+Run time division_by_zero_dace iter 17: 3.477 ms
+Run time division_by_zero_dace iter 18: 3.470 ms
+Run time division_by_zero_dace iter 19: 3.401 ms
+[can_be_applied] to if_255 is True
+[can_be_applied] to if_255 is True
+Changing __out = (__in1 / __in2) to have +1.7800590868057611e-307 to avoid NaN/inf floating-point exception in division!
+Run time division_by_zero_dace_icpx__veclen_8_no_cpy iter 0: 3.274 ms
+Run time division_by_zero_dace_icpx__veclen_8_no_cpy iter 1: 3.237 ms
+Run time division_by_zero_dace_icpx__veclen_8_no_cpy iter 2: 3.266 ms
+Run time division_by_zero_dace_icpx__veclen_8_no_cpy iter 3: 3.124 ms
+Run time division_by_zero_dace_icpx__veclen_8_no_cpy iter 4: 3.241 ms
+Run time division_by_zero_dace_icpx__veclen_8_no_cpy iter 5: 3.250 ms
+Run time division_by_zero_dace_icpx__veclen_8_no_cpy iter 6: 3.278 ms
+Run time division_by_zero_dace_icpx__veclen_8_no_cpy iter 7: 3.083 ms
+Run time division_by_zero_dace_icpx__veclen_8_no_cpy iter 8: 3.260 ms
+Run time division_by_zero_dace_icpx__veclen_8_no_cpy iter 9: 3.099 ms
+Run time division_by_zero_dace_icpx__veclen_8_no_cpy iter 10: 5.023 ms
+Run time division_by_zero_dace_icpx__veclen_8_no_cpy iter 11: 3.081 ms
+Run time division_by_zero_dace_icpx__veclen_8_no_cpy iter 12: 3.264 ms
+Run time division_by_zero_dace_icpx__veclen_8_no_cpy iter 13: 3.324 ms
+Run time division_by_zero_dace_icpx__veclen_8_no_cpy iter 14: 3.390 ms
+Run time division_by_zero_dace_icpx__veclen_8_no_cpy iter 15: 3.301 ms
+Run time division_by_zero_dace_icpx__veclen_8_no_cpy iter 16: 3.336 ms
+Run time division_by_zero_dace_icpx__veclen_8_no_cpy iter 17: 3.392 ms
+Run time division_by_zero_dace_icpx__veclen_8_no_cpy iter 18: 3.247 ms
+Run time division_by_zero_dace_icpx__veclen_8_no_cpy iter 19: 3.313 ms
+[can_be_applied] to if_255 is True
+[can_be_applied] to if_255 is True
+Changing __out = (__in1 / __in2) to have +1.7800590868057611e-307 to avoid NaN/inf floating-point exception in division!
+Run time division_by_zero_dace_icpx__veclen_8_cpy iter 0: 3.295 ms
+Run time division_by_zero_dace_icpx__veclen_8_cpy iter 1: 3.287 ms
+Run time division_by_zero_dace_icpx__veclen_8_cpy iter 2: 3.304 ms
+Run time division_by_zero_dace_icpx__veclen_8_cpy iter 3: 3.323 ms
+Run time division_by_zero_dace_icpx__veclen_8_cpy iter 4: 3.264 ms
+Run time division_by_zero_dace_icpx__veclen_8_cpy iter 5: 3.239 ms
+Run time division_by_zero_dace_icpx__veclen_8_cpy iter 6: 3.257 ms
+Run time division_by_zero_dace_icpx__veclen_8_cpy iter 7: 3.267 ms
+Run time division_by_zero_dace_icpx__veclen_8_cpy iter 8: 3.093 ms
+Run time division_by_zero_dace_icpx__veclen_8_cpy iter 9: 3.305 ms
+Run time division_by_zero_dace_icpx__veclen_8_cpy iter 10: 3.093 ms
+Run time division_by_zero_dace_icpx__veclen_8_cpy iter 11: 3.283 ms
+Run time division_by_zero_dace_icpx__veclen_8_cpy iter 12: 3.243 ms
+Run time division_by_zero_dace_icpx__veclen_8_cpy iter 13: 3.251 ms
+Run time division_by_zero_dace_icpx__veclen_8_cpy iter 14: 3.290 ms
+Run time division_by_zero_dace_icpx__veclen_8_cpy iter 15: 3.258 ms
+Run time division_by_zero_dace_icpx__veclen_8_cpy iter 16: 3.384 ms
+Run time division_by_zero_dace_icpx__veclen_8_cpy iter 17: 3.218 ms
+Run time division_by_zero_dace_icpx__veclen_8_cpy iter 18: 3.222 ms
+Run time division_by_zero_dace_icpx__veclen_8_cpy iter 19: 3.279 ms
+[can_be_applied] to if_255 is True
+[can_be_applied] to if_255 is True
+Changing __out = (__in1 / __in2) to have +1.7800590868057611e-307 to avoid NaN/inf floating-point exception in division!
+Run time division_by_zero_dace_icpx__veclen_16_no_cpy iter 0: 3.356 ms
+Run time division_by_zero_dace_icpx__veclen_16_no_cpy iter 1: 3.371 ms
+Run time division_by_zero_dace_icpx__veclen_16_no_cpy iter 2: 3.377 ms
+Run time division_by_zero_dace_icpx__veclen_16_no_cpy iter 3: 3.353 ms
+Run time division_by_zero_dace_icpx__veclen_16_no_cpy iter 4: 3.365 ms
+Run time division_by_zero_dace_icpx__veclen_16_no_cpy iter 5: 3.357 ms
+Run time division_by_zero_dace_icpx__veclen_16_no_cpy iter 6: 3.446 ms
+Run time division_by_zero_dace_icpx__veclen_16_no_cpy iter 7: 3.358 ms
+Run time division_by_zero_dace_icpx__veclen_16_no_cpy iter 8: 3.194 ms
+Run time division_by_zero_dace_icpx__veclen_16_no_cpy iter 9: 3.273 ms
+Run time division_by_zero_dace_icpx__veclen_16_no_cpy iter 10: 3.406 ms
+Run time division_by_zero_dace_icpx__veclen_16_no_cpy iter 11: 3.171 ms
+Run time division_by_zero_dace_icpx__veclen_16_no_cpy iter 12: 3.307 ms
+Run time division_by_zero_dace_icpx__veclen_16_no_cpy iter 13: 3.256 ms
+Run time division_by_zero_dace_icpx__veclen_16_no_cpy iter 14: 3.309 ms
+Run time division_by_zero_dace_icpx__veclen_16_no_cpy iter 15: 3.309 ms
+Run time division_by_zero_dace_icpx__veclen_16_no_cpy iter 16: 3.363 ms
+Run time division_by_zero_dace_icpx__veclen_16_no_cpy iter 17: 3.501 ms
+Run time division_by_zero_dace_icpx__veclen_16_no_cpy iter 18: 3.243 ms
+Run time division_by_zero_dace_icpx__veclen_16_no_cpy iter 19: 3.273 ms
+[can_be_applied] to if_255 is True
+[can_be_applied] to if_255 is True
+Changing __out = (__in1 / __in2) to have +1.7800590868057611e-307 to avoid NaN/inf floating-point exception in division!
+Run time division_by_zero_dace_icpx__veclen_16_cpy iter 0: 3.396 ms
+Run time division_by_zero_dace_icpx__veclen_16_cpy iter 1: 3.449 ms
+Run time division_by_zero_dace_icpx__veclen_16_cpy iter 2: 4.343 ms
+Run time division_by_zero_dace_icpx__veclen_16_cpy iter 3: 3.339 ms
+Run time division_by_zero_dace_icpx__veclen_16_cpy iter 4: 3.460 ms
+Run time division_by_zero_dace_icpx__veclen_16_cpy iter 5: 3.151 ms
+Run time division_by_zero_dace_icpx__veclen_16_cpy iter 6: 3.133 ms
+Run time division_by_zero_dace_icpx__veclen_16_cpy iter 7: 3.326 ms
+Run time division_by_zero_dace_icpx__veclen_16_cpy iter 8: 3.349 ms
+Run time division_by_zero_dace_icpx__veclen_16_cpy iter 9: 3.375 ms
+Run time division_by_zero_dace_icpx__veclen_16_cpy iter 10: 3.341 ms
+Run time division_by_zero_dace_icpx__veclen_16_cpy iter 11: 3.329 ms
+Run time division_by_zero_dace_icpx__veclen_16_cpy iter 12: 3.335 ms
+Run time division_by_zero_dace_icpx__veclen_16_cpy iter 13: 3.325 ms
+Run time division_by_zero_dace_icpx__veclen_16_cpy iter 14: 3.322 ms
+Run time division_by_zero_dace_icpx__veclen_16_cpy iter 15: 3.196 ms
+Run time division_by_zero_dace_icpx__veclen_16_cpy iter 16: 3.154 ms
+Run time division_by_zero_dace_icpx__veclen_16_cpy iter 17: 3.338 ms
+Run time division_by_zero_dace_icpx__veclen_16_cpy iter 18: 3.301 ms
+Run time division_by_zero_dace_icpx__veclen_16_cpy iter 19: 3.365 ms
+[can_be_applied] to if_255 is True
+[can_be_applied] to if_255 is True
+Changing __out = (__in1 / __in2) to have +1.7800590868057611e-307 to avoid NaN/inf floating-point exception in division!
+Run time division_by_zero_dace_icpx__veclen_32_no_cpy iter 0: 4.342 ms
+Run time division_by_zero_dace_icpx__veclen_32_no_cpy iter 1: 3.367 ms
+Run time division_by_zero_dace_icpx__veclen_32_no_cpy iter 2: 3.677 ms
+Run time division_by_zero_dace_icpx__veclen_32_no_cpy iter 3: 3.221 ms
+Run time division_by_zero_dace_icpx__veclen_32_no_cpy iter 4: 3.354 ms
+Run time division_by_zero_dace_icpx__veclen_32_no_cpy iter 5: 3.374 ms
+Run time division_by_zero_dace_icpx__veclen_32_no_cpy iter 6: 3.166 ms
+Run time division_by_zero_dace_icpx__veclen_32_no_cpy iter 7: 3.534 ms
+Run time division_by_zero_dace_icpx__veclen_32_no_cpy iter 8: 3.313 ms
+Run time division_by_zero_dace_icpx__veclen_32_no_cpy iter 9: 3.376 ms
+Run time division_by_zero_dace_icpx__veclen_32_no_cpy iter 10: 3.301 ms
+Run time division_by_zero_dace_icpx__veclen_32_no_cpy iter 11: 3.998 ms
+Run time division_by_zero_dace_icpx__veclen_32_no_cpy iter 12: 3.162 ms
+Run time division_by_zero_dace_icpx__veclen_32_no_cpy iter 13: 3.389 ms
+Run time division_by_zero_dace_icpx__veclen_32_no_cpy iter 14: 3.366 ms
+Run time division_by_zero_dace_icpx__veclen_32_no_cpy iter 15: 3.553 ms
+Run time division_by_zero_dace_icpx__veclen_32_no_cpy iter 16: 3.151 ms
+Run time division_by_zero_dace_icpx__veclen_32_no_cpy iter 17: 3.346 ms
+Run time division_by_zero_dace_icpx__veclen_32_no_cpy iter 18: 3.309 ms
+Run time division_by_zero_dace_icpx__veclen_32_no_cpy iter 19: 3.391 ms
+[can_be_applied] to if_255 is True
+[can_be_applied] to if_255 is True
+Changing __out = (__in1 / __in2) to have +1.7800590868057611e-307 to avoid NaN/inf floating-point exception in division!
+Run time division_by_zero_dace_icpx__veclen_32_cpy iter 0: 4.201 ms
+Run time division_by_zero_dace_icpx__veclen_32_cpy iter 1: 3.653 ms
+Run time division_by_zero_dace_icpx__veclen_32_cpy iter 2: 3.557 ms
+Run time division_by_zero_dace_icpx__veclen_32_cpy iter 3: 3.587 ms
+Run time division_by_zero_dace_icpx__veclen_32_cpy iter 4: 4.378 ms
+Run time division_by_zero_dace_icpx__veclen_32_cpy iter 5: 3.555 ms
+Run time division_by_zero_dace_icpx__veclen_32_cpy iter 6: 3.414 ms
+Run time division_by_zero_dace_icpx__veclen_32_cpy iter 7: 3.580 ms
+Run time division_by_zero_dace_icpx__veclen_32_cpy iter 8: 3.559 ms
+Run time division_by_zero_dace_icpx__veclen_32_cpy iter 9: 3.398 ms
+Run time division_by_zero_dace_icpx__veclen_32_cpy iter 10: 3.560 ms
+Run time division_by_zero_dace_icpx__veclen_32_cpy iter 11: 4.288 ms
+Run time division_by_zero_dace_icpx__veclen_32_cpy iter 12: 3.389 ms
+Run time division_by_zero_dace_icpx__veclen_32_cpy iter 13: 3.570 ms
+Run time division_by_zero_dace_icpx__veclen_32_cpy iter 14: 3.552 ms
+Run time division_by_zero_dace_icpx__veclen_32_cpy iter 15: 3.397 ms
+Run time division_by_zero_dace_icpx__veclen_32_cpy iter 16: 4.689 ms
+Run time division_by_zero_dace_icpx__veclen_32_cpy iter 17: 3.583 ms
+Run time division_by_zero_dace_icpx__veclen_32_cpy iter 18: 3.590 ms
+Run time division_by_zero_dace_icpx__veclen_32_cpy iter 19: 3.555 ms
+[can_be_applied] to if_255 is True
+[can_be_applied] to if_255 is True
+Changing __out = (__in1 / __in2) to have +1.7800590868057611e-307 to avoid NaN/inf floating-point exception in division!
+Run time division_by_zero_dace_icpx__veclen_64_no_cpy iter 0: 3.737 ms
+Run time division_by_zero_dace_icpx__veclen_64_no_cpy iter 1: 3.724 ms
+Run time division_by_zero_dace_icpx__veclen_64_no_cpy iter 2: 3.792 ms
+Run time division_by_zero_dace_icpx__veclen_64_no_cpy iter 3: 3.748 ms
+Run time division_by_zero_dace_icpx__veclen_64_no_cpy iter 4: 4.465 ms
+Run time division_by_zero_dace_icpx__veclen_64_no_cpy iter 5: 4.037 ms
+Run time division_by_zero_dace_icpx__veclen_64_no_cpy iter 6: 3.770 ms
+Run time division_by_zero_dace_icpx__veclen_64_no_cpy iter 7: 3.750 ms
+Run time division_by_zero_dace_icpx__veclen_64_no_cpy iter 8: 5.776 ms
+Run time division_by_zero_dace_icpx__veclen_64_no_cpy iter 9: 3.773 ms
+Run time division_by_zero_dace_icpx__veclen_64_no_cpy iter 10: 3.762 ms
+Run time division_by_zero_dace_icpx__veclen_64_no_cpy iter 11: 3.752 ms
+Run time division_by_zero_dace_icpx__veclen_64_no_cpy iter 12: 3.787 ms
+Run time division_by_zero_dace_icpx__veclen_64_no_cpy iter 13: 3.636 ms
+Run time division_by_zero_dace_icpx__veclen_64_no_cpy iter 14: 3.750 ms
+Run time division_by_zero_dace_icpx__veclen_64_no_cpy iter 15: 3.799 ms
+Run time division_by_zero_dace_icpx__veclen_64_no_cpy iter 16: 3.733 ms
+Run time division_by_zero_dace_icpx__veclen_64_no_cpy iter 17: 3.783 ms
+Run time division_by_zero_dace_icpx__veclen_64_no_cpy iter 18: 3.755 ms
+Run time division_by_zero_dace_icpx__veclen_64_no_cpy iter 19: 5.795 ms
+[can_be_applied] to if_255 is True
+[can_be_applied] to if_255 is True
+Changing __out = (__in1 / __in2) to have +1.7800590868057611e-307 to avoid NaN/inf floating-point exception in division!
+Run time division_by_zero_dace_icpx__veclen_64_cpy iter 0: 3.838 ms
+Run time division_by_zero_dace_icpx__veclen_64_cpy iter 1: 3.753 ms
+Run time division_by_zero_dace_icpx__veclen_64_cpy iter 2: 3.750 ms
+Run time division_by_zero_dace_icpx__veclen_64_cpy iter 3: 3.757 ms
+Run time division_by_zero_dace_icpx__veclen_64_cpy iter 4: 3.757 ms
+Run time division_by_zero_dace_icpx__veclen_64_cpy iter 5: 3.750 ms
+Run time division_by_zero_dace_icpx__veclen_64_cpy iter 6: 3.774 ms
+Run time division_by_zero_dace_icpx__veclen_64_cpy iter 7: 3.741 ms
+Run time division_by_zero_dace_icpx__veclen_64_cpy iter 8: 3.738 ms
+Run time division_by_zero_dace_icpx__veclen_64_cpy iter 9: 3.731 ms
+Run time division_by_zero_dace_icpx__veclen_64_cpy iter 10: 3.916 ms
+Run time division_by_zero_dace_icpx__veclen_64_cpy iter 11: 3.756 ms
+Run time division_by_zero_dace_icpx__veclen_64_cpy iter 12: 3.842 ms
+Run time division_by_zero_dace_icpx__veclen_64_cpy iter 13: 3.747 ms
+Run time division_by_zero_dace_icpx__veclen_64_cpy iter 14: 3.770 ms
+Run time division_by_zero_dace_icpx__veclen_64_cpy iter 15: 3.756 ms
+Run time division_by_zero_dace_icpx__veclen_64_cpy iter 16: 3.727 ms
+Run time division_by_zero_dace_icpx__veclen_64_cpy iter 17: 3.767 ms
+Run time division_by_zero_dace_icpx__veclen_64_cpy iter 18: 3.743 ms
+Run time division_by_zero_dace_icpx__veclen_64_cpy iter 19: 3.752 ms
+Saved timing results to division_by_zero_timings__singlecore.csv
+Run time division_by_zero_dace iter 0: 6.466 ms
+Run time division_by_zero_dace iter 1: 6.985 ms
+Run time division_by_zero_dace iter 2: 6.781 ms
+Run time division_by_zero_dace iter 3: 6.769 ms
+Run time division_by_zero_dace iter 4: 6.790 ms
+Run time division_by_zero_dace iter 5: 6.965 ms
+Run time division_by_zero_dace iter 6: 6.883 ms
+Run time division_by_zero_dace iter 7: 6.795 ms
+Run time division_by_zero_dace iter 8: 7.358 ms
+Run time division_by_zero_dace iter 9: 7.187 ms
+Run time division_by_zero_dace iter 10: 7.402 ms
+Run time division_by_zero_dace iter 11: 6.878 ms
+Run time division_by_zero_dace iter 12: 6.795 ms
+Run time division_by_zero_dace iter 13: 6.769 ms
+Run time division_by_zero_dace iter 14: 6.801 ms
+Run time division_by_zero_dace iter 15: 6.788 ms
+Run time division_by_zero_dace iter 16: 6.800 ms
+Run time division_by_zero_dace iter 17: 6.787 ms
+Run time division_by_zero_dace iter 18: 7.021 ms
+Run time division_by_zero_dace iter 19: 7.144 ms
+[can_be_applied] to if_255 is True
+[can_be_applied] to if_255 is True
+Changing __out = (__in1 / __in2) to have +1.7800590868057611e-307 to avoid NaN/inf floating-point exception in division!
+Run time division_by_zero_dace_icpx__veclen_8_no_cpy iter 0: 6.135 ms
+Run time division_by_zero_dace_icpx__veclen_8_no_cpy iter 1: 6.132 ms
+Run time division_by_zero_dace_icpx__veclen_8_no_cpy iter 2: 6.591 ms
+Run time division_by_zero_dace_icpx__veclen_8_no_cpy iter 3: 6.632 ms
+Run time division_by_zero_dace_icpx__veclen_8_no_cpy iter 4: 6.167 ms
+Run time division_by_zero_dace_icpx__veclen_8_no_cpy iter 5: 8.541 ms
+Run time division_by_zero_dace_icpx__veclen_8_no_cpy iter 6: 6.211 ms
+Run time division_by_zero_dace_icpx__veclen_8_no_cpy iter 7: 6.158 ms
+Run time division_by_zero_dace_icpx__veclen_8_no_cpy iter 8: 6.163 ms
+Run time division_by_zero_dace_icpx__veclen_8_no_cpy iter 9: 6.678 ms
+Run time division_by_zero_dace_icpx__veclen_8_no_cpy iter 10: 6.828 ms
+Run time division_by_zero_dace_icpx__veclen_8_no_cpy iter 11: 6.851 ms
+Run time division_by_zero_dace_icpx__veclen_8_no_cpy iter 12: 6.130 ms
+Run time division_by_zero_dace_icpx__veclen_8_no_cpy iter 13: 8.600 ms
+Run time division_by_zero_dace_icpx__veclen_8_no_cpy iter 14: 6.454 ms
+Run time division_by_zero_dace_icpx__veclen_8_no_cpy iter 15: 6.174 ms
+Run time division_by_zero_dace_icpx__veclen_8_no_cpy iter 16: 6.711 ms
+Run time division_by_zero_dace_icpx__veclen_8_no_cpy iter 17: 6.788 ms
+Run time division_by_zero_dace_icpx__veclen_8_no_cpy iter 18: 6.276 ms
+Run time division_by_zero_dace_icpx__veclen_8_no_cpy iter 19: 6.637 ms
+[can_be_applied] to if_255 is True
+[can_be_applied] to if_255 is True
+Changing __out = (__in1 / __in2) to have +1.7800590868057611e-307 to avoid NaN/inf floating-point exception in division!
+Run time division_by_zero_dace_icpx__veclen_8_cpy iter 0: 6.652 ms
+Run time division_by_zero_dace_icpx__veclen_8_cpy iter 1: 6.175 ms
+Run time division_by_zero_dace_icpx__veclen_8_cpy iter 2: 6.687 ms
+Run time division_by_zero_dace_icpx__veclen_8_cpy iter 3: 6.652 ms
+Run time division_by_zero_dace_icpx__veclen_8_cpy iter 4: 6.187 ms
+Run time division_by_zero_dace_icpx__veclen_8_cpy iter 5: 6.150 ms
+Run time division_by_zero_dace_icpx__veclen_8_cpy iter 6: 6.174 ms
+Run time division_by_zero_dace_icpx__veclen_8_cpy iter 7: 6.164 ms
+Run time division_by_zero_dace_icpx__veclen_8_cpy iter 8: 6.167 ms
+Run time division_by_zero_dace_icpx__veclen_8_cpy iter 9: 6.690 ms
+Run time division_by_zero_dace_icpx__veclen_8_cpy iter 10: 6.896 ms
+Run time division_by_zero_dace_icpx__veclen_8_cpy iter 11: 6.315 ms
+Run time division_by_zero_dace_icpx__veclen_8_cpy iter 12: 6.641 ms
+Run time division_by_zero_dace_icpx__veclen_8_cpy iter 13: 6.186 ms
+Run time division_by_zero_dace_icpx__veclen_8_cpy iter 14: 6.345 ms
+Run time division_by_zero_dace_icpx__veclen_8_cpy iter 15: 6.656 ms
+Run time division_by_zero_dace_icpx__veclen_8_cpy iter 16: 6.137 ms
+Run time division_by_zero_dace_icpx__veclen_8_cpy iter 17: 8.595 ms
+Run time division_by_zero_dace_icpx__veclen_8_cpy iter 18: 6.130 ms
+Run time division_by_zero_dace_icpx__veclen_8_cpy iter 19: 6.152 ms
+[can_be_applied] to if_255 is True
+[can_be_applied] to if_255 is True
+Changing __out = (__in1 / __in2) to have +1.7800590868057611e-307 to avoid NaN/inf floating-point exception in division!
+Run time division_by_zero_dace_icpx__veclen_16_no_cpy iter 0: 6.452 ms
+Run time division_by_zero_dace_icpx__veclen_16_no_cpy iter 1: 6.898 ms
+Run time division_by_zero_dace_icpx__veclen_16_no_cpy iter 2: 6.234 ms
+Run time division_by_zero_dace_icpx__veclen_16_no_cpy iter 3: 6.630 ms
+Run time division_by_zero_dace_icpx__veclen_16_no_cpy iter 4: 6.320 ms
+Run time division_by_zero_dace_icpx__veclen_16_no_cpy iter 5: 6.432 ms
+Run time division_by_zero_dace_icpx__veclen_16_no_cpy iter 6: 6.779 ms
+Run time division_by_zero_dace_icpx__veclen_16_no_cpy iter 7: 6.631 ms
+Run time division_by_zero_dace_icpx__veclen_16_no_cpy iter 8: 6.430 ms
+Run time division_by_zero_dace_icpx__veclen_16_no_cpy iter 9: 7.201 ms
+Run time division_by_zero_dace_icpx__veclen_16_no_cpy iter 10: 8.875 ms
+Run time division_by_zero_dace_icpx__veclen_16_no_cpy iter 11: 10.014 ms
+Run time division_by_zero_dace_icpx__veclen_16_no_cpy iter 12: 9.080 ms
+Run time division_by_zero_dace_icpx__veclen_16_no_cpy iter 13: 6.314 ms
+Run time division_by_zero_dace_icpx__veclen_16_no_cpy iter 14: 6.300 ms
+Run time division_by_zero_dace_icpx__veclen_16_no_cpy iter 15: 6.554 ms
+Run time division_by_zero_dace_icpx__veclen_16_no_cpy iter 16: 6.743 ms
+Run time division_by_zero_dace_icpx__veclen_16_no_cpy iter 17: 8.465 ms
+Run time division_by_zero_dace_icpx__veclen_16_no_cpy iter 18: 6.869 ms
+Run time division_by_zero_dace_icpx__veclen_16_no_cpy iter 19: 6.294 ms
+[can_be_applied] to if_255 is True
+[can_be_applied] to if_255 is True
+Changing __out = (__in1 / __in2) to have +1.7800590868057611e-307 to avoid NaN/inf floating-point exception in division!
+Run time division_by_zero_dace_icpx__veclen_16_cpy iter 0: 10.192 ms
+Run time division_by_zero_dace_icpx__veclen_16_cpy iter 1: 8.133 ms
+Run time division_by_zero_dace_icpx__veclen_16_cpy iter 2: 7.382 ms
+Run time division_by_zero_dace_icpx__veclen_16_cpy iter 3: 6.332 ms
+Run time division_by_zero_dace_icpx__veclen_16_cpy iter 4: 6.462 ms
+Run time division_by_zero_dace_icpx__veclen_16_cpy iter 5: 6.646 ms
+Run time division_by_zero_dace_icpx__veclen_16_cpy iter 6: 6.228 ms
+Run time division_by_zero_dace_icpx__veclen_16_cpy iter 7: 6.332 ms
+Run time division_by_zero_dace_icpx__veclen_16_cpy iter 8: 6.378 ms
+Run time division_by_zero_dace_icpx__veclen_16_cpy iter 9: 6.724 ms
+Run time division_by_zero_dace_icpx__veclen_16_cpy iter 10: 6.885 ms
+Run time division_by_zero_dace_icpx__veclen_16_cpy iter 11: 6.277 ms
+Run time division_by_zero_dace_icpx__veclen_16_cpy iter 12: 6.336 ms
+Run time division_by_zero_dace_icpx__veclen_16_cpy iter 13: 9.330 ms
+Run time division_by_zero_dace_icpx__veclen_16_cpy iter 14: 7.988 ms
+Run time division_by_zero_dace_icpx__veclen_16_cpy iter 15: 6.825 ms
+Run time division_by_zero_dace_icpx__veclen_16_cpy iter 16: 6.729 ms
+Run time division_by_zero_dace_icpx__veclen_16_cpy iter 17: 6.359 ms
+Run time division_by_zero_dace_icpx__veclen_16_cpy iter 18: 6.239 ms
+Run time division_by_zero_dace_icpx__veclen_16_cpy iter 19: 6.350 ms
+[can_be_applied] to if_255 is True
+[can_be_applied] to if_255 is True
+Changing __out = (__in1 / __in2) to have +1.7800590868057611e-307 to avoid NaN/inf floating-point exception in division!
+Run time division_by_zero_dace_icpx__veclen_32_no_cpy iter 0: 6.334 ms
+Run time division_by_zero_dace_icpx__veclen_32_no_cpy iter 1: 6.496 ms
+Run time division_by_zero_dace_icpx__veclen_32_no_cpy iter 2: 6.451 ms
+Run time division_by_zero_dace_icpx__veclen_32_no_cpy iter 3: 6.360 ms
+Run time division_by_zero_dace_icpx__veclen_32_no_cpy iter 4: 9.551 ms
+Run time division_by_zero_dace_icpx__veclen_32_no_cpy iter 5: 9.547 ms
+Run time division_by_zero_dace_icpx__veclen_32_no_cpy iter 6: 6.331 ms
+Run time division_by_zero_dace_icpx__veclen_32_no_cpy iter 7: 8.089 ms
+Run time division_by_zero_dace_icpx__veclen_32_no_cpy iter 8: 7.168 ms
+Run time division_by_zero_dace_icpx__veclen_32_no_cpy iter 9: 6.317 ms
+Run time division_by_zero_dace_icpx__veclen_32_no_cpy iter 10: 6.353 ms
+Run time division_by_zero_dace_icpx__veclen_32_no_cpy iter 11: 6.380 ms
+Run time division_by_zero_dace_icpx__veclen_32_no_cpy iter 12: 6.334 ms
+Run time division_by_zero_dace_icpx__veclen_32_no_cpy iter 13: 6.299 ms
+Run time division_by_zero_dace_icpx__veclen_32_no_cpy iter 14: 6.676 ms
+Run time division_by_zero_dace_icpx__veclen_32_no_cpy iter 15: 11.473 ms
+Run time division_by_zero_dace_icpx__veclen_32_no_cpy iter 16: 7.210 ms
+Run time division_by_zero_dace_icpx__veclen_32_no_cpy iter 17: 6.403 ms
+Run time division_by_zero_dace_icpx__veclen_32_no_cpy iter 18: 6.674 ms
+Run time division_by_zero_dace_icpx__veclen_32_no_cpy iter 19: 6.598 ms
+[can_be_applied] to if_255 is True
+[can_be_applied] to if_255 is True
+Changing __out = (__in1 / __in2) to have +1.7800590868057611e-307 to avoid NaN/inf floating-point exception in division!
+Run time division_by_zero_dace_icpx__veclen_32_cpy iter 0: 7.815 ms
+Run time division_by_zero_dace_icpx__veclen_32_cpy iter 1: 6.444 ms
+Run time division_by_zero_dace_icpx__veclen_32_cpy iter 2: 6.623 ms
+Run time division_by_zero_dace_icpx__veclen_32_cpy iter 3: 6.305 ms
+Run time division_by_zero_dace_icpx__veclen_32_cpy iter 4: 6.272 ms
+Run time division_by_zero_dace_icpx__veclen_32_cpy iter 5: 6.355 ms
+Run time division_by_zero_dace_icpx__veclen_32_cpy iter 6: 6.823 ms
+Run time division_by_zero_dace_icpx__veclen_32_cpy iter 7: 6.677 ms
+Run time division_by_zero_dace_icpx__veclen_32_cpy iter 8: 6.294 ms
+Run time division_by_zero_dace_icpx__veclen_32_cpy iter 9: 6.757 ms
+Run time division_by_zero_dace_icpx__veclen_32_cpy iter 10: 6.443 ms
+Run time division_by_zero_dace_icpx__veclen_32_cpy iter 11: 6.321 ms
+Run time division_by_zero_dace_icpx__veclen_32_cpy iter 12: 6.807 ms
+Run time division_by_zero_dace_icpx__veclen_32_cpy iter 13: 6.305 ms
+Run time division_by_zero_dace_icpx__veclen_32_cpy iter 14: 6.314 ms
+Run time division_by_zero_dace_icpx__veclen_32_cpy iter 15: 6.368 ms
+Run time division_by_zero_dace_icpx__veclen_32_cpy iter 16: 8.897 ms
+Run time division_by_zero_dace_icpx__veclen_32_cpy iter 17: 6.343 ms
+Run time division_by_zero_dace_icpx__veclen_32_cpy iter 18: 6.853 ms
+Run time division_by_zero_dace_icpx__veclen_32_cpy iter 19: 6.336 ms
+[can_be_applied] to if_255 is True
+[can_be_applied] to if_255 is True
+Changing __out = (__in1 / __in2) to have +1.7800590868057611e-307 to avoid NaN/inf floating-point exception in division!
+Run time division_by_zero_dace_icpx__veclen_64_no_cpy iter 0: 7.295 ms
+Run time division_by_zero_dace_icpx__veclen_64_no_cpy iter 1: 9.399 ms
+Run time division_by_zero_dace_icpx__veclen_64_no_cpy iter 2: 7.511 ms
+Run time division_by_zero_dace_icpx__veclen_64_no_cpy iter 3: 9.267 ms
+Run time division_by_zero_dace_icpx__veclen_64_no_cpy iter 4: 7.335 ms
+Run time division_by_zero_dace_icpx__veclen_64_no_cpy iter 5: 7.365 ms
+Run time division_by_zero_dace_icpx__veclen_64_no_cpy iter 6: 7.374 ms
+Run time division_by_zero_dace_icpx__veclen_64_no_cpy iter 7: 7.371 ms
+Run time division_by_zero_dace_icpx__veclen_64_no_cpy iter 8: 7.871 ms
+Run time division_by_zero_dace_icpx__veclen_64_no_cpy iter 9: 7.363 ms
+Run time division_by_zero_dace_icpx__veclen_64_no_cpy iter 10: 7.425 ms
+Run time division_by_zero_dace_icpx__veclen_64_no_cpy iter 11: 8.572 ms
+Run time division_by_zero_dace_icpx__veclen_64_no_cpy iter 12: 7.447 ms
+Run time division_by_zero_dace_icpx__veclen_64_no_cpy iter 13: 7.394 ms
+Run time division_by_zero_dace_icpx__veclen_64_no_cpy iter 14: 7.466 ms
+Run time division_by_zero_dace_icpx__veclen_64_no_cpy iter 15: 10.371 ms
+Run time division_by_zero_dace_icpx__veclen_64_no_cpy iter 16: 9.949 ms
+Run time division_by_zero_dace_icpx__veclen_64_no_cpy iter 17: 7.896 ms
+Run time division_by_zero_dace_icpx__veclen_64_no_cpy iter 18: 7.630 ms
+Run time division_by_zero_dace_icpx__veclen_64_no_cpy iter 19: 7.480 ms
+[can_be_applied] to if_255 is True
+[can_be_applied] to if_255 is True
+Changing __out = (__in1 / __in2) to have +1.7800590868057611e-307 to avoid NaN/inf floating-point exception in division!
+Run time division_by_zero_dace_icpx__veclen_64_cpy iter 0: 7.551 ms
+Run time division_by_zero_dace_icpx__veclen_64_cpy iter 1: 7.698 ms
+Run time division_by_zero_dace_icpx__veclen_64_cpy iter 2: 7.272 ms
+Run time division_by_zero_dace_icpx__veclen_64_cpy iter 3: 7.334 ms
+Run time division_by_zero_dace_icpx__veclen_64_cpy iter 4: 8.866 ms
+Run time division_by_zero_dace_icpx__veclen_64_cpy iter 5: 7.360 ms
+Run time division_by_zero_dace_icpx__veclen_64_cpy iter 6: 7.542 ms
+Run time division_by_zero_dace_icpx__veclen_64_cpy iter 7: 7.535 ms
+Run time division_by_zero_dace_icpx__veclen_64_cpy iter 8: 7.311 ms
+Run time division_by_zero_dace_icpx__veclen_64_cpy iter 9: 7.280 ms
+Run time division_by_zero_dace_icpx__veclen_64_cpy iter 10: 7.284 ms
+Run time division_by_zero_dace_icpx__veclen_64_cpy iter 11: 7.480 ms
+Run time division_by_zero_dace_icpx__veclen_64_cpy iter 12: 7.405 ms
+Run time division_by_zero_dace_icpx__veclen_64_cpy iter 13: 7.865 ms
+Run time division_by_zero_dace_icpx__veclen_64_cpy iter 14: 10.086 ms
+Run time division_by_zero_dace_icpx__veclen_64_cpy iter 15: 7.300 ms
+Run time division_by_zero_dace_icpx__veclen_64_cpy iter 16: 8.546 ms
+Run time division_by_zero_dace_icpx__veclen_64_cpy iter 17: 7.472 ms
+Run time division_by_zero_dace_icpx__veclen_64_cpy iter 18: 8.211 ms
+Run time division_by_zero_dace_icpx__veclen_64_cpy iter 19: 7.403 ms
+Saved timing results to division_by_zero_timings__singlecore.csv
+Run time division_by_zero_dace iter 0: 12.941 ms
+Run time division_by_zero_dace iter 1: 13.036 ms
+Run time division_by_zero_dace iter 2: 13.930 ms
+Run time division_by_zero_dace iter 3: 12.986 ms
+Run time division_by_zero_dace iter 4: 13.516 ms
+Run time division_by_zero_dace iter 5: 16.608 ms
+Run time division_by_zero_dace iter 6: 15.291 ms
+Run time division_by_zero_dace iter 7: 17.214 ms
+Run time division_by_zero_dace iter 8: 13.042 ms
+Run time division_by_zero_dace iter 9: 13.425 ms
+Run time division_by_zero_dace iter 10: 13.149 ms
+Run time division_by_zero_dace iter 11: 13.093 ms
+Run time division_by_zero_dace iter 12: 13.093 ms
+Run time division_by_zero_dace iter 13: 12.975 ms
+Run time division_by_zero_dace iter 14: 13.124 ms
+Run time division_by_zero_dace iter 15: 13.744 ms
+Run time division_by_zero_dace iter 16: 13.612 ms
+Run time division_by_zero_dace iter 17: 13.556 ms
+Run time division_by_zero_dace iter 18: 13.883 ms
+Run time division_by_zero_dace iter 19: 13.682 ms
+[can_be_applied] to if_255 is True
+[can_be_applied] to if_255 is True
+Changing __out = (__in1 / __in2) to have +1.7800590868057611e-307 to avoid NaN/inf floating-point exception in division!
+Run time division_by_zero_dace_icpx__veclen_8_no_cpy iter 0: 12.214 ms
+Run time division_by_zero_dace_icpx__veclen_8_no_cpy iter 1: 12.254 ms
+Run time division_by_zero_dace_icpx__veclen_8_no_cpy iter 2: 12.268 ms
+Run time division_by_zero_dace_icpx__veclen_8_no_cpy iter 3: 12.818 ms
+Run time division_by_zero_dace_icpx__veclen_8_no_cpy iter 4: 12.329 ms
+Run time division_by_zero_dace_icpx__veclen_8_no_cpy iter 5: 12.315 ms
+Run time division_by_zero_dace_icpx__veclen_8_no_cpy iter 6: 12.284 ms
+Run time division_by_zero_dace_icpx__veclen_8_no_cpy iter 7: 12.794 ms
+Run time division_by_zero_dace_icpx__veclen_8_no_cpy iter 8: 12.298 ms
+Run time division_by_zero_dace_icpx__veclen_8_no_cpy iter 9: 12.398 ms
+Run time division_by_zero_dace_icpx__veclen_8_no_cpy iter 10: 13.005 ms
+Run time division_by_zero_dace_icpx__veclen_8_no_cpy iter 11: 12.896 ms
+Run time division_by_zero_dace_icpx__veclen_8_no_cpy iter 12: 12.327 ms
+Run time division_by_zero_dace_icpx__veclen_8_no_cpy iter 13: 12.805 ms
+Run time division_by_zero_dace_icpx__veclen_8_no_cpy iter 14: 12.903 ms
+Run time division_by_zero_dace_icpx__veclen_8_no_cpy iter 15: 12.447 ms
+Run time division_by_zero_dace_icpx__veclen_8_no_cpy iter 16: 12.800 ms
+Run time division_by_zero_dace_icpx__veclen_8_no_cpy iter 17: 12.182 ms
+Run time division_by_zero_dace_icpx__veclen_8_no_cpy iter 18: 12.766 ms
+Run time division_by_zero_dace_icpx__veclen_8_no_cpy iter 19: 12.785 ms
+[can_be_applied] to if_255 is True
+[can_be_applied] to if_255 is True
+Changing __out = (__in1 / __in2) to have +1.7800590868057611e-307 to avoid NaN/inf floating-point exception in division!
+Run time division_by_zero_dace_icpx__veclen_8_cpy iter 0: 12.698 ms
+Run time division_by_zero_dace_icpx__veclen_8_cpy iter 1: 12.220 ms
+Run time division_by_zero_dace_icpx__veclen_8_cpy iter 2: 12.778 ms
+Run time division_by_zero_dace_icpx__veclen_8_cpy iter 3: 12.303 ms
+Run time division_by_zero_dace_icpx__veclen_8_cpy iter 4: 12.744 ms
+Run time division_by_zero_dace_icpx__veclen_8_cpy iter 5: 12.846 ms
+Run time division_by_zero_dace_icpx__veclen_8_cpy iter 6: 12.233 ms
+Run time division_by_zero_dace_icpx__veclen_8_cpy iter 7: 12.287 ms
+Run time division_by_zero_dace_icpx__veclen_8_cpy iter 8: 12.313 ms
+Run time division_by_zero_dace_icpx__veclen_8_cpy iter 9: 12.847 ms
+Run time division_by_zero_dace_icpx__veclen_8_cpy iter 10: 12.565 ms
+Run time division_by_zero_dace_icpx__veclen_8_cpy iter 11: 13.272 ms
+Run time division_by_zero_dace_icpx__veclen_8_cpy iter 12: 12.855 ms
+Run time division_by_zero_dace_icpx__veclen_8_cpy iter 13: 13.009 ms
+Run time division_by_zero_dace_icpx__veclen_8_cpy iter 14: 12.986 ms
+Run time division_by_zero_dace_icpx__veclen_8_cpy iter 15: 12.840 ms
+Run time division_by_zero_dace_icpx__veclen_8_cpy iter 16: 12.296 ms
+Run time division_by_zero_dace_icpx__veclen_8_cpy iter 17: 12.759 ms
+Run time division_by_zero_dace_icpx__veclen_8_cpy iter 18: 12.799 ms
+Run time division_by_zero_dace_icpx__veclen_8_cpy iter 19: 13.033 ms
+[can_be_applied] to if_255 is True
+[can_be_applied] to if_255 is True
+Changing __out = (__in1 / __in2) to have +1.7800590868057611e-307 to avoid NaN/inf floating-point exception in division!
+Run time division_by_zero_dace_icpx__veclen_16_no_cpy iter 0: 12.465 ms
+Run time division_by_zero_dace_icpx__veclen_16_no_cpy iter 1: 13.122 ms
+Run time division_by_zero_dace_icpx__veclen_16_no_cpy iter 2: 12.998 ms
+Run time division_by_zero_dace_icpx__veclen_16_no_cpy iter 3: 14.754 ms
+Run time division_by_zero_dace_icpx__veclen_16_no_cpy iter 4: 13.120 ms
+Run time division_by_zero_dace_icpx__veclen_16_no_cpy iter 5: 13.082 ms
+Run time division_by_zero_dace_icpx__veclen_16_no_cpy iter 6: 13.953 ms
+Run time division_by_zero_dace_icpx__veclen_16_no_cpy iter 7: 13.088 ms
+Run time division_by_zero_dace_icpx__veclen_16_no_cpy iter 8: 13.150 ms
+Run time division_by_zero_dace_icpx__veclen_16_no_cpy iter 9: 12.834 ms
+Run time division_by_zero_dace_icpx__veclen_16_no_cpy iter 10: 13.273 ms
+Run time division_by_zero_dace_icpx__veclen_16_no_cpy iter 11: 12.503 ms
+Run time division_by_zero_dace_icpx__veclen_16_no_cpy iter 12: 13.066 ms
+Run time division_by_zero_dace_icpx__veclen_16_no_cpy iter 13: 12.600 ms
+Run time division_by_zero_dace_icpx__veclen_16_no_cpy iter 14: 13.239 ms
+Run time division_by_zero_dace_icpx__veclen_16_no_cpy iter 15: 13.371 ms
+Run time division_by_zero_dace_icpx__veclen_16_no_cpy iter 16: 13.135 ms
+Run time division_by_zero_dace_icpx__veclen_16_no_cpy iter 17: 12.684 ms
+Run time division_by_zero_dace_icpx__veclen_16_no_cpy iter 18: 13.079 ms
+Run time division_by_zero_dace_icpx__veclen_16_no_cpy iter 19: 13.323 ms
+[can_be_applied] to if_255 is True
+[can_be_applied] to if_255 is True
+Changing __out = (__in1 / __in2) to have +1.7800590868057611e-307 to avoid NaN/inf floating-point exception in division!
+Run time division_by_zero_dace_icpx__veclen_16_cpy iter 0: 12.629 ms
+Run time division_by_zero_dace_icpx__veclen_16_cpy iter 1: 12.465 ms
+Run time division_by_zero_dace_icpx__veclen_16_cpy iter 2: 13.121 ms
+Run time division_by_zero_dace_icpx__veclen_16_cpy iter 3: 12.560 ms
+Run time division_by_zero_dace_icpx__veclen_16_cpy iter 4: 12.573 ms
+Run time division_by_zero_dace_icpx__veclen_16_cpy iter 5: 13.287 ms
+Run time division_by_zero_dace_icpx__veclen_16_cpy iter 6: 17.711 ms
+Run time division_by_zero_dace_icpx__veclen_16_cpy iter 7: 19.831 ms
+Run time division_by_zero_dace_icpx__veclen_16_cpy iter 8: 14.646 ms
+Run time division_by_zero_dace_icpx__veclen_16_cpy iter 9: 12.484 ms
+Run time division_by_zero_dace_icpx__veclen_16_cpy iter 10: 18.996 ms
+Run time division_by_zero_dace_icpx__veclen_16_cpy iter 11: 19.302 ms
+Run time division_by_zero_dace_icpx__veclen_16_cpy iter 12: 13.014 ms
+Run time division_by_zero_dace_icpx__veclen_16_cpy iter 13: 13.251 ms
+Run time division_by_zero_dace_icpx__veclen_16_cpy iter 14: 13.285 ms
+Run time division_by_zero_dace_icpx__veclen_16_cpy iter 15: 12.551 ms
+Run time division_by_zero_dace_icpx__veclen_16_cpy iter 16: 12.552 ms
+Run time division_by_zero_dace_icpx__veclen_16_cpy iter 17: 13.052 ms
+Run time division_by_zero_dace_icpx__veclen_16_cpy iter 18: 12.502 ms
+Run time division_by_zero_dace_icpx__veclen_16_cpy iter 19: 13.097 ms
+[can_be_applied] to if_255 is True
+[can_be_applied] to if_255 is True
+Changing __out = (__in1 / __in2) to have +1.7800590868057611e-307 to avoid NaN/inf floating-point exception in division!
+Run time division_by_zero_dace_icpx__veclen_32_no_cpy iter 0: 13.158 ms
+Run time division_by_zero_dace_icpx__veclen_32_no_cpy iter 1: 13.289 ms
+Run time division_by_zero_dace_icpx__veclen_32_no_cpy iter 2: 13.201 ms
+Run time division_by_zero_dace_icpx__veclen_32_no_cpy iter 3: 12.624 ms
+Run time division_by_zero_dace_icpx__veclen_32_no_cpy iter 4: 13.191 ms
+Run time division_by_zero_dace_icpx__veclen_32_no_cpy iter 5: 13.131 ms
+Run time division_by_zero_dace_icpx__veclen_32_no_cpy iter 6: 13.110 ms
+Run time division_by_zero_dace_icpx__veclen_32_no_cpy iter 7: 13.277 ms
+Run time division_by_zero_dace_icpx__veclen_32_no_cpy iter 8: 12.579 ms
+Run time division_by_zero_dace_icpx__veclen_32_no_cpy iter 9: 12.512 ms
+Run time division_by_zero_dace_icpx__veclen_32_no_cpy iter 10: 14.564 ms
+Run time division_by_zero_dace_icpx__veclen_32_no_cpy iter 11: 14.605 ms
+Run time division_by_zero_dace_icpx__veclen_32_no_cpy iter 12: 13.020 ms
+Run time division_by_zero_dace_icpx__veclen_32_no_cpy iter 13: 13.264 ms
+Run time division_by_zero_dace_icpx__veclen_32_no_cpy iter 14: 13.091 ms
+Run time division_by_zero_dace_icpx__veclen_32_no_cpy iter 15: 15.230 ms
+Run time division_by_zero_dace_icpx__veclen_32_no_cpy iter 16: 14.072 ms
+Run time division_by_zero_dace_icpx__veclen_32_no_cpy iter 17: 25.887 ms
+Run time division_by_zero_dace_icpx__veclen_32_no_cpy iter 18: 13.193 ms
+Run time division_by_zero_dace_icpx__veclen_32_no_cpy iter 19: 13.533 ms
+[can_be_applied] to if_255 is True
+[can_be_applied] to if_255 is True
+Changing __out = (__in1 / __in2) to have +1.7800590868057611e-307 to avoid NaN/inf floating-point exception in division!
+Run time division_by_zero_dace_icpx__veclen_32_cpy iter 0: 13.256 ms
+Run time division_by_zero_dace_icpx__veclen_32_cpy iter 1: 13.586 ms
+Run time division_by_zero_dace_icpx__veclen_32_cpy iter 2: 13.055 ms
+Run time division_by_zero_dace_icpx__veclen_32_cpy iter 3: 12.565 ms
+Run time division_by_zero_dace_icpx__veclen_32_cpy iter 4: 13.359 ms
+Run time division_by_zero_dace_icpx__veclen_32_cpy iter 5: 12.743 ms
+Run time division_by_zero_dace_icpx__veclen_32_cpy iter 6: 12.882 ms
+Run time division_by_zero_dace_icpx__veclen_32_cpy iter 7: 18.435 ms
+Run time division_by_zero_dace_icpx__veclen_32_cpy iter 8: 13.078 ms
+Run time division_by_zero_dace_icpx__veclen_32_cpy iter 9: 13.196 ms
+Run time division_by_zero_dace_icpx__veclen_32_cpy iter 10: 13.275 ms
+Run time division_by_zero_dace_icpx__veclen_32_cpy iter 11: 16.420 ms
+Run time division_by_zero_dace_icpx__veclen_32_cpy iter 12: 12.544 ms
+Run time division_by_zero_dace_icpx__veclen_32_cpy iter 13: 13.011 ms
+Run time division_by_zero_dace_icpx__veclen_32_cpy iter 14: 12.943 ms
+Run time division_by_zero_dace_icpx__veclen_32_cpy iter 15: 18.005 ms
+Run time division_by_zero_dace_icpx__veclen_32_cpy iter 16: 12.990 ms
+Run time division_by_zero_dace_icpx__veclen_32_cpy iter 17: 12.967 ms
+Run time division_by_zero_dace_icpx__veclen_32_cpy iter 18: 14.459 ms
+Run time division_by_zero_dace_icpx__veclen_32_cpy iter 19: 19.518 ms
+[can_be_applied] to if_255 is True
+[can_be_applied] to if_255 is True
+Changing __out = (__in1 / __in2) to have +1.7800590868057611e-307 to avoid NaN/inf floating-point exception in division!
+Run time division_by_zero_dace_icpx__veclen_64_no_cpy iter 0: 14.801 ms
+Run time division_by_zero_dace_icpx__veclen_64_no_cpy iter 1: 15.341 ms
+Run time division_by_zero_dace_icpx__veclen_64_no_cpy iter 2: 15.132 ms
+Run time division_by_zero_dace_icpx__veclen_64_no_cpy iter 3: 14.718 ms
+Run time division_by_zero_dace_icpx__veclen_64_no_cpy iter 4: 15.786 ms
+Run time division_by_zero_dace_icpx__veclen_64_no_cpy iter 5: 18.278 ms
+Run time division_by_zero_dace_icpx__veclen_64_no_cpy iter 6: 15.266 ms
+Run time division_by_zero_dace_icpx__veclen_64_no_cpy iter 7: 14.776 ms
+Run time division_by_zero_dace_icpx__veclen_64_no_cpy iter 8: 14.827 ms
+Run time division_by_zero_dace_icpx__veclen_64_no_cpy iter 9: 31.860 ms
+Run time division_by_zero_dace_icpx__veclen_64_no_cpy iter 10: 14.662 ms
+Run time division_by_zero_dace_icpx__veclen_64_no_cpy iter 11: 32.465 ms
+Run time division_by_zero_dace_icpx__veclen_64_no_cpy iter 12: 16.479 ms
+Run time division_by_zero_dace_icpx__veclen_64_no_cpy iter 13: 16.301 ms
+Run time division_by_zero_dace_icpx__veclen_64_no_cpy iter 14: 21.599 ms
+Run time division_by_zero_dace_icpx__veclen_64_no_cpy iter 15: 14.551 ms
+Run time division_by_zero_dace_icpx__veclen_64_no_cpy iter 16: 15.270 ms
+Run time division_by_zero_dace_icpx__veclen_64_no_cpy iter 17: 16.312 ms
+Run time division_by_zero_dace_icpx__veclen_64_no_cpy iter 18: 14.642 ms
+Run time division_by_zero_dace_icpx__veclen_64_no_cpy iter 19: 14.675 ms
+[can_be_applied] to if_255 is True
+[can_be_applied] to if_255 is True
+Changing __out = (__in1 / __in2) to have +1.7800590868057611e-307 to avoid NaN/inf floating-point exception in division!
+Run time division_by_zero_dace_icpx__veclen_64_cpy iter 0: 13.887 ms
+Run time division_by_zero_dace_icpx__veclen_64_cpy iter 1: 14.637 ms
+Run time division_by_zero_dace_icpx__veclen_64_cpy iter 2: 14.350 ms
+Run time division_by_zero_dace_icpx__veclen_64_cpy iter 3: 14.291 ms
+Run time division_by_zero_dace_icpx__veclen_64_cpy iter 4: 14.016 ms
+Run time division_by_zero_dace_icpx__veclen_64_cpy iter 5: 13.918 ms
+Run time division_by_zero_dace_icpx__veclen_64_cpy iter 6: 14.020 ms
+Run time division_by_zero_dace_icpx__veclen_64_cpy iter 7: 20.274 ms
+Run time division_by_zero_dace_icpx__veclen_64_cpy iter 8: 33.310 ms
+Run time division_by_zero_dace_icpx__veclen_64_cpy iter 9: 13.890 ms
+Run time division_by_zero_dace_icpx__veclen_64_cpy iter 10: 18.450 ms
+Run time division_by_zero_dace_icpx__veclen_64_cpy iter 11: 21.392 ms
+Run time division_by_zero_dace_icpx__veclen_64_cpy iter 12: 22.948 ms
+Run time division_by_zero_dace_icpx__veclen_64_cpy iter 13: 22.207 ms
+Run time division_by_zero_dace_icpx__veclen_64_cpy iter 14: 17.217 ms
+Run time division_by_zero_dace_icpx__veclen_64_cpy iter 15: 14.229 ms
+Run time division_by_zero_dace_icpx__veclen_64_cpy iter 16: 13.965 ms
+Run time division_by_zero_dace_icpx__veclen_64_cpy iter 17: 14.043 ms
+Run time division_by_zero_dace_icpx__veclen_64_cpy iter 18: 14.245 ms
+Run time division_by_zero_dace_icpx__veclen_64_cpy iter 19: 18.792 ms
+Saved timing results to division_by_zero_timings__singlecore.csv
+Run time division_by_zero_dace iter 0: 31.588 ms
+Run time division_by_zero_dace iter 1: 26.429 ms
+Run time division_by_zero_dace iter 2: 32.182 ms
+Run time division_by_zero_dace iter 3: 26.193 ms
+Run time division_by_zero_dace iter 4: 33.492 ms
+Run time division_by_zero_dace iter 5: 26.004 ms
+Run time division_by_zero_dace iter 6: 31.995 ms
+Run time division_by_zero_dace iter 7: 26.524 ms
+Run time division_by_zero_dace iter 8: 26.561 ms
+Run time division_by_zero_dace iter 9: 28.215 ms
+Run time division_by_zero_dace iter 10: 26.507 ms
+Run time division_by_zero_dace iter 11: 26.578 ms
+Run time division_by_zero_dace iter 12: 32.788 ms
+Run time division_by_zero_dace iter 13: 27.471 ms
+Run time division_by_zero_dace iter 14: 27.041 ms
+Run time division_by_zero_dace iter 15: 26.966 ms
+Run time division_by_zero_dace iter 16: 26.670 ms
+Run time division_by_zero_dace iter 17: 26.741 ms
+Run time division_by_zero_dace iter 18: 27.059 ms
+Run time division_by_zero_dace iter 19: 26.791 ms
+[can_be_applied] to if_255 is True
+[can_be_applied] to if_255 is True
+Changing __out = (__in1 / __in2) to have +1.7800590868057611e-307 to avoid NaN/inf floating-point exception in division!
+Run time division_by_zero_dace_icpx__veclen_8_no_cpy iter 0: 34.336 ms
+Run time division_by_zero_dace_icpx__veclen_8_no_cpy iter 1: 25.141 ms
+Run time division_by_zero_dace_icpx__veclen_8_no_cpy iter 2: 34.362 ms
+Run time division_by_zero_dace_icpx__veclen_8_no_cpy iter 3: 32.176 ms
+Run time division_by_zero_dace_icpx__veclen_8_no_cpy iter 4: 27.428 ms
+Run time division_by_zero_dace_icpx__veclen_8_no_cpy iter 5: 25.497 ms
+Run time division_by_zero_dace_icpx__veclen_8_no_cpy iter 6: 25.510 ms
+Run time division_by_zero_dace_icpx__veclen_8_no_cpy iter 7: 29.511 ms
+Run time division_by_zero_dace_icpx__veclen_8_no_cpy iter 8: 33.299 ms
+Run time division_by_zero_dace_icpx__veclen_8_no_cpy iter 9: 25.838 ms
+Run time division_by_zero_dace_icpx__veclen_8_no_cpy iter 10: 25.111 ms
+Run time division_by_zero_dace_icpx__veclen_8_no_cpy iter 11: 25.607 ms
+Run time division_by_zero_dace_icpx__veclen_8_no_cpy iter 12: 25.691 ms
+Run time division_by_zero_dace_icpx__veclen_8_no_cpy iter 13: 25.906 ms
+Run time division_by_zero_dace_icpx__veclen_8_no_cpy iter 14: 25.705 ms
+Run time division_by_zero_dace_icpx__veclen_8_no_cpy iter 15: 25.214 ms
+Run time division_by_zero_dace_icpx__veclen_8_no_cpy iter 16: 25.717 ms
+Run time division_by_zero_dace_icpx__veclen_8_no_cpy iter 17: 25.255 ms
+Run time division_by_zero_dace_icpx__veclen_8_no_cpy iter 18: 25.383 ms
+Run time division_by_zero_dace_icpx__veclen_8_no_cpy iter 19: 25.329 ms
+[can_be_applied] to if_255 is True
+[can_be_applied] to if_255 is True
+Changing __out = (__in1 / __in2) to have +1.7800590868057611e-307 to avoid NaN/inf floating-point exception in division!
+Run time division_by_zero_dace_icpx__veclen_8_cpy iter 0: 32.736 ms
+Run time division_by_zero_dace_icpx__veclen_8_cpy iter 1: 32.857 ms
+Run time division_by_zero_dace_icpx__veclen_8_cpy iter 2: 25.196 ms
+Run time division_by_zero_dace_icpx__veclen_8_cpy iter 3: 25.300 ms
+Run time division_by_zero_dace_icpx__veclen_8_cpy iter 4: 24.747 ms
+Run time division_by_zero_dace_icpx__veclen_8_cpy iter 5: 25.595 ms
+Run time division_by_zero_dace_icpx__veclen_8_cpy iter 6: 25.292 ms
+Run time division_by_zero_dace_icpx__veclen_8_cpy iter 7: 25.786 ms
+Run time division_by_zero_dace_icpx__veclen_8_cpy iter 8: 24.762 ms
+Run time division_by_zero_dace_icpx__veclen_8_cpy iter 9: 25.623 ms
+Run time division_by_zero_dace_icpx__veclen_8_cpy iter 10: 25.925 ms
+Run time division_by_zero_dace_icpx__veclen_8_cpy iter 11: 25.360 ms
+Run time division_by_zero_dace_icpx__veclen_8_cpy iter 12: 25.754 ms
+Run time division_by_zero_dace_icpx__veclen_8_cpy iter 13: 25.281 ms
+Run time division_by_zero_dace_icpx__veclen_8_cpy iter 14: 25.699 ms
+Run time division_by_zero_dace_icpx__veclen_8_cpy iter 15: 26.268 ms
+Run time division_by_zero_dace_icpx__veclen_8_cpy iter 16: 25.653 ms
+Run time division_by_zero_dace_icpx__veclen_8_cpy iter 17: 25.791 ms
+Run time division_by_zero_dace_icpx__veclen_8_cpy iter 18: 25.514 ms
+Run time division_by_zero_dace_icpx__veclen_8_cpy iter 19: 25.746 ms
+[can_be_applied] to if_255 is True
+[can_be_applied] to if_255 is True
+Changing __out = (__in1 / __in2) to have +1.7800590868057611e-307 to avoid NaN/inf floating-point exception in division!
+Run time division_by_zero_dace_icpx__veclen_16_no_cpy iter 0: 25.989 ms
+Run time division_by_zero_dace_icpx__veclen_16_no_cpy iter 1: 26.307 ms
+Run time division_by_zero_dace_icpx__veclen_16_no_cpy iter 2: 25.446 ms
+Run time division_by_zero_dace_icpx__veclen_16_no_cpy iter 3: 25.777 ms
+Run time division_by_zero_dace_icpx__veclen_16_no_cpy iter 4: 25.361 ms
+Run time division_by_zero_dace_icpx__veclen_16_no_cpy iter 5: 26.142 ms
+Run time division_by_zero_dace_icpx__veclen_16_no_cpy iter 6: 25.991 ms
+Run time division_by_zero_dace_icpx__veclen_16_no_cpy iter 7: 25.894 ms
+Run time division_by_zero_dace_icpx__veclen_16_no_cpy iter 8: 25.833 ms
+Run time division_by_zero_dace_icpx__veclen_16_no_cpy iter 9: 25.921 ms
+Run time division_by_zero_dace_icpx__veclen_16_no_cpy iter 10: 25.915 ms
+Run time division_by_zero_dace_icpx__veclen_16_no_cpy iter 11: 25.901 ms
+Run time division_by_zero_dace_icpx__veclen_16_no_cpy iter 12: 26.520 ms
+Run time division_by_zero_dace_icpx__veclen_16_no_cpy iter 13: 26.035 ms
+Run time division_by_zero_dace_icpx__veclen_16_no_cpy iter 14: 26.216 ms
+Run time division_by_zero_dace_icpx__veclen_16_no_cpy iter 15: 26.090 ms
+Run time division_by_zero_dace_icpx__veclen_16_no_cpy iter 16: 25.533 ms
+Run time division_by_zero_dace_icpx__veclen_16_no_cpy iter 17: 26.027 ms
+Run time division_by_zero_dace_icpx__veclen_16_no_cpy iter 18: 26.041 ms
+Run time division_by_zero_dace_icpx__veclen_16_no_cpy iter 19: 26.027 ms
+[can_be_applied] to if_255 is True
+[can_be_applied] to if_255 is True
+Changing __out = (__in1 / __in2) to have +1.7800590868057611e-307 to avoid NaN/inf floating-point exception in division!
+Run time division_by_zero_dace_icpx__veclen_16_cpy iter 0: 33.602 ms
+Run time division_by_zero_dace_icpx__veclen_16_cpy iter 1: 25.537 ms
+Run time division_by_zero_dace_icpx__veclen_16_cpy iter 2: 31.395 ms
+Run time division_by_zero_dace_icpx__veclen_16_cpy iter 3: 25.703 ms
+Run time division_by_zero_dace_icpx__veclen_16_cpy iter 4: 33.646 ms
+Run time division_by_zero_dace_icpx__veclen_16_cpy iter 5: 25.452 ms
+Run time division_by_zero_dace_icpx__veclen_16_cpy iter 6: 34.654 ms
+Run time division_by_zero_dace_icpx__veclen_16_cpy iter 7: 31.209 ms
+Run time division_by_zero_dace_icpx__veclen_16_cpy iter 8: 25.674 ms
+Run time division_by_zero_dace_icpx__veclen_16_cpy iter 9: 40.277 ms
+Run time division_by_zero_dace_icpx__veclen_16_cpy iter 10: 28.341 ms
+Run time division_by_zero_dace_icpx__veclen_16_cpy iter 11: 25.985 ms
+Run time division_by_zero_dace_icpx__veclen_16_cpy iter 12: 33.117 ms
+Run time division_by_zero_dace_icpx__veclen_16_cpy iter 13: 25.929 ms
+Run time division_by_zero_dace_icpx__veclen_16_cpy iter 14: 32.903 ms
+Run time division_by_zero_dace_icpx__veclen_16_cpy iter 15: 26.204 ms
+Run time division_by_zero_dace_icpx__veclen_16_cpy iter 16: 33.380 ms
+Run time division_by_zero_dace_icpx__veclen_16_cpy iter 17: 31.643 ms
+Run time division_by_zero_dace_icpx__veclen_16_cpy iter 18: 25.651 ms
+Run time division_by_zero_dace_icpx__veclen_16_cpy iter 19: 26.300 ms
+[can_be_applied] to if_255 is True
+[can_be_applied] to if_255 is True
+Changing __out = (__in1 / __in2) to have +1.7800590868057611e-307 to avoid NaN/inf floating-point exception in division!
+Run time division_by_zero_dace_icpx__veclen_32_no_cpy iter 0: 32.947 ms
+Run time division_by_zero_dace_icpx__veclen_32_no_cpy iter 1: 27.726 ms
+Run time division_by_zero_dace_icpx__veclen_32_no_cpy iter 2: 35.433 ms
+Run time division_by_zero_dace_icpx__veclen_32_no_cpy iter 3: 27.392 ms
+Run time division_by_zero_dace_icpx__veclen_32_no_cpy iter 4: 34.255 ms
+Run time division_by_zero_dace_icpx__veclen_32_no_cpy iter 5: 31.307 ms
+Run time division_by_zero_dace_icpx__veclen_32_no_cpy iter 6: 30.571 ms
+Run time division_by_zero_dace_icpx__veclen_32_no_cpy iter 7: 27.475 ms
+Run time division_by_zero_dace_icpx__veclen_32_no_cpy iter 8: 27.702 ms
+Run time division_by_zero_dace_icpx__veclen_32_no_cpy iter 9: 29.112 ms
+Run time division_by_zero_dace_icpx__veclen_32_no_cpy iter 10: 28.605 ms
+Run time division_by_zero_dace_icpx__veclen_32_no_cpy iter 11: 30.822 ms
+Run time division_by_zero_dace_icpx__veclen_32_no_cpy iter 12: 44.527 ms
+Run time division_by_zero_dace_icpx__veclen_32_no_cpy iter 13: 31.525 ms
+Run time division_by_zero_dace_icpx__veclen_32_no_cpy iter 14: 28.210 ms
+Run time division_by_zero_dace_icpx__veclen_32_no_cpy iter 15: 27.779 ms
+Run time division_by_zero_dace_icpx__veclen_32_no_cpy iter 16: 27.733 ms
+Run time division_by_zero_dace_icpx__veclen_32_no_cpy iter 17: 27.866 ms
+Run time division_by_zero_dace_icpx__veclen_32_no_cpy iter 18: 27.274 ms
+Run time division_by_zero_dace_icpx__veclen_32_no_cpy iter 19: 27.456 ms
+[can_be_applied] to if_255 is True
+[can_be_applied] to if_255 is True
+Changing __out = (__in1 / __in2) to have +1.7800590868057611e-307 to avoid NaN/inf floating-point exception in division!
+Run time division_by_zero_dace_icpx__veclen_32_cpy iter 0: 43.254 ms
+Run time division_by_zero_dace_icpx__veclen_32_cpy iter 1: 39.811 ms
+Run time division_by_zero_dace_icpx__veclen_32_cpy iter 2: 28.152 ms
+Run time division_by_zero_dace_icpx__veclen_32_cpy iter 3: 37.267 ms
+Run time division_by_zero_dace_icpx__veclen_32_cpy iter 4: 29.561 ms
+Run time division_by_zero_dace_icpx__veclen_32_cpy iter 5: 28.888 ms
+Run time division_by_zero_dace_icpx__veclen_32_cpy iter 6: 39.221 ms
+Run time division_by_zero_dace_icpx__veclen_32_cpy iter 7: 46.156 ms
+Run time division_by_zero_dace_icpx__veclen_32_cpy iter 8: 28.921 ms
+Run time division_by_zero_dace_icpx__veclen_32_cpy iter 9: 31.783 ms
+Run time division_by_zero_dace_icpx__veclen_32_cpy iter 10: 28.740 ms
+Run time division_by_zero_dace_icpx__veclen_32_cpy iter 11: 38.223 ms
+Run time division_by_zero_dace_icpx__veclen_32_cpy iter 12: 28.080 ms
+Run time division_by_zero_dace_icpx__veclen_32_cpy iter 13: 28.502 ms
+Run time division_by_zero_dace_icpx__veclen_32_cpy iter 14: 42.160 ms
+Run time division_by_zero_dace_icpx__veclen_32_cpy iter 15: 39.848 ms
+Run time division_by_zero_dace_icpx__veclen_32_cpy iter 16: 28.621 ms
+Run time division_by_zero_dace_icpx__veclen_32_cpy iter 17: 48.401 ms
+Run time division_by_zero_dace_icpx__veclen_32_cpy iter 18: 36.735 ms
+Run time division_by_zero_dace_icpx__veclen_32_cpy iter 19: 36.603 ms
+[can_be_applied] to if_255 is True
+[can_be_applied] to if_255 is True
+Changing __out = (__in1 / __in2) to have +1.7800590868057611e-307 to avoid NaN/inf floating-point exception in division!
+Run time division_by_zero_dace_icpx__veclen_64_no_cpy iter 0: 47.261 ms
+Run time division_by_zero_dace_icpx__veclen_64_no_cpy iter 1: 40.468 ms
+Run time division_by_zero_dace_icpx__veclen_64_no_cpy iter 2: 48.887 ms
+Run time division_by_zero_dace_icpx__veclen_64_no_cpy iter 3: 46.219 ms
+Run time division_by_zero_dace_icpx__veclen_64_no_cpy iter 4: 49.336 ms
+Run time division_by_zero_dace_icpx__veclen_64_no_cpy iter 5: 38.392 ms
+Run time division_by_zero_dace_icpx__veclen_64_no_cpy iter 6: 43.571 ms
+Run time division_by_zero_dace_icpx__veclen_64_no_cpy iter 7: 61.216 ms
+Run time division_by_zero_dace_icpx__veclen_64_no_cpy iter 8: 57.833 ms
+Run time division_by_zero_dace_icpx__veclen_64_no_cpy iter 9: 44.657 ms
+Run time division_by_zero_dace_icpx__veclen_64_no_cpy iter 10: 40.072 ms
+Run time division_by_zero_dace_icpx__veclen_64_no_cpy iter 11: 38.214 ms
+Run time division_by_zero_dace_icpx__veclen_64_no_cpy iter 12: 41.456 ms
+Run time division_by_zero_dace_icpx__veclen_64_no_cpy iter 13: 38.572 ms
+Run time division_by_zero_dace_icpx__veclen_64_no_cpy iter 14: 55.868 ms
+Run time division_by_zero_dace_icpx__veclen_64_no_cpy iter 15: 38.656 ms
+Run time division_by_zero_dace_icpx__veclen_64_no_cpy iter 16: 39.699 ms
+Run time division_by_zero_dace_icpx__veclen_64_no_cpy iter 17: 41.835 ms
+Run time division_by_zero_dace_icpx__veclen_64_no_cpy iter 18: 43.716 ms
+Run time division_by_zero_dace_icpx__veclen_64_no_cpy iter 19: 44.920 ms
+[can_be_applied] to if_255 is True
+[can_be_applied] to if_255 is True
+Changing __out = (__in1 / __in2) to have +1.7800590868057611e-307 to avoid NaN/inf floating-point exception in division!
+Run time division_by_zero_dace_icpx__veclen_64_cpy iter 0: 64.861 ms
+Run time division_by_zero_dace_icpx__veclen_64_cpy iter 1: 30.461 ms
+Run time division_by_zero_dace_icpx__veclen_64_cpy iter 2: 42.010 ms
+Run time division_by_zero_dace_icpx__veclen_64_cpy iter 3: 41.708 ms
+Run time division_by_zero_dace_icpx__veclen_64_cpy iter 4: 32.730 ms
+Run time division_by_zero_dace_icpx__veclen_64_cpy iter 5: 29.107 ms
+Run time division_by_zero_dace_icpx__veclen_64_cpy iter 6: 28.456 ms
+Run time division_by_zero_dace_icpx__veclen_64_cpy iter 7: 60.995 ms
+Run time division_by_zero_dace_icpx__veclen_64_cpy iter 8: 38.981 ms
+Run time division_by_zero_dace_icpx__veclen_64_cpy iter 9: 37.460 ms
+Run time division_by_zero_dace_icpx__veclen_64_cpy iter 10: 33.411 ms
+Run time division_by_zero_dace_icpx__veclen_64_cpy iter 11: 46.208 ms
+Run time division_by_zero_dace_icpx__veclen_64_cpy iter 12: 53.078 ms
+Run time division_by_zero_dace_icpx__veclen_64_cpy iter 13: 55.297 ms
+Run time division_by_zero_dace_icpx__veclen_64_cpy iter 14: 33.612 ms
+Run time division_by_zero_dace_icpx__veclen_64_cpy iter 15: 35.303 ms
+Run time division_by_zero_dace_icpx__veclen_64_cpy iter 16: 29.656 ms
+Run time division_by_zero_dace_icpx__veclen_64_cpy iter 17: 28.983 ms
+Run time division_by_zero_dace_icpx__veclen_64_cpy iter 18: 41.424 ms
+Run time division_by_zero_dace_icpx__veclen_64_cpy iter 19: 29.514 ms
+Saved timing results to division_by_zero_timings__singlecore.csv
+Running with EXTRA_FLAGS='-qopt-zmm-usage=high -diag-enable=vec -qopt-report=5 -qopt-report-phase=vec -qopt-report-file=/division_by_zero_vec_report.optrpt', SUFFIX='force_width_512'
+Running with suffix: _force_width_512
+Running with #1 cores
+Running with base flags: -fstrict-aliasing -std=c++17 -faligned-new -fPIC -Wall -Wextra -O3 -march=native -ffast-math -Wno-unused-parameter -Wno-unused-label -qopenmp
+Running with env flags: -qopt-zmm-usage=high -diag-enable=vec -qopt-report=5 -qopt-report-phase=vec -qopt-report-file=/division_by_zero_vec_report.optrpt
+Running with flags: -fstrict-aliasing -std=c++17 -faligned-new -fPIC -Wall -Wextra -O3 -march=native -ffast-math -Wno-unused-parameter -Wno-unused-label -qopenmp -qopt-zmm-usage=high -diag-enable=vec -qopt-report=5 -qopt-report-phase=vec -qopt-report-file=/division_by_zero_vec_report.optrpt
+[can_be_applied] to if_154 is True
+[can_be_applied] to if_154 is True
+Changing __out = (__in1 / __in2) to have +1.7800590868057611e-307 to avoid NaN/inf floating-point exception in division!
+[[0. 0. 0. ... 0. 0. 0.]
+ [0. 0. 0. ... 0. 0. 0.]
+ [0. 0. 0. ... 0. 0. 0.]
+ ...
+ [0. 0. 0. ... 0. 0. 0.]
+ [0. 0. 0. ... 0. 0. 0.]
+ [0. 0. 0. ... 0. 0. 0.]]
+[[0. 0. 0. ... 0. 0. 0.]
+ [0. 0. 0. ... 0. 0. 0.]
+ [0. 0. 0. ... 0. 0. 0.]
+ ...
+ [0. 0. 0. ... 0. 0. 0.]
+ [0. 0. 0. ... 0. 0. 0.]
+ [0. 0. 0. ... 0. 0. 0.]]
+0.0
+Instrumentation report
+SDFG Hash: f870e292a5d1275c7fa6c49d3dad7e4d88bb0262c5100a0ff2f11f8485fceefd
+---------------------------------------------------------------------------
+Element        Runtime (ms)   
+               Min            Mean           Median         Max            
+---------------------------------------------------------------------------
+SDFG (0)                                                                   
+|Thread 6423066134202926218:                                                            
+|              2.711          2.711          2.711          2.711          
+---------------------------------------------------------------------------
+
+Instrumentation report
+SDFG Hash: 443c9ad4e6dbd5a30aebbb53dc9b58d6db4809c0de03257b35fba1d8cd207a21
+---------------------------------------------------------------------------
+Element        Runtime (ms)   
+               Min            Mean           Median         Max            
+---------------------------------------------------------------------------
+SDFG (0)                                                                   
+|Thread 6423066134202926218:                                                            
+|              0.010          0.010          0.010          0.010          
+---------------------------------------------------------------------------
+
+Run time division_by_zero_dace iter 0: 3.534 ms
+Run time division_by_zero_dace iter 1: 3.595 ms
+Run time division_by_zero_dace iter 2: 3.627 ms
+Run time division_by_zero_dace iter 3: 3.746 ms
+Run time division_by_zero_dace iter 4: 3.504 ms
+Run time division_by_zero_dace iter 5: 3.469 ms
+Run time division_by_zero_dace iter 6: 3.540 ms
+Run time division_by_zero_dace iter 7: 3.383 ms
+Run time division_by_zero_dace iter 8: 3.515 ms
+Run time division_by_zero_dace iter 9: 3.312 ms
+Run time division_by_zero_dace iter 10: 3.236 ms
+Run time division_by_zero_dace iter 11: 3.225 ms
+Run time division_by_zero_dace iter 12: 3.234 ms
+Run time division_by_zero_dace iter 13: 3.387 ms
+Run time division_by_zero_dace iter 14: 3.250 ms
+Run time division_by_zero_dace iter 15: 4.895 ms
+Run time division_by_zero_dace iter 16: 3.526 ms
+Run time division_by_zero_dace iter 17: 3.246 ms
+Run time division_by_zero_dace iter 18: 3.238 ms
+Run time division_by_zero_dace iter 19: 3.269 ms
+[can_be_applied] to if_255 is True
+[can_be_applied] to if_255 is True
+Changing __out = (__in1 / __in2) to have +1.7800590868057611e-307 to avoid NaN/inf floating-point exception in division!
+Run time division_by_zero_dace_icpx__force_width_512_veclen_8_no_cpy iter 0: 3.356 ms
+Run time division_by_zero_dace_icpx__force_width_512_veclen_8_no_cpy iter 1: 3.250 ms
+Run time division_by_zero_dace_icpx__force_width_512_veclen_8_no_cpy iter 2: 3.431 ms
+Run time division_by_zero_dace_icpx__force_width_512_veclen_8_no_cpy iter 3: 3.322 ms
+Run time division_by_zero_dace_icpx__force_width_512_veclen_8_no_cpy iter 4: 3.336 ms
+Run time division_by_zero_dace_icpx__force_width_512_veclen_8_no_cpy iter 5: 3.262 ms
+Run time division_by_zero_dace_icpx__force_width_512_veclen_8_no_cpy iter 6: 3.389 ms
+Run time division_by_zero_dace_icpx__force_width_512_veclen_8_no_cpy iter 7: 3.247 ms
+Run time division_by_zero_dace_icpx__force_width_512_veclen_8_no_cpy iter 8: 3.215 ms
+Run time division_by_zero_dace_icpx__force_width_512_veclen_8_no_cpy iter 9: 3.243 ms
+Run time division_by_zero_dace_icpx__force_width_512_veclen_8_no_cpy iter 10: 3.115 ms
+Run time division_by_zero_dace_icpx__force_width_512_veclen_8_no_cpy iter 11: 3.264 ms
+Run time division_by_zero_dace_icpx__force_width_512_veclen_8_no_cpy iter 12: 3.339 ms
+Run time division_by_zero_dace_icpx__force_width_512_veclen_8_no_cpy iter 13: 4.034 ms
+Run time division_by_zero_dace_icpx__force_width_512_veclen_8_no_cpy iter 14: 4.025 ms
+Run time division_by_zero_dace_icpx__force_width_512_veclen_8_no_cpy iter 15: 3.341 ms
+Run time division_by_zero_dace_icpx__force_width_512_veclen_8_no_cpy iter 16: 3.045 ms
+Run time division_by_zero_dace_icpx__force_width_512_veclen_8_no_cpy iter 17: 3.363 ms
+Run time division_by_zero_dace_icpx__force_width_512_veclen_8_no_cpy iter 18: 3.241 ms
+Run time division_by_zero_dace_icpx__force_width_512_veclen_8_no_cpy iter 19: 3.999 ms
+[can_be_applied] to if_255 is True
+[can_be_applied] to if_255 is True
+Changing __out = (__in1 / __in2) to have +1.7800590868057611e-307 to avoid NaN/inf floating-point exception in division!
+Run time division_by_zero_dace_icpx__force_width_512_veclen_8_cpy iter 0: 3.186 ms
+Run time division_by_zero_dace_icpx__force_width_512_veclen_8_cpy iter 1: 3.459 ms
+Run time division_by_zero_dace_icpx__force_width_512_veclen_8_cpy iter 2: 3.134 ms
+Run time division_by_zero_dace_icpx__force_width_512_veclen_8_cpy iter 3: 3.396 ms
+Run time division_by_zero_dace_icpx__force_width_512_veclen_8_cpy iter 4: 3.617 ms
+Run time division_by_zero_dace_icpx__force_width_512_veclen_8_cpy iter 5: 3.299 ms
+Run time division_by_zero_dace_icpx__force_width_512_veclen_8_cpy iter 6: 3.526 ms
+Run time division_by_zero_dace_icpx__force_width_512_veclen_8_cpy iter 7: 3.313 ms
+Run time division_by_zero_dace_icpx__force_width_512_veclen_8_cpy iter 8: 3.190 ms
+Run time division_by_zero_dace_icpx__force_width_512_veclen_8_cpy iter 9: 3.467 ms
+Run time division_by_zero_dace_icpx__force_width_512_veclen_8_cpy iter 10: 3.247 ms
+Run time division_by_zero_dace_icpx__force_width_512_veclen_8_cpy iter 11: 3.258 ms
+Run time division_by_zero_dace_icpx__force_width_512_veclen_8_cpy iter 12: 3.315 ms
+Run time division_by_zero_dace_icpx__force_width_512_veclen_8_cpy iter 13: 3.312 ms
+Run time division_by_zero_dace_icpx__force_width_512_veclen_8_cpy iter 14: 3.266 ms
+Run time division_by_zero_dace_icpx__force_width_512_veclen_8_cpy iter 15: 3.955 ms
+Run time division_by_zero_dace_icpx__force_width_512_veclen_8_cpy iter 16: 3.109 ms
+Run time division_by_zero_dace_icpx__force_width_512_veclen_8_cpy iter 17: 3.338 ms
+Run time division_by_zero_dace_icpx__force_width_512_veclen_8_cpy iter 18: 3.192 ms
+Run time division_by_zero_dace_icpx__force_width_512_veclen_8_cpy iter 19: 3.282 ms
+[can_be_applied] to if_255 is True
+[can_be_applied] to if_255 is True
+Changing __out = (__in1 / __in2) to have +1.7800590868057611e-307 to avoid NaN/inf floating-point exception in division!
+Run time division_by_zero_dace_icpx__force_width_512_veclen_16_no_cpy iter 0: 3.460 ms
+Run time division_by_zero_dace_icpx__force_width_512_veclen_16_no_cpy iter 1: 3.445 ms
+Run time division_by_zero_dace_icpx__force_width_512_veclen_16_no_cpy iter 2: 3.332 ms
+Run time division_by_zero_dace_icpx__force_width_512_veclen_16_no_cpy iter 3: 3.381 ms
+Run time division_by_zero_dace_icpx__force_width_512_veclen_16_no_cpy iter 4: 3.367 ms
+Run time division_by_zero_dace_icpx__force_width_512_veclen_16_no_cpy iter 5: 3.356 ms
+Run time division_by_zero_dace_icpx__force_width_512_veclen_16_no_cpy iter 6: 3.624 ms
+Run time division_by_zero_dace_icpx__force_width_512_veclen_16_no_cpy iter 7: 3.281 ms
+Run time division_by_zero_dace_icpx__force_width_512_veclen_16_no_cpy iter 8: 3.411 ms
+Run time division_by_zero_dace_icpx__force_width_512_veclen_16_no_cpy iter 9: 3.363 ms
+Run time division_by_zero_dace_icpx__force_width_512_veclen_16_no_cpy iter 10: 3.391 ms
+Run time division_by_zero_dace_icpx__force_width_512_veclen_16_no_cpy iter 11: 3.762 ms
+Run time division_by_zero_dace_icpx__force_width_512_veclen_16_no_cpy iter 12: 3.468 ms
+Run time division_by_zero_dace_icpx__force_width_512_veclen_16_no_cpy iter 13: 3.546 ms
+Run time division_by_zero_dace_icpx__force_width_512_veclen_16_no_cpy iter 14: 3.406 ms
+Run time division_by_zero_dace_icpx__force_width_512_veclen_16_no_cpy iter 15: 3.424 ms
+Run time division_by_zero_dace_icpx__force_width_512_veclen_16_no_cpy iter 16: 3.411 ms
+Run time division_by_zero_dace_icpx__force_width_512_veclen_16_no_cpy iter 17: 3.366 ms
+Run time division_by_zero_dace_icpx__force_width_512_veclen_16_no_cpy iter 18: 3.521 ms
+Run time division_by_zero_dace_icpx__force_width_512_veclen_16_no_cpy iter 19: 3.187 ms
+[can_be_applied] to if_255 is True
+[can_be_applied] to if_255 is True
+Changing __out = (__in1 / __in2) to have +1.7800590868057611e-307 to avoid NaN/inf floating-point exception in division!
+Run time division_by_zero_dace_icpx__force_width_512_veclen_16_cpy iter 0: 3.313 ms
+Run time division_by_zero_dace_icpx__force_width_512_veclen_16_cpy iter 1: 3.634 ms
+Run time division_by_zero_dace_icpx__force_width_512_veclen_16_cpy iter 2: 3.514 ms
+Run time division_by_zero_dace_icpx__force_width_512_veclen_16_cpy iter 3: 3.399 ms
+Run time division_by_zero_dace_icpx__force_width_512_veclen_16_cpy iter 4: 3.322 ms
+Run time division_by_zero_dace_icpx__force_width_512_veclen_16_cpy iter 5: 3.732 ms
+Run time division_by_zero_dace_icpx__force_width_512_veclen_16_cpy iter 6: 3.933 ms
+Run time division_by_zero_dace_icpx__force_width_512_veclen_16_cpy iter 7: 3.277 ms
+Run time division_by_zero_dace_icpx__force_width_512_veclen_16_cpy iter 8: 3.491 ms
+Run time division_by_zero_dace_icpx__force_width_512_veclen_16_cpy iter 9: 3.487 ms
+Run time division_by_zero_dace_icpx__force_width_512_veclen_16_cpy iter 10: 3.426 ms
+Run time division_by_zero_dace_icpx__force_width_512_veclen_16_cpy iter 11: 3.419 ms
+Run time division_by_zero_dace_icpx__force_width_512_veclen_16_cpy iter 12: 3.439 ms
+Run time division_by_zero_dace_icpx__force_width_512_veclen_16_cpy iter 13: 3.351 ms
+Run time division_by_zero_dace_icpx__force_width_512_veclen_16_cpy iter 14: 3.376 ms
+Run time division_by_zero_dace_icpx__force_width_512_veclen_16_cpy iter 15: 3.455 ms
+Run time division_by_zero_dace_icpx__force_width_512_veclen_16_cpy iter 16: 3.478 ms
+Run time division_by_zero_dace_icpx__force_width_512_veclen_16_cpy iter 17: 3.297 ms
+Run time division_by_zero_dace_icpx__force_width_512_veclen_16_cpy iter 18: 3.346 ms
+Run time division_by_zero_dace_icpx__force_width_512_veclen_16_cpy iter 19: 3.297 ms
+[can_be_applied] to if_255 is True
+[can_be_applied] to if_255 is True
+Changing __out = (__in1 / __in2) to have +1.7800590868057611e-307 to avoid NaN/inf floating-point exception in division!
+Run time division_by_zero_dace_icpx__force_width_512_veclen_32_no_cpy iter 0: 3.338 ms
+Run time division_by_zero_dace_icpx__force_width_512_veclen_32_no_cpy iter 1: 3.375 ms
+Run time division_by_zero_dace_icpx__force_width_512_veclen_32_no_cpy iter 2: 3.365 ms
+Run time division_by_zero_dace_icpx__force_width_512_veclen_32_no_cpy iter 3: 3.340 ms
+Run time division_by_zero_dace_icpx__force_width_512_veclen_32_no_cpy iter 4: 3.452 ms
+Run time division_by_zero_dace_icpx__force_width_512_veclen_32_no_cpy iter 5: 3.230 ms
+Run time division_by_zero_dace_icpx__force_width_512_veclen_32_no_cpy iter 6: 3.361 ms
+Run time division_by_zero_dace_icpx__force_width_512_veclen_32_no_cpy iter 7: 3.334 ms
+Run time division_by_zero_dace_icpx__force_width_512_veclen_32_no_cpy iter 8: 3.664 ms
+Run time division_by_zero_dace_icpx__force_width_512_veclen_32_no_cpy iter 9: 3.732 ms
+Run time division_by_zero_dace_icpx__force_width_512_veclen_32_no_cpy iter 10: 3.157 ms
+Run time division_by_zero_dace_icpx__force_width_512_veclen_32_no_cpy iter 11: 3.227 ms
+Run time division_by_zero_dace_icpx__force_width_512_veclen_32_no_cpy iter 12: 3.346 ms
+Run time division_by_zero_dace_icpx__force_width_512_veclen_32_no_cpy iter 13: 3.960 ms
+Run time division_by_zero_dace_icpx__force_width_512_veclen_32_no_cpy iter 14: 3.914 ms
+Run time division_by_zero_dace_icpx__force_width_512_veclen_32_no_cpy iter 15: 3.240 ms
+Run time division_by_zero_dace_icpx__force_width_512_veclen_32_no_cpy iter 16: 3.226 ms
+Run time division_by_zero_dace_icpx__force_width_512_veclen_32_no_cpy iter 17: 3.262 ms
+Run time division_by_zero_dace_icpx__force_width_512_veclen_32_no_cpy iter 18: 3.259 ms
+Run time division_by_zero_dace_icpx__force_width_512_veclen_32_no_cpy iter 19: 3.365 ms
+[can_be_applied] to if_255 is True
+[can_be_applied] to if_255 is True
+Changing __out = (__in1 / __in2) to have +1.7800590868057611e-307 to avoid NaN/inf floating-point exception in division!
+Run time division_by_zero_dace_icpx__force_width_512_veclen_32_cpy iter 0: 3.969 ms
+Run time division_by_zero_dace_icpx__force_width_512_veclen_32_cpy iter 1: 3.836 ms
+Run time division_by_zero_dace_icpx__force_width_512_veclen_32_cpy iter 2: 3.684 ms
+Run time division_by_zero_dace_icpx__force_width_512_veclen_32_cpy iter 3: 3.689 ms
+Run time division_by_zero_dace_icpx__force_width_512_veclen_32_cpy iter 4: 3.727 ms
+Run time division_by_zero_dace_icpx__force_width_512_veclen_32_cpy iter 5: 3.568 ms
+Run time division_by_zero_dace_icpx__force_width_512_veclen_32_cpy iter 6: 3.704 ms
+Run time division_by_zero_dace_icpx__force_width_512_veclen_32_cpy iter 7: 3.600 ms
+Run time division_by_zero_dace_icpx__force_width_512_veclen_32_cpy iter 8: 3.604 ms
+Run time division_by_zero_dace_icpx__force_width_512_veclen_32_cpy iter 9: 3.586 ms
+Run time division_by_zero_dace_icpx__force_width_512_veclen_32_cpy iter 10: 3.605 ms
+Run time division_by_zero_dace_icpx__force_width_512_veclen_32_cpy iter 11: 3.620 ms
+Run time division_by_zero_dace_icpx__force_width_512_veclen_32_cpy iter 12: 3.818 ms
+Run time division_by_zero_dace_icpx__force_width_512_veclen_32_cpy iter 13: 3.731 ms
+Run time division_by_zero_dace_icpx__force_width_512_veclen_32_cpy iter 14: 3.745 ms
+Run time division_by_zero_dace_icpx__force_width_512_veclen_32_cpy iter 15: 3.587 ms
+Run time division_by_zero_dace_icpx__force_width_512_veclen_32_cpy iter 16: 3.571 ms
+Run time division_by_zero_dace_icpx__force_width_512_veclen_32_cpy iter 17: 3.664 ms
+Run time division_by_zero_dace_icpx__force_width_512_veclen_32_cpy iter 18: 3.564 ms
+Run time division_by_zero_dace_icpx__force_width_512_veclen_32_cpy iter 19: 3.565 ms
+[can_be_applied] to if_255 is True
+[can_be_applied] to if_255 is True
+Changing __out = (__in1 / __in2) to have +1.7800590868057611e-307 to avoid NaN/inf floating-point exception in division!
+Run time division_by_zero_dace_icpx__force_width_512_veclen_64_no_cpy iter 0: 4.373 ms
+Run time division_by_zero_dace_icpx__force_width_512_veclen_64_no_cpy iter 1: 4.360 ms
+Run time division_by_zero_dace_icpx__force_width_512_veclen_64_no_cpy iter 2: 4.327 ms
+Run time division_by_zero_dace_icpx__force_width_512_veclen_64_no_cpy iter 3: 4.356 ms
+Run time division_by_zero_dace_icpx__force_width_512_veclen_64_no_cpy iter 4: 4.417 ms
+Run time division_by_zero_dace_icpx__force_width_512_veclen_64_no_cpy iter 5: 4.338 ms
+Run time division_by_zero_dace_icpx__force_width_512_veclen_64_no_cpy iter 6: 4.333 ms
+Run time division_by_zero_dace_icpx__force_width_512_veclen_64_no_cpy iter 7: 4.355 ms
+Run time division_by_zero_dace_icpx__force_width_512_veclen_64_no_cpy iter 8: 4.327 ms
+Run time division_by_zero_dace_icpx__force_width_512_veclen_64_no_cpy iter 9: 4.367 ms
+Run time division_by_zero_dace_icpx__force_width_512_veclen_64_no_cpy iter 10: 4.381 ms
+Run time division_by_zero_dace_icpx__force_width_512_veclen_64_no_cpy iter 11: 4.389 ms
+Run time division_by_zero_dace_icpx__force_width_512_veclen_64_no_cpy iter 12: 4.549 ms
+Run time division_by_zero_dace_icpx__force_width_512_veclen_64_no_cpy iter 13: 4.339 ms
+Run time division_by_zero_dace_icpx__force_width_512_veclen_64_no_cpy iter 14: 4.391 ms
+Run time division_by_zero_dace_icpx__force_width_512_veclen_64_no_cpy iter 15: 4.398 ms
+Run time division_by_zero_dace_icpx__force_width_512_veclen_64_no_cpy iter 16: 4.566 ms
+Run time division_by_zero_dace_icpx__force_width_512_veclen_64_no_cpy iter 17: 4.319 ms
+Run time division_by_zero_dace_icpx__force_width_512_veclen_64_no_cpy iter 18: 4.529 ms
+Run time division_by_zero_dace_icpx__force_width_512_veclen_64_no_cpy iter 19: 4.585 ms
+[can_be_applied] to if_255 is True
+[can_be_applied] to if_255 is True
+Changing __out = (__in1 / __in2) to have +1.7800590868057611e-307 to avoid NaN/inf floating-point exception in division!
+Run time division_by_zero_dace_icpx__force_width_512_veclen_64_cpy iter 0: 3.788 ms
+Run time division_by_zero_dace_icpx__force_width_512_veclen_64_cpy iter 1: 3.906 ms
+Run time division_by_zero_dace_icpx__force_width_512_veclen_64_cpy iter 2: 3.843 ms
+Run time division_by_zero_dace_icpx__force_width_512_veclen_64_cpy iter 3: 3.865 ms
+Run time division_by_zero_dace_icpx__force_width_512_veclen_64_cpy iter 4: 4.008 ms
+Run time division_by_zero_dace_icpx__force_width_512_veclen_64_cpy iter 5: 3.913 ms
+Run time division_by_zero_dace_icpx__force_width_512_veclen_64_cpy iter 6: 4.143 ms
+Run time division_by_zero_dace_icpx__force_width_512_veclen_64_cpy iter 7: 3.835 ms
+Run time division_by_zero_dace_icpx__force_width_512_veclen_64_cpy iter 8: 3.905 ms
+Run time division_by_zero_dace_icpx__force_width_512_veclen_64_cpy iter 9: 3.881 ms
+Run time division_by_zero_dace_icpx__force_width_512_veclen_64_cpy iter 10: 4.090 ms
+Run time division_by_zero_dace_icpx__force_width_512_veclen_64_cpy iter 11: 3.956 ms
+Run time division_by_zero_dace_icpx__force_width_512_veclen_64_cpy iter 12: 3.933 ms
+Run time division_by_zero_dace_icpx__force_width_512_veclen_64_cpy iter 13: 4.098 ms
+Run time division_by_zero_dace_icpx__force_width_512_veclen_64_cpy iter 14: 3.936 ms
+Run time division_by_zero_dace_icpx__force_width_512_veclen_64_cpy iter 15: 4.124 ms
+Run time division_by_zero_dace_icpx__force_width_512_veclen_64_cpy iter 16: 3.906 ms
+Run time division_by_zero_dace_icpx__force_width_512_veclen_64_cpy iter 17: 3.875 ms
+Run time division_by_zero_dace_icpx__force_width_512_veclen_64_cpy iter 18: 3.956 ms
+Run time division_by_zero_dace_icpx__force_width_512_veclen_64_cpy iter 19: 3.831 ms
+Saved timing results to division_by_zero_timings__force_width_512_singlecore.csv
+Run time division_by_zero_dace iter 0: 8.097 ms
+Run time division_by_zero_dace iter 1: 8.545 ms
+Run time division_by_zero_dace iter 2: 6.868 ms
+Run time division_by_zero_dace iter 3: 6.604 ms
+Run time division_by_zero_dace iter 4: 6.996 ms
+Run time division_by_zero_dace iter 5: 7.322 ms
+Run time division_by_zero_dace iter 6: 6.506 ms
+Run time division_by_zero_dace iter 7: 8.379 ms
+Run time division_by_zero_dace iter 8: 6.591 ms
+Run time division_by_zero_dace iter 9: 7.083 ms
+Run time division_by_zero_dace iter 10: 6.659 ms
+Run time division_by_zero_dace iter 11: 7.186 ms
+Run time division_by_zero_dace iter 12: 6.465 ms
+Run time division_by_zero_dace iter 13: 6.800 ms
+Run time division_by_zero_dace iter 14: 6.849 ms
+Run time division_by_zero_dace iter 15: 7.431 ms
+Run time division_by_zero_dace iter 16: 7.264 ms
+Run time division_by_zero_dace iter 17: 6.962 ms
+Run time division_by_zero_dace iter 18: 7.259 ms
+Run time division_by_zero_dace iter 19: 7.134 ms
+[can_be_applied] to if_255 is True
+[can_be_applied] to if_255 is True
+Changing __out = (__in1 / __in2) to have +1.7800590868057611e-307 to avoid NaN/inf floating-point exception in division!
+Run time division_by_zero_dace_icpx__force_width_512_veclen_8_no_cpy iter 0: 6.339 ms
+Run time division_by_zero_dace_icpx__force_width_512_veclen_8_no_cpy iter 1: 6.187 ms
+Run time division_by_zero_dace_icpx__force_width_512_veclen_8_no_cpy iter 2: 6.700 ms
+Run time division_by_zero_dace_icpx__force_width_512_veclen_8_no_cpy iter 3: 6.177 ms
+Run time division_by_zero_dace_icpx__force_width_512_veclen_8_no_cpy iter 4: 6.881 ms
+Run time division_by_zero_dace_icpx__force_width_512_veclen_8_no_cpy iter 5: 7.078 ms
+Run time division_by_zero_dace_icpx__force_width_512_veclen_8_no_cpy iter 6: 7.100 ms
+Run time division_by_zero_dace_icpx__force_width_512_veclen_8_no_cpy iter 7: 6.676 ms
+Run time division_by_zero_dace_icpx__force_width_512_veclen_8_no_cpy iter 8: 7.110 ms
+Run time division_by_zero_dace_icpx__force_width_512_veclen_8_no_cpy iter 9: 7.196 ms
+Run time division_by_zero_dace_icpx__force_width_512_veclen_8_no_cpy iter 10: 7.431 ms
+Run time division_by_zero_dace_icpx__force_width_512_veclen_8_no_cpy iter 11: 6.554 ms
+Run time division_by_zero_dace_icpx__force_width_512_veclen_8_no_cpy iter 12: 6.906 ms
+Run time division_by_zero_dace_icpx__force_width_512_veclen_8_no_cpy iter 13: 6.491 ms
+Run time division_by_zero_dace_icpx__force_width_512_veclen_8_no_cpy iter 14: 6.495 ms
+Run time division_by_zero_dace_icpx__force_width_512_veclen_8_no_cpy iter 15: 7.098 ms
+Run time division_by_zero_dace_icpx__force_width_512_veclen_8_no_cpy iter 16: 7.124 ms
+Run time division_by_zero_dace_icpx__force_width_512_veclen_8_no_cpy iter 17: 6.708 ms
+Run time division_by_zero_dace_icpx__force_width_512_veclen_8_no_cpy iter 18: 6.767 ms
+Run time division_by_zero_dace_icpx__force_width_512_veclen_8_no_cpy iter 19: 6.274 ms
+[can_be_applied] to if_255 is True
+[can_be_applied] to if_255 is True
+Changing __out = (__in1 / __in2) to have +1.7800590868057611e-307 to avoid NaN/inf floating-point exception in division!
+Run time division_by_zero_dace_icpx__force_width_512_veclen_8_cpy iter 0: 6.463 ms
+Run time division_by_zero_dace_icpx__force_width_512_veclen_8_cpy iter 1: 6.451 ms
+Run time division_by_zero_dace_icpx__force_width_512_veclen_8_cpy iter 2: 6.801 ms
+Run time division_by_zero_dace_icpx__force_width_512_veclen_8_cpy iter 3: 6.887 ms
+Run time division_by_zero_dace_icpx__force_width_512_veclen_8_cpy iter 4: 6.565 ms
+Run time division_by_zero_dace_icpx__force_width_512_veclen_8_cpy iter 5: 6.299 ms
+Run time division_by_zero_dace_icpx__force_width_512_veclen_8_cpy iter 6: 6.880 ms
+Run time division_by_zero_dace_icpx__force_width_512_veclen_8_cpy iter 7: 6.547 ms
+Run time division_by_zero_dace_icpx__force_width_512_veclen_8_cpy iter 8: 6.630 ms
+Run time division_by_zero_dace_icpx__force_width_512_veclen_8_cpy iter 9: 6.684 ms
+Run time division_by_zero_dace_icpx__force_width_512_veclen_8_cpy iter 10: 7.333 ms
+Run time division_by_zero_dace_icpx__force_width_512_veclen_8_cpy iter 11: 6.837 ms
+Run time division_by_zero_dace_icpx__force_width_512_veclen_8_cpy iter 12: 6.355 ms
+Run time division_by_zero_dace_icpx__force_width_512_veclen_8_cpy iter 13: 6.991 ms
+Run time division_by_zero_dace_icpx__force_width_512_veclen_8_cpy iter 14: 6.428 ms
+Run time division_by_zero_dace_icpx__force_width_512_veclen_8_cpy iter 15: 7.002 ms
+Run time division_by_zero_dace_icpx__force_width_512_veclen_8_cpy iter 16: 6.406 ms
+Run time division_by_zero_dace_icpx__force_width_512_veclen_8_cpy iter 17: 6.779 ms
+Run time division_by_zero_dace_icpx__force_width_512_veclen_8_cpy iter 18: 6.330 ms
+Run time division_by_zero_dace_icpx__force_width_512_veclen_8_cpy iter 19: 6.829 ms
+[can_be_applied] to if_255 is True
+[can_be_applied] to if_255 is True
+Changing __out = (__in1 / __in2) to have +1.7800590868057611e-307 to avoid NaN/inf floating-point exception in division!
+Run time division_by_zero_dace_icpx__force_width_512_veclen_16_no_cpy iter 0: 6.999 ms
+Run time division_by_zero_dace_icpx__force_width_512_veclen_16_no_cpy iter 1: 6.684 ms
+Run time division_by_zero_dace_icpx__force_width_512_veclen_16_no_cpy iter 2: 8.295 ms
+Run time division_by_zero_dace_icpx__force_width_512_veclen_16_no_cpy iter 3: 6.470 ms
+Run time division_by_zero_dace_icpx__force_width_512_veclen_16_no_cpy iter 4: 6.591 ms
+Run time division_by_zero_dace_icpx__force_width_512_veclen_16_no_cpy iter 5: 6.903 ms
+Run time division_by_zero_dace_icpx__force_width_512_veclen_16_no_cpy iter 6: 7.067 ms
+Run time division_by_zero_dace_icpx__force_width_512_veclen_16_no_cpy iter 7: 6.576 ms
+Run time division_by_zero_dace_icpx__force_width_512_veclen_16_no_cpy iter 8: 7.043 ms
+Run time division_by_zero_dace_icpx__force_width_512_veclen_16_no_cpy iter 9: 6.485 ms
+Run time division_by_zero_dace_icpx__force_width_512_veclen_16_no_cpy iter 10: 7.011 ms
+Run time division_by_zero_dace_icpx__force_width_512_veclen_16_no_cpy iter 11: 6.567 ms
+Run time division_by_zero_dace_icpx__force_width_512_veclen_16_no_cpy iter 12: 7.025 ms
+Run time division_by_zero_dace_icpx__force_width_512_veclen_16_no_cpy iter 13: 6.670 ms
+Run time division_by_zero_dace_icpx__force_width_512_veclen_16_no_cpy iter 14: 6.450 ms
+Run time division_by_zero_dace_icpx__force_width_512_veclen_16_no_cpy iter 15: 6.784 ms
+Run time division_by_zero_dace_icpx__force_width_512_veclen_16_no_cpy iter 16: 7.059 ms
+Run time division_by_zero_dace_icpx__force_width_512_veclen_16_no_cpy iter 17: 6.344 ms
+Run time division_by_zero_dace_icpx__force_width_512_veclen_16_no_cpy iter 18: 6.633 ms
+Run time division_by_zero_dace_icpx__force_width_512_veclen_16_no_cpy iter 19: 6.658 ms
+[can_be_applied] to if_255 is True
+[can_be_applied] to if_255 is True
+Changing __out = (__in1 / __in2) to have +1.7800590868057611e-307 to avoid NaN/inf floating-point exception in division!
+Run time division_by_zero_dace_icpx__force_width_512_veclen_16_cpy iter 0: 8.569 ms
+Run time division_by_zero_dace_icpx__force_width_512_veclen_16_cpy iter 1: 6.425 ms
+Run time division_by_zero_dace_icpx__force_width_512_veclen_16_cpy iter 2: 6.704 ms
+Run time division_by_zero_dace_icpx__force_width_512_veclen_16_cpy iter 3: 6.290 ms
+Run time division_by_zero_dace_icpx__force_width_512_veclen_16_cpy iter 4: 7.037 ms
+Run time division_by_zero_dace_icpx__force_width_512_veclen_16_cpy iter 5: 6.407 ms
+Run time division_by_zero_dace_icpx__force_width_512_veclen_16_cpy iter 6: 7.109 ms
+Run time division_by_zero_dace_icpx__force_width_512_veclen_16_cpy iter 7: 6.472 ms
+Run time division_by_zero_dace_icpx__force_width_512_veclen_16_cpy iter 8: 7.025 ms
+Run time division_by_zero_dace_icpx__force_width_512_veclen_16_cpy iter 9: 6.449 ms
+Run time division_by_zero_dace_icpx__force_width_512_veclen_16_cpy iter 10: 7.031 ms
+Run time division_by_zero_dace_icpx__force_width_512_veclen_16_cpy iter 11: 6.429 ms
+Run time division_by_zero_dace_icpx__force_width_512_veclen_16_cpy iter 12: 6.741 ms
+Run time division_by_zero_dace_icpx__force_width_512_veclen_16_cpy iter 13: 6.580 ms
+Run time division_by_zero_dace_icpx__force_width_512_veclen_16_cpy iter 14: 6.856 ms
+Run time division_by_zero_dace_icpx__force_width_512_veclen_16_cpy iter 15: 7.057 ms
+Run time division_by_zero_dace_icpx__force_width_512_veclen_16_cpy iter 16: 6.989 ms
+Run time division_by_zero_dace_icpx__force_width_512_veclen_16_cpy iter 17: 6.777 ms
+Run time division_by_zero_dace_icpx__force_width_512_veclen_16_cpy iter 18: 6.580 ms
+Run time division_by_zero_dace_icpx__force_width_512_veclen_16_cpy iter 19: 6.830 ms
+[can_be_applied] to if_255 is True
+[can_be_applied] to if_255 is True
+Changing __out = (__in1 / __in2) to have +1.7800590868057611e-307 to avoid NaN/inf floating-point exception in division!
+Run time division_by_zero_dace_icpx__force_width_512_veclen_32_no_cpy iter 0: 7.117 ms
+Run time division_by_zero_dace_icpx__force_width_512_veclen_32_no_cpy iter 1: 6.944 ms
+Run time division_by_zero_dace_icpx__force_width_512_veclen_32_no_cpy iter 2: 6.744 ms
+Run time division_by_zero_dace_icpx__force_width_512_veclen_32_no_cpy iter 3: 7.318 ms
+Run time division_by_zero_dace_icpx__force_width_512_veclen_32_no_cpy iter 4: 6.890 ms
+Run time division_by_zero_dace_icpx__force_width_512_veclen_32_no_cpy iter 5: 6.442 ms
+Run time division_by_zero_dace_icpx__force_width_512_veclen_32_no_cpy iter 6: 7.009 ms
+Run time division_by_zero_dace_icpx__force_width_512_veclen_32_no_cpy iter 7: 6.510 ms
+Run time division_by_zero_dace_icpx__force_width_512_veclen_32_no_cpy iter 8: 7.026 ms
+Run time division_by_zero_dace_icpx__force_width_512_veclen_32_no_cpy iter 9: 6.505 ms
+Run time division_by_zero_dace_icpx__force_width_512_veclen_32_no_cpy iter 10: 7.205 ms
+Run time division_by_zero_dace_icpx__force_width_512_veclen_32_no_cpy iter 11: 6.744 ms
+Run time division_by_zero_dace_icpx__force_width_512_veclen_32_no_cpy iter 12: 6.824 ms
+Run time division_by_zero_dace_icpx__force_width_512_veclen_32_no_cpy iter 13: 6.522 ms
+Run time division_by_zero_dace_icpx__force_width_512_veclen_32_no_cpy iter 14: 7.288 ms
+Run time division_by_zero_dace_icpx__force_width_512_veclen_32_no_cpy iter 15: 6.980 ms
+Run time division_by_zero_dace_icpx__force_width_512_veclen_32_no_cpy iter 16: 6.946 ms
+Run time division_by_zero_dace_icpx__force_width_512_veclen_32_no_cpy iter 17: 6.874 ms
+Run time division_by_zero_dace_icpx__force_width_512_veclen_32_no_cpy iter 18: 7.177 ms
+Run time division_by_zero_dace_icpx__force_width_512_veclen_32_no_cpy iter 19: 6.434 ms
+[can_be_applied] to if_255 is True
+[can_be_applied] to if_255 is True
+Changing __out = (__in1 / __in2) to have +1.7800590868057611e-307 to avoid NaN/inf floating-point exception in division!
+Run time division_by_zero_dace_icpx__force_width_512_veclen_32_cpy iter 0: 7.333 ms
+Run time division_by_zero_dace_icpx__force_width_512_veclen_32_cpy iter 1: 8.089 ms
+Run time division_by_zero_dace_icpx__force_width_512_veclen_32_cpy iter 2: 7.471 ms
+Run time division_by_zero_dace_icpx__force_width_512_veclen_32_cpy iter 3: 8.165 ms
+Run time division_by_zero_dace_icpx__force_width_512_veclen_32_cpy iter 4: 8.424 ms
+Run time division_by_zero_dace_icpx__force_width_512_veclen_32_cpy iter 5: 7.830 ms
+Run time division_by_zero_dace_icpx__force_width_512_veclen_32_cpy iter 6: 7.389 ms
+Run time division_by_zero_dace_icpx__force_width_512_veclen_32_cpy iter 7: 9.778 ms
+Run time division_by_zero_dace_icpx__force_width_512_veclen_32_cpy iter 8: 7.558 ms
+Run time division_by_zero_dace_icpx__force_width_512_veclen_32_cpy iter 9: 6.899 ms
+Run time division_by_zero_dace_icpx__force_width_512_veclen_32_cpy iter 10: 7.653 ms
+Run time division_by_zero_dace_icpx__force_width_512_veclen_32_cpy iter 11: 7.662 ms
+Run time division_by_zero_dace_icpx__force_width_512_veclen_32_cpy iter 12: 7.051 ms
+Run time division_by_zero_dace_icpx__force_width_512_veclen_32_cpy iter 13: 7.400 ms
+Run time division_by_zero_dace_icpx__force_width_512_veclen_32_cpy iter 14: 8.442 ms
+Run time division_by_zero_dace_icpx__force_width_512_veclen_32_cpy iter 15: 6.967 ms
+Run time division_by_zero_dace_icpx__force_width_512_veclen_32_cpy iter 16: 7.716 ms
+Run time division_by_zero_dace_icpx__force_width_512_veclen_32_cpy iter 17: 7.372 ms
+Run time division_by_zero_dace_icpx__force_width_512_veclen_32_cpy iter 18: 6.959 ms
+Run time division_by_zero_dace_icpx__force_width_512_veclen_32_cpy iter 19: 7.603 ms
+[can_be_applied] to if_255 is True
+[can_be_applied] to if_255 is True
+Changing __out = (__in1 / __in2) to have +1.7800590868057611e-307 to avoid NaN/inf floating-point exception in division!
+Run time division_by_zero_dace_icpx__force_width_512_veclen_64_no_cpy iter 0: 8.612 ms
+Run time division_by_zero_dace_icpx__force_width_512_veclen_64_no_cpy iter 1: 8.497 ms
+Run time division_by_zero_dace_icpx__force_width_512_veclen_64_no_cpy iter 2: 8.815 ms
+Run time division_by_zero_dace_icpx__force_width_512_veclen_64_no_cpy iter 3: 8.628 ms
+Run time division_by_zero_dace_icpx__force_width_512_veclen_64_no_cpy iter 4: 9.476 ms
+Run time division_by_zero_dace_icpx__force_width_512_veclen_64_no_cpy iter 5: 9.218 ms
+Run time division_by_zero_dace_icpx__force_width_512_veclen_64_no_cpy iter 6: 8.619 ms
+Run time division_by_zero_dace_icpx__force_width_512_veclen_64_no_cpy iter 7: 8.565 ms
+Run time division_by_zero_dace_icpx__force_width_512_veclen_64_no_cpy iter 8: 9.577 ms
+Run time division_by_zero_dace_icpx__force_width_512_veclen_64_no_cpy iter 9: 9.293 ms
+Run time division_by_zero_dace_icpx__force_width_512_veclen_64_no_cpy iter 10: 9.617 ms
+Run time division_by_zero_dace_icpx__force_width_512_veclen_64_no_cpy iter 11: 10.615 ms
+Run time division_by_zero_dace_icpx__force_width_512_veclen_64_no_cpy iter 12: 9.334 ms
+Run time division_by_zero_dace_icpx__force_width_512_veclen_64_no_cpy iter 13: 8.556 ms
+Run time division_by_zero_dace_icpx__force_width_512_veclen_64_no_cpy iter 14: 8.968 ms
+Run time division_by_zero_dace_icpx__force_width_512_veclen_64_no_cpy iter 15: 9.020 ms
+Run time division_by_zero_dace_icpx__force_width_512_veclen_64_no_cpy iter 16: 9.256 ms
+Run time division_by_zero_dace_icpx__force_width_512_veclen_64_no_cpy iter 17: 8.940 ms
+Run time division_by_zero_dace_icpx__force_width_512_veclen_64_no_cpy iter 18: 8.610 ms
+Run time division_by_zero_dace_icpx__force_width_512_veclen_64_no_cpy iter 19: 9.051 ms
+[can_be_applied] to if_255 is True
+[can_be_applied] to if_255 is True
+Changing __out = (__in1 / __in2) to have +1.7800590868057611e-307 to avoid NaN/inf floating-point exception in division!
+Run time division_by_zero_dace_icpx__force_width_512_veclen_64_cpy iter 0: 7.388 ms
+Run time division_by_zero_dace_icpx__force_width_512_veclen_64_cpy iter 1: 9.507 ms
+Run time division_by_zero_dace_icpx__force_width_512_veclen_64_cpy iter 2: 8.069 ms
+Run time division_by_zero_dace_icpx__force_width_512_veclen_64_cpy iter 3: 8.058 ms
+Run time division_by_zero_dace_icpx__force_width_512_veclen_64_cpy iter 4: 7.965 ms
+Run time division_by_zero_dace_icpx__force_width_512_veclen_64_cpy iter 5: 7.911 ms
+Run time division_by_zero_dace_icpx__force_width_512_veclen_64_cpy iter 6: 7.483 ms
+Run time division_by_zero_dace_icpx__force_width_512_veclen_64_cpy iter 7: 7.496 ms
+Run time division_by_zero_dace_icpx__force_width_512_veclen_64_cpy iter 8: 7.575 ms
+Run time division_by_zero_dace_icpx__force_width_512_veclen_64_cpy iter 9: 7.402 ms
+Run time division_by_zero_dace_icpx__force_width_512_veclen_64_cpy iter 10: 7.447 ms
+Run time division_by_zero_dace_icpx__force_width_512_veclen_64_cpy iter 11: 7.503 ms
+Run time division_by_zero_dace_icpx__force_width_512_veclen_64_cpy iter 12: 10.236 ms
+Run time division_by_zero_dace_icpx__force_width_512_veclen_64_cpy iter 13: 7.506 ms
+Run time division_by_zero_dace_icpx__force_width_512_veclen_64_cpy iter 14: 7.447 ms
+Run time division_by_zero_dace_icpx__force_width_512_veclen_64_cpy iter 15: 7.875 ms
+Run time division_by_zero_dace_icpx__force_width_512_veclen_64_cpy iter 16: 8.771 ms
+Run time division_by_zero_dace_icpx__force_width_512_veclen_64_cpy iter 17: 8.797 ms
+Run time division_by_zero_dace_icpx__force_width_512_veclen_64_cpy iter 18: 7.858 ms
+Run time division_by_zero_dace_icpx__force_width_512_veclen_64_cpy iter 19: 7.458 ms
+Saved timing results to division_by_zero_timings__force_width_512_singlecore.csv
+Run time division_by_zero_dace iter 0: 13.452 ms
+Run time division_by_zero_dace iter 1: 15.334 ms
+Run time division_by_zero_dace iter 2: 13.087 ms
+Run time division_by_zero_dace iter 3: 13.283 ms
+Run time division_by_zero_dace iter 4: 12.945 ms
+Run time division_by_zero_dace iter 5: 15.891 ms
+Run time division_by_zero_dace iter 6: 13.591 ms
+Run time division_by_zero_dace iter 7: 13.732 ms
+Run time division_by_zero_dace iter 8: 13.814 ms
+Run time division_by_zero_dace iter 9: 13.703 ms
+Run time division_by_zero_dace iter 10: 13.678 ms
+Run time division_by_zero_dace iter 11: 13.658 ms
+Run time division_by_zero_dace iter 12: 13.431 ms
+Run time division_by_zero_dace iter 13: 13.217 ms
+Run time division_by_zero_dace iter 14: 13.932 ms
+Run time division_by_zero_dace iter 15: 13.730 ms
+Run time division_by_zero_dace iter 16: 14.915 ms
+Run time division_by_zero_dace iter 17: 13.490 ms
+Run time division_by_zero_dace iter 18: 13.927 ms
+Run time division_by_zero_dace iter 19: 13.684 ms
+[can_be_applied] to if_255 is True
+[can_be_applied] to if_255 is True
+Changing __out = (__in1 / __in2) to have +1.7800590868057611e-307 to avoid NaN/inf floating-point exception in division!
+Run time division_by_zero_dace_icpx__force_width_512_veclen_8_no_cpy iter 0: 15.276 ms
+Run time division_by_zero_dace_icpx__force_width_512_veclen_8_no_cpy iter 1: 14.650 ms
+Run time division_by_zero_dace_icpx__force_width_512_veclen_8_no_cpy iter 2: 15.800 ms
+Run time division_by_zero_dace_icpx__force_width_512_veclen_8_no_cpy iter 3: 16.004 ms
+Run time division_by_zero_dace_icpx__force_width_512_veclen_8_no_cpy iter 4: 12.680 ms
+Run time division_by_zero_dace_icpx__force_width_512_veclen_8_no_cpy iter 5: 15.699 ms
+Run time division_by_zero_dace_icpx__force_width_512_veclen_8_no_cpy iter 6: 16.239 ms
+Run time division_by_zero_dace_icpx__force_width_512_veclen_8_no_cpy iter 7: 13.403 ms
+Run time division_by_zero_dace_icpx__force_width_512_veclen_8_no_cpy iter 8: 15.617 ms
+Run time division_by_zero_dace_icpx__force_width_512_veclen_8_no_cpy iter 9: 13.848 ms
+Run time division_by_zero_dace_icpx__force_width_512_veclen_8_no_cpy iter 10: 13.267 ms
+Run time division_by_zero_dace_icpx__force_width_512_veclen_8_no_cpy iter 11: 12.514 ms
+Run time division_by_zero_dace_icpx__force_width_512_veclen_8_no_cpy iter 12: 13.051 ms
+Run time division_by_zero_dace_icpx__force_width_512_veclen_8_no_cpy iter 13: 12.461 ms
+Run time division_by_zero_dace_icpx__force_width_512_veclen_8_no_cpy iter 14: 12.983 ms
+Run time division_by_zero_dace_icpx__force_width_512_veclen_8_no_cpy iter 15: 13.204 ms
+Run time division_by_zero_dace_icpx__force_width_512_veclen_8_no_cpy iter 16: 12.926 ms
+Run time division_by_zero_dace_icpx__force_width_512_veclen_8_no_cpy iter 17: 12.963 ms
+Run time division_by_zero_dace_icpx__force_width_512_veclen_8_no_cpy iter 18: 12.625 ms
+Run time division_by_zero_dace_icpx__force_width_512_veclen_8_no_cpy iter 19: 13.047 ms
+[can_be_applied] to if_255 is True
+[can_be_applied] to if_255 is True
+Changing __out = (__in1 / __in2) to have +1.7800590868057611e-307 to avoid NaN/inf floating-point exception in division!
+Run time division_by_zero_dace_icpx__force_width_512_veclen_8_cpy iter 0: 12.326 ms
+Run time division_by_zero_dace_icpx__force_width_512_veclen_8_cpy iter 1: 12.825 ms
+Run time division_by_zero_dace_icpx__force_width_512_veclen_8_cpy iter 2: 13.093 ms
+Run time division_by_zero_dace_icpx__force_width_512_veclen_8_cpy iter 3: 13.155 ms
+Run time division_by_zero_dace_icpx__force_width_512_veclen_8_cpy iter 4: 12.550 ms
+Run time division_by_zero_dace_icpx__force_width_512_veclen_8_cpy iter 5: 12.839 ms
+Run time division_by_zero_dace_icpx__force_width_512_veclen_8_cpy iter 6: 13.210 ms
+Run time division_by_zero_dace_icpx__force_width_512_veclen_8_cpy iter 7: 12.509 ms
+Run time division_by_zero_dace_icpx__force_width_512_veclen_8_cpy iter 8: 15.050 ms
+Run time division_by_zero_dace_icpx__force_width_512_veclen_8_cpy iter 9: 14.829 ms
+Run time division_by_zero_dace_icpx__force_width_512_veclen_8_cpy iter 10: 12.521 ms
+Run time division_by_zero_dace_icpx__force_width_512_veclen_8_cpy iter 11: 16.640 ms
+Run time division_by_zero_dace_icpx__force_width_512_veclen_8_cpy iter 12: 13.562 ms
+Run time division_by_zero_dace_icpx__force_width_512_veclen_8_cpy iter 13: 17.358 ms
+Run time division_by_zero_dace_icpx__force_width_512_veclen_8_cpy iter 14: 13.014 ms
+Run time division_by_zero_dace_icpx__force_width_512_veclen_8_cpy iter 15: 16.646 ms
+Run time division_by_zero_dace_icpx__force_width_512_veclen_8_cpy iter 16: 13.153 ms
+Run time division_by_zero_dace_icpx__force_width_512_veclen_8_cpy iter 17: 13.135 ms
+Run time division_by_zero_dace_icpx__force_width_512_veclen_8_cpy iter 18: 12.666 ms
+Run time division_by_zero_dace_icpx__force_width_512_veclen_8_cpy iter 19: 13.370 ms
+[can_be_applied] to if_255 is True
+[can_be_applied] to if_255 is True
+Changing __out = (__in1 / __in2) to have +1.7800590868057611e-307 to avoid NaN/inf floating-point exception in division!
+Run time division_by_zero_dace_icpx__force_width_512_veclen_16_no_cpy iter 0: 16.097 ms
+Run time division_by_zero_dace_icpx__force_width_512_veclen_16_no_cpy iter 1: 16.566 ms
+Run time division_by_zero_dace_icpx__force_width_512_veclen_16_no_cpy iter 2: 17.881 ms
+Run time division_by_zero_dace_icpx__force_width_512_veclen_16_no_cpy iter 3: 14.004 ms
+Run time division_by_zero_dace_icpx__force_width_512_veclen_16_no_cpy iter 4: 16.731 ms
+Run time division_by_zero_dace_icpx__force_width_512_veclen_16_no_cpy iter 5: 13.377 ms
+Run time division_by_zero_dace_icpx__force_width_512_veclen_16_no_cpy iter 6: 12.630 ms
+Run time division_by_zero_dace_icpx__force_width_512_veclen_16_no_cpy iter 7: 13.524 ms
+Run time division_by_zero_dace_icpx__force_width_512_veclen_16_no_cpy iter 8: 17.036 ms
+Run time division_by_zero_dace_icpx__force_width_512_veclen_16_no_cpy iter 9: 16.556 ms
+Run time division_by_zero_dace_icpx__force_width_512_veclen_16_no_cpy iter 10: 13.026 ms
+Run time division_by_zero_dace_icpx__force_width_512_veclen_16_no_cpy iter 11: 18.131 ms
+Run time division_by_zero_dace_icpx__force_width_512_veclen_16_no_cpy iter 12: 14.502 ms
+Run time division_by_zero_dace_icpx__force_width_512_veclen_16_no_cpy iter 13: 13.537 ms
+Run time division_by_zero_dace_icpx__force_width_512_veclen_16_no_cpy iter 14: 14.690 ms
+Run time division_by_zero_dace_icpx__force_width_512_veclen_16_no_cpy iter 15: 16.780 ms
+Run time division_by_zero_dace_icpx__force_width_512_veclen_16_no_cpy iter 16: 12.843 ms
+Run time division_by_zero_dace_icpx__force_width_512_veclen_16_no_cpy iter 17: 13.310 ms
+Run time division_by_zero_dace_icpx__force_width_512_veclen_16_no_cpy iter 18: 13.022 ms
+Run time division_by_zero_dace_icpx__force_width_512_veclen_16_no_cpy iter 19: 13.122 ms
+[can_be_applied] to if_255 is True
+[can_be_applied] to if_255 is True
+Changing __out = (__in1 / __in2) to have +1.7800590868057611e-307 to avoid NaN/inf floating-point exception in division!
+Run time division_by_zero_dace_icpx__force_width_512_veclen_16_cpy iter 0: 16.832 ms
+Run time division_by_zero_dace_icpx__force_width_512_veclen_16_cpy iter 1: 12.787 ms
+Run time division_by_zero_dace_icpx__force_width_512_veclen_16_cpy iter 2: 12.937 ms
+Run time division_by_zero_dace_icpx__force_width_512_veclen_16_cpy iter 3: 13.555 ms
+Run time division_by_zero_dace_icpx__force_width_512_veclen_16_cpy iter 4: 13.160 ms
+Run time division_by_zero_dace_icpx__force_width_512_veclen_16_cpy iter 5: 14.155 ms
+Run time division_by_zero_dace_icpx__force_width_512_veclen_16_cpy iter 6: 13.809 ms
+Run time division_by_zero_dace_icpx__force_width_512_veclen_16_cpy iter 7: 14.692 ms
+Run time division_by_zero_dace_icpx__force_width_512_veclen_16_cpy iter 8: 13.739 ms
+Run time division_by_zero_dace_icpx__force_width_512_veclen_16_cpy iter 9: 14.008 ms
+Run time division_by_zero_dace_icpx__force_width_512_veclen_16_cpy iter 10: 12.628 ms
+Run time division_by_zero_dace_icpx__force_width_512_veclen_16_cpy iter 11: 14.941 ms
+Run time division_by_zero_dace_icpx__force_width_512_veclen_16_cpy iter 12: 13.171 ms
+Run time division_by_zero_dace_icpx__force_width_512_veclen_16_cpy iter 13: 14.017 ms
+Run time division_by_zero_dace_icpx__force_width_512_veclen_16_cpy iter 14: 14.377 ms
+Run time division_by_zero_dace_icpx__force_width_512_veclen_16_cpy iter 15: 14.190 ms
+Run time division_by_zero_dace_icpx__force_width_512_veclen_16_cpy iter 16: 16.504 ms
+Run time division_by_zero_dace_icpx__force_width_512_veclen_16_cpy iter 17: 12.966 ms
+Run time division_by_zero_dace_icpx__force_width_512_veclen_16_cpy iter 18: 14.852 ms
+Run time division_by_zero_dace_icpx__force_width_512_veclen_16_cpy iter 19: 13.065 ms
+[can_be_applied] to if_255 is True
+[can_be_applied] to if_255 is True
+Changing __out = (__in1 / __in2) to have +1.7800590868057611e-307 to avoid NaN/inf floating-point exception in division!
+Run time division_by_zero_dace_icpx__force_width_512_veclen_32_no_cpy iter 0: 12.977 ms
+Run time division_by_zero_dace_icpx__force_width_512_veclen_32_no_cpy iter 1: 13.572 ms
+Run time division_by_zero_dace_icpx__force_width_512_veclen_32_no_cpy iter 2: 13.266 ms
+Run time division_by_zero_dace_icpx__force_width_512_veclen_32_no_cpy iter 3: 13.226 ms
+Run time division_by_zero_dace_icpx__force_width_512_veclen_32_no_cpy iter 4: 12.685 ms
+Run time division_by_zero_dace_icpx__force_width_512_veclen_32_no_cpy iter 5: 13.026 ms
+Run time division_by_zero_dace_icpx__force_width_512_veclen_32_no_cpy iter 6: 13.264 ms
+Run time division_by_zero_dace_icpx__force_width_512_veclen_32_no_cpy iter 7: 13.537 ms
+Run time division_by_zero_dace_icpx__force_width_512_veclen_32_no_cpy iter 8: 13.505 ms
+Run time division_by_zero_dace_icpx__force_width_512_veclen_32_no_cpy iter 9: 15.771 ms
+Run time division_by_zero_dace_icpx__force_width_512_veclen_32_no_cpy iter 10: 14.864 ms
+Run time division_by_zero_dace_icpx__force_width_512_veclen_32_no_cpy iter 11: 16.795 ms
+Run time division_by_zero_dace_icpx__force_width_512_veclen_32_no_cpy iter 12: 15.431 ms
+Run time division_by_zero_dace_icpx__force_width_512_veclen_32_no_cpy iter 13: 12.926 ms
+Run time division_by_zero_dace_icpx__force_width_512_veclen_32_no_cpy iter 14: 12.905 ms
+Run time division_by_zero_dace_icpx__force_width_512_veclen_32_no_cpy iter 15: 13.160 ms
+Run time division_by_zero_dace_icpx__force_width_512_veclen_32_no_cpy iter 16: 13.224 ms
+Run time division_by_zero_dace_icpx__force_width_512_veclen_32_no_cpy iter 17: 16.171 ms
+Run time division_by_zero_dace_icpx__force_width_512_veclen_32_no_cpy iter 18: 13.627 ms
+Run time division_by_zero_dace_icpx__force_width_512_veclen_32_no_cpy iter 19: 15.552 ms
+[can_be_applied] to if_255 is True
+[can_be_applied] to if_255 is True
+Changing __out = (__in1 / __in2) to have +1.7800590868057611e-307 to avoid NaN/inf floating-point exception in division!
+Run time division_by_zero_dace_icpx__force_width_512_veclen_32_cpy iter 0: 13.884 ms
+Run time division_by_zero_dace_icpx__force_width_512_veclen_32_cpy iter 1: 13.243 ms
+Run time division_by_zero_dace_icpx__force_width_512_veclen_32_cpy iter 2: 13.298 ms
+Run time division_by_zero_dace_icpx__force_width_512_veclen_32_cpy iter 3: 13.401 ms
+Run time division_by_zero_dace_icpx__force_width_512_veclen_32_cpy iter 4: 12.786 ms
+Run time division_by_zero_dace_icpx__force_width_512_veclen_32_cpy iter 5: 13.229 ms
+Run time division_by_zero_dace_icpx__force_width_512_veclen_32_cpy iter 6: 12.816 ms
+Run time division_by_zero_dace_icpx__force_width_512_veclen_32_cpy iter 7: 13.196 ms
+Run time division_by_zero_dace_icpx__force_width_512_veclen_32_cpy iter 8: 13.117 ms
+Run time division_by_zero_dace_icpx__force_width_512_veclen_32_cpy iter 9: 13.443 ms
+Run time division_by_zero_dace_icpx__force_width_512_veclen_32_cpy iter 10: 13.610 ms
+Run time division_by_zero_dace_icpx__force_width_512_veclen_32_cpy iter 11: 13.474 ms
+Run time division_by_zero_dace_icpx__force_width_512_veclen_32_cpy iter 12: 12.956 ms
+Run time division_by_zero_dace_icpx__force_width_512_veclen_32_cpy iter 13: 13.070 ms
+Run time division_by_zero_dace_icpx__force_width_512_veclen_32_cpy iter 14: 13.086 ms
+Run time division_by_zero_dace_icpx__force_width_512_veclen_32_cpy iter 15: 16.248 ms
+Run time division_by_zero_dace_icpx__force_width_512_veclen_32_cpy iter 16: 15.058 ms
+Run time division_by_zero_dace_icpx__force_width_512_veclen_32_cpy iter 17: 13.308 ms
+Run time division_by_zero_dace_icpx__force_width_512_veclen_32_cpy iter 18: 13.260 ms
+Run time division_by_zero_dace_icpx__force_width_512_veclen_32_cpy iter 19: 12.741 ms
+[can_be_applied] to if_255 is True
+[can_be_applied] to if_255 is True
+Changing __out = (__in1 / __in2) to have +1.7800590868057611e-307 to avoid NaN/inf floating-point exception in division!
+Run time division_by_zero_dace_icpx__force_width_512_veclen_64_no_cpy iter 0: 17.512 ms
+Run time division_by_zero_dace_icpx__force_width_512_veclen_64_no_cpy iter 1: 16.870 ms
+Run time division_by_zero_dace_icpx__force_width_512_veclen_64_no_cpy iter 2: 17.352 ms
+Run time division_by_zero_dace_icpx__force_width_512_veclen_64_no_cpy iter 3: 17.435 ms
+Run time division_by_zero_dace_icpx__force_width_512_veclen_64_no_cpy iter 4: 17.535 ms
+Run time division_by_zero_dace_icpx__force_width_512_veclen_64_no_cpy iter 5: 17.546 ms
+Run time division_by_zero_dace_icpx__force_width_512_veclen_64_no_cpy iter 6: 17.187 ms
+Run time division_by_zero_dace_icpx__force_width_512_veclen_64_no_cpy iter 7: 17.680 ms
+Run time division_by_zero_dace_icpx__force_width_512_veclen_64_no_cpy iter 8: 17.420 ms
+Run time division_by_zero_dace_icpx__force_width_512_veclen_64_no_cpy iter 9: 17.440 ms
+Run time division_by_zero_dace_icpx__force_width_512_veclen_64_no_cpy iter 10: 17.160 ms
+Run time division_by_zero_dace_icpx__force_width_512_veclen_64_no_cpy iter 11: 18.548 ms
+Run time division_by_zero_dace_icpx__force_width_512_veclen_64_no_cpy iter 12: 17.294 ms
+Run time division_by_zero_dace_icpx__force_width_512_veclen_64_no_cpy iter 13: 18.442 ms
+Run time division_by_zero_dace_icpx__force_width_512_veclen_64_no_cpy iter 14: 17.111 ms
+Run time division_by_zero_dace_icpx__force_width_512_veclen_64_no_cpy iter 15: 16.877 ms
+Run time division_by_zero_dace_icpx__force_width_512_veclen_64_no_cpy iter 16: 16.974 ms
+Run time division_by_zero_dace_icpx__force_width_512_veclen_64_no_cpy iter 17: 18.300 ms
+Run time division_by_zero_dace_icpx__force_width_512_veclen_64_no_cpy iter 18: 18.765 ms
+Run time division_by_zero_dace_icpx__force_width_512_veclen_64_no_cpy iter 19: 18.272 ms
+[can_be_applied] to if_255 is True
+[can_be_applied] to if_255 is True
+Changing __out = (__in1 / __in2) to have +1.7800590868057611e-307 to avoid NaN/inf floating-point exception in division!
+Run time division_by_zero_dace_icpx__force_width_512_veclen_64_cpy iter 0: 15.838 ms
+Run time division_by_zero_dace_icpx__force_width_512_veclen_64_cpy iter 1: 15.889 ms
+Run time division_by_zero_dace_icpx__force_width_512_veclen_64_cpy iter 2: 16.015 ms
+Run time division_by_zero_dace_icpx__force_width_512_veclen_64_cpy iter 3: 15.807 ms
+Run time division_by_zero_dace_icpx__force_width_512_veclen_64_cpy iter 4: 16.030 ms
+Run time division_by_zero_dace_icpx__force_width_512_veclen_64_cpy iter 5: 15.471 ms
+Run time division_by_zero_dace_icpx__force_width_512_veclen_64_cpy iter 6: 14.762 ms
+Run time division_by_zero_dace_icpx__force_width_512_veclen_64_cpy iter 7: 15.104 ms
+Run time division_by_zero_dace_icpx__force_width_512_veclen_64_cpy iter 8: 15.534 ms
+Run time division_by_zero_dace_icpx__force_width_512_veclen_64_cpy iter 9: 16.176 ms
+Run time division_by_zero_dace_icpx__force_width_512_veclen_64_cpy iter 10: 15.532 ms
+Run time division_by_zero_dace_icpx__force_width_512_veclen_64_cpy iter 11: 16.427 ms
+Run time division_by_zero_dace_icpx__force_width_512_veclen_64_cpy iter 12: 17.568 ms
+Run time division_by_zero_dace_icpx__force_width_512_veclen_64_cpy iter 13: 19.464 ms
+Run time division_by_zero_dace_icpx__force_width_512_veclen_64_cpy iter 14: 15.155 ms
+Run time division_by_zero_dace_icpx__force_width_512_veclen_64_cpy iter 15: 15.156 ms
+Run time division_by_zero_dace_icpx__force_width_512_veclen_64_cpy iter 16: 14.685 ms
+Run time division_by_zero_dace_icpx__force_width_512_veclen_64_cpy iter 17: 14.949 ms
+Run time division_by_zero_dace_icpx__force_width_512_veclen_64_cpy iter 18: 15.042 ms
+Run time division_by_zero_dace_icpx__force_width_512_veclen_64_cpy iter 19: 14.843 ms
+Saved timing results to division_by_zero_timings__force_width_512_singlecore.csv
+Run time division_by_zero_dace iter 0: 26.816 ms
+Run time division_by_zero_dace iter 1: 28.018 ms
+Run time division_by_zero_dace iter 2: 27.645 ms
+Run time division_by_zero_dace iter 3: 28.233 ms
+Run time division_by_zero_dace iter 4: 27.906 ms
+Run time division_by_zero_dace iter 5: 27.564 ms
+Run time division_by_zero_dace iter 6: 27.336 ms
+Run time division_by_zero_dace iter 7: 27.195 ms
+Run time division_by_zero_dace iter 8: 28.889 ms
+Run time division_by_zero_dace iter 9: 27.075 ms
+Run time division_by_zero_dace iter 10: 30.661 ms
+Run time division_by_zero_dace iter 11: 26.901 ms
+Run time division_by_zero_dace iter 12: 27.956 ms
+Run time division_by_zero_dace iter 13: 29.528 ms
+Run time division_by_zero_dace iter 14: 27.432 ms
+Run time division_by_zero_dace iter 15: 30.566 ms
+Run time division_by_zero_dace iter 16: 32.292 ms
+Run time division_by_zero_dace iter 17: 26.750 ms
+Run time division_by_zero_dace iter 18: 30.917 ms
+Run time division_by_zero_dace iter 19: 26.985 ms
+[can_be_applied] to if_255 is True
+[can_be_applied] to if_255 is True
+Changing __out = (__in1 / __in2) to have +1.7800590868057611e-307 to avoid NaN/inf floating-point exception in division!
+Run time division_by_zero_dace_icpx__force_width_512_veclen_8_no_cpy iter 0: 26.884 ms
+Run time division_by_zero_dace_icpx__force_width_512_veclen_8_no_cpy iter 1: 26.754 ms
+Run time division_by_zero_dace_icpx__force_width_512_veclen_8_no_cpy iter 2: 26.714 ms
+Run time division_by_zero_dace_icpx__force_width_512_veclen_8_no_cpy iter 3: 26.657 ms
+Run time division_by_zero_dace_icpx__force_width_512_veclen_8_no_cpy iter 4: 26.107 ms
+Run time division_by_zero_dace_icpx__force_width_512_veclen_8_no_cpy iter 5: 26.356 ms
+Run time division_by_zero_dace_icpx__force_width_512_veclen_8_no_cpy iter 6: 25.973 ms
+Run time division_by_zero_dace_icpx__force_width_512_veclen_8_no_cpy iter 7: 26.809 ms
+Run time division_by_zero_dace_icpx__force_width_512_veclen_8_no_cpy iter 8: 27.122 ms
+Run time division_by_zero_dace_icpx__force_width_512_veclen_8_no_cpy iter 9: 26.611 ms
+Run time division_by_zero_dace_icpx__force_width_512_veclen_8_no_cpy iter 10: 26.710 ms
+Run time division_by_zero_dace_icpx__force_width_512_veclen_8_no_cpy iter 11: 25.934 ms
+Run time division_by_zero_dace_icpx__force_width_512_veclen_8_no_cpy iter 12: 26.328 ms
+Run time division_by_zero_dace_icpx__force_width_512_veclen_8_no_cpy iter 13: 28.903 ms
+Run time division_by_zero_dace_icpx__force_width_512_veclen_8_no_cpy iter 14: 28.330 ms
+Run time division_by_zero_dace_icpx__force_width_512_veclen_8_no_cpy iter 15: 27.814 ms
+Run time division_by_zero_dace_icpx__force_width_512_veclen_8_no_cpy iter 16: 25.804 ms
+Run time division_by_zero_dace_icpx__force_width_512_veclen_8_no_cpy iter 17: 26.572 ms
+Run time division_by_zero_dace_icpx__force_width_512_veclen_8_no_cpy iter 18: 26.573 ms
+Run time division_by_zero_dace_icpx__force_width_512_veclen_8_no_cpy iter 19: 25.954 ms
+[can_be_applied] to if_255 is True
+[can_be_applied] to if_255 is True
+Changing __out = (__in1 / __in2) to have +1.7800590868057611e-307 to avoid NaN/inf floating-point exception in division!
+Run time division_by_zero_dace_icpx__force_width_512_veclen_8_cpy iter 0: 25.975 ms
+Run time division_by_zero_dace_icpx__force_width_512_veclen_8_cpy iter 1: 26.027 ms
+Run time division_by_zero_dace_icpx__force_width_512_veclen_8_cpy iter 2: 26.428 ms
+Run time division_by_zero_dace_icpx__force_width_512_veclen_8_cpy iter 3: 26.188 ms
+Run time division_by_zero_dace_icpx__force_width_512_veclen_8_cpy iter 4: 26.422 ms
+Run time division_by_zero_dace_icpx__force_width_512_veclen_8_cpy iter 5: 26.311 ms
+Run time division_by_zero_dace_icpx__force_width_512_veclen_8_cpy iter 6: 26.335 ms
+Run time division_by_zero_dace_icpx__force_width_512_veclen_8_cpy iter 7: 26.364 ms
+Run time division_by_zero_dace_icpx__force_width_512_veclen_8_cpy iter 8: 26.857 ms
+Run time division_by_zero_dace_icpx__force_width_512_veclen_8_cpy iter 9: 26.722 ms
+Run time division_by_zero_dace_icpx__force_width_512_veclen_8_cpy iter 10: 25.456 ms
+Run time division_by_zero_dace_icpx__force_width_512_veclen_8_cpy iter 11: 26.203 ms
+Run time division_by_zero_dace_icpx__force_width_512_veclen_8_cpy iter 12: 25.789 ms
+Run time division_by_zero_dace_icpx__force_width_512_veclen_8_cpy iter 13: 26.068 ms
+Run time division_by_zero_dace_icpx__force_width_512_veclen_8_cpy iter 14: 28.722 ms
+Run time division_by_zero_dace_icpx__force_width_512_veclen_8_cpy iter 15: 25.930 ms
+Run time division_by_zero_dace_icpx__force_width_512_veclen_8_cpy iter 16: 26.157 ms
+Run time division_by_zero_dace_icpx__force_width_512_veclen_8_cpy iter 17: 25.995 ms
+Run time division_by_zero_dace_icpx__force_width_512_veclen_8_cpy iter 18: 26.312 ms
+Run time division_by_zero_dace_icpx__force_width_512_veclen_8_cpy iter 19: 25.607 ms
+[can_be_applied] to if_255 is True
+[can_be_applied] to if_255 is True
+Changing __out = (__in1 / __in2) to have +1.7800590868057611e-307 to avoid NaN/inf floating-point exception in division!
+Run time division_by_zero_dace_icpx__force_width_512_veclen_16_no_cpy iter 0: 26.757 ms
+Run time division_by_zero_dace_icpx__force_width_512_veclen_16_no_cpy iter 1: 27.520 ms
+Run time division_by_zero_dace_icpx__force_width_512_veclen_16_no_cpy iter 2: 26.670 ms
+Run time division_by_zero_dace_icpx__force_width_512_veclen_16_no_cpy iter 3: 26.719 ms
+Run time division_by_zero_dace_icpx__force_width_512_veclen_16_no_cpy iter 4: 26.706 ms
+Run time division_by_zero_dace_icpx__force_width_512_veclen_16_no_cpy iter 5: 25.834 ms
+Run time division_by_zero_dace_icpx__force_width_512_veclen_16_no_cpy iter 6: 26.589 ms
+Run time division_by_zero_dace_icpx__force_width_512_veclen_16_no_cpy iter 7: 26.549 ms
+Run time division_by_zero_dace_icpx__force_width_512_veclen_16_no_cpy iter 8: 27.150 ms
+Run time division_by_zero_dace_icpx__force_width_512_veclen_16_no_cpy iter 9: 25.889 ms
+Run time division_by_zero_dace_icpx__force_width_512_veclen_16_no_cpy iter 10: 26.284 ms
+Run time division_by_zero_dace_icpx__force_width_512_veclen_16_no_cpy iter 11: 26.295 ms
+Run time division_by_zero_dace_icpx__force_width_512_veclen_16_no_cpy iter 12: 25.773 ms
+Run time division_by_zero_dace_icpx__force_width_512_veclen_16_no_cpy iter 13: 27.216 ms
+Run time division_by_zero_dace_icpx__force_width_512_veclen_16_no_cpy iter 14: 26.287 ms
+Run time division_by_zero_dace_icpx__force_width_512_veclen_16_no_cpy iter 15: 27.438 ms
+Run time division_by_zero_dace_icpx__force_width_512_veclen_16_no_cpy iter 16: 26.495 ms
+Run time division_by_zero_dace_icpx__force_width_512_veclen_16_no_cpy iter 17: 26.647 ms
+Run time division_by_zero_dace_icpx__force_width_512_veclen_16_no_cpy iter 18: 26.260 ms
+Run time division_by_zero_dace_icpx__force_width_512_veclen_16_no_cpy iter 19: 26.496 ms
+[can_be_applied] to if_255 is True
+[can_be_applied] to if_255 is True
+Changing __out = (__in1 / __in2) to have +1.7800590868057611e-307 to avoid NaN/inf floating-point exception in division!
+Run time division_by_zero_dace_icpx__force_width_512_veclen_16_cpy iter 0: 32.216 ms
+Run time division_by_zero_dace_icpx__force_width_512_veclen_16_cpy iter 1: 26.801 ms
+Run time division_by_zero_dace_icpx__force_width_512_veclen_16_cpy iter 2: 26.062 ms
+Run time division_by_zero_dace_icpx__force_width_512_veclen_16_cpy iter 3: 26.083 ms
+Run time division_by_zero_dace_icpx__force_width_512_veclen_16_cpy iter 4: 32.090 ms
+Run time division_by_zero_dace_icpx__force_width_512_veclen_16_cpy iter 5: 33.868 ms
+Run time division_by_zero_dace_icpx__force_width_512_veclen_16_cpy iter 6: 26.028 ms
+Run time division_by_zero_dace_icpx__force_width_512_veclen_16_cpy iter 7: 26.589 ms
+Run time division_by_zero_dace_icpx__force_width_512_veclen_16_cpy iter 8: 26.726 ms
+Run time division_by_zero_dace_icpx__force_width_512_veclen_16_cpy iter 9: 26.843 ms
+Run time division_by_zero_dace_icpx__force_width_512_veclen_16_cpy iter 10: 26.960 ms
+Run time division_by_zero_dace_icpx__force_width_512_veclen_16_cpy iter 11: 26.181 ms
+Run time division_by_zero_dace_icpx__force_width_512_veclen_16_cpy iter 12: 26.430 ms
+Run time division_by_zero_dace_icpx__force_width_512_veclen_16_cpy iter 13: 26.535 ms
+Run time division_by_zero_dace_icpx__force_width_512_veclen_16_cpy iter 14: 26.429 ms
+Run time division_by_zero_dace_icpx__force_width_512_veclen_16_cpy iter 15: 26.397 ms
+Run time division_by_zero_dace_icpx__force_width_512_veclen_16_cpy iter 16: 27.064 ms
+Run time division_by_zero_dace_icpx__force_width_512_veclen_16_cpy iter 17: 26.948 ms
+Run time division_by_zero_dace_icpx__force_width_512_veclen_16_cpy iter 18: 26.354 ms
+Run time division_by_zero_dace_icpx__force_width_512_veclen_16_cpy iter 19: 25.740 ms
+[can_be_applied] to if_255 is True
+[can_be_applied] to if_255 is True
+Changing __out = (__in1 / __in2) to have +1.7800590868057611e-307 to avoid NaN/inf floating-point exception in division!
+Run time division_by_zero_dace_icpx__force_width_512_veclen_32_no_cpy iter 0: 34.434 ms
+Run time division_by_zero_dace_icpx__force_width_512_veclen_32_no_cpy iter 1: 28.031 ms
+Run time division_by_zero_dace_icpx__force_width_512_veclen_32_no_cpy iter 2: 32.374 ms
+Run time division_by_zero_dace_icpx__force_width_512_veclen_32_no_cpy iter 3: 33.875 ms
+Run time division_by_zero_dace_icpx__force_width_512_veclen_32_no_cpy iter 4: 35.005 ms
+Run time division_by_zero_dace_icpx__force_width_512_veclen_32_no_cpy iter 5: 31.533 ms
+Run time division_by_zero_dace_icpx__force_width_512_veclen_32_no_cpy iter 6: 29.055 ms
+Run time division_by_zero_dace_icpx__force_width_512_veclen_32_no_cpy iter 7: 30.096 ms
+Run time division_by_zero_dace_icpx__force_width_512_veclen_32_no_cpy iter 8: 28.747 ms
+Run time division_by_zero_dace_icpx__force_width_512_veclen_32_no_cpy iter 9: 33.241 ms
+Run time division_by_zero_dace_icpx__force_width_512_veclen_32_no_cpy iter 10: 39.453 ms
+Run time division_by_zero_dace_icpx__force_width_512_veclen_32_no_cpy iter 11: 35.928 ms
+Run time division_by_zero_dace_icpx__force_width_512_veclen_32_no_cpy iter 12: 32.760 ms
+Run time division_by_zero_dace_icpx__force_width_512_veclen_32_no_cpy iter 13: 29.412 ms
+Run time division_by_zero_dace_icpx__force_width_512_veclen_32_no_cpy iter 14: 34.859 ms
+Run time division_by_zero_dace_icpx__force_width_512_veclen_32_no_cpy iter 15: 28.625 ms
+Run time division_by_zero_dace_icpx__force_width_512_veclen_32_no_cpy iter 16: 28.660 ms
+Run time division_by_zero_dace_icpx__force_width_512_veclen_32_no_cpy iter 17: 28.275 ms
+Run time division_by_zero_dace_icpx__force_width_512_veclen_32_no_cpy iter 18: 28.533 ms
+Run time division_by_zero_dace_icpx__force_width_512_veclen_32_no_cpy iter 19: 28.721 ms
+[can_be_applied] to if_255 is True
+[can_be_applied] to if_255 is True
+Changing __out = (__in1 / __in2) to have +1.7800590868057611e-307 to avoid NaN/inf floating-point exception in division!
+Run time division_by_zero_dace_icpx__force_width_512_veclen_32_cpy iter 0: 38.486 ms
+Run time division_by_zero_dace_icpx__force_width_512_veclen_32_cpy iter 1: 37.086 ms
+Run time division_by_zero_dace_icpx__force_width_512_veclen_32_cpy iter 2: 31.917 ms
+Run time division_by_zero_dace_icpx__force_width_512_veclen_32_cpy iter 3: 31.751 ms
+Run time division_by_zero_dace_icpx__force_width_512_veclen_32_cpy iter 4: 27.027 ms
+Run time division_by_zero_dace_icpx__force_width_512_veclen_32_cpy iter 5: 33.191 ms
+Run time division_by_zero_dace_icpx__force_width_512_veclen_32_cpy iter 6: 34.350 ms
+Run time division_by_zero_dace_icpx__force_width_512_veclen_32_cpy iter 7: 35.938 ms
+Run time division_by_zero_dace_icpx__force_width_512_veclen_32_cpy iter 8: 34.511 ms
+Run time division_by_zero_dace_icpx__force_width_512_veclen_32_cpy iter 9: 27.543 ms
+Run time division_by_zero_dace_icpx__force_width_512_veclen_32_cpy iter 10: 27.592 ms
+Run time division_by_zero_dace_icpx__force_width_512_veclen_32_cpy iter 11: 33.600 ms
+Run time division_by_zero_dace_icpx__force_width_512_veclen_32_cpy iter 12: 27.172 ms
+Run time division_by_zero_dace_icpx__force_width_512_veclen_32_cpy iter 13: 28.952 ms
+Run time division_by_zero_dace_icpx__force_width_512_veclen_32_cpy iter 14: 27.092 ms
+Run time division_by_zero_dace_icpx__force_width_512_veclen_32_cpy iter 15: 27.879 ms
+Run time division_by_zero_dace_icpx__force_width_512_veclen_32_cpy iter 16: 36.603 ms
+Run time division_by_zero_dace_icpx__force_width_512_veclen_32_cpy iter 17: 31.088 ms
+Run time division_by_zero_dace_icpx__force_width_512_veclen_32_cpy iter 18: 30.341 ms
+Run time division_by_zero_dace_icpx__force_width_512_veclen_32_cpy iter 19: 26.297 ms
+[can_be_applied] to if_255 is True
+[can_be_applied] to if_255 is True
+Changing __out = (__in1 / __in2) to have +1.7800590868057611e-307 to avoid NaN/inf floating-point exception in division!
+Run time division_by_zero_dace_icpx__force_width_512_veclen_64_no_cpy iter 0: 31.363 ms
+Run time division_by_zero_dace_icpx__force_width_512_veclen_64_no_cpy iter 1: 30.640 ms
+Run time division_by_zero_dace_icpx__force_width_512_veclen_64_no_cpy iter 2: 29.908 ms
+Run time division_by_zero_dace_icpx__force_width_512_veclen_64_no_cpy iter 3: 30.506 ms
+Run time division_by_zero_dace_icpx__force_width_512_veclen_64_no_cpy iter 4: 34.804 ms
+Run time division_by_zero_dace_icpx__force_width_512_veclen_64_no_cpy iter 5: 34.344 ms
+Run time division_by_zero_dace_icpx__force_width_512_veclen_64_no_cpy iter 6: 30.150 ms
+Run time division_by_zero_dace_icpx__force_width_512_veclen_64_no_cpy iter 7: 30.170 ms
+Run time division_by_zero_dace_icpx__force_width_512_veclen_64_no_cpy iter 8: 30.432 ms
+Run time division_by_zero_dace_icpx__force_width_512_veclen_64_no_cpy iter 9: 36.095 ms
+Run time division_by_zero_dace_icpx__force_width_512_veclen_64_no_cpy iter 10: 30.490 ms
+Run time division_by_zero_dace_icpx__force_width_512_veclen_64_no_cpy iter 11: 30.940 ms
+Run time division_by_zero_dace_icpx__force_width_512_veclen_64_no_cpy iter 12: 31.898 ms
+Run time division_by_zero_dace_icpx__force_width_512_veclen_64_no_cpy iter 13: 37.287 ms
+Run time division_by_zero_dace_icpx__force_width_512_veclen_64_no_cpy iter 14: 35.206 ms
+Run time division_by_zero_dace_icpx__force_width_512_veclen_64_no_cpy iter 15: 41.185 ms
+Run time division_by_zero_dace_icpx__force_width_512_veclen_64_no_cpy iter 16: 35.037 ms
+Run time division_by_zero_dace_icpx__force_width_512_veclen_64_no_cpy iter 17: 29.872 ms
+Run time division_by_zero_dace_icpx__force_width_512_veclen_64_no_cpy iter 18: 39.087 ms
+Run time division_by_zero_dace_icpx__force_width_512_veclen_64_no_cpy iter 19: 36.413 ms
+[can_be_applied] to if_255 is True
+[can_be_applied] to if_255 is True
+Changing __out = (__in1 / __in2) to have +1.7800590868057611e-307 to avoid NaN/inf floating-point exception in division!
+Run time division_by_zero_dace_icpx__force_width_512_veclen_64_cpy iter 0: 29.756 ms
+Run time division_by_zero_dace_icpx__force_width_512_veclen_64_cpy iter 1: 30.001 ms
+Run time division_by_zero_dace_icpx__force_width_512_veclen_64_cpy iter 2: 29.647 ms
+Run time division_by_zero_dace_icpx__force_width_512_veclen_64_cpy iter 3: 38.460 ms
+Run time division_by_zero_dace_icpx__force_width_512_veclen_64_cpy iter 4: 30.951 ms
+Run time division_by_zero_dace_icpx__force_width_512_veclen_64_cpy iter 5: 29.754 ms
+Run time division_by_zero_dace_icpx__force_width_512_veclen_64_cpy iter 6: 29.810 ms
+Run time division_by_zero_dace_icpx__force_width_512_veclen_64_cpy iter 7: 33.262 ms
+Run time division_by_zero_dace_icpx__force_width_512_veclen_64_cpy iter 8: 35.647 ms
+Run time division_by_zero_dace_icpx__force_width_512_veclen_64_cpy iter 9: 48.266 ms
+Run time division_by_zero_dace_icpx__force_width_512_veclen_64_cpy iter 10: 37.712 ms
+Run time division_by_zero_dace_icpx__force_width_512_veclen_64_cpy iter 11: 29.380 ms
+Run time division_by_zero_dace_icpx__force_width_512_veclen_64_cpy iter 12: 36.850 ms
+Run time division_by_zero_dace_icpx__force_width_512_veclen_64_cpy iter 13: 29.790 ms
+Run time division_by_zero_dace_icpx__force_width_512_veclen_64_cpy iter 14: 44.273 ms
+Run time division_by_zero_dace_icpx__force_width_512_veclen_64_cpy iter 15: 37.826 ms
+Run time division_by_zero_dace_icpx__force_width_512_veclen_64_cpy iter 16: 29.962 ms
+Run time division_by_zero_dace_icpx__force_width_512_veclen_64_cpy iter 17: 38.100 ms
+Run time division_by_zero_dace_icpx__force_width_512_veclen_64_cpy iter 18: 45.296 ms
+Run time division_by_zero_dace_icpx__force_width_512_veclen_64_cpy iter 19: 42.029 ms
+Saved timing results to division_by_zero_timings__force_width_512_singlecore.csv
+Running with EXTRA_FLAGS='-no-vec', SUFFIX='no_vectorize'
