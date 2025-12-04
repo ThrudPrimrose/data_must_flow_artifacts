@@ -9,7 +9,9 @@
 
 spack load cmake
 spack load gcc@14.2
-
+export OMP_NUM_THREADS=72
+export OMP_PLACES=cores
+export OMP_PROC_BIND=spread
 alias cc=gcc
 alias c++=g++
 alias cxx=g++

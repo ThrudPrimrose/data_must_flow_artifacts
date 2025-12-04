@@ -14,7 +14,9 @@ alias c++=clang++
 alias cxx=clang++
 export CC=clang
 export CXX=clang++
-
+export OMP_NUM_THREADS=64
+export OMP_PLACES=cores
+export OMP_PROC_BIND=spread
 echo "Script path: $SCRIPT_PATH"
 echo "Script dir:  $SCRIPT_DIR"
 

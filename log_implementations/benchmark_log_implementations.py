@@ -3,6 +3,7 @@ import csv
 import os
 import numpy as np
 import dace
+from dace.transformation.passes.vectorization.tasklet_preprocessing_passes import ReplaceSTDLogWithDaCeLog
 from dace.transformation.passes.vectorization.vectorize_cpu import VectorizeCPU
 from math import log
 
@@ -252,6 +253,7 @@ if __name__ == "__main__":
 
         # Baseline SDFG
         log_implementations_dace_sdfg = log_implementations.to_sdfg()
+        ReplaceSTDLogWithDaCeLog().apply_pass(log_implementations_dace_sdfg, {})
         log_implementations_dace_sdfg.name = "log_implementations_dace"
         log_implementations_dace_sdfg.instrument = dace.dtypes.InstrumentationType.Timer
 
@@ -301,5 +303,5 @@ if __name__ == "__main__":
         # -------------------------------------------------------
         # CSV output
         # -------------------------------------------------------
-        save_timings_to_csv(f"log_implementations_timings_{env_suffix_str}{multicore_suffix}.csv", i, S, all_timings)
+        save_timings_to_csv(f"log_implementations_timings_dace_intrinsic_{env_suffix_str}{multicore_suffix}.csv", i, S, all_timings)
         print(f"Saved timing results to log_implementations_timings_{env_suffix_str}{multicore_suffix}.csv")

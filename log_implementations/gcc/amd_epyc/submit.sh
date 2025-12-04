@@ -9,7 +9,9 @@
 
 spack load cmake
 spack load gcc@14.2
-
+export OMP_NUM_THREADS=64
+export OMP_PLACES=cores
+export OMP_PROC_BIND=spread
 alias cc=gcc
 alias c++=g++
 alias cxx=g++
@@ -20,10 +22,10 @@ export CPU_NAME="amd_epyc"
 
 # Define configurations: each element is "EXTRA_FLAGS SUFFIX"
 configs=(
-    "-march=armv9-a+sve2 -mcpu=neoverse-v2" ""                                   # first run: no extra flags, no suffix
-    "-march=armv9-a+simd -mcpu=neoverse-v2 -mprefer-vector-width=128" "neon"  # second run
-    "-march=armv9-a+sve2 -no-simd -mcpu=neoverse-v2" "sve"  # second run
-    "-march=armv9-a -mcpu=neoverse-v2 -fno-tree-vectorize -fno-tree-slp-vectorize" "no-vectorize"
+    "-mprefer-vector-width=512" "force_width_512"
+    "-mprefer-vector-width=256" "force_width_256"
+    "" ""                                   
+    "-fno-tree-vectorize -fno-tree-slp-vectorize" "no-vectorize"
 )
 
 for RUNMULTI in 0 1; do

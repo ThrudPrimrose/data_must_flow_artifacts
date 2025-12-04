@@ -15,7 +15,9 @@ alias c++=icpx
 alias cxx=icpx
 export CC=icx
 export CXX=icpx
-
+export OMP_NUM_THREADS=18
+export OMP_PLACES=cores
+export OMP_PROC_BIND=spread
 export CPU_NAME="intel_xeon"
 
 echo "Script path: $SCRIPT_PATH"
