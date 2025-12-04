@@ -17,10 +17,10 @@ subprocess.CalledProcessError: Command 'cmake  "/scratch/ybudanaz/dace/dace/code
 During handling of the above exception, another exception occurred:
 
 Traceback (most recent call last):
-  File "/scratch/ybudanaz/data_must_flow_artifacts/log_implementations/gcc/amd_epyc/benchmark_log_implementations.py", line 276, in <module>
+  File "/scratch/ybudanaz/data_must_flow_artifacts/log_implementations/gcc/amd_epyc/benchmark_log_implementations.py", line 265, in <module>
     all_timings["log_implementations_dace", S] = run_sdfg_multiple_times(
                                                  ^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/scratch/ybudanaz/data_must_flow_artifacts/log_implementations/gcc/amd_epyc/benchmark_log_implementations.py", line 193, in run_sdfg_multiple_times
+  File "/scratch/ybudanaz/data_must_flow_artifacts/log_implementations/gcc/amd_epyc/benchmark_log_implementations.py", line 182, in run_sdfg_multiple_times
     compiled = sdfg.compile()
                ^^^^^^^^^^^^^^
   File "/scratch/ybudanaz/dace/dace/sdfg/sdfg.py", line 2436, in compile
@@ -48,21 +48,21 @@ CMake Error at /users/ybudanaz/.pyenv/versions/3.12.4/lib/python3.12/site-packag
 
   It fails with the following output:
 
-    Change Dir: '/scratch/ybudanaz/data_must_flow_artifacts/log_implementations/gcc/amd_epyc/.dacecache/log_implementations_dace/build/CMakeFiles/CMakeScratch/TryCompile-HLxX9F'
+    Change Dir: '/scratch/ybudanaz/data_must_flow_artifacts/log_implementations/gcc/amd_epyc/.dacecache/log_implementations_dace/build/CMakeFiles/CMakeScratch/TryCompile-Zr041S'
     
-    Run Build Command(s): /users/ybudanaz/.pyenv/versions/3.12.4/lib/python3.12/site-packages/cmake/data/bin/cmake -E env VERBOSE=1 /scratch/ybudanaz/spack/opt/spack/linux-centos8-zen2/gcc-10.2.0/gmake-4.4.1-gpmelukr7tfcxmwv3tlwazj6jelsyke6/bin/gmake -f Makefile cmTC_fc0ad/fast
-    /scratch/ybudanaz/spack/opt/spack/linux-centos8-zen2/gcc-10.2.0/gmake-4.4.1-gpmelukr7tfcxmwv3tlwazj6jelsyke6/bin/gmake  -f CMakeFiles/cmTC_fc0ad.dir/build.make CMakeFiles/cmTC_fc0ad.dir/build
-    gmake[1]: Entering directory '/scratch/ybudanaz/data_must_flow_artifacts/log_implementations/gcc/amd_epyc/.dacecache/log_implementations_dace/build/CMakeFiles/CMakeScratch/TryCompile-HLxX9F'
-    Building CXX object CMakeFiles/cmTC_fc0ad.dir/testCXXCompiler.cxx.o
-    /scratch/ybudanaz/spack/opt/spack/linux-centos8-zen2/gcc-10.2.0/gcc-14.2.0-2ib2x4iccgsxfde5ggfripdsywmm5hxc/bin/g++   -fopenmp -fstrict-aliasing -std=c++17 -faligned-new -fPIC -Wall -Wextra -O3 -march=native -ffast-math -Wno-unused-parameter -Wno-unused-label -march=armv9-a+sve2 -mcpu=neoverse-v2  -o CMakeFiles/cmTC_fc0ad.dir/testCXXCompiler.cxx.o -c /scratch/ybudanaz/data_must_flow_artifacts/log_implementations/gcc/amd_epyc/.dacecache/log_implementations_dace/build/CMakeFiles/CMakeScratch/TryCompile-HLxX9F/testCXXCompiler.cxx
+    Run Build Command(s): /users/ybudanaz/.pyenv/versions/3.12.4/lib/python3.12/site-packages/cmake/data/bin/cmake -E env VERBOSE=1 /scratch/ybudanaz/spack/opt/spack/linux-centos8-zen2/gcc-10.2.0/gmake-4.4.1-gpmelukr7tfcxmwv3tlwazj6jelsyke6/bin/gmake -f Makefile cmTC_5d8d7/fast
+    /scratch/ybudanaz/spack/opt/spack/linux-centos8-zen2/gcc-10.2.0/gmake-4.4.1-gpmelukr7tfcxmwv3tlwazj6jelsyke6/bin/gmake  -f CMakeFiles/cmTC_5d8d7.dir/build.make CMakeFiles/cmTC_5d8d7.dir/build
+    gmake[1]: Entering directory '/scratch/ybudanaz/data_must_flow_artifacts/log_implementations/gcc/amd_epyc/.dacecache/log_implementations_dace/build/CMakeFiles/CMakeScratch/TryCompile-Zr041S'
+    Building CXX object CMakeFiles/cmTC_5d8d7.dir/testCXXCompiler.cxx.o
+    /scratch/ybudanaz/spack/opt/spack/linux-centos8-zen2/gcc-10.2.0/gcc-14.2.0-2ib2x4iccgsxfde5ggfripdsywmm5hxc/bin/g++   -fopenmp -fstrict-aliasing -std=c++17 -faligned-new -fPIC -Wall -Wextra -O3 -march=native -ffast-math -Wno-unused-parameter -Wno-unused-label -march=armv9-a+sve2 -mcpu=neoverse-v2  -o CMakeFiles/cmTC_5d8d7.dir/testCXXCompiler.cxx.o -c /scratch/ybudanaz/data_must_flow_artifacts/log_implementations/gcc/amd_epyc/.dacecache/log_implementations_dace/build/CMakeFiles/CMakeScratch/TryCompile-Zr041S/testCXXCompiler.cxx
     g++: warning: '-mcpu=' is deprecated; use '-mtune=' or '-march=' instead
     cc1plus: error: bad value 'armv9-a+sve2' for '-march=' switch
     cc1plus: note: valid arguments to '-march=' switch are: nocona core2 nehalem corei7 westmere sandybridge corei7-avx ivybridge core-avx-i haswell core-avx2 broadwell skylake skylake-avx512 cannonlake icelake-client rocketlake icelake-server cascadelake tigerlake cooperlake sapphirerapids emeraldrapids alderlake raptorlake meteorlake graniterapids graniterapids-d arrowlake arrowlake-s lunarlake pantherlake bonnell atom silvermont slm goldmont goldmont-plus tremont gracemont sierraforest grandridge clearwaterforest knl knm x86-64 x86-64-v2 x86-64-v3 x86-64-v4 eden-x2 nano nano-1000 nano-2000 nano-3000 nano-x2 eden-x4 nano-x4 lujiazui yongfeng k8 k8-sse3 opteron opteron-sse3 athlon64 athlon64-sse3 athlon-fx amdfam10 barcelona bdver1 bdver2 bdver3 bdver4 znver1 znver2 znver3 znver4 znver5 btver1 btver2 native
     cc1plus: error: bad value 'neoverse-v2' for '-mtune=' switch
     cc1plus: note: valid arguments to '-mtune=' switch are: nocona core2 nehalem corei7 westmere sandybridge corei7-avx ivybridge core-avx-i haswell core-avx2 broadwell skylake skylake-avx512 cannonlake icelake-client rocketlake icelake-server cascadelake tigerlake cooperlake sapphirerapids emeraldrapids alderlake raptorlake meteorlake graniterapids graniterapids-d arrowlake arrowlake-s lunarlake pantherlake bonnell atom silvermont slm goldmont goldmont-plus tremont gracemont sierraforest grandridge clearwaterforest knl knm intel x86-64 eden-x2 nano nano-1000 nano-2000 nano-3000 nano-x2 eden-x4 nano-x4 lujiazui yongfeng k8 k8-sse3 opteron opteron-sse3 athlon64 athlon64-sse3 athlon-fx amdfam10 barcelona bdver1 bdver2 bdver3 bdver4 znver1 znver2 znver3 znver4 znver5 btver1 btver2 generic native
-    gmake[1]: *** [CMakeFiles/cmTC_fc0ad.dir/build.make:81: CMakeFiles/cmTC_fc0ad.dir/testCXXCompiler.cxx.o] Error 1
-    gmake[1]: Leaving directory '/scratch/ybudanaz/data_must_flow_artifacts/log_implementations/gcc/amd_epyc/.dacecache/log_implementations_dace/build/CMakeFiles/CMakeScratch/TryCompile-HLxX9F'
-    gmake: *** [Makefile:134: cmTC_fc0ad/fast] Error 2
+    gmake[1]: *** [CMakeFiles/cmTC_5d8d7.dir/build.make:81: CMakeFiles/cmTC_5d8d7.dir/testCXXCompiler.cxx.o] Error 1
+    gmake[1]: Leaving directory '/scratch/ybudanaz/data_must_flow_artifacts/log_implementations/gcc/amd_epyc/.dacecache/log_implementations_dace/build/CMakeFiles/CMakeScratch/TryCompile-Zr041S'
+    gmake: *** [Makefile:134: cmTC_5d8d7/fast] Error 2
     
     
 
@@ -94,10 +94,10 @@ subprocess.CalledProcessError: Command 'cmake  "/scratch/ybudanaz/dace/dace/code
 During handling of the above exception, another exception occurred:
 
 Traceback (most recent call last):
-  File "/scratch/ybudanaz/data_must_flow_artifacts/log_implementations/gcc/amd_epyc/benchmark_log_implementations.py", line 276, in <module>
+  File "/scratch/ybudanaz/data_must_flow_artifacts/log_implementations/gcc/amd_epyc/benchmark_log_implementations.py", line 265, in <module>
     all_timings["log_implementations_dace", S] = run_sdfg_multiple_times(
                                                  ^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/scratch/ybudanaz/data_must_flow_artifacts/log_implementations/gcc/amd_epyc/benchmark_log_implementations.py", line 193, in run_sdfg_multiple_times
+  File "/scratch/ybudanaz/data_must_flow_artifacts/log_implementations/gcc/amd_epyc/benchmark_log_implementations.py", line 182, in run_sdfg_multiple_times
     compiled = sdfg.compile()
                ^^^^^^^^^^^^^^
   File "/scratch/ybudanaz/dace/dace/sdfg/sdfg.py", line 2436, in compile
@@ -125,21 +125,21 @@ CMake Error at /users/ybudanaz/.pyenv/versions/3.12.4/lib/python3.12/site-packag
 
   It fails with the following output:
 
-    Change Dir: '/scratch/ybudanaz/data_must_flow_artifacts/log_implementations/gcc/amd_epyc/.dacecache/log_implementations_dace/build/CMakeFiles/CMakeScratch/TryCompile-4P1Ur9'
+    Change Dir: '/scratch/ybudanaz/data_must_flow_artifacts/log_implementations/gcc/amd_epyc/.dacecache/log_implementations_dace/build/CMakeFiles/CMakeScratch/TryCompile-QuJoNg'
     
-    Run Build Command(s): /users/ybudanaz/.pyenv/versions/3.12.4/lib/python3.12/site-packages/cmake/data/bin/cmake -E env VERBOSE=1 /scratch/ybudanaz/spack/opt/spack/linux-centos8-zen2/gcc-10.2.0/gmake-4.4.1-gpmelukr7tfcxmwv3tlwazj6jelsyke6/bin/gmake -f Makefile cmTC_be403/fast
-    /scratch/ybudanaz/spack/opt/spack/linux-centos8-zen2/gcc-10.2.0/gmake-4.4.1-gpmelukr7tfcxmwv3tlwazj6jelsyke6/bin/gmake  -f CMakeFiles/cmTC_be403.dir/build.make CMakeFiles/cmTC_be403.dir/build
-    gmake[1]: Entering directory '/scratch/ybudanaz/data_must_flow_artifacts/log_implementations/gcc/amd_epyc/.dacecache/log_implementations_dace/build/CMakeFiles/CMakeScratch/TryCompile-4P1Ur9'
-    Building CXX object CMakeFiles/cmTC_be403.dir/testCXXCompiler.cxx.o
-    /scratch/ybudanaz/spack/opt/spack/linux-centos8-zen2/gcc-10.2.0/gcc-14.2.0-2ib2x4iccgsxfde5ggfripdsywmm5hxc/bin/g++   -fopenmp -fstrict-aliasing -std=c++17 -faligned-new -fPIC -Wall -Wextra -O3 -march=native -ffast-math -Wno-unused-parameter -Wno-unused-label -march=armv9-a+simd -mcpu=neoverse-v2 -mprefer-vector-width=128  -o CMakeFiles/cmTC_be403.dir/testCXXCompiler.cxx.o -c /scratch/ybudanaz/data_must_flow_artifacts/log_implementations/gcc/amd_epyc/.dacecache/log_implementations_dace/build/CMakeFiles/CMakeScratch/TryCompile-4P1Ur9/testCXXCompiler.cxx
+    Run Build Command(s): /users/ybudanaz/.pyenv/versions/3.12.4/lib/python3.12/site-packages/cmake/data/bin/cmake -E env VERBOSE=1 /scratch/ybudanaz/spack/opt/spack/linux-centos8-zen2/gcc-10.2.0/gmake-4.4.1-gpmelukr7tfcxmwv3tlwazj6jelsyke6/bin/gmake -f Makefile cmTC_c9f8f/fast
+    /scratch/ybudanaz/spack/opt/spack/linux-centos8-zen2/gcc-10.2.0/gmake-4.4.1-gpmelukr7tfcxmwv3tlwazj6jelsyke6/bin/gmake  -f CMakeFiles/cmTC_c9f8f.dir/build.make CMakeFiles/cmTC_c9f8f.dir/build
+    gmake[1]: Entering directory '/scratch/ybudanaz/data_must_flow_artifacts/log_implementations/gcc/amd_epyc/.dacecache/log_implementations_dace/build/CMakeFiles/CMakeScratch/TryCompile-QuJoNg'
+    Building CXX object CMakeFiles/cmTC_c9f8f.dir/testCXXCompiler.cxx.o
+    /scratch/ybudanaz/spack/opt/spack/linux-centos8-zen2/gcc-10.2.0/gcc-14.2.0-2ib2x4iccgsxfde5ggfripdsywmm5hxc/bin/g++   -fopenmp -fstrict-aliasing -std=c++17 -faligned-new -fPIC -Wall -Wextra -O3 -march=native -ffast-math -Wno-unused-parameter -Wno-unused-label -march=armv9-a+simd -mcpu=neoverse-v2 -mprefer-vector-width=128  -o CMakeFiles/cmTC_c9f8f.dir/testCXXCompiler.cxx.o -c /scratch/ybudanaz/data_must_flow_artifacts/log_implementations/gcc/amd_epyc/.dacecache/log_implementations_dace/build/CMakeFiles/CMakeScratch/TryCompile-QuJoNg/testCXXCompiler.cxx
     g++: warning: '-mcpu=' is deprecated; use '-mtune=' or '-march=' instead
     cc1plus: error: bad value 'armv9-a+simd' for '-march=' switch
     cc1plus: note: valid arguments to '-march=' switch are: nocona core2 nehalem corei7 westmere sandybridge corei7-avx ivybridge core-avx-i haswell core-avx2 broadwell skylake skylake-avx512 cannonlake icelake-client rocketlake icelake-server cascadelake tigerlake cooperlake sapphirerapids emeraldrapids alderlake raptorlake meteorlake graniterapids graniterapids-d arrowlake arrowlake-s lunarlake pantherlake bonnell atom silvermont slm goldmont goldmont-plus tremont gracemont sierraforest grandridge clearwaterforest knl knm x86-64 x86-64-v2 x86-64-v3 x86-64-v4 eden-x2 nano nano-1000 nano-2000 nano-3000 nano-x2 eden-x4 nano-x4 lujiazui yongfeng k8 k8-sse3 opteron opteron-sse3 athlon64 athlon64-sse3 athlon-fx amdfam10 barcelona bdver1 bdver2 bdver3 bdver4 znver1 znver2 znver3 znver4 znver5 btver1 btver2 native
     cc1plus: error: bad value 'neoverse-v2' for '-mtune=' switch
     cc1plus: note: valid arguments to '-mtune=' switch are: nocona core2 nehalem corei7 westmere sandybridge corei7-avx ivybridge core-avx-i haswell core-avx2 broadwell skylake skylake-avx512 cannonlake icelake-client rocketlake icelake-server cascadelake tigerlake cooperlake sapphirerapids emeraldrapids alderlake raptorlake meteorlake graniterapids graniterapids-d arrowlake arrowlake-s lunarlake pantherlake bonnell atom silvermont slm goldmont goldmont-plus tremont gracemont sierraforest grandridge clearwaterforest knl knm intel x86-64 eden-x2 nano nano-1000 nano-2000 nano-3000 nano-x2 eden-x4 nano-x4 lujiazui yongfeng k8 k8-sse3 opteron opteron-sse3 athlon64 athlon64-sse3 athlon-fx amdfam10 barcelona bdver1 bdver2 bdver3 bdver4 znver1 znver2 znver3 znver4 znver5 btver1 btver2 generic native
-    gmake[1]: *** [CMakeFiles/cmTC_be403.dir/build.make:81: CMakeFiles/cmTC_be403.dir/testCXXCompiler.cxx.o] Error 1
-    gmake[1]: Leaving directory '/scratch/ybudanaz/data_must_flow_artifacts/log_implementations/gcc/amd_epyc/.dacecache/log_implementations_dace/build/CMakeFiles/CMakeScratch/TryCompile-4P1Ur9'
-    gmake: *** [Makefile:134: cmTC_be403/fast] Error 2
+    gmake[1]: *** [CMakeFiles/cmTC_c9f8f.dir/build.make:81: CMakeFiles/cmTC_c9f8f.dir/testCXXCompiler.cxx.o] Error 1
+    gmake[1]: Leaving directory '/scratch/ybudanaz/data_must_flow_artifacts/log_implementations/gcc/amd_epyc/.dacecache/log_implementations_dace/build/CMakeFiles/CMakeScratch/TryCompile-QuJoNg'
+    gmake: *** [Makefile:134: cmTC_c9f8f/fast] Error 2
     
     
 
@@ -171,10 +171,10 @@ subprocess.CalledProcessError: Command 'cmake  "/scratch/ybudanaz/dace/dace/code
 During handling of the above exception, another exception occurred:
 
 Traceback (most recent call last):
-  File "/scratch/ybudanaz/data_must_flow_artifacts/log_implementations/gcc/amd_epyc/benchmark_log_implementations.py", line 276, in <module>
+  File "/scratch/ybudanaz/data_must_flow_artifacts/log_implementations/gcc/amd_epyc/benchmark_log_implementations.py", line 265, in <module>
     all_timings["log_implementations_dace", S] = run_sdfg_multiple_times(
                                                  ^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/scratch/ybudanaz/data_must_flow_artifacts/log_implementations/gcc/amd_epyc/benchmark_log_implementations.py", line 193, in run_sdfg_multiple_times
+  File "/scratch/ybudanaz/data_must_flow_artifacts/log_implementations/gcc/amd_epyc/benchmark_log_implementations.py", line 182, in run_sdfg_multiple_times
     compiled = sdfg.compile()
                ^^^^^^^^^^^^^^
   File "/scratch/ybudanaz/dace/dace/sdfg/sdfg.py", line 2436, in compile
@@ -202,18 +202,18 @@ CMake Error at /users/ybudanaz/.pyenv/versions/3.12.4/lib/python3.12/site-packag
 
   It fails with the following output:
 
-    Change Dir: '/scratch/ybudanaz/data_must_flow_artifacts/log_implementations/gcc/amd_epyc/.dacecache/log_implementations_dace/build/CMakeFiles/CMakeScratch/TryCompile-YB3ahL'
+    Change Dir: '/scratch/ybudanaz/data_must_flow_artifacts/log_implementations/gcc/amd_epyc/.dacecache/log_implementations_dace/build/CMakeFiles/CMakeScratch/TryCompile-AmLpMx'
     
-    Run Build Command(s): /users/ybudanaz/.pyenv/versions/3.12.4/lib/python3.12/site-packages/cmake/data/bin/cmake -E env VERBOSE=1 /scratch/ybudanaz/spack/opt/spack/linux-centos8-zen2/gcc-10.2.0/gmake-4.4.1-gpmelukr7tfcxmwv3tlwazj6jelsyke6/bin/gmake -f Makefile cmTC_a55e5/fast
-    /scratch/ybudanaz/spack/opt/spack/linux-centos8-zen2/gcc-10.2.0/gmake-4.4.1-gpmelukr7tfcxmwv3tlwazj6jelsyke6/bin/gmake  -f CMakeFiles/cmTC_a55e5.dir/build.make CMakeFiles/cmTC_a55e5.dir/build
-    gmake[1]: Entering directory '/scratch/ybudanaz/data_must_flow_artifacts/log_implementations/gcc/amd_epyc/.dacecache/log_implementations_dace/build/CMakeFiles/CMakeScratch/TryCompile-YB3ahL'
-    Building CXX object CMakeFiles/cmTC_a55e5.dir/testCXXCompiler.cxx.o
-    /scratch/ybudanaz/spack/opt/spack/linux-centos8-zen2/gcc-10.2.0/gcc-14.2.0-2ib2x4iccgsxfde5ggfripdsywmm5hxc/bin/g++   -fopenmp -fstrict-aliasing -std=c++17 -faligned-new -fPIC -Wall -Wextra -O3 -march=native -ffast-math -Wno-unused-parameter -Wno-unused-label -march=armv9-a+sve2 -no-simd -mcpu=neoverse-v2  -o CMakeFiles/cmTC_a55e5.dir/testCXXCompiler.cxx.o -c /scratch/ybudanaz/data_must_flow_artifacts/log_implementations/gcc/amd_epyc/.dacecache/log_implementations_dace/build/CMakeFiles/CMakeScratch/TryCompile-YB3ahL/testCXXCompiler.cxx
+    Run Build Command(s): /users/ybudanaz/.pyenv/versions/3.12.4/lib/python3.12/site-packages/cmake/data/bin/cmake -E env VERBOSE=1 /scratch/ybudanaz/spack/opt/spack/linux-centos8-zen2/gcc-10.2.0/gmake-4.4.1-gpmelukr7tfcxmwv3tlwazj6jelsyke6/bin/gmake -f Makefile cmTC_0fa6a/fast
+    /scratch/ybudanaz/spack/opt/spack/linux-centos8-zen2/gcc-10.2.0/gmake-4.4.1-gpmelukr7tfcxmwv3tlwazj6jelsyke6/bin/gmake  -f CMakeFiles/cmTC_0fa6a.dir/build.make CMakeFiles/cmTC_0fa6a.dir/build
+    gmake[1]: Entering directory '/scratch/ybudanaz/data_must_flow_artifacts/log_implementations/gcc/amd_epyc/.dacecache/log_implementations_dace/build/CMakeFiles/CMakeScratch/TryCompile-AmLpMx'
+    Building CXX object CMakeFiles/cmTC_0fa6a.dir/testCXXCompiler.cxx.o
+    /scratch/ybudanaz/spack/opt/spack/linux-centos8-zen2/gcc-10.2.0/gcc-14.2.0-2ib2x4iccgsxfde5ggfripdsywmm5hxc/bin/g++   -fopenmp -fstrict-aliasing -std=c++17 -faligned-new -fPIC -Wall -Wextra -O3 -march=native -ffast-math -Wno-unused-parameter -Wno-unused-label -march=armv9-a+sve2 -no-simd -mcpu=neoverse-v2  -o CMakeFiles/cmTC_0fa6a.dir/testCXXCompiler.cxx.o -c /scratch/ybudanaz/data_must_flow_artifacts/log_implementations/gcc/amd_epyc/.dacecache/log_implementations_dace/build/CMakeFiles/CMakeScratch/TryCompile-AmLpMx/testCXXCompiler.cxx
     g++: warning: '-mcpu=' is deprecated; use '-mtune=' or '-march=' instead
     g++: error: unrecognized command-line option '-no-simd'
-    gmake[1]: *** [CMakeFiles/cmTC_a55e5.dir/build.make:81: CMakeFiles/cmTC_a55e5.dir/testCXXCompiler.cxx.o] Error 1
-    gmake[1]: Leaving directory '/scratch/ybudanaz/data_must_flow_artifacts/log_implementations/gcc/amd_epyc/.dacecache/log_implementations_dace/build/CMakeFiles/CMakeScratch/TryCompile-YB3ahL'
-    gmake: *** [Makefile:134: cmTC_a55e5/fast] Error 2
+    gmake[1]: *** [CMakeFiles/cmTC_0fa6a.dir/build.make:81: CMakeFiles/cmTC_0fa6a.dir/testCXXCompiler.cxx.o] Error 1
+    gmake[1]: Leaving directory '/scratch/ybudanaz/data_must_flow_artifacts/log_implementations/gcc/amd_epyc/.dacecache/log_implementations_dace/build/CMakeFiles/CMakeScratch/TryCompile-AmLpMx'
+    gmake: *** [Makefile:134: cmTC_0fa6a/fast] Error 2
     
     
 
@@ -245,10 +245,10 @@ subprocess.CalledProcessError: Command 'cmake  "/scratch/ybudanaz/dace/dace/code
 During handling of the above exception, another exception occurred:
 
 Traceback (most recent call last):
-  File "/scratch/ybudanaz/data_must_flow_artifacts/log_implementations/gcc/amd_epyc/benchmark_log_implementations.py", line 276, in <module>
+  File "/scratch/ybudanaz/data_must_flow_artifacts/log_implementations/gcc/amd_epyc/benchmark_log_implementations.py", line 265, in <module>
     all_timings["log_implementations_dace", S] = run_sdfg_multiple_times(
                                                  ^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/scratch/ybudanaz/data_must_flow_artifacts/log_implementations/gcc/amd_epyc/benchmark_log_implementations.py", line 193, in run_sdfg_multiple_times
+  File "/scratch/ybudanaz/data_must_flow_artifacts/log_implementations/gcc/amd_epyc/benchmark_log_implementations.py", line 182, in run_sdfg_multiple_times
     compiled = sdfg.compile()
                ^^^^^^^^^^^^^^
   File "/scratch/ybudanaz/dace/dace/sdfg/sdfg.py", line 2436, in compile
@@ -276,21 +276,21 @@ CMake Error at /users/ybudanaz/.pyenv/versions/3.12.4/lib/python3.12/site-packag
 
   It fails with the following output:
 
-    Change Dir: '/scratch/ybudanaz/data_must_flow_artifacts/log_implementations/gcc/amd_epyc/.dacecache/log_implementations_dace/build/CMakeFiles/CMakeScratch/TryCompile-dgCfKQ'
+    Change Dir: '/scratch/ybudanaz/data_must_flow_artifacts/log_implementations/gcc/amd_epyc/.dacecache/log_implementations_dace/build/CMakeFiles/CMakeScratch/TryCompile-znF4jF'
     
-    Run Build Command(s): /users/ybudanaz/.pyenv/versions/3.12.4/lib/python3.12/site-packages/cmake/data/bin/cmake -E env VERBOSE=1 /scratch/ybudanaz/spack/opt/spack/linux-centos8-zen2/gcc-10.2.0/gmake-4.4.1-gpmelukr7tfcxmwv3tlwazj6jelsyke6/bin/gmake -f Makefile cmTC_3d6e2/fast
-    /scratch/ybudanaz/spack/opt/spack/linux-centos8-zen2/gcc-10.2.0/gmake-4.4.1-gpmelukr7tfcxmwv3tlwazj6jelsyke6/bin/gmake  -f CMakeFiles/cmTC_3d6e2.dir/build.make CMakeFiles/cmTC_3d6e2.dir/build
-    gmake[1]: Entering directory '/scratch/ybudanaz/data_must_flow_artifacts/log_implementations/gcc/amd_epyc/.dacecache/log_implementations_dace/build/CMakeFiles/CMakeScratch/TryCompile-dgCfKQ'
-    Building CXX object CMakeFiles/cmTC_3d6e2.dir/testCXXCompiler.cxx.o
-    /scratch/ybudanaz/spack/opt/spack/linux-centos8-zen2/gcc-10.2.0/gcc-14.2.0-2ib2x4iccgsxfde5ggfripdsywmm5hxc/bin/g++   -fopenmp -fstrict-aliasing -std=c++17 -faligned-new -fPIC -Wall -Wextra -O3 -march=native -ffast-math -Wno-unused-parameter -Wno-unused-label -march=armv9-a -mcpu=neoverse-v2 -fno-tree-vectorize -fno-tree-slp-vectorize  -o CMakeFiles/cmTC_3d6e2.dir/testCXXCompiler.cxx.o -c /scratch/ybudanaz/data_must_flow_artifacts/log_implementations/gcc/amd_epyc/.dacecache/log_implementations_dace/build/CMakeFiles/CMakeScratch/TryCompile-dgCfKQ/testCXXCompiler.cxx
+    Run Build Command(s): /users/ybudanaz/.pyenv/versions/3.12.4/lib/python3.12/site-packages/cmake/data/bin/cmake -E env VERBOSE=1 /scratch/ybudanaz/spack/opt/spack/linux-centos8-zen2/gcc-10.2.0/gmake-4.4.1-gpmelukr7tfcxmwv3tlwazj6jelsyke6/bin/gmake -f Makefile cmTC_e7567/fast
+    /scratch/ybudanaz/spack/opt/spack/linux-centos8-zen2/gcc-10.2.0/gmake-4.4.1-gpmelukr7tfcxmwv3tlwazj6jelsyke6/bin/gmake  -f CMakeFiles/cmTC_e7567.dir/build.make CMakeFiles/cmTC_e7567.dir/build
+    gmake[1]: Entering directory '/scratch/ybudanaz/data_must_flow_artifacts/log_implementations/gcc/amd_epyc/.dacecache/log_implementations_dace/build/CMakeFiles/CMakeScratch/TryCompile-znF4jF'
+    Building CXX object CMakeFiles/cmTC_e7567.dir/testCXXCompiler.cxx.o
+    /scratch/ybudanaz/spack/opt/spack/linux-centos8-zen2/gcc-10.2.0/gcc-14.2.0-2ib2x4iccgsxfde5ggfripdsywmm5hxc/bin/g++   -fopenmp -fstrict-aliasing -std=c++17 -faligned-new -fPIC -Wall -Wextra -O3 -march=native -ffast-math -Wno-unused-parameter -Wno-unused-label -march=armv9-a -mcpu=neoverse-v2 -fno-tree-vectorize -fno-tree-slp-vectorize  -o CMakeFiles/cmTC_e7567.dir/testCXXCompiler.cxx.o -c /scratch/ybudanaz/data_must_flow_artifacts/log_implementations/gcc/amd_epyc/.dacecache/log_implementations_dace/build/CMakeFiles/CMakeScratch/TryCompile-znF4jF/testCXXCompiler.cxx
     g++: warning: '-mcpu=' is deprecated; use '-mtune=' or '-march=' instead
     cc1plus: error: bad value 'armv9-a' for '-march=' switch
     cc1plus: note: valid arguments to '-march=' switch are: nocona core2 nehalem corei7 westmere sandybridge corei7-avx ivybridge core-avx-i haswell core-avx2 broadwell skylake skylake-avx512 cannonlake icelake-client rocketlake icelake-server cascadelake tigerlake cooperlake sapphirerapids emeraldrapids alderlake raptorlake meteorlake graniterapids graniterapids-d arrowlake arrowlake-s lunarlake pantherlake bonnell atom silvermont slm goldmont goldmont-plus tremont gracemont sierraforest grandridge clearwaterforest knl knm x86-64 x86-64-v2 x86-64-v3 x86-64-v4 eden-x2 nano nano-1000 nano-2000 nano-3000 nano-x2 eden-x4 nano-x4 lujiazui yongfeng k8 k8-sse3 opteron opteron-sse3 athlon64 athlon64-sse3 athlon-fx amdfam10 barcelona bdver1 bdver2 bdver3 bdver4 znver1 znver2 znver3 znver4 znver5 btver1 btver2 native
     cc1plus: error: bad value 'neoverse-v2' for '-mtune=' switch
     cc1plus: note: valid arguments to '-mtune=' switch are: nocona core2 nehalem corei7 westmere sandybridge corei7-avx ivybridge core-avx-i haswell core-avx2 broadwell skylake skylake-avx512 cannonlake icelake-client rocketlake icelake-server cascadelake tigerlake cooperlake sapphirerapids emeraldrapids alderlake raptorlake meteorlake graniterapids graniterapids-d arrowlake arrowlake-s lunarlake pantherlake bonnell atom silvermont slm goldmont goldmont-plus tremont gracemont sierraforest grandridge clearwaterforest knl knm intel x86-64 eden-x2 nano nano-1000 nano-2000 nano-3000 nano-x2 eden-x4 nano-x4 lujiazui yongfeng k8 k8-sse3 opteron opteron-sse3 athlon64 athlon64-sse3 athlon-fx amdfam10 barcelona bdver1 bdver2 bdver3 bdver4 znver1 znver2 znver3 znver4 znver5 btver1 btver2 generic native
-    gmake[1]: *** [CMakeFiles/cmTC_3d6e2.dir/build.make:81: CMakeFiles/cmTC_3d6e2.dir/testCXXCompiler.cxx.o] Error 1
-    gmake[1]: Leaving directory '/scratch/ybudanaz/data_must_flow_artifacts/log_implementations/gcc/amd_epyc/.dacecache/log_implementations_dace/build/CMakeFiles/CMakeScratch/TryCompile-dgCfKQ'
-    gmake: *** [Makefile:134: cmTC_3d6e2/fast] Error 2
+    gmake[1]: *** [CMakeFiles/cmTC_e7567.dir/build.make:81: CMakeFiles/cmTC_e7567.dir/testCXXCompiler.cxx.o] Error 1
+    gmake[1]: Leaving directory '/scratch/ybudanaz/data_must_flow_artifacts/log_implementations/gcc/amd_epyc/.dacecache/log_implementations_dace/build/CMakeFiles/CMakeScratch/TryCompile-znF4jF'
+    gmake: *** [Makefile:134: cmTC_e7567/fast] Error 2
     
     
 
@@ -322,10 +322,10 @@ subprocess.CalledProcessError: Command 'cmake  "/scratch/ybudanaz/dace/dace/code
 During handling of the above exception, another exception occurred:
 
 Traceback (most recent call last):
-  File "/scratch/ybudanaz/data_must_flow_artifacts/log_implementations/gcc/amd_epyc/benchmark_log_implementations.py", line 276, in <module>
+  File "/scratch/ybudanaz/data_must_flow_artifacts/log_implementations/gcc/amd_epyc/benchmark_log_implementations.py", line 265, in <module>
     all_timings["log_implementations_dace", S] = run_sdfg_multiple_times(
                                                  ^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/scratch/ybudanaz/data_must_flow_artifacts/log_implementations/gcc/amd_epyc/benchmark_log_implementations.py", line 193, in run_sdfg_multiple_times
+  File "/scratch/ybudanaz/data_must_flow_artifacts/log_implementations/gcc/amd_epyc/benchmark_log_implementations.py", line 182, in run_sdfg_multiple_times
     compiled = sdfg.compile()
                ^^^^^^^^^^^^^^
   File "/scratch/ybudanaz/dace/dace/sdfg/sdfg.py", line 2436, in compile
@@ -353,21 +353,21 @@ CMake Error at /users/ybudanaz/.pyenv/versions/3.12.4/lib/python3.12/site-packag
 
   It fails with the following output:
 
-    Change Dir: '/scratch/ybudanaz/data_must_flow_artifacts/log_implementations/gcc/amd_epyc/.dacecache/log_implementations_dace/build/CMakeFiles/CMakeScratch/TryCompile-bbGTuF'
+    Change Dir: '/scratch/ybudanaz/data_must_flow_artifacts/log_implementations/gcc/amd_epyc/.dacecache/log_implementations_dace/build/CMakeFiles/CMakeScratch/TryCompile-1NYNCq'
     
-    Run Build Command(s): /users/ybudanaz/.pyenv/versions/3.12.4/lib/python3.12/site-packages/cmake/data/bin/cmake -E env VERBOSE=1 /scratch/ybudanaz/spack/opt/spack/linux-centos8-zen2/gcc-10.2.0/gmake-4.4.1-gpmelukr7tfcxmwv3tlwazj6jelsyke6/bin/gmake -f Makefile cmTC_1d1a3/fast
-    /scratch/ybudanaz/spack/opt/spack/linux-centos8-zen2/gcc-10.2.0/gmake-4.4.1-gpmelukr7tfcxmwv3tlwazj6jelsyke6/bin/gmake  -f CMakeFiles/cmTC_1d1a3.dir/build.make CMakeFiles/cmTC_1d1a3.dir/build
-    gmake[1]: Entering directory '/scratch/ybudanaz/data_must_flow_artifacts/log_implementations/gcc/amd_epyc/.dacecache/log_implementations_dace/build/CMakeFiles/CMakeScratch/TryCompile-bbGTuF'
-    Building CXX object CMakeFiles/cmTC_1d1a3.dir/testCXXCompiler.cxx.o
-    /scratch/ybudanaz/spack/opt/spack/linux-centos8-zen2/gcc-10.2.0/gcc-14.2.0-2ib2x4iccgsxfde5ggfripdsywmm5hxc/bin/g++   -fopenmp -fstrict-aliasing -std=c++17 -faligned-new -fPIC -Wall -Wextra -O3 -march=native -ffast-math -Wno-unused-parameter -Wno-unused-label -march=armv9-a+sve2 -mcpu=neoverse-v2  -o CMakeFiles/cmTC_1d1a3.dir/testCXXCompiler.cxx.o -c /scratch/ybudanaz/data_must_flow_artifacts/log_implementations/gcc/amd_epyc/.dacecache/log_implementations_dace/build/CMakeFiles/CMakeScratch/TryCompile-bbGTuF/testCXXCompiler.cxx
+    Run Build Command(s): /users/ybudanaz/.pyenv/versions/3.12.4/lib/python3.12/site-packages/cmake/data/bin/cmake -E env VERBOSE=1 /scratch/ybudanaz/spack/opt/spack/linux-centos8-zen2/gcc-10.2.0/gmake-4.4.1-gpmelukr7tfcxmwv3tlwazj6jelsyke6/bin/gmake -f Makefile cmTC_cda73/fast
+    /scratch/ybudanaz/spack/opt/spack/linux-centos8-zen2/gcc-10.2.0/gmake-4.4.1-gpmelukr7tfcxmwv3tlwazj6jelsyke6/bin/gmake  -f CMakeFiles/cmTC_cda73.dir/build.make CMakeFiles/cmTC_cda73.dir/build
+    gmake[1]: Entering directory '/scratch/ybudanaz/data_must_flow_artifacts/log_implementations/gcc/amd_epyc/.dacecache/log_implementations_dace/build/CMakeFiles/CMakeScratch/TryCompile-1NYNCq'
+    Building CXX object CMakeFiles/cmTC_cda73.dir/testCXXCompiler.cxx.o
+    /scratch/ybudanaz/spack/opt/spack/linux-centos8-zen2/gcc-10.2.0/gcc-14.2.0-2ib2x4iccgsxfde5ggfripdsywmm5hxc/bin/g++   -fopenmp -fstrict-aliasing -std=c++17 -faligned-new -fPIC -Wall -Wextra -O3 -march=native -ffast-math -Wno-unused-parameter -Wno-unused-label -march=armv9-a+sve2 -mcpu=neoverse-v2  -o CMakeFiles/cmTC_cda73.dir/testCXXCompiler.cxx.o -c /scratch/ybudanaz/data_must_flow_artifacts/log_implementations/gcc/amd_epyc/.dacecache/log_implementations_dace/build/CMakeFiles/CMakeScratch/TryCompile-1NYNCq/testCXXCompiler.cxx
     g++: warning: '-mcpu=' is deprecated; use '-mtune=' or '-march=' instead
     cc1plus: error: bad value 'armv9-a+sve2' for '-march=' switch
     cc1plus: note: valid arguments to '-march=' switch are: nocona core2 nehalem corei7 westmere sandybridge corei7-avx ivybridge core-avx-i haswell core-avx2 broadwell skylake skylake-avx512 cannonlake icelake-client rocketlake icelake-server cascadelake tigerlake cooperlake sapphirerapids emeraldrapids alderlake raptorlake meteorlake graniterapids graniterapids-d arrowlake arrowlake-s lunarlake pantherlake bonnell atom silvermont slm goldmont goldmont-plus tremont gracemont sierraforest grandridge clearwaterforest knl knm x86-64 x86-64-v2 x86-64-v3 x86-64-v4 eden-x2 nano nano-1000 nano-2000 nano-3000 nano-x2 eden-x4 nano-x4 lujiazui yongfeng k8 k8-sse3 opteron opteron-sse3 athlon64 athlon64-sse3 athlon-fx amdfam10 barcelona bdver1 bdver2 bdver3 bdver4 znver1 znver2 znver3 znver4 znver5 btver1 btver2 native
     cc1plus: error: bad value 'neoverse-v2' for '-mtune=' switch
     cc1plus: note: valid arguments to '-mtune=' switch are: nocona core2 nehalem corei7 westmere sandybridge corei7-avx ivybridge core-avx-i haswell core-avx2 broadwell skylake skylake-avx512 cannonlake icelake-client rocketlake icelake-server cascadelake tigerlake cooperlake sapphirerapids emeraldrapids alderlake raptorlake meteorlake graniterapids graniterapids-d arrowlake arrowlake-s lunarlake pantherlake bonnell atom silvermont slm goldmont goldmont-plus tremont gracemont sierraforest grandridge clearwaterforest knl knm intel x86-64 eden-x2 nano nano-1000 nano-2000 nano-3000 nano-x2 eden-x4 nano-x4 lujiazui yongfeng k8 k8-sse3 opteron opteron-sse3 athlon64 athlon64-sse3 athlon-fx amdfam10 barcelona bdver1 bdver2 bdver3 bdver4 znver1 znver2 znver3 znver4 znver5 btver1 btver2 generic native
-    gmake[1]: *** [CMakeFiles/cmTC_1d1a3.dir/build.make:81: CMakeFiles/cmTC_1d1a3.dir/testCXXCompiler.cxx.o] Error 1
-    gmake[1]: Leaving directory '/scratch/ybudanaz/data_must_flow_artifacts/log_implementations/gcc/amd_epyc/.dacecache/log_implementations_dace/build/CMakeFiles/CMakeScratch/TryCompile-bbGTuF'
-    gmake: *** [Makefile:134: cmTC_1d1a3/fast] Error 2
+    gmake[1]: *** [CMakeFiles/cmTC_cda73.dir/build.make:81: CMakeFiles/cmTC_cda73.dir/testCXXCompiler.cxx.o] Error 1
+    gmake[1]: Leaving directory '/scratch/ybudanaz/data_must_flow_artifacts/log_implementations/gcc/amd_epyc/.dacecache/log_implementations_dace/build/CMakeFiles/CMakeScratch/TryCompile-1NYNCq'
+    gmake: *** [Makefile:134: cmTC_cda73/fast] Error 2
     
     
 
@@ -399,10 +399,10 @@ subprocess.CalledProcessError: Command 'cmake  "/scratch/ybudanaz/dace/dace/code
 During handling of the above exception, another exception occurred:
 
 Traceback (most recent call last):
-  File "/scratch/ybudanaz/data_must_flow_artifacts/log_implementations/gcc/amd_epyc/benchmark_log_implementations.py", line 276, in <module>
+  File "/scratch/ybudanaz/data_must_flow_artifacts/log_implementations/gcc/amd_epyc/benchmark_log_implementations.py", line 265, in <module>
     all_timings["log_implementations_dace", S] = run_sdfg_multiple_times(
                                                  ^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/scratch/ybudanaz/data_must_flow_artifacts/log_implementations/gcc/amd_epyc/benchmark_log_implementations.py", line 193, in run_sdfg_multiple_times
+  File "/scratch/ybudanaz/data_must_flow_artifacts/log_implementations/gcc/amd_epyc/benchmark_log_implementations.py", line 182, in run_sdfg_multiple_times
     compiled = sdfg.compile()
                ^^^^^^^^^^^^^^
   File "/scratch/ybudanaz/dace/dace/sdfg/sdfg.py", line 2436, in compile
@@ -430,21 +430,21 @@ CMake Error at /users/ybudanaz/.pyenv/versions/3.12.4/lib/python3.12/site-packag
 
   It fails with the following output:
 
-    Change Dir: '/scratch/ybudanaz/data_must_flow_artifacts/log_implementations/gcc/amd_epyc/.dacecache/log_implementations_dace/build/CMakeFiles/CMakeScratch/TryCompile-1G0bJ6'
+    Change Dir: '/scratch/ybudanaz/data_must_flow_artifacts/log_implementations/gcc/amd_epyc/.dacecache/log_implementations_dace/build/CMakeFiles/CMakeScratch/TryCompile-LY6jYW'
     
-    Run Build Command(s): /users/ybudanaz/.pyenv/versions/3.12.4/lib/python3.12/site-packages/cmake/data/bin/cmake -E env VERBOSE=1 /scratch/ybudanaz/spack/opt/spack/linux-centos8-zen2/gcc-10.2.0/gmake-4.4.1-gpmelukr7tfcxmwv3tlwazj6jelsyke6/bin/gmake -f Makefile cmTC_08724/fast
-    /scratch/ybudanaz/spack/opt/spack/linux-centos8-zen2/gcc-10.2.0/gmake-4.4.1-gpmelukr7tfcxmwv3tlwazj6jelsyke6/bin/gmake  -f CMakeFiles/cmTC_08724.dir/build.make CMakeFiles/cmTC_08724.dir/build
-    gmake[1]: Entering directory '/scratch/ybudanaz/data_must_flow_artifacts/log_implementations/gcc/amd_epyc/.dacecache/log_implementations_dace/build/CMakeFiles/CMakeScratch/TryCompile-1G0bJ6'
-    Building CXX object CMakeFiles/cmTC_08724.dir/testCXXCompiler.cxx.o
-    /scratch/ybudanaz/spack/opt/spack/linux-centos8-zen2/gcc-10.2.0/gcc-14.2.0-2ib2x4iccgsxfde5ggfripdsywmm5hxc/bin/g++   -fopenmp -fstrict-aliasing -std=c++17 -faligned-new -fPIC -Wall -Wextra -O3 -march=native -ffast-math -Wno-unused-parameter -Wno-unused-label -march=armv9-a+simd -mcpu=neoverse-v2 -mprefer-vector-width=128  -o CMakeFiles/cmTC_08724.dir/testCXXCompiler.cxx.o -c /scratch/ybudanaz/data_must_flow_artifacts/log_implementations/gcc/amd_epyc/.dacecache/log_implementations_dace/build/CMakeFiles/CMakeScratch/TryCompile-1G0bJ6/testCXXCompiler.cxx
+    Run Build Command(s): /users/ybudanaz/.pyenv/versions/3.12.4/lib/python3.12/site-packages/cmake/data/bin/cmake -E env VERBOSE=1 /scratch/ybudanaz/spack/opt/spack/linux-centos8-zen2/gcc-10.2.0/gmake-4.4.1-gpmelukr7tfcxmwv3tlwazj6jelsyke6/bin/gmake -f Makefile cmTC_f5b15/fast
+    /scratch/ybudanaz/spack/opt/spack/linux-centos8-zen2/gcc-10.2.0/gmake-4.4.1-gpmelukr7tfcxmwv3tlwazj6jelsyke6/bin/gmake  -f CMakeFiles/cmTC_f5b15.dir/build.make CMakeFiles/cmTC_f5b15.dir/build
+    gmake[1]: Entering directory '/scratch/ybudanaz/data_must_flow_artifacts/log_implementations/gcc/amd_epyc/.dacecache/log_implementations_dace/build/CMakeFiles/CMakeScratch/TryCompile-LY6jYW'
+    Building CXX object CMakeFiles/cmTC_f5b15.dir/testCXXCompiler.cxx.o
+    /scratch/ybudanaz/spack/opt/spack/linux-centos8-zen2/gcc-10.2.0/gcc-14.2.0-2ib2x4iccgsxfde5ggfripdsywmm5hxc/bin/g++   -fopenmp -fstrict-aliasing -std=c++17 -faligned-new -fPIC -Wall -Wextra -O3 -march=native -ffast-math -Wno-unused-parameter -Wno-unused-label -march=armv9-a+simd -mcpu=neoverse-v2 -mprefer-vector-width=128  -o CMakeFiles/cmTC_f5b15.dir/testCXXCompiler.cxx.o -c /scratch/ybudanaz/data_must_flow_artifacts/log_implementations/gcc/amd_epyc/.dacecache/log_implementations_dace/build/CMakeFiles/CMakeScratch/TryCompile-LY6jYW/testCXXCompiler.cxx
     g++: warning: '-mcpu=' is deprecated; use '-mtune=' or '-march=' instead
     cc1plus: error: bad value 'armv9-a+simd' for '-march=' switch
     cc1plus: note: valid arguments to '-march=' switch are: nocona core2 nehalem corei7 westmere sandybridge corei7-avx ivybridge core-avx-i haswell core-avx2 broadwell skylake skylake-avx512 cannonlake icelake-client rocketlake icelake-server cascadelake tigerlake cooperlake sapphirerapids emeraldrapids alderlake raptorlake meteorlake graniterapids graniterapids-d arrowlake arrowlake-s lunarlake pantherlake bonnell atom silvermont slm goldmont goldmont-plus tremont gracemont sierraforest grandridge clearwaterforest knl knm x86-64 x86-64-v2 x86-64-v3 x86-64-v4 eden-x2 nano nano-1000 nano-2000 nano-3000 nano-x2 eden-x4 nano-x4 lujiazui yongfeng k8 k8-sse3 opteron opteron-sse3 athlon64 athlon64-sse3 athlon-fx amdfam10 barcelona bdver1 bdver2 bdver3 bdver4 znver1 znver2 znver3 znver4 znver5 btver1 btver2 native
     cc1plus: error: bad value 'neoverse-v2' for '-mtune=' switch
     cc1plus: note: valid arguments to '-mtune=' switch are: nocona core2 nehalem corei7 westmere sandybridge corei7-avx ivybridge core-avx-i haswell core-avx2 broadwell skylake skylake-avx512 cannonlake icelake-client rocketlake icelake-server cascadelake tigerlake cooperlake sapphirerapids emeraldrapids alderlake raptorlake meteorlake graniterapids graniterapids-d arrowlake arrowlake-s lunarlake pantherlake bonnell atom silvermont slm goldmont goldmont-plus tremont gracemont sierraforest grandridge clearwaterforest knl knm intel x86-64 eden-x2 nano nano-1000 nano-2000 nano-3000 nano-x2 eden-x4 nano-x4 lujiazui yongfeng k8 k8-sse3 opteron opteron-sse3 athlon64 athlon64-sse3 athlon-fx amdfam10 barcelona bdver1 bdver2 bdver3 bdver4 znver1 znver2 znver3 znver4 znver5 btver1 btver2 generic native
-    gmake[1]: *** [CMakeFiles/cmTC_08724.dir/build.make:81: CMakeFiles/cmTC_08724.dir/testCXXCompiler.cxx.o] Error 1
-    gmake[1]: Leaving directory '/scratch/ybudanaz/data_must_flow_artifacts/log_implementations/gcc/amd_epyc/.dacecache/log_implementations_dace/build/CMakeFiles/CMakeScratch/TryCompile-1G0bJ6'
-    gmake: *** [Makefile:134: cmTC_08724/fast] Error 2
+    gmake[1]: *** [CMakeFiles/cmTC_f5b15.dir/build.make:81: CMakeFiles/cmTC_f5b15.dir/testCXXCompiler.cxx.o] Error 1
+    gmake[1]: Leaving directory '/scratch/ybudanaz/data_must_flow_artifacts/log_implementations/gcc/amd_epyc/.dacecache/log_implementations_dace/build/CMakeFiles/CMakeScratch/TryCompile-LY6jYW'
+    gmake: *** [Makefile:134: cmTC_f5b15/fast] Error 2
     
     
 
@@ -476,10 +476,10 @@ subprocess.CalledProcessError: Command 'cmake  "/scratch/ybudanaz/dace/dace/code
 During handling of the above exception, another exception occurred:
 
 Traceback (most recent call last):
-  File "/scratch/ybudanaz/data_must_flow_artifacts/log_implementations/gcc/amd_epyc/benchmark_log_implementations.py", line 276, in <module>
+  File "/scratch/ybudanaz/data_must_flow_artifacts/log_implementations/gcc/amd_epyc/benchmark_log_implementations.py", line 265, in <module>
     all_timings["log_implementations_dace", S] = run_sdfg_multiple_times(
                                                  ^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/scratch/ybudanaz/data_must_flow_artifacts/log_implementations/gcc/amd_epyc/benchmark_log_implementations.py", line 193, in run_sdfg_multiple_times
+  File "/scratch/ybudanaz/data_must_flow_artifacts/log_implementations/gcc/amd_epyc/benchmark_log_implementations.py", line 182, in run_sdfg_multiple_times
     compiled = sdfg.compile()
                ^^^^^^^^^^^^^^
   File "/scratch/ybudanaz/dace/dace/sdfg/sdfg.py", line 2436, in compile
@@ -507,18 +507,18 @@ CMake Error at /users/ybudanaz/.pyenv/versions/3.12.4/lib/python3.12/site-packag
 
   It fails with the following output:
 
-    Change Dir: '/scratch/ybudanaz/data_must_flow_artifacts/log_implementations/gcc/amd_epyc/.dacecache/log_implementations_dace/build/CMakeFiles/CMakeScratch/TryCompile-34q57Y'
+    Change Dir: '/scratch/ybudanaz/data_must_flow_artifacts/log_implementations/gcc/amd_epyc/.dacecache/log_implementations_dace/build/CMakeFiles/CMakeScratch/TryCompile-Aru6p7'
     
-    Run Build Command(s): /users/ybudanaz/.pyenv/versions/3.12.4/lib/python3.12/site-packages/cmake/data/bin/cmake -E env VERBOSE=1 /scratch/ybudanaz/spack/opt/spack/linux-centos8-zen2/gcc-10.2.0/gmake-4.4.1-gpmelukr7tfcxmwv3tlwazj6jelsyke6/bin/gmake -f Makefile cmTC_03585/fast
-    /scratch/ybudanaz/spack/opt/spack/linux-centos8-zen2/gcc-10.2.0/gmake-4.4.1-gpmelukr7tfcxmwv3tlwazj6jelsyke6/bin/gmake  -f CMakeFiles/cmTC_03585.dir/build.make CMakeFiles/cmTC_03585.dir/build
-    gmake[1]: Entering directory '/scratch/ybudanaz/data_must_flow_artifacts/log_implementations/gcc/amd_epyc/.dacecache/log_implementations_dace/build/CMakeFiles/CMakeScratch/TryCompile-34q57Y'
-    Building CXX object CMakeFiles/cmTC_03585.dir/testCXXCompiler.cxx.o
-    /scratch/ybudanaz/spack/opt/spack/linux-centos8-zen2/gcc-10.2.0/gcc-14.2.0-2ib2x4iccgsxfde5ggfripdsywmm5hxc/bin/g++   -fopenmp -fstrict-aliasing -std=c++17 -faligned-new -fPIC -Wall -Wextra -O3 -march=native -ffast-math -Wno-unused-parameter -Wno-unused-label -march=armv9-a+sve2 -no-simd -mcpu=neoverse-v2  -o CMakeFiles/cmTC_03585.dir/testCXXCompiler.cxx.o -c /scratch/ybudanaz/data_must_flow_artifacts/log_implementations/gcc/amd_epyc/.dacecache/log_implementations_dace/build/CMakeFiles/CMakeScratch/TryCompile-34q57Y/testCXXCompiler.cxx
+    Run Build Command(s): /users/ybudanaz/.pyenv/versions/3.12.4/lib/python3.12/site-packages/cmake/data/bin/cmake -E env VERBOSE=1 /scratch/ybudanaz/spack/opt/spack/linux-centos8-zen2/gcc-10.2.0/gmake-4.4.1-gpmelukr7tfcxmwv3tlwazj6jelsyke6/bin/gmake -f Makefile cmTC_530a9/fast
+    /scratch/ybudanaz/spack/opt/spack/linux-centos8-zen2/gcc-10.2.0/gmake-4.4.1-gpmelukr7tfcxmwv3tlwazj6jelsyke6/bin/gmake  -f CMakeFiles/cmTC_530a9.dir/build.make CMakeFiles/cmTC_530a9.dir/build
+    gmake[1]: Entering directory '/scratch/ybudanaz/data_must_flow_artifacts/log_implementations/gcc/amd_epyc/.dacecache/log_implementations_dace/build/CMakeFiles/CMakeScratch/TryCompile-Aru6p7'
+    Building CXX object CMakeFiles/cmTC_530a9.dir/testCXXCompiler.cxx.o
+    /scratch/ybudanaz/spack/opt/spack/linux-centos8-zen2/gcc-10.2.0/gcc-14.2.0-2ib2x4iccgsxfde5ggfripdsywmm5hxc/bin/g++   -fopenmp -fstrict-aliasing -std=c++17 -faligned-new -fPIC -Wall -Wextra -O3 -march=native -ffast-math -Wno-unused-parameter -Wno-unused-label -march=armv9-a+sve2 -no-simd -mcpu=neoverse-v2  -o CMakeFiles/cmTC_530a9.dir/testCXXCompiler.cxx.o -c /scratch/ybudanaz/data_must_flow_artifacts/log_implementations/gcc/amd_epyc/.dacecache/log_implementations_dace/build/CMakeFiles/CMakeScratch/TryCompile-Aru6p7/testCXXCompiler.cxx
     g++: warning: '-mcpu=' is deprecated; use '-mtune=' or '-march=' instead
     g++: error: unrecognized command-line option '-no-simd'
-    gmake[1]: *** [CMakeFiles/cmTC_03585.dir/build.make:81: CMakeFiles/cmTC_03585.dir/testCXXCompiler.cxx.o] Error 1
-    gmake[1]: Leaving directory '/scratch/ybudanaz/data_must_flow_artifacts/log_implementations/gcc/amd_epyc/.dacecache/log_implementations_dace/build/CMakeFiles/CMakeScratch/TryCompile-34q57Y'
-    gmake: *** [Makefile:134: cmTC_03585/fast] Error 2
+    gmake[1]: *** [CMakeFiles/cmTC_530a9.dir/build.make:81: CMakeFiles/cmTC_530a9.dir/testCXXCompiler.cxx.o] Error 1
+    gmake[1]: Leaving directory '/scratch/ybudanaz/data_must_flow_artifacts/log_implementations/gcc/amd_epyc/.dacecache/log_implementations_dace/build/CMakeFiles/CMakeScratch/TryCompile-Aru6p7'
+    gmake: *** [Makefile:134: cmTC_530a9/fast] Error 2
     
     
 
@@ -550,10 +550,10 @@ subprocess.CalledProcessError: Command 'cmake  "/scratch/ybudanaz/dace/dace/code
 During handling of the above exception, another exception occurred:
 
 Traceback (most recent call last):
-  File "/scratch/ybudanaz/data_must_flow_artifacts/log_implementations/gcc/amd_epyc/benchmark_log_implementations.py", line 276, in <module>
+  File "/scratch/ybudanaz/data_must_flow_artifacts/log_implementations/gcc/amd_epyc/benchmark_log_implementations.py", line 265, in <module>
     all_timings["log_implementations_dace", S] = run_sdfg_multiple_times(
                                                  ^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/scratch/ybudanaz/data_must_flow_artifacts/log_implementations/gcc/amd_epyc/benchmark_log_implementations.py", line 193, in run_sdfg_multiple_times
+  File "/scratch/ybudanaz/data_must_flow_artifacts/log_implementations/gcc/amd_epyc/benchmark_log_implementations.py", line 182, in run_sdfg_multiple_times
     compiled = sdfg.compile()
                ^^^^^^^^^^^^^^
   File "/scratch/ybudanaz/dace/dace/sdfg/sdfg.py", line 2436, in compile
@@ -581,21 +581,21 @@ CMake Error at /users/ybudanaz/.pyenv/versions/3.12.4/lib/python3.12/site-packag
 
   It fails with the following output:
 
-    Change Dir: '/scratch/ybudanaz/data_must_flow_artifacts/log_implementations/gcc/amd_epyc/.dacecache/log_implementations_dace/build/CMakeFiles/CMakeScratch/TryCompile-eIo9Es'
+    Change Dir: '/scratch/ybudanaz/data_must_flow_artifacts/log_implementations/gcc/amd_epyc/.dacecache/log_implementations_dace/build/CMakeFiles/CMakeScratch/TryCompile-FEu7jT'
     
-    Run Build Command(s): /users/ybudanaz/.pyenv/versions/3.12.4/lib/python3.12/site-packages/cmake/data/bin/cmake -E env VERBOSE=1 /scratch/ybudanaz/spack/opt/spack/linux-centos8-zen2/gcc-10.2.0/gmake-4.4.1-gpmelukr7tfcxmwv3tlwazj6jelsyke6/bin/gmake -f Makefile cmTC_88955/fast
-    /scratch/ybudanaz/spack/opt/spack/linux-centos8-zen2/gcc-10.2.0/gmake-4.4.1-gpmelukr7tfcxmwv3tlwazj6jelsyke6/bin/gmake  -f CMakeFiles/cmTC_88955.dir/build.make CMakeFiles/cmTC_88955.dir/build
-    gmake[1]: Entering directory '/scratch/ybudanaz/data_must_flow_artifacts/log_implementations/gcc/amd_epyc/.dacecache/log_implementations_dace/build/CMakeFiles/CMakeScratch/TryCompile-eIo9Es'
-    Building CXX object CMakeFiles/cmTC_88955.dir/testCXXCompiler.cxx.o
-    /scratch/ybudanaz/spack/opt/spack/linux-centos8-zen2/gcc-10.2.0/gcc-14.2.0-2ib2x4iccgsxfde5ggfripdsywmm5hxc/bin/g++   -fopenmp -fstrict-aliasing -std=c++17 -faligned-new -fPIC -Wall -Wextra -O3 -march=native -ffast-math -Wno-unused-parameter -Wno-unused-label -march=armv9-a -mcpu=neoverse-v2 -fno-tree-vectorize -fno-tree-slp-vectorize  -o CMakeFiles/cmTC_88955.dir/testCXXCompiler.cxx.o -c /scratch/ybudanaz/data_must_flow_artifacts/log_implementations/gcc/amd_epyc/.dacecache/log_implementations_dace/build/CMakeFiles/CMakeScratch/TryCompile-eIo9Es/testCXXCompiler.cxx
+    Run Build Command(s): /users/ybudanaz/.pyenv/versions/3.12.4/lib/python3.12/site-packages/cmake/data/bin/cmake -E env VERBOSE=1 /scratch/ybudanaz/spack/opt/spack/linux-centos8-zen2/gcc-10.2.0/gmake-4.4.1-gpmelukr7tfcxmwv3tlwazj6jelsyke6/bin/gmake -f Makefile cmTC_fa1e7/fast
+    /scratch/ybudanaz/spack/opt/spack/linux-centos8-zen2/gcc-10.2.0/gmake-4.4.1-gpmelukr7tfcxmwv3tlwazj6jelsyke6/bin/gmake  -f CMakeFiles/cmTC_fa1e7.dir/build.make CMakeFiles/cmTC_fa1e7.dir/build
+    gmake[1]: Entering directory '/scratch/ybudanaz/data_must_flow_artifacts/log_implementations/gcc/amd_epyc/.dacecache/log_implementations_dace/build/CMakeFiles/CMakeScratch/TryCompile-FEu7jT'
+    Building CXX object CMakeFiles/cmTC_fa1e7.dir/testCXXCompiler.cxx.o
+    /scratch/ybudanaz/spack/opt/spack/linux-centos8-zen2/gcc-10.2.0/gcc-14.2.0-2ib2x4iccgsxfde5ggfripdsywmm5hxc/bin/g++   -fopenmp -fstrict-aliasing -std=c++17 -faligned-new -fPIC -Wall -Wextra -O3 -march=native -ffast-math -Wno-unused-parameter -Wno-unused-label -march=armv9-a -mcpu=neoverse-v2 -fno-tree-vectorize -fno-tree-slp-vectorize  -o CMakeFiles/cmTC_fa1e7.dir/testCXXCompiler.cxx.o -c /scratch/ybudanaz/data_must_flow_artifacts/log_implementations/gcc/amd_epyc/.dacecache/log_implementations_dace/build/CMakeFiles/CMakeScratch/TryCompile-FEu7jT/testCXXCompiler.cxx
     g++: warning: '-mcpu=' is deprecated; use '-mtune=' or '-march=' instead
     cc1plus: error: bad value 'armv9-a' for '-march=' switch
     cc1plus: note: valid arguments to '-march=' switch are: nocona core2 nehalem corei7 westmere sandybridge corei7-avx ivybridge core-avx-i haswell core-avx2 broadwell skylake skylake-avx512 cannonlake icelake-client rocketlake icelake-server cascadelake tigerlake cooperlake sapphirerapids emeraldrapids alderlake raptorlake meteorlake graniterapids graniterapids-d arrowlake arrowlake-s lunarlake pantherlake bonnell atom silvermont slm goldmont goldmont-plus tremont gracemont sierraforest grandridge clearwaterforest knl knm x86-64 x86-64-v2 x86-64-v3 x86-64-v4 eden-x2 nano nano-1000 nano-2000 nano-3000 nano-x2 eden-x4 nano-x4 lujiazui yongfeng k8 k8-sse3 opteron opteron-sse3 athlon64 athlon64-sse3 athlon-fx amdfam10 barcelona bdver1 bdver2 bdver3 bdver4 znver1 znver2 znver3 znver4 znver5 btver1 btver2 native
     cc1plus: error: bad value 'neoverse-v2' for '-mtune=' switch
     cc1plus: note: valid arguments to '-mtune=' switch are: nocona core2 nehalem corei7 westmere sandybridge corei7-avx ivybridge core-avx-i haswell core-avx2 broadwell skylake skylake-avx512 cannonlake icelake-client rocketlake icelake-server cascadelake tigerlake cooperlake sapphirerapids emeraldrapids alderlake raptorlake meteorlake graniterapids graniterapids-d arrowlake arrowlake-s lunarlake pantherlake bonnell atom silvermont slm goldmont goldmont-plus tremont gracemont sierraforest grandridge clearwaterforest knl knm intel x86-64 eden-x2 nano nano-1000 nano-2000 nano-3000 nano-x2 eden-x4 nano-x4 lujiazui yongfeng k8 k8-sse3 opteron opteron-sse3 athlon64 athlon64-sse3 athlon-fx amdfam10 barcelona bdver1 bdver2 bdver3 bdver4 znver1 znver2 znver3 znver4 znver5 btver1 btver2 generic native
-    gmake[1]: *** [CMakeFiles/cmTC_88955.dir/build.make:81: CMakeFiles/cmTC_88955.dir/testCXXCompiler.cxx.o] Error 1
-    gmake[1]: Leaving directory '/scratch/ybudanaz/data_must_flow_artifacts/log_implementations/gcc/amd_epyc/.dacecache/log_implementations_dace/build/CMakeFiles/CMakeScratch/TryCompile-eIo9Es'
-    gmake: *** [Makefile:134: cmTC_88955/fast] Error 2
+    gmake[1]: *** [CMakeFiles/cmTC_fa1e7.dir/build.make:81: CMakeFiles/cmTC_fa1e7.dir/testCXXCompiler.cxx.o] Error 1
+    gmake[1]: Leaving directory '/scratch/ybudanaz/data_must_flow_artifacts/log_implementations/gcc/amd_epyc/.dacecache/log_implementations_dace/build/CMakeFiles/CMakeScratch/TryCompile-FEu7jT'
+    gmake: *** [Makefile:134: cmTC_fa1e7/fast] Error 2
     
     
 

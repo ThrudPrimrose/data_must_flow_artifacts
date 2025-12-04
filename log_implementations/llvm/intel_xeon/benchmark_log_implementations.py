@@ -92,17 +92,6 @@ print(f"Running with base flags: {base_flags_str}")
 print(f"Running with env flags: {env_flags_str}")
 print(f"Running with flags: {flags}")
 
-def init_openmp():
-    # Get physical core count
-    ncores = get_physical_cores()
-
-    # Set OpenMP environment
-    os.environ["OMP_NUM_THREADS"] = "1"
-    os.environ["OMP_PLACES"] = "cores"
-    os.environ["OMP_PROC_BIND"] = "true"
-
-# Call before loading OpenMP-linked C++ libs
-init_openmp()
 
 def run_vectorization_test(
     dace_func,
