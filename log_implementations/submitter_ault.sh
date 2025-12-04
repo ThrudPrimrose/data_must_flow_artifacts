@@ -1,12 +1,12 @@
-# cd gcc/amd_epyc
-# sbatch submit.sh
-# cd ../..
+cd gcc/amd_epyc
+sbatch submit.sh
+cd ../..
 cd gcc/intel_xeon
 sbatch submit.sh
 cd ../..
-# cd llvm/amd_epyc
-# sbatch submit.sh
-# cd ../..
+cd llvm/amd_epyc
+sbatch submit.sh
+cd ../..
 cd llvm/intel_xeon
 sbatch submit.sh
 cd ../..

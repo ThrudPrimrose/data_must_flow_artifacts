@@ -1,5 +1,5 @@
 #!/bin/bash
-#SBATCH --job-name=log_amd_epyc_llvm  # Job name
+#SBATCH --job-name=log_amd_epyc_intel  # Job name
 #SBATCH --nodes=1                     # Number of nodes
 #SBATCH --partition=amd               # Partition/queue
 #SBATCH --time=02:30:00               # Walltime (hh:mm:ss)
@@ -8,12 +8,13 @@
 #SBATCH --chdir=.
 
 spack load cmake
+spack load intel-oneapi-compilers@2025.0.4
 
-alias cc=clang
-alias c++=clang++
-alias cxx=clang++
-export CC=clang
-export CXX=clang++
+alias cc=icx
+alias c++=icpx
+alias cxx=icpx
+export CC=icx
+export CXX=icpx
 
 echo "Script path: $SCRIPT_PATH"
 echo "Script dir:  $SCRIPT_DIR"
@@ -23,11 +24,8 @@ export CPU_NAME="amd_epyc"
 # Define configurations: each element is "EXTRA_FLAGS SUFFIX"
 configs=(
     "" ""                                   # first run: no extra flags, no suffix
-    "-mprefer-vector-width=512" "force_width_256"   # second run
-    "-mprefer-vector-width=512" "force_width_512"
-    "-fno-vectorize" "no_vectorize"
-    # Prob disable if no arith function
-    "-fno-math-errno -fveclib=libmvec -mprefer-vector-width=512" "libmvec"
+    "-qopt-zmm-usage=high -diag-enable=vec -qopt-report=5 -qopt-report-phase=vec -qopt-report-file=${SCRIPT_DIR}/log_implementations_vec_report.optrpt" "force_width_512"
+    "-no-vec" "no_vectorize"
 )
 
 for RUNMULTI in 0 1; do
