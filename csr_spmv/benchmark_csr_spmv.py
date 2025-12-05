@@ -1,31 +1,57 @@
 import copy
 import csv
 import os
-
 import numpy as np
 import dace
 from dace.transformation.passes.vectorization.vectorize_cpu import VectorizeCPU
-from dace.sdfg import utils as sdutil
-
-# S = dace.symbol("S")
-
+from math import log
 
 import subprocess
-import argparse
 
-# -----------------------------
-# Parse arguments
-# -----------------------------
-parser = argparse.ArgumentParser(description="Run csr_spmv DaCe benchmarks")
-parser.add_argument(
-    "--suffix",
-    type=str,
-    default="",
-    help="Suffix to append to the output CSV file"
-)
-args = parser.parse_args()
+cpu_name = os.environ.get('CPU_NAME', 'amd_epyc')
+compiler_exec = os.environ.get('CXX', 'c++')
+dace.config.Config.set("compiler", "cpu", "executable", value=compiler_exec)
 
-csv_filename = f"csr_spmv_timings{('_' + args.suffix) if args.suffix else ''}_1_core.csv"
+# Base compilation flags
+base_flags = [
+    '-fopenmp', '-fstrict-aliasing', '-std=c++17', '-faligned-new',
+    '-fPIC', '-Wall', '-Wextra', '-O3', '-march=native', '-ffast-math',
+    '-Wno-unused-parameter', '-Wno-unused-label'
+]
+
+
+if cpu_name == "arm":
+    base_flags.remove("-march=native")
+
+if compiler_exec == "icpx":
+    base_flags.remove("-fopenmp")
+    base_flags.append("-qopenmp")
+
+# Architecture / compiler specific extra flags
+env_flags_str = os.environ.get('EXTRA_FLAGS', '')
+base_flags_str = ' '.join(base_flags)
+
+flags = base_flags_str + " " + env_flags_str if env_flags_str != '' else base_flags_str
+dace.config.Config.set("compiler", "cpu", "args", value=flags)
+
+
+multi_core = int(os.environ.get('RUN_MULTICORE', '0')) == 1
+core_count = 1
+
+
+multicore_suffix = '' if core_count == 1 else '_multicore'
+
+if multi_core:
+    if cpu_name == "arm":
+        core_count = 72
+    elif cpu_name == "intel_xeon":
+        core_count = 18
+    elif cpu_name == "amd_epyc":
+        core_count = 64
+
+env_suffix_str = os.environ.get('SUFFIX', '')
+if env_suffix_str != '':
+    env_suffix_str = "_" + env_suffix_str
 
 def get_physical_cores():
     # Use lscpu and parse "Core(s) per socket" and "Socket(s)"
@@ -42,8 +68,18 @@ def get_physical_cores():
     # fallback
     return int(subprocess.check_output(["nproc", "--all"]).decode())
 
-ncores = get_physical_cores()
-print("Physical cores:", ncores)
+
+def init_openmp():
+    # Get physical core count
+    ncores = get_physical_cores()
+
+    # Set OpenMP environment
+    os.environ["OMP_NUM_THREADS"] = str(core_count)
+    os.environ["OMP_PLACES"] = "cores"
+    os.environ["OMP_PROC_BIND"] = "true"
+
+# Call before loading OpenMP-linked C++ libs
+init_openmp()
 
 def init_openmp():
     # Get physical core count
@@ -56,9 +92,6 @@ def init_openmp():
 
 # Call before loading OpenMP-linked C++ libs
 init_openmp()
-
-
-
 
 def run_vectorization_test(
     dace_func,
@@ -107,99 +140,26 @@ def run_vectorization_test(
     print(sdfg.get_instrumentation_reports()[-1])
     print(copy_sdfg.get_instrumentation_reports()[-1])
 
-def _dense_to_csr(dense: np.ndarray):
-    """
-    Convert a 2D dense numpy array to CSR arrays (data, indices, indptr).
-    Keeps the same ordering usually used by CSR: row-major.
-    """
-    data = []
-    indices = []
-    indptr = [0]
-    nrows, ncols = dense.shape
-    for i in range(nrows):
-        row_nnz = 0
-        for j in range(ncols):
-            v = dense[i, j]
-            if v != 0:
-                data.append(v)
-                indices.append(j)
-                row_nnz += 1
-        indptr.append(indptr[-1] + row_nnz)
-    return np.array(data, dtype=dense.dtype), np.array(indices, dtype=np.int64), np.array(indptr,
-                                                                                                      dtype=np.int64)
 
+def test_csr_spmv():
+    # S = dace.symbol("S")
+    S = 64  # Ensure divisibility for vectorization
 
-def trim_to_multiple_of_X(dense: np.ndarray, X: int) -> np.ndarray:
-    """
-    For each row in the dense matrix, drop (set to zero) the last few nonzeros
-    so that the number of nonzeros becomes a multiple of 8.
-    """
-    A = dense.copy()
-    for i in range(A.shape[0]):
-        nz_idx = np.flatnonzero(A[i])
-        excess = len(nz_idx) % X
-        if excess:
-            # zero out the last 'excess' nonzeros
-            A[i, nz_idx[-excess:]] = 0
-    return A
-
-
-def test_pattern_one():
-    _N = 32  # Ensure divisibility for vectorization
-    n = _N  # number of rows
-    m = _N  # number of columns
-    nnz = dace.symbol('nnz')  # number of nonzeros
-    density = 0.25
-    dense = np.random.random((_N, _N))
-    mask = np.random.random((_N, _N)) < density
-    dense = dense * mask  # many zeros
-
-    # Create CSR arrays (data, indices, indptr)
-    dense = trim_to_multiple_of_X(dense, 8)
-    data, indices, indptr = _dense_to_csr(dense)
-
-    # input / output vectors
-    x = np.random.random((_N, ))
-    y_orig = np.zeros_like(x)
-    y_vec = np.zeros_like(x)
-    nnz = len(data)
+    A = np.random.random((S, S))
+    B = np.random.random((S, S))
 
     @dace.program
-    def csr_spmv(indptr: dace.int64[n + 1], indices: dace.int64[nnz], data: dace.float64[nnz], x: dace.float64[m],
-                y: dace.float64[n]):
-        n_rows = len(indptr) - 1
+    def csr_spmv(A: dace.float64[S], B: dace.float64[S]):
+        for i in dace.map[0:S]:
+            B[i] = log(A[i])
 
-        for i in dace.map[0:n_rows:1]:
-            row_start = indptr[i]
-            row_end = indptr[i + 1]
-            tmp = 0.0
-            for idx in dace.map[row_start:row_end:1]:
-                j = indices[idx]
-                tmp = tmp + data[idx] * x[j]
-            y[i] = tmp
-
-
-    sdfg = csr_spmv.to_sdfg()
-    sdfg.name = f"csr_spmv"
-    sdfg.validate()
-    #it_23: dace.int64, it_47: dace.int64
-    sdfg.validate()
-    sdfg.auto_optimize(dace.dtypes.DeviceType.CPU, True, True)
-    sdfg.validate()
-    out_no_fuse = {k: v.copy() for k, v in data.items()}
-    sdfg(**out_no_fuse)
-
-    # Apply transformation
-    copy_sdfg = copy.deepcopy(sdfg)
-    VectorizeCPU(vector_width=8, insert_copies=False).apply_pass(copy_sdfg, {})
-    copy_sdfg.name = f"csr_spmv_vectorized"
-
-    sdfg(data=data, indices=indices, indptr=indptr, x=x, y=y_orig, n=_N, nnz=_nnz)
-    copy_sdfg(data=data, indices=indices, indptr=indptr, x=x, y=y_vec, n=_N, nnz=_nnz)
-
-
-    # Compare all arrays
-    assert np.allclose(y_orig, y_vec, atol=1e-12), f"{y_orig - y_vec}"
+    run_vectorization_test(
+        dace_func=csr_spmv,
+        arrays={"A": A, "B": B},
+        params={},
+        vector_width=8,
+        sdfg_name="csr_spmv",
+    )
 
 
 def run_sdfg_multiple_times(
@@ -241,18 +201,17 @@ def run_sdfg_multiple_times(
 
     return times
 
-def save_timings_to_csv(filename, timings_dict, isize, i):
+def save_timings_to_csv(filename, i, isize, timings_dict):
     """
     Write:
         sdfg_name,rep_idx,time_in_seconds
     """
     with open(filename, "w" if i == 0 else "a", newline="") as f:
         writer = csv.writer(f)
-        if i == 0:
-            writer.writerow(["sdfg_name", "size", "rep", "time_seconds"])
+        writer.writerow(["sdfg_name", "size", "rep", "time_seconds"])
 
-        for (sdfg_name,size), times in timings_dict.items():
-            if size != isize:
+        for (sdfg_name, size), times in timings_dict.items():
+            if isize != size:
                 continue
             for i, t in enumerate(times):
                 writer.writerow([sdfg_name, size, i, t])
@@ -261,24 +220,67 @@ def save_timings_to_csv(filename, timings_dict, isize, i):
 # Helpers
 # -------------------------------------------------------
 
-def build_vectorized_sdfg(base_sdfg, vec_width, insert_copies, suffix):
+def build_vectorized_sdfg(base_sdfg, vec_width, insert_copies, cpy_suffix, base_name):
     sdfg = copy.deepcopy(base_sdfg)
     VectorizeCPU(vector_width=vec_width, insert_copies=insert_copies).apply_pass(sdfg, {})
-    name = f"csr_spmv_vectorized_static_veclen_{vec_width}_{suffix}"
+    # Naming scheme: based sdfg name + compiler name + flag suffix read from env + vector length + copy suffix
+    if "/" in compiler_exec and "clang" in compiler_exec:
+        cname = "graceclang"
+    else:
+        cname = compiler_exec.replace("+","").replace("/", "_")
+    name = f"{base_name}_{cname}_{env_suffix_str}_veclen_{vec_width}_{cpy_suffix}"
     sdfg.name = name
     sdfg.instrument = dace.dtypes.InstrumentationType.Timer
-    return sdfg, name
+    return sdfg, sdfg.name
 
+
+def _dense_to_csr(dense: np.ndarray):
+    """
+    Convert a 2D dense numpy array to CSR arrays (data, indices, indptr).
+    Keeps the same ordering usually used by CSR: row-major.
+    """
+    data = []
+    indices = []
+    indptr = [0]
+    nrows, ncols = dense.shape
+    for i in range(nrows):
+        row_nnz = 0
+        for j in range(ncols):
+            v = dense[i, j]
+            if v != 0:
+                data.append(v)
+                indices.append(j)
+                row_nnz += 1
+        indptr.append(indptr[-1] + row_nnz)
+    return np.array(data, dtype=dense.dtype), np.array(indices, dtype=np.int64), np.array(indptr,
+                                                                                                      dtype=np.int64)
+
+
+def trim_to_multiple_of_X(dense: np.ndarray, X: int) -> np.ndarray:
+    """
+    For each row in the dense matrix, drop (set to zero) the last few nonzeros
+    so that the number of nonzeros becomes a multiple of 8.
+    """
+    A = dense.copy()
+    for i in range(A.shape[0]):
+        nz_idx = np.flatnonzero(A[i])
+        excess = len(nz_idx) % X
+        if excess:
+            # zero out the last 'excess' nonzeros
+            A[i, nz_idx[-excess:]] = 0
+    return A
 
 # -------------------------------------------------------
 # Main
 # -------------------------------------------------------
 
 if __name__ == "__main__":
-    NUM_REPS = 10
+    NUM_REPS = 20
     all_timings = {}
 
-    for i, N in enumerate([2048, 4096, 8192, 8192 * 2]):
+    # S = dace.symbol("S")
+    for i, S in enumerate([8192 * 64, 8192 * 256, 8192 * 512, 8192 * 1024, 8192 * 2048, 8192 * 4096, 8192 * 8192]):
+        N = S
         size = N
         _N = N
         n = N
@@ -289,7 +291,7 @@ if __name__ == "__main__":
         dense = dense * mask  # many zeros
 
         # Create CSR arrays (data, indices, indptr)
-        dense = trim_to_multiple_of_X(dense, 128)
+        dense = trim_to_multiple_of_X(dense, 64)
         data, indices, indptr = _dense_to_csr(dense)
 
         # input / output vectors
@@ -329,29 +331,56 @@ if __name__ == "__main__":
             num_runs=NUM_REPS,
         )
 
+        # Baseline SDFG
+        csr_spmv_sdfg = csr_spmv.to_sdfg()
+        csr_spmv_sdfg.name = "csr_spmv"
+        csr_spmv_sdfg.instrument = dace.dtypes.InstrumentationType.Timer
+
+        # Baseline arrays
+        A = np.random.random((S, ))
+        B = np.random.random((S, ))
+        base_arrays = {"A": A, "B": B, }
+        params = {}
+
+        # Run baseline 1
+        all_timings["csr_spmv", S] = run_sdfg_multiple_times(
+            sdfg=csr_spmv_sdfg,
+            arrays=base_arrays,
+            params=params,
+            num_runs=NUM_REPS,
+        )
+
         # -------------------------------------------------------
         # Vectorized versions
         # -------------------------------------------------------
-        for l in [8, 16, 32, 64, 128]:
-            # no-copy version
+        if cpu_name == "intel_xeon":
+            vlens = [8, 16, 32, 64]
+        elif cpu_name == "amd_epyc":
+            vlens = [4, 8, 16, 32, 64]
+        else:
+            vlens = [2, 4, 8, 16, 32, 64]
+
+        for l in vlens:
+            # std no-copy version
             sdfg_vec, name = build_vectorized_sdfg(
-                sdfg, vec_width=l, insert_copies=False, suffix="no_cpy"
+                csr_spmv_sdfg, vec_width=l, insert_copies=False, cpy_suffix="no_cpy",
+                base_name="csr_spmv"
             )
-            all_timings[name, size] = run_sdfg_multiple_times(
-                sdfg=sdfg_vec, arrays=datadict, params=dict(), num_runs=NUM_REPS
+            all_timings[name, S] = run_sdfg_multiple_times(
+                sdfg=sdfg_vec, arrays=base_arrays, params=params, num_runs=NUM_REPS
             )
 
-            # copy version
+            # std copy version
             sdfg_vec_cpy, name = build_vectorized_sdfg(
-                sdfg, vec_width=l, insert_copies=True, suffix="cpy"
+                csr_spmv_sdfg, vec_width=l, insert_copies=True, cpy_suffix="cpy",
+                base_name="csr_spmv"
             )
-            all_timings[name, size] = run_sdfg_multiple_times(
-                sdfg=sdfg_vec_cpy, arrays=datadict, params=dict(), num_runs=NUM_REPS
+            all_timings[name, S] = run_sdfg_multiple_times(
+                sdfg=sdfg_vec_cpy, arrays=base_arrays, params=params, num_runs=NUM_REPS
             )
-
 
         # -------------------------------------------------------
         # CSV output
         # -------------------------------------------------------
-        save_timings_to_csv(csv_filename, all_timings, size, i)
-        print(f"Saved timing results to {csv_filename}.csv")
+        save_timings_to_csv(f"csr_spmv_timings_{env_suffix_str}{multicore_suffix}.csv", i, S, all_timings)
+        print(f"Saved timing results to csr_spmv_timings_{env_suffix_str}{multicore_suffix}.csv")

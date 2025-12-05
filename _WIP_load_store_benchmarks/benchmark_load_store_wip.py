@@ -135,7 +135,7 @@ if __name__ == "__main__":
     NUM_REPS = 20
     all_timings = {}
 
-    for i, N in enumerate([8192 * 64, 8192 * 256, 8192 * 512, 8192 * 1024, 8192 * 2048, 8192 * 4096, 8192 * 8192, 8192 * 8192 * 2]):
+    for i, N in enumerate([512 * 576, 512 * 576 * 2, 512 * 576 * 4, 512 * 576 * 8, 512 * 576 * 16]):
         @dace.program
         def vecscale_unit_stride(src: dace.float64[N], dst: dace.float64[N], scale: dace.float64):
             for i, in dace.map[0:N:1]:

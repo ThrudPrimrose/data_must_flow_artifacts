@@ -1,5 +1,5 @@
 #!/bin/bash
-#SBATCH --job-name=csr_intel_xeon_gcc  # Job name
+#SBATCH --job-name=csr_intel_xeon_  # Job name
 #SBATCH --nodes=1                     # Number of nodes
 #SBATCH --partition=intel               # Partition/queue
 #SBATCH --time=02:30:00               # Walltime (hh:mm:ss)
@@ -10,24 +10,27 @@
 #SBATCH --cpus-per-task=72
 
 spack load cmake
-spack load gcc@14.2
+spack load intel-oneapi-compilers@2025.0.4
 
-alias cc=gcc
-alias c++=g++
-alias cxx=g++
-export CC=gcc
-export CXX=g++
+alias cc=icx
+alias c++=icpx
+alias cxx=icpx
+export CC=icx
+export CXX=icpx
 
 export CPU_NAME="intel_xeon"
+
+echo "Script path: $SCRIPT_PATH"
+echo "Script dir:  $SCRIPT_DIR"
 export OMP_NUM_THREADS=36
 export OMP_PLACES=cores
 export OMP_PROC_BIND=close
 
 # Define configurations: each element is "EXTRA_FLAGS SUFFIX"
 configs=(
-    "-mprefer-vector-width=512" "force_width_512"
-    "" ""                                   
-    "-fno-tree-vectorize -fno-tree-slp-vectorize" "no-vectorize"
+    "" ""                                   # first run: no extra flags, no suffix
+    "-qopt-zmm-usage=high -diag-enable=vec -qopt-report=5 -qopt-report-phase=vec -qopt-report-file=${SCRIPT_DIR}/csr_spmv_vec_report.optrpt" "force_width_512"
+    "-no-vec" "no_vectorize"
 )
 
 for RUNMULTI in 0 1; do

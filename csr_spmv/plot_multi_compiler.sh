@@ -1,1 +1,0 @@
-python plot_multi_compiler.py csr_spmv csr_spmv_multicompiler.png
