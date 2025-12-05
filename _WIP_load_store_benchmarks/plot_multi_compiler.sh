@@ -1,1 +1,0 @@
-python plot_multi_compiler.py TEMPLATE TEMPLATE_multicompiler.png
