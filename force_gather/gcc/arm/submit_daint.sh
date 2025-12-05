@@ -8,7 +8,9 @@
 #SBATCH --chdir=.
 #SBATCH --ntasks=1
 #SBATCH --cpus-per-task=72
-
+export OMP_NUM_THREADS=72
+export OMP_PLACES=cores
+export OMP_PROC_BIND=spread
 spack load cmake
 spack load gcc@14.2
 
