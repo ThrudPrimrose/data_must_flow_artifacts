@@ -10,7 +10,7 @@
 #SBATCH --cpus-per-task=288
 export OMP_NUM_THREADS=288
 export OMP_PLACES=cores
-export export OMP_PROC_BIND=close
+export OMP_PROC_BIND=close
 spack load cmake
 alias cc=clang
 alias c++=clang++

@@ -18,7 +18,7 @@ export CXX=clang++
 export CPU_NAME="arm"
 export OMP_NUM_THREADS=288
 export OMP_PLACES=cores
-export export OMP_PROC_BIND=close
+export OMP_PROC_BIND=close
 # Define configurations: each element is "EXTRA_FLAGS SUFFIX"
 configs=(
     "-march=armv9-a+simd -mcpu=neoverse-v2 -mprefer-vector-width=128" "neon"  # second run

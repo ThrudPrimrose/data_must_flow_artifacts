@@ -10,7 +10,7 @@
 #SBATCH --cpus-per-task=288
 export OMP_NUM_THREADS=288
 export OMP_PLACES=cores
-export export OMP_PROC_BIND=close
+export OMP_PROC_BIND=close
 spack load cmake
 alias cc="/users/ybudanaz/clang-grace-toolchain-21.25.10/bin/clang"
 alias c++="/users/ybudanaz/clang-grace-toolchain-21.25.10/bin/clang++"

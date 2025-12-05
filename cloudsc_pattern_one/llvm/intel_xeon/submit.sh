@@ -10,7 +10,7 @@
 #SBATCH --cpus-per-task=72
 export OMP_NUM_THREADS=36
 export OMP_PLACES=cores
-export export OMP_PROC_BIND=close
+export OMP_PROC_BIND=close
 spack load cmake
 
 alias cc=clang
@@ -33,7 +33,7 @@ configs=(
     "-fno-math-errno -fveclib=libmvec -mprefer-vector-width=512" "libmvec"
 )
 
-for RUNMULTI in 1 0; do
+for RUNMULTI in 0 1; do
     export RUN_MULTICORE="$RUNMULTI"
     for ((i=0; i<${#configs[@]}; i+=2)); do
         export EXTRA_FLAGS="${configs[i]}"

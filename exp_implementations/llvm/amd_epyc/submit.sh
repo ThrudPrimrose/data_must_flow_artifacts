@@ -18,7 +18,7 @@ export CC=clang
 export CXX=clang++
 export OMP_NUM_THREADS=64
 export OMP_PLACES=cores
-export export OMP_PROC_BIND=close
+export OMP_PROC_BIND=close
 echo "Script path: $SCRIPT_PATH"
 echo "Script dir:  $SCRIPT_DIR"
 

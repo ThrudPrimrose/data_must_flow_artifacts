@@ -19,7 +19,7 @@ export CC=gcc
 export CXX=g++
 export OMP_NUM_THREADS=36
 export OMP_PLACES=cores
-export export OMP_PROC_BIND=close
+export OMP_PROC_BIND=close
 export CPU_NAME="intel_xeon"
 
 # Define configurations: each element is "EXTRA_FLAGS SUFFIX"

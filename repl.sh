@@ -56,4 +56,13 @@ run_replace() {
 #    '^\s*export OMP_PROC_BIND=spread$' \
 #    'export export OMP_PROC_BIND=close'
 
+#run_replace "Updating OMP_PROC_BIND spread → close" \
+#    '^\s*export export OMP_PROC_BIND=close$' \
+#    'export OMP_PROC_BIND=close'
+
+#run_replace "Updating RUNMULTI Order" \
+#    '^\s*for RUNMULTI in 1 0; do$' \
+#    'for RUNMULTI in 0 1; do'
+
+
 echo "=== All replacements completed ==="

@@ -17,7 +17,7 @@ export CC="/users/ybudanaz/clang-grace-toolchain-21.25.10/bin/clang"
 export CXX="/users/ybudanaz/clang-grace-toolchain-21.25.10/bin/clang++"
 export OMP_NUM_THREADS=288
 export OMP_PLACES=cores
-export export OMP_PROC_BIND=close
+export OMP_PROC_BIND=close
 export CPU_NAME="arm"
 
 # Define configurations: each element is "EXTRA_FLAGS SUFFIX"

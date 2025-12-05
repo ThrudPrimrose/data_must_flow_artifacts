@@ -21,7 +21,7 @@ export CXX=g++
 export CPU_NAME="intel_xeon"
 export OMP_NUM_THREADS=36
 export OMP_PLACES=cores
-export export OMP_PROC_BIND=close
+export OMP_PROC_BIND=close
 # Define configurations: each element is "EXTRA_FLAGS SUFFIX"
 configs=(
     "-mprefer-vector-width=512" "force_width_512"
@@ -29,7 +29,7 @@ configs=(
     "-fno-tree-vectorize -fno-tree-slp-vectorize" "no_vectorize"
 )
 
-for RUNMULTI in 1 0; do
+for RUNMULTI in 0 1; do
     export RUN_MULTICORE="$RUNMULTI"
     for ((i=0; i<${#configs[@]}; i+=2)); do
         export EXTRA_FLAGS="${configs[i]}"

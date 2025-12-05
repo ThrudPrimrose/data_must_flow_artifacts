@@ -21,7 +21,7 @@ export CXX=icpx
 export CPU_NAME="intel_xeon"
 export OMP_NUM_THREADS=36
 export OMP_PLACES=cores
-export export OMP_PROC_BIND=close
+export OMP_PROC_BIND=close
 echo "Script path: $SCRIPT_PATH"
 echo "Script dir:  $SCRIPT_DIR"
 
@@ -32,7 +32,7 @@ configs=(
     "-no-vec" "no_vectorize"
 )
 
-for RUNMULTI in 1 0; do
+for RUNMULTI in 0 1; do
     export RUN_MULTICORE="$RUNMULTI"
     for ((i=0; i<${#configs[@]}; i+=2)); do
         export EXTRA_FLAGS="${configs[i]}"
