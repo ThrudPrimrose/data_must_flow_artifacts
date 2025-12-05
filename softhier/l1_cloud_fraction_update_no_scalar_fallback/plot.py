@@ -12,6 +12,82 @@ def load_all_csv(folder):
         raise FileNotFoundError("No .csv files found in folder")
     return pd.concat([pd.read_csv(f) for f in files], ignore_index=True)
 
+KEY_COLS = [
+    "VLSU Ports",
+    "Function Units",
+    "Vector Length",
+    "X_dim",
+    "Y_dim",
+    "Num Core Per Cluster",
+    "Num Vector Unit Per Cluster",
+    "Bank Width",
+    "Bank Num",
+]
+
+
+def load_all_csv(folder: str) -> pd.DataFrame:
+    files = glob.glob(os.path.join(folder, "*.csv"))
+    if not files:
+        raise FileNotFoundError(f"No .csv files found in folder {folder}")
+    return pd.concat([pd.read_csv(f) for f in files], ignore_index=True)
+
+
+def compare_folders(folder1: str, folder2: str):
+    df1 = load_all_csv(folder1)
+    df2 = load_all_csv(folder2)
+
+    # Rename original performance columns
+    df1 = df1.rename(columns={"Achieved Performance (GFLOP/s)": "perf1"})
+    df2 = df2.rename(columns={"Achieved Performance (GFLOP/s)": "perf2"})
+
+    # Merge on identifying configuration columns
+    merged = pd.merge(df1, df2, on=KEY_COLS, how="inner", suffixes=("_1", "_2"))
+
+    # Compute abs diff
+    diff_abs = (merged["perf1"] - merged["perf2"]).abs()
+    same_mask = diff_abs < 5
+    diff_mask = ~same_mask
+
+    # === SAME CASE: take original df1 row ===
+    same_rows = df1.merge(
+        merged[same_mask][KEY_COLS],
+        on=KEY_COLS,
+        how="inner"
+    ).copy()
+    same_rows = same_rows.rename(columns={"perf1": "Achieved Performance (GFLOP/s)"})
+
+    # === DIFFERENT CASE: choose FULL ROW from df1 or df2 ===
+    diff_rows = []
+
+    #for _, row in merged[diff_mask].iterrows():
+    #
+    #    if row["perf1"] <= row["perf2"]:
+    #        # take full df1 row
+    #        key_vals = tuple(row[col] for col in KEY_COLS)
+    #        full_row = df1[df1.apply(lambda r: tuple(r[c] for c in KEY_COLS) == key_vals, axis=1)].iloc[0].copy()
+    #        full_row["Achieved Performance (GFLOP/s)"] = full_row["perf1"]
+    #    else:
+    #        # take full df2 row
+    #        key_vals = tuple(row[col] for col in KEY_COLS)
+    #        full_row = df2[df2.apply(lambda r: tuple(r[c] for c in KEY_COLS) == key_vals, axis=1)].iloc[0].copy()
+    #        full_row["Achieved Performance (GFLOP/s)"] = full_row["perf2"]
+    #
+    #    diff_rows.append(full_row)
+
+    diff_rows = pd.DataFrame(diff_rows)
+
+    # Drop internal perf columns
+    same_rows = same_rows.drop(columns=["perf1"], errors="ignore")
+    #diff_rows = diff_rows.drop(columns=["perf1", "perf2"], errors="ignore")
+
+    # === FINAL RESULT ===
+    #df_final = pd.concat([same_rows, diff_rows], ignore_index=True)
+    df_final = same_rows
+
+    return df_final, merged
+
+
+
 def compute_roofline_percentage(df):
     """
     Computes performance as % of the roofline for each row.
@@ -28,8 +104,8 @@ def compute_roofline_percentage(df):
 
     return df
 
-def plot_scatter(folder):
-    df = load_all_csv(folder)
+def plot_scatter(folder1, folder2):
+    df, _ = compare_folders(folder1, folder2)
     df = compute_roofline_percentage(df)
 
     # Filter extreme values
@@ -100,7 +176,7 @@ def plot_scatter(folder):
 
     plt.xlabel("Peak Performance (GFLOP/s)")
     plt.ylabel("Performance % of Roofline")
-    plt.title(f"CloudSC Loop Nests on SoftHier (Vector Length=8192)")
+    plt.title(f"CloudSC Example Loop Nest 1 on SoftHier (Vector Length=8192)")
     plt.ylim(-0.1, YLIM)
 
     plt.grid(visible=True, which="both", axis="both", linestyle="--", color="gray", linewidth=0.8)
@@ -122,13 +198,13 @@ def plot_scatter(folder):
     plt.legend(
         handles=all_handles,
         loc="lower center",
-        bbox_to_anchor=(0.5, -0.35),
+        bbox_to_anchor=(0.5, -0.30),
         ncol=4,
         fontsize=8,
         frameon=True
     )
     plt.tight_layout()
-    plt.savefig(f"{folder.replace('/', '_')}_plot_roofline.png", dpi=150)
+    plt.savefig(f"{folder1.replace('/', '_')}_plot_roofline.png", dpi=150)
 
     # -------------------------------------------------------
     # Second plot: Performance (% of Roofline) vs Peak GFLOPs
@@ -188,11 +264,11 @@ def plot_scatter(folder):
                 ncol=5, fontsize=8, frameon=True)
 
         plt.tight_layout(rect=[0, 0, 1, 1])
-        plt.savefig(f"{folder.replace('/', '_')}_plot_roofline_vlsu_fu_{fu}.png", dpi=150)
+        plt.savefig(f"{folder1.replace('/', '_')}_plot_roofline_vlsu_fu_{fu}.png", dpi=150)
 
 
-def plot_scatter_w_lines(folder):
-    df = load_all_csv(folder)
+def plot_scatter_w_lines(folder1, folder2):
+    df, _ = compare_folders(folder1, folder2)
     df = compute_roofline_percentage(df)
 
     # Filter extreme values
@@ -298,12 +374,19 @@ def plot_scatter_w_lines(folder):
 
         plt.tight_layout()
 
-        outname = f"{folder.replace('/', '_')}_vlsu_{vlsu}_fu_{fu}_plot_roofline.png"
+        outname = f"{folder1.replace('/', '_')}_vlsu_{vlsu}_fu_{fu}_plot_roofline.png"
         plt.savefig(outname, dpi=150)
         plt.close()
         print(f"Saved {outname}")
 
 if __name__ == "__main__":
-    plot_scatter_w_lines("perf_w_num_cores")
-    plot_scatter("perf_w_num_cores")
+    df_same, df_diff = compare_folders("perf_w_num_cores", "../l1_cloud_fraction_update_no_scalar_fallback2/perf_w_num_cores")
+    print(df_same)
+    print(len(df_same))
+    print(df_diff)
+    print(df_diff[["VLSU Ports", "Function Units", "perf1", "perf2"]])
+    print(len(df_diff[["perf1", "perf2"]]))
+    #raise Exception("X")
+    plot_scatter_w_lines("perf_w_num_cores", "../l1_cloud_fraction_update_no_scalar_fallback2/perf_w_num_cores")
+    plot_scatter("perf_w_num_cores", "../l1_cloud_fraction_update_no_scalar_fallback2/perf_w_num_cores")
     #plot_scatter("perf_v1")
