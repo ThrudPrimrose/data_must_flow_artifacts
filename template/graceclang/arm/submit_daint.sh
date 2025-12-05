@@ -7,7 +7,7 @@
 #SBATCH --error=%x_%j.err             # Standard error
 #SBATCH --chdir=.
 #SBATCH --ntasks=1
-#SBATCH --cpus-per-task=72
+#SBATCH --cpus-per-task=288
 
 spack load cmake
 alias cc="/users/ybudanaz/clang-grace-toolchain-21.25.10/bin/clang"
@@ -17,9 +17,9 @@ export CC="/users/ybudanaz/clang-grace-toolchain-21.25.10/bin/clang"
 export CXX="/users/ybudanaz/clang-grace-toolchain-21.25.10/bin/clang++"
 
 export CPU_NAME="arm"
-export OMP_NUM_THREADS=72
+export OMP_NUM_THREADS=288
 export OMP_PLACES=cores
-export OMP_PROC_BIND=spread
+export export OMP_PROC_BIND=close
 
 # Define configurations: each element is "EXTRA_FLAGS SUFFIX"
 configs=(

@@ -7,7 +7,7 @@
 #SBATCH --error=%x_%j.err             # Standard error
 #SBATCH --chdir=.
 #SBATCH --ntasks=1
-#SBATCH --cpus-per-task=18
+#SBATCH --cpus-per-task=72
 
 spack load cmake
 
@@ -21,9 +21,9 @@ export CPU_NAME="intel_xeon"
 
 echo "Script path: $SCRIPT_PATH"
 echo "Script dir:  $SCRIPT_DIR"
-export OMP_NUM_THREADS=18
+export OMP_NUM_THREADS=36
 export OMP_PLACES=cores
-export OMP_PROC_BIND=spread
+export export OMP_PROC_BIND=close
 
 # Define configurations: each element is "EXTRA_FLAGS SUFFIX"
 configs=(

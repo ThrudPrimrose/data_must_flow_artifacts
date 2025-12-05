@@ -7,7 +7,7 @@
 #SBATCH --error=%x_%j.err             # Standard error
 #SBATCH --chdir=.
 #SBATCH --ntasks=1
-#SBATCH --cpus-per-task=18
+#SBATCH --cpus-per-task=72
 
 spack load cmake
 spack load gcc@14.2
@@ -19,9 +19,9 @@ export CC=gcc
 export CXX=g++
 
 export CPU_NAME="intel_xeon"
-export OMP_NUM_THREADS=18
+export OMP_NUM_THREADS=36
 export OMP_PLACES=cores
-export OMP_PROC_BIND=spread
+export export OMP_PROC_BIND=close
 # Define configurations: each element is "EXTRA_FLAGS SUFFIX"
 configs=(
     "-mprefer-vector-width=512" "force_width_512"

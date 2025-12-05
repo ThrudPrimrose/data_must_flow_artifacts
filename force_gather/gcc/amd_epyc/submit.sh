@@ -7,10 +7,10 @@
 #SBATCH --error=%x_%j.err             # Standard error
 #SBATCH --chdir=.
 #SBATCH --ntasks=1
-#SBATCH --cpus-per-task=64
+#SBATCH --cpus-per-task=128
 export OMP_NUM_THREADS=64
 export OMP_PLACES=cores
-export OMP_PROC_BIND=spread
+export export OMP_PROC_BIND=close
 spack load cmake
 spack load gcc@14.2
 

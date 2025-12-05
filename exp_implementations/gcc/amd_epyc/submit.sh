@@ -6,7 +6,7 @@
 #SBATCH --output=%x_%j.out            # Standard output (%x=job name, %j=job ID)
 #SBATCH --error=%x_%j.err             # Standard error
 #SBATCH --ntasks=1
-#SBATCH --cpus-per-task=64
+#SBATCH --cpus-per-task=128
 
 
 spack load cmake
@@ -19,7 +19,7 @@ export CC=gcc
 export CXX=g++
 export OMP_NUM_THREADS=64
 export OMP_PLACES=cores
-export OMP_PROC_BIND=spread
+export export OMP_PROC_BIND=close
 export CPU_NAME="amd_epyc"
 
 # Define configurations: each element is "EXTRA_FLAGS SUFFIX"

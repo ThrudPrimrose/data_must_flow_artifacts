@@ -8,10 +8,10 @@
 #SBATCH --chdir=.
 #SBATCH --ntasks=1
 #SBATCH --ntasks=1
-#SBATCH --cpus-per-task=18
-export OMP_NUM_THREADS=18
+#SBATCH --cpus-per-task=72
+export OMP_NUM_THREADS=36
 export OMP_PLACES=cores
-export OMP_PROC_BIND=spread
+export export OMP_PROC_BIND=close
 
 spack load cmake
 spack load intel-oneapi-compilers@2025.0.4
