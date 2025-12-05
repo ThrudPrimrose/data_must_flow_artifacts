@@ -6,7 +6,9 @@
 #SBATCH --output=%x_%j.out            # Standard output (%x=job name, %j=job ID)
 #SBATCH --error=%x_%j.err             # Standard error
 #SBATCH --chdir=.
-#SBATCH --exclusive
+#SBATCH --ntasks=1
+#SBATCH --cpus-per-task=72
+
 spack load cmake
 spack load gcc@14.2
 
@@ -15,7 +17,9 @@ alias c++=g++
 alias cxx=g++
 export CC=gcc
 export CXX=g++
-
+export OMP_NUM_THREADS=72
+export OMP_PLACES=cores
+export OMP_PROC_BIND=spread
 export CPU_NAME="arm"
 
 # Define configurations: each element is "EXTRA_FLAGS SUFFIX"

@@ -6,6 +6,8 @@
 #SBATCH --output=%x_%j.out            # Standard output (%x=job name, %j=job ID)
 #SBATCH --error=%x_%j.err             # Standard error
 #SBATCH --chdir=.
+#SBATCH --ntasks=1
+#SBATCH --cpus-per-task=18
 
 spack load cmake
 spack load intel-oneapi-compilers@2025.0.4
@@ -20,7 +22,7 @@ export CPU_NAME="intel_xeon"
 
 echo "Script path: $SCRIPT_PATH"
 echo "Script dir:  $SCRIPT_DIR"
-export OMP_NUM_THREADS=64
+export OMP_NUM_THREADS=18
 export OMP_PLACES=cores
 export OMP_PROC_BIND=spread
 

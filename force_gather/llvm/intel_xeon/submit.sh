@@ -6,6 +6,8 @@
 #SBATCH --output=%x_%j.out            # Standard output (%x=job name, %j=job ID)
 #SBATCH --error=%x_%j.err             # Standard error
 #SBATCH --chdir=.
+#SBATCH --ntasks=1
+#SBATCH --cpus-per-task=18
 
 spack load cmake
 
@@ -16,7 +18,9 @@ export CC=clang
 export CXX=clang++
 
 export CPU_NAME="intel_xeon"
-
+export OMP_NUM_THREADS=18
+export OMP_PLACES=cores
+export OMP_PROC_BIND=spread
 echo "Script path: $SCRIPT_PATH"
 echo "Script dir:  $SCRIPT_DIR"
 
@@ -26,7 +30,7 @@ configs=(
     "-mprefer-vector-width=512" "force_width_512"   # second run
     "-fno-vectorize" "no_vectorize"
     # Probably, disable below if not arithmetic function
-    "-fno-math-errno -fveclib=libmvec -mprefer-vector-width=512" "libmvec"
+    "-fno-math-errno -fveclib=libmvec -mprefer-vector-width=512" "mvec"
 )
 
 for RUNMULTI in 0 1; do

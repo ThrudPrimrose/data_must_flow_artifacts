@@ -2,11 +2,13 @@
 #SBATCH --job-name=clsc1_intel_xeon_  # Job name
 #SBATCH --nodes=1                     # Number of nodes
 #SBATCH --partition=intel               # Partition/queue
-#SBATCH --time=02:30:00               # Walltime (hh:mm:ss)
+#SBATCH --time=04:00:00               # Walltime (hh:mm:ss)
 #SBATCH --output=%x_%j.out            # Standard output (%x=job name, %j=job ID)
 #SBATCH --error=%x_%j.err             # Standard error
 #SBATCH --chdir=.
-#SBATCH --exclusive
+#SBATCH --ntasks=1
+#SBATCH --cpus-per-task=18
+
 spack load cmake
 spack load intel-oneapi-compilers@2025.0.4
 
@@ -30,7 +32,7 @@ configs=(
     "-no-vec" "no_vectorize"
 )
 
-for RUNMULTI in 0 1; do
+for RUNMULTI in 1 0; do
     export RUN_MULTICORE="$RUNMULTI"
     for ((i=0; i<${#configs[@]}; i+=2)); do
         export EXTRA_FLAGS="${configs[i]}"

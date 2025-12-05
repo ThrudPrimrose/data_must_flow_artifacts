@@ -6,7 +6,9 @@
 #SBATCH --output=%x_%j.out            # Standard output (%x=job name, %j=job ID)
 #SBATCH --error=%x_%j.err             # Standard error
 #SBATCH --chdir=.
-#SBATCH --exclusive
+#SBATCH --ntasks=1
+#SBATCH --cpus-per-task=72
+
 spack load cmake
 alias cc="/users/ybudanaz/clang-grace-toolchain-21.25.10/bin/clang"
 alias c++="/users/ybudanaz/clang-grace-toolchain-21.25.10/bin/clang++"

@@ -1,8 +1,0 @@
-/scratch/ybudanaz/dace/dace/sdfg/propagation.py:1508: UserWarning: Cannot find appropriate memlet pattern to propagate idx through __map_316_b0:__map_316_e1
-  warnings.warn('Cannot find appropriate memlet pattern to '
-/scratch/ybudanaz/dace/dace/sdfg/propagation.py:1508: UserWarning: Cannot find appropriate memlet pattern to propagate i through 0:__map_312_e0
-  warnings.warn('Cannot find appropriate memlet pattern to '
-/scratch/ybudanaz/dace/dace/sdfg/propagation.py:1508: UserWarning: Cannot find appropriate memlet pattern to propagate i + 1 through 0:__map_312_e0
-  warnings.warn('Cannot find appropriate memlet pattern to '
-/tmp/slurmd/job734137/slurm_script: line 19: 628211 Killed                  python3 csr_gemmver.py
-slurmstepd: error: Detected 1 oom-kill event(s) in StepId=734137.batch cgroup. Some of your processes may have been killed by the cgroup out-of-memory handler.

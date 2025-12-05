@@ -5,6 +5,8 @@ import numpy as np
 import dace
 from dace.transformation.passes.vectorization.tasklet_preprocessing_passes import ReplaceSTDExpWithDaCeExp
 from dace.transformation.passes.vectorization.vectorize_cpu import VectorizeCPU
+from dace.transformation.passes.vectorization.tasklet_preprocessing_passes import ReplaceSTDExpWithDaCeExp
+
 from math import log, exp
 
 import subprocess
@@ -244,64 +246,74 @@ if __name__ == "__main__":
     NUM_REPS = 20
     all_timings = {}
 
+if __name__ == "__main__":
+    NUM_REPS = 20
+    all_timings = {}
+
     # S = dace.symbol("S")
-    for i, S in enumerate([8192 * 576, 8192 * 2 * 576, 8192 * 4 * 576, 8192 * 8 * 576]):
-        @dace.program
-        def exp_implementations(A: dace.float64[S], B: dace.float64[S]):
-            for i in dace.map[0:S]:
-                B[i] = exp(A[i])
+    for std_var in ["std", "dace"]:
+        for i, S in enumerate([8192 * 576, 8192 * 2 * 576, 8192 * 4 * 576, 8192 * 8 * 576]):
+            @dace.program
+            def exp_implementations(A: dace.float64[S], B: dace.float64[S]):
+                for i in dace.map[0:S]:
+                    B[i] = exp(A[i])
 
-        # Baseline SDFG
-        exp_implementations_dace_sdfg = exp_implementations.to_sdfg()
-        ReplaceSTDExpWithDaCeExp().apply_pass(exp_implementations_dace_sdfg, {})
-        exp_implementations_dace_sdfg.name = "exp_implementations_dace"
-        exp_implementations_dace_sdfg.instrument = dace.dtypes.InstrumentationType.Timer
+            # Baseline SDFG
+            exp_implementaitons_std_sdfg = exp_implementations.to_sdfg()
+            if std_var == "dace":
+                ReplaceSTDExpWithDaCeExp().apply_pass(exp_implementaitons_std_sdfg, {})
+                exp_implementaitons_std_sdfg.name = "exp_implementaitons_dace"
+            else:
+                exp_implementaitons_std_sdfg.name = "exp_implementations_std"
 
-        # Baseline arrays
-        A = np.random.random((S, ))
-        B = np.random.random((S, ))
-        base_arrays = {"A": A, "B": B, }
-        params = {}
+            exp_implementaitons_std_sdfg.instrument = dace.dtypes.InstrumentationType.Timer
 
-        # Run baseline 1
-        all_timings["exp_implementations_dace", S] = run_sdfg_multiple_times(
-            sdfg=exp_implementations_dace_sdfg,
-            arrays=base_arrays,
-            params=params,
-            num_runs=NUM_REPS,
-        )
+            # Baseline arrays
+            A = np.random.random((S, ))
+            B = np.random.random((S, ))
+            base_arrays = {"A": A, "B": B, }
+            params = {}
 
-        # -------------------------------------------------------
-        # Vectorized versions
-        # -------------------------------------------------------
-        if cpu_name == "intel_xeon":
-            vlens = [8, 16, 32, 64]
-        elif cpu_name == "amd_epyc":
-            vlens = [4, 8, 16, 32, 64]
-        else:
-            vlens = [2, 4, 8, 16, 32, 64]
-
-        for l in vlens:
-            # std no-copy version
-            sdfg_vec, name = build_vectorized_sdfg(
-                exp_implementations_dace_sdfg, vec_width=l, insert_copies=False, cpy_suffix="no_cpy",
-                base_name="exp_implementations_dace"
-            )
-            all_timings[name, S] = run_sdfg_multiple_times(
-                sdfg=sdfg_vec, arrays=base_arrays, params=params, num_runs=NUM_REPS
+            # Run baseline 1
+            all_timings[exp_implementaitons_std_sdfg.name, S] = run_sdfg_multiple_times(
+                sdfg=exp_implementaitons_std_sdfg,
+                arrays=base_arrays,
+                params=params,
+                num_runs=NUM_REPS,
             )
 
-            # std copy version
-            sdfg_vec_cpy, name = build_vectorized_sdfg(
-                exp_implementations_dace_sdfg, vec_width=l, insert_copies=True, cpy_suffix="cpy",
-                base_name="exp_implementations_dace"
-            )
-            all_timings[name, S] = run_sdfg_multiple_times(
-                sdfg=sdfg_vec_cpy, arrays=base_arrays, params=params, num_runs=NUM_REPS
-            )
+            # -------------------------------------------------------
+            # Vectorized versions
+            # -------------------------------------------------------
+            if cpu_name == "intel_xeon":
+                vlens = [8, 16, 32, 64]
+            elif cpu_name == "amd_epyc":
+                vlens = [4, 8, 16, 32, 64]
+            else:
+                vlens = [2, 4, 8, 16, 32, 64]
 
-        # -------------------------------------------------------
-        # CSV output
-        # -------------------------------------------------------
-        save_timings_to_csv(f"exp_implementations_timings_dace_intrinsic_{env_suffix_str}{multicore_suffix}.csv", i, S, all_timings)
-        print(f"Saved timing results to exp_implementations_timings_{env_suffix_str}{multicore_suffix}.csv")
+            for l in vlens:
+                # std no-copy version
+                sdfg_vec, name = build_vectorized_sdfg(
+                    exp_implementaitons_std_sdfg, vec_width=l, insert_copies=False, cpy_suffix="no_cpy",
+                    base_name=exp_implementaitons_std_sdfg.name
+                )
+                all_timings[name, S] = run_sdfg_multiple_times(
+                    sdfg=sdfg_vec, arrays=base_arrays, params=params, num_runs=NUM_REPS
+                )
+
+                # std copy version
+                sdfg_vec_cpy, name = build_vectorized_sdfg(
+                    exp_implementaitons_std_sdfg, vec_width=l, insert_copies=True, cpy_suffix="cpy",
+                    base_name=exp_implementaitons_std_sdfg.name
+                )
+                all_timings[name, S] = run_sdfg_multiple_times(
+                    sdfg=sdfg_vec_cpy, arrays=base_arrays, params=params, num_runs=NUM_REPS
+                )
+
+            # -------------------------------------------------------
+            # CSV output
+            # -------------------------------------------------------
+            intrinsic_suffix = "__dace_intrin_" if std_var == "dace" else ""
+            save_timings_to_csv(f"exp_implementations_timings_{intrinsic_suffix}{env_suffix_str}{multicore_suffix}.csv", i, S, all_timings)
+            print(f"Saved timing results to exp_implementations_timings_{intrinsic_suffix}{env_suffix_str}{multicore_suffix}.csv")

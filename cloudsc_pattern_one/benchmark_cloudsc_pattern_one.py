@@ -39,7 +39,7 @@ multi_core = int(os.environ.get('RUN_MULTICORE', '0')) == 1
 core_count = 1
 
 
-multicore_suffix = '' if core_count == 1 else '_multicore'
+multicore_suffix = '_singlecore' if core_count == 1 else '_multicore'
 
 if multi_core:
     if cpu_name == "arm":
@@ -299,7 +299,6 @@ if __name__ == "__main__":
         cloudsc_pattern_one_sdfg = cloudsc_pattern_one.to_sdfg()
         cloudsc_pattern_one_sdfg.name = "cloudsc_pattern_one"
         cloudsc_pattern_one_sdfg.instrument = dace.dtypes.InstrumentationType.Timer
-        cloudsc_pattern_one_sdfg.save("cloudsc_pattern_one.sdfgz", compress=True)
 
         # Baseline arrays
         """Generate test data for the loop body function"""

@@ -1,2 +1,0 @@
-usage: benchmark_jacobi2d.py [-h] [--suffix SUFFIX]
-benchmark_jacobi2d.py: error: unrecognized arguments: jacobi2d_timings_amd_epyc_llvm

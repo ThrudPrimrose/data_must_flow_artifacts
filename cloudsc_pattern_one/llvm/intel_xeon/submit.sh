@@ -6,7 +6,8 @@
 #SBATCH --output=%x_%j.out            # Standard output (%x=job name, %j=job ID)
 #SBATCH --error=%x_%j.err             # Standard error
 #SBATCH --chdir=.
-#SBATCH --exclusive
+#SBATCH --ntasks=1
+#SBATCH --cpus-per-task=18
 spack load cmake
 
 alias cc=clang
@@ -16,7 +17,9 @@ export CC=clang
 export CXX=clang++
 
 export CPU_NAME="intel_xeon"
-
+export OMP_NUM_THREADS=18
+export OMP_PLACES=cores
+export OMP_PROC_BIND=spread
 echo "Script path: $SCRIPT_PATH"
 echo "Script dir:  $SCRIPT_DIR"
 
@@ -29,7 +32,7 @@ configs=(
     "-fno-math-errno -fveclib=libmvec -mprefer-vector-width=512" "libmvec"
 )
 
-for RUNMULTI in 0 1; do
+for RUNMULTI in 1 0; do
     export RUN_MULTICORE="$RUNMULTI"
     for ((i=0; i<${#configs[@]}; i+=2)); do
         export EXTRA_FLAGS="${configs[i]}"

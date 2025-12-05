@@ -6,14 +6,18 @@
 #SBATCH --output=%x_%j.out            # Standard output (%x=job name, %j=job ID)
 #SBATCH --error=%x_%j.err             # Standard error
 #SBATCH --chdir=.
-
+#SBATCH --ntasks=1
+#SBATCH --ntasks=1
+#SBATCH --cpus-per-task=72
+export OMP_NUM_THREADS=72
+export OMP_PLACES=cores
+export OMP_PROC_BIND=spread
 spack load cmake
-alias cc="clang --target=aarch64-linux-gnu"
-alias c++="clang++ --target=aarch64-linux-gnu"
-alias cxx="clang++ --target=aarch64-linux-gnu"
-export CC="clang --target=aarch64-linux-gnu"
-export CXX="clang++ --target=aarch64-linux-gnu"
-
+alias cc=clang
+alias c++=clang++
+alias cxx=clang++
+export CC=clang
+export CXX=clang++
 export CPU_NAME="arm"
 
 # Define configurations: each element is "EXTRA_FLAGS SUFFIX"

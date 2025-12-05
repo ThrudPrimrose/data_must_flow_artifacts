@@ -1,3 +1,0 @@
-Kernel Name,VLSU Ports,Function Units,Vector Length,X_dim,Y_dim,Peak Performance (GFLOP/s),Peak Bandwidth (GB/s),Achieved Performance (GFLOP/s),Achieved Bandwidth (GB/s),Performance % of Peak,Bandwidth % of Peak,Operational Intensity (FLOP/byte),Execution Time (us),Total FLOPs,Total Bytes,Num Core Per Cluster,Num Vector Unit Per Cluster
-l1_matrix_add,64,64,8192,8192,4,512.0000,1024.0000,34.0937,409.1248,39.95,39.95,0.0833,961.1150,32768000,393216000,4,4
-l1_matrix_add,64,64,8192,8192,4,512.0000,128.0000,7.4151,88.9807,69.52,69.52,0.0833,4419.1160,32768000,393216000,4,4

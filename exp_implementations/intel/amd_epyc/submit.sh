@@ -6,6 +6,8 @@
 #SBATCH --output=%x_%j.out            # Standard output (%x=job name, %j=job ID)
 #SBATCH --error=%x_%j.err             # Standard error
 #SBATCH --chdir=.
+#SBATCH --ntasks=1
+#SBATCH --cpus-per-task=64
 
 spack load cmake
 spack load intel-oneapi-compilers@2025.0.4
@@ -15,7 +17,9 @@ alias c++=icpx
 alias cxx=icpx
 export CC=icx
 export CXX=icpx
-
+export OMP_NUM_THREADS=64
+export OMP_PLACES=cores
+export OMP_PROC_BIND=spread
 echo "Script path: $SCRIPT_PATH"
 echo "Script dir:  $SCRIPT_DIR"
 

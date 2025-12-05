@@ -1,1 +1,0 @@
-python plot_multi_compiler.py jacobi2d jacobi2d_multicompiler.png

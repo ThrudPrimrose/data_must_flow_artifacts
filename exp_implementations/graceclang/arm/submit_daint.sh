@@ -6,6 +6,8 @@
 #SBATCH --output=%x_%j.out            # Standard output (%x=job name, %j=job ID)
 #SBATCH --error=%x_%j.err             # Standard error
 #SBATCH --chdir=.
+#SBATCH --ntasks=1
+#SBATCH --cpus-per-task=72
 
 spack load cmake
 alias cc="/users/ybudanaz/clang-grace-toolchain-21.25.10/bin/clang"
@@ -22,7 +24,7 @@ export CPU_NAME="arm"
 configs=(
     "-march=armv9-a+sve2 -mcpu=neoverse-v2" ""                                   # first run: no extra flags, no suffix
     "-march=armv9-a+simd -mcpu=neoverse-v2 -mprefer-vector-width=128" "neon"  # second run
-    "-march=armv9-a+sve2 -no-simd -mcpu=neoverse-v2" "sve"  # second run
+    "-march=armv9-a+sve2 -mcpu=neoverse-v2" "sve"  # second run
     "-march=armv9-a -mcpu=neoverse-v2 -fno-tree-vectorize -fno-tree-slp-vectorize" "no-vectorize"
     # Probably, disable below if not arithmetic function
     "-march=armv9-a+sve2+simd -mcpu=neoverse-v2 -fno-math-errno -fveclib=libarm -mprefer-vector-width=512" "libarm"

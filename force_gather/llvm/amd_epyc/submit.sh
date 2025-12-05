@@ -6,7 +6,12 @@
 #SBATCH --output=%x_%j.out            # Standard output (%x=job name, %j=job ID)
 #SBATCH --error=%x_%j.err             # Standard error
 #SBATCH --chdir=.
-
+#SBATCH --ntasks=1
+#SBATCH --ntasks=1
+#SBATCH --cpus-per-task=64
+export OMP_NUM_THREADS=64
+export OMP_PLACES=cores
+export OMP_PROC_BIND=spread
 spack load cmake
 
 alias cc=clang
@@ -14,7 +19,9 @@ alias c++=clang++
 alias cxx=clang++
 export CC=clang
 export CXX=clang++
-
+export OMP_NUM_THREADS=64
+export OMP_PLACES=cores
+export OMP_PROC_BIND=spread
 echo "Script path: $SCRIPT_PATH"
 echo "Script dir:  $SCRIPT_DIR"
 
@@ -27,7 +34,7 @@ configs=(
     "-mprefer-vector-width=512" "force_width_512"
     "-fno-vectorize" "no_vectorize"
     # Prob disable if no arith function
-    "-fno-math-errno -fveclib=libmvec -mprefer-vector-width=512" "libmvec"
+    "-fno-math-errno -fveclib=libmvec -mprefer-vector-width=512" "mvec"
 )
 
 for RUNMULTI in 0 1; do

@@ -247,63 +247,69 @@ if __name__ == "__main__":
     all_timings = {}
 
     # S = dace.symbol("S")
-    for i, S in enumerate([8192 * 576, 8192 * 2 * 576, 8192 * 4 * 576, 8192 * 8 * 576]):
-        @dace.program
-        def log_implementations(A: dace.float64[S], B: dace.float64[S]):
-            for i in dace.map[0:S]:
-                B[i] = log(A[i])
+    for std_var in ["std", "dace"]:
+        for i, S in enumerate([8192 * 576, 8192 * 2 * 576, 8192 * 4 * 576, 8192 * 8 * 576]):
+            @dace.program
+            def log_implementations(A: dace.float64[S], B: dace.float64[S]):
+                for i in dace.map[0:S]:
+                    B[i] = log(A[i])
 
-        # Baseline SDFG
-        log_implementations_dace_sdfg = log_implementations.to_sdfg()
-        ReplaceSTDLogWithDaCeLog().apply_pass(log_implementations_dace_sdfg, {})
-        log_implementations_dace_sdfg.name = "log_implementations_dace"
-        log_implementations_dace_sdfg.instrument = dace.dtypes.InstrumentationType.Timer
+            # Baseline SDFG
+            log_implementaitons_std_sdfg = log_implementations.to_sdfg()
+            if std_var == "dace":
+                ReplaceSTDLogWithDaCeLog().apply_pass(log_implementaitons_std_sdfg, {})
+                log_implementaitons_std_sdfg.name = "log_implementaitons_dace"
+            else:
+                log_implementaitons_std_sdfg.name = "log_implementations_std"
 
-        # Baseline arrays
-        A = np.random.random((S, ))
-        B = np.random.random((S, ))
-        base_arrays = {"A": A, "B": B, }
-        params = {}
+            log_implementaitons_std_sdfg.instrument = dace.dtypes.InstrumentationType.Timer
 
-        # Run baseline 1
-        all_timings["log_implementations_dace", S] = run_sdfg_multiple_times(
-            sdfg=log_implementations_dace_sdfg,
-            arrays=base_arrays,
-            params=params,
-            num_runs=NUM_REPS,
-        )
+            # Baseline arrays
+            A = np.random.random((S, ))
+            B = np.random.random((S, ))
+            base_arrays = {"A": A, "B": B, }
+            params = {}
 
-        # -------------------------------------------------------
-        # Vectorized versions
-        # -------------------------------------------------------
-        if cpu_name == "intel_xeon":
-            vlens = [8, 16, 32, 64]
-        elif cpu_name == "amd_epyc":
-            vlens = [4, 8, 16, 32, 64]
-        else:
-            vlens = [2, 4, 8, 16, 32, 64]
-
-        for l in vlens:
-            # std no-copy version
-            sdfg_vec, name = build_vectorized_sdfg(
-                log_implementations_dace_sdfg, vec_width=l, insert_copies=False, cpy_suffix="no_cpy",
-                base_name="log_implementations_dace"
-            )
-            all_timings[name, S] = run_sdfg_multiple_times(
-                sdfg=sdfg_vec, arrays=base_arrays, params=params, num_runs=NUM_REPS
+            # Run baseline 1
+            all_timings[log_implementaitons_std_sdfg.name, S] = run_sdfg_multiple_times(
+                sdfg=log_implementaitons_std_sdfg,
+                arrays=base_arrays,
+                params=params,
+                num_runs=NUM_REPS,
             )
 
-            # std copy version
-            sdfg_vec_cpy, name = build_vectorized_sdfg(
-                log_implementations_dace_sdfg, vec_width=l, insert_copies=True, cpy_suffix="cpy",
-                base_name="log_implementations_dace"
-            )
-            all_timings[name, S] = run_sdfg_multiple_times(
-                sdfg=sdfg_vec_cpy, arrays=base_arrays, params=params, num_runs=NUM_REPS
-            )
+            # -------------------------------------------------------
+            # Vectorized versions
+            # -------------------------------------------------------
+            if cpu_name == "intel_xeon":
+                vlens = [8, 16, 32, 64]
+            elif cpu_name == "amd_epyc":
+                vlens = [4, 8, 16, 32, 64]
+            else:
+                vlens = [2, 4, 8, 16, 32, 64]
 
-        # -------------------------------------------------------
-        # CSV output
-        # -------------------------------------------------------
-        save_timings_to_csv(f"log_implementations_timings_dace_intrinsic_{env_suffix_str}{multicore_suffix}.csv", i, S, all_timings)
-        print(f"Saved timing results to log_implementations_timings_{env_suffix_str}{multicore_suffix}.csv")
+            for l in vlens:
+                # std no-copy version
+                sdfg_vec, name = build_vectorized_sdfg(
+                    log_implementaitons_std_sdfg, vec_width=l, insert_copies=False, cpy_suffix="no_cpy",
+                    base_name=log_implementaitons_std_sdfg.name
+                )
+                all_timings[name, S] = run_sdfg_multiple_times(
+                    sdfg=sdfg_vec, arrays=base_arrays, params=params, num_runs=NUM_REPS
+                )
+
+                # std copy version
+                sdfg_vec_cpy, name = build_vectorized_sdfg(
+                    log_implementaitons_std_sdfg, vec_width=l, insert_copies=True, cpy_suffix="cpy",
+                    base_name=log_implementaitons_std_sdfg.name
+                )
+                all_timings[name, S] = run_sdfg_multiple_times(
+                    sdfg=sdfg_vec_cpy, arrays=base_arrays, params=params, num_runs=NUM_REPS
+                )
+
+            # -------------------------------------------------------
+            # CSV output
+            # -------------------------------------------------------
+            intrinsic_suffix = "__dace_intrin_" if std_var == "dace" else ""
+            save_timings_to_csv(f"log_implementations_timings_{intrinsic_suffix}{env_suffix_str}{multicore_suffix}.csv", i, S, all_timings)
+            print(f"Saved timing results to log_implementations_timings_{intrinsic_suffix}{env_suffix_str}{multicore_suffix}.csv")

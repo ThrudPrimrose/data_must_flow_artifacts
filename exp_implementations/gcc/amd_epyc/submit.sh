@@ -5,7 +5,9 @@
 #SBATCH --time=02:30:00               # Walltime (hh:mm:ss)
 #SBATCH --output=%x_%j.out            # Standard output (%x=job name, %j=job ID)
 #SBATCH --error=%x_%j.err             # Standard error
-#SBATCH --chdir=.
+#SBATCH --ntasks=1
+#SBATCH --cpus-per-task=64
+
 
 spack load cmake
 spack load gcc@14.2

@@ -6,6 +6,8 @@
 #SBATCH --output=%x_%j.out            # Standard output (%x=job name, %j=job ID)
 #SBATCH --error=%x_%j.err             # Standard error
 #SBATCH --chdir=.
+#SBATCH --ntasks=1
+#SBATCH --cpus-per-task=72
 
 spack load cmake
 spack load gcc@14.2
@@ -23,8 +25,8 @@ export CPU_NAME="arm"
 # Define configurations: each element is "EXTRA_FLAGS SUFFIX"
 configs=(
     "" ""                                   # first run: no extra flags, no suffix
-    "-march=armv9-a+simd -no-simd -mcpu=neoverse-v2 -mprefer-vector-width=128" "neon"  # second run
-    "-march=armv9-a+sve2 -no-simd -mcpu=neoverse-v2" "sve"  # second run
+    "-march=armv9-a+simd -mcpu=neoverse-v2 -mprefer-vector-width=128" "neon"  # second run
+    "-march=armv9-a+sve2 mcpu=neoverse-v2" "sve"  # second run
     "-fno-tree-vectorize -fno-tree-slp-vectorize" "no-vectorize"
 )
 
