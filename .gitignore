@@ -5,6 +5,8 @@ venv
 
 *.sdfg
 *.sdfgz
+*.out
+*.err
 
 out.txt
 log
