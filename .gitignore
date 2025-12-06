@@ -9,6 +9,8 @@ venv
 *.err
 *.png
 *.pdf
+*.cpp
+*.so
 
 out.txt
 log
