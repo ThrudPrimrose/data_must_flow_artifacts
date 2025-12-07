@@ -144,20 +144,29 @@ for size in sizes:
     plt.title(f"TSVC-2 Benchmark s441 Runtime Comparison")
     plt.xticks(x, compilers)
     plt.grid(axis="y", linestyle="--", alpha=0.5)
+    for spine in plt.gca().spines.values():
+        spine.set_linewidth(0.1)   # e.g. 0.5, 0.3, 0.2 for even thinner
+        spine.set_edgecolor("gray")   # or a lighter gray
 
     import matplotlib.ticker as ticker
-    plt.gca().yaxis.set_major_locator(ticker.MultipleLocator(10))
+    plt.gca().yaxis.set_major_locator(ticker.MultipleLocator(20))
 
     # Legend below plot
     plt.legend(
-        bbox_to_anchor=(0.5, -0.15),
+        bbox_to_anchor=(0.5, -0.2),
         loc="upper center",
         ncol=3,
         frameon=True,          # enable border
     )
+
+    plt.rc("axes", labelsize=14, titlesize=14)   # axis labels + title
+    plt.rc("xtick", labelsize=14)                # x tick labels
+    plt.rc("ytick", labelsize=14)                # y tick labels
+    plt.rc("legend", fontsize=14)                # legend font size
     plt.tight_layout()
     outname = f"s441_v1_barplot_by_compiler_size_{size}.png"
     plt.savefig(outname, dpi=200)
+    plt.savefig(outname.replace(".png", ".pdf"))
     plt.close()
 
     print(f"[INFO] Saved {outname}")
