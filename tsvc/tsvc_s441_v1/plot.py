@@ -139,6 +139,11 @@ for size in sizes:
                     )
 
 
+    plt.rc("axes", labelsize=16, titlesize=18)   # axis labels + title
+    plt.rc("xtick", labelsize=14)                # x tick labels
+    plt.rc("ytick", labelsize=14)                # y tick labels
+    plt.rc("legend", fontsize=14)                # legend font size
+
     plt.xlabel("Compiler")
     plt.ylabel("Runtime (ms)")
     plt.title(f"TSVC-2 Benchmark s441 Runtime Comparison")
