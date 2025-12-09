@@ -15,7 +15,6 @@ def autoconversion_snow_dace(
     ztp1: dace.float64[KLON],
     zicecld: dace.float64[KLON],
     pnice: dace.float64[KLON],
-    zsnowaut: dace.float64[KLON],
     zsolqb: dace.float64[KLON],
     rtt: dace.float64,
     rlcritsnow: dace.float64,
@@ -23,25 +22,20 @@ def autoconversion_snow_dace(
     rsnowlin2: dace.float64,
     rnice: dace.float64,
     ptsphy: dace.float64,
-    zepsec: dace.float64,
     laericeauto: dace.int32,
 ):
-    for jl in dace.map[0:KLON]:
-        zsnowaut[jl] = 0.0
+    zsnowaut: dace.float64[KLON] = dace.define_local((KLON,), dace.float64)
 
-        if ztp1[jl] <= rtt:
-            if zicecld[jl] > zepsec:
-                zzco: dace.float64 = (
-                    ptsphy * rsnowlin1 * math.exp(rsnowlin2 * (ztp1[jl] - rtt))
-                )
+    for jl in range(KLON):
+        zzco: dace.float64 = ptsphy * rsnowlin1 * math.exp(rsnowlin2 * (ztp1[jl] - rtt))
 
-                zlcrit: dace.float64 = rlcritsnow
-                if laericeauto != 0:
-                    zzco = zzco * (rnice / pnice[jl]) ** 0.333
+        zlcrit: dace.float64 = rlcritsnow
+        if laericeauto != 0:
+            zzco = zzco * (rnice / pnice[jl]) ** 0.333
 
-                ratio: dace.float64 = zicecld[jl] / zlcrit
-                zsnowaut[jl] = zzco * (1.0 - math.exp(-(ratio * ratio)))
-                zsolqb[jl] = zsolqb[jl] + zsnowaut[jl]
+        ratio: dace.float64 = zicecld[jl] / zlcrit
+        zsnowaut[jl] = zzco * (1.0 - math.exp(-(ratio * ratio)))
+        zsolqb[jl] = zsolqb[jl] + zsnowaut[jl]
 
 
 if __name__ == "__main__":
