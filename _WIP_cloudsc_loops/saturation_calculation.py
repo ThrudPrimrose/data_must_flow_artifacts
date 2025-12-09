@@ -16,9 +16,8 @@ def compute_saturation_values_dace(
     ztp1: dace.float64[KLON, KLEV],
     pap: dace.float64[KLON, KLEV],
     zfoealfa: dace.float64[KLON, KLEV],
-    zfoeewmt: dace.float64[KLON, KLEV],
-    zqsmix: dace.float64[KLON, KLEV],
     zfoeew: dace.float64[KLON, KLEV],
+    zqsmix: dace.float64[KLON, KLEV],
     zqsice: dace.float64[KLON, KLEV],
     zfoeeliqt: dace.float64[KLON, KLEV],
     zqsliq: dace.float64[KLON, KLEV],
@@ -33,40 +32,43 @@ def compute_saturation_values_dace(
     rtwat: dace.float64,
     rtwat_rtice_r: dace.float64,
 ):
-    for jl, jk in dace.map[0:KLON, 0:KLEV]:
-        temp = ztp1[jl, jk]
-        press = pap[jl, jk]
+    zfoeewmt = dace.define_local((KLON, KLEV), dace.float64)
 
-        if temp >= rtt:
-            foedelta_val = 1.0
-        else:
-            foedelta_val = 0.0
+    for jl in range(KLON):
+        for jk in range(KLEV):
+            temp = ztp1[jl, jk]
+            press = pap[jl, jk]
 
-        temp_clipped = max(rtice, min(rtwat, temp))
-        alfa = min(1.0, ((temp_clipped - rtice) * rtwat_rtice_r) ** 2)
-        zfoealfa[jl, jk] = alfa
+            if temp >= rtt:
+                foedelta_val = 1.0
+            else:
+                foedelta_val = 0.0
 
-        exp_liq = math.exp(r3les * (temp - rtt) / (temp - r4les))
-        exp_ice = math.exp(r3ies * (temp - rtt) / (temp - r4ies))
+            temp_clipped = max(rtice, min(rtwat, temp))
+            alfa = min(1.0, ((temp_clipped - rtice) * rtwat_rtice_r) ** 2)
+            zfoealfa[jl, jk] = alfa
 
-        foeewm_val = r2es * (alfa * exp_liq + (1.0 - alfa) * exp_ice)
-        zfoeewmt[jl, jk] = min(foeewm_val / press, 0.5)
+            exp_liq = math.exp(r3les * (temp - rtt) / (temp - r4les))
+            exp_ice = math.exp(r3ies * (temp - rtt) / (temp - r4ies))
 
-        foeewmt_local = zfoeewmt[jl, jk]
-        zqsmix[jl, jk] = foeewmt_local / (1.0 - retv * foeewmt_local)
+            foeewm_val = r2es * (alfa * exp_liq + (1.0 - alfa) * exp_ice)
+            zfoeewmt[jl, jk] = min(foeewm_val / press, 0.5)
 
-        foeeliq_val = r2es * exp_liq
-        foeeice_val = r2es * exp_ice
-        foeew_val = (
-            foedelta_val * foeeliq_val + (1.0 - foedelta_val) * foeeice_val
-        ) / press
-        foeew_val = min(0.5, foeew_val)
-        zfoeew[jl, jk] = foeew_val
-        zqsice[jl, jk] = foeew_val / (1.0 - retv * foeew_val)
+            foeewmt_local = zfoeewmt[jl, jk]
+            zqsmix[jl, jk] = foeewmt_local / (1.0 - retv * foeewmt_local)
 
-        foeeliqt_val = min(foeeliq_val / press, 0.5)
-        zfoeeliqt[jl, jk] = foeeliqt_val
-        zqsliq[jl, jk] = foeeliqt_val / (1.0 - retv * foeeliqt_val)
+            foeeliq_val = r2es * exp_liq
+            foeeice_val = r2es * exp_ice
+            foeew_val = (
+                foedelta_val * foeeliq_val + (1.0 - foedelta_val) * foeeice_val
+            ) / press
+            foeew_val = min(0.5, foeew_val)
+            zfoeew[jl, jk] = foeew_val
+            zqsice[jl, jk] = foeew_val / (1.0 - retv * foeew_val)
+
+            foeeliqt_val = min(foeeliq_val / press, 0.5)
+            zfoeeliqt[jl, jk] = foeeliqt_val
+            zqsliq[jl, jk] = foeeliqt_val / (1.0 - retv * foeeliqt_val)
 
 
 if __name__ == "__main__":
