@@ -53,7 +53,7 @@ def check_numerical_equivalence(
     xform_sdfg(**xform_input)
 
     # Compare outputs
-    for name, _ in base_sdfg.arrays:
+    for name, _ in base_sdfg.arrays.items():
         base_output = base_input[name]
         xform_output = xform_input[name]
         if not np.allclose(base_output, xform_output, atol=atol, rtol=rtol):
