@@ -139,7 +139,7 @@ def save_timings_to_csv(filename, i, isize, timings_dict):
     Write:
         sdfg_name,rep_idx,time_in_seconds
     """
-    with open(filename, "w" if i == 0 else "a", newline="") as f:
+    with open(filename, "a" if i == 0 else "a", newline="") as f:
         writer = csv.writer(f)
         writer.writerow(["sdfg_name", "size", "rep", "time_seconds"])
 
