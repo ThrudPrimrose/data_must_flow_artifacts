@@ -187,7 +187,6 @@ if __name__ == "__main__":
 
         # Baseline SDFG
         for sdfg, variant_name, stride in sdfg_list:
-            DetectGather().apply_pass(sdfg, {})
             sdfg.name = sdfg.name + env_suffix_str
             sdfg.instrument = dace.dtypes.InstrumentationType.Timer
 
@@ -223,7 +222,7 @@ if __name__ == "__main__":
             # -------------------------------------------------------
             # Vectorized versions
             # -------------------------------------------------------
-            for l in [2, 4, 8, 16, 32, 64, 128, 256]:
+            for l in [8, 16, 32, 64]:
                 # std no-copy version
                 sdfg_vec, name = build_vectorized_sdfg(
                     sdfg, vec_width=l, insert_copies=False, suffix=f"no_cpy",
@@ -245,5 +244,5 @@ if __name__ == "__main__":
             # -------------------------------------------------------
             # CSV dstput
             # -------------------------------------------------------
-        save_timings_to_csv(f"force_gather_timings_dace_intrin_{env_suffix_str}{multicore_suffix}.csv", i, N, all_timings)
-        print(f"Saved timing results to force_gather_timings_dace_intrin_{env_suffix_str}{multicore_suffix}.csv")
+        save_timings_to_csv(f"force_gather_timings_{env_suffix_str}{multicore_suffix}.csv", i, S, all_timings)
+        print(f"Saved timing results to force_gather_timings_{env_suffix_str}{multicore_suffix}.csv")

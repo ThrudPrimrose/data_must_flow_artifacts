@@ -248,8 +248,8 @@ if __name__ == "__main__":
     test_division_by_zero()
 
     # S = dace.symbol("S")
-    #for i, S in enumerate([8192 * 576, ]):
-    for i, S in enumerate([8192 * 576, 8192 * 2 * 576, 8192 * 4 * 576, 8192 * 8 * 576]):
+    #for i, S in enumerate([8192 * 576, 8192 * 2 * 576, 8192 * 4 * 576, 8192 * 8 * 576]):
+    for i, S in enumerate([8192 * 576, ]):
         @dace.program
         def division_by_zero(A: dace.float64[S], B: dace.float64[S], c: dace.float64):
             for i in dace.map[0:S]:
@@ -286,7 +286,7 @@ if __name__ == "__main__":
             vlens = [4, 8, 16, 32, 64]
         else:
             vlens = [2, 4, 8, 16, 32, 64]
-
+            #vlens = [8, 32, 1024]
 
         for l in vlens:
             # std no-copy version

@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-for sub in llvm/arm gcc/arm graceclang/arm; do
+for sub in . ; do
     [[ -d "$sub" ]] || continue
 
     echo "Entering $sub"
@@ -19,7 +19,7 @@ for sub in llvm/arm gcc/arm graceclang/arm; do
                 out_name="${folder_name}_${name}.asm"
 
                 echo "  Dumping $so_file → $out_name"
-                objdump -d "$so_file" > "../../asm/$out_name"
+                objdump -d "$so_file" > "asm/$out_name"
             else
                 echo "  Skipping $name (no .so found)"
             fi

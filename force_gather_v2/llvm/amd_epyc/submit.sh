@@ -1,31 +1,40 @@
 #!/bin/bash
-#SBATCH --job-name=log_arm_llvm  # Job name
+#SBATCH --job-name=gather_amd_epyc_llvm  # Job name
 #SBATCH --nodes=1                     # Number of nodes
-#SBATCH --partition=normal               # Partition/queue
+#SBATCH --partition=amd               # Partition/queue
 #SBATCH --time=02:30:00               # Walltime (hh:mm:ss)
 #SBATCH --output=%x_%j.out            # Standard output (%x=job name, %j=job ID)
 #SBATCH --error=%x_%j.err             # Standard error
 #SBATCH --chdir=.
 #SBATCH --ntasks=1
-#SBATCH --cpus-per-task=288
-export OMP_NUM_THREADS=288
+#SBATCH --ntasks=1
+#SBATCH --cpus-per-task=128
+export OMP_NUM_THREADS=64
 export OMP_PLACES=cores
 export OMP_PROC_BIND=close
 spack load cmake
+
 alias cc=clang
 alias c++=clang++
 alias cxx=clang++
 export CC=clang
 export CXX=clang++
+export OMP_NUM_THREADS=64
+export OMP_PLACES=cores
+export OMP_PROC_BIND=close
+echo "Script path: $SCRIPT_PATH"
+echo "Script dir:  $SCRIPT_DIR"
 
-export CPU_NAME="arm"
+export CPU_NAME="amd_epyc"
 
 # Define configurations: each element is "EXTRA_FLAGS SUFFIX"
 configs=(
-    "-march=armv9-a+simd+nosve+nosve2 -D__ARM_NEON -D__DACE_USE_INTRINSICS=1 -D__DACE_USE_SVE=0" "intrinsic_neon"
-    "-march=armv9-a+sve2+sve+nosimd -D__ARM_FEATURE_SVE -D__DACE_USE_INTRINSICS=1 -D__DACE_USE_SVE=1" "intrinsic_sve"
-    "" ""
+    "" ""                                   # first run: no extra flags, no suffix
+    "-mprefer-vector-width=512" "force_width_256"   # second run
+    "-mprefer-vector-width=512" "force_width_512"
     "-fno-vectorize" "no_vectorize"
+    # Prob disable if no arith function
+    "-fno-math-errno -fveclib=libmvec -mprefer-vector-width=512" "mvec"
 )
 
 for RUNMULTI in 0 1; do
@@ -37,12 +46,12 @@ for RUNMULTI in 0 1; do
         echo "Running with EXTRA_FLAGS='$EXTRA_FLAGS', SUFFIX='$SUFFIX'"
 
         # Copy benchmark script
-        cp ../../benchmark_log_implementations.py .
+        cp ../../benchmark_force_gather.py .
 
         # Run benchmark
-        python3 benchmark_log_implementations.py
+        python3 benchmark_force_gather.py
 
         # Remove script
-        rm benchmark_log_implementations.py
+        rm benchmark_force_gather.py
     done
 done
