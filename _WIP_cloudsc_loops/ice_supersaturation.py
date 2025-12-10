@@ -18,9 +18,9 @@ def ice_supersaturation_adjustment_dace(
     zqsice: dace.float64[KLON],
     zcorqsice: dace.float64[KLON],
     zfokoop: dace.float64[KLON],
-    zsolqa: dace.float64[KLON, NCLV, NCLV],
+    zsolqa: dace.float64[NCLV, NCLV, KLON],
     zsolac: dace.float64[KLON],
-    zqxfg: dace.float64[KLON, NCLV],
+    zqxfg: dace.float64[NCLV, KLON],
     rtt: dace.float64,
     ramin: dace.float64,
     rthomo: dace.float64,
@@ -34,7 +34,7 @@ def ice_supersaturation_adjustment_dace(
 ):
     zepsilon: dace.float64 = 1.0e-14
 
-    for jl in dace.map[0:KLON]:
+    for jl in range(KLON):
         if ztp1[jl] >= rtt or nssopt == 0:
             zfac: dace.float64 = 1.0
             zfaci: dace.float64 = 1.0
@@ -55,21 +55,21 @@ def ice_supersaturation_adjustment_dace(
 
         if zsupsat > zepsec:
             if ztp1[jl] > rthomo:
-                zsolqa[jl, ncldql - 1, ncldqv - 1] = (
-                    zsolqa[jl, ncldql - 1, ncldqv - 1] + zsupsat
+                zsolqa[ncldql - 1, ncldqv - 1, jl] = (
+                    zsolqa[ncldql - 1, ncldqv - 1, jl] + zsupsat
                 )
-                zsolqa[jl, ncldqv - 1, ncldql - 1] = (
-                    zsolqa[jl, ncldqv - 1, ncldql - 1] - zsupsat
+                zsolqa[ncldqv - 1, ncldql - 1, jl] = (
+                    zsolqa[ncldqv - 1, ncldql - 1, jl] - zsupsat
                 )
-                zqxfg[jl, ncldql - 1] = zqxfg[jl, ncldql - 1] + zsupsat
+                zqxfg[ncldql - 1, jl] = zqxfg[ncldql - 1, jl] + zsupsat
             else:
-                zsolqa[jl, ncldqi - 1, ncldqv - 1] = (
-                    zsolqa[jl, ncldqi - 1, ncldqv - 1] + zsupsat
+                zsolqa[ncldqi - 1, ncldqv - 1, jl] = (
+                    zsolqa[ncldqi - 1, ncldqv - 1, jl] + zsupsat
                 )
-                zsolqa[jl, ncldqv - 1, ncldqi - 1] = (
-                    zsolqa[jl, ncldqv - 1, ncldqi - 1] - zsupsat
+                zsolqa[ncldqv - 1, ncldqi - 1, jl] = (
+                    zsolqa[ncldqv - 1, ncldqi - 1, jl] - zsupsat
                 )
-                zqxfg[jl, ncldqi - 1] = zqxfg[jl, ncldqi - 1] + zsupsat
+                zqxfg[ncldqi - 1, jl] = zqxfg[ncldqi - 1, jl] + zsupsat
 
             zsolac[jl] = (1.0 - za[jl]) * zfaci
 
@@ -100,9 +100,9 @@ if __name__ == "__main__":
     zcorqsice = np.random.uniform(1.0, 1.5, klon).astype(np.float64)
     zfokoop = np.random.uniform(0.8, 1.2, klon).astype(np.float64)
 
-    zsolqa = np.zeros((klon, nclv, nclv), dtype=np.float64)
+    zsolqa = np.zeros((nclv, nclv, klon), dtype=np.float64)
     zsolac = np.zeros(klon, dtype=np.float64)
-    zqxfg = np.random.uniform(0, 0.01, (klon, nclv)).astype(np.float64)
+    zqxfg = np.random.uniform(0, 0.01, (nclv, klon)).astype(np.float64)
 
     # Generate SDFG
     sdfg = ice_supersaturation_adjustment_dace.to_sdfg()

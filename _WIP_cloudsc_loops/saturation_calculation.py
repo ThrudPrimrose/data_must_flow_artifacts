@@ -7,20 +7,20 @@ import math
 import numpy as np
 
 # Define symbolic sizes
-KLON = dace.symbol("KLON")
 KLEV = dace.symbol("KLEV")
+KLON = dace.symbol("KLEV")
 
 
 @dace.program
 def compute_saturation_values_dace(
-    ztp1: dace.float64[KLON, KLEV],
-    pap: dace.float64[KLON, KLEV],
-    zfoealfa: dace.float64[KLON, KLEV],
-    zfoeew: dace.float64[KLON, KLEV],
-    zqsmix: dace.float64[KLON, KLEV],
-    zqsice: dace.float64[KLON, KLEV],
-    zfoeeliqt: dace.float64[KLON, KLEV],
-    zqsliq: dace.float64[KLON, KLEV],
+    ztp1: dace.float64[KLEV, KLON],
+    pap: dace.float64[KLEV, KLON],
+    zfoealfa: dace.float64[KLEV, KLON],
+    zfoeew: dace.float64[KLEV, KLON],
+    zqsmix: dace.float64[KLEV, KLON],
+    zqsice: dace.float64[KLEV, KLON],
+    zfoeeliqt: dace.float64[KLEV, KLON],
+    zqsliq: dace.float64[KLEV, KLON],
     rtt: dace.float64,
     retv: dace.float64,
     r2es: dace.float64,
@@ -32,10 +32,10 @@ def compute_saturation_values_dace(
     rtwat: dace.float64,
     rtwat_rtice_r: dace.float64,
 ):
-    zfoeewmt = dace.define_local((KLON, KLEV), dace.float64)
+    zfoeewmt = dace.define_local((KLEV, KLON), dace.float64)
 
-    for jl in range(KLON):
-        for jk in range(KLEV):
+    for jl in range(KLEV):
+        for jk in range(KLON):
             temp = ztp1[jl, jk]
             press = pap[jl, jk]
 
@@ -73,7 +73,7 @@ def compute_saturation_values_dace(
 
 if __name__ == "__main__":
     # Example usage with test data
-    klon, klev = 128, 64
+    klev, klon = 128, 64
 
     # Typical atmospheric values
     rtt = 273.16
@@ -88,17 +88,16 @@ if __name__ == "__main__":
     rtwat_rtice_r = 1.0 / (rtwat - rtice)
 
     # Create test data
-    ztp1 = np.linspace(220, 310, klon * klev).reshape(klon, klev).astype(np.float64)
-    pap = np.linspace(10000, 100000, klon * klev).reshape(klon, klev).astype(np.float64)
+    ztp1 = np.linspace(220, 310, klev * klon).reshape(klev, klon).astype(np.float64)
+    pap = np.linspace(10000, 100000, klev * klon).reshape(klev, klon).astype(np.float64)
 
     # Output arrays
-    zfoealfa = np.zeros((klon, klev), dtype=np.float64)
-    zfoeewmt = np.zeros((klon, klev), dtype=np.float64)
-    zqsmix = np.zeros((klon, klev), dtype=np.float64)
-    zfoeew = np.zeros((klon, klev), dtype=np.float64)
-    zqsice = np.zeros((klon, klev), dtype=np.float64)
-    zfoeeliqt = np.zeros((klon, klev), dtype=np.float64)
-    zqsliq = np.zeros((klon, klev), dtype=np.float64)
+    zfoealfa = np.zeros((klev, klon), dtype=np.float64)
+    zqsmix = np.zeros((klev, klon), dtype=np.float64)
+    zfoeew = np.zeros((klev, klon), dtype=np.float64)
+    zqsice = np.zeros((klev, klon), dtype=np.float64)
+    zfoeeliqt = np.zeros((klev, klon), dtype=np.float64)
+    zqsliq = np.zeros((klev, klon), dtype=np.float64)
 
     # Generate SDFG
     sdfg = compute_saturation_values_dace.to_sdfg()
@@ -111,7 +110,6 @@ if __name__ == "__main__":
         ztp1=ztp1,
         pap=pap,
         zfoealfa=zfoealfa,
-        zfoeewmt=zfoeewmt,
         zqsmix=zqsmix,
         zfoeew=zfoeew,
         zqsice=zqsice,

@@ -49,7 +49,6 @@ if __name__ == "__main__":
     rsnowlin2 = 0.025
     rnice = 1.0e8
     ptsphy = 3600.0
-    zepsec = 1.0e-14
     laericeauto = 0
 
     # Create test data
@@ -57,7 +56,6 @@ if __name__ == "__main__":
     ztp1 = np.random.uniform(220, 280, klon).astype(np.float64)
     zicecld = np.random.uniform(1e-6, 1e-4, klon).astype(np.float64)
     pnice = np.random.uniform(1e7, 1e9, klon).astype(np.float64)
-    zsnowaut = np.zeros(klon, dtype=np.float64)
     zsolqb = np.zeros(klon, dtype=np.float64)
 
     # Generate SDFG
@@ -71,7 +69,6 @@ if __name__ == "__main__":
         ztp1=ztp1,
         zicecld=zicecld,
         pnice=pnice,
-        zsnowaut=zsnowaut,
         zsolqb=zsolqb,
         rtt=rtt,
         rlcritsnow=rlcritsnow,
@@ -79,12 +76,9 @@ if __name__ == "__main__":
         rsnowlin2=rsnowlin2,
         rnice=rnice,
         ptsphy=ptsphy,
-        zepsec=zepsec,
         laericeauto=laericeauto,
         KLON=klon,
     )
 
     print("Snow autoconversion (DaCe) complete!")
-    print(f"Non-zero autoconversion: {np.count_nonzero(zsnowaut)}")
-    print(f"Max autoconversion rate: {zsnowaut.max():.6e}")
     print(f"Total autoconverted snow (ZSOLQB): {np.sum(zsolqb):.6e}")
