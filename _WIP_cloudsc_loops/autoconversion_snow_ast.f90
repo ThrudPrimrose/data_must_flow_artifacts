@@ -2,9 +2,9 @@ SUBROUTINE autoconversion_snow(kidia, kfdia, klon, ztp1, zicecld, pnice, zsolqb,
   IMPLICIT NONE
   INTEGER(KIND = 4), VALUE :: kidia, kfdia, klon
   INTEGER(KIND = 4), VALUE :: ncldqs, ncldqi
-  REAL(KIND = 8), INTENT(IN) :: ztp1(kfdia)
-  REAL(KIND = 8), INTENT(IN) :: zicecld(kfdia)
-  REAL(KIND = 8), INTENT(IN) :: pnice(kfdia)
+  REAL(KIND = 8), INTENT(IN) :: ztp1(klon)
+  REAL(KIND = 8), INTENT(IN) :: zicecld(klon)
+  REAL(KIND = 8), INTENT(IN) :: pnice(klon)
   REAL(KIND = 8), VALUE :: rtt
   REAL(KIND = 8), VALUE :: rlcritsnow
   REAL(KIND = 8), VALUE :: rsnowlin1
@@ -13,8 +13,8 @@ SUBROUTINE autoconversion_snow(kidia, kfdia, klon, ztp1, zicecld, pnice, zsolqb,
   REAL(KIND = 8), VALUE :: ptsphy
   REAL(KIND = 8), VALUE :: zepsec
   INTEGER(KIND=4), VALUE :: laericeauto
-  REAL(KIND = 8), INTENT(OUT) :: zsnowaut(kfdia)
-  REAL(KIND = 8), INTENT(INOUT) :: zsolqb(kfdia, ncldqs, ncldqi)
+  REAL(KIND = 8), INTENT(OUT) :: zsnowaut(klon)
+  REAL(KIND = 8), INTENT(INOUT) :: zsolqb(klon, ncldqs, ncldqi)
   INTEGER(KIND = 4) :: jl
   REAL(KIND = 8) :: zzco, zlcrit
   zsnowaut(:) = 0.0D0

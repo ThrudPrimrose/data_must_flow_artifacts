@@ -34,79 +34,6 @@ scalar_specialization_values = {
     'laericesed': 0
 }
 
-@dace.program
-def compute_saturation_values_dace(
-    ztp1: dace.float64[klev, klon],
-    pap: dace.float64[klev, klon],
-    zfoealfa: dace.float64[klev, klon],
-    zfoeew: dace.float64[klev, klon],
-    zqsmix: dace.float64[klev, klon],
-    zqsice: dace.float64[klev, klon],
-    zfoeeliqt: dace.float64[klev, klon],
-    zqsliq: dace.float64[klev, klon],
-    zfoeewmt: dace.float64[klev, klon],
-    rtt: dace.float64,
-    retv: dace.float64,
-    r2es: dace.float64,
-    r3les: dace.float64,
-    r3ies: dace.float64,
-    r4les: dace.float64,
-    r4ies: dace.float64,
-    rtice: dace.float64,
-    rtwat: dace.float64,
-    rtwat_rtice_r: dace.float64,
-    kidia: dace.int32,
-    kfdia: dace.int32
-):
-    # Loop order matches Fortran: DO JK, DO JL
-    # But we access [jk, jl] for row-major (Python)
-    # while Fortran accesses [JL, JK] for col-major
-    for jk in range(klev):
-        for jl in range(klon):
-            ptare = ztp1[jk, jl]
-            pressure = pap[jk, jl]
-            
-            # FOEALFA(PTARE)
-            temp_clipped = max(rtice, min(rtwat, ptare))
-            foealfa_val = min(1.0, ((temp_clipped - rtice) * rtwat_rtice_r) ** 2)
-            zfoealfa[jk, jl] = foealfa_val
-            
-            # Exponentials for FOEEWM, FOEELIQ, FOEEICE
-            exp_liq = math.exp(r3les * (ptare - rtt) / (ptare - r4les))
-            exp_ice = math.exp(r3ies * (ptare - rtt) / (ptare - r4ies))
-            
-            # FOEEWM(PTARE)
-            foeewm_val = r2es * (foealfa_val * exp_liq + (1.0 - foealfa_val) * exp_ice)
-            zfoeewmt[jk, jl] = min(foeewm_val / pressure, 0.5)
-            
-            # ZQSMIX calculation
-            zqsmix[jk, jl] = zfoeewmt[jk, jl]
-            zqsmix[jk, jl] = zqsmix[jk, jl] / (1.0 - retv * zqsmix[jk, jl])
-            
-            # FOEDELTA(PTARE)
-            if ptare >= rtt:
-                zalfa = 1.0 
-            else:
-                zalfa = 0.0
-
-            # FOEELIQ(PTARE) and FOEEICE(PTARE)
-            foeeliq_val = r2es * exp_liq
-            foeeice_val = r2es * exp_ice
-            
-            # ZFOEEW calculation
-            zfoeew[jk, jl] = min((zalfa * foeeliq_val + (1.0 - zalfa) * foeeice_val) / pressure, 0.5)
-            zfoeew[jk, jl] = min(0.5, zfoeew[jk, jl])
-            
-            # ZQSICE calculation
-            zqsice[jk, jl] = zfoeew[jk, jl] / (1.0 - retv * zfoeew[jk, jl])
-            
-            # ZFOEELIQT calculation
-            zfoeeliqt[jk, jl] = min(foeeliq_val / pressure, 0.5)
-            
-            # ZQSLIQ calculation
-            zqsliq[jk, jl] = zfoeeliqt[jk, jl]
-            zqsliq[jk, jl] = zqsliq[jk, jl] / (1.0 - retv * zqsliq[jk, jl])
-
 def generate_compute_saturation_values_data():
     # Scalars
     rtt = np.float64(273.16)
@@ -308,7 +235,7 @@ def run_saturation_calculation():
     data_F = make_col_major(data)
 
     # ----- Build SDFG -----
-    sdfg = compute_saturation_values_dace.to_sdfg()
+    sdfg = dace.SDFG.from_file("saturation_calculation.sdfg")
     sdfg.name = "saturation_calculation"
 
     # Specialize scalars if needed
@@ -318,6 +245,8 @@ def run_saturation_calculation():
 
     # Replace symbolic constants
     sdfg.replace_dict({"sym_nclv": 5})
+    sdfg.replace_dict({"sym_klon": klon_val})
+    sdfg.replace_dict({"sym_klev": klev_val})
     sdfg.validate()
 
     sdfg.save("saturation_calculation.sdfgz", compress=True)

@@ -1,18 +1,15 @@
 """
-Saturation Values Calculation - DaCe Version
+Autoconversion Snow - DaCe vs Fortran Runner
 """
 
 import copy
-from typing import Any, Dict
+from typing import Dict
 import dace
-import math
 import numpy as np
 import dace.sdfg.utils as sdutil
 import subprocess
 import ctypes
 import os
-from typing import Callable
-from math import exp, log, pow, sqrt
 
 # Define symbolic sizes
 klev = dace.symbol("klev")
@@ -106,87 +103,83 @@ def compare_row_col_dicts(data_C, data_F, rtol=1e-12, atol=1e-12):
     
     return all_ok
 
-def generate_ice_supersaturation_data() -> Dict[str, np.ndarray]:
+
+# ---------------------------------------------------------------------------
+# Data generator
+# ---------------------------------------------------------------------------
+
+def generate_autoconversion_snow_data() -> Dict[str, np.ndarray]:
     """
-    Generate synthetic but consistent data for ice_supersaturation_adjustment.
-    Following the same style and dimensions as rain evaporation.
+    Generate synthetic data for the autoconversion_snow routine.
     """
 
-    # Choose species indices consistent with scalar_specialization_values
-    ncldql_val = np.int32(1)  # liquid cloud water
-    ncldqi_val = np.int32(2)  # ice cloud water
-    ncldqv_val = np.int32(5)  # vapour
+    # Species indices / sizes – align with scalar_specialization_values
+    ncldqs_val = np.int32(4)  # snow index & 2nd dim size
+    ncldqi_val = np.int32(2)  # ice index  & 3rd dim size
 
     # Scalars
-    rtt      = np.float64(273.16)
-    ramin    = np.float64(1e-3)      # min clear fraction
-    rthomo   = np.float64(233.16)    # homogenous freezing threshold
-    nssopt   = np.int32(1)           # activate Koop scheme
-    rkooptau = np.float64(60.0)     # characteristic timescale [s]
-    ptsphy   = np.float64(2.0)       # timestep [s]
-    zepsec   = np.float64(1e-12)
+    rtt         = np.float64(273.16)   # triple point
+    rlcritsnow  = np.float64(1e-4)     # critical ice content for snow
+    rsnowlin1   = np.float64(1.0e-3)   # linear coefficient 1
+    rsnowlin2   = np.float64(0.05)     # linear coefficient 2 (1/K)
+    rnice       = np.float64(1.0e7)    # reference ice number conc
+    ptsphy      = np.float64(2.0)      # timestep [s]
+    zepsec      = np.float64(1e-12)    # epsilon
+    laericeauto = True                 # exercise aerosol-aware branch
 
-    # Temperature (some below RTT, some above)
-    ztp1 = np.linspace(230.0, 280.0, klon_val).astype(np.float64)
+    kidia = np.int32(1)
+    kfdia = np.int32(klon_val)
+    klon  = np.int32(klon_val)
 
-    # Cloud fraction
-    za = (0.05 + 0.9 * np.random.rand(klon_val)).astype(np.float64)
+    # ---- 1D fields (length = KLON) ----
+    # Temperature: some below RTT, some above
+    ztp1 = np.linspace(250.0, 270.0, klon_val).astype(np.float64)
 
-    # Vapour content
-    zqx_ncldqv = (0.02 * np.random.rand(klon_val)).astype(np.float64)
+    # Ice cloud water (must be > zepsec in many points to trigger kernel)
+    zicecld = (1e-5 + 5e-4 * np.random.rand(klon_val)).astype(np.float64)
 
-    # Ice saturation mixing ratio
-    zqsice = (1e-4 + 2e-3 * np.random.rand(klon_val)).astype(np.float64)
+    # Ice number concentration: positive, around RNICE
+    pnice = (0.5 * rnice + 1.5 * rnice * np.random.rand(klon_val)).astype(np.float64)
 
-    # Correction factor for ice saturation
-    zcorqsice = (0.5 + 0.5 * np.random.rand(klon_val)).astype(np.float64)
+    # ---- 3D source / sink tensor ----
+    # Dimensions: (KFDIA, NCLDQS, NCLDQI)
+    zsolqb = np.zeros((klon_val, int(ncldqs_val), int(ncldqi_val)), dtype=np.float64)
 
-    # Koop factor between 0 and 1
-    zfokoop = np.random.rand(klon_val).astype(np.float64)
-
-    # 3D source-sink tensor: initialize to zeros
-    zsolqa = np.zeros((nclv_val, nclv_val, klon_val), dtype=np.float64)
-
-    # Accretion / supersat activation term
-    zsolac = np.zeros(klon_val, dtype=np.float64)
-
-    # QXFG(KLON, NCLV): current species mixing ratios, start with small noise
-    zqxfg = (1e-5 * np.random.rand(nclv_val, klon_val)).astype(np.float64)
+    # ---- Output snow autoconversion ----
+    zsnowaut = np.zeros(klon_val, dtype=np.float64)
 
     return dict(
+        kidia=kidia,
+        kfdia=kfdia,
+        klon=klon,
         ztp1=ztp1,
-        za=za,
-        zqx_ncldqv=zqx_ncldqv,
-        zqsice=zqsice,
-        zcorqsice=zcorqsice,
-        zfokoop=zfokoop,
-        zsolqa=zsolqa,
-        zsolac=zsolac,
-        zqxfg=zqxfg,
+        zicecld=zicecld,
+        pnice=pnice,
+        zsolqb=zsolqb,
+        zsnowaut=zsnowaut,
         rtt=rtt,
-        ramin=ramin,
-        rthomo=rthomo,
-        nssopt=nssopt,
-        rkooptau=rkooptau,
+        rlcritsnow=rlcritsnow,
+        rsnowlin1=rsnowlin1,
+        rsnowlin2=rsnowlin2,
+        rnice=rnice,
         ptsphy=ptsphy,
         zepsec=zepsec,
-        ncldql=np.int32(ncldql_val),
-        ncldqi=np.int32(ncldqi_val),
-        ncldqv=np.int32(ncldqv_val),
-        kidia=np.int32(1),
-        kfdia=np.int32(klon_val),
-        klon=np.int32(klon_val),
-        klev=np.int32(klev_val),
-        nclv=np.int32(nclv_val),
+        laericeauto=laericeauto,
+        ncldqs=ncldqs_val,
+        ncldqi=ncldqi_val,
     )
 
-def compile_ice_supersaturation_fortran(
-    src_path: str = "./ice_supersaturation_adjustment.f90",
-    libname: str = "libice_supersaturation.so",
-    func_name: str = "ice_supersaturation_adjustment",
+# ---------------------------------------------------------------------------
+# Fortran compilation and wrapper
+# ---------------------------------------------------------------------------
+
+def compile_autoconversion_snow_fortran(
+    src_path: str = "./autoconversion_snow.f90",
+    libname: str = "libautoconversion_snow.so",
+    func_name: str = "autoconversion_snow",
 ):
     """
-    Compile the ice_supersaturation_adjustment Fortran routine into a shared library
+    Compile the autoconversion_snow Fortran routine into a shared library
     and return a ctypes function handle.
     """
     if not os.path.exists(src_path):
@@ -204,7 +197,6 @@ def compile_ice_supersaturation_fortran(
         raise RuntimeError(f"Fortran symbol '{func_name}' not found in shared library.")
 
     ndF64_1d = np.ctypeslib.ndpointer(dtype=np.float64, ndim=1, flags="F_CONTIGUOUS")
-    ndF64_2d = np.ctypeslib.ndpointer(dtype=np.float64, ndim=2, flags="F_CONTIGUOUS")
     ndF64_3d = np.ctypeslib.ndpointer(dtype=np.float64, ndim=3, flags="F_CONTIGUOUS")
 
     func.restype = None
@@ -213,41 +205,37 @@ def compile_ice_supersaturation_fortran(
         ctypes.c_int,   # KFDIA
         ctypes.c_int,   # KLON
         ndF64_1d,       # ZTP1
-        ndF64_1d,       # ZA
-        ndF64_1d,       # ZQX_NCLDQV
-        ndF64_1d,       # ZQSICE
-        ndF64_1d,       # ZCORQSICE
-        ndF64_1d,       # ZFOKOOP
-        ndF64_3d,       # ZSOLQA
-        ndF64_1d,       # ZSOLAC
-        ndF64_2d,       # ZQXFG
+        ndF64_1d,       # ZICECLD
+        ndF64_1d,       # PNICE
+        ndF64_3d,       # ZSOLQB
+        ndF64_1d,       # ZSNOWAUT
         ctypes.c_double,  # RTT
-        ctypes.c_double,  # RAMIN
-        ctypes.c_double,  # RTHOMO
-        ctypes.c_int,     # NSSOPT
-        ctypes.c_double,  # RKOOPTAU
+        ctypes.c_double,  # RLCRITSNOW
+        ctypes.c_double,  # RSNOWLIN1
+        ctypes.c_double,  # RSNOWLIN2
+        ctypes.c_double,  # RNICE
         ctypes.c_double,  # PTSPHY
         ctypes.c_double,  # ZEPSEC
-        ctypes.c_int,     # NCLDQL
+        ctypes.c_bool,    # LAERICEAUTO
+        ctypes.c_int,     # NCLDQS
         ctypes.c_int,     # NCLDQI
-        ctypes.c_int,     # NCLDQV
-        ctypes.c_int,     # NCLV
     ]
 
-    print("Fortran function loaded (ice supersaturation)")
+    print("Fortran function loaded (autoconversion_snow)")
     return func
 
-def wrap_ice_supersaturation(func):
+def wrap_autoconversion_snow(func):
     """
-    Thin wrapper to call the Fortran ice_supersaturation_adjustment routine
-    using a kwargs dict consistent with the Python/Dace naming.
+    Thin wrapper to call the Fortran autoconversion_snow routine
+    using a kwargs dict consistent with the Python/DaCe naming.
     """
     arg_order = [
         "kidia", "kfdia", "klon",
-        "ztp1", "za", "zqx_ncldqv", "zqsice", "zcorqsice", "zfokoop",
-        "zsolqa", "zsolac", "zqxfg",
-        "rtt", "ramin", "rthomo", "nssopt", "rkooptau", "ptsphy", "zepsec",
-        "ncldql", "ncldqi", "ncldqv", "nclv",
+        "ztp1", "zicecld", "pnice",
+        "zsolqb", "zsnowaut",
+        "rtt", "rlcritsnow", "rsnowlin1", "rsnowlin2", "rnice",
+        "ptsphy", "zepsec", "laericeauto",
+        "ncldqs", "ncldqi",
     ]
 
     def wrapper(**kwargs):
@@ -256,19 +244,23 @@ def wrap_ice_supersaturation(func):
 
     return wrapper
 
-def run_ice_supersaturation():
-    # ----- Generate Inputs -----
-    data = generate_ice_supersaturation_data()
-    data_F_dace = make_col_major(data)
-    data_F = make_col_major(data)
-    del data
+# ---------------------------------------------------------------------------
+# Main runner
+# ---------------------------------------------------------------------------
 
+def run_autoconversion_snow():
+    # ----- Generate Inputs -----
+    data = generate_autoconversion_snow_data()
+
+    # Prepare Fortran/DaCe copies (Fortran wants F-contiguous for multi-d arrays)
+    data_F_dace = make_col_major(data)  # you already have this helper
+    data_F      = make_col_major(data)
 
     # ----- Build SDFG -----
-    sdfg = dace.SDFG.from_file("ice_supersaturation_adjustment.sdfg")
-    sdfg.name = "ice_supersaturation_adjustment"
+    sdfg = dace.SDFG.from_file("autoconversion_snow.sdfg")
+    sdfg.name = "autoconversion_snow"
 
-    # Optional: same preprocessing passes as for rain, if needed
+    # Optional preprocessing passes (same as your other runners)
     from dace.transformation.passes.vectorization.tasklet_preprocessing_passes import (
         PowerOperatorExpansion,
         RemoveFPTypeCasts,
@@ -289,22 +281,25 @@ def run_ice_supersaturation():
     sdfg.replace_dict({"sym_nclv": 5})
     sdfg.replace_dict({"sym_klon": klon_val})
     sdfg.replace_dict({"sym_klev": klev_val})
+    sdfg.replace_dict({"sym_ncldqs": scalar_specialization_values["ncldqs"]})
 
     compiled = sdfg.compile()
+
+    # Run DaCe version
     compiled(**data_F_dace)
 
-    # ----- Build Fortran -----
-    raw_func = compile_ice_supersaturation_fortran(
-        "./ice_supersaturation_adjustment.f90",
-        "libice_supersaturation.so",
-        "ice_supersaturation_adjustment",
+    # ----- Build and run Fortran -----
+    raw_func = compile_autoconversion_snow_fortran(
+        "./autoconversion_snow.f90",
+        "libautoconversion_snow.so",
+        "autoconversion_snow",
     )
-    fortran_func = wrap_ice_supersaturation(raw_func)
+    fortran_func = wrap_autoconversion_snow(raw_func)
     fortran_func(**data_F)
 
     # ----- Results -----
-    print("Ice supersaturation (DaCe vs Fortran) comparison:")
+    print("Autoconversion snow (DaCe vs Fortran) comparison:")
     compare_row_col_dicts(data_F_dace, data_F, rtol=1e-12, atol=1e-12)
 
 if __name__ == "__main__":
-    run_ice_supersaturation()
+    run_autoconversion_snow()
