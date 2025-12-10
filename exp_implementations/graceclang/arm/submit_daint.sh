@@ -22,12 +22,10 @@ export CPU_NAME="arm"
 
 # Define configurations: each element is "EXTRA_FLAGS SUFFIX"
 configs=(
-    "-march=armv9-a+sve2 -mcpu=neoverse-v2" ""                                   # first run: no extra flags, no suffix
-    "-march=armv9-a+simd -mcpu=neoverse-v2 -mprefer-vector-width=128" "neon"  # second run
-    "-march=armv9-a+sve2 -mcpu=neoverse-v2" "sve"  # second run
-    "-march=armv9-a -mcpu=neoverse-v2 -fno-tree-vectorize -fno-tree-slp-vectorize" "no-vectorize"
-    # Probably, disable below if not arithmetic function
-    "-march=armv9-a+sve2+simd -mcpu=neoverse-v2 -fno-math-errno -fveclib=libarm -mprefer-vector-width=512" "libarm"
+    "-march=armv9-a+simd+nosve+nosve2 -D__ARM_NEON -D__DACE_USE_INTRINSICS=1 -D__DACE_USE_SVE=0" "intrinsic_neon"
+    "-march=armv9-a+sve2+sve+nosimd -D__ARM_FEATURE_SVE -D__DACE_USE_INTRINSICS=1 -D__DACE_USE_SVE=1" "intrinsic_sve"
+    "" ""
+    "-fno-vectorize" "no_vectorize"
 )
 
 for RUNMULTI in 0 1; do

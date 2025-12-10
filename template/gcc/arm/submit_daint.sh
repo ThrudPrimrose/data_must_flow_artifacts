@@ -25,11 +25,11 @@ export OMP_PROC_BIND=close
 
 # Define configurations: each element is "EXTRA_FLAGS SUFFIX"
 configs=(
-    "-march=armv9-a+simd -mcpu=neoverse-v2 -mprefer-vector-width=128" "neon"  # second run
-    "-march=armv9-a+sve2 -mcpu=neoverse-v2" "sve"  # second run
-    "-fno-tree-vectorize -fno-tree-slp-vectorize" "no-vectorize"
+    "-march=armv9-a+simd+nosve+nosve2 -D__DACE_USE_AVX512=0 -D__ARM_NEON -D__DACE_USE_INTRINSICS=1 -D__DACE_USE_SVE=0" "intrinsic_neon"
+    "-march=armv9-a+sve2+sve+nosimd -D__DACE_USE_AVX512=0 -D__ARM_FEATURE_SVE -D__DACE_USE_INTRINSICS=1 -D__DACE_USE_SVE=1" "intrinsic_sve"
+    "" ""
+    "-fno-tree-vectorize" "no_vectorize"
 )
-
 for RUNMULTI in 0 1; do
     export RUN_MULTICORE="$RUNMULTI"
     for ((i=0; i<${#configs[@]}; i+=2)); do

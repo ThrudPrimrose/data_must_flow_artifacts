@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-for sub in gcc/* llvm/* intel/*; do
+for sub in llvm/arm gcc/arm graceclang/arm; do
     [[ -d "$sub" ]] || continue
 
     echo "Entering $sub"
