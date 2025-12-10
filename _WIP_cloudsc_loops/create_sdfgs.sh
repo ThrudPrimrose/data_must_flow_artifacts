@@ -3,6 +3,7 @@ cd $SCRATCH/dace
 git checkout f2dace-windmill
 cd $SPATH
 
+
 python -m dace.frontend.fortran.tools.create_preprocessed_ast \
        -i ./rain_evaporation_abel_boutle.f90 \
        -o ./rain_evaporation_abel_boutle_ast.f90 \
@@ -65,6 +66,22 @@ python -m dace.frontend.fortran.tools.create_singular_sdfg_from_ast \
     -i ./saturation_calculation_ast.f90 \
     -k compute_saturation_values \
     -o ./saturation_calculation.sdfg
+
+python -m dace.frontend.fortran.tools.create_preprocessed_ast \
+       -i ./lu_solver.f90 \
+       -o ./lu_solver_ast.f90 \
+       -k lu_solver_microphysics \
+       --noop mo_exception.finish \
+       --noop mo_real_timer.timer_start \
+       --noop mo_real_timer.timer_stop \
+       -d scratchpad
+
+sed -i 's/LOGICAL(KIND *= *1)/INTEGER(KIND=4)/g' ./lu_solver_ast.f90
+
+python -m dace.frontend.fortran.tools.create_singular_sdfg_from_ast \
+    -i ./lu_solver_ast.f90 \
+    -k lu_solver_microphysics \
+    -o ./lu_solver.sdfg
 
 
 cd $SCRATCH/dace
