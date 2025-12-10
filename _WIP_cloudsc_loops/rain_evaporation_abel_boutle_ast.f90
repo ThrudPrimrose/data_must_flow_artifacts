@@ -25,7 +25,7 @@ SUBROUTINE rain_evaporation_abel_boutle(kidia, kfdia, klon, ztp1, zqx_ncldqv, za
   REAL(KIND = 8) :: zzrh, zqe, zpreclr, zfallcorr, zesatliq
   REAL(KIND = 8) :: zlambda, zevap_denom, zcorr2, zka, zsubsat
   REAL(KIND = 8) :: zbeta, zdenom, zdpevap, zevap
-  INTEGER(KIND = 4) :: llo1
+  INTEGER(KIND=4) :: llo1
   REAL(KIND = 8) :: r2es_local, r3les_local, r4les_local
   r2es_local = 611.21D0
   r3les_local = 17.502D0

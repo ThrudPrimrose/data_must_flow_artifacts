@@ -106,139 +106,6 @@ def compare_row_col_dicts(data_C, data_F, rtol=1e-12, atol=1e-12):
     
     return all_ok
 
-
-@dace.program
-def rain_evaporation_abel_boutle_dace(
-    ztp1: dace.float64[klon],
-    zqx_ncldqv: dace.float64[klon],
-    za: dace.float64[klon],
-    zqsliq: dace.float64[klon],
-    zqxfg_ncldqr: dace.float64[klon],
-    zcovptot: dace.float64[klon],
-    zcovpclr: dace.float64[klon],
-    zcovpmax: dace.float64[klon],
-    zrho: dace.float64[klon],
-    pap: dace.float64[klon],
-    # NOTE: correct order: species_i, species_j, jl
-    zsolqa: dace.float64[nclv, nclv, klon],
-    zevap_out: dace.float64[klon],
-    rtt: dace.float64,
-    rv: dace.float64,
-    rd: dace.float64,
-    rprecrhmax: dace.float64,
-    rcovpmin: dace.float64,
-    rdensref: dace.float64,
-    ptsphy: dace.float64,
-    zepsec: dace.float64,
-    rcl_fac1: dace.float64,
-    rcl_fac2: dace.float64,
-    rcl_cdenom1: dace.float64,
-    rcl_cdenom2: dace.float64,
-    rcl_cdenom3: dace.float64,
-    rcl_ka273: dace.float64,
-    rcl_const1r: dace.float64,
-    rcl_const2r: dace.float64,
-    rcl_const3r: dace.float64,
-    rcl_const4r: dace.float64,
-    ncldqv: dace.int32,
-    ncldqr: dace.int32,
-    kidia: dace.int32,
-    kfdia: dace.int32,
-):
-
-    R2ES_LOCAL = 611.21
-    R3LES_LOCAL = 17.502
-    R4LES_LOCAL = 32.19
-
-    for jl in range(0, klon):
-        zevap_out[jl] = 0.0
-
-    # JL loop (Python 0-based, Fortran 1-based)
-    for jl in range(0, klon):
-
-        zzrh = rprecrhmax + (1.0 - rprecrhmax) * \
-               zcovpmax[jl] / max(zepsec, 1.0 - za[jl])
-
-        # EXACT same clamping order as Fortran
-        zzrh = max(zzrh, rprecrhmax)
-        zzrh = min(zzrh, 1.0)
-        zzrh = min(zzrh, 0.8)
-
-        zqe = max(0.0, min(zqx_ncldqv[jl], zqsliq[jl]))
-
-        # EXACT Fortran logical condition
-        llo1 = ((zcovpclr[jl] > zepsec) and
-                (zqxfg_ncldqr[jl] > zepsec) and
-                (zqe < zzrh * zqsliq[jl]))
-
-        if llo1:
-
-            zpreclr   = zqxfg_ncldqr[jl] / zcovptot[jl]
-            zfallcorr = (rdensref / zrho[jl]) ** 0.4
-
-            zesatliq = (rv / rd) * R2ES_LOCAL * math.exp(
-                R3LES_LOCAL * (ztp1[jl] - rtt) / (ztp1[jl] - R4LES_LOCAL)
-            )
-
-            zlambda = (rcl_fac1 / (zrho[jl] * zpreclr)) ** rcl_fac2
-
-            zevap_denom = (
-                rcl_cdenom1 * zesatliq
-                - rcl_cdenom2 * ztp1[jl] * zesatliq
-                + rcl_cdenom3 * (ztp1[jl] ** 3) * pap[jl]
-            )
-
-            zcorr2 = (ztp1[jl] / 273.0) ** 1.5 * 393.0 / (ztp1[jl] + 120.0)
-            zka = rcl_ka273 * zcorr2
-
-            zsubsat = max(zzrh * zqsliq[jl] - zqe, 0.0)
-
-            zbeta = (
-                0.5 / zqsliq[jl]
-                * (ztp1[jl] ** 2)
-                * zesatliq
-                * rcl_const1r
-                * (zcorr2 / zevap_denom)
-                * (
-                    0.78 / (zlambda ** rcl_const4r)
-                    + rcl_const2r
-                    * (zrho[jl] * zfallcorr) ** 0.5
-                    / (zcorr2 ** 0.5 * zlambda ** rcl_const3r)
-                )
-            )
-
-            zdenom = 1.0 + zbeta * ptsphy
-
-            zdpevap = zcovpclr[jl] * zbeta * ptsphy * zsubsat / zdenom
-
-            zevap = min(zdpevap, zqxfg_ncldqr[jl])
-            zevap_out[jl] = zevap
-
-            # ---------------------------------------------------------------
-            # MOST IMPORTANT PART:
-            # Fortran:
-            #
-            # ZSOLQA(JL, NCLDQV, NCLDQR) = ZSOLQA(JL, NCLDQV, NCLDQR) + ZEVAP
-            # ZSOLQA(JL, NCLDQR, NCLDQV) = ZSOLQA(JL, NCLDQR, NCLDQV) - ZEVAP
-            #
-            # NumPy layout is (NCLV, NCLV, KLON)
-            # so index is [i-1, j-1, jl]
-            # ---------------------------------------------------------------
-            zsolqa[ncldqr - 1, ncldqv - 1, jl] = zsolqa[ncldqr - 1, ncldqv - 1, jl] + zevap
-            zsolqa[ncldqv - 1, ncldqr - 1, jl] = zsolqa[ncldqv - 1, ncldqr - 1, jl] - zevap
-
-            zcovptot[jl] = max(
-                rcovpmin,
-                zcovptot[jl]
-                - max(
-                    0.0,
-                    (zcovptot[jl] - za[jl]) * zevap / zqxfg_ncldqr[jl],
-                ),
-            )
-
-            zqxfg_ncldqr[jl] = zqxfg_ncldqr[jl] - zevap
-
-
 def generate_rain_evaporation_data() -> Dict[str, np.ndarray]:
     """
     Generate synthetic but reasonable data for rain_evaporation_abel_boutle.
@@ -442,8 +309,9 @@ def wrap_rain_evaporation(func):
 def run_rain_evaporation():
     # ----- Generate Inputs -----
     data = generate_rain_evaporation_data()
-    data_F_dace = generate_rain_evaporation_data()
+    data_F_dace = make_col_major(data)
     data_F = make_col_major(data)
+    del data
 
     # ----- Build SDFG -----
     #sdfg = rain_evaporation_abel_boutle_dace.to_sdfg(simplify=False)
@@ -463,6 +331,8 @@ def run_rain_evaporation():
 
     # Replace symbolic constants
     sdfg.replace_dict({"sym_nclv": 5})
+    sdfg.replace_dict({"sym_klon": klon_val})
+    sdfg.replace_dict({"sym_klev": klev_val})
     sdfg.validate()
 
     compiled = sdfg.compile()
