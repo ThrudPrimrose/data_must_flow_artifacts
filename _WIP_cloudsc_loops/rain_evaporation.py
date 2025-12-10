@@ -17,8 +17,6 @@ def rain_evaporation_dace(
     zqsliq: dace.float64[KLON],
     pap: dace.float64[KLON],
     zcovpclr: dace.float64[KLON],
-    zcorqsice: dace.float64[KLON],
-    zcorqsliq: dace.float64[KLON],
     zevap: dace.float64[KLON],
     rtt: dace.float64,
     rv: dace.float64,
@@ -28,15 +26,13 @@ def rain_evaporation_dace(
     zepsec: dace.float64,
     ptsphy: dace.float64,
 ):
-    for jl in dace.map[0:KLON]:
+    for jl in range(KLON):
         zevap[jl] = 0.0
 
         if ztp1[jl] < rtt:
             zqsval: dace.float64 = zqsice[jl]
-            zcorqs: dace.float64 = zcorqsice[jl]
         else:
             zqsval: dace.float64 = zqsliq[jl]
-            zcorqs: dace.float64 = zcorqsliq[jl]
 
         if zqsval > zepsec:
             zrh: dace.float64 = zqx[jl] / zqsval
@@ -85,8 +81,6 @@ if __name__ == "__main__":
     zqsliq = np.random.uniform(0.01, 0.04, klon).astype(np.float64)
     pap = np.random.uniform(30000, 101325, klon).astype(np.float64)
     zcovpclr = np.random.uniform(0.0, 1.0, klon).astype(np.float64)
-    zcorqsice = np.ones(klon, dtype=np.float64)
-    zcorqsliq = np.ones(klon, dtype=np.float64)
     zevap = np.zeros(klon, dtype=np.float64)
 
     # Generate SDFG
@@ -103,8 +97,6 @@ if __name__ == "__main__":
         zqsliq=zqsliq,
         pap=pap,
         zcovpclr=zcovpclr,
-        zcorqsice=zcorqsice,
-        zcorqsliq=zcorqsliq,
         zevap=zevap,
         rtt=rtt,
         rv=rv,
