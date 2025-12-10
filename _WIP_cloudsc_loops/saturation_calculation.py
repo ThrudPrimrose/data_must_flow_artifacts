@@ -8,7 +8,7 @@ import numpy as np
 
 # Define symbolic sizes
 KLEV = dace.symbol("KLEV")
-KLON = dace.symbol("KLEV")
+KLON = dace.symbol("KLON")
 
 
 @dace.program

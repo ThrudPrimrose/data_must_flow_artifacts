@@ -110,6 +110,10 @@ if __name__ == "__main__":
     num_apps = llmr_pass.num_applications
     print(f"LLMR applied {num_apps} time(s).")
 
+    if num_apps == 0:
+        print("No LLMR transformations were applied. Exiting.")
+        exit(0)
+
     # Prepare input data
     if args.input_data:
         loaded = np.load(args.input_data)
