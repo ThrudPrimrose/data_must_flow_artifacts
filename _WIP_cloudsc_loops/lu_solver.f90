@@ -2,7 +2,7 @@
 !
 
 SUBROUTINE lu_solver_microphysics(KIDIA, KFDIA, NCLV, &
-    & ZQLHS, ZQXN)
+    & ZQLHS, ZQXN)  bind(c)
 
   IMPLICIT NONE
   

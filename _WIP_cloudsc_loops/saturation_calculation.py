@@ -21,6 +21,7 @@ def compute_saturation_values_dace(
     zqsice: dace.float64[KLEV, KLON],
     zfoeeliqt: dace.float64[KLEV, KLON],
     zqsliq: dace.float64[KLEV, KLON],
+    zfoeewmt: dace.float64[KLEV, KLON],
     rtt: dace.float64,
     retv: dace.float64,
     r2es: dace.float64,
@@ -32,7 +33,6 @@ def compute_saturation_values_dace(
     rtwat: dace.float64,
     rtwat_rtice_r: dace.float64,
 ):
-    zfoeewmt = dace.define_local((KLEV, KLON), dace.float64)
 
     for jl in range(KLEV):
         for jk in range(KLON):
@@ -98,6 +98,7 @@ if __name__ == "__main__":
     zqsice = np.zeros((klev, klon), dtype=np.float64)
     zfoeeliqt = np.zeros((klev, klon), dtype=np.float64)
     zqsliq = np.zeros((klev, klon), dtype=np.float64)
+    zfoeewmt = np.rezos((klev, klon), dtype=np.float64)
 
     # Generate SDFG
     sdfg = compute_saturation_values_dace.to_sdfg()
