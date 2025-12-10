@@ -79,7 +79,7 @@ if env_suffix_str != '':
 
 LEN_1D = dace.symbol("LEN_1D")
 LEN_2D = dace.symbol("LEN_2D")
-G_LEN_1D_VAL = 8192 * 8 #8192 * 8192 * 4
+G_LEN_1D_VAL = 8192 * 4 #8192 * 8192 * 4
 G_LEN_2D_VAL = 512 #8192
 #G_LEN_1D_VAL = 32
 #G_LEN_2D_VAL = 32
@@ -1624,7 +1624,7 @@ def dace_s317(q: dace.float64[LEN_1D]):
 # s318: isamax-like with increment inc
 # ============================================================
 @dace.program
-def dace_s318(a: dace.float64[LEN_1D], inc: dace.int32):
+def dace_s318(a: dace.float64[LEN_1D], b:dace.float64[2], inc: dace.int32):
     for nl in range(ITERATIONS):
         k = 0
         index = 0
@@ -1639,6 +1639,7 @@ def dace_s318(a: dace.float64[LEN_1D], inc: dace.int32):
         chksum = maxv + float(index)
         tmp = chksum
         tmp = tmp
+        b[0] = chksum
 
 
 # ============================================================
@@ -1781,7 +1782,7 @@ def dace_s323(
 
 
 @dace.program
-def dace_s331(a: dace.float64[LEN_1D], b: dace.float[LEN_1D]):
+def dace_s331(a: dace.float64[LEN_1D], b: dace.float64[2]):
     j = dace.int32(-1)
     for nl in range(ITERATIONS):
         j = -1
@@ -1879,6 +1880,7 @@ def dace_s1351(
 def dace_s352(
     a: dace.float64[LEN_1D],
     b: dace.float64[LEN_1D],
+    c: dace.float64[LEN_1D],
 ):
     dot = dace.float64(0)
     for nl in range(8 * ITERATIONS):
@@ -1886,7 +1888,7 @@ def dace_s352(
         for i in range(0, LEN_1D, 5):
             dot = dot + (a[i] * b[i] + a[i + 1] * b[i + 1] + a[i + 2] * b[i + 2] + a[i + 3] * b[i + 3] +
                          a[i + 4] * b[i + 4])
-        a[i] = dot
+            c[i] = dot
 
 
 @dace.program
@@ -2245,7 +2247,7 @@ def test_s000():
             "LEN_1D": LEN_1D_val,
             "ITERATIONS": ITERATIONS_val
         },
-        save_sdfgs=True,
+        save_sdfgs=SAVE_SDFGS,
         sdfg_name="dace_s000",
         apply_loop_to_map=True,
     )
@@ -3837,8 +3839,6 @@ def test_s2244():
     c = np.random.rand(LEN)
     e = np.random.rand(LEN)
 
-    #sdfg = dace_s2244.to_sdfg()
-    #sdfg.save("s2244_v2.sdfg")
 
     compare_kernel(
         dace_s2244,
@@ -5156,11 +5156,12 @@ def s317():
 def s318():
     LEN_1D_val = G_LEN_1D_VAL
     a = np.random.rand(LEN_1D_val)
+    b = np.random.rand(2)
     inc_val = 2
 
     compare_kernel(
         dace_s318,
-        {"a": a},
+        {"a": a, "b": b },
         {
             "LEN_1D": LEN_1D_val,
             "ITERATIONS": 1,
@@ -5170,7 +5171,7 @@ def s318():
 
     run_vectorization_test(
         dace_func=dace_s318,
-        arrays={"a": a},
+        arrays={"a": a, "b": b },
         params={
             "LEN_1D": LEN_1D_val,
             "ITERATIONS": 1,
@@ -5501,7 +5502,7 @@ def test_s331():
     ITERS = 1
 
     a = np.random.rand(LEN) - 0.5
-    b = np.zeros(LEN,)
+    b = np.zeros(2,)
 
     compare_kernel(
         dace_s331,
@@ -5722,12 +5723,14 @@ def test_s352():
 
     a = np.random.rand(LEN)
     b = np.random.rand(LEN)
+    c = np.random.rand(LEN)
 
     compare_kernel(
         dace_s352,
         {
             "a": a,
-            "b": b
+            "b": b,
+            "c": c
         },
         {
             "LEN_1D": LEN,
@@ -5739,7 +5742,8 @@ def test_s352():
         dace_func=dace_s352,
         arrays={
             "a": a,
-            "b": b
+            "b": b,
+            "c": c
         },
         params={
             "LEN_1D": LEN,
@@ -5930,10 +5934,6 @@ def s1281():
     d = np.random.rand(LEN)
     e = np.random.rand(LEN)
 
-    sdfg = dace_s1281.to_sdfg()
-    sdfg.apply_transformations_repeated(LoopToMap)
-    sdfg.save("s1281.sdfg")
-
     compare_kernel(
         dace_s1281,
         {
@@ -5975,11 +5975,6 @@ def test_s291():
 
     a = np.random.rand(LEN)
     b = np.random.rand(LEN)
-
-    #sdfg = dace_s291.to_sdfg()
-    #sdfg.save("s291.sdfg")
-    #sdfg.apply_transformations_repeated(LoopToMap)
-    #sdfg.save("s291_ltm.sdfg")
 
     compare_kernel(
         dace_s291,
