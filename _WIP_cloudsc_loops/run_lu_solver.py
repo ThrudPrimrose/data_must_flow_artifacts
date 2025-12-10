@@ -118,80 +118,44 @@ def compare_row_col_dicts(data_C, data_F, rtol=1e-12, atol=1e-12):
 # Data generator
 # ---------------------------------------------------------------------------
 
-def generate_autoconversion_snow_data() -> Dict[str, np.ndarray]:
+def generate_lu_solver_microphysics_data():
     """
-    Generate synthetic data for the autoconversion_snow routine.
+    Generate synthetic but consistent data for LU solver microphysics.
     """
-
-    # Species indices / sizes – align with scalar_specialization_values
-    ncldqs_val = np.int32(4)  # snow index & 2nd dim size
-    ncldqi_val = np.int32(2)  # ice index  & 3rd dim size
-
-    # Scalars
-    rtt         = np.float64(273.16)   # triple point
-    rlcritsnow  = np.float64(1e-4)     # critical ice content for snow
-    rsnowlin1   = np.float64(1.0e-3)   # linear coefficient 1
-    rsnowlin2   = np.float64(0.05)     # linear coefficient 2 (1/K)
-    rnice       = np.float64(1.0e7)    # reference ice number conc
-    ptsphy      = np.float64(2.0)      # timestep [s]
-    zepsec      = np.float64(1e-12)    # epsilon
-    laericeauto = True                 # exercise aerosol-aware branch
 
     kidia = np.int32(1)
     kfdia = np.int32(klon_val)
     klon  = np.int32(klon_val)
+    nclv  = np.int32(nclv_val)
 
-    # ---- 1D fields (length = KLON) ----
-    # Temperature: some below RTT, some above
-    ztp1 = np.linspace(250.0, 270.0, klon_val).astype(np.float64)
+    # Matrix blocks: shape (KLON, NCLV, NCLV)
+    # Ensure diagonals are non-zero (avoid div by zero)
+    ZQLHS = np.random.rand(klon_val, nclv_val, nclv_val).astype(np.float64)
+    for jl in range(klon_val):
+        for i in range(nclv_val):
+            ZQLHS[jl, i, i] += 1.0  # make diagonal strictly positive
 
-    # Ice cloud water (must be > zepsec in many points to trigger kernel)
-    zicecld = (1e-5 + 5e-4 * np.random.rand(klon_val)).astype(np.float64)
-
-    # Ice number concentration: positive, around RNICE
-    pnice = (0.5 * rnice + 1.5 * rnice * np.random.rand(klon_val)).astype(np.float64)
-
-    # ---- 3D source / sink tensor ----
-    # Dimensions: (KFDIA, NCLDQS, NCLDQI)
-    zsolqb = np.zeros((klon_val, int(ncldqs_val), int(ncldqi_val)), dtype=np.float64)
-
-    # ---- Output snow autoconversion ----
-    zsnowaut = np.zeros(klon_val, dtype=np.float64)
+    # RHS vector: shape (KLON, NCLV)
+    ZQXN = np.random.rand(klon_val, nclv_val).astype(np.float64)
 
     return dict(
         kidia=kidia,
         kfdia=kfdia,
         klon=klon,
-        ztp1=ztp1,
-        zicecld=zicecld,
-        pnice=pnice,
-        zsolqb=zsolqb,
-        zsnowaut=zsnowaut,
-        rtt=rtt,
-        rlcritsnow=rlcritsnow,
-        rsnowlin1=rsnowlin1,
-        rsnowlin2=rsnowlin2,
-        rnice=rnice,
-        ptsphy=ptsphy,
-        zepsec=zepsec,
-        laericeauto=laericeauto,
-        ncldqs=ncldqs_val,
-        ncldqi=ncldqi_val,
+        nclv=nclv,
+        zqlhs=ZQLHS,
+        zqxn=ZQXN,
     )
 
 # ---------------------------------------------------------------------------
-# Fortran compilation and wrapper
+# Fortran compilation + wrapper
 # ---------------------------------------------------------------------------
 
-def compile_autoconversion_snow_fortran(
-    src_path: str = "./autoconversion_snow.f90",
-    libname: str = "libautoconversion_snow.so",
-    func_name: str = "autoconversion_snow",
+def compile_lu_solver_fortran(
+    src_path: str = "./lu_solver_microphysics.f90",
+    libname: str = "liblu_solver_microphysics.so",
+    func_name: str = "lu_solver_microphysics",
 ):
-    """
-    Compile the autoconversion_snow Fortran routine into a shared library
-    and return a ctypes function handle.
-    """
     if not os.path.exists(src_path):
         raise FileNotFoundError(f"Fortran source not found: {src_path}")
 
@@ -201,55 +165,36 @@ def compile_autoconversion_snow_fortran(
     print(f"Built {libname}")
 
     lib = ctypes.CDLL(f"./{libname}")
+
     try:
         func = getattr(lib, func_name)
     except AttributeError:
         raise RuntimeError(f"Fortran symbol '{func_name}' not found in shared library.")
 
-    ndF64_1d = np.ctypeslib.ndpointer(dtype=np.float64, ndim=1, flags="F_CONTIGUOUS")
     ndF64_3d = np.ctypeslib.ndpointer(dtype=np.float64, ndim=3, flags="F_CONTIGUOUS")
+    ndF64_2d = np.ctypeslib.ndpointer(dtype=np.float64, ndim=2, flags="F_CONTIGUOUS")
 
     func.restype = None
     func.argtypes = [
         ctypes.c_int,   # KIDIA
         ctypes.c_int,   # KFDIA
         ctypes.c_int,   # KLON
-        ndF64_1d,       # ZTP1
-        ndF64_1d,       # ZICECLD
-        ndF64_1d,       # PNICE
-        ndF64_3d,       # ZSOLQB
-        ndF64_1d,       # ZSNOWAUT
-        ctypes.c_double,  # RTT
-        ctypes.c_double,  # RLCRITSNOW
-        ctypes.c_double,  # RSNOWLIN1
-        ctypes.c_double,  # RSNOWLIN2
-        ctypes.c_double,  # RNICE
-        ctypes.c_double,  # PTSPHY
-        ctypes.c_double,  # ZEPSEC
-        ctypes.c_bool,    # LAERICEAUTO
-        ctypes.c_int,     # NCLDQS
-        ctypes.c_int,     # NCLDQI
+        ctypes.c_int,   # NCLV
+        ndF64_3d,       # ZQLHS
+        ndF64_2d,       # ZQXN
     ]
 
-    print("Fortran function loaded (autoconversion_snow)")
+    print("Fortran function loaded (lu_solver_microphysics)")
     return func
 
-def wrap_autoconversion_snow(func):
-    """
-    Thin wrapper to call the Fortran autoconversion_snow routine
-    using a kwargs dict consistent with the Python/DaCe naming.
-    """
-    arg_order = [
-        "kidia", "kfdia", "klon",
-        "ztp1", "zicecld", "pnice",
-        "zsolqb", "zsnowaut",
-        "rtt", "rlcritsnow", "rsnowlin1", "rsnowlin2", "rnice",
-        "ptsphy", "zepsec", "laericeauto",
-        "ncldqs", "ncldqi",
+def wrap_lu_solver(func):
+    order = [
+        "kidia", "kfdia", "klon", "nclv",
+        "zqlhs", "zqxn"
     ]
 
     def wrapper(**kwargs):
-        args = [kwargs[name] for name in arg_order]
+        args = [kwargs[k] for k in order]
         return func(*args)
 
     return wrapper
@@ -258,19 +203,20 @@ def wrap_autoconversion_snow(func):
 # Main runner
 # ---------------------------------------------------------------------------
 
-def run_autoconversion_snow():
-    # ----- Generate Inputs -----
-    data = generate_autoconversion_snow_data()
+def run_lu_solver_microphysics():
 
-    # Prepare Fortran/DaCe copies (Fortran wants F-contiguous for multi-d arrays)
-    data_F_dace = make_col_major(data)  # you already have this helper
+    # --- Generate inputs ---
+    data = generate_lu_solver_microphysics_data()
+
+    # Your utility to produce F-contiguous arrays
+    data_F_dace = make_col_major(data)
     data_F      = make_col_major(data)
 
-    # ----- Build SDFG -----
-    sdfg = dace.SDFG.from_file("autoconversion_snow.sdfg")
-    sdfg.name = "autoconversion_snow"
+    # --- Load SDFG ---
+    sdfg = dace.SDFG.from_file("lu_solver.sdfg")
+    sdfg.name = "lu_solver_microphysics"
 
-    # Optional preprocessing passes (same as your other runners)
+    # Apply standard preprocessing passes
     from dace.transformation.passes.vectorization.tasklet_preprocessing_passes import (
         PowerOperatorExpansion,
         RemoveFPTypeCasts,
@@ -281,35 +227,35 @@ def run_autoconversion_snow():
     RemoveIntTypeCasts().apply_pass(sdfg, {})
     sdfg.simplify()
 
-    # Specialize scalars from scalar_specialization_values if relevant
-    for scalar_name, scalar_value in scalar_specialization_values.items():
-        if scalar_name in sdfg.free_symbols:
-            sdutil.specialize_scalar(
-                sdfg=sdfg, scalar_name=scalar_name, scalar_val=scalar_value
-            )
+    # Specialize symbolic scalars if used
+    for sym, val in dict(
+        sym_klev=klev_val,
+        sym_klon=klon_val,
+        nclv=nclv_val,
+    ).items():
+        if sym in sdfg.free_symbols:
+            sdutil.specialize_scalar(sdfg, sym, val)
             sdfg.validate()
-    sdfg.replace_dict({"sym_nclv": 5})
-    sdfg.replace_dict({"sym_klon": klon_val})
-    sdfg.replace_dict({"sym_klev": klev_val})
-    sdfg.replace_dict({"sym_ncldqs": scalar_specialization_values["ncldqs"]})
 
     compiled = sdfg.compile()
 
-    # Run DaCe version
+    # --- Run DaCe ---
     compiled(**data_F_dace)
 
-    # ----- Build and run Fortran -----
-    raw_func = compile_autoconversion_snow_fortran(
-        "./autoconversion_snow.f90",
-        "libautoconversion_snow.so",
-        "autoconversion_snow",
+    # --- Compile and run Fortran ---
+    raw = compile_lu_solver_fortran(
+        "./lu_solver_microphysics.f90",
+        "liblu_solver_microphysics.so",
+        "lu_solver_microphysics"
     )
-    fortran_func = wrap_autoconversion_snow(raw_func)
-    fortran_func(**data_F)
+    fort = wrap_lu_solver(raw)
+    fort(**data_F)
 
-    # ----- Results -----
-    print("Autoconversion snow (DaCe vs Fortran) comparison:")
+    # --- Compare results ---
+    print("LU microphysics (DaCe vs Fortran) comparison:")
     compare_row_col_dicts(data_F_dace, data_F, rtol=1e-12, atol=1e-12)
 
+# ---------------------------------------------------------------------------
+
 if __name__ == "__main__":
-    run_autoconversion_snow()
+    run_lu_solver_microphysics()

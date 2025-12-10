@@ -18,8 +18,18 @@ from math import exp, log, pow
 klev = dace.symbol("klev")
 klon = dace.symbol("klon")
 nclv = dace.symbol("nclv")
-klev_val = 64
-klon_val = 128
+def _read_env_int(name: str, default: int) -> int:
+    val = os.getenv(name)
+    if val is None:
+        return default
+    try:
+        return int(val)
+    except ValueError:
+        raise ValueError(f"Environment variable {name} must be an integer, got: {val}")
+
+# Default values same as your other runners
+klev_val = _read_env_int("__DACE_KLEV", 64)
+klon_val = _read_env_int("__DACE_KLON", 512)
 nvlc_val = 5
 
 scalar_specialization_values = {

@@ -1,5 +1,4 @@
-SUBROUTINE lu_solver_microphysics( KIDIA, KFDIA, KLON, NCLV, &
-    ZQLHS, ZQXN ) BIND(C, NAME="lu_solver_microphysics")
+SUBROUTINE lu_solver_microphysics( KIDIA, KFDIA, KLON, NCLV, ZQLHS, ZQXN ) BIND(C, NAME="lu_solver_microphysics")
   USE, INTRINSIC :: ISO_C_BINDING, ONLY: c_int, c_double
   IMPLICIT NONE
   
@@ -7,8 +6,8 @@ SUBROUTINE lu_solver_microphysics( KIDIA, KFDIA, KLON, NCLV, &
   INTEGER(c_int), VALUE :: KIDIA, KFDIA, KLON, NCLV
   
   ! InOut arrays
-  REAL(c_double), INTENT(INOUT) :: ZQLHS(KFDIA, NCLV, NCLV)
-  REAL(c_double), INTENT(INOUT) :: ZQXN(KFDIA, NCLV)
+  REAL(c_double), INTENT(INOUT) :: ZQLHS(KLON, NCLV, NCLV)
+  REAL(c_double), INTENT(INOUT) :: ZQXN(KLON, NCLV)
   
   ! Local variables
   INTEGER(c_int) :: JL, JN, JM, IK
