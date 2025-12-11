@@ -2,10 +2,15 @@ SUBROUTINE autoconversion_snow( KIDIA, KFDIA, KLON, &
     ZTP1, ZICECLD, PNICE, &
     ZSOLQB, ZSNOWAUT, &
     RTT, RLCRITSNOW, RSNOWLIN1, RSNOWLIN2, RNICE, &
-    PTSPHY, ZEPSEC, LAERICEAUTO, NCLDQS, NCLDQI) BIND(C, NAME="autoconversion_snow")
+    PTSPHY, ZEPSEC, LAERICEAUTO, NCLDQS, NCLDQI, TIMER) BIND(C, NAME="autoconversion_snow")
   USE, INTRINSIC :: ISO_C_BINDING, ONLY: c_int, c_double, c_bool
   IMPLICIT NONE
   
+  integer(8) :: start, finish, count_rate, count_max
+  real(8) :: elapsed_time
+  
+
+  REAL(c_double), INTENT(OUT)   :: TIMER(2)
 
   ! Dimensions / indices (scalars passed by value)
   INTEGER(c_int), VALUE :: KIDIA, KFDIA, KLON
@@ -33,6 +38,11 @@ SUBROUTINE autoconversion_snow( KIDIA, KFDIA, KLON, &
   ! Local variables
   INTEGER(c_int)   :: JL
   REAL(c_double)   :: ZZCO, ZLCRIT
+  ! Get the clock rate (counts per second)
+  call system_clock(count_rate=count_rate, count_max=count_max)
+  
+  ! Start timing
+  call system_clock(start)
   
   ! Initialize output
   ZSNOWAUT(:) = 0.0D0
@@ -59,4 +69,15 @@ SUBROUTINE autoconversion_snow( KIDIA, KFDIA, KLON, &
     END IF 
   
   END DO
+
+  ! Stop timing
+  call system_clock(finish)
+  
+  ! Calculate elapsed time in seconds
+  elapsed_time = real(finish - start, 8) / real(count_rate, 8)
+  ! Print results
+  print *, 'Elapsed time (seconds):', elapsed_time
+  print *, 'Elapsed time (nanoseconds):', elapsed_time * 1.0e9
+  print *, 'Clock resolution (nanoseconds):', 1.0e9 / real(count_rate, 8)
+  timer(1) = elapsed_time * 1.0e6
 END SUBROUTINE autoconversion_snow

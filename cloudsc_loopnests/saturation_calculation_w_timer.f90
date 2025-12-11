@@ -1,10 +1,14 @@
 SUBROUTINE compute_saturation_values(KIDIA, KFDIA, KLON, KLEV, ZTP1, PAP, &
     & ZFOEALFA, ZFOEEWMT, ZQSMIX, ZFOEEW, ZQSICE, ZFOEELIQT, ZQSLIQ, &
-    & RTT, RETV, R2ES, R3LES, R3IES, R4LES, R4IES, RTICE, RTWAT, RTWAT_RTICE_R) BIND(c)
-
+    & RTT, RETV, R2ES, R3LES, R3IES, R4LES, R4IES, RTICE, RTWAT, RTWAT_RTICE_R, TIMER) BIND(c)
   use iso_c_binding, only: c_int, c_double
   implicit none
 
+  integer(8) :: start, finish, count_rate, count_max
+  real(8) :: elapsed_time
+  
+
+  REAL(c_double), INTENT(OUT)   :: TIMER(2)
 
   ! ===============================
   ! Integer arguments (by value)
@@ -52,6 +56,12 @@ SUBROUTINE compute_saturation_values(KIDIA, KFDIA, KLON, KLEV, ZTP1, PAP, &
   real(c_double)  :: ZFOEELIQ_loc
   real(c_double)  :: ZFOEEICE_loc
 
+  ! Get the clock rate (counts per second)
+  call system_clock(count_rate=count_rate, count_max=count_max)
+  
+  ! Start timing
+  call system_clock(start)
+
   ! Main computation loop
   DO JK = 1, KLEV
     DO JL = 1, KLON
@@ -92,6 +102,15 @@ SUBROUTINE compute_saturation_values(KIDIA, KFDIA, KLON, KLEV, ZTP1, PAP, &
     END DO
   END DO
 
-  CALL SYSTEM_CLOCK(t_end)
-
+  ! Stop timing
+  call system_clock(finish)
+  
+  ! Calculate elapsed time in seconds
+  elapsed_time = real(finish - start, 8) / real(count_rate, 8)
+  ! Print results
+  print *, 'Elapsed time (seconds):', elapsed_time
+  print *, 'Elapsed time (nanoseconds):', elapsed_time * 1.0e9
+  print *, 'Clock resolution (nanoseconds):', 1.0e9 / real(count_rate, 8)
+  timer(1) = elapsed_time * 1.0e6
+  
 END SUBROUTINE compute_saturation_values

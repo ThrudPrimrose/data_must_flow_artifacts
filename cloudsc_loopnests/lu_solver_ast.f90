@@ -1,8 +1,8 @@
 SUBROUTINE lu_solver_microphysics(kidia, kfdia, klon, nclv, zqlhs, zqxn)
   IMPLICIT NONE
   INTEGER(KIND = 4), VALUE :: kidia, kfdia, klon, nclv
-  REAL(KIND = 8), INTENT(INOUT) :: zqlhs(kfdia, nclv, nclv)
-  REAL(KIND = 8), INTENT(INOUT) :: zqxn(kfdia, nclv)
+  REAL(KIND = 8), INTENT(INOUT) :: zqlhs(klon, nclv, nclv)
+  REAL(KIND = 8), INTENT(INOUT) :: zqxn(klon, nclv)
   INTEGER(KIND = 4) :: jl, jn, jm, ik
   DO jn = 1, nclv - 1
     DO jm = jn + 1, nclv
@@ -36,4 +36,7 @@ SUBROUTINE lu_solver_microphysics(kidia, kfdia, klon, nclv, zqlhs, zqxn)
       zqxn(jl, jn) = zqxn(jl, jn) / zqlhs(jl, jn, jn)
     END DO
   END DO
+
+  CALL SYSTEM_CLOCK(t_end)
+
 END SUBROUTINE lu_solver_microphysics

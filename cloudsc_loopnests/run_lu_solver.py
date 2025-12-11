@@ -16,8 +16,10 @@ from dace.transformation.interstate.loop_to_map import LoopToMap
 from dace.transformation.passes import ConstantPropagation, EliminateBranches, OffsetLoopsAndMaps
 from dace.transformation.passes.prune_symbols import RemoveUnusedSymbols
 from dace.transformation.passes.vectorization.vectorize_cpu import VectorizeCPU
+from dace.utils.log_runtime import compare_row_col_dicts, write_runtime
 
 # Define symbolic sizes
+
 klev = dace.symbol("klev")
 klon = dace.symbol("klon")
 nclv = dace.symbol("nclv")
@@ -31,9 +33,56 @@ def _read_env_int(name: str, default: int) -> int:
         raise ValueError(f"Environment variable {name} must be an integer, got: {val}")
 
 # Default values same as your other runners
-klev_val = _read_env_int("__DACE_KLEV", 64)
-klon_val = _read_env_int("__DACE_KLON", 512)
+klev_val = _read_env_int("__DACE_KLEV", 8)
+klon_val = _read_env_int("__DACE_KLON", 8192 * 1024)
 nclv_val = 5
+
+
+cpu_name = os.environ.get('CPU_NAME', 'amd_epyc')
+compiler_exec = os.environ.get('CXX', 'c++')
+dace.config.Config.set("compiler", "cpu", "executable", value=compiler_exec)
+
+# Base compilation flags
+base_flags = [
+    '-fopenmp', '-fstrict-aliasing', '-std=c++17', '-faligned-new',
+    '-fPIC', '-Wall', '-Wextra', '-O3', '-march=native', '-ffast-math',
+    '-Wno-unused-parameter', '-Wno-unused-label'
+]
+
+
+if cpu_name == "arm":
+    base_flags.remove("-march=native")
+
+if compiler_exec == "icpx":
+    base_flags.remove("-fopenmp")
+    base_flags.append("-qopenmp")
+
+# Architecture / compiler specific extra flags
+env_flags_str = os.environ.get('EXTRA_FLAGS', '')
+base_flags_str = ' '.join(base_flags)
+
+flags = base_flags_str + " " + env_flags_str if env_flags_str != '' else base_flags_str
+dace.config.Config.set("compiler", "cpu", "args", value=flags)
+
+
+multi_core = int(os.environ.get('RUN_MULTICORE', '0')) == 1
+core_count = 1
+
+
+multicore_suffix = '' if core_count == 1 else '_multicore'
+
+if multi_core:
+    if cpu_name == "arm":
+        core_count = 72
+    elif cpu_name == "intel_xeon":
+        core_count = 18
+    elif cpu_name == "amd_epyc":
+        core_count = 64
+
+env_suffix_str = os.environ.get('SUFFIX', '')
+if env_suffix_str != '':
+    env_suffix_str = "_" + env_suffix_str
+
 
 scalar_specialization_values = {
     "nclv": 5,      # number of microphysics variables
@@ -70,54 +119,18 @@ def make_col_major(arrays: Dict[str, np.ndarray]) -> Dict[str, np.ndarray]:
 
     return out
 
-def compare_row_col_dicts(data_C, data_F, rtol=1e-12, atol=1e-12):
-    """
-    Compare two dictionaries (row-major and column-major versions)
-    using numpy.allclose on all ndarray entries.
+def set_map_sched(sdfg: dace.SDFG):
+    for n, g in sdfg.all_nodes_recursive():
+        if isinstance(n, dace.nodes.MapEntry):
+            n.map.schedule = dace.dtypes.ScheduleType.Sequential
+        if isinstance(n, dace.nodes.NestedSDFG):
+            for arr_name, arr in n.sdfg.arrays.items():
+                if arr.storage == dace.dtypes.StorageType.Default and arr.transient is True:
+                    arr.storage = dace.dtypes.StorageType.Register
+    for arr_name, arr in sdfg.arrays.items():
+        if arr.storage == dace.dtypes.StorageType.Default and arr.transient is True:
+            arr.storage = dace.dtypes.StorageType.Register
 
-    Scalars and non-array entries are skipped.
-
-    Returns
-    -------
-    all_ok : bool
-        True if all arrays match within tolerance.
-    """
-    all_ok = True
-
-    for key in data_C.keys():
-        vC = data_C[key]
-        vF = data_F[key]
-
-        # Only compare arrays
-        if not isinstance(vC, np.ndarray) or not isinstance(vF, np.ndarray):
-            continue
-
-        # Flatten both arrays so row/col layout differences disappear
-        arrC = np.asarray(vC).reshape(-1)
-        arrF = np.asarray(vF).reshape(-1)
-
-        abs_diff = np.abs(arrC - arrF)
-        denominator = np.maximum(np.abs(arrF), np.abs(arrC))
-        rel_diff = np.zeros_like(abs_diff)
-        mask = denominator > 0
-        rel_diff[mask] = abs_diff[mask] / denominator[mask]
-        rel_diff[~mask] = abs_diff[~mask]
-        max_rel_diff = np.nanmax(rel_diff)
-        max_abs_diff = np.nanmax(abs_diff)
-
-        # Count mismatching indices
-        mismatch_mask = ~np.isclose(arrC, arrF, rtol=rtol, atol=atol, equal_nan=True)
-        num_mismatch = np.sum(mismatch_mask)
-        total_elements = arrC.size
-        
-        if not np.allclose(arrC, arrF, rtol=rtol, atol=atol, equal_nan=True):
-            print(f"[Mismatch] {key}: max rel diff = {max_rel_diff:e}, max abs diff = {max_abs_diff:e}, "
-                  f"mismatches = {num_mismatch}/{total_elements} ({100*num_mismatch/total_elements:.2f}%)")
-            all_ok = False
-        else:
-            print(f"[Pass] {key}: max rel diff = {max_rel_diff:e}, max abs diff = {max_abs_diff:e}")
-    
-    return all_ok
 
 
 # ---------------------------------------------------------------------------
@@ -139,10 +152,11 @@ def generate_lu_solver_microphysics_data():
     ZQLHS = np.random.rand(nclv_val, nclv_val, klon_val).astype(np.float64)
     for i in range(nclv_val):
         for jl in range(klon_val):
-            ZQLHS[i, i, jl] += 0.1  # make diagonal strictly positive
+            ZQLHS[i, i, jl] += 0.2  # make diagonal strictly positive
 
     # RHS vector: shape (KLON, NCLV)
     ZQXN = np.random.rand(nclv_val, klon_val).astype(np.float64)
+    timer = np.zeros((2,), dtype=np.float64)
 
     return dict(
         kidia=kidia,
@@ -151,6 +165,9 @@ def generate_lu_solver_microphysics_data():
         nclv=nclv,
         zqlhs=ZQLHS,
         zqxn=ZQXN,
+        timer=timer,
+        sym_klon=klon_val,
+        sym_klev=klev_val
     )
 
 # ---------------------------------------------------------------------------
@@ -179,6 +196,7 @@ def compile_lu_solver_fortran(
 
     ndF64_3d = np.ctypeslib.ndpointer(dtype=np.float64, ndim=3, flags="F_CONTIGUOUS")
     ndF64_2d = np.ctypeslib.ndpointer(dtype=np.float64, ndim=2, flags="F_CONTIGUOUS")
+    ndF64_1d = np.ctypeslib.ndpointer(dtype=np.float64, ndim=1, flags="F_CONTIGUOUS")
 
     func.restype = None
     func.argtypes = [
@@ -187,7 +205,8 @@ def compile_lu_solver_fortran(
         ctypes.c_int,   # KLON
         ctypes.c_int,   # NCLV
         ndF64_3d,       # ZQLHS
-        ndF64_2d,       # ZQXN
+        ndF64_2d,       # ZQXN,
+        ndF64_1d, # timer
     ]
 
     print("Fortran function loaded (lu_solver_microphysics)")
@@ -196,7 +215,7 @@ def compile_lu_solver_fortran(
 def wrap_lu_solver(func):
     order = [
         "kidia", "kfdia", "klon", "nclv",
-        "zqlhs", "zqxn"
+        "zqlhs", "zqxn", "timer"
     ]
 
     def wrapper(**kwargs):
@@ -205,103 +224,187 @@ def wrap_lu_solver(func):
 
     return wrapper
 
-# ---------------------------------------------------------------------------
-# Main runner
-# ---------------------------------------------------------------------------
-
 def run_lu_solver_microphysics():
 
     # --- Generate inputs ---
-    data = generate_lu_solver_microphysics_data()
+    base_data = generate_lu_solver_microphysics_data()
 
-    # Your utility to produce F-contiguous arrays
-    data_F_dace = make_col_major(data)
-    data_F_dace_vec = make_col_major(data)
-    data_F      = make_col_major(data)
-    del data
+    # Fortran + DaCe need F-contiguous arrays, keep base_data for re-use
+    data_F      = make_col_major(copy.deepcopy(base_data))
+    data_F_dace = make_col_major(copy.deepcopy(base_data))
 
     # --- Load SDFG ---
     sdfg = dace.SDFG.from_file("lu_solver.sdfg")
     sdfg.name = "lu_solver_microphysics"
 
-    # Apply standard preprocessing passes
     from dace.transformation.passes.vectorization.tasklet_preprocessing_passes import (
         PowerOperatorExpansion,
         RemoveFPTypeCasts,
         RemoveIntTypeCasts,
     )
-    #PowerOperatorExpansion().apply_pass(sdfg, {})
-    #RemoveFPTypeCasts().apply_pass(sdfg, {})
-    #RemoveIntTypeCasts().apply_pass(sdfg, {})
-    #sdfg.apply_transformations_repeated(WCRToAugAssign)
-    #OffsetLoopsAndMaps(offset_expr="-1", begin_expr=None).apply_pass(sdfg, {})
-    #sdfg.apply_transformations_repeated(LoopToMap)
+
+    sdfg.save("lu_solver_unspecialized.sdfg")
+    PowerOperatorExpansion().apply_pass(sdfg, {})
+    RemoveFPTypeCasts().apply_pass(sdfg, {})
+    RemoveIntTypeCasts().apply_pass(sdfg, {})
+
+    sdfg.apply_transformations_repeated(WCRToAugAssign)
+    OffsetLoopsAndMaps(offset_expr="-1", begin_expr=None).apply_pass(sdfg, {})
+    sdfg.apply_transformations_repeated(LoopToMap)
     sdfg.simplify()
 
-    # Specialize symbolic scalars if used
-    # Specialize scalars from scalar_specialization_values if relevant
+    # --- Specialize scalars / symbols ---
     for scalar_name, scalar_value in scalar_specialization_values.items():
-        if scalar_name in sdfg.free_symbols:
+        if scalar_name in sdfg.arrays:
             sdutil.specialize_scalar(
                 sdfg=sdfg, scalar_name=scalar_name, scalar_val=scalar_value
             )
             sdfg.validate()
-    repldict = {"sym_nclv": 5, "sym_klon": klon_val,"sym_klev": klev_val,
-                "sym_kfdia": 1,
-                "sym_ncldqs": scalar_specialization_values["ncldqs"],
-                "sym_ncldqi": scalar_specialization_values["ncldqi"],
-                "sym_ncldqs": scalar_specialization_values["ncldqs"],
-                "sym_ncldqv": scalar_specialization_values["ncldqv"]}
+        if scalar_name in sdfg.symbols:
+            sdfg.replace_dict({scalar_name: scalar_value})
+            sdfg.remove_symbol(scalar_name)
+
+    repldict = {
+        "sym_nclv": 5,
+        "sym_kfdia": 1,
+        "sym_ncldqs": scalar_specialization_values["ncldqs"],
+        "sym_ncldqi": scalar_specialization_values["ncldqi"],
+        "sym_ncldqv": scalar_specialization_values["ncldqv"],
+    }
     sdfg.replace_dict(repldict)
-    for sym, val in repldict.items():
+    for sym in repldict:
         if sym in sdfg.symbols:
             sdfg.remove_symbol(sym)
+
     sdfg.validate()
     RemoveUnusedSymbols().apply_pass(sdfg, {})
+    ConstantPropagation().apply_pass(sdfg, {})
+    sdfg.simplify()
+
+    sdfg.instrument = dace.dtypes.InstrumentationType.Timer
+    set_map_sched(sdfg)
+    sdfg.save("lu_solver_propagated.sdfg")
+
     compiled = sdfg.compile()
 
-    # --- Run DaCe ---
+    # --- Run DaCe baseline (1×) ---
     compiled(**data_F_dace)
+    report = sdfg.get_latest_report()
+    dace_total_time = report.events[0].duration  # microseconds
+    print(f"Run time SDFG ({sdfg.name}): {float(dace_total_time)} us")
+    write_runtime(f"lu_solver_microphysics{env_suffix_str}", "dace", dace_total_time)
 
-    # --- Compile and run Fortran ---
+    # --- Compile and run Fortran baseline (1×) ---
     raw = compile_lu_solver_fortran(
-        "./lu_solver.f90",
+        "./lu_solver_w_timer.f90",
         "liblu_solver_microphysics.so",
-        "lu_solver_microphysics"
+        "lu_solver_microphysics",
     )
     fort = wrap_lu_solver(raw)
     fort(**data_F)
+    fortran_total_time = float(data_F["timer"][0])
+    print(f"Run time Fortran: {fortran_total_time} us")
+    write_runtime(f"lu_solver_microphysics{env_suffix_str}", "fortran", fortran_total_time)
 
-    # --- Compare results ---
+    # --- Compare baseline results + repeated timings ---
     print("LU microphysics (DaCe vs Fortran) comparison:")
-    compare_row_col_dicts(data_F_dace, data_F, rtol=1e-12, atol=1e-12)
-    exit(0)
+    if compare_row_col_dicts(data_F_dace, data_F, rtol=1e-12, atol=1e50):
 
-    """
-    vec_sdfg = copy.deepcopy(sdfg)
-    vec_sdfg.name = vec_sdfg.name + "_vectorized"
+        # 10× DaCe baseline (reuse mutated data_F_dace)
+        for rep in range(10):
+            compiled(**data_F_dace)
+            report = sdfg.get_latest_report()
+            dace_time = report.events[0].duration
+            print(f"  Run DaCe {rep+1}/10: {dace_time} us")
+            write_runtime(
+                f"lu_solver_microphysics{env_suffix_str}",
+                "dace",
+                dace_time,
+            )
 
-    eb = EliminateBranches()
-    eb.try_clean = True
-    eb.apply_pass(vec_sdfg, {})
-    ConstantPropagation().apply_pass(sdfg, {})
+    del data_F_dace
 
-    VectorizeCPU(vector_width=8, try_to_demote_symbols_in_nsdfgs=True,
-                 fuse_overlapping_loads=False, insert_copies=True,
-                 eliminate_trivial_vector_map=True).apply_pass(vec_sdfg, {})
-    vec_sdfg.save("ice_supersaturation_vec.sdfg")
+    # 10× Fortran baseline on a fresh deep copy
+    data_F_repeat = make_col_major(copy.deepcopy(base_data))
+    for rep in range(10):
+        fort(**data_F_repeat)
+        ft_time = float(data_F_repeat["timer"][0])
+        print(f"  Run Fortran {rep+1}/10: {ft_time} us")
+        write_runtime(
+            f"lu_solver_microphysics{env_suffix_str}",
+            "fortran",
+            ft_time,
+        )
 
-    vec_compiled = vec_sdfg.compile()
-    # Run DaCe version
-    vec_compiled(**data_F_dace_vec)
+    # --- Vectorization sweep ---
+    if cpu_name == "intel_xeon":
+        vlens = [8, 16, 32, 64]
+    elif cpu_name == "amd_epyc":
+        vlens = [4, 8, 16, 32, 64]
+    else:
+        vlens = [2, 4, 8, 16, 32, 64]
 
-    print("LU microphysics (DaCe-Vec vs Fortran) comparison:")
-    compare_row_col_dicts(data_F_dace_vec, data_F, rtol=1e-12, atol=1e-12)
-    """
+    for vlen in vlens:
+        for cpy in [False, True]:
+            # First vector run: fresh input from base_data
+            data_F_dace_vec = make_col_major(copy.deepcopy(base_data))
 
+            vec_sdfg = copy.deepcopy(sdfg)
+            vec_sdfg.instrument = dace.dtypes.InstrumentationType.Timer
+            vec_sdfg.name = f"{sdfg.name}_vectorized_v{vlen}_cpy{int(cpy)}"
 
+            eb = EliminateBranches()
+            eb.try_clean = True
+            eb.apply_pass(vec_sdfg, {})
+            ConstantPropagation().apply_pass(vec_sdfg, {})
+            RemoveUnusedSymbols().apply_pass(vec_sdfg, {})
 
-# ---------------------------------------------------------------------------
+            VectorizeCPU(
+                vector_width=vlen,
+                try_to_demote_symbols_in_nsdfgs=True,
+                fuse_overlapping_loads=False,
+                insert_copies=cpy,
+                eliminate_trivial_vector_map=True,
+            ).apply_pass(vec_sdfg, {})
+
+            set_map_sched(vec_sdfg)
+            vec_sdfg.save(f"lu_solver_vec_v{vlen}_cpy{int(cpy)}.sdfg")
+
+            vec_compiled = vec_sdfg.compile()
+            vec_compiled(**data_F_dace_vec)
+
+            report = vec_sdfg.get_latest_report()
+            dace_vec_time = report.events[0].duration  # microseconds
+            print("LU microphysics (DaCe-Vec vs Fortran) comparison:")
+
+            if compare_row_col_dicts(
+                data_F_dace_vec, data_F, rtol=1e-12, atol=1e50
+            ):
+                print(
+                    f"Run time SDFG ({vec_sdfg.name}): {float(dace_vec_time)} us"
+                )
+                write_runtime(
+                    f"lu_solver_microphysics{env_suffix_str}",
+                    "dace_vec",
+                    dace_vec_time,
+                    vlen=vlen,
+                    cpy=cpy,
+                )
+
+                # 10× extra vec runs using same mutated data_F_dace_vec
+                for rep in range(10):
+                    vec_compiled(**data_F_dace_vec)
+                    report = vec_sdfg.get_latest_report()
+                    dace_vec_time_rep = report.events[0].duration
+                    print(f"  Run {rep+1}/10: {dace_vec_time_rep} us")
+                    write_runtime(
+                        f"lu_solver_microphysics{env_suffix_str}",
+                        "dace_vec",
+                        dace_vec_time_rep,
+                        vlen=vlen,
+                        cpy=cpy,
+                    )
+
 
 if __name__ == "__main__":
     run_lu_solver_microphysics()

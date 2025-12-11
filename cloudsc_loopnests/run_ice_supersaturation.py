@@ -18,6 +18,7 @@ from dace.transformation.interstate.loop_to_map import LoopToMap
 from dace.transformation.passes import ConstantPropagation, EliminateBranches, OffsetLoopsAndMaps
 from dace.transformation.passes.prune_symbols import RemoveUnusedSymbols
 from dace.transformation.passes.vectorization.vectorize_cpu import VectorizeCPU
+from dace.utils.log_runtime import compare_row_col_dicts, write_runtime
 
 # Define symbolic sizes
 klev = dace.symbol("klev")
@@ -33,8 +34,8 @@ def _read_env_int(name: str, default: int) -> int:
         raise ValueError(f"Environment variable {name} must be an integer, got: {val}")
 
 # Default values same as your other runners
-klev_val = _read_env_int("__DACE_KLEV", 64)
-klon_val = _read_env_int("__DACE_KLON", 512)
+klev_val = _read_env_int("__DACE_KLEV", 8)
+klon_val = _read_env_int("__DACE_KLON", 8192*1024)
 nclv_val = 5
 
 cpu_name = os.environ.get('CPU_NAME', 'amd_epyc')
@@ -117,61 +118,6 @@ def make_col_major(arrays: Dict[str, np.ndarray]) -> Dict[str, np.ndarray]:
 
     return out
 
-def compare_row_col_dicts(data_C, data_F, rtol=1e-12, atol=1e-12):
-    """
-    Compare two dictionaries (row-major and column-major versions)
-    using numpy.allclose on all ndarray entries.
-
-    Scalars and non-array entries are skipped.
-
-    Returns
-    -------
-    all_ok : bool
-        True if all arrays match within tolerance.
-    """
-    all_ok = True
-
-    for key in data_C.keys():
-        vC = data_C[key]
-        vF = data_F[key]
-
-        # Only compare arrays
-        if not isinstance(vC, np.ndarray) or not isinstance(vF, np.ndarray):
-            continue
-
-        # Flatten both arrays so row/col layout differences disappear
-        arrC = np.asarray(vC).reshape(-1)
-        arrF = np.asarray(vF).reshape(-1)
-
-        abs_diff = np.abs(arrC - arrF)
-        denominator = np.maximum(np.abs(arrF), np.abs(arrC))
-        rel_diff = np.zeros_like(abs_diff)
-        mask = denominator > 0
-        rel_diff[mask] = abs_diff[mask] / denominator[mask]
-        rel_diff[~mask] = abs_diff[~mask]
-        max_rel_diff = np.nanmax(rel_diff)
-        max_abs_diff = np.nanmax(abs_diff)
-
-        # Count mismatching indices
-        mismatch_mask = ~np.isclose(arrC, arrF, rtol=rtol, atol=atol, equal_nan=True)
-        num_mismatch = np.sum(mismatch_mask)
-        total_elements = arrC.size
-        
-        if not np.allclose(arrC, arrF, rtol=rtol, atol=atol, equal_nan=True):
-            print(f"[Mismatch] {key}: max rel diff = {max_rel_diff:e}, max abs diff = {max_abs_diff:e}, "
-                  f"mismatches = {num_mismatch}/{total_elements} ({100*num_mismatch/total_elements:.2f}%)")
-            # NEW: get mismatching indices
-            mismatch_mask = ~np.isclose(arrC, arrF, rtol=rtol, atol=atol, equal_nan=True)
-            mismatch_int = mismatch_mask.astype(int)
-
-            print(mismatch_int)
-
-            all_ok = False
-        else:
-            print(f"[Pass] {key}: max rel diff = {max_rel_diff:e}, max abs diff = {max_abs_diff:e}")
-    
-    return all_ok
-
 def generate_ice_supersaturation_data() -> Dict[str, np.ndarray]:
     """
     Generate synthetic but consistent data for ice_supersaturation_adjustment.
@@ -218,6 +164,7 @@ def generate_ice_supersaturation_data() -> Dict[str, np.ndarray]:
 
     # QXFG(KLON, NCLV): current species mixing ratios, start with small noise
     zqxfg = (1e-5 * np.random.rand(nclv_val, klon_val)).astype(np.float64)
+    timer = np.zeros((2,), dtype=np.float64)
 
     return dict(
         ztp1=ztp1,
@@ -244,6 +191,9 @@ def generate_ice_supersaturation_data() -> Dict[str, np.ndarray]:
         klon=np.int32(klon_val),
         klev=np.int32(klev_val),
         nclv=np.int32(nclv_val),
+        timer=timer,
+        sym_klon=klon_val,
+        sym_klev=klev_val
     )
 
 def compile_ice_supersaturation_fortran(
@@ -298,10 +248,24 @@ def compile_ice_supersaturation_fortran(
         ctypes.c_int,     # NCLDQI
         ctypes.c_int,     # NCLDQV
         ctypes.c_int,     # NCLV
+        ndF64_1d, # timer
     ]
 
     print("Fortran function loaded (ice supersaturation)")
     return func
+
+def set_map_sched(sdfg: dace.SDFG):
+    for n, g in sdfg.all_nodes_recursive():
+        if isinstance(n, dace.nodes.MapEntry):
+            n.map.schedule = dace.dtypes.ScheduleType.Sequential
+        if isinstance(n, dace.nodes.NestedSDFG):
+            for arr_name, arr in n.sdfg.arrays.items():
+                if arr.storage == dace.dtypes.StorageType.Default and arr.transient is True:
+                    arr.storage = dace.dtypes.StorageType.Register
+    for arr_name, arr in sdfg.arrays.items():
+        if arr.storage == dace.dtypes.StorageType.Default and arr.transient is True:
+            arr.storage = dace.dtypes.StorageType.Register
+
 
 def wrap_ice_supersaturation(func):
     """
@@ -313,7 +277,7 @@ def wrap_ice_supersaturation(func):
         "ztp1", "za", "zqx_ncldqv", "zqsice", "zcorqsice", "zfokoop",
         "zsolqa", "zsolac", "zqxfg",
         "rtt", "ramin", "rthomo", "nssopt", "rkooptau", "ptsphy", "zepsec",
-        "ncldql", "ncldqi", "ncldqv", "nclv",
+        "ncldql", "ncldqi", "ncldqv", "nclv", "timer"
     ]
 
     def wrapper(**kwargs):
@@ -323,24 +287,22 @@ def wrap_ice_supersaturation(func):
     return wrapper
 
 def run_ice_supersaturation():
-    # ----- Generate Inputs -----
-    data = generate_ice_supersaturation_data()
-    data_F_dace = make_col_major(data)
-    data_F_dace_vec = make_col_major(data)
-    data_F = make_col_major(data)
-    del data
+    # ===== Generate Inputs =====
+    base_data   = generate_ice_supersaturation_data()
+    data_F      = make_col_major(copy.deepcopy(base_data))
+    data_F_dace = make_col_major(copy.deepcopy(base_data))
 
-
-    # ----- Build SDFG -----
+    # ===== Build SDFG =====
     sdfg = dace.SDFG.from_file("ice_supersaturation_adjustment.sdfg")
     sdfg.name = "ice_supersaturation_adjustment"
 
-    # Optional: same preprocessing passes as for rain, if needed
     from dace.transformation.passes.vectorization.tasklet_preprocessing_passes import (
         PowerOperatorExpansion,
         RemoveFPTypeCasts,
         RemoveIntTypeCasts,
     )
+
+    # Preprocessing
     PowerOperatorExpansion().apply_pass(sdfg, {})
     RemoveFPTypeCasts().apply_pass(sdfg, {})
     RemoveIntTypeCasts().apply_pass(sdfg, {})
@@ -349,63 +311,154 @@ def run_ice_supersaturation():
     sdfg.simplify()
     sdfg.save("ice_supersaturation_par.sdfg")
 
-    # Specialize scalars from scalar_specialization_values if relevant
+    # ===== Scalar specialization =====
     for scalar_name, scalar_value in scalar_specialization_values.items():
-        if scalar_name in sdfg.free_symbols:
+        if scalar_name in sdfg.arrays:
             sdutil.specialize_scalar(
                 sdfg=sdfg, scalar_name=scalar_name, scalar_val=scalar_value
             )
             sdfg.validate()
-    repldict = {"sym_nclv": 5, "sym_klon": klon_val,"sym_klev": klev_val,
-                "sym_ncldqs": scalar_specialization_values["ncldqs"],
-                "sym_ncldqi": scalar_specialization_values["ncldqi"],
-                "sym_ncldqs": scalar_specialization_values["ncldqs"],
-                "sym_ncldqv": scalar_specialization_values["ncldqv"]}
+        if scalar_name in sdfg.symbols:
+            sdfg.replace_dict({scalar_name: scalar_value})
+            sdfg.remove_symbol(scalar_name)
+
+    repldict = {
+        "sym_nclv": 5,
+        "sym_ncldqs": scalar_specialization_values["ncldqs"],
+        "sym_ncldqi": scalar_specialization_values["ncldqi"],
+        "sym_ncldqv": scalar_specialization_values["ncldqv"],
+    }
     sdfg.replace_dict(repldict)
-    for sym, val in repldict.items():
+    for sym in repldict:
         if sym in sdfg.symbols:
             sdfg.remove_symbol(sym)
+
     sdfg.validate()
     RemoveUnusedSymbols().apply_pass(sdfg, {})
 
+    # ===== Instrumentation and scheduling =====
+    sdfg.instrument = dace.dtypes.InstrumentationType.Timer
+    sdfg.simplify()
+    set_map_sched(sdfg)
+
+    # ===== Baseline DaCe =====
     compiled = sdfg.compile()
     compiled(**data_F_dace)
 
-    # ----- Build Fortran -----
+    report = sdfg.get_latest_report()
+    dace_total_time = report.events[0].duration
+    print(f"Run time SDFG ({sdfg.name}): {dace_total_time} us")
+    write_runtime(f"ice_supersaturation{env_suffix_str}", "dace", dace_total_time)
+
+    # ===== Baseline Fortran =====
     raw_func = compile_ice_supersaturation_fortran(
-        "./ice_supersaturation_adjustment.f90",
+        "./ice_supersaturation_adjustment_w_timer.f90",
         "libice_supersaturation.so",
         "ice_supersaturation_adjustment",
     )
     fortran_func = wrap_ice_supersaturation(raw_func)
+
     fortran_func(**data_F)
+    fortran_total_time = float(data_F["timer"][0])
+    print(f"Run time Fortran: {fortran_total_time} us")
+    write_runtime(f"ice_supersaturation{env_suffix_str}", "fortran", fortran_total_time)
 
-    # ----- Results -----
+    # ===== Compare baseline =====
     print("Ice supersaturation (DaCe vs Fortran) comparison:")
-    compare_row_col_dicts(data_F_dace, data_F, rtol=1e-12, atol=1e-12)
+    if compare_row_col_dicts(data_F_dace, data_F, rtol=1e-12, atol=1e-12):
 
+        # Repeated DaCe timings (mutated data_F_dace)
+        for rep in range(10):
+            compiled(**data_F_dace)
+            report = sdfg.get_latest_report()
+            dace_rep = report.events[0].duration
+            print(f"  Run DaCe {rep+1}/10: {dace_rep} us")
+            write_runtime(
+                f"ice_supersaturation{env_suffix_str}",
+                "dace",
+                dace_rep,
+            )
 
-    vec_sdfg = copy.deepcopy(sdfg)
-    vec_sdfg.name = vec_sdfg.name + "_vectorized"
+    del data_F_dace
 
-    eb = EliminateBranches()
-    eb.try_clean = True
-    eb.apply_pass(vec_sdfg, {})
-    ConstantPropagation().apply_pass(vec_sdfg, {})
+    # Repeated Fortran timings (fresh deep copy)
+    repeat_F = make_col_major(copy.deepcopy(base_data))
+    for rep in range(10):
+        fortran_func(**repeat_F)
+        ftime = float(repeat_F["timer"][0])
+        print(f"  Run Fortran {rep+1}/10: {ftime} us")
+        write_runtime(
+            f"ice_supersaturation{env_suffix_str}",
+            "fortran",
+            ftime,
+        )
 
-    VectorizeCPU(vector_width=8, try_to_demote_symbols_in_nsdfgs=True,
-                 fuse_overlapping_loads=False, insert_copies=True,
-                 eliminate_trivial_vector_map=True).apply_pass(vec_sdfg, {})
+    # ===== Vectorization sweep =====
+    if cpu_name == "intel_xeon":
+        vlens = [8, 16, 32, 64]
+    elif cpu_name == "amd_epyc":
+        vlens = [4, 8, 16, 32, 64]
+    else:
+        vlens = [2, 4, 8, 16, 32, 64]
 
-    vec_sdfg.save("ice_supersaturation_vec.sdfg")
-    vec_compiled = vec_sdfg.compile()
-    # Run DaCe version
-    vec_compiled(**data_F_dace_vec)
+    for vlen in vlens:
+        for cpy in [True, False]:
 
-    print("Ice supersaturation (DaCe-Vec vs Fortran) comparison:")
-    compare_row_col_dicts(data_F_dace_vec, data_F, rtol=1e-12, atol=1e-12)
+            # First vec run: fresh inputs
+            data_F_dace_vec = make_col_major(copy.deepcopy(base_data))
 
+            vec_sdfg = copy.deepcopy(sdfg)
+            vec_sdfg.name = f"{sdfg.name}_vec_v{vlen}_cpy{int(cpy)}"
+            vec_sdfg.instrument = dace.dtypes.InstrumentationType.Timer
 
+            eb = EliminateBranches()
+            eb.try_clean = True
+            eb.apply_pass(vec_sdfg, {})
+            ConstantPropagation().apply_pass(vec_sdfg, {})
+            RemoveUnusedSymbols().apply_pass(vec_sdfg, {})
+
+            VectorizeCPU(
+                vector_width=vlen,
+                try_to_demote_symbols_in_nsdfgs=True,
+                fuse_overlapping_loads=False,
+                insert_copies=cpy,
+                eliminate_trivial_vector_map=True,
+            ).apply_pass(vec_sdfg, {})
+
+            set_map_sched(vec_sdfg)
+
+            vec_compiled = vec_sdfg.compile()
+            vec_compiled(**data_F_dace_vec)
+
+            report = vec_sdfg.get_latest_report()
+            dace_vec_time = report.events[0].duration
+
+            print("Ice supersaturation (DaCe-Vec vs Fortran) comparison:")
+            if compare_row_col_dicts(
+                data_F_dace_vec, data_F, rtol=1e-12, atol=1e-12
+            ):
+                print(f"Run time SDFG ({vec_sdfg.name}): {dace_vec_time} us")
+                write_runtime(
+                    f"ice_supersaturation{env_suffix_str}",
+                    "dace_vec",
+                    dace_vec_time,
+                    vlen=vlen,
+                    cpy=cpy,
+                )
+
+                # 10× repeated vector run (mutated data_F_dace_vec)
+                for rep in range(10):
+                    vec_compiled(**data_F_dace_vec)
+                    report = vec_sdfg.get_latest_report()
+                    vec_rep = report.events[0].duration
+                    print(f"  Run {rep+1}/10: {vec_rep} us")
+                    write_runtime(
+                        f"ice_supersaturation{env_suffix_str}",
+                        "dace_vec",
+                        vec_rep,
+                        vlen=vlen,
+                        cpy=cpy,
+                    )
 
 if __name__ == "__main__":
     run_ice_supersaturation()

@@ -2,9 +2,14 @@ SUBROUTINE ice_supersaturation_adjustment( KIDIA, KFDIA, KLON, &
     ZTP1, ZA, ZQX_NCLDQV, ZQSICE, ZCORQSICE, ZFOKOOP, &
     ZSOLQA, ZSOLAC, ZQXFG, &
     RTT, RAMIN, RTHOMO, NSSOPT, RKOOPTAU, PTSPHY, ZEPSEC, &
-    NCLDQL, NCLDQI, NCLDQV, NCLV) BIND(C, NAME="ice_supersaturation_adjustment")
+    NCLDQL, NCLDQI, NCLDQV, NCLV, TIMER ) BIND(C, NAME="ice_supersaturation_adjustment")
   USE, INTRINSIC :: ISO_C_BINDING, ONLY: c_int, c_double, c_bool
   IMPLICIT NONE
+  integer(8) :: start, finish, count_rate, count_max
+  real(8) :: elapsed_time
+  
+
+  REAL(c_double), INTENT(OUT)   :: TIMER(2)
 
   ! Dimensions
   INTEGER(c_int), VALUE :: KIDIA, KFDIA, KLON
@@ -33,6 +38,11 @@ SUBROUTINE ice_supersaturation_adjustment( KIDIA, KFDIA, KLON, &
   REAL(c_double) :: ZFAC, ZFACI
   REAL(c_double) :: ZSUPSAT, ZQP1ENV
   REAL(c_double) :: ZEPSILON
+  ! Get the clock rate (counts per second)
+  call system_clock(count_rate=count_rate, count_max=count_max)
+  
+  ! Start timing
+  call system_clock(start)
 
   ZEPSILON = 1.0D-14
 
@@ -72,7 +82,15 @@ SUBROUTINE ice_supersaturation_adjustment( KIDIA, KFDIA, KLON, &
     ENDIF
 
   ENDDO
-
-
+  ! Stop timing
+  call system_clock(finish)
+  
+  ! Calculate elapsed time in seconds
+  elapsed_time = real(finish - start, 8) / real(count_rate, 8)
+  ! Print results
+  print *, 'Elapsed time (seconds):', elapsed_time
+  print *, 'Elapsed time (nanoseconds):', elapsed_time * 1.0e9
+  print *, 'Clock resolution (nanoseconds):', 1.0e9 / real(count_rate, 8)
+  timer(1) = elapsed_time * 1.0e6
 
 END SUBROUTINE ice_supersaturation_adjustment

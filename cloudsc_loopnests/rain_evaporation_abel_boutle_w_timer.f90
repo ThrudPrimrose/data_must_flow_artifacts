@@ -5,10 +5,15 @@ SUBROUTINE rain_evaporation_abel_boutle( KIDIA, KFDIA, KLON, &
     RTT, RV, RD, RPRECRHMAX, RCOVPMIN, RDENSREF, PTSPHY, ZEPSEC, &
     RCL_FAC1, RCL_FAC2, RCL_CDENOM1, RCL_CDENOM2, RCL_CDENOM3, &
     RCL_KA273, RCL_CONST1R, RCL_CONST2R, RCL_CONST3R, RCL_CONST4R, &
-    NCLDQV, NCLDQR, NCLV) BIND(C, NAME="rain_evaporation_abel_boutle")
+    NCLDQV, NCLDQR, NCLV, TIMER) BIND(C, NAME="rain_evaporation_abel_boutle")
   USE, INTRINSIC :: ISO_C_BINDING, ONLY: c_int, c_double, c_bool
   IMPLICIT NONE
 
+  integer(8) :: start, finish, count_rate, count_max
+  real(8) :: elapsed_time
+  
+
+  REAL(c_double), INTENT(OUT)   :: TIMER(2)
 
   ! Dimensions
   INTEGER(c_int), VALUE :: KIDIA, KFDIA, KLON
@@ -50,6 +55,13 @@ SUBROUTINE rain_evaporation_abel_boutle( KIDIA, KFDIA, KLON, &
 
   ! Local constants for saturation vapor pressure
   REAL(c_double) :: R2ES_LOCAL, R3LES_LOCAL, R4LES_LOCAL
+
+
+  ! Get the clock rate (counts per second)
+  call system_clock(count_rate=count_rate, count_max=count_max)
+  
+  ! Start timing
+  call system_clock(start)
   R2ES_LOCAL  = 611.21D0
   R3LES_LOCAL = 17.502D0
   R4LES_LOCAL = 32.19D0
@@ -109,7 +121,16 @@ SUBROUTINE rain_evaporation_abel_boutle( KIDIA, KFDIA, KLON, &
 
     END IF
   END DO
-
-
+  ! Stop timing
+  call system_clock(finish)
+  
+  ! Calculate elapsed time in seconds
+  elapsed_time = real(finish - start, 8) / real(count_rate, 8)
+  ! Print results
+  print *, 'Elapsed time (seconds):', elapsed_time
+  print *, 'Elapsed time (nanoseconds):', elapsed_time * 1.0e9
+  print *, 'Clock resolution (nanoseconds):', 1.0e9 / real(count_rate, 8)
+  timer(1) = elapsed_time * 1.0e6
+  
 
 END SUBROUTINE rain_evaporation_abel_boutle
