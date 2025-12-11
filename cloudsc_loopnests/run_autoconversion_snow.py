@@ -338,9 +338,6 @@ def run_autoconversion_snow():
         PowerOperatorExpansion().apply_pass(sdfg, {})
         RemoveFPTypeCasts().apply_pass(sdfg, {})
         RemoveIntTypeCasts().apply_pass(sdfg, {})
-        sdfg.apply_transformations_repeated(LoopToMap)
-        sdfg.simplify()
-
         # Specialize scalars from scalar_specialization_values if relevant
         for scalar_name, scalar_value in scalar_specialization_values.items():
             if scalar_name in sdfg.free_symbols:
@@ -359,6 +356,9 @@ def run_autoconversion_snow():
                 sdfg.remove_symbol(sym)
         sdfg.validate()
         RemoveUnusedSymbols().apply_pass(sdfg, {})
+        sdfg.apply_transformations_repeated(LoopToMap)
+        sdfg.simplify()
+
 
         compiled = sdfg.compile()
 

@@ -276,6 +276,8 @@ def run_lu_solver_microphysics():
     print("LU microphysics (DaCe vs Fortran) comparison:")
     compare_row_col_dicts(data_F_dace, data_F, rtol=1e-12, atol=1e-12)
     exit(0)
+
+    """
     vec_sdfg = copy.deepcopy(sdfg)
     vec_sdfg.name = vec_sdfg.name + "_vectorized"
 
@@ -295,6 +297,7 @@ def run_lu_solver_microphysics():
 
     print("LU microphysics (DaCe-Vec vs Fortran) comparison:")
     compare_row_col_dicts(data_F_dace_vec, data_F, rtol=1e-12, atol=1e-12)
+    """
 
 
 
