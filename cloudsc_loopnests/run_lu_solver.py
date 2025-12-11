@@ -11,6 +11,12 @@ import subprocess
 import ctypes
 import os
 
+from dace.transformation.dataflow import WCRToAugAssign
+from dace.transformation.interstate.loop_to_map import LoopToMap
+from dace.transformation.passes import ConstantPropagation, EliminateBranches, OffsetLoopsAndMaps
+from dace.transformation.passes.prune_symbols import RemoveUnusedSymbols
+from dace.transformation.passes.vectorization.vectorize_cpu import VectorizeCPU
+
 # Define symbolic sizes
 klev = dace.symbol("klev")
 klon = dace.symbol("klon")
@@ -133,7 +139,7 @@ def generate_lu_solver_microphysics_data():
     ZQLHS = np.random.rand(nclv_val, nclv_val, klon_val).astype(np.float64)
     for i in range(nclv_val):
         for jl in range(klon_val):
-            ZQLHS[i, i, jl] += 1.0  # make diagonal strictly positive
+            ZQLHS[i, i, jl] += 0.1  # make diagonal strictly positive
 
     # RHS vector: shape (KLON, NCLV)
     ZQXN = np.random.rand(nclv_val, klon_val).astype(np.float64)
@@ -152,7 +158,7 @@ def generate_lu_solver_microphysics_data():
 # ---------------------------------------------------------------------------
 
 def compile_lu_solver_fortran(
-    src_path: str = "./lu_solver_microphysics.f90",
+    src_path: str = "./lu_solver.f90",
     libname: str = "liblu_solver_microphysics.so",
     func_name: str = "lu_solver_microphysics",
 ):
@@ -210,7 +216,9 @@ def run_lu_solver_microphysics():
 
     # Your utility to produce F-contiguous arrays
     data_F_dace = make_col_major(data)
+    data_F_dace_vec = make_col_major(data)
     data_F      = make_col_major(data)
+    del data
 
     # --- Load SDFG ---
     sdfg = dace.SDFG.from_file("lu_solver.sdfg")
@@ -222,21 +230,34 @@ def run_lu_solver_microphysics():
         RemoveFPTypeCasts,
         RemoveIntTypeCasts,
     )
-    PowerOperatorExpansion().apply_pass(sdfg, {})
-    RemoveFPTypeCasts().apply_pass(sdfg, {})
-    RemoveIntTypeCasts().apply_pass(sdfg, {})
+    #PowerOperatorExpansion().apply_pass(sdfg, {})
+    #RemoveFPTypeCasts().apply_pass(sdfg, {})
+    #RemoveIntTypeCasts().apply_pass(sdfg, {})
+    #sdfg.apply_transformations_repeated(WCRToAugAssign)
+    #OffsetLoopsAndMaps(offset_expr="-1", begin_expr=None).apply_pass(sdfg, {})
+    #sdfg.apply_transformations_repeated(LoopToMap)
     sdfg.simplify()
 
     # Specialize symbolic scalars if used
-    for sym, val in dict(
-        sym_klev=klev_val,
-        sym_klon=klon_val,
-        nclv=nclv_val,
-    ).items():
-        if sym in sdfg.free_symbols:
-            sdutil.specialize_scalar(sdfg, sym, val)
+    # Specialize scalars from scalar_specialization_values if relevant
+    for scalar_name, scalar_value in scalar_specialization_values.items():
+        if scalar_name in sdfg.free_symbols:
+            sdutil.specialize_scalar(
+                sdfg=sdfg, scalar_name=scalar_name, scalar_val=scalar_value
+            )
             sdfg.validate()
-
+    repldict = {"sym_nclv": 5, "sym_klon": klon_val,"sym_klev": klev_val,
+                "sym_kfdia": 1,
+                "sym_ncldqs": scalar_specialization_values["ncldqs"],
+                "sym_ncldqi": scalar_specialization_values["ncldqi"],
+                "sym_ncldqs": scalar_specialization_values["ncldqs"],
+                "sym_ncldqv": scalar_specialization_values["ncldqv"]}
+    sdfg.replace_dict(repldict)
+    for sym, val in repldict.items():
+        if sym in sdfg.symbols:
+            sdfg.remove_symbol(sym)
+    sdfg.validate()
+    RemoveUnusedSymbols().apply_pass(sdfg, {})
     compiled = sdfg.compile()
 
     # --- Run DaCe ---
@@ -244,7 +265,7 @@ def run_lu_solver_microphysics():
 
     # --- Compile and run Fortran ---
     raw = compile_lu_solver_fortran(
-        "./lu_solver_microphysics.f90",
+        "./lu_solver.f90",
         "liblu_solver_microphysics.so",
         "lu_solver_microphysics"
     )
@@ -254,6 +275,28 @@ def run_lu_solver_microphysics():
     # --- Compare results ---
     print("LU microphysics (DaCe vs Fortran) comparison:")
     compare_row_col_dicts(data_F_dace, data_F, rtol=1e-12, atol=1e-12)
+    exit(0)
+    vec_sdfg = copy.deepcopy(sdfg)
+    vec_sdfg.name = vec_sdfg.name + "_vectorized"
+
+    eb = EliminateBranches()
+    eb.try_clean = True
+    eb.apply_pass(vec_sdfg, {})
+    ConstantPropagation().apply_pass(sdfg, {})
+
+    VectorizeCPU(vector_width=8, try_to_demote_symbols_in_nsdfgs=True,
+                 fuse_overlapping_loads=False, insert_copies=True,
+                 eliminate_trivial_vector_map=True).apply_pass(vec_sdfg, {})
+    vec_sdfg.save("ice_supersaturation_vec.sdfg")
+
+    vec_compiled = vec_sdfg.compile()
+    # Run DaCe version
+    vec_compiled(**data_F_dace_vec)
+
+    print("LU microphysics (DaCe-Vec vs Fortran) comparison:")
+    compare_row_col_dicts(data_F_dace_vec, data_F, rtol=1e-12, atol=1e-12)
+
+
 
 # ---------------------------------------------------------------------------
 

@@ -14,6 +14,11 @@ import os
 from typing import Callable
 from math import exp, log, pow, sqrt
 
+from dace.transformation.interstate.loop_to_map import LoopToMap
+from dace.transformation.passes import ConstantPropagation, EliminateBranches, OffsetLoopsAndMaps
+from dace.transformation.passes.prune_symbols import RemoveUnusedSymbols
+from dace.transformation.passes.vectorization.vectorize_cpu import VectorizeCPU
+
 # Define symbolic sizes
 klev = dace.symbol("klev")
 klon = dace.symbol("klon")
@@ -31,6 +36,51 @@ def _read_env_int(name: str, default: int) -> int:
 klev_val = _read_env_int("__DACE_KLEV", 64)
 klon_val = _read_env_int("__DACE_KLON", 512)
 nclv_val = 5
+
+cpu_name = os.environ.get('CPU_NAME', 'amd_epyc')
+compiler_exec = os.environ.get('CXX', 'c++')
+dace.config.Config.set("compiler", "cpu", "executable", value=compiler_exec)
+
+# Base compilation flags
+base_flags = [
+    '-fopenmp', '-fstrict-aliasing', '-std=c++17', '-faligned-new',
+    '-fPIC', '-Wall', '-Wextra', '-O3', '-march=native', '-ffast-math',
+    '-Wno-unused-parameter', '-Wno-unused-label'
+]
+
+
+if cpu_name == "arm":
+    base_flags.remove("-march=native")
+
+if compiler_exec == "icpx":
+    base_flags.remove("-fopenmp")
+    base_flags.append("-qopenmp")
+
+# Architecture / compiler specific extra flags
+env_flags_str = os.environ.get('EXTRA_FLAGS', '')
+base_flags_str = ' '.join(base_flags)
+
+flags = base_flags_str + " " + env_flags_str if env_flags_str != '' else base_flags_str
+dace.config.Config.set("compiler", "cpu", "args", value=flags)
+
+
+multi_core = int(os.environ.get('RUN_MULTICORE', '0')) == 1
+core_count = 1
+
+
+multicore_suffix = '' if core_count == 1 else '_multicore'
+
+if multi_core:
+    if cpu_name == "arm":
+        core_count = 72
+    elif cpu_name == "intel_xeon":
+        core_count = 18
+    elif cpu_name == "amd_epyc":
+        core_count = 64
+
+env_suffix_str = os.environ.get('SUFFIX', '')
+if env_suffix_str != '':
+    env_suffix_str = "_" + env_suffix_str
 
 scalar_specialization_values = {
     "nclv": 5,      # number of microphysics variables
@@ -110,6 +160,12 @@ def compare_row_col_dicts(data_C, data_F, rtol=1e-12, atol=1e-12):
         if not np.allclose(arrC, arrF, rtol=rtol, atol=atol, equal_nan=True):
             print(f"[Mismatch] {key}: max rel diff = {max_rel_diff:e}, max abs diff = {max_abs_diff:e}, "
                   f"mismatches = {num_mismatch}/{total_elements} ({100*num_mismatch/total_elements:.2f}%)")
+            # NEW: get mismatching indices
+            mismatch_mask = ~np.isclose(arrC, arrF, rtol=rtol, atol=atol, equal_nan=True)
+            mismatch_int = mismatch_mask.astype(int)
+
+            print(mismatch_int)
+
             all_ok = False
         else:
             print(f"[Pass] {key}: max rel diff = {max_rel_diff:e}, max abs diff = {max_abs_diff:e}")
@@ -270,6 +326,7 @@ def run_ice_supersaturation():
     # ----- Generate Inputs -----
     data = generate_ice_supersaturation_data()
     data_F_dace = make_col_major(data)
+    data_F_dace_vec = make_col_major(data)
     data_F = make_col_major(data)
     del data
 
@@ -287,7 +344,10 @@ def run_ice_supersaturation():
     PowerOperatorExpansion().apply_pass(sdfg, {})
     RemoveFPTypeCasts().apply_pass(sdfg, {})
     RemoveIntTypeCasts().apply_pass(sdfg, {})
+    OffsetLoopsAndMaps(offset_expr="-1", begin_expr=None).apply_pass(sdfg, {})
+    sdfg.apply_transformations_repeated(LoopToMap)
     sdfg.simplify()
+    sdfg.save("ice_supersaturation_par.sdfg")
 
     # Specialize scalars from scalar_specialization_values if relevant
     for scalar_name, scalar_value in scalar_specialization_values.items():
@@ -296,9 +356,17 @@ def run_ice_supersaturation():
                 sdfg=sdfg, scalar_name=scalar_name, scalar_val=scalar_value
             )
             sdfg.validate()
-    sdfg.replace_dict({"sym_nclv": 5})
-    sdfg.replace_dict({"sym_klon": klon_val})
-    sdfg.replace_dict({"sym_klev": klev_val})
+    repldict = {"sym_nclv": 5, "sym_klon": klon_val,"sym_klev": klev_val,
+                "sym_ncldqs": scalar_specialization_values["ncldqs"],
+                "sym_ncldqi": scalar_specialization_values["ncldqi"],
+                "sym_ncldqs": scalar_specialization_values["ncldqs"],
+                "sym_ncldqv": scalar_specialization_values["ncldqv"]}
+    sdfg.replace_dict(repldict)
+    for sym, val in repldict.items():
+        if sym in sdfg.symbols:
+            sdfg.remove_symbol(sym)
+    sdfg.validate()
+    RemoveUnusedSymbols().apply_pass(sdfg, {})
 
     compiled = sdfg.compile()
     compiled(**data_F_dace)
@@ -315,6 +383,29 @@ def run_ice_supersaturation():
     # ----- Results -----
     print("Ice supersaturation (DaCe vs Fortran) comparison:")
     compare_row_col_dicts(data_F_dace, data_F, rtol=1e-12, atol=1e-12)
+
+
+    vec_sdfg = copy.deepcopy(sdfg)
+    vec_sdfg.name = vec_sdfg.name + "_vectorized"
+
+    eb = EliminateBranches()
+    eb.try_clean = True
+    eb.apply_pass(vec_sdfg, {})
+    ConstantPropagation().apply_pass(vec_sdfg, {})
+
+    VectorizeCPU(vector_width=8, try_to_demote_symbols_in_nsdfgs=True,
+                 fuse_overlapping_loads=False, insert_copies=True,
+                 eliminate_trivial_vector_map=True).apply_pass(vec_sdfg, {})
+
+    vec_sdfg.save("ice_supersaturation_vec.sdfg")
+    vec_compiled = vec_sdfg.compile()
+    # Run DaCe version
+    vec_compiled(**data_F_dace_vec)
+
+    print("Ice supersaturation (DaCe-Vec vs Fortran) comparison:")
+    compare_row_col_dicts(data_F_dace_vec, data_F, rtol=1e-12, atol=1e-12)
+
+
 
 if __name__ == "__main__":
     run_ice_supersaturation()
