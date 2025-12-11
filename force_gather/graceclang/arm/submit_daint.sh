@@ -22,12 +22,11 @@ export CPU_NAME="arm"
 
 # Define configurations: each element is "EXTRA_FLAGS SUFFIX"
 configs=(
-    "" ""                                   # first run: no extra flags, no suffix
-    "-march=armv9-a+simd+nosve+nosve2 -mcpu=neoverse-v2" "neon"  # second run
-    "-march=armv9-a+sve2+sve+nosimd -mcpu=neoverse-v2" "sve"  # second run
+    "-march=armv9-a+simd+nosve+nosve2 -D__DACE_USE_AVX512=0 -D__ARM_NEON -D__DACE_USE_INTRINSICS=1 -D__DACE_USE_SVE=0" "intrinsic_neon"
+    "-march=armv9-a+sve2+sve+nosimd -D__DACE_USE_AVX512=0 -D__ARM_FEATURE_SVE -D__DACE_USE_INTRINSICS=1 -D__DACE_USE_SVE=1" "intrinsic_sve"
+    "" ""
     "-fno-vectorize" "no_vectorize"
 )
-
 for RUNMULTI in 0 1; do
     export RUN_MULTICORE="$RUNMULTI"
     for ((i=0; i<${#configs[@]}; i+=2)); do

@@ -1,0 +1,5 @@
+python run_autoconversion_snow.py
+python run_ice_supersaturation.py
+python run_lu_solver.py
+python run_rain_evaporation.py
+python run_saturation_calculation.py

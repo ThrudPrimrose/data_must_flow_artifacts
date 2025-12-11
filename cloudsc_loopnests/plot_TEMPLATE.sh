@@ -1,0 +1,4 @@
+python plot.py gcc/amd_epyc/TEMPLATE_timings_1_core.csv  TEMPLATE_timings_1_core_amd_epyc_gcc.png TEMPLATE gcc amd_epyc_7742
+python plot.py llvm/amd_epyc/TEMPLATE_timings_1_core.csv  TEMPLATE_timings_1_core_amd_epyc_llvm.png TEMPLATE llvm amd_epyc_7742
+python plot.py gcc/intel_xeon/TEMPLATE_timings_1_core.csv  TEMPLATE_timings_1_core_intel_xeon_gcc.png TEMPLATE gcc intel_xeon_gold
+python plot.py llvm/intel_xeon/TEMPLATE_timings_1_core.csv  TEMPLATE_timings_1_core_intel_xeon_llvm.png TEMPLATE llvm intel_xeon_gold
