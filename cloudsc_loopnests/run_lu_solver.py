@@ -34,7 +34,8 @@ def _read_env_int(name: str, default: int) -> int:
 
 # Default values same as your other runners
 klev_val = _read_env_int("__DACE_KLEV", 8)
-klon_val = _read_env_int("__DACE_KLON", 8192 * 1024)
+klon_val = _read_env_int("__DACE_KLON", 8192*512)
+
 nclv_val = 5
 
 
@@ -82,6 +83,7 @@ if multi_core:
 env_suffix_str = os.environ.get('SUFFIX', '')
 if env_suffix_str != '':
     env_suffix_str = "_" + env_suffix_str
+env_suffix_str += f"_size_{klon_val}"
 
 
 scalar_specialization_values = {

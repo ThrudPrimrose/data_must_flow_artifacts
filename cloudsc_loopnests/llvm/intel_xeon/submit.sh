@@ -42,32 +42,36 @@ for RUNMULTI in 0 ; do
 
         echo "Running with EXTRA_FLAGS='$EXTRA_FLAGS', SUFFIX='$SUFFIX'"
 
-        export __DACE_KLON=8
-        export __DACE_KLON=33554432
-        # Copy benchmark script
-        cp ../../run_autoconversion_snow.py .
-        cp ../../run_ice_supersaturation.py .
-        cp ../../run_lu_solver.py .
-        cp ../../run_rain_evaporation.py .
-        cp ../../run_saturation_calculation.py .
-        cp ../../*.sdfg .
-        cp ../../*.f90 .
+        export __DACE_KLEV=8
+        for KLON in $((8192*256)) $((8192*512)) $((8192*1024)); do
+            export __DACE_KLON="$KLON"
+            echo "Running with __DACE_KLON=$__DACE_KLON"
 
-        # Run benchmark
-        python run_autoconversion_snow.py
-        python run_ice_supersaturation.py
-        python run_lu_solver.py
-        python run_rain_evaporation.py
-        python run_saturation_calculation.py
+            # Copy benchmark script
+            cp ../../run_autoconversion_snow.py .
+            cp ../../run_ice_supersaturation.py .
+            cp ../../run_lu_solver.py .
+            cp ../../run_rain_evaporation.py .
+            cp ../../run_saturation_calculation.py .
+            cp ../../*.sdfg .
+            cp ../../*.f90 .
 
-        # Remove script
-        rm run_autoconversion_snow.py
-        rm run_ice_supersaturation.py
-        rm run_lu_solver.py
-        rm run_rain_evaporation.py
-        rm run_saturation_calculation.py
-        rm *.so
-        rm *.sdfg
-        rm *.f90
+            # Run benchmark
+            python run_autoconversion_snow.py
+            python run_ice_supersaturation.py
+            python run_lu_solver.py
+            python run_rain_evaporation.py
+            python run_saturation_calculation.py
+
+            # Remove script
+            rm run_autoconversion_snow.py
+            rm run_ice_supersaturation.py
+            rm run_lu_solver.py
+            rm run_rain_evaporation.py
+            rm run_saturation_calculation.py
+            rm *.so
+            rm *.sdfg
+            rm *.f90
+        done
     done
 done
