@@ -25,17 +25,17 @@ from dace.transformation.passes.fusion_inline import InlineSDFGs
 
 LEN_1D = dace.symbol("LEN_1D")
 LEN_2D = dace.symbol("LEN_2D")
-#G_LEN_1D_VAL = 8192 * 8192
-#G_LEN_2D_VAL = 8192
-G_LEN_1D_VAL = 32
-G_LEN_2D_VAL = 32
+G_LEN_1D_VAL = 4096 * 4096 * 4
+G_LEN_2D_VAL = 4096
+#G_LEN_1D_VAL = 32
+#G_LEN_2D_VAL = 32
 ITERATIONS = dace.symbol("ITERATIONS")
 S = dace.symbol('S')
 
 LIB_NAME = "libtsvcpp.so"
 CPP_FILE = "tsvcpp.cpp"
 
-SAVE_SDFGS = True
+SAVE_SDFGS = False
 
 
 def build_tsvcpp_lib():
@@ -181,7 +181,7 @@ import os
 import fcntl
 
 
-def log_runtime(time_ns: int, name: str, filename: str = "runtimes.csv"):
+def log_runtime(time_ns: int, name: str, filename: str = "runtimes_v2.csv"):
     header = "name,time_ns\n"
     line = f"{name},{time_ns}\n"
 
@@ -324,6 +324,20 @@ def run_vectorization_test(dace_func: Union[dace.SDFG, callable],
         if isinstance(n, dace.nodes.MapEntry):
             print(n.map.schedule)
             assert n.map.schedule == dace.dtypes.ScheduleType.Sequential
+
+    def set_arrdtype(sdfg: dace.SDFG):
+        for n, g in sdfg.all_nodes_recursive():
+            if isinstance(n, dace.nodes.MapEntry):
+                n.map.schedule = dace.dtypes.ScheduleType.Sequential
+            if isinstance(n, dace.nodes.NestedSDFG):
+                for arr_name, arr in n.sdfg.arrays.items():
+                    if arr.storage == dace.dtypes.StorageType.Default and arr.transient is True:
+                        arr.storage = dace.dtypes.StorageType.Register
+        for arr_name, arr in sdfg.arrays.items():
+            if arr.storage == dace.dtypes.StorageType.Default and arr.transient is True:
+                arr.storage = dace.dtypes.StorageType.Register
+    set_arrdtype(copy_sdfg)
+
     if save_sdfgs and sdfg_name:
         copy_sdfg.save(f"{sdfg_name}_vectorized.sdfg")
     c_copy_sdfg = copy_sdfg.compile()
@@ -456,7 +470,7 @@ def dace_s1113(a: dace.float64[LEN_1D], b: dace.float64[LEN_1D]):
 # s114: transpose vectorization - Jump in data access
 @dace.program
 def dace_s114(aa: dace.float64[LEN_2D, LEN_2D], bb: dace.float64[LEN_2D, LEN_2D]):
-    for nl in range(200 * (ITERATIONS // LEN_2D)):
+    for nl in range(200 * (ITERATIONS )):
         for i in range(LEN_2D):
             for j in range(i):
                 aa[i, j] = aa[j, i] + bb[i, j]
@@ -465,7 +479,7 @@ def dace_s114(aa: dace.float64[LEN_2D, LEN_2D], bb: dace.float64[LEN_2D, LEN_2D]
 # s115: triangular saxpy loop
 @dace.program
 def dace_s115(a: dace.float64[LEN_2D], aa: dace.float64[LEN_2D, LEN_2D]):
-    for nl in range(1000 * (ITERATIONS // LEN_2D)):
+    for nl in range(1000 * (ITERATIONS )):
         for j in range(LEN_2D):
             for i in range(j + 1, LEN_2D):
                 a[i] = a[i] - aa[j, i] * a[j]
@@ -474,7 +488,7 @@ def dace_s115(a: dace.float64[LEN_2D], aa: dace.float64[LEN_2D, LEN_2D]):
 # s1115: triangular saxpy loop variant
 @dace.program
 def dace_s1115(aa: dace.float64[LEN_2D, LEN_2D], bb: dace.float64[LEN_2D, LEN_2D], cc: dace.float64[LEN_2D, LEN_2D]):
-    for nl in range(100 * (ITERATIONS // LEN_2D)):
+    for nl in range(100 * (ITERATIONS )):
         for i in range(LEN_2D):
             for j in range(LEN_2D):
                 aa[i, j] = aa[i, j] * cc[j, i] + bb[i, j]
@@ -501,7 +515,7 @@ def dace_s118(a: dace.float64[LEN_2D], bb: dace.float64[LEN_2D, LEN_2D]):
 
 @dace.program
 def dace_s119(aa: dace.float64[LEN_2D, LEN_2D], bb: dace.float64[LEN_2D, LEN_2D]):
-    for nl in range(200 * (ITERATIONS // LEN_2D)):
+    for nl in range(200 * (ITERATIONS )):
         for i in range(1, LEN_2D):
             for j in range(1, LEN_2D):
                 aa[i, j] = aa[i - 1, j - 1] + bb[i, j]
@@ -555,7 +569,7 @@ def dace_s124(a: dace.float64[LEN_1D], b: dace.float64[LEN_1D], c: dace.float64[
 @dace.program
 def dace_s125(flat_2d_array: dace.float64[LEN_2D * LEN_2D], aa: dace.float64[LEN_2D, LEN_2D],
               bb: dace.float64[LEN_2D, LEN_2D], cc: dace.float64[LEN_2D, LEN_2D]):
-    for nl in range(100 * (ITERATIONS // LEN_2D)):
+    for nl in range(100 * (ITERATIONS )):
         k = -1
         for i in range(LEN_2D):
             for j in range(LEN_2D):
@@ -566,7 +580,7 @@ def dace_s125(flat_2d_array: dace.float64[LEN_2D * LEN_2D], aa: dace.float64[LEN
 @dace.program
 def dace_s126(bb: dace.float64[LEN_2D, LEN_2D], flat_2d_array: dace.float64[LEN_2D * LEN_2D], cc: dace.float64[LEN_2D,
                                                                                                                LEN_2D]):
-    for nl in range(10 * (ITERATIONS // LEN_2D)):
+    for nl in range(10 * (ITERATIONS )):
         k = 1
         for i in range(LEN_2D):
             for j in range(1, LEN_2D):
@@ -634,7 +648,7 @@ def dace_s152(a: dace.float64[LEN_1D], b: dace.float64[LEN_1D], c: dace.float64[
 @dace.program
 def dace_s161(a: dace.float64[LEN_1D], b: dace.float64[LEN_1D], c: dace.float64[LEN_1D], d: dace.float64[LEN_1D],
               e: dace.float64[LEN_1D]):
-    for nl in range(ITERATIONS // 2):
+    for nl in range(ITERATIONS ):
         for i in range(LEN_1D):
             if b[i] < 0.0:
                 c[i + 1] = a[i] + d[i] * d[i]
@@ -704,7 +718,7 @@ def dace_s175(a: dace.float64[LEN_1D], b: dace.float64[LEN_1D], inc: dace.int64)
 def dace_s176(a: dace.float64[LEN_1D], b: dace.float64[LEN_1D], c: dace.float64[LEN_1D]):
 
     m = LEN_1D // 2
-    outer = 4 * (ITERATIONS // LEN_1D)
+    outer = 4 * (ITERATIONS )
 
     for nl in range(outer):
         for j in range(LEN_1D // 2):
@@ -752,7 +766,7 @@ def dace_s1213(a: dace.float64[LEN_1D], b: dace.float64[LEN_1D], c: dace.float64
 @dace.program
 def dace_s221(a: dace.float64[LEN_1D], b: dace.float64[LEN_1D], c: dace.float64[LEN_1D], d: dace.float64[LEN_1D]):
 
-    outer = ITERATIONS // 2
+    outer = ITERATIONS 
     for nl in range(outer):
         for i in range(1, LEN_1D):
             a[i] = a[i] + c[i] * d[i]
@@ -770,7 +784,7 @@ def dace_s1221(a: dace.float64[LEN_1D], b: dace.float64[LEN_1D]):
 @dace.program
 def dace_s222(a: dace.float64[LEN_1D], b: dace.float64[LEN_1D], c: dace.float64[LEN_1D], e: dace.float64[LEN_1D]):
 
-    outer = ITERATIONS // 2
+    outer = ITERATIONS 
 
     for nl in range(outer):
         for i in range(1, LEN_1D):
@@ -785,7 +799,7 @@ def dace_s222(a: dace.float64[LEN_1D], b: dace.float64[LEN_1D], c: dace.float64[
 @dace.program
 def dace_s231(aa: dace.float64[LEN_2D, LEN_2D], bb: dace.float64[LEN_2D, LEN_2D]):
 
-    outer = 100 * (ITERATIONS // LEN_2D)
+    outer = 100 * (ITERATIONS )
 
     for nl in range(outer):
         for i in range(LEN_2D):
@@ -813,7 +827,7 @@ def dace_s232(aa: dace.float64[LEN_2D, LEN_2D], bb: dace.float64[LEN_2D, LEN_2D]
 @dace.program
 def dace_s1232(aa: dace.float64[LEN_2D, LEN_2D], bb: dace.float64[LEN_2D, LEN_2D], cc: dace.float64[LEN_2D, LEN_2D]):
 
-    outer = 100 * (ITERATIONS // LEN_2D)
+    outer = 100 * (ITERATIONS )
 
     for nl in range(outer):
         for j in range(LEN_2D):
@@ -827,7 +841,7 @@ def dace_s1232(aa: dace.float64[LEN_2D, LEN_2D], bb: dace.float64[LEN_2D, LEN_2D
 @dace.program
 def dace_s233(aa: dace.float64[LEN_2D, LEN_2D], bb: dace.float64[LEN_2D, LEN_2D], cc: dace.float64[LEN_2D, LEN_2D]):
 
-    outer = 100 * (ITERATIONS // LEN_2D)
+    outer = 100 * (ITERATIONS )
 
     for nl in range(outer):
         for i in range(1, LEN_2D):
@@ -845,7 +859,7 @@ def dace_s233(aa: dace.float64[LEN_2D, LEN_2D], bb: dace.float64[LEN_2D, LEN_2D]
 @dace.program
 def dace_s2233(aa: dace.float64[LEN_2D, LEN_2D], bb: dace.float64[LEN_2D, LEN_2D], cc: dace.float64[LEN_2D, LEN_2D]):
 
-    outer = 100 * (ITERATIONS // LEN_2D)
+    outer = 100 * (ITERATIONS )
 
     for nl in range(outer):
         for i in range(1, LEN_2D):
@@ -861,7 +875,7 @@ def dace_s2233(aa: dace.float64[LEN_2D, LEN_2D], bb: dace.float64[LEN_2D, LEN_2D
 def dace_s235(a: dace.float64[LEN_2D], b: dace.float64[LEN_2D], c: dace.float64[LEN_2D],
               aa: dace.float64[LEN_2D, LEN_2D], bb: dace.float64[LEN_2D, LEN_2D]):
 
-    outer = 200 * (ITERATIONS // LEN_2D)
+    outer = 200 * (ITERATIONS )
 
     for nl in range(outer):
         for i in range(LEN_2D):
@@ -1009,7 +1023,7 @@ def dace_s254(a: dace.float64[LEN_1D], b: dace.float64[LEN_1D]):
 @dace.program
 def dace_s235(a: dace.float64[LEN_2D], b: dace.float64[LEN_2D], c: dace.float64[LEN_2D],
               aa: dace.float64[LEN_2D, LEN_2D], bb: dace.float64[LEN_2D, LEN_2D]):
-    outer = 200 * (ITERATIONS // LEN_2D)
+    outer = 200 * (ITERATIONS )
     for nl in range(outer):
         for i in range(LEN_2D):
             a[i] = a[i] + b[i] * c[i]
@@ -1135,7 +1149,7 @@ def dace_s255(a: dace.float64[LEN_1D], b: dace.float64[LEN_1D]):
 @dace.program
 def dace_s256(a: dace.float64[LEN_2D], aa: dace.float64[LEN_2D, LEN_2D], bb: dace.float64[LEN_2D, LEN_2D],
               d: dace.float64[LEN_2D]):
-    outer = 10 * (ITERATIONS // LEN_2D)
+    outer = 10 * (ITERATIONS )
     for nl in range(outer):
         for i in range(LEN_2D):
             for j in range(1, LEN_2D):
@@ -1145,7 +1159,7 @@ def dace_s256(a: dace.float64[LEN_2D], aa: dace.float64[LEN_2D, LEN_2D], bb: dac
 
 @dace.program
 def dace_s257(a: dace.float64[LEN_2D], aa: dace.float64[LEN_2D, LEN_2D], bb: dace.float64[LEN_2D, LEN_2D]):
-    outer = 10 * (ITERATIONS // LEN_2D)
+    outer = 10 * (ITERATIONS )
     for nl in range(outer):
         for i in range(1, LEN_2D):
             for j in range(LEN_2D):
@@ -1217,7 +1231,7 @@ def dace_s274(a: dace.float64[LEN_1D], b: dace.float64[LEN_1D], c: dace.float64[
 
 @dace.program
 def dace_s275(aa: dace.float64[LEN_2D, LEN_2D], bb: dace.float64[LEN_2D, LEN_2D], cc: dace.float64[LEN_2D, LEN_2D]):
-    outer = 10 * (ITERATIONS // LEN_2D)
+    outer = 10 * (ITERATIONS )
     for nl in range(outer):
         for i in range(LEN_2D):
             if aa[0, i] > 0.0:
@@ -1318,7 +1332,7 @@ def dace_s2101(aa: dace.float64[LEN_2D, LEN_2D], bb: dace.float64[LEN_2D, LEN_2D
 # ============================================================
 @dace.program
 def dace_s2102(aa: dace.float64[LEN_2D, LEN_2D]):
-    for nl in range(100 * (ITERATIONS // LEN_2D)):
+    for nl in range(100 * (ITERATIONS )):
         for i in range(LEN_2D):
             for j in range(LEN_2D):
                 aa[j, i] = 0.0
@@ -1330,7 +1344,7 @@ def dace_s2102(aa: dace.float64[LEN_2D, LEN_2D]):
 # ============================================================
 @dace.program
 def dace_s2111(aa: dace.float64[LEN_2D, LEN_2D]):
-    for nl in range(100 * (ITERATIONS // LEN_2D)):
+    for nl in range(100 * (ITERATIONS )):
         for j in range(1, LEN_2D):
             for i in range(1, LEN_2D):
                 aa[j, i] = (aa[j, i - 1] + aa[j - 1, i]) / 1.9
@@ -1373,7 +1387,7 @@ def dace_s2275(
     bb: dace.float64[LEN_2D, LEN_2D],
     cc: dace.float64[LEN_2D, LEN_2D],
 ):
-    for nl in range(100 * (ITERATIONS // LEN_2D)):
+    for nl in range(100 * (ITERATIONS )):
         for i in range(LEN_2D):
             for j in range(LEN_2D):
                 aa[j, i] = aa[j, i] + bb[j, i] * cc[j, i]
@@ -1437,7 +1451,7 @@ def dace_s279(
     d: dace.float64[LEN_1D],
     e: dace.float64[LEN_1D],
 ):
-    for nl in range(ITERATIONS // 2):
+    for nl in range(ITERATIONS ):
         for i in range(LEN_1D):
             if a[i] > 0.0:
                 c[i] = -c[i] + e[i] * e[i]
@@ -1466,7 +1480,7 @@ def dace_s1279(
 @dace.program
 def dace_s2710(a: dace.float64[LEN_1D], b: dace.float64[LEN_1D], c: dace.float64[LEN_1D], d: dace.float64[LEN_1D],
                e: dace.float64[LEN_1D], x: dace.float64[LEN_1D]):
-    for nl in range(ITERATIONS // 2):
+    for nl in range(ITERATIONS ):
         for i in range(LEN_1D):
             if a[i] > b[i]:
                 a[i] = a[i] + b[i] * d[i]
@@ -1589,7 +1603,7 @@ def dace_s317(q: dace.float64[LEN_1D]):
 # ============================================================
 @dace.program
 def dace_s318(a: dace.float64[LEN_1D], inc: dace.int32):
-    for nl in range(ITERATIONS // 2):
+    for nl in range(ITERATIONS ):
         k = 0
         index = 0
         maxv = abs(a[0])
@@ -1625,7 +1639,7 @@ def dace_s319(a: dace.float64[LEN_1D], b: dace.float64[LEN_1D], c: dace.float64[
 # ============================================================
 @dace.program
 def dace_s3110(aa: dace.float64[LEN_2D, LEN_2D]):
-    for nl in range(100 * (ITERATIONS // LEN_2D)):
+    for nl in range(100 * (ITERATIONS )):
         maxv = aa[0, 0]
         xindex = 0
         yindex = 0
@@ -1645,7 +1659,7 @@ def dace_s3110(aa: dace.float64[LEN_2D, LEN_2D]):
 # ============================================================
 @dace.program
 def dace_s13110(aa: dace.float64[LEN_2D, LEN_2D]):
-    for nl in range(100 * (ITERATIONS // LEN_2D)):
+    for nl in range(100 * (ITERATIONS )):
         maxv = aa[0, 0]
         xindex = 0
         yindex = 0
@@ -1665,7 +1679,7 @@ def dace_s13110(aa: dace.float64[LEN_2D, LEN_2D]):
 # ============================================================
 @dace.program
 def dace_s3111(a: dace.float64[LEN_1D]):
-    for nl in range(ITERATIONS // 2):
+    for nl in range(ITERATIONS ):
         sum_val = 0.0
         for i in range(LEN_1D):
             if a[i] > 0.0:
@@ -1718,7 +1732,7 @@ def dace_s322(
     b: dace.float64[LEN_1D],
     c: dace.float64[LEN_1D],
 ):
-    for nl in range(ITERATIONS // 2):
+    for nl in range(ITERATIONS ):
         for i in range(2, LEN_1D):
             a[i] = a[i] + a[i - 1] * b[i] + a[i - 2] * c[i]
 
@@ -1731,7 +1745,7 @@ def dace_s323(
     d: dace.float64[LEN_1D],
     e: dace.float64[LEN_1D],
 ):
-    for nl in range(ITERATIONS // 2):
+    for nl in range(ITERATIONS ):
         for i in range(1, LEN_1D):
             a[i] = b[i - 1] + c[i] * d[i]
             b[i] = a[i] + c[i] * e[i]
@@ -1793,7 +1807,7 @@ def dace_s343(
     flat_2d_array: dace.float64[LEN_2D * LEN_2D],
 ):
     # pack aa(j,i) where bb(j,i) > 0 into flat_2d_array
-    for nl in range(10 * (ITERATIONS // LEN_2D)):
+    for nl in range(10 * (ITERATIONS )):
         k = -1
         for i in range(LEN_2D):
             for j in range(LEN_2D):
@@ -2039,7 +2053,7 @@ def dace_s453(a: dace.float64[LEN_1D], b: dace.float64[LEN_1D]):
 @dace.program
 def dace_s471(x: dace.float64[LEN_1D], b: dace.float64[LEN_1D], c: dace.float64[LEN_1D], d: dace.float64[LEN_1D],
               e: dace.float64[LEN_1D]):
-    for nl in range(ITERATIONS // 2):
+    for nl in range(ITERATIONS ):
         for i in range(LEN_1D):
             x[i] = b[i] + d[i] * d[i]
             # s471s() is a no-op in DaCe
