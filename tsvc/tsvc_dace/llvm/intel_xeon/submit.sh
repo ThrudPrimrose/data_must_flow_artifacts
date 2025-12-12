@@ -1,7 +1,7 @@
 #!/bin/bash
 #SBATCH --job-name=ts_i_llvm  # Job name
 #SBATCH --nodes=1                     # Number of nodes
-#SBATCH --partition=intel               # Partition/queue
+#SBATCH --partition=intelv100               # Partition/queue
 #SBATCH --time=04:00:00               # Walltime (hh:mm:ss)
 #SBATCH --output=%x_%j.out            # Standard output (%x=job name, %j=job ID)
 #SBATCH --error=%x_%j.err             # Standard error
@@ -27,12 +27,12 @@ export OMP_PROC_BIND=close
 
 # Define configurations: each element is "EXTRA_FLAGS SUFFIX"
 configs=(
-    "" "default"                                   # first run: no extra flags, no suffix
-    "-mprefer-vector-width=512" "force_width_512"   # second run
+    #"" "default"                                   # first run: no extra flags, no suffix
+    "-mprefer-vector-width=512" ""   # second run
     # Probably, disable below if not arithmetic function
 )
 
-for RUNMULTI in 0 1; do
+for RUNMULTI in 0 ; do
     export __DACE_INSERT_COPIES="$RUNMULTI"
     for ((i=0; i<${#configs[@]}; i+=2)); do
         export EXTRA_FLAGS="${configs[i]}"
@@ -40,8 +40,10 @@ for RUNMULTI in 0 1; do
 
         echo "Running with EXTRA_FLAGS='$EXTRA_FLAGS', SUFFIX='$SUFFIX'"
         rm -rf .dacecache
+        cp ../../conftest.py .
         cp ../../run_tsvc.py .
         cp ../../tsvcpp.cpp .
+
 
         # Run benchmark
         pytest -n 1   run_tsvc.py
