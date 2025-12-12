@@ -45,7 +45,7 @@ for RUNMULTI in 0 1; do
 
 
         export __DACE_KLEV=8
-        for KLON in $((8192*256)) $((8192*512)) $((8192*1024)); do
+        for KLON in $((8192*512)); do
             export __DACE_KLON="$KLON"
             echo "Running with __DACE_KLON=$__DACE_KLON"
 
