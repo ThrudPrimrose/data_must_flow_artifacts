@@ -611,15 +611,6 @@ def dace_s128(a: dace.float64[LEN_1D], b: dace.float64[LEN_1D], c: dace.float64[
             j = k + 1
             b[k] = a[i] + c[k]
 
-
-@dace.program
-def dace_s131(a: dace.float64[LEN_1D], b: dace.float64[LEN_1D]):
-    m = 1
-    for nl in range(5 * ITERATIONS):
-        for i in range(LEN_1D - 1):
-            a[i] = a[i + m] + b[i]
-
-
 @dace.program
 def dace_s132(aa: dace.float64[LEN_2D, LEN_2D], b: dace.float64[LEN_2D], c: dace.float64[LEN_2D]):
     j = 0

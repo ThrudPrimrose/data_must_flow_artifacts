@@ -33,6 +33,7 @@ configs=(
     "-fno-math-errno -fveclib=libmvec -mprefer-vector-width=512" "libmvec"
 )
 
+
 for RUNMULTI in 0 1; do
     export RUN_MULTICORE="$RUNMULTI"
     for ((i=0; i<${#configs[@]}; i+=2)); do

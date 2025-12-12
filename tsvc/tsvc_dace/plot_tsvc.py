@@ -9,8 +9,8 @@ from pathlib import Path
 COMPILERS = ["gcc", "intel", "llvm", "gracclang"]
 CLUSTERS  = ["amd_epyc", "arm", "intel_xeon"]
 TARGET_FILENAMES = [
-    "runtimes__default_v3.csv",
-    "runtimes__force_width_512_v3.csv",
+    "runtimes_v2.csv",
+    "runtimes__force_width_512_v2.csv",
 ]
 
 # Root directory where script is run

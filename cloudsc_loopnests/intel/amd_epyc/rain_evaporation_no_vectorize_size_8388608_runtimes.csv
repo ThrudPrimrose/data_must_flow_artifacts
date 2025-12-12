@@ -1,0 +1,9 @@
+name,variant,runtime_us,vlen,cpy
+rain_evaporation_no_vectorize_size_8388608,dace,158829.0,None,None
+rain_evaporation_no_vectorize_size_8388608,fortran,3736739.55,None,None
+rain_evaporation_no_vectorize_size_8388608,dace,194678.0,None,None
+rain_evaporation_no_vectorize_size_8388608,fortran,3682034.899,None,None
+rain_evaporation_no_vectorize_size_8388608,dace,152864.0,None,None
+rain_evaporation_no_vectorize_size_8388608,fortran,3822309.303,None,None
+rain_evaporation_no_vectorize_size_8388608,dace,156423.0,None,None
+rain_evaporation_no_vectorize_size_8388608,fortran,3708007.5190000003,None,None

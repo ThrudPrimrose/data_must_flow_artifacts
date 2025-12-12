@@ -22,7 +22,7 @@ paths = [
     ("gcc",  "intel_xeon", "gcc/intel_xeon/cloudsc_pattern_one_timings__singlecore.csv"),
     #("gcc",  "arm", "gcc/arm/cloudsc_pattern_one_timings__singlecore.csv"),
     ("llvm", "amd_epyc",   "llvm/amd_epyc/cloudsc_pattern_one_timings__singlecore.csv"),
-    ("llvm", "intel_xeon", "llvm/intel_xeon/cloudsc_pattern_one_timings__singlecore.csv"),
+    ("llvm", "intel_xeon", "llvm/intel_xeon/cloudsc_pattern_one_timings__libmvec_singlecore.csv"),
     #("llvm", "arm", "llvm/arm/cloudsc_pattern_one_timings__singlecore.csv"),
     ("intel", "amd_epyc", "llvm/intel_xeon/cloudsc_pattern_one_timings__singlecore.csv"),
     ("intel", "intel_xeon", "llvm/intel_xeon/cloudsc_pattern_one_timings__singlecore.csv"),
@@ -37,7 +37,9 @@ for vl in ["8", "16", "32", "64"]:
 
         label_map = {
             "cloudsc_pattern_one": "Auto Vectorized",
-            k: v, 
+            k: v,
+            f"cloudsc_pattern_one_libmvec_veclen_{vl}_cpy": f"Auto + DaCe Vectorized (veclen={vl}, expl. copy)",
+            f"cloudsc_pattern_one_libmvec_veclen_{vl}_no_cpy": f"Auto + DaCe Vectorized (veclen={vl}, no. copy)",
         }
 
         dfs = []
@@ -86,7 +88,8 @@ for vl in ["8", "16", "32", "64"]:
         # SDFGs to include
         # ------------------------
         alt_name = base_name + k[len("cloudsc_pattern_one"):]
-        selected_names = [base_name, alt_name]
+        alt_name2 = base_name +  k.replace("cloudsc_pattern_one_veclen", "cloudsc_pattern_one_libmvec_veclen")[len("cloudsc_pattern_one"):]
+        selected_names = [base_name, alt_name, alt_name2]
         df = df[df["sdfg_name"].isin(selected_names)]
         # ------------------------
         # Compute summary
@@ -101,6 +104,8 @@ for vl in ["8", "16", "32", "64"]:
         'cloudsc_pattern_one': colors[1],
         f'cloudsc_pattern_one_vectorized_static_veclen_{vl}_no_cpy': colors[1],
         f'cloudsc_pattern_one_vectorized_static_veclen_{vl}_cpy': colors[2],
+        f'cloudsc_pattern_one_libmvec_vectorized_static_veclen_{vl}_no_cpy': colors[1],
+        f'cloudsc_pattern_one_libmvec_vectorized_static_veclen_{vl}_cpy': colors[2],
         }
 
         sizes = sorted(summary["size"].unique())
@@ -121,11 +126,14 @@ for vl in ["8", "16", "32", "64"]:
         # ------------------------
         # Plot: 2 bars per variant
         # ------------------------
-        group_index = 0
         speedup_data = {}
 
+        group_index = 0
+        used_labels = set()
         for compiler, cpu in variants:
-            for sdfg_idx, sdfg in enumerate(selected_names):
+            for sdfg_idx, (sdfg) in enumerate(selected_names):
+                if "libmvec" in sdfg:
+                    group_index -= 1
                 sub = summary[
                     (summary["compiler"] == compiler) &
                     (summary["cpu"] == cpu) &
@@ -150,9 +158,10 @@ for vl in ["8", "16", "32", "64"]:
                     width=width,
                     yerr=sub_plot["error"],
                     capsize=5,
-                    label=label,
+                    label=label if label not in used_labels else "",
                     color=colors[group_index % len(colors)]
                 )
+                used_labels.add(label)
 
                 # --- SPEEDUP DATA (no skipping!) ---
                 plot_key = (compiler, cpu, sdfg)
@@ -161,8 +170,8 @@ for vl in ["8", "16", "32", "64"]:
                     "median": sub["median"].values,       # full median kept
                     "color": colors[group_index % len(colors)]
                 }
-
                 group_index += 1
+
 
         # ------------------------
         # Speedup Annotations

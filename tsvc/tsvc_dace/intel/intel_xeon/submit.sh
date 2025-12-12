@@ -1,8 +1,8 @@
 #!/bin/bash
-#SBATCH --job-name=tsvc_intel_xeon_  # Job name
+#SBATCH --job-name=ts_i_  # Job name
 #SBATCH --nodes=1                     # Number of nodes
-#SBATCH --partition=intel               # Partition/queue
-#SBATCH --time=02:30:00               # Walltime (hh:mm:ss)
+#SBATCH --partition=intelv100               # Partition/queue
+#SBATCH --time=04:00:00               # Walltime (hh:mm:ss)
 #SBATCH --output=%x_%j.out            # Standard output (%x=job name, %j=job ID)
 #SBATCH --error=%x_%j.err             # Standard error
 #SBATCH --chdir=.
@@ -28,9 +28,8 @@ export OMP_PROC_BIND=close
 
 # Define configurations: each element is "EXTRA_FLAGS SUFFIX"
 configs=(
-    "" ""                                   # first run: no extra flags, no suffix
-    "-qopt-zmm-usage=high -diag-enable=vec -qopt-report=5 -qopt-report-phase=vec -qopt-report-file=${SCRIPT_DIR}/tsvc_vec_report.optrpt" "force_width_512"
-    "-no-vec" "no_vectorize"
+    "" "default"                                   # first run: no extra flags, no suffix
+    "-qopt-zmm-usage=high" "force_width_512"
 )
 
 for RUNMULTI in 0 1; do
@@ -49,5 +48,6 @@ for RUNMULTI in 0 1; do
 
         rm *.so
         rm run_tsvc.py
+        rm tsvcpp.cpp
     done
 done

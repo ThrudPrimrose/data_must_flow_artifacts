@@ -1,0 +1,5 @@
+name,variant,runtime_us,vlen,cpy
+rain_evaporation_libmvec_size_8388608,dace,264708.0,None,None
+rain_evaporation_libmvec_size_8388608,fortran,3716496.618,None,None
+rain_evaporation_libmvec_size_8388608,dace,263752.0,None,None
+rain_evaporation_libmvec_size_8388608,fortran,3737319.891,None,None
