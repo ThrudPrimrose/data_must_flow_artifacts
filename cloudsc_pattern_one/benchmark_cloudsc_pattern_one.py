@@ -3,6 +3,7 @@ import csv
 import os
 import numpy as np
 import dace
+from dace.transformation.passes.vectorization.tasklet_preprocessing_passes import ReplaceSTDExpWithDaCeExp, ReplaceSTDLogWithDaCeLog
 from dace.transformation.passes.vectorization.vectorize_cpu import VectorizeCPU
 from math import log
 
@@ -38,6 +39,7 @@ dace.config.Config.set("compiler", "cpu", "args", value=flags)
 multi_core = int(os.environ.get('RUN_MULTICORE', '0')) == 1
 core_count = 1
 
+use_dace_log_and_exp = int(os.environ.get('USE_DACE_LOG_AND_EXP', '1')) == 1
 
 multicore_suffix = '_singlecore' if core_count == 1 else '_multicore'
 
@@ -212,6 +214,9 @@ def save_timings_to_csv(filename, i, isize, timings_dict):
 def build_vectorized_sdfg(base_sdfg, vec_width, insert_copies, cpy_suffix, base_name):
     sdfg = copy.deepcopy(base_sdfg)
     VectorizeCPU(vector_width=vec_width, insert_copies=insert_copies).apply_pass(sdfg, {})
+    if use_dace_log_and_exp:
+        ReplaceSTDExpWithDaCeExp().apply_pass(sdfg, {})
+        ReplaceSTDLogWithDaCeLog().appl_pass(sdfg, {})
     # Naming scheme: based sdfg name + compiler name + flag suffix read from env + vector length + copy suffix
     if "/" in compiler_exec and "clang" in compiler_exec:
         cname = "graceclang"
@@ -393,5 +398,9 @@ if __name__ == "__main__":
         # -------------------------------------------------------
         # CSV output
         # -------------------------------------------------------
-        save_timings_to_csv(f"cloudsc_pattern_one_timings_{env_suffix_str}{multicore_suffix}.csv", i, N, all_timings)
-        print(f"Saved timing results to cloudsc_pattern_one_timings_{env_suffix_str}{multicore_suffix}.csv")
+        if use_dace_log_and_exp:
+            save_timings_to_csv(f"cloudsc_pattern_one_timings_{env_suffix_str}{multicore_suffix}.csv", i, N, all_timings)
+            print(f"Saved timing results to cloudsc_pattern_one_timings_{env_suffix_str}{multicore_suffix}.csv")
+        else:
+            save_timings_to_csv(f"cloudsc_pattern_one_timings_dace_intrin_{env_suffix_str}{multicore_suffix}.csv", i, N, all_timings)
+            print(f"Saved timing results to cloudsc_pattern_one_timings_dace_intrin_{env_suffix_str}{multicore_suffix}.csv")

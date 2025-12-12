@@ -208,15 +208,16 @@ def compile_autoconversion_snow_fortran(
     if not os.path.exists(src_path):
         raise FileNotFoundError(f"Fortran source not found: {src_path}")
 
-    f90 = None
-    if compiler_exec == "c++":
+    cxx = os.environ["CXX"]
+    if cxx == "clang++":
+        f90 = "flang"
+    elif cxx == "g++":
         f90 = "gfortran"
-    elif compiler_exec == "clang++":
-        f90 = "flang-20"
     else:
-        f90 = "gfortran"
+        assert cxx == "icpx"
+        f90 = "ifx"
 
-    cmd = [f90, "-O0", "-fPIC", "-shared", src_path, "-o", libname]
+    cmd = [f90, "-O3",  "-fPIC", "-shared", src_path, "-o", libname]
     print("Compiling Fortran:", " ".join(cmd))
     subprocess.check_call(cmd)
     print(f"Built {libname}")

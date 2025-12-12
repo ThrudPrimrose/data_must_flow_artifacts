@@ -1,1 +1,1 @@
-python plot_multi_compiler.py exp_implementations exp_implementations_multicompiler.png
+python plot_multi_compiler.py exp_implementations_std exp_implementations_multicompiler.png
