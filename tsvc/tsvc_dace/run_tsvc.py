@@ -4,7 +4,6 @@ import os
 from typing import Tuple
 import dace
 import copy
-import pytest
 import numpy as np
 from dace import InterstateEdge
 from dace import Union
@@ -36,6 +35,11 @@ LIB_NAME = "libtsvcpp.so"
 CPP_FILE = "tsvcpp.cpp"
 
 SAVE_SDFGS = False
+
+import fcntl
+DONE_FILE = os.environ.get("TSVC_DONE_FILE", "./completed_tests.txt")
+
+import pytest
 
 
 def build_tsvcpp_lib():
@@ -187,7 +191,7 @@ def log_runtime(time_ns: int, name: str, filename: str = "runtimes_v2.csv"):
 
     with open(filename, "a+") as f:
         # Acquire exclusive file lock (blocks until available)
-        fcntl.flock(f, fcntl.LOCK_EX)
+        #fcntl.flock(f, fcntl.LOCK_EX)
 
         # Check if file is empty (first writer)
         f.seek(0, os.SEEK_END)
@@ -198,7 +202,7 @@ def log_runtime(time_ns: int, name: str, filename: str = "runtimes_v2.csv"):
         f.flush()
 
         # Release lock
-        fcntl.flock(f, fcntl.LOCK_UN)
+        #fcntl.flock(f, fcntl.LOCK_UN)
 
 
 def run_vectorization_test(dace_func: Union[dace.SDFG, callable],
@@ -385,6 +389,14 @@ def run_vectorization_test(dace_func: Union[dace.SDFG, callable],
         report = copy_sdfg.get_latest_report()
         total_time = report.events[0].duration * 1000  # useconds
         log_runtime(int(total_time), sdfg_name)
+
+
+    tname = sdfg.name.replace("dace_", "").replace("_run_timed", "")
+    with open(DONE_FILE, "a") as f:
+        #fcntl.flock(f, fcntl.LOCK_EX)
+        f.write(tname + "\n")
+        #fcntl.flock(f, fcntl.LOCK_UN)
+
 
     return int(total_time)
 
@@ -5999,7 +6011,7 @@ def test_s292():
             "ITERATIONS": ITERS
         },
         sdfg_name="s292",
-        save_sdfgs=True,
+        save_sdfgs=SAVE_SDFGS,
         apply_loop_to_map=True,
     )
     return a

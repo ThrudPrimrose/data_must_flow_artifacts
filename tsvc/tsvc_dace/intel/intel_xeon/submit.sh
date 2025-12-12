@@ -32,7 +32,7 @@ configs=(
     "-qopt-zmm-usage=high" "force_width_512"
 )
 
-for RUNMULTI in 0 1; do
+for RUNMULTI in 0 ; do
     export __DACE_INSERT_COPIES="$RUNMULTI"
     for ((i=0; i<${#configs[@]}; i+=2)); do
         export EXTRA_FLAGS="${configs[i]}"
@@ -40,8 +40,10 @@ for RUNMULTI in 0 1; do
 
         echo "Running with EXTRA_FLAGS='$EXTRA_FLAGS', SUFFIX='$SUFFIX'"
         rm -rf .dacecache
-        cp ../../tsvcpp.cpp ./
+        cp ../../conftest.py .
         cp ../../run_tsvc.py .
+        cp ../../tsvcpp.cpp .
+
 
         # Run benchmark
         pytest -n 1   run_tsvc.py
