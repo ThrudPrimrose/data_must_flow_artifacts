@@ -130,13 +130,13 @@ def generate_lu_solver_microphysics_data():
 
     # Matrix blocks: shape (KLON, NCLV, NCLV)
     # Ensure diagonals are non-zero (avoid div by zero)
-    ZQLHS = np.random.rand(klon_val, nclv_val, nclv_val).astype(np.float64)
-    for jl in range(klon_val):
-        for i in range(nclv_val):
-            ZQLHS[jl, i, i] += 1.0  # make diagonal strictly positive
+    ZQLHS = np.random.rand(nclv_val, nclv_val, klon_val).astype(np.float64)
+    for i in range(nclv_val):
+        for jl in range(klon_val):
+            ZQLHS[i, i, jl] += 1.0  # make diagonal strictly positive
 
     # RHS vector: shape (KLON, NCLV)
-    ZQXN = np.random.rand(klon_val, nclv_val).astype(np.float64)
+    ZQXN = np.random.rand(nclv_val, klon_val).astype(np.float64)
 
     return dict(
         kidia=kidia,

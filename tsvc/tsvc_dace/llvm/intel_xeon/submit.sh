@@ -1,8 +1,8 @@
 #!/bin/bash
-#SBATCH --job-name=tsvc_intel_xeon_llvm  # Job name
+#SBATCH --job-name=ts_i_llvm  # Job name
 #SBATCH --nodes=1                     # Number of nodes
 #SBATCH --partition=intel               # Partition/queue
-#SBATCH --time=02:30:00               # Walltime (hh:mm:ss)
+#SBATCH --time=04:00:00               # Walltime (hh:mm:ss)
 #SBATCH --output=%x_%j.out            # Standard output (%x=job name, %j=job ID)
 #SBATCH --error=%x_%j.err             # Standard error
 #SBATCH --chdir=.
@@ -27,11 +27,9 @@ export OMP_PROC_BIND=close
 
 # Define configurations: each element is "EXTRA_FLAGS SUFFIX"
 configs=(
-    "" ""                                   # first run: no extra flags, no suffix
+    "" "default"                                   # first run: no extra flags, no suffix
     "-mprefer-vector-width=512" "force_width_512"   # second run
-    "-fno-vectorize" "no_vectorize"
     # Probably, disable below if not arithmetic function
-    "-fno-math-errno -fveclib=libmvec -mprefer-vector-width=512" "libmvec"
 )
 
 for RUNMULTI in 0 1; do
@@ -50,5 +48,6 @@ for RUNMULTI in 0 1; do
 
         rm *.so
         rm run_tsvc.py
+        rm tsvcpp.cpp
     done
 done

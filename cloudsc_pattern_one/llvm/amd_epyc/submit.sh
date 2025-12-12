@@ -25,12 +25,12 @@ export CPU_NAME="amd_epyc"
 
 # Define configurations: each element is "EXTRA_FLAGS SUFFIX"
 configs=(
+    "-fno-math-errno -fveclib=libmvec -mprefer-vector-width=512" "libmvec"
     "" ""                                   # first run: no extra flags, no suffix
     "-mprefer-vector-width=256" "force_width_256"   # second run
     "-mprefer-vector-width=512" "force_width_512"
     "-fno-vectorize" "no_vectorize"
     # Prob disable if no arith function
-    "-fno-math-errno -fveclib=libmvec -mprefer-vector-width=512" "libmvec"
 )
 
 for RUNMULTI in 0 1; do

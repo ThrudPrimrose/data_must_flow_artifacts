@@ -1,5 +1,5 @@
 #!/bin/bash
-#SBATCH --job-name=exp_amd_epyc_gcc  # Job name
+#SBATCH --job-name=e1  # Job name
 #SBATCH --nodes=1                     # Number of nodes
 #SBATCH --partition=amd               # Partition/queue
 #SBATCH --time=02:30:00               # Walltime (hh:mm:ss)

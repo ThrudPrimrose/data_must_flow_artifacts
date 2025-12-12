@@ -46,7 +46,7 @@ dace.config.Config.set("compiler", "cpu", "executable", value=compiler_exec)
 # Base compilation flags
 base_flags = [
     '-fopenmp', '-fstrict-aliasing', '-std=c++17', '-faligned-new',
-    '-fPIC', '-Wall', '-Wextra', '-O3', '-march=native', '-ffast-math',
+    '-fPIC', '-Wall', '-Wextra', '-O3', '-march=native', 
     '-Wno-unused-parameter', '-Wno-unused-label'
 ]
 
@@ -184,7 +184,16 @@ def compile_lu_solver_fortran(
     if not os.path.exists(src_path):
         raise FileNotFoundError(f"Fortran source not found: {src_path}")
 
-    cmd = ["gfortran", "-O3", "-fPIC", "-shared", src_path, "-o", libname]
+    cxx = os.environ["CXX"]
+    if cxx == "clang++":
+        f90 = "flang"
+    elif cxx == "g++":
+        f90 = "gfortran"
+    else:
+        assert cxx == "icpx"
+        f90 = "ifx"
+
+    cmd = [f90, "-O3", "-ffast-math", "-fPIC", "-shared", src_path, "-o", libname]
     print("Compiling Fortran:", " ".join(cmd))
     subprocess.check_call(cmd)
     print(f"Built {libname}")

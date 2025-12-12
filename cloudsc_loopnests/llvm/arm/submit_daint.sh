@@ -37,7 +37,7 @@ for RUNMULTI in 0 1; do
         echo "Running with EXTRA_FLAGS='$EXTRA_FLAGS', SUFFIX='$SUFFIX'"
 
         export __DACE_KLON=8
-        export __DACE_KLON=33554432
+        export __DACE_KLON=$((8192*512))
         # Copy benchmark script
         cp ../../run_autoconversion_snow.py .
         cp ../../run_ice_supersaturation.py .
