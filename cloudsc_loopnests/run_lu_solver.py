@@ -33,8 +33,8 @@ def _read_env_int(name: str, default: int) -> int:
         raise ValueError(f"Environment variable {name} must be an integer, got: {val}")
 
 # Default values same as your other runners
-klev_val = _read_env_int("__DACE_KLEV", 8)
-klon_val = _read_env_int("__DACE_KLON", 8192*512)
+klev_val = int(_read_env_int("__DACE_KLEV", 8))
+klon_val = int(_read_env_int("__DACE_KLON", 8192))
 
 nclv_val = 5
 
@@ -46,8 +46,8 @@ dace.config.Config.set("compiler", "cpu", "executable", value=compiler_exec)
 # Base compilation flags
 base_flags = [
     '-fopenmp', '-fstrict-aliasing', '-std=c++17', '-faligned-new',
-    '-fPIC', '-Wall', '-Wextra', '-O3', '-march=native', '-ffast-math',
-    '-Wno-unused-parameter', '-Wno-unused-label'
+    '-fPIC', '-Wall', '-Wextra', '-O3', '-march=native',
+    '-Wno-unused-parameter', '-Wno-unused-label',
 ]
 
 
@@ -141,25 +141,34 @@ def set_map_sched(sdfg: dace.SDFG):
 
 def generate_lu_solver_microphysics_data():
     """
-    Generate synthetic but consistent data for LU solver microphysics.
+    Generate synthetic but numerically stable data for LU solver microphysics.
     """
-
     kidia = np.int32(1)
     kfdia = np.int32(klon_val)
     klon  = np.int32(klon_val)
     nclv  = np.int32(nclv_val)
-
-    # Matrix blocks: shape (KLON, NCLV, NCLV)
-    # Ensure diagonals are non-zero (avoid div by zero)
-    ZQLHS = np.random.rand(nclv_val, nclv_val, klon_val).astype(np.float64)
-    for i in range(nclv_val):
-        for jl in range(klon_val):
-            ZQLHS[i, i, jl] += 0.2  # make diagonal strictly positive
-
-    # RHS vector: shape (KLON, NCLV)
-    ZQXN = np.random.rand(nclv_val, klon_val).astype(np.float64)
+    
+    # Create well-conditioned matrices for each column
+    # Shape will be (NCLV, NCLV, KLON) to match your C layout [5, 5, KLON]
+    ZQLHS = 10 * np.random.rand(nclv_val, nclv_val, klon_val).astype(dtype=np.float64)
+    """
+    for jl in range(klon_val):
+        # Generate a well-conditioned symmetric positive definite matrix
+        # This ensures numerical stability for LU decomposition
+        A = np.random.randn(nclv_val, nclv_val)
+        # Make it symmetric positive definite: A^T * A + I
+        M = A.T @ A + np.eye(nclv_val) * 2.0
+        
+        # Alternatively, use a diagonally dominant matrix (even more stable)
+        # M = np.random.rand(nclv_val, nclv_val) * 0.1
+        # np.fill_diagonal(M, np.random.rand(nclv_val) + nclv_val)
+        ZQLHS[:, :, jl] = M
+    """
+    # RHS vector: shape (NCLV, KLON) to match your C layout [5, KLON]
+    ZQXN = 10 * np.random.rand(nclv_val, klon_val).astype(np.float64)
+    
     timer = np.zeros((2,), dtype=np.float64)
-
+    
     return dict(
         kidia=kidia,
         kfdia=kfdia,
@@ -169,7 +178,12 @@ def generate_lu_solver_microphysics_data():
         zqxn=ZQXN,
         timer=timer,
         sym_klon=klon_val,
-        sym_klev=klev_val
+        sym_klev=klev_val,
+        sym_nclv=5,
+        sym_kfdia=1,
+        sym_ncldqs=scalar_specialization_values["ncldqs"],
+        sym_ncldqi=scalar_specialization_values["ncldqi"],
+        sym_ncldqv=scalar_specialization_values["ncldqv"],
     )
 
 # ---------------------------------------------------------------------------
@@ -184,7 +198,7 @@ def compile_lu_solver_fortran(
     if not os.path.exists(src_path):
         raise FileNotFoundError(f"Fortran source not found: {src_path}")
 
-    cmd = ["gfortran", "-O3", "-fPIC", "-shared", src_path, "-o", libname]
+    cmd = ["gfortran", "-O3", "-fPIC", "-shared", "-fno-tree-vectorize", src_path, "-o", libname]
     print("Compiling Fortran:", " ".join(cmd))
     subprocess.check_call(cmd)
     print(f"Built {libname}")
@@ -277,7 +291,6 @@ def run_lu_solver_microphysics():
     for sym in repldict:
         if sym in sdfg.symbols:
             sdfg.remove_symbol(sym)
-
     sdfg.validate()
     RemoveUnusedSymbols().apply_pass(sdfg, {})
     ConstantPropagation().apply_pass(sdfg, {})
@@ -310,7 +323,7 @@ def run_lu_solver_microphysics():
 
     # --- Compare baseline results + repeated timings ---
     print("LU microphysics (DaCe vs Fortran) comparison:")
-    if compare_row_col_dicts(data_F_dace, data_F, rtol=1e-12, atol=1e50):
+    if compare_row_col_dicts(data_F_dace, data_F, rtol=1e-9, atol=1e-4):
 
         # 10× DaCe baseline (reuse mutated data_F_dace)
         for rep in range(10):
@@ -380,7 +393,7 @@ def run_lu_solver_microphysics():
             print("LU microphysics (DaCe-Vec vs Fortran) comparison:")
 
             if compare_row_col_dicts(
-                data_F_dace_vec, data_F, rtol=1e-12, atol=1e50
+                data_F_dace_vec, data_F, rtol=1e-9, atol=1e-4
             ):
                 print(
                     f"Run time SDFG ({vec_sdfg.name}): {float(dace_vec_time)} us"

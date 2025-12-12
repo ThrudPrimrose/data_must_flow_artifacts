@@ -35,8 +35,8 @@ def _read_env_int(name: str, default: int) -> int:
         raise ValueError(f"Environment variable {name} must be an integer, got: {val}")
 
 # Default values same as your other runners
-klev_val = _read_env_int("__DACE_KLEV", 8)
-klon_val = _read_env_int("__DACE_KLON", 8192*512)
+klev_val = int(_read_env_int("__DACE_KLEV", 8))
+klon_val = int(_read_env_int("__DACE_KLON", 8192*512))
 
 nclv_val = 5
 
@@ -59,7 +59,7 @@ dace.config.Config.set("compiler", "cpu", "executable", value=compiler_exec)
 # Base compilation flags
 base_flags = [
     '-fopenmp', '-fstrict-aliasing', '-std=c++17', '-faligned-new',
-    '-fPIC', '-Wall', '-Wextra', '-O3', '-march=native', '-ffast-math',
+    '-fPIC', '-Wall', '-Wextra', '-O0', '-march=native', 
     '-Wno-unused-parameter', '-Wno-unused-label'
 ]
 
@@ -208,7 +208,15 @@ def compile_autoconversion_snow_fortran(
     if not os.path.exists(src_path):
         raise FileNotFoundError(f"Fortran source not found: {src_path}")
 
-    cmd = ["gfortran", "-O3", "-fPIC", "-shared", src_path, "-o", libname]
+    f90 = None
+    if compiler_exec == "c++":
+        f90 = "gfortran"
+    elif compiler_exec == "clang++":
+        f90 = "flang-20"
+    else:
+        f90 = "gfortran"
+
+    cmd = [f90, "-O0", "-fPIC", "-shared", src_path, "-o", libname]
     print("Compiling Fortran:", " ".join(cmd))
     subprocess.check_call(cmd)
     print(f"Built {libname}")
@@ -306,6 +314,7 @@ def run_autoconversion_snow():
     PowerOperatorExpansion().apply_pass(sdfg, {})
     RemoveFPTypeCasts().apply_pass(sdfg, {})
     RemoveIntTypeCasts().apply_pass(sdfg, {})
+    OffsetLoopsAndMaps(offset_expr="-1", begin_expr=None).apply_pass(sdfg, {})
     # Specialize scalars from scalar_specialization_values if relevant
     for scalar_name, scalar_value in scalar_specialization_values.items():
         if scalar_name in sdfg.arrays:
@@ -388,7 +397,7 @@ def run_autoconversion_snow():
     elif cpu_name == "amd_epyc":
         vlens = [4, 8, 16, 32, 64]
     else:
-        vlens = [2, 4, 8, 16, 32, 64]
+        vlens = [8]
     
     for vlen in vlens:
         for cpy in [False, True]:
@@ -399,13 +408,14 @@ def run_autoconversion_snow():
             eb = EliminateBranches()
             eb.try_clean = True
             eb.apply_pass(vec_sdfg, {})
-            OffsetLoopsAndMaps(offset_expr="-1", begin_expr=None).apply_pass(vec_sdfg, {})
             ConstantPropagation().apply_pass(vec_sdfg, {})
             RemoveUnusedSymbols().apply_pass(vec_sdfg, {})
             VectorizeCPU(vector_width=vlen, try_to_demote_symbols_in_nsdfgs=True,
                         fuse_overlapping_loads=False, insert_copies=cpy,
                         eliminate_trivial_vector_map=True).apply_pass(vec_sdfg, {})
             set_map_sched(vec_sdfg)
+            vec_sdfg.save(f"ice_supersaturation_{vlen}.sdfg")
+
             vec_compiled = vec_sdfg.compile()
             # Run DaCe version
             vec_compiled(**data_F_dace_vec)

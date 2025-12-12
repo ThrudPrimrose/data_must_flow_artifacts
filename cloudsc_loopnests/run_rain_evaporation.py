@@ -39,9 +39,8 @@ def _read_env_int(name: str, default: int) -> int:
 
 # Default values same as your other runners
 # Default values same as your other runners
-klev_val = _read_env_int("__DACE_KLEV", 8)
-klon_val = _read_env_int("__DACE_KLON", 8192*512)
-
+klev_val = int(_read_env_int("__DACE_KLEV", 8))
+klon_val = int(_read_env_int("__DACE_KLON", 8192*512))
 nclv_val = 5
 
 

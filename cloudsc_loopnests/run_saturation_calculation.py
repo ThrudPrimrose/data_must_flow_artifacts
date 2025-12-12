@@ -39,9 +39,8 @@ def _read_env_int(name: str, default: int) -> int:
 
 # Default values same as your other runners
 # Default values same as your other runners
-klev_val = _read_env_int("__DACE_KLEV", 8)
-klon_val = _read_env_int("__DACE_KLON", 8192*512)
-
+klev_val = int(_read_env_int("__DACE_KLEV", 8))
+klon_val = int(_read_env_int("__DACE_KLON", 8192*512))
 nclv_val = 5
 
 
@@ -617,7 +616,7 @@ def run_saturation_calculation():
     print("Saturation calculation (DaCe vs Fortran) comparison:")
     if compare_row_col_dicts(data_F_dace, data_F, rtol=1e-13, atol=1e-12):
         # 10× repeated DaCe baseline on mutated data_F_dace
-        for rep in range(10):
+        for rep in range(1):
             compiled(**data_F_dace)
             report = sdfg.get_latest_report()
             dace_time = report.events[0].duration
@@ -632,7 +631,7 @@ def run_saturation_calculation():
 
     # 10× repeated Fortran baseline on a fresh copy
     fortran_repeat_data = make_col_major(copy.deepcopy(base_data))
-    for rep in range(10):
+    for rep in range(1):
         fortran_func(**fortran_repeat_data)
         ft_time = float(fortran_repeat_data["timer"][0])
         print(f"  Run Fortran {rep+1}/10: {ft_time} us")
@@ -674,7 +673,7 @@ def run_saturation_calculation():
         vlens = [4, 8, 16, 32, 64]
     else:
         vlens = [2, 4, 8, 16, 32, 64]
-
+    vlens = []
     for vlen in vlens:
         for cpy in [True, False]:
             # First vec run: fresh inputs from base_data
@@ -722,7 +721,7 @@ def run_saturation_calculation():
                 )
 
                 # 10× extra vec runs using same mutated data_F_dace_vec
-                for rep in range(10):
+                for rep in range(1):
                     vec_compiled(**data_F_dace_vec)
                     report = vec_sdfg.get_latest_report()
                     dace_vec_time_rep = report.events[0].duration

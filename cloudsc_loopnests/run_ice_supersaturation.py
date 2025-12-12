@@ -34,8 +34,8 @@ def _read_env_int(name: str, default: int) -> int:
         raise ValueError(f"Environment variable {name} must be an integer, got: {val}")
 
 # Default values same as your other runners
-klev_val = _read_env_int("__DACE_KLEV", 8)
-klon_val = _read_env_int("__DACE_KLON", 8192*512)
+klev_val = int(_read_env_int("__DACE_KLEV", 8))
+klon_val = int(_read_env_int("__DACE_KLON", 8192*512))
 nclv_val = 5
 
 cpu_name = os.environ.get('CPU_NAME', 'amd_epyc')
@@ -427,6 +427,7 @@ def run_ice_supersaturation():
             ).apply_pass(vec_sdfg, {})
 
             set_map_sched(vec_sdfg)
+            vec_sdfg.save(f"ice_supersaturation_{vlen}.sdfg")
 
             vec_compiled = vec_sdfg.compile()
             vec_compiled(**data_F_dace_vec)
