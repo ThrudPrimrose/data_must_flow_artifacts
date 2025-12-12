@@ -18,13 +18,15 @@ def main():
     """
     X_LIST     = [16384]
     Y_LIST     = [2]
-    VL_LIST    = [8192]
-    VLSU_LIST  = [32, 64]
-    FU_LIST    = [8, 16, 32, 64]
-    NUM_CORE   = [1, 2, 4, 8]
+    VL_LIST    = [32, 256, 8192]
+    VLSU_LIST  = [8]
+    FU_LIST    = [32]
+    #VLSU_LIST  = [8, 16, 32, 64]
+    #FU_LIST    = [8, 16, 32, 64]
+    NUM_CORE   = [1]
     NUM_VECTOR_UNIT   = [1]
-    NUM_BANKS = [32, 64]
-    BANK_WIDTH = [32, 64]
+    NUM_BANKS = [128]
+    BANK_WIDTH = [32]
 
     for BW in BANK_WIDTH:
         for NB in NUM_BANKS:

@@ -142,6 +142,235 @@ def plot_scatter(folder1, folder2):
     # Drop rows with missing peak flops
     df = df.dropna(subset=["Peak Performance (GFLOP/s)"])
 
+    # Create unique configs VLSU Port x Function Unit x Bank Width x Bank Num
+    pd.set_option("display.max_columns", None)
+    print(df)
+    config_cols = [
+        "VLSU Ports",
+        "Function Units",
+        "Bank Width",
+        "Bank Num",
+    ]
+    num_configs = df[config_cols].drop_duplicates().shape[0]
+    print("num configs", num_configs)
+    df["config"] = (
+        df[config_cols]
+        .astype(str)               # ensure hashable consistency
+        .agg("_".join, axis=1)
+        .factorize()[0]
+    )
+    df["config"] = df.groupby(config_cols, sort=False).ngroup()
+    assert df["config"].nunique() == num_configs
+    configs = (
+        df[config_cols + ["config"]]
+        .drop_duplicates()
+        .sort_values("config")
+    )
+
+    print(configs)
+
+
+    plt.figure(figsize=(14, 6))
+
+    markers = ["o", "s", "^", "D", "v", ">", "<", "p", "x", "*"]
+    colors = plt.rcParams["axes.prop_cycle"].by_key()["color"]
+    configs = np.sort(df["config"].unique())
+    vector_lengths = np.sort(df["Vector Length"].unique())
+    n_vlens = len(vector_lengths)
+
+    valid_configs = (
+        df.groupby("config")["Vector Length"]
+        .nunique()
+        .loc[lambda s: s == n_vlens]
+        .index
+        .to_numpy()
+    )
+    df_valid = df[df["config"].isin(valid_configs)].copy()
+    df_valid["dense_config"] = (
+        df_valid["config"]
+        .astype("category")
+        .cat.set_categories(sorted(valid_configs), ordered=True)
+        .cat.codes
+    )
+
+    vector_lengths = np.sort(df_valid["Vector Length"].unique())
+    configs_dense = np.arange(df_valid["dense_config"].nunique())
+
+    for i, vlen in enumerate(vector_lengths):
+        sub = df_valid[df_valid["Vector Length"] == vlen]
+
+        agg = (
+            sub.groupby("dense_config")["Performance % of Roofline"]
+            .median()
+            .reindex(configs_dense)
+        )
+        print(len(agg))
+        print(len(configs_dense))
+        print(configs_dense)
+
+        plt.scatter(
+            configs_dense,
+            agg.values,
+            marker=markers[i % len(markers)],
+            s=45,
+            alpha=0.85,
+            label=f"VL={vlen}",
+        )
+
+    df_valid["config_label"] = (
+        "("
+        + df_valid["VLSU Ports"].astype(str)
+        + "×"
+        + df_valid["Function Units"].astype(str)
+        + "×"
+        + df_valid["Bank Num"].astype(str)
+        + "×"
+        + df_valid["Bank Width"].astype(str)
+        + ")"
+    )
+    config_labels = (
+        df_valid
+        .sort_values("dense_config")
+        .drop_duplicates("dense_config")
+        .set_index("dense_config")["config_label"]
+    )
+    plt.xlabel("Configuration")
+    plt.ylabel("Performance (% of Roofline)")
+    plt.title("Roofline Efficiency per Vector Unit and L1 Configuration")
+    plt.xticks(
+        configs_dense,
+        config_labels.loc[configs_dense].values,
+        rotation=90
+    )
+    plt.grid(True, linestyle="--", alpha=0.4)
+    plt.tight_layout(rect=[0, 0.12, 1, 1])
+    ltt = plt.gcf().text(
+        0.5 - 0.04 * 3 ,  # auto-ish left shift
+        0.1125,
+        "Vector Length:",
+        ha="right",
+        va="center"
+    )
+    plt.legend(
+        loc="upper center",
+        bbox_to_anchor=(0.5, -0.48),
+        ncol=len(vector_lengths),
+    )
+    plt.savefig("configs.png")
+    plt.savefig("configs.pdf")
+    plt.xticks(
+        [],
+        [],
+        rotation=90
+    )
+    plt.xticks(
+        configs_dense,
+        [f"C{i}" for (i, c) in enumerate(config_labels.loc[configs_dense].values)],
+        rotation=90
+    )
+    ltt.remove()
+    ltt2 = plt.gcf().text(
+        0.5 - 0.04 * 3 ,  # auto-ish left shift
+        0.145,
+        "Vector Length:",
+        ha="right",
+        va="center"
+    )
+    plt.legend(
+        loc="upper center",
+        bbox_to_anchor=(0.5, -0.175),
+        ncol=len(vector_lengths),
+    )
+    plt.tight_layout(rect=[0, 0.12, 1, 1])
+    plt.savefig("configs_name_v2.png")
+    plt.savefig("configs_name_v2.pdf")
+    ltt2.remove()
+
+    df["Performance % wrt. Roofline"] = (
+        df["Performance % of Roofline"].astype(float)
+    )
+    value_col = "Performance % wrt. Roofline"
+
+    # Y-axis key: Bank Num → Bank Width
+    df["bank_key"] = list(
+        zip(df["Bank Num"], df["Bank Width"])
+    )
+
+    # X-axis key: VLSU → Function Units
+    df["compute_key"] = list(
+        zip(df["VLSU Ports"], df["Function Units"])
+    )
+    bank_order = (
+        df[["Bank Num", "Bank Width"]]
+        .drop_duplicates()
+        .sort_values(["Bank Num", "Bank Width"])
+    )
+
+    bank_keys = list(zip(bank_order["Bank Num"], bank_order["Bank Width"]))
+
+    compute_order = (
+        df[["VLSU Ports", "Function Units"]]
+        .drop_duplicates()
+        .sort_values(["VLSU Ports", "Function Units"])
+    )
+
+    compute_keys = list(zip(compute_order["VLSU Ports"], compute_order["Function Units"]))
+
+    heatmap_df = (
+        df
+        .groupby(["bank_key", "compute_key"])[value_col]
+        .median()
+        .unstack("compute_key")
+        .reindex(index=bank_keys, columns=compute_keys)
+    )
+    y_labels = [f"BN:{bn}, BW:{bw}" for bn, bw in heatmap_df.index]
+    x_labels = [f"V:{v}, F:{fu}" for v, fu in heatmap_df.columns]
+
+    plt.figure(figsize=(0.4 * len(x_labels), 0.6 * len(y_labels)))
+
+    from matplotlib.colors import Normalize
+
+    norm = Normalize(vmin=0.0, vmax=100.0)
+    #cmap = plt.cm.RdYlGn
+    from matplotlib.colors import LinearSegmentedColormap
+
+    def truncated_cmap(cmap, minval=0.15, maxval=1.0, n=256):
+        return LinearSegmentedColormap.from_list(
+            f"trunc({cmap.name},{minval:.2f},{maxval:.2f})",
+            cmap(np.linspace(minval, maxval, n))
+        )
+
+    cmap = truncated_cmap(plt.cm.Spectral, minval=0.15, maxval=1.0)
+    im = plt.imshow(
+        heatmap_df.values,
+        aspect="auto",
+        origin="lower",
+        cmap=cmap,
+        norm=norm,
+    )
+
+    plt.colorbar(im, label=value_col)
+
+    plt.xticks(
+        ticks=np.arange(len(x_labels)),
+        labels=x_labels,
+        rotation=90
+    )
+
+    plt.yticks(
+        ticks=np.arange(len(y_labels)),
+        labels=y_labels
+    )
+
+    plt.xlabel("VLSU Ports (V) × Function Units (F)")
+    plt.ylabel("Bank Num (BN) × Bank Width (BW)")
+    #plt.title("Performance (% wrt. Roofline)")
+
+    plt.tight_layout()
+
+    plt.savefig("heatmap.png")
+    plt.savefig("heatmap.pdf")
+    """
     # Triplets for color mapping: (VLSU Ports, Function Units)
     triplets = list(df[["VLSU Ports", "Function Units"]].itertuples(index=False, name=None))
     unique_combos = list(dict.fromkeys(triplets))
@@ -205,7 +434,7 @@ def plot_scatter(folder1, folder2):
     )
     plt.tight_layout()
     plt.savefig(f"{folder1.replace('/', '_')}_plot_roofline.png", dpi=150)
-
+    
     # -------------------------------------------------------
     # Second plot: Performance (% of Roofline) vs Peak GFLOPs
     # -------------------------------------------------------
@@ -265,119 +494,7 @@ def plot_scatter(folder1, folder2):
 
         plt.tight_layout(rect=[0, 0, 1, 1])
         plt.savefig(f"{folder1.replace('/', '_')}_plot_roofline_vlsu_fu_{fu}.png", dpi=150)
-
-
-def plot_scatter_w_lines(folder1, folder2):
-    df, _ = compare_folders(folder1, folder2)
-    df = compute_roofline_percentage(df)
-
-    # Filter extreme values
-    df = df[df["Performance % of Roofline"] <= 100.0]
-    df = df[df["Num Vector Unit Per Cluster"] == df["Num Core Per Cluster"]]
-    #df = df[df["Bank Width"] == 32]
-
-    # Updated required columns
-    required = {
-        "Kernel Name", "VLSU Ports", "Function Units", "Vector Length",
-        "X_dim", "Y_dim", "Num Vector Unit Per Cluster",
-        "Roofline (GFLOP/s)", "Performance % of Roofline",
-        "Bank Width", "Bank Num"
-    }
-    if not required.issubset(df.columns):
-        raise ValueError(f"CSV files missing required columns: {required}")
-
-    df = df.dropna(subset=["Roofline (GFLOP/s)"])
-
-    # Unique VLSU/FU pairs → separate plot per pair
-    vlsu_fu_pairs = df[["VLSU Ports", "Function Units"]].drop_duplicates()
-
-    # Marker scheme for Vector Length
-    markers = ['o', '*', 's', 'D', '^', 'v', '<', '>', 'p', 'X', 'H', '+', 'x']
-    vec_lengths_all = df["Vector Length"].unique().tolist()
-    marker_map = {vl: markers[i % len(markers)] for i, vl in enumerate(vec_lengths_all)}
-
-    # Color scheme now based on (Bank Width, Bank Num)
-    bw_bn_pairs = df[["Bank Width", "Bank Num"]].drop_duplicates().itertuples(index=False, name=None)
-    bw_bn_pairs = list(bw_bn_pairs)
-
-    palette = list(plt.cm.tab20.colors) + list(plt.cm.tab20b.colors) + list(plt.cm.tab20c.colors)
-    if len(bw_bn_pairs) > len(palette):
-        raise ValueError("Too many unique (BankWidth, BankNum) combinations for available colors.")
-
-    color_map = {pair: palette[i] for i, pair in enumerate(bw_bn_pairs)}
-
-    # ------------------------------------------------------------------
-    #  LOOP: Make a separate plot for each (VLSU Ports, Function Units)
-    # ------------------------------------------------------------------
-    for (vlsu, fu) in vlsu_fu_pairs.values:
-        df_sub = df[(df["VLSU Ports"] == vlsu) & (df["Function Units"] == fu)]
-        if df_sub.empty:
-            continue
-
-        plt.figure(figsize=(10, 8))
-
-        # Groups that must remain constant
-        grouping = ["Kernel Name", "Vector Length", "X_dim", "Y_dim", "Bank Width", "Bank Num"]
-        grouped = df_sub.groupby(grouping)
-
-        for group_vals, group_df in grouped:
-            kernel, vl, xd, yd, bw, bn = group_vals
-
-            group_df = group_df.sort_values(by="Num Vector Unit Per Cluster")
-
-            xs = group_df["Num Vector Unit Per Cluster"].values
-            ys = group_df["Performance % of Roofline"].values
-
-            marker = marker_map[vl]
-            color = color_map[(bw, bn)]
-
-            # scatter points
-            plt.scatter(xs, ys, s=70, color=color, marker=marker, alpha=0.9)
-
-            # connecting line
-            plt.plot(xs, ys, color=color, linewidth=1.5, alpha=0.8,
-                     label=f"{kernel}, BW={bw}, BN={bn}, VL={vl}")
-
-            # debug
-            for _, r in group_df.iterrows():
-                print(
-                    f"[VLSU={vlsu}, FU={fu}, BW={bw}, BN={bn}] "
-                    f"Roofline={r['Roofline (GFLOP/s)']}, "
-                    f"Perf%={r['Performance % of Roofline']}, "
-                    f"NumVecUnit={r['Num Vector Unit Per Cluster']}, ",
-                    f"Bank Width={r['Bank Width']}, "
-                    f"Bank Count={r['Bank Num']}, ",
-                    f'Colour={str(color)}'
-                )
-
-        # Labeling
-        plt.xlabel("Number of Vector Units per Cluster (Equal to Number of Scalar Cores per Cluster)")
-        plt.ylabel("Performance % of Roofline")
-        plt.title(f"Performance Scaling (VLSU={vlsu}, FU={fu})")
-
-        plt.ylim(-0.1, YLIM)
-        plt.grid(True, linestyle="--", linewidth=0.8, alpha=0.6)
-
-        # Legends: BankWidth/BankNum colors + VectorLength markers
-        handles_color = [
-            plt.Line2D([0], [0], color=color_map[pair], linewidth=3,
-                       label=f"BankW={pair[0]}, BankN={pair[1]}")
-            for pair in bw_bn_pairs
-        ]
-        handles_marker = [
-            plt.Line2D([0], [0], marker=marker_map[vl], color="k", linestyle="None",
-                       markersize=8, label=f"VL={vl}")
-            for vl in vec_lengths_all
-        ]
-
-        plt.legend(handles=handles_color + handles_marker, fontsize=8, frameon=True)
-
-        plt.tight_layout()
-
-        outname = f"{folder1.replace('/', '_')}_vlsu_{vlsu}_fu_{fu}_plot_roofline.png"
-        plt.savefig(outname, dpi=150)
-        plt.close()
-        print(f"Saved {outname}")
+    """
 
 if __name__ == "__main__":
     df_same, df_diff = compare_folders("perf_w_num_cores", "../l1_cloud_fraction_update_no_scalar_fallback2/perf_w_num_cores")
@@ -387,6 +504,6 @@ if __name__ == "__main__":
     print(df_diff[["VLSU Ports", "Function Units", "perf1", "perf2"]])
     print(len(df_diff[["perf1", "perf2"]]))
     #raise Exception("X")
-    plot_scatter_w_lines("perf_w_num_cores", "../l1_cloud_fraction_update_no_scalar_fallback2/perf_w_num_cores")
+    #plot_scatter_w_lines("perf_w_num_cores", "../l1_cloud_fraction_update_no_scalar_fallback2/perf_w_num_cores")
     plot_scatter("perf_w_num_cores", "../l1_cloud_fraction_update_no_scalar_fallback2/perf_w_num_cores")
     #plot_scatter("perf_v1")
