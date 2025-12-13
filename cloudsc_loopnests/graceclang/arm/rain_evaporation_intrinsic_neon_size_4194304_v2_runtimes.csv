@@ -1,0 +1,2 @@
+name,variant,runtime_us,vlen,cpy
+rain_evaporation_intrinsic_neon_size_4194304_v2,dace,67156.0,None,None
