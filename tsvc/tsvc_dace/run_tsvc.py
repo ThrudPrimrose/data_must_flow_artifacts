@@ -40,7 +40,7 @@ import fcntl
 DONE_FILE = os.environ.get("TSVC_DONE_FILE", "./completed_tests.txt")
 
 import pytest
-
+envsuffix = os.environ.get("SUFFIX", "")
 
 def build_tsvcpp_lib():
     """Compile tsvcpp.cpp into a shared library located next to this Python file."""
@@ -185,9 +185,10 @@ import os
 import fcntl
 
 
-def log_runtime(time_ns: int, name: str, filename: str = "runtimes_v2.csv"):
+def log_runtime(time_ns: int, name: str, filename: str = "runtimes_v2"):
     header = "name,time_ns\n"
     line = f"{name},{time_ns}\n"
+    filename += f"_{envsuffix}.csv"
 
     with open(filename, "a+") as f:
         # Acquire exclusive file lock (blocks until available)
@@ -442,10 +443,12 @@ def dace_s111(a: dace.float64[LEN_1D], b: dace.float64[LEN_1D]):
             a[i] = a[i - 1] + b[i]
 
 
+# Manual looptomap
 @dace.program
 def dace_s1111(a: dace.float64[LEN_1D], b: dace.float64[LEN_1D], c: dace.float64[LEN_1D], d: dace.float64[LEN_1D]):
     for nl in range(2 * ITERATIONS):
-        for i in range(LEN_1D // 2):
+        #for i in range(LEN_1D // 2):
+        for i in dace.map[0:LEN_1D//2]:
             a[2 * i] = (c[i] * b[i] + d[i] * b[i] + c[i] * c[i] + d[i] * b[i] + d[i] * c[i])
 
 
@@ -456,6 +459,7 @@ def dace_s112(a: dace.float64[LEN_1D], b: dace.float64[LEN_1D]):
             a[i + 1] = a[i] + b[i]
 
 
+# Manual map reverse
 @dace.program
 def dace_s1112(a: dace.float64[LEN_1D], b: dace.float64[LEN_1D]):
     for nl in range(3 * ITERATIONS):
@@ -600,17 +604,18 @@ def dace_s126(bb: dace.float64[LEN_2D, LEN_2D], flat_2d_array: dace.float64[LEN_
                 k = k + 1
             k = k + 1
 
-
+# Manual induction variable detection
 @dace.program
 def dace_s127(a: dace.float64[LEN_1D], b: dace.float64[LEN_1D], c: dace.float64[LEN_1D], d: dace.float64[LEN_1D],
               e: dace.float64[LEN_1D]):
     for nl in range(2 * ITERATIONS):
-        j = -1
-        for i in range(LEN_1D // 2):
-            j = j + 1
-            a[j] = b[i] + c[i] * d[i]
-            j = j + 1
-            a[j] = b[i] + d[i] * e[i]
+        #j = -1
+        #for i in range(LEN_1D // 2):
+        for i in dace.map[0:LEN_1D//2]:
+            #j = j + 1
+            a[i] = b[i] + c[i] * d[i]
+            #j = j + 1
+            a[i+1] = b[i] + d[i] * e[i]
 
 
 @dace.program
@@ -623,13 +628,14 @@ def dace_s128(a: dace.float64[LEN_1D], b: dace.float64[LEN_1D], c: dace.float64[
             j = k + 1
             b[k] = a[i] + c[k]
 
+# Manual constant propagation
 @dace.program
 def dace_s132(aa: dace.float64[LEN_2D, LEN_2D], b: dace.float64[LEN_2D], c: dace.float64[LEN_2D]):
-    j = 0
-    k = 1
-    for nl in range(400 * ITERATIONS):
+    #j = 0
+    #k = 1
+    for nl in range(5 * ITERATIONS):
         for i in range(1, LEN_2D):
-            aa[j, i] = aa[k, i - 1] + b[i] * c[1]
+            aa[0, i] = aa[1, i - 1] + b[i] * c[1]
 
 
 @dace.program
@@ -638,13 +644,14 @@ def dace_s151(a: dace.float64[LEN_1D], b: dace.float64[LEN_1D]):
         for i in range(LEN_1D - 1):
             a[i] = a[i + 1] + b[i]
 
-
+# Manual map split
 @dace.program
 def dace_s152(a: dace.float64[LEN_1D], b: dace.float64[LEN_1D], c: dace.float64[LEN_1D], d: dace.float64[LEN_1D],
               e: dace.float64[LEN_1D]):
     for nl in range(ITERATIONS):
         for i in range(LEN_1D):
             b[i] = d[i] * e[i]
+        for i in range(LEN_1D):
             a[i] = a[i] + b[i] * c[i]
 
 
@@ -692,12 +699,13 @@ def dace_s172(a: dace.float64[LEN_1D], b: dace.float64[LEN_1D], n1: dace.int64, 
             a[i] = a[i] + b[i]
 
 
+# Manual symbol prop
 @dace.program
 def dace_s173(a: dace.float64[LEN_1D], b: dace.float64[LEN_1D]):
-    k = LEN_1D // 2
+    #k = LEN_1D // 2
     for nl in range(10 * ITERATIONS):
         for i in range(LEN_1D // 2):
-            a[i + k] = a[i] + b[i]
+            a[i + (LEN_1D // 2)] = a[i] + b[i]
 
 
 @dace.program
@@ -3072,9 +3080,9 @@ def test_s1161():
 
 
 def test_s162():
-    LEN_1D_val = G_LEN_1D_VAL
+    LEN_1D_val = G_LEN_1D_VAL + 1
     ITERATIONS_val = 1
-    k_val = 0
+    k_val = 1
 
     a = np.random.rand(LEN_1D_val)
     b = np.random.rand(LEN_1D_val)
@@ -3208,7 +3216,7 @@ def test_s173():
 def test_s174():
     LEN_1D_val = G_LEN_1D_VAL
     ITERATIONS_val = 1
-    M_val = 0
+    M_val = G_LEN_1D_VAL//2
 
     a = np.random.rand(LEN_1D_val)
     b = np.random.rand(LEN_1D_val)
