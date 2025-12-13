@@ -633,7 +633,6 @@ void s132_run_timed(
     const double * c,
     const int iterations,
     const int len_2d,
-    const int vlen,
     std::int64_t* time_ns
 ){
     using clock = std::chrono::high_resolution_clock;
@@ -642,8 +641,8 @@ void s132_run_timed(
 
     auto t1 = clock::now();
     {
-        for (int nl = 0; nl < 400 * iterations; ++nl) {
-            for (int i = 1; i < len_2d + vlen - 1; ++i) {
+        for (int nl = 0; nl < 100 * iterations; ++nl) {
+            for (int i = 1; i < len_2d; ++i) {
                 aa[j * len_2d + i] =
                     aa[k * len_2d + (i - 1)] + b[i] * c[1];
             }
