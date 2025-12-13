@@ -1,0 +1,9 @@
+name,variant,runtime_us,vlen,cpy
+saturation_calculation_force_width_512_v2,dace,923380.0,None,None
+saturation_calculation_force_width_512_v2,fortran,1176109.79,None,None
+saturation_calculation_force_width_512_v2,dace,923049.0,None,None
+saturation_calculation_force_width_512_v2,fortran,1175889.941,None,None
+saturation_calculation_force_width_512_v2,dace,922962.0,None,None
+saturation_calculation_force_width_512_v2,fortran,1169586.024,None,None
+saturation_calculation_force_width_512_v2,dace,922340.0,None,None
+saturation_calculation_force_width_512_v2,fortran,1169462.372,None,None

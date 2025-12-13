@@ -1,0 +1,5 @@
+name,variant,runtime_us,vlen,cpy
+saturation_calculation_no_vectorize_v2,dace,1026982.0,None,None
+saturation_calculation_no_vectorize_v2,fortran,1290640.0229999998,None,None
+saturation_calculation_no_vectorize_v2,dace,1032306.0,None,None
+saturation_calculation_no_vectorize_v2,fortran,1302505.0920000002,None,None
