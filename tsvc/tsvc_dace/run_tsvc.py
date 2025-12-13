@@ -24,8 +24,8 @@ from dace.transformation.passes.fusion_inline import InlineSDFGs
 
 LEN_1D = dace.symbol("LEN_1D")
 LEN_2D = dace.symbol("LEN_2D")
-#G_LEN_1D_VAL = 4096 * 4096 * 4
-#G_LEN_2D_VAL = 4096
+G_LEN_1D_VAL = 4096 * 4096 * 4
+G_LEN_2D_VAL = 2048
 G_LEN_1D_VAL = 32
 G_LEN_2D_VAL = 32
 ITERATIONS = dace.symbol("ITERATIONS")
@@ -185,7 +185,7 @@ import os
 import fcntl
 
 
-def log_runtime(time_ns: int, name: str, filename: str = "runtimes_v2"):
+def log_runtime(time_ns: int, name: str, filename: str = "runtimes_v3"):
     header = "name,time_ns\n"
     line = f"{name},{time_ns}\n"
     filename += f"_{envsuffix}.csv"
@@ -632,7 +632,7 @@ def dace_s128(a: dace.float64[LEN_1D], b: dace.float64[LEN_1D], c: dace.float64[
 def dace_s132(aa: dace.float64[LEN_2D, LEN_2D], b: dace.float64[LEN_2D], c: dace.float64[LEN_2D]):
     #j = 0
     #k = 1
-    for nl in range(5 * ITERATIONS):
+    for nl in range(400 * ITERATIONS):
         for i in range(1, LEN_2D):
             aa[0, i] = aa[1, i - 1] + b[i] * c[1]
 
@@ -709,7 +709,7 @@ def dace_s173(a: dace.float64[LEN_1D], b: dace.float64[LEN_1D]):
 
 @dace.program
 def dace_s174(a: dace.float64[LEN_1D], b: dace.float64[LEN_1D], M: dace.int64):
-    for nl in range(10 * ITERATIONS):
+    for nl in range(1000 * ITERATIONS):
         for i in range(M):
             a[i + M] = a[i] + b[i]
 
@@ -1411,8 +1411,8 @@ def dace_s311(a: dace.float64[LEN_1D], sum_out: dace.float64[LEN_1D]):
 # s31111
 # ============================================================
 @dace.program
-def dace_s31111(a: dace.float64[LEN_1D]):
-    for nl in range(2000 * ITERATIONS):
+def dace_s31111(a: dace.float64[LEN_1D], b:dace.float64[2]):
+    for nl in range(1 * ITERATIONS):
         sum_val = 0.0
         for base in range(0, LEN_1D, 4):
             partial = 0.0
@@ -1421,6 +1421,7 @@ def dace_s31111(a: dace.float64[LEN_1D]):
             partial = partial + a[base + 2]
             partial = partial + a[base + 3]
             sum_val = partial + partial
+        b[0] = sum_val
 
 
 @dace.program
@@ -1684,7 +1685,7 @@ def dace_s319(a: dace.float64[LEN_1D], b: dace.float64[LEN_1D], c: dace.float64[
 # s3110: 2D max+index
 # ============================================================
 @dace.program
-def dace_s3110(aa: dace.float64[LEN_2D, LEN_2D]):
+def dace_s3110(aa: dace.float64[LEN_2D, LEN_2D], bb: dace.float64[2,2]):
     for nl in range(100 * (ITERATIONS )):
         maxv = aa[0, 0]
         xindex = 0
@@ -1698,13 +1699,15 @@ def dace_s3110(aa: dace.float64[LEN_2D, LEN_2D]):
         chksum = maxv + float(xindex) + float(yindex)
         tmp = chksum
         tmp = tmp
+        bb[0, 0] = chksum
 
 
 # ============================================================
 # s13110: same pattern as s3110 (variant
 # ============================================================
 @dace.program
-def dace_s13110(aa: dace.float64[LEN_2D, LEN_2D]):
+def dace_s13110(aa: dace.float64[LEN_2D, LEN_2D],
+                bb: dace.float64[2, 2]):
     for nl in range(100 * (ITERATIONS )):
         maxv = aa[0, 0]
         xindex = 0
@@ -1718,19 +1721,20 @@ def dace_s13110(aa: dace.float64[LEN_2D, LEN_2D]):
         chksum = maxv + float(xindex) + float(yindex)
         tmp = chksum
         tmp = tmp
+        bb[0, 0] = chksum
 
 
 # ============================================================
 # s3111: conditional sum reduction
 # ============================================================
 @dace.program
-def dace_s3111(a: dace.float64[LEN_1D]):
+def dace_s3111(a: dace.float64[LEN_1D], b: dace.float64[2]):
     for nl in range(ITERATIONS ):
         sum_val = 0.0
         for i in range(LEN_1D):
             if a[i] > 0.0:
                 sum_val = sum_val + a[i]
-
+        b[0] = sum_val
 
 @dace.program
 def dace_s3112(
@@ -1746,7 +1750,7 @@ def dace_s3112(
 
 
 @dace.program
-def dace_s3113(a: dace.float64[LEN_1D], ):
+def dace_s3113(a: dace.float64[LEN_1D], b:dace.float64[2]):
     # maximum of absolute value
     maxv = dace.float64(0)
     for nl in range(ITERATIONS * 4):
@@ -1755,7 +1759,7 @@ def dace_s3113(a: dace.float64[LEN_1D], ):
             av = abs(a[i])
             if av > maxv:
                 maxv = av
-
+    b[0] = maxv
 
 # ======================
 # %3.2 – Recurrences
@@ -1803,15 +1807,15 @@ def dace_s323(
 
 
 @dace.program
-def dace_s331(a: dace.float64[LEN_1D], ):
-    j = dace.int32(-1)
+def dace_s331(a: dace.float64[LEN_1D], b:dace.float64[2]):
+    j = -1
     for nl in range(ITERATIONS):
         j = -1
         for i in range(LEN_1D):
             if a[i] < 0.0:
                 j = i
     # return value would be j+1 in C version
-
+    b[0] = j
 
 # ======================
 # %3.4 – Packing
@@ -2937,7 +2941,7 @@ def test_s131():
 
 
 def test_s132():
-    LEN_2D_val = G_LEN_2D_VAL
+    LEN_2D_val = G_LEN_2D_VAL + VLEN - 1
     ITERATIONS_val = 1
 
     aa = np.random.rand(LEN_2D_val, LEN_2D_val)
@@ -2982,7 +2986,8 @@ def test_s151():
         },
         params={
             "LEN_1D": LEN_1D_val,
-            "ITERATIONS": ITERATIONS_val
+            "ITERATIONS": ITERATIONS_val,
+            "VLEN": VLEN,
         },
         save_sdfgs=SAVE_SDFGS,
         sdfg_name="dace_s151",
@@ -3119,7 +3124,7 @@ def test_s1161():
 
 def test_s162():
     LEN_1D_val = G_LEN_1D_VAL + 1
-    ITERATIONS_val = 1
+    ITERATIONS_val = 5
     k_val = 1
 
     a = np.random.rand(LEN_1D_val)
@@ -3866,7 +3871,7 @@ def test_s2244():
     e = np.random.rand(LEN)
 
     #sdfg = dace_s2244.to_sdfg()
-    #sdfg.save("s2244_v2.sdfg")
+    #sdfg.save("s2244_v3.sdfg")
 
     compare_kernel(
         dace_s2244,
@@ -5257,10 +5262,11 @@ def s319():
 def test_s3110():
     LEN_2D_val = G_LEN_2D_VAL
     aa = np.random.rand(LEN_2D_val, LEN_2D_val)
+    bb = np.random.rand(2,2)
 
     compare_kernel(
         dace_s3110,
-        {"aa": aa},
+        {"aa": aa, "bb": bb},
         {
             "LEN_2D": LEN_2D_val,
             "ITERATIONS": 1
@@ -5269,7 +5275,7 @@ def test_s3110():
 
     run_vectorization_test(
         dace_func=dace_s3110,
-        arrays={"aa": aa},
+        arrays={"aa": aa, "bb": bb},
         params={
             "LEN_2D": LEN_2D_val,
             "ITERATIONS": 1
@@ -5284,10 +5290,11 @@ def test_s3110():
 def test_s13110():
     LEN_2D_val = G_LEN_2D_VAL
     aa = np.random.rand(LEN_2D_val, LEN_2D_val)
+    aa = np.random.rand(2, 2)
 
     compare_kernel(
         dace_s13110,
-        {"aa": aa},
+        {"aa": aa, "bb": bb},
         {
             "LEN_2D": LEN_2D_val,
             "ITERATIONS": 1
@@ -5296,7 +5303,7 @@ def test_s13110():
 
     run_vectorization_test(
         dace_func=dace_s13110,
-        arrays={"aa": aa},
+        arrays={"aa": aa, "bb": bb},
         params={
             "LEN_2D": LEN_2D_val,
             "ITERATIONS": 1
@@ -5311,10 +5318,11 @@ def test_s13110():
 def test_s3111():
     LEN_1D_val = G_LEN_1D_VAL
     a = np.random.randn(LEN_1D_val)
+    a = np.random.randn(2)
 
     compare_kernel(
         dace_s3111,
-        {"a": a},
+        {"a": a, "b": b},
         {
             "LEN_1D": LEN_1D_val,
             "ITERATIONS": 1
@@ -5323,7 +5331,7 @@ def test_s3111():
 
     run_vectorization_test(
         dace_func=dace_s3111,
-        arrays={"a": a},
+        arrays={"a": a, "b": b},
         params={
             "LEN_1D": LEN_1D_val,
             "ITERATIONS": 1
@@ -5376,10 +5384,11 @@ def test_s3113():
     ITERATIONS_val = 1
 
     a = np.random.rand(LEN_1D_val)
+    a = np.random.rand(2)
 
     compare_kernel(
         dace_s3113,
-        {"a": a},
+        {"a": a, "b": b},
         {
             "LEN_1D": LEN_1D_val,
             "ITERATIONS": ITERATIONS_val
@@ -5388,7 +5397,7 @@ def test_s3113():
 
     run_vectorization_test(
         dace_func=dace_s3113,
-        arrays={"a": a},
+        arrays={"a": a, "b": b},
         params={
             "LEN_1D": LEN_1D_val,
             "ITERATIONS": ITERATIONS_val
@@ -5525,10 +5534,11 @@ def test_s331():
     ITERS = 1
 
     a = np.random.rand(LEN) - 0.5
+    a = np.random.rand(2)
 
     compare_kernel(
         dace_s331,
-        {"a": a},
+        {"a": a, "b": b},
         {
             "LEN_1D": LEN,
             "ITERATIONS": ITERS
@@ -5537,7 +5547,7 @@ def test_s331():
 
     run_vectorization_test(
         dace_func=dace_s331,
-        arrays={"a": a},
+        arrays={"a": a, "b": b},
         params={
             "LEN_1D": LEN,
             "ITERATIONS": ITERS
@@ -6978,8 +6988,8 @@ def test_s482():
     # Make 50%
     a = np.random.rand(LEN).astype(np.float64)
     b = np.random.rand(LEN).astype(np.float64)
-    b = np.random.uniform(0.0, 0.4, LEN).astype(np.float64)
-    c = np.random.uniform(0.6, 1.0, LEN).astype(np.float64)
+    b = np.random.uniform(0.6, 1.4, LEN).astype(np.float64)
+    c = np.random.uniform(0.0, 0.4, LEN).astype(np.float64)
 
     compare_kernel(
         dace_s482,
@@ -7063,11 +7073,12 @@ def test_s31111():
 
     # Initialize input array
     a = np.random.rand(LEN_1D_val).astype(np.float64)
+    a = np.random.rand(2).astype(np.float64)
 
     # Check against the reference C++ kernel
     compare_kernel(
         dace_s31111,
-        {"a": a},
+        {"a": a, "b": b},
         {
             "LEN_1D": LEN_1D_val,
             "ITERATIONS": ITERATIONS_val
@@ -7077,7 +7088,7 @@ def test_s31111():
     # Run vectorization test
     run_vectorization_test(
         dace_func=dace_s31111,
-        arrays={"a": a},
+        arrays={"a": a, "b": b},
         params={
             "LEN_1D": LEN_1D_val,
             "ITERATIONS": ITERATIONS_val

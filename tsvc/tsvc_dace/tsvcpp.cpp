@@ -633,6 +633,7 @@ void s132_run_timed(
     const double * c,
     const int iterations,
     const int len_2d,
+    const int vlen,
     std::int64_t* time_ns
 ){
     using clock = std::chrono::high_resolution_clock;
@@ -642,7 +643,7 @@ void s132_run_timed(
     auto t1 = clock::now();
     {
         for (int nl = 0; nl < 400 * iterations; ++nl) {
-            for (int i = 1; i < len_2d; ++i) {
+            for (int i = 1; i < len_2d + vlen - 1; ++i) {
                 aa[j * len_2d + i] =
                     aa[k * len_2d + (i - 1)] + b[i] * c[1];
             }
@@ -957,7 +958,7 @@ void s174_run_timed(
 
     auto t1 = clock::now();
     {
-        for (int nl = 0; nl < 10 * iterations; ++nl) {
+        for (int nl = 0; nl < 1000 * iterations; ++nl) {
             for (int i = 0; i < M; ++i) {
                 a[i + M] = a[i] + b[i];
             }
@@ -2413,6 +2414,7 @@ double s31111_test(const double* A)
 // ------------------------------------------------------------
 void s31111_run_timed(
     double* a,
+    double* b,
     int iterations,
     int len_1d,
     std::int64_t* time_ns
@@ -2421,15 +2423,17 @@ void s31111_run_timed(
 
     auto t1 = clock::now();
     {
-        int outer = 2000 * iterations;
+        int outer = 1 * iterations;
         for (int nl = 0; nl < outer; nl++) {
             double sum = 0.0;
             for (int base = 0; base < len_1d; base += 4)
                 sum += s31111_test(&a[base]);
 
             //asm volatile("" :: "r,m"(sum));
+            b[0] = sum;
         }
     }
+    
     auto t2 = clock::now();
 
     *time_ns =
@@ -2983,6 +2987,7 @@ void s319_run_timed(
 // ------------------------------------------------------------
 void s3110_run_timed(
     double *aa,
+    double *bb,
     int iterations,
     int len_2d,
     std::int64_t* time_ns
@@ -3012,6 +3017,7 @@ void s3110_run_timed(
             chksum = maxv + static_cast<double>(xindex) + static_cast<double>(yindex);
             volatile double sink = chksum;
             (void)sink;
+            bb[0] = chksum;
         }
     }
     auto t2 = clock::now();
@@ -3025,6 +3031,7 @@ void s3110_run_timed(
 // ------------------------------------------------------------
 void s13110_run_timed(
     double *aa,
+    double *bb,
     int iterations,
     int len_2d,
     std::int64_t* time_ns
@@ -3054,6 +3061,7 @@ void s13110_run_timed(
             chksum = maxv + static_cast<double>(xindex) + static_cast<double>(yindex);
             volatile double sink = chksum;
             (void)sink;
+            bb[0] = chksum;
         }
     }
     auto t2 = clock::now();
@@ -3067,6 +3075,7 @@ void s13110_run_timed(
 // ------------------------------------------------------------
 void s3111_run_timed(
     const double *a,
+    double *b,
     int iterations,
     int len_1d,
     std::int64_t* time_ns
@@ -3086,6 +3095,7 @@ void s3111_run_timed(
             volatile double sink = sum;
             (void)sink;
         }
+        b[0] = sum;
     }
     auto t2 = clock::now();
 
@@ -3128,6 +3138,7 @@ void s3112_run_timed(
 // s3113: maximum of absolute value
 void s3113_run_timed(
     const double *a,
+    double *b,
     int iterations,
     int len_1d,
     std::int64_t* time_ns
@@ -3144,6 +3155,7 @@ void s3113_run_timed(
             }
         }
     }
+    b[0] = maxv;
 
     auto t2 = clock_highres::now();
     time_ns[0] =
@@ -3229,6 +3241,7 @@ void s323_run_timed(
 // s331: last index with a[i] < 0
 void s331_run_timed(
     const double *a,
+    double *b,
     int iterations,
     int len_1d,
     std::int64_t* time_ns
@@ -3245,6 +3258,7 @@ void s331_run_timed(
         }
         // chksum = (real_t) j;  // ignored in timed version
     }
+    b[0] = j;
 
     auto t2 = clock_highres::now();
     time_ns[0] =
