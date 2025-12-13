@@ -1,0 +1,7 @@
+name,variant,runtime_us,vlen,cpy
+rain_evaporation_force_width_256_size_8388608,dace,279580.0,None,None
+rain_evaporation_force_width_256_size_8388608,fortran,3818135.634,None,None
+rain_evaporation_force_width_256_size_8388608,dace,279776.0,None,None
+rain_evaporation_force_width_256_size_8388608,fortran,3752816.779,None,None
+rain_evaporation_force_width_256_size_8388608,dace,281747.0,None,None
+rain_evaporation_force_width_256_size_8388608,fortran,3669172.686,None,None

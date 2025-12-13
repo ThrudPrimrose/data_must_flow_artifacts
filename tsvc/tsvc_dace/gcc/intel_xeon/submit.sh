@@ -1,8 +1,8 @@
 #!/bin/bash
-#SBATCH --job-name=tsvc_intel_xeon_gcc  # Job name
+#SBATCH --job-name=ts_i_gcc  # Job name
 #SBATCH --nodes=1                     # Number of nodes
-#SBATCH --partition=intel               # Partition/queue
-#SBATCH --time=02:30:00               # Walltime (hh:mm:ss)
+#SBATCH --partition=intelv100               # Partition/queue
+#SBATCH --time=04:00:00               # Walltime (hh:mm:ss)
 #SBATCH --output=%x_%j.out            # Standard output (%x=job name, %j=job ID)
 #SBATCH --error=%x_%j.err             # Standard error
 #SBATCH --chdir=.
@@ -25,12 +25,11 @@ export OMP_PROC_BIND=close
 
 # Define configurations: each element is "EXTRA_FLAGS SUFFIX"
 configs=(
+    "" "default"                                   
     "-mprefer-vector-width=512" "force_width_512"
-    "" ""                                   
-    "-fno-tree-vectorize -fno-tree-slp-vectorize" "no-vectorize"
 )
 
-for RUNMULTI in 0 1; do
+for RUNMULTI in 0 ; do
     export __DACE_INSERT_COPIES="$RUNMULTI"
     for ((i=0; i<${#configs[@]}; i+=2)); do
         export EXTRA_FLAGS="${configs[i]}"
@@ -38,13 +37,16 @@ for RUNMULTI in 0 1; do
 
         echo "Running with EXTRA_FLAGS='$EXTRA_FLAGS', SUFFIX='$SUFFIX'"
         rm -rf .dacecache
-        cp ../../tsvcpp.cpp ./
+        cp ../../conftest.py .
         cp ../../run_tsvc.py .
+        cp ../../tsvcpp.cpp .
+
 
         # Run benchmark
         pytest -n 1   run_tsvc.py
 
         rm *.so
         rm run_tsvc.py
+        rm tsvcpp.cpp
     done
 done

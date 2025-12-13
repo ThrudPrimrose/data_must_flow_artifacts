@@ -17,14 +17,38 @@ base_name = args.base_name
 # ------------------------
 # Load 4 CSVs
 # ------------------------
-paths = [
-    ("gcc",  "amd_epyc",   "gcc/amd_epyc/division_by_zero_timings__singlecore.csv"),
-    ("gcc",  "intel_xeon", "gcc/intel_xeon/division_by_zero_timings__singlecore.csv"),
-    #("gcc",  "arm", "gcc/arm/division_by_zero_timings.csv"),
-    ("llvm", "amd_epyc",   "llvm/amd_epyc/division_by_zero_timings__singlecore.csv"),
-    ("llvm", "intel_xeon", "llvm/intel_xeon/division_by_zero_timings__singlecore.csv"),
-    #("llvm", "arm", "llvm/arm/division_by_zero_timings.csv"),
-]
+MULTI_CORE = 1
+
+# ------------------------
+# Load CSVs (singlecore)
+# ------------------------
+if MULTI_CORE:
+    paths = [
+        ("gcc",  "amd_epyc",   "gcc/amd_epyc/division_by_zero_timings__multicore.csv"),
+        ("gcc",  "intel_xeon", "gcc/intel_xeon/division_by_zero_timings__multicore.csv"),
+        # ("gcc",  "arm", "gcc/arm/division_by_zero_timings.csv"),
+        ("llvm", "amd_epyc",   "llvm/amd_epyc/division_by_zero_timings__multicore.csv"),
+        ("llvm", "intel_xeon", "llvm/intel_xeon/division_by_zero_timings__multicore.csv"),
+        # ("llvm", "arm", "llvm/arm/division_by_zero_timings.csv"),
+    ]
+else:
+    paths = [
+        ("gcc",  "amd_epyc",   "gcc/amd_epyc/division_by_zero_timings__singlecore.csv"),
+        ("gcc",  "intel_xeon", "gcc/intel_xeon/division_by_zero_timings__singlecore.csv"),
+        # ("gcc",  "arm", "gcc/arm/division_by_zero_timings.csv"),
+        ("llvm", "amd_epyc",   "llvm/amd_epyc/division_by_zero_timings__singlecore.csv"),
+        ("llvm", "intel_xeon", "llvm/intel_xeon/division_by_zero_timings__singlecore.csv"),
+        # ("llvm", "arm", "llvm/arm/division_by_zero_timings.csv"),
+    ]
+
+dfs = []
+for compiler, cpu, path in paths:
+    df_tmp = pd.read_csv(path)
+    df_tmp["compiler"] = compiler
+    df_tmp["cpu"] = cpu
+    dfs.append(df_tmp)
+
+df = pd.concat(dfs, ignore_index=True)
 
 for vl in [8, 16, 32, 64]:
     for l, k, v in [("w_cpy", f"division_by_zero_dace_veclen_{vl}_cpy", "Auto + DaCe Vectorized (veclen=8, expl. copy)"),
@@ -54,7 +78,15 @@ for vl in [8, 16, 32, 64]:
         if not pd.api.types.is_float_dtype(df["time_seconds"]):
             raise ValueError("time_seconds column still contains non-float values!")
 
-        df["time_seconds"] = df["time_seconds"].astype(float) / 1000.0
+
+        df["size"] = pd.to_numeric(df["size"].astype(str).str.strip(),
+                                        errors="coerce")
+        df = df[df["size"].notna()]
+        # Ensure no entries are strings anymore
+        if not pd.api.types.is_int64_dtype(df["size"]) and not not pd.api.types.is_int32_dtype(df["size"]):
+            raise ValueError("size column still contains non-float values!")
+
+        df["size"] = df["size"].astype(int)
         patterns = ["_clang_", "_icpx_", "_g_"]
 
         def fix_compiler(row):
@@ -226,10 +258,19 @@ for vl in [8, 16, 32, 64]:
 
         ax.grid(which="both", linestyle="--", alpha=0.7)
         plt.tight_layout()
-        plt.savefig(args.output_png.split(".png")[0] + "_" + l + ".png")
-        print(f"Saved figure to {args.output_png}"  + "_" + l)
+        if MULTI_CORE:
+            plt.savefig("multicore_" + args.output_png.split(".png")[0] + "_" + l + ".png")
+            print(f"Saved figure to {args.output_png}"  + "_" + l)
 
-        ax.grid(which="both", linestyle="--", alpha=0.7)
-        plt.tight_layout()
-        plt.savefig(args.output_png.split(".png")[0] + "_" + l + f"_{vl}.png")
-        print(f"Saved figure to {args.output_png}"  + "_" + l + f"_{vl}")
+            ax.grid(which="both", linestyle="--", alpha=0.7)
+            plt.tight_layout()
+            plt.savefig("multicore_" + args.output_png.split(".png")[0] + "_" + l + f"_{vl}.png")
+            print(f"Saved figure to {args.output_png}"  + "_" + l + f"_{vl}")
+        else:
+            plt.savefig(args.output_png.split(".png")[0] + "_" + l + ".png")
+            print(f"Saved figure to {args.output_png}"  + "_" + l)
+
+            ax.grid(which="both", linestyle="--", alpha=0.7)
+            plt.tight_layout()
+            plt.savefig(args.output_png.split(".png")[0] + "_" + l + f"_{vl}.png")
+            print(f"Saved figure to {args.output_png}"  + "_" + l + f"_{vl}")

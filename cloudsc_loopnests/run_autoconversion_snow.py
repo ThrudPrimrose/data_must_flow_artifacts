@@ -3,6 +3,8 @@ Autoconversion Snow - DaCe vs Fortran Runner
 """
 
 import copy
+import csv
+from pathlib import Path
 from typing import Dict
 import dace
 import numpy as np
@@ -16,6 +18,9 @@ from dace.transformation.passes.prune_symbols import RemoveUnusedSymbols
 from dace.transformation.passes.vectorization.vectorize_cpu import VectorizeCPU
 from dace.transformation.passes.scalar_fission import ScalarFission
 from dace.transformation.passes import RemoveUnusedSymbols, analysis as ap
+from dace.utils.log_runtime import compare_row_col_dicts, write_runtime
+
+
 # Define symbolic sizes
 klev = dace.symbol("klev")
 klon = dace.symbol("klon")
@@ -30,8 +35,9 @@ def _read_env_int(name: str, default: int) -> int:
         raise ValueError(f"Environment variable {name} must be an integer, got: {val}")
 
 # Default values same as your other runners
-klev_val = _read_env_int("__DACE_KLEV", 64)
-klon_val = _read_env_int("__DACE_KLON", 512)
+klev_val = int(_read_env_int("__DACE_KLEV", 8))
+klon_val = int(_read_env_int("__DACE_KLON", 8192*512))
+
 nclv_val = 5
 
 scalar_specialization_values = {
@@ -53,7 +59,7 @@ dace.config.Config.set("compiler", "cpu", "executable", value=compiler_exec)
 # Base compilation flags
 base_flags = [
     '-fopenmp', '-fstrict-aliasing', '-std=c++17', '-faligned-new',
-    '-fPIC', '-Wall', '-Wextra', '-O3', '-march=native', '-ffast-math',
+    '-fPIC', '-Wall', '-Wextra', '-O0', '-march=native', 
     '-Wno-unused-parameter', '-Wno-unused-label'
 ]
 
@@ -90,6 +96,7 @@ if multi_core:
 env_suffix_str = os.environ.get('SUFFIX', '')
 if env_suffix_str != '':
     env_suffix_str = "_" + env_suffix_str
+env_suffix_str += f"_size_{klon_val}"
 
 def make_col_major(arrays: Dict[str, np.ndarray]) -> Dict[str, np.ndarray]:
     """
@@ -114,54 +121,6 @@ def make_col_major(arrays: Dict[str, np.ndarray]) -> Dict[str, np.ndarray]:
 
     return out
 
-def compare_row_col_dicts(data_C, data_F, rtol=1e-12, atol=1e-12):
-    """
-    Compare two dictionaries (row-major and column-major versions)
-    using numpy.allclose on all ndarray entries.
-
-    Scalars and non-array entries are skipped.
-
-    Returns
-    -------
-    all_ok : bool
-        True if all arrays match within tolerance.
-    """
-    all_ok = True
-
-    for key in data_C.keys():
-        vC = data_C[key]
-        vF = data_F[key]
-
-        # Only compare arrays
-        if not isinstance(vC, np.ndarray) or not isinstance(vF, np.ndarray):
-            continue
-
-        # Flatten both arrays so row/col layout differences disappear
-        arrC = np.asarray(vC).reshape(-1)
-        arrF = np.asarray(vF).reshape(-1)
-
-        abs_diff = np.abs(arrC - arrF)
-        denominator = np.maximum(np.abs(arrF), np.abs(arrC))
-        rel_diff = np.zeros_like(abs_diff)
-        mask = denominator > 0
-        rel_diff[mask] = abs_diff[mask] / denominator[mask]
-        rel_diff[~mask] = abs_diff[~mask]
-        max_rel_diff = np.nanmax(rel_diff)
-        max_abs_diff = np.nanmax(abs_diff)
-
-        # Count mismatching indices
-        mismatch_mask = ~np.isclose(arrC, arrF, rtol=rtol, atol=atol, equal_nan=True)
-        num_mismatch = np.sum(mismatch_mask)
-        total_elements = arrC.size
-        
-        if not np.allclose(arrC, arrF, rtol=rtol, atol=atol, equal_nan=True):
-            print(f"[Mismatch] {key}: max rel diff = {max_rel_diff:e}, max abs diff = {max_abs_diff:e}, "
-                  f"mismatches = {num_mismatch}/{total_elements} ({100*num_mismatch/total_elements:.2f}%)")
-            all_ok = False
-        else:
-            print(f"[Pass] {key}: max rel diff = {max_rel_diff:e}, max abs diff = {max_abs_diff:e}")
-    
-    return all_ok
 
 
 # ---------------------------------------------------------------------------
@@ -207,6 +166,7 @@ def generate_autoconversion_snow_data() -> Dict[str, np.ndarray]:
 
     # ---- Output snow autoconversion ----
     zsnowaut = np.zeros(klon_val, dtype=np.float64)
+    timer = np.zeros((2,), dtype=np.float64)
 
     return dict(
         kidia=kidia,
@@ -227,6 +187,9 @@ def generate_autoconversion_snow_data() -> Dict[str, np.ndarray]:
         laericeauto=laericeauto,
         ncldqs=ncldqs_val,
         ncldqi=ncldqi_val,
+        timer=timer,
+        sym_klon=klon_val,
+        sym_klev=klev_val
     )
 
 # ---------------------------------------------------------------------------
@@ -245,7 +208,16 @@ def compile_autoconversion_snow_fortran(
     if not os.path.exists(src_path):
         raise FileNotFoundError(f"Fortran source not found: {src_path}")
 
-    cmd = ["gfortran", "-O3", "-fPIC", "-shared", src_path, "-o", libname]
+    cxx = os.environ["CXX"]
+    if cxx == "clang++":
+        f90 = "flang"
+    elif cxx == "g++":
+        f90 = "gfortran"
+    else:
+        assert cxx == "icpx"
+        f90 = "ifx"
+
+    cmd = [f90, "-O3",  "-fPIC", "-shared", src_path, "-o", libname]
     print("Compiling Fortran:", " ".join(cmd))
     subprocess.check_call(cmd)
     print(f"Built {libname}")
@@ -279,6 +251,7 @@ def compile_autoconversion_snow_fortran(
         ctypes.c_bool,    # LAERICEAUTO
         ctypes.c_int,     # NCLDQS
         ctypes.c_int,     # NCLDQI
+        ndF64_1d, # timer
     ]
 
     print("Fortran function loaded (autoconversion_snow)")
@@ -295,7 +268,7 @@ def wrap_autoconversion_snow(func):
         "zsolqb", "zsnowaut",
         "rtt", "rlcritsnow", "rsnowlin1", "rsnowlin2", "rnice",
         "ptsphy", "zepsec", "laericeauto",
-        "ncldqs", "ncldqi",
+        "ncldqs", "ncldqi", "timer"
     ]
 
     def wrapper(**kwargs):
@@ -308,94 +281,163 @@ def wrap_autoconversion_snow(func):
 # Main runner
 # ---------------------------------------------------------------------------
 
+def set_map_sched(sdfg: dace.SDFG):
+    for n, g in sdfg.all_nodes_recursive():
+        if isinstance(n, dace.nodes.MapEntry):
+            n.map.schedule = dace.dtypes.ScheduleType.Sequential
+        if isinstance(n, dace.nodes.NestedSDFG):
+            for arr_name, arr in n.sdfg.arrays.items():
+                if arr.storage == dace.dtypes.StorageType.Default and arr.transient is True:
+                    arr.storage = dace.dtypes.StorageType.Register
+    for arr_name, arr in sdfg.arrays.items():
+        if arr.storage == dace.dtypes.StorageType.Default and arr.transient is True:
+            arr.storage = dace.dtypes.StorageType.Register
+
+
 def run_autoconversion_snow():
     # ----- Generate Inputs -----
     data = generate_autoconversion_snow_data()
     # Prepare Fortran/DaCe copies (Fortran wants F-contiguous for multi-d arrays)
     data_F_dace     = make_col_major(data)  # you already have this helper
     data_F          = make_col_major(data)
-    data_F_dace_vec = make_col_major(data)
-    del data
+
+
+    # ----- Build SDFG -----
+    sdfg = dace.SDFG.from_file("autoconversion_snow.sdfg")
+    sdfg.name = "autoconversion_snow"
+
+    # Optional preprocessing passes (same as your other runners)
+    from dace.transformation.passes.vectorization.tasklet_preprocessing_passes import (
+        PowerOperatorExpansion,
+        RemoveFPTypeCasts,
+        RemoveIntTypeCasts,
+    )
+    PowerOperatorExpansion().apply_pass(sdfg, {})
+    RemoveFPTypeCasts().apply_pass(sdfg, {})
+    RemoveIntTypeCasts().apply_pass(sdfg, {})
+    OffsetLoopsAndMaps(offset_expr="-1", begin_expr=None).apply_pass(sdfg, {})
+    # Specialize scalars from scalar_specialization_values if relevant
+    for scalar_name, scalar_value in scalar_specialization_values.items():
+        if scalar_name in sdfg.arrays:
+            sdutil.specialize_scalar(
+                sdfg=sdfg, scalar_name=scalar_name, scalar_val=scalar_value
+            )
+            sdfg.validate()
+        if scalar_name in sdfg.symbols:
+            sdfg.replace_dict({scalar_name: scalar_value})
+            sdfg.remove_symbol(scalar_name)
+    repldict = {"sym_nclv": 5,
+                "sym_ncldqs": scalar_specialization_values["ncldqs"],
+                "sym_ncldqi": scalar_specialization_values["ncldqi"],
+                "sym_ncldqs": scalar_specialization_values["ncldqs"],
+                "sym_ncldqv": scalar_specialization_values["ncldqv"]}
+    sdfg.replace_dict(repldict)
+    for sym, val in repldict.items():
+        if sym in sdfg.symbols:
+            sdfg.remove_symbol(sym)
+    sdfg.validate()
+    RemoveUnusedSymbols().apply_pass(sdfg, {})
+    sdfg.apply_transformations_repeated(LoopToMap)
+    sdfg.simplify()
+    sdfg.instrument = dace.dtypes.InstrumentationType.Timer
+
+    sdfg.simplify()
+    set_map_sched(sdfg)
+
+    compiled = sdfg.compile()
+
+    # Run DaCe version
+    compiled(**data_F_dace)
+    report = sdfg.get_latest_report()
+    dace_total_time = report.events[0].duration  # useconds
+    print(f"Run time SDFG ({sdfg.name}): {float(dace_total_time)} us")
+    write_runtime(f"autoconversion_snow{env_suffix_str}", "dace", dace_total_time)
+
+    # ----- Build and run Fortran -----
+    raw_func = compile_autoconversion_snow_fortran(
+        "./autoconversion_snow_w_timer.f90",
+        "libautoconversion_snow.so",
+        "autoconversion_snow",
+    )
+    fortran_func = wrap_autoconversion_snow(raw_func)
+    fortran_func(**data_F)
+    fortran_total_time = float(data_F["timer"][0])
+    print(f"Run time Fortran: {fortran_total_time} us")
+    write_runtime(f"autoconversion_snow{env_suffix_str}", "fortran", fortran_total_time)
+
+    # ----- Results -----
+    print("Autoconversion snow (DaCe vs Fortran) comparison:")
+    if compare_row_col_dicts(data_F_dace, data_F, rtol=1e-12, atol=1e-12):
+        for rep in range(10):
+            compiled(**data_F_dace)
+            report = sdfg.get_latest_report()
+            dace_time = report.events[0].duration
+
+            print(f"  Run DaCe {rep+1}/10: {dace_time} us")
+
+            write_runtime(
+                f"autoconversion_snow{env_suffix_str}",
+                "dace",
+                dace_time,
+            )
+    del data_F_dace
+    copy_data_F = copy.deepcopy(data_F)
+    for rep in range(10):
+        fortran_func(**copy_data_F)
+        fortran_total_time = float(copy_data_F["timer"][0])
+        print(f"  Run time Fortran {rep+1}/10: {fortran_total_time} us")
+        write_runtime(
+            f"autoconversion_snow{env_suffix_str}",
+            "fortran",
+            fortran_total_time,
+        )
+    del copy_data_F
 
     if cpu_name == "intel_xeon":
         vlens = [8, 16, 32, 64]
     elif cpu_name == "amd_epyc":
         vlens = [4, 8, 16, 32, 64]
     else:
-        vlens = [2, 4, 8, 16, 32, 64]
+        vlens = [8]
     
     for vlen in vlens:
-        # ----- Build SDFG -----
-        sdfg = dace.SDFG.from_file("autoconversion_snow.sdfg")
-        sdfg.name = "autoconversion_snow"
+        for cpy in [False, True]:
+            data_F_dace_vec = make_col_major(data)
+            vec_sdfg = copy.deepcopy(sdfg)
+            vec_sdfg.name = vec_sdfg.name + "_vectorized"
 
-        # Optional preprocessing passes (same as your other runners)
-        from dace.transformation.passes.vectorization.tasklet_preprocessing_passes import (
-            PowerOperatorExpansion,
-            RemoveFPTypeCasts,
-            RemoveIntTypeCasts,
-        )
-        PowerOperatorExpansion().apply_pass(sdfg, {})
-        RemoveFPTypeCasts().apply_pass(sdfg, {})
-        RemoveIntTypeCasts().apply_pass(sdfg, {})
-        # Specialize scalars from scalar_specialization_values if relevant
-        for scalar_name, scalar_value in scalar_specialization_values.items():
-            if scalar_name in sdfg.free_symbols:
-                sdutil.specialize_scalar(
-                    sdfg=sdfg, scalar_name=scalar_name, scalar_val=scalar_value
-                )
-                sdfg.validate()
-        repldict = {"sym_nclv": 5, "sym_klon": klon_val,"sym_klev": klev_val,
-                    "sym_ncldqs": scalar_specialization_values["ncldqs"],
-                    "sym_ncldqi": scalar_specialization_values["ncldqi"],
-                    "sym_ncldqs": scalar_specialization_values["ncldqs"],
-                    "sym_ncldqv": scalar_specialization_values["ncldqv"]}
-        sdfg.replace_dict(repldict)
-        for sym, val in repldict.items():
-            if sym in sdfg.symbols:
-                sdfg.remove_symbol(sym)
-        sdfg.validate()
-        RemoveUnusedSymbols().apply_pass(sdfg, {})
-        sdfg.apply_transformations_repeated(LoopToMap)
-        sdfg.simplify()
+            eb = EliminateBranches()
+            eb.try_clean = True
+            eb.apply_pass(vec_sdfg, {})
+            ConstantPropagation().apply_pass(vec_sdfg, {})
+            RemoveUnusedSymbols().apply_pass(vec_sdfg, {})
+            VectorizeCPU(vector_width=vlen, try_to_demote_symbols_in_nsdfgs=True,
+                        fuse_overlapping_loads=False, insert_copies=cpy,
+                        eliminate_trivial_vector_map=True).apply_pass(vec_sdfg, {})
+            set_map_sched(vec_sdfg)
+            vec_sdfg.save(f"ice_supersaturation_{vlen}.sdfg")
 
+            vec_compiled = vec_sdfg.compile()
+            # Run DaCe version
+            vec_compiled(**data_F_dace_vec)
+            report = vec_sdfg.get_latest_report()
+            dace_total_time = report.events[0].duration  # useconds
+            print(f"Run time SDFG ({vec_sdfg.name}): {float(dace_total_time)} us")
+            if compare_row_col_dicts(data_F_dace_vec, data_F, rtol=1e-12, atol=1e-12):
+                write_runtime(f"autoconversion_snow{env_suffix_str}", "dace_vec", dace_total_time, vlen=vlen, cpy=cpy)
 
-        compiled = sdfg.compile()
-
-        # Run DaCe version
-        compiled(**data_F_dace)
-
-        # ----- Build and run Fortran -----
-        raw_func = compile_autoconversion_snow_fortran(
-            "./autoconversion_snow.f90",
-            "libautoconversion_snow.so",
-            "autoconversion_snow",
-        )
-        fortran_func = wrap_autoconversion_snow(raw_func)
-        fortran_func(**data_F)
-
-        # ----- Results -----
-        print("Autoconversion snow (DaCe vs Fortran) comparison:")
-        compare_row_col_dicts(data_F_dace, data_F, rtol=1e-12, atol=1e-12)
-
-        vec_sdfg = copy.deepcopy(sdfg)
-        vec_sdfg.name = vec_sdfg.name + "_vectorized"
-
-        eb = EliminateBranches()
-        eb.try_clean = True
-        eb.apply_pass(vec_sdfg, {})
-        OffsetLoopsAndMaps(offset_expr="-1", begin_expr=None).apply_pass(sdfg, {})
-        ConstantPropagation().apply_pass(sdfg, {})
-
-        VectorizeCPU(vector_width=8, try_to_demote_symbols_in_nsdfgs=True,
-                    fuse_overlapping_loads=False, insert_copies=True,
-                    eliminate_trivial_vector_map=True).apply_pass(vec_sdfg, {})
-
-        vec_compiled = vec_sdfg.compile()
-        # Run DaCe version
-        vec_compiled(**data_F_dace_vec)
-
-        compare_row_col_dicts(data_F_dace_vec, data_F, rtol=1e-12, atol=1e-12)
+                for rep in range(10):
+                    vec_compiled(**data_F_dace_vec)
+                    report = vec_sdfg.get_latest_report()
+                    dace_vec_time = report.events[0].duration
+                    print(f"  Run {rep+1}/10: {dace_vec_time} us")
+                    write_runtime(
+                        f"autoconversion_snow{env_suffix_str}",
+                        "dace_vec",
+                        dace_vec_time,
+                        vlen=vlen,
+                        cpy=cpy,
+                    )
 
 
 if __name__ == "__main__":

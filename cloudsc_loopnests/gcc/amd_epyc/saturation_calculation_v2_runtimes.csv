@@ -1,0 +1,9 @@
+name,variant,runtime_us,vlen,cpy
+saturation_calculation_v2,dace,1050735.0,None,None
+saturation_calculation_v2,fortran,468114.766,None,None
+saturation_calculation_v2,dace,1045694.0,None,None
+saturation_calculation_v2,fortran,472100.444,None,None
+saturation_calculation_v2,dace,1042550.0,None,None
+saturation_calculation_v2,fortran,467078.502,None,None
+saturation_calculation_v2,dace,1050229.0,None,None
+saturation_calculation_v2,fortran,473054.632,None,None

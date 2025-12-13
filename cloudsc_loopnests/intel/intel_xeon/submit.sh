@@ -1,8 +1,8 @@
 #!/bin/bash
 #SBATCH --job-name=TXN_intel_xeon_  # Job name
 #SBATCH --nodes=1                     # Number of nodes
-#SBATCH --partition=intel               # Partition/queue
-#SBATCH --time=02:30:00               # Walltime (hh:mm:ss)
+#SBATCH --partition=intelv100              # Partition/queue
+#SBATCH --time=04:00:00               # Walltime (hh:mm:ss)
 #SBATCH --output=%x_%j.out            # Standard output (%x=job name, %j=job ID)
 #SBATCH --error=%x_%j.err             # Standard error
 #SBATCH --chdir=.
@@ -41,13 +41,36 @@ for RUNMULTI in 0 1; do
 
         echo "Running with EXTRA_FLAGS='$EXTRA_FLAGS', SUFFIX='$SUFFIX'"
 
+
+        export __DACE_KLEV=8
+        export __DACE_KLON=$((8192*512))
+        echo "Running with __DACE_KLON=$__DACE_KLON"
+
         # Copy benchmark script
-        cp ../../benchmark_TEMPLATE.py .
+        cp ../../run_autoconversion_snow.py .
+        cp ../../run_ice_supersaturation.py .
+        cp ../../run_lu_solver.py .
+        cp ../../run_rain_evaporation.py .
+        cp ../../run_saturation_calculation.py .
+        cp ../../*.sdfg .
+        cp ../../*.f90 .
 
         # Run benchmark
-        python3 benchmark_TEMPLATE.py
+        python run_saturation_calculation.py
+        python run_autoconversion_snow.py
+        python run_ice_supersaturation.py
+        python run_lu_solver.py
+        python run_rain_evaporation.py
 
         # Remove script
-        rm benchmark_TEMPLATE.py
+        rm run_autoconversion_snow.py
+        rm run_ice_supersaturation.py
+        rm run_lu_solver.py
+        rm run_rain_evaporation.py
+        rm run_saturation_calculation.py
+        rm *.so
+        rm *.sdfg
+        rm *.f90
+        done
     done
 done

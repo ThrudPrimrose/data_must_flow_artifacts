@@ -1,0 +1,9 @@
+name,variant,runtime_us,vlen,cpy
+saturation_calculation_libmvec_v2,dace,277952.0,None,None
+saturation_calculation_libmvec_v2,fortran,1179687.9149999998,None,None
+saturation_calculation_libmvec_v2,dace,279163.0,None,None
+saturation_calculation_libmvec_v2,fortran,1178945.4740000002,None,None
+saturation_calculation_libmvec_v2,dace,275358.0,None,None
+saturation_calculation_libmvec_v2,fortran,1179231.457,None,None
+saturation_calculation_libmvec_v2,dace,274152.0,None,None
+saturation_calculation_libmvec_v2,fortran,1171879.402,None,None
