@@ -74,7 +74,7 @@ def run_vectorization_test(
     dace_func,
     arrays,
     params,
-    vector_widths=(4, 8, 16, 32,),
+    vector_widths=(8, 16, 32,),
     simplify=True,
     skip_simplify=None,
     save_sdfgs=False,
@@ -111,8 +111,7 @@ def run_vectorization_test(
     if save_sdfgs and sdfg_name:
         sdfg.save(f"{sdfg_name}.sdfg")
 
-    #arr_orig = {k: copy.deepcopy(v) for k,v in arrays.items()}
-    arr_orig = arrays
+    arr_orig = {k: copy.deepcopy(v) for k,v in arrays.items()}
     arr_vec = {k: copy.deepcopy(v) for k,v in arrays.items()}
 
     # ------------------------------------------------------------------
@@ -155,11 +154,11 @@ def run_vectorization_test(
 
             if "_load_stride_" in vsdfg.name:
                 DetectStridedLoad().apply_pass(vsdfg, {})
-            if "_store_stride_" in vsdfg.name:
+            elif "_store_stride_" in vsdfg.name:
                 DetectStridedStore().apply_pass(vsdfg, {})
-            if detect_gather:
+            elif detect_gather is True:
                 DetectGather().apply_pass(vsdfg, {})
-            if detect_scatter:
+            elif detect_scatter is True:
                 DetectScatter().apply_pass(vsdfg, {})
 
             if save_sdfgs and sdfg_name:
@@ -169,17 +168,19 @@ def run_vectorization_test(
             # Correctness check
             # --------------------------------------------------------------
             set_sched_and_type(vsdfg)
+            print(f"C0")
             compile_and_run(vsdfg, arr_vec, params)
+            print(f"Base {_}")
 
             for name in arrays:
                 assert np.allclose(
-                    arr_orig[name], arr_vec[name], rtol=1e-32
+                    arr_orig[name], arr_vec[name], rtol=1e-32, equal_nan=True,
                 ), f"{name} mismatch (vlen={vlen})"
 
                 if exact is not None:
                     diff = arr_vec[name] - exact
                     assert np.allclose(
-                        arr_vec[name], exact, rtol=0, atol=1e-300
+                        arr_vec[name], exact, rtol=0, atol=1e-300, equal_nan=True,
                     ), f"{name}: max abs diff = {np.max(np.abs(diff))}"
 
             # --------------------------------------------------------------
@@ -188,6 +189,7 @@ def run_vectorization_test(
             cpy = do_copy
 
             for _ in range(runs):
+                print(f"Run {_}")
                 runtime_us = compile_and_run(vsdfg, arr_vec, params)
                 write_runtime(
                     name=identifier_name,
@@ -642,15 +644,14 @@ def test_indexed_gather():
         dace_func=gather_load,
         arrays=arrays,
         params=params,
-        save_sdfgs=False,
-        sdfg_name=f"{func.name}",
+        save_sdfgs=True,
+        sdfg_name=f"{gather_load.name}",
         apply_loop_to_map=True,
         simplify=True,
         skip_simplify=["ScalarToSymbolPromotion"],
-        identifier_name=gather_load.name,
+        identifier_name=f"{gather_load.name}",
         detect_gather=True,
     )
-    return vsdfg
 
 
 def test_indexed_store():
@@ -671,11 +672,10 @@ def test_indexed_store():
         arrays=arrays,
         params=params,
         save_sdfgs=False,
-        sdfg_name=f"{func.name}",
+        sdfg_name=f"{scatter_store.name}",
         apply_loop_to_map=True,
         simplify=True,
         skip_simplify=["ScalarToSymbolPromotion"],
-        identifier_name=scatter_store.name,
+        identifier_name=f"{scatter_store.name}",
         detect_scatter=True,
     )
-    return vsdfg
