@@ -4,11 +4,14 @@ import ctypes
 import os
 import csv
 from datetime import datetime
+from math import log, exp
+import dace
+from dace.transformation.passes.vectorization.tasklet_preprocessing_passes import ReplaceSTDExpWithDaCeExp, ReplaceSTDLogWithDaCeLog
 
 # ------------------------------------------------------------
 # Configuration
 # ------------------------------------------------------------
-N = 1 << 22
+N = 1 << 12
 NUM_RUNS = 10
 NP_SEED = 42
 
@@ -142,6 +145,17 @@ def run_function(func_name, cfg):
         baseline_runtime = baseline_fn(in_array, baseline_out, len(in_array))
         baseline_output = baseline_out.copy()
 
+        @dace.program
+        def log_implementations(A: dace.float64[N], B: dace.float64[N]):
+            for i in dace.map[0:N]:
+                B[i] = log(A[i])
+
+        @dace.program
+        def exp_implementations(A: dace.float64[N], B: dace.float64[N]):
+            for i in dace.map[0:N]:
+                B[i] = exp(A[i])
+
+        
         print(f"Baseline: {baseline_name} → {baseline_runtime:.3f} ms")
 
         # ----------------------------------------------------
@@ -171,7 +185,47 @@ def run_function(func_name, cfg):
                     "runtime_ms": runtime,
                     "speedup_vs_baseline": speedup,
                 }
+                row.update(errors)
 
+                writer.writerow(row)
+
+        # Baseline SDFG
+        if func_name == "log":
+            log_implementaitons_std_sdfg = log_implementations.to_sdfg()
+            ReplaceSTDLogWithDaCeLog().apply_pass(log_implementaitons_std_sdfg, {})
+            log_implementaitons_std_sdfg.instrument = dace.dtypes.InstrumentationType.Timer
+            for run in range(1, NUM_RUNS + 1):
+                log_implementaitons_std_sdfg(in_array, out, len(in_array))
+                runtime = log_implementaitons_std_sdfg.get_latest_report().events[0].duration
+                errors = compute_errors(baseline_output, out)
+                speedup = baseline_runtime / runtime
+
+                row = {
+                    "function": func_name,
+                    "run": run,
+                    "library": "Dace",
+                    "runtime_ms": runtime,
+                    "speedup_vs_baseline": speedup
+                }
+                row.update(errors)
+                writer.writerow(row)
+        else:
+            log_implementaitons_std_sdfg = exp_implementations.to_sdfg()
+            ReplaceSTDExpWithDaCeExp().apply_pass(log_implementaitons_std_sdfg, {})
+            log_implementaitons_std_sdfg.instrument = dace.dtypes.InstrumentationType.Timer
+            for run in range(1, NUM_RUNS + 1):
+                log_implementaitons_std_sdfg(in_array, out, len(in_array))
+                errors = compute_errors(baseline_output, out)
+                speedup = baseline_runtime / runtime
+
+                row = {
+                    "function": func_name,
+                    "run": run,
+                    "library": "Dace",
+                    "runtime_ms": runtime,
+                    "speedup_vs_baseline": speedup
+                }
+                row.update(errors)
                 writer.writerow(row)
 
     print(f"\n✓ Results written to {csv_name}")
