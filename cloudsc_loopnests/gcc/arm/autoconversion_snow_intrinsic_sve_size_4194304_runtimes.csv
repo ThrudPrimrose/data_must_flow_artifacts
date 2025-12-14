@@ -1,7 +1,0 @@
-name,variant,runtime_us,vlen,cpy
-autoconversion_snow_intrinsic_sve_size_4194304,dace,67644.0,None,None
-autoconversion_snow_intrinsic_sve_size_4194304,dace,67979.0,None,None
-autoconversion_snow_intrinsic_sve_size_4194304,dace,90053.0,None,None
-autoconversion_snow_intrinsic_sve_size_4194304,dace,67445.0,None,None
-autoconversion_snow_intrinsic_sve_size_4194304,dace,67195.0,None,None
-autoconversion_snow_intrinsic_sve_size_4194304,dace,68057.0,None,None

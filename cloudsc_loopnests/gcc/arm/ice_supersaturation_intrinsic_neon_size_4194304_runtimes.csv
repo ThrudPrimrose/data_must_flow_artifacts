@@ -1,7 +1,0 @@
-name,variant,runtime_us,vlen,cpy
-ice_supersaturation_intrinsic_neon_size_4194304,dace,22392.0,None,None
-ice_supersaturation_intrinsic_neon_size_4194304,dace,64317.0,None,None
-ice_supersaturation_intrinsic_neon_size_4194304,dace,88230.0,None,None
-ice_supersaturation_intrinsic_neon_size_4194304,dace,48215.0,None,None
-ice_supersaturation_intrinsic_neon_size_4194304,dace,81805.0,None,None
-ice_supersaturation_intrinsic_neon_size_4194304,dace,64547.0,None,None

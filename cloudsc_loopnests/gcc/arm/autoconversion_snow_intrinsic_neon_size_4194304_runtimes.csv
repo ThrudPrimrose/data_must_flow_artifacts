@@ -1,7 +1,0 @@
-name,variant,runtime_us,vlen,cpy
-autoconversion_snow_intrinsic_neon_size_4194304,dace,79077.0,None,None
-autoconversion_snow_intrinsic_neon_size_4194304,dace,67769.0,None,None
-autoconversion_snow_intrinsic_neon_size_4194304,dace,68433.0,None,None
-autoconversion_snow_intrinsic_neon_size_4194304,dace,67346.0,None,None
-autoconversion_snow_intrinsic_neon_size_4194304,dace,68129.0,None,None
-autoconversion_snow_intrinsic_neon_size_4194304,dace,81759.0,None,None

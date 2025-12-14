@@ -1,7 +1,0 @@
-name,variant,runtime_us,vlen,cpy
-lu_solver_microphysics_no_vectorize_size_4194304,dace,467184.0,None,None
-lu_solver_microphysics_no_vectorize_size_4194304,dace,466859.0,None,None
-lu_solver_microphysics_no_vectorize_size_4194304,dace,467900.0,None,None
-lu_solver_microphysics_no_vectorize_size_4194304,dace,459869.0,None,None
-lu_solver_microphysics_no_vectorize_size_4194304,dace,504663.0,None,None
-lu_solver_microphysics_no_vectorize_size_4194304,dace,464283.0,None,None

@@ -1,7 +1,0 @@
-name,variant,runtime_us,vlen,cpy
-autoconversion_snow_no_vectorize_size_4194304,dace,67806.0,None,None
-autoconversion_snow_no_vectorize_size_4194304,dace,67484.0,None,None
-autoconversion_snow_no_vectorize_size_4194304,dace,67543.0,None,None
-autoconversion_snow_no_vectorize_size_4194304,dace,67950.0,None,None
-autoconversion_snow_no_vectorize_size_4194304,dace,67947.0,None,None
-autoconversion_snow_no_vectorize_size_4194304,dace,79794.0,None,None

@@ -1,7 +1,0 @@
-name,variant,runtime_us,vlen,cpy
-ice_supersaturation_intrinsic_sve_size_4194304,dace,77234.0,None,None
-ice_supersaturation_intrinsic_sve_size_4194304,dace,64446.0,None,None
-ice_supersaturation_intrinsic_sve_size_4194304,dace,75954.0,None,None
-ice_supersaturation_intrinsic_sve_size_4194304,dace,62555.0,None,None
-ice_supersaturation_intrinsic_sve_size_4194304,dace,69327.0,None,None
-ice_supersaturation_intrinsic_sve_size_4194304,dace,49043.0,None,None

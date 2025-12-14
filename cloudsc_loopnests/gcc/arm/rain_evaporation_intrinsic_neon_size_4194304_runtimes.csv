@@ -1,7 +1,0 @@
-name,variant,runtime_us,vlen,cpy
-rain_evaporation_intrinsic_neon_size_4194304,dace,102212.0,None,None
-rain_evaporation_intrinsic_neon_size_4194304,dace,108475.0,None,None
-rain_evaporation_intrinsic_neon_size_4194304,dace,104877.0,None,None
-rain_evaporation_intrinsic_neon_size_4194304,dace,85928.0,None,None
-rain_evaporation_intrinsic_neon_size_4194304,dace,95785.0,None,None
-rain_evaporation_intrinsic_neon_size_4194304,dace,79669.0,None,None

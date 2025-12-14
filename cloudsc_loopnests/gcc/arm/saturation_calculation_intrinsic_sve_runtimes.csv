@@ -1,7 +1,0 @@
-name,variant,runtime_us,vlen,cpy
-saturation_calculation_intrinsic_sve,dace,541854.0,None,None
-saturation_calculation_intrinsic_sve,dace,535489.0,None,None
-saturation_calculation_intrinsic_sve,dace,558718.0,None,None
-saturation_calculation_intrinsic_sve,dace,523832.0,None,None
-saturation_calculation_intrinsic_sve,dace,550590.0,None,None
-saturation_calculation_intrinsic_sve,dace,530312.0,None,None
