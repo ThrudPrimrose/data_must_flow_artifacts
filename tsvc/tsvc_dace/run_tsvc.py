@@ -26,8 +26,8 @@ LEN_1D = dace.symbol("LEN_1D")
 LEN_2D = dace.symbol("LEN_2D")
 G_LEN_1D_VAL = 4096 * 4096 * 4
 G_LEN_2D_VAL = 2048
-G_LEN_1D_VAL = 32
-G_LEN_2D_VAL = 32
+#G_LEN_1D_VAL = 32
+#G_LEN_2D_VAL = 32
 ITERATIONS = dace.symbol("ITERATIONS")
 S = dace.symbol('S')
 VLEN = 8
@@ -178,6 +178,12 @@ def compare_kernel(dace_func, arrays, params):
         cpp_func(*args_cpp)
         log_runtime(int(time_ns[0]), cpp_name)
 
+    dace_sdfg.intrument = dace.dtypes.InstrumentationType.Timer
+    # Do it 10 more times
+    for i in range(10):
+        cpp_func(*args_cpp)
+        log_runtime(int(time_ns[0]), "base_" + dace_sdfg.name.replace("run_tsvc_dace_", ""))
+
     return int(time_ns[0])
 
 
@@ -185,7 +191,7 @@ import os
 import fcntl
 
 
-def log_runtime(time_ns: int, name: str, filename: str = "runtimes_v3"):
+def log_runtime(time_ns: int, name: str, filename: str = "runtimes_v4"):
     header = "name,time_ns\n"
     line = f"{name},{time_ns}\n"
     filename += f"_{envsuffix}.csv"
@@ -224,6 +230,7 @@ def run_vectorization_test(dace_func: Union[dace.SDFG, callable],
                            apply_loop_to_map=False,
                            break_vectorize=False,
                            split_all_branches=False):
+    return
 
     # Create copies for comparison
     arrays_orig = {k: copy.deepcopy(v) for k, v in arrays.items()}
