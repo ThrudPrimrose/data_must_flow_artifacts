@@ -328,5 +328,34 @@ clang++ -O3 -ffast-math -march=native -mavx512f \
     log_benchmark_sleef.cpp -o lib/liblog_sleef_512.so \
     ${SLEEF_LIB}/libsleef.a -lm
 
+
+echo "Building icpx SVML 256..."
+icpx -O3 -ffast-math -march=native -mavx2 \
+     -qopenmp-simd \
+     -fPIC -shared \
+     exp_benchmark.cpp -o lib/libexp_icpx_svml_256.so \
+     -lsvml -lm
+
+echo "Building icpx SVML 512..."
+icpx -O3 -ffast-math -march=native -mavx512f \
+     -qopenmp-simd \
+     -fPIC -shared \
+     exp_benchmark.cpp -o lib/libexp_icpx_svml_512.so \
+     -lsvml -lm
+
+echo "Building icpx SVML 256..."
+icpx -O3 -ffast-math -march=native -mavx2 \
+     -qopenmp-simd \
+     -fPIC -shared \
+     log_benchmark.cpp -o lib/liblog_icpx_svml_256.so \
+     -lsvml -lm
+
+echo "Building icpx SVML 512..."
+icpx -O3 -ffast-math -march=native -mavx512f \
+     -qopenmp-simd \
+     -fPIC -shared \
+     log_benchmark.cpp -o lib/liblog_icpx_svml_512.so \
+     -lsvml -lm
+
 echo "Build complete! Libraries are in ./lib/"
 ls -lh lib/

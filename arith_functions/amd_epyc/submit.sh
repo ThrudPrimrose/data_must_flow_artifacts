@@ -2,7 +2,7 @@
 #SBATCH --job-name=arith_aepyc  # Job name
 #SBATCH --nodes=1                     # Number of nodes
 #SBATCH --partition=amd               # Partition/queue
-#SBATCH --time=01:30:00               # Walltime (hh:mm:ss)
+#SBATCH --time=00:30:00               # Walltime (hh:mm:ss)
 #SBATCH --output=%x_%j.out            # Standard output (%x=job name, %j=job ID)
 #SBATCH --error=%x_%j.err             # Standard error
 #SBATCH --chdir=.
@@ -10,8 +10,10 @@
 #SBATCH --cpus-per-task=72
 
 spack load cmake
+spack load sleef
 spack load gcc@14.2
 spack load mpfr mpc
+spack load intel-oneapi-compilers
 
 # 1. Make scripts executable
 export CPU="amd_epyc"

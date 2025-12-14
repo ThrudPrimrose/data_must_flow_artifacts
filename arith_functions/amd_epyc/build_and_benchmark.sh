@@ -19,314 +19,141 @@ export SVML_INCLUDE=${INTEL_INSTALL_DIR}/include
 export SVML_LIB=${INTEL_INSTALL_DIR}/lib
 export LD_LIBRARY_PATH=${SVML_LIB}:${LD_LIBRARY_PATH}
 
-mkdir -p lib
-
-# Build baseline: g++ LIBMVEC (256-bit)
-echo "Building g++ LIBMVEC 256..."
-g++ -O3 -ffast-math -march=native -mavx2 \
-    -ftree-vectorize -ftree-slp-vectorize \
-    -mprefer-vector-width=256 \
-    -fPIC -shared \
-    exp_benchmark.cpp -o lib/libexp_g++_libmvec_256.so \
-    -lmvec -lm
-
-# Build g++ LIBMVEC (512-bit)
-echo "Building g++ LIBMVEC 512..."
-g++ -O3 -ffast-math -march=native -mavx512f \
-    -ftree-vectorize -ftree-slp-vectorize \
-    -mprefer-vector-width=512 \
-    -fPIC -shared \
-    exp_benchmark.cpp -o lib/libexp_g++_libmvec_512.so \
-    -lmvec -lm
-
-# Build g++ AMD AOCL (256-bit)
-echo "Building g++ AMD AOCL 256..."
-g++ -O3 -ffast-math -march=native -mavx2 \
-    -ftree-vectorize -ftree-slp-vectorize \
-    -mprefer-vector-width=256 \
-    -fPIC -shared \
-    -I${SCRATCH}/aocl-libm-ose/install/include \
-    exp_benchmark.cpp -o lib/libexp_g++_aocl_256.so \
-    -L${SCRATCH}/aocl-libm-ose/install/lib -lalm -lm
-
-# Build g++ AMD AOCL (512-bit)
-echo "Building g++ AMD AOCL 512..."
-g++ -O3 -ffast-math -march=native -mavx512f \
-    -ftree-vectorize -ftree-slp-vectorize \
-    -mprefer-vector-width=512 \
-    -fPIC -shared \
-    -I${SCRATCH}/aocl-libm-ose/install/include \
-    exp_benchmark.cpp -o lib/libexp_g++_aocl_512.so \
-    -L${SCRATCH}/aocl-libm-ose/install/lib -lalm -lm
-
-# Build clang++ LIBMVEC (256-bit)
-echo "Building clang++ LIBMVEC 256..."
-clang++ -O3 -ffast-math -march=native -mavx2 \
-    -fno-math-errno -fveclib=libmvec \
-    -mprefer-vector-width=256 \
-    -fPIC -shared \
-    exp_benchmark.cpp -o lib/libexp_clang++_libmvec_256.so \
-    -lmvec -lm
-
-# Build clang++ LIBMVEC (512-bit)
-echo "Building clang++ LIBMVEC 512..."
-clang++ -O3 -ffast-math -march=native -mavx512f \
-    -fno-math-errno -fveclib=libmvec \
-    -mprefer-vector-width=512 \
-    -fPIC -shared \
-    exp_benchmark.cpp -o lib/libexp_clang++_libmvec_512.so \
-    -lmvec -lm
-
-# Build clang++ AMD AOCL (256-bit)
-echo "Building clang++ AMD AOCL 256..."
-clang++ -O3 -ffast-math -march=native -mavx2 \
-    -fno-math-errno -fveclib=AMDLIBM \
-    -mprefer-vector-width=256 \
-    -fPIC -shared \
-    -I${SCRATCH}/aocl-libm-ose/install/include \
-    exp_benchmark.cpp -o lib/libexp_clang++_aocl_256.so \
-    -L${SCRATCH}/aocl-libm-ose/install/lib -lalm -lm
-
-# Build clang++ AMD AOCL (512-bit)
-echo "Building clang++ AMD AOCL 512..."
-clang++ -O3 -ffast-math -march=native -mavx512f \
-    -fno-math-errno -fveclib=AMDLIBM \
-    -mprefer-vector-width=512 \
-    -fPIC -shared \
-    -I${SCRATCH}/aocl-libm-ose/install/include \
-    exp_benchmark.cpp -o lib/libexp_clang++_aocl_512.so \
-    -L${SCRATCH}/aocl-libm-ose/install/lib -lalm -lm
-
-# Build clang++ SVML (256-bit)
-echo "Building clang++ SVML 256..."
-clang++ -O3 -ffast-math -march=native -mavx2 \
-    -fno-math-errno -fveclib=SVML \
-    -mprefer-vector-width=256 \
-    -fPIC -shared \
-    -I${SVML_INCLUDE} \
-    exp_benchmark.cpp -o lib/libexp_clang++_svml_256.so \
-    -L${SVML_LIB} -lsvml -lm
-
-# Build clang++ SVML (512-bit)
-echo "Building clang++ SVML 512..."
-clang++ -O3 -ffast-math -march=native -mavx512f \
-    -fno-math-errno -fveclib=SVML \
-    -mprefer-vector-width=512 \
-    -fPIC -shared \
-    -I${SVML_INCLUDE} \
-    exp_benchmark.cpp -o lib/libexp_clang++_svml_512.so \
-    -L${SVML_LIB} -lsvml -lm
-
-# Build clang++ SLEEF AUTO (256-bit)
-echo "Building clang++ SLEEF AUTO 256..."
-clang++ -O3 -ffast-math -march=native -mavx2 \
-    -fno-math-errno -fveclib=SLEEF \
-    -mprefer-vector-width=256 \
-    -fPIC -shared \
-    -I${SLEEF_INCLUDE} \
-    exp_benchmark.cpp -o lib/libexp_clang++_sleef_auto_256.so \
-    -L${SLEEF_LIB} -lsleef -lm
-
-# Build clang++ SLEEF AUTO (512-bit)
-echo "Building clang++ SLEEF AUTO 512..."
-clang++ -O3 -ffast-math -march=native -mavx512f \
-    -fno-math-errno -fveclib=SLEEF \
-    -mprefer-vector-width=512 \
-    -fPIC -shared \
-    -I${SLEEF_INCLUDE} \
-    exp_benchmark.cpp -o lib/libexp_clang++_sleef_auto_512.so \
-    -L${SLEEF_LIB} -lsleef -lm
-
-# Build SLEEF Manual - Scalar
-echo "Building SLEEF Manual Scalar..."
-clang++ -O3 -ffast-math -march=native \
-    -DVECTOR_WIDTH=0 \
-    -fPIC -shared \
-    -I${SLEEF_INCLUDE} \
-    exp_benchmark_sleef.cpp -o lib/libexp_sleef_scalar.so \
-    ${SLEEF_LIB}/libsleef.a -lm
-
-# Build SLEEF Manual - 256-bit (AVX2)
-echo "Building SLEEF Manual 256..."
-clang++ -O3 -ffast-math -march=native -mavx2 \
-    -DVECTOR_WIDTH=256 \
-    -fPIC -shared \
-    -I${SLEEF_INCLUDE} \
-    exp_benchmark_sleef.cpp -o lib/libexp_sleef_256.so \
-    ${SLEEF_LIB}/libsleef.a -lm
-
-# Build SLEEF Manual - 512-bit (AVX512)
-echo "Building SLEEF Manual 512..."
-clang++ -O3 -ffast-math -march=native -mavx512f \
-    -DVECTOR_WIDTH=512 \
-    -fPIC -shared \
-    -I${SLEEF_INCLUDE} \
-    exp_benchmark_sleef.cpp -o lib/libexp_sleef_512.so \
-    ${SLEEF_LIB}/libsleef.a -lm
-
-# Set environment variables
-export AOCL_UTILS=$SCRATCH
-export C_INCLUDE_PATH=${AOCL_UTILS}/include:${C_INCLUDE_PATH}
-export CPLUS_INCLUDE_PATH=${AOCL_UTILS}/include:${CPLUS_INCLUDE_PATH}
-export LD_LIBRARY_PATH=${AOCL_UTILS}/lib64:${LD_LIBRARY_PATH}
-export AOCL_LIBM=$SCRATCH
-export LD_LIBRARY_PATH=$AOCL_LIBM/lib64:$LD_LIBRARY_PATH
-
-export SLEEF_DIR=$(spack location -i sleef)
-export SLEEF_INCLUDE=${SLEEF_DIR}/include
-export SLEEF_LIB=${SLEEF_DIR}/lib64
-export LD_LIBRARY_PATH=${SLEEF_LIB}:${LD_LIBRARY_PATH}
-
-export INTEL_DIR=$(spack location -i intel-oneapi-compilers)
-export INTEL_INSTALL_DIR=${INTEL_DIR}/compiler/latest
-export SVML_INCLUDE=${INTEL_INSTALL_DIR}/include
-export SVML_LIB=${INTEL_INSTALL_DIR}/lib
-export LD_LIBRARY_PATH=${SVML_LIB}:${LD_LIBRARY_PATH}
 
 mkdir -p lib
 
-# Build baseline: g++ LIBMVEC (256-bit)
-echo "Building g++ LIBMVEC 256..."
-g++ -O3 -ffast-math -march=native -mavx2 \
-    -ftree-vectorize -ftree-slp-vectorize \
-    -mprefer-vector-width=256 \
-    -fPIC -shared \
-    log_benchmark.cpp -o lib/liblog_g++_libmvec_256.so \
-    -lmvec -lm
+FUNCS=(exp log)
+WIDTHS=(256 512)
 
-# Build g++ LIBMVEC (512-bit)
-echo "Building g++ LIBMVEC 512..."
-g++ -O3 -ffast-math -march=native -mavx512f \
-    -ftree-vectorize -ftree-slp-vectorize \
-    -mprefer-vector-width=512 \
-    -fPIC -shared \
-    log_benchmark.cpp -o lib/liblog_g++_libmvec_512.so \
-    -lmvec -lm
+AOCL_INC="${SCRATCH}/aocl-libm-ose/install/include"
+AOCL_LIB="${SCRATCH}/aocl-libm-ose/install/lib"
 
-# Build g++ AMD AOCL (256-bit)
-echo "Building g++ AMD AOCL 256..."
-g++ -O3 -ffast-math -march=native -mavx2 \
-    -ftree-vectorize -ftree-slp-vectorize \
-    -mprefer-vector-width=256 \
-    -fPIC -shared \
-    -I${SCRATCH}/aocl-libm-ose/install/include \
-    log_benchmark.cpp -o lib/liblog_g++_aocl_256.so \
-    -L${SCRATCH}/aocl-libm-ose/install/lib -lalm -lm
+COMMON_GCC_FLAGS="-O3 -ffast-math -march=native -fPIC -shared \
+                  -ftree-vectorize -ftree-slp-vectorize"
 
-# Build g++ AMD AOCL (512-bit)
-echo "Building g++ AMD AOCL 512..."
-g++ -O3 -ffast-math -march=native -mavx512f \
-    -ftree-vectorize -ftree-slp-vectorize \
-    -mprefer-vector-width=512 \
-    -fPIC -shared \
-    -I${SCRATCH}/aocl-libm-ose/install/include \
-    log_benchmark.cpp -o lib/liblog_g++_aocl_512.so \
-    -L${SCRATCH}/aocl-libm-ose/install/lib -lalm -lm
+COMMON_CLANG_FLAGS="-O3 -ffast-math -march=native -fPIC -shared -fno-math-errno"
 
-# Build clang++ LIBMVEC (256-bit)
-echo "Building clang++ LIBMVEC 256..."
-clang++ -O3 -ffast-math -march=native -mavx2 \
-    -fno-math-errno -fveclib=libmvec \
-    -mprefer-vector-width=256 \
-    -fPIC -shared \
-    log_benchmark.cpp -o lib/liblog_clang++_libmvec_256.so \
-    -lmvec -lm
+COMMON_ICPX_FLAGS="-O3 -ffast-math -march=native -fPIC -shared -qopenmp-simd"
 
-# Build clang++ LIBMVEC (512-bit)
-echo "Building clang++ LIBMVEC 512..."
-clang++ -O3 -ffast-math -march=native -mavx512f \
-    -fno-math-errno -fveclib=libmvec \
-    -mprefer-vector-width=512 \
-    -fPIC -shared \
-    log_benchmark.cpp -o lib/liblog_clang++_libmvec_512.so \
-    -lmvec -lm
+mkdir -p lib
 
-# Build clang++ AMD AOCL (256-bit)
-echo "Building clang++ AMD AOCL 256..."
-clang++ -O3 -ffast-math -march=native -mavx2 \
-    -fno-math-errno -fveclib=AMDLIBM \
-    -mprefer-vector-width=256 \
-    -fPIC -shared \
-    -I${SCRATCH}/aocl-libm-ose/install/include \
-    log_benchmark.cpp -o lib/liblog_clang++_aocl_256.so \
-    -L${SCRATCH}/aocl-libm-ose/install/lib -lalm -lm
+# clang++ (LIBMVEC / AOCL / SVML / SLEEF AUTO)
+for func in "${FUNCS[@]}"; do
+  for width in "${WIDTHS[@]}"; do
+    export VECTOR_WIDTH=${width}
 
-# Build clang++ AMD AOCL (512-bit)
-echo "Building clang++ AMD AOCL 512..."
-clang++ -O3 -ffast-math -march=native -mavx512f \
-    -fno-math-errno -fveclib=AMDLIBM \
-    -mprefer-vector-width=512 \
-    -fPIC -shared \
-    -I${SCRATCH}/aocl-libm-ose/install/include \
-    log_benchmark.cpp -o lib/liblog_clang++_aocl_512.so \
-    -L${SCRATCH}/aocl-libm-ose/install/lib -lalm -lm
+    echo "Building clang++ LIBMVEC ${width} (${func})"
+    clang++ $COMMON_CLANG_FLAGS \
+        -mprefer-vector-width=${width} \
+        -fveclib=libmvec \
+        ${func}_benchmark.cpp \
+        -o lib/lib${func}_clang++_libmvec_${width}.so \
+        -lmvec -lm
 
-# Build clang++ SVML (256-bit)
-echo "Building clang++ SVML 256..."
-clang++ -O3 -ffast-math -march=native -mavx2 \
-    -fno-math-errno -fveclib=SVML \
-    -mprefer-vector-width=256 \
-    -fPIC -shared \
-    -I${SVML_INCLUDE} \
-    log_benchmark.cpp -o lib/liblog_clang++_svml_256.so \
-    -L${SVML_LIB} -lsvml -lm
+    echo "Building clang++ AOCL ${width} (${func})"
+    clang++ $COMMON_CLANG_FLAGS \
+        -mprefer-vector-width=${width} \
+        -fveclib=AMDLIBM -I${AOCL_INC} \
+        ${func}_benchmark.cpp \
+        -o lib/lib${func}_clang++_aocl_${width}.so \
+        -L${AOCL_LIB} -lalm -lm
 
-# Build clang++ SVML (512-bit)
-echo "Building clang++ SVML 512..."
-clang++ -O3 -ffast-math -march=native -mavx512f \
-    -fno-math-errno -fveclib=SVML \
-    -mprefer-vector-width=512 \
-    -fPIC -shared \
-    -I${SVML_INCLUDE} \
-    log_benchmark.cpp -o lib/liblog_clang++_svml_512.so \
-    -L${SVML_LIB} -lsvml -lm
+    echo "Building clang++ SVML ${width} (${func})"
+    clang++ $COMMON_CLANG_FLAGS \
+        -mprefer-vector-width=${width} \
+        -fveclib=SVML -I${SVML_INCLUDE} \
+        ${func}_benchmark.cpp \
+        -o lib/lib${func}_clang++_svml_${width}.so \
+        -L${SVML_LIB} -lsvml -lm
 
-# Build clang++ SLEEF AUTO (256-bit)
-echo "Building clang++ SLEEF AUTO 256..."
-clang++ -O3 -ffast-math -march=native -mavx2 \
-    -fno-math-errno -fveclib=SLEEF \
-    -mprefer-vector-width=256 \
-    -fPIC -shared \
-    -I${SLEEF_INCLUDE} \
-    log_benchmark.cpp -o lib/liblog_clang++_sleef_auto_256.so \
-    -L${SLEEF_LIB} -lsleef -lm
+    echo "Building clang++ SLEEF AUTO ${width} (${func})"
+    clang++ $COMMON_CLANG_FLAGS \
+        -mprefer-vector-width=${width} \
+        -fveclib=SLEEF -I${SLEEF_INCLUDE} \
+        ${func}_benchmark.cpp \
+        -o lib/lib${func}_clang++_sleef_auto_${width}.so \
+        -L${SLEEF_LIB} -lsleef -lm
 
-# Build clang++ SLEEF AUTO (512-bit)
-echo "Building clang++ SLEEF AUTO 512..."
-clang++ -O3 -ffast-math -march=native -mavx512f \
-    -fno-math-errno -fveclib=SLEEF \
-    -mprefer-vector-width=512 \
-    -fPIC -shared \
-    -I${SLEEF_INCLUDE} \
-    log_benchmark.cpp -o lib/liblog_clang++_sleef_auto_512.so \
-    -L${SLEEF_LIB} -lsleef -lm
+  done
+done
 
-# Build SLEEF Manual - Scalar
-echo "Building SLEEF Manual Scalar..."
-clang++ -O3 -ffast-math -march=native \
-    -DVECTOR_WIDTH=0 \
-    -fPIC -shared \
-    -I${SLEEF_INCLUDE} \
-    log_benchmark_sleef.cpp -o lib/liblog_sleef_scalar.so \
-    ${SLEEF_LIB}/libsleef.a -lm
+# G++ LIBMVEC / AOCL / SVML
+for func in "${FUNCS[@]}"; do
+  for width in "${WIDTHS[@]}"; do
+    export VECTOR_WIDTH=${width}
 
-# Build SLEEF Manual - 256-bit (AVX2)
-echo "Building SLEEF Manual 256..."
-clang++ -O3 -ffast-math -march=native -mavx2 \
-    -DVECTOR_WIDTH=256 \
-    -fPIC -shared \
-    -I${SLEEF_INCLUDE} \
-    log_benchmark_sleef.cpp -o lib/liblog_sleef_256.so \
-    ${SLEEF_LIB}/libsleef.a -lm
+    echo "Building g++ LIBMVEC ${width} (${func})"
+    g++ $COMMON_GCC_FLAGS \
+        -mprefer-vector-width=${width} \
+        ${func}_benchmark.cpp \
+        -o lib/lib${func}_g++_libmvec_${width}.so \
+        -lmvec -lm
 
-# Build SLEEF Manual - 512-bit (AVX512)
-echo "Building SLEEF Manual 512..."
-clang++ -O3 -ffast-math -march=native -mavx512f \
-    -DVECTOR_WIDTH=512 \
-    -fPIC -shared \
-    -I${SLEEF_INCLUDE} \
-    log_benchmark_sleef.cpp -o lib/liblog_sleef_512.so \
-    ${SLEEF_LIB}/libsleef.a -lm
+    echo "Building g++ AOCL ${width} (${func})"
+    g++ $COMMON_GCC_FLAGS \
+        -mprefer-vector-width=${width} \
+        -I${AOCL_INC} \
+        ${func}_benchmark.cpp \
+        -o lib/lib${func}_g++_aocl_${width}.so \
+        -L${AOCL_LIB} -lalm -lm
 
-echo "Build complete! Libraries are in ./lib/"
-ls -lh lib/
+    g++ $COMMON_GCC_FLAGS \
+        -mprefer-vector-width=${width} \
+        --I${SVML_INCLUDE} \
+        ${func}_benchmark.cpp \
+        -o lib/lib${func}_g++_svml_${width}.so \
+        -L${SVML_LIB} -lsvml -lm
+  done
+done
+
+SLEEF_COMPILERS=("clang++" "g++" "icpx")
+for func in "${FUNCS[@]}"; do
+  for comp in "${SLEEF_COMPILERS[@]}"; do
+    for width in "${WIDTHS[@]}"; do
+        export VECTOR_WIDTH=${width}
+
+        echo "Building SLEEF Manual Scalar (${func}, ${comp})"
+        ${comp} -O3 -ffast-math -march=native -fPIC -shared \
+            -DVECTOR_WIDTH=0 \
+            -I${SLEEF_INCLUDE} \
+            -L${SLEEF_LIB} \
+            ${func}_benchmark_sleef.cpp \
+            -o lib/lib${func}_${comp}_sleef_scalar.so \
+            ${SLEEF_LIB}/libsleef.a -lm
+
+        for width in 256 512; do
+        echo "Building SLEEF Manual ${width} (${func}, ${comp})"
+        ${comp} -O3 -ffast-math -march=native -fPIC -shared \
+            -DVECTOR_WIDTH=${width} \
+            -I${SLEEF_INCLUDE} \
+            -L${SLEEF_LIB} \
+            ${func}_benchmark_sleef.cpp \
+            -o lib/lib${func}_${comp}_sleef_${width}.so \
+            ${SLEEF_LIB}/libsleef.a -lm
+        done
+    done
+  done
+done
+
+
+
+for func in "${FUNCS[@]}"; do
+  for width in "${WIDTHS[@]}"; do
+    export VECTOR_WIDTH=${width}
+
+    echo "Building icpx SVML ${width} (${func})"
+    icpx $COMMON_ICPX_FLAGS \
+        -mprefer-vector-width=${width} \
+        ${func}_benchmark.cpp \
+        -o lib/lib${func}_icpx_svml_${width}.so \
+        -lsvml -lm
+
+    echo "Building icpx LIBMVEC ${width} (${func})"
+    icpx $COMMON_ICPX_FLAGS \
+        -mprefer-vector-width=${width} \
+        -fveclib=libmvec \
+        ${func}_benchmark.cpp \
+        -o lib/lib${func}_icpx_libmvec_${width}.so \
+        -lmvec -lm
+  done
+done

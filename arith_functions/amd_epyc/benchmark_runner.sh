@@ -1,6 +1,4 @@
 # 1. Make scripts executable
-export CPU="amd_epyc"
-
 chmod +x build_and_benchmark.sh
 
 # 2. Build all libraries

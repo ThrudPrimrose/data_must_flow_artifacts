@@ -38,26 +38,26 @@ FUNCTIONS = {
 # Libraries
 # ------------------------------------------------------------
 BASE_LIBRARIES = [
-    ("SLEEF Manual Scalar",     "lib/lib{func}_sleef_scalar.so"),
+    #("SLEEF Manual Scalar",     "lib/lib{func}_sleef_scalar.so"),
     ("SLEEF Manual 256",        "lib/lib{func}_sleef_256.so"),
-
-    ("g++ LIBMVEC 256",         "lib/lib{func}_g++_libmvec_256.so"),
-    ("g++ AMD AOCL 256",        "lib/lib{func}_g++_aocl_256.so"),
-
-    ("clang++ LIBMVEC 256",     "lib/lib{func}_clang++_libmvec_256.so"),
-    ("clang++ AMD AOCL 256",    "lib/lib{func}_clang++_aocl_256.so"),
-    ("clang++ SVML 256",        "lib/lib{func}_clang++_svml_256.so"),
-    ("clang++ SLEEF AUTO 256",  "lib/lib{func}_clang++_sleef_auto_256.so"),
+    #("g++ LIBMVEC 256",         "lib/lib{func}_g++_libmvec_256.so"),
+    #("g++ AMD AOCL 256",        "lib/lib{func}_g++_aocl_256.so"),
+    #("clang++ LIBMVEC 256",     "lib/lib{func}_clang++_libmvec_256.so"),
+    #("clang++ AMD AOCL 256",    "lib/lib{func}_clang++_aocl_256.so"),
+    #("clang++ SVML 256",        "lib/lib{func}_clang++_svml_256.so"),
+    #("clang++ SLEEF AUTO 256",  "lib/lib{func}_clang++_sleef_auto_256.so"),
+    # Intel icpx (SVML only)
+    ("icpx SVML 256",           "lib/lib{func}_icpx_svml_256.so"),
 ]
 
 AVX512_LIBRARIES = [
-    ("SLEEF Manual 512",        "lib/lib{func}_sleef_512.so"),
-    ("g++ LIBMVEC 512",         "lib/lib{func}_g++_libmvec_512.so"),
-    ("clang++ LIBMVEC 512",     "lib/lib{func}_clang++_libmvec_512.so"),
-    ("clang++ SVML 512",        "lib/lib{func}_clang++_svml_512.so"),
-    ("clang++ SLEEF AUTO 512",  "lib/lib{func}_clang++_sleef_auto_512.so"),
+    #("SLEEF Manual 512",        "lib/lib{func}_sleef_512.so"),
+    #("g++ LIBMVEC 512",         "lib/lib{func}_g++_libmvec_512.so"),
+    #("clang++ LIBMVEC 512",     "lib/lib{func}_clang++_libmvec_512.so"),
+    #("clang++ SVML 512",        "lib/lib{func}_clang++_svml_512.so"),
+    #("clang++ SLEEF AUTO 512",  "lib/lib{func}_clang++_sleef_auto_512.so"),
+    ("icpx SVML 512",           "lib/lib{func}_icpx_svml_512.so"),
 ]
-
 LIBRARIES = BASE_LIBRARIES + AVX512_LIBRARIES if is_intel_xeon() else BASE_LIBRARIES
 
 # ------------------------------------------------------------
@@ -103,7 +103,7 @@ def run_function(func_name, cfg):
     in_array = cfg["input_gen"](N)
 
     #timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
-    csv_name = f"benchmark_{func_name}.csv"
+    csv_name = f"benchmark_icpx_{func_name}.csv"
 
     fieldnames = [
         "function",
@@ -130,6 +130,8 @@ def run_function(func_name, cfg):
         # Run baseline once
         # ----------------------------------------------------
         baseline_name = cfg["baseline"]
+        print(LIBRARIES)
+        print(baseline_name)
         baseline_tpl = next(p for n, p in LIBRARIES if n == baseline_name)
         baseline_path = baseline_tpl.format(func=func_name)
 

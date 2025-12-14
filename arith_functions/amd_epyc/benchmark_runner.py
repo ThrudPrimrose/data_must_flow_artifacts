@@ -4,6 +4,9 @@ import ctypes
 import os
 import csv
 from datetime import datetime
+from math import log, exp
+import dace
+from dace.transformation.passes.vectorization.tasklet_preprocessing_passes import ReplaceSTDExpWithDaCeExp, ReplaceSTDLogWithDaCeLog
 
 # ------------------------------------------------------------
 # Configuration
@@ -18,6 +21,14 @@ NP_SEED = 42
 def is_intel_xeon():
     return os.environ.get("CPU", "").lower() == "intel_xeon"
 
+def set_storage_sched(sdfg:dace.SDFG):
+    for s in sdfg.all_states():
+        for n in s.nodes():
+            if isinstance(n, dace.nodes.MapEntry):
+                n.map.schedule = dace.dtypes.ScheduleType.Sequential
+            if isinstance(n, dace.nodes.NestedSDFG):
+                set_storage_sched(n.sdfg)
+
 # ------------------------------------------------------------
 # Functions to benchmark
 # ------------------------------------------------------------
@@ -25,12 +36,12 @@ FUNCTIONS = {
     "log": {
         "symbol": "compute_log",
         "input_gen": lambda n: 0.001 + np.random.rand(n) * 100.0,
-        "baseline": "SLEEF Manual 256",
+        "baseline": "g++ SLEEF Manual 256",
     },
     "exp": {
         "symbol": "compute_exp",
         "input_gen": lambda n: np.random.rand(n) * 10.0,
-        "baseline": "SLEEF Manual 256",
+        "baseline": "g++ SLEEF Manual 256",
     },
 }
 
@@ -38,25 +49,81 @@ FUNCTIONS = {
 # Libraries
 # ------------------------------------------------------------
 BASE_LIBRARIES = [
-    ("SLEEF Manual Scalar",     "lib/lib{func}_sleef_scalar.so"),
-    ("SLEEF Manual 256",        "lib/lib{func}_sleef_256.so"),
+    # -------------------------
+    # SLEEF manual (scalar)
+    # -------------------------
+    ("g++ SLEEF Manual Scalar",     "lib/lib{func}_g++_sleef_scalar.so"),
+    ("clang++ SLEEF Manual Scalar", "lib/lib{func}_clang++_sleef_scalar.so"),
+    ("icpx SLEEF Manual Scalar",    "lib/lib{func}_icpx_sleef_scalar.so"),
 
-    ("g++ LIBMVEC 256",         "lib/lib{func}_g++_libmvec_256.so"),
-    ("g++ AMD AOCL 256",        "lib/lib{func}_g++_aocl_256.so"),
+    # -------------------------
+    # SLEEF manual (256)
+    # -------------------------
+    ("g++ SLEEF Manual 256",        "lib/lib{func}_g++_sleef_256.so"),
+    ("clang++ SLEEF Manual 256",    "lib/lib{func}_clang++_sleef_256.so"),
+    ("icpx SLEEF Manual 256",       "lib/lib{func}_icpx_sleef_256.so"),
 
-    ("clang++ LIBMVEC 256",     "lib/lib{func}_clang++_libmvec_256.so"),
-    ("clang++ AMD AOCL 256",    "lib/lib{func}_clang++_aocl_256.so"),
-    ("clang++ SVML 256",        "lib/lib{func}_clang++_svml_256.so"),
-    ("clang++ SLEEF AUTO 256",  "lib/lib{func}_clang++_sleef_auto_256.so"),
+    # -------------------------
+    # LIBMVEC (256)
+    # -------------------------
+    ("g++ LIBMVEC 256",             "lib/lib{func}_g++_libmvec_256.so"),
+    ("clang++ LIBMVEC 256",         "lib/lib{func}_clang++_libmvec_256.so"),
+    ("icpx LIBMVEC 256",            "lib/lib{func}_icpx_libmvec_256.so"),
+
+    # -------------------------
+    # AMD AOCL (256)
+    # -------------------------
+    ("g++ AMD AOCL 256",            "lib/lib{func}_g++_aocl_256.so"),
+    ("clang++ AMD AOCL 256",        "lib/lib{func}_clang++_aocl_256.so"),
+
+    # -------------------------
+    # SVML (256)
+    # -------------------------
+    ("g++ SVML 256",                "lib/lib{func}_g++_svml_256.so"),
+    ("clang++ SVML 256",            "lib/lib{func}_clang++_svml_256.so"),
+    ("icpx SVML 256",               "lib/lib{func}_icpx_svml_256.so"),
+
+    # -------------------------
+    # SLEEF auto (256)
+    # -------------------------
+    ("clang++ SLEEF AUTO 256",      "lib/lib{func}_clang++_sleef_auto_256.so"),
 ]
+
 
 AVX512_LIBRARIES = [
-    ("SLEEF Manual 512",        "lib/lib{func}_sleef_512.so"),
-    ("g++ LIBMVEC 512",         "lib/lib{func}_g++_libmvec_512.so"),
-    ("clang++ LIBMVEC 512",     "lib/lib{func}_clang++_libmvec_512.so"),
-    ("clang++ SVML 512",        "lib/lib{func}_clang++_svml_512.so"),
-    ("clang++ SLEEF AUTO 512",  "lib/lib{func}_clang++_sleef_auto_512.so"),
+    # -------------------------
+    # SLEEF manual (512)
+    # -------------------------
+    ("g++ SLEEF Manual 512",        "lib/lib{func}_g++_sleef_512.so"),
+    ("clang++ SLEEF Manual 512",    "lib/lib{func}_clang++_sleef_512.so"),
+    ("icpx SLEEF Manual 512",       "lib/lib{func}_icpx_sleef_512.so"),
+
+    # -------------------------
+    # LIBMVEC (512)
+    # -------------------------
+    ("g++ LIBMVEC 512",             "lib/lib{func}_g++_libmvec_512.so"),
+    ("clang++ LIBMVEC 512",         "lib/lib{func}_clang++_libmvec_512.so"),
+    ("icpx LIBMVEC 512",            "lib/lib{func}_icpx_libmvec_512.so"),
+
+    # -------------------------
+    # AMD AOCL (512)
+    # -------------------------
+    ("g++ AMD AOCL 512",            "lib/lib{func}_g++_aocl_512.so"),
+    ("clang++ AMD AOCL 512",        "lib/lib{func}_clang++_aocl_512.so"),
+
+    # -------------------------
+    # SVML (512)
+    # -------------------------
+    ("g++ SVML 512",                "lib/lib{func}_g++_svml_512.so"),
+    ("clang++ SVML 512",            "lib/lib{func}_clang++_svml_512.so"),
+    ("icpx SVML 512",               "lib/lib{func}_icpx_svml_512.so"),
+
+    # -------------------------
+    # SLEEF auto (512)
+    # -------------------------
+    ("clang++ SLEEF AUTO 512",      "lib/lib{func}_clang++_sleef_auto_512.so"),
 ]
+
 
 LIBRARIES = BASE_LIBRARIES + AVX512_LIBRARIES if is_intel_xeon() else BASE_LIBRARIES
 
@@ -142,6 +209,17 @@ def run_function(func_name, cfg):
         baseline_runtime = baseline_fn(in_array, baseline_out, len(in_array))
         baseline_output = baseline_out.copy()
 
+        @dace.program
+        def log_implementations(A: dace.float64[N], B: dace.float64[N]):
+            for i in dace.map[0:N]:
+                B[i] = log(A[i])
+
+        @dace.program
+        def exp_implementations(A: dace.float64[N], B: dace.float64[N]):
+            for i in dace.map[0:N]:
+                B[i] = exp(A[i])
+
+        
         print(f"Baseline: {baseline_name} → {baseline_runtime:.3f} ms")
 
         # ----------------------------------------------------
@@ -171,7 +249,52 @@ def run_function(func_name, cfg):
                     "runtime_ms": runtime,
                     "speedup_vs_baseline": speedup,
                 }
+                row.update(errors)
 
+                writer.writerow(row)
+
+        # Baseline SDFG
+        if func_name == "log":
+            log_implementaitons_std_sdfg = log_implementations.to_sdfg()
+            ReplaceSTDLogWithDaCeLog().apply_pass(log_implementaitons_std_sdfg, {})
+            set_storage_sched(log_implementaitons_std_sdfg)
+            log_implementaitons_std_sdfg.instrument = dace.dtypes.InstrumentationType.Timer
+            for run in range(1, NUM_RUNS + 1):
+                log_implementaitons_std_sdfg(in_array, out, len(in_array))
+                # get ms from us
+                runtime = log_implementaitons_std_sdfg.get_latest_report().events[0].duration * 1e-3
+                errors = compute_errors(baseline_output, out)
+                speedup = baseline_runtime / runtime
+
+                row = {
+                    "function": func_name,
+                    "run": run,
+                    "library": "Dace",
+                    "runtime_ms": runtime,
+                    "speedup_vs_baseline": speedup
+                }
+                row.update(errors)
+                writer.writerow(row)
+        else:
+            log_implementaitons_std_sdfg = exp_implementations.to_sdfg()
+            ReplaceSTDExpWithDaCeExp().apply_pass(log_implementaitons_std_sdfg, {})
+            set_storage_sched(log_implementaitons_std_sdfg)
+            log_implementaitons_std_sdfg.instrument = dace.dtypes.InstrumentationType.Timer
+            for run in range(1, NUM_RUNS + 1):
+                log_implementaitons_std_sdfg(in_array, out, len(in_array))
+                # get ms from us
+                runtime = log_implementaitons_std_sdfg.get_latest_report().events[0].duration * 1e-3
+                errors = compute_errors(baseline_output, out)
+                speedup = baseline_runtime / runtime
+
+                row = {
+                    "function": func_name,
+                    "run": run,
+                    "library": "Dace",
+                    "runtime_ms": runtime,
+                    "speedup_vs_baseline": speedup
+                }
+                row.update(errors)
                 writer.writerow(row)
 
     print(f"\n✓ Results written to {csv_name}")
