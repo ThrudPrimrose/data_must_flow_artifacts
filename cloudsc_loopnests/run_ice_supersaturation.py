@@ -46,7 +46,7 @@ dace.config.Config.set("compiler", "cpu", "executable", value=compiler_exec)
 base_flags = [
     '-fopenmp', '-fstrict-aliasing', '-std=c++17', '-faligned-new',
     '-fPIC', '-Wall', '-Wextra', '-O3', '-march=native', '-ffast-math',
-    '-Wno-unused-parameter', '-Wno-unused-label'
+    '-Wno-unused-parameter', '-Wno-unused-label',
 ]
 
 
@@ -56,6 +56,10 @@ if cpu_name == "arm":
 if compiler_exec == "icpx":
     base_flags.remove("-fopenmp")
     base_flags.append("-qopenmp")
+
+if compiler_exec.endswith("clang++"):
+    base_flags.append("-fno-math-errno")
+    #base_flags.append("-fveclib=libmvec")
 
 # Architecture / compiler specific extra flags
 env_flags_str = os.environ.get('EXTRA_FLAGS', '')
@@ -210,15 +214,17 @@ def compile_ice_supersaturation_fortran(
         raise FileNotFoundError(f"Fortran source not found: {src_path}")
 
     cxx = os.environ["CXX"]
-    if cxx == "clang++":
+    if cxx.endswith("clang++"):
         f90 = "flang"
-    elif cxx == "g++":
+        #c1 = "-fno-math-errno"
+        #c2 = "-fveclib=libmvec"
+    elif cxx.endswith("g++"):
         f90 = "gfortran"
     else:
-        assert cxx == "icpx"
+        assert cxx.endwidth("icpx")
         f90 = "ifx"
 
-    cmd = [f90, "-O3", "-ffast-math", "-fPIC", "-shared", src_path, "-o", libname]
+    cmd = [f90, "-O3",  "-fPIC", "-shared", "-ffast-math",  src_path, "-o", libname]
     print("Compiling Fortran:", " ".join(cmd))
     subprocess.check_call(cmd)
     print(f"Built {libname}")
@@ -358,7 +364,7 @@ def run_ice_supersaturation():
     report = sdfg.get_latest_report()
     dace_total_time = report.events[0].duration
     print(f"Run time SDFG ({sdfg.name}): {dace_total_time} us")
-    write_runtime(f"ice_supersaturation{env_suffix_str}", "dace", dace_total_time)
+    write_runtime(f"ice_supersaturation{env_suffix_str}_v3", "dace", dace_total_time)
 
     # ===== Baseline Fortran =====
     raw_func = compile_ice_supersaturation_fortran(
@@ -371,7 +377,7 @@ def run_ice_supersaturation():
     fortran_func(**data_F)
     fortran_total_time = float(data_F["timer"][0])
     print(f"Run time Fortran: {fortran_total_time} us")
-    write_runtime(f"ice_supersaturation{env_suffix_str}", "fortran", fortran_total_time)
+    write_runtime(f"ice_supersaturation{env_suffix_str}_v3", "fortran", fortran_total_time)
 
     # ===== Compare baseline =====
     print("Ice supersaturation (DaCe vs Fortran) comparison:")
@@ -384,7 +390,7 @@ def run_ice_supersaturation():
             dace_rep = report.events[0].duration
             print(f"  Run DaCe {rep+1}/10: {dace_rep} us")
             write_runtime(
-                f"ice_supersaturation{env_suffix_str}",
+                f"ice_supersaturation{env_suffix_str}_v3",
                 "dace",
                 dace_rep,
             )
@@ -398,7 +404,7 @@ def run_ice_supersaturation():
         ftime = float(repeat_F["timer"][0])
         print(f"  Run Fortran {rep+1}/10: {ftime} us")
         write_runtime(
-            f"ice_supersaturation{env_suffix_str}",
+            f"ice_supersaturation{env_suffix_str}_v3",
             "fortran",
             ftime,
         )
@@ -450,7 +456,7 @@ def run_ice_supersaturation():
             ):
                 print(f"Run time SDFG ({vec_sdfg.name}): {dace_vec_time} us")
                 write_runtime(
-                    f"ice_supersaturation{env_suffix_str}",
+                    f"ice_supersaturation{env_suffix_str}_v3",
                     "dace_vec",
                     dace_vec_time,
                     vlen=vlen,
@@ -464,7 +470,7 @@ def run_ice_supersaturation():
                     vec_rep = report.events[0].duration
                     print(f"  Run {rep+1}/10: {vec_rep} us")
                     write_runtime(
-                        f"ice_supersaturation{env_suffix_str}",
+                        f"ice_supersaturation{env_suffix_str}_v3",
                         "dace_vec",
                         vec_rep,
                         vlen=vlen,

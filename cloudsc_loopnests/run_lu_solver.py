@@ -47,7 +47,7 @@ dace.config.Config.set("compiler", "cpu", "executable", value=compiler_exec)
 base_flags = [
     '-fopenmp', '-fstrict-aliasing', '-std=c++17', '-faligned-new',
     '-fPIC', '-Wall', '-Wextra', '-O3', '-march=native', 
-    '-Wno-unused-parameter', '-Wno-unused-label'
+    '-Wno-unused-parameter', '-Wno-unused-label',
 ]
 
 
@@ -57,6 +57,10 @@ if cpu_name == "arm":
 if compiler_exec == "icpx":
     base_flags.remove("-fopenmp")
     base_flags.append("-qopenmp")
+
+if compiler_exec.endswith("clang++"):
+    base_flags.append("-fno-math-errno")
+    #base_flags.append("-fveclib=libmvec")
 
 # Architecture / compiler specific extra flags
 env_flags_str = os.environ.get('EXTRA_FLAGS', '')
@@ -199,19 +203,20 @@ def compile_lu_solver_fortran(
         raise FileNotFoundError(f"Fortran source not found: {src_path}")
 
     cxx = os.environ["CXX"]
-    if cxx == "clang++":
+    if cxx.endswith("clang++"):
         f90 = "flang"
-    elif cxx == "g++":
+        #c1 = "-fno-math-errno"
+        #c2 = "-fveclib=libmvec"
+    elif cxx.endswith("g++"):
         f90 = "gfortran"
     else:
-        assert cxx == "icpx"
+        assert cxx.endwidth("icpx")
         f90 = "ifx"
 
-    cmd = [f90, "-O3", "-ffast-math", "-fPIC", "-shared", src_path, "-o", libname]
+    cmd = [f90, "-O3",  "-fPIC", "-shared",  src_path, "-o", libname]
     print("Compiling Fortran:", " ".join(cmd))
     subprocess.check_call(cmd)
     print(f"Built {libname}")
-
     lib = ctypes.CDLL(f"./{libname}")
 
     try:
@@ -316,7 +321,7 @@ def run_lu_solver_microphysics():
     report = sdfg.get_latest_report()
     dace_total_time = report.events[0].duration  # microseconds
     print(f"Run time SDFG ({sdfg.name}): {float(dace_total_time)} us")
-    write_runtime(f"lu_solver_microphysics{env_suffix_str}", "dace", dace_total_time)
+    write_runtime(f"lu_solver_microphysics{env_suffix_str}_v3", "dace", dace_total_time)
 
     # --- Compile and run Fortran baseline (1×) ---
     raw = compile_lu_solver_fortran(
@@ -328,7 +333,7 @@ def run_lu_solver_microphysics():
     fort(**data_F)
     fortran_total_time = float(data_F["timer"][0])
     print(f"Run time Fortran: {fortran_total_time} us")
-    write_runtime(f"lu_solver_microphysics{env_suffix_str}", "fortran", fortran_total_time)
+    write_runtime(f"lu_solver_microphysics{env_suffix_str}_v3", "fortran", fortran_total_time)
 
     # --- Compare baseline results + repeated timings ---
     print("LU microphysics (DaCe vs Fortran) comparison:")
@@ -341,7 +346,7 @@ def run_lu_solver_microphysics():
             dace_time = report.events[0].duration
             print(f"  Run DaCe {rep+1}/10: {dace_time} us")
             write_runtime(
-                f"lu_solver_microphysics{env_suffix_str}",
+                f"lu_solver_microphysics{env_suffix_str}_v3",
                 "dace",
                 dace_time,
             )
@@ -355,7 +360,7 @@ def run_lu_solver_microphysics():
         ft_time = float(data_F_repeat["timer"][0])
         print(f"  Run Fortran {rep+1}/10: {ft_time} us")
         write_runtime(
-            f"lu_solver_microphysics{env_suffix_str}",
+            f"lu_solver_microphysics{env_suffix_str}_v3",
             "fortran",
             ft_time,
         )
@@ -408,7 +413,7 @@ def run_lu_solver_microphysics():
                     f"Run time SDFG ({vec_sdfg.name}): {float(dace_vec_time)} us"
                 )
                 write_runtime(
-                    f"lu_solver_microphysics{env_suffix_str}",
+                    f"lu_solver_microphysics{env_suffix_str}_v3",
                     "dace_vec",
                     dace_vec_time,
                     vlen=vlen,
@@ -422,7 +427,7 @@ def run_lu_solver_microphysics():
                     dace_vec_time_rep = report.events[0].duration
                     print(f"  Run {rep+1}/10: {dace_vec_time_rep} us")
                     write_runtime(
-                        f"lu_solver_microphysics{env_suffix_str}",
+                        f"lu_solver_microphysics{env_suffix_str}_v3",
                         "dace_vec",
                         dace_vec_time_rep,
                         vlen=vlen,

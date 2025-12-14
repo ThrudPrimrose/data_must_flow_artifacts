@@ -60,7 +60,7 @@ dace.config.Config.set("compiler", "cpu", "executable", value=compiler_exec)
 base_flags = [
     '-fopenmp', '-fstrict-aliasing', '-std=c++17', '-faligned-new',
     '-fPIC', '-Wall', '-Wextra', '-O0', '-march=native', 
-    '-Wno-unused-parameter', '-Wno-unused-label'
+    '-Wno-unused-parameter', '-Wno-unused-label', "-ffast-math",
 ]
 
 
@@ -70,6 +70,10 @@ if cpu_name == "arm":
 if compiler_exec == "icpx":
     base_flags.remove("-fopenmp")
     base_flags.append("-qopenmp")
+
+if compiler_exec.endswith("clang++"):
+    base_flags.append("-fno-math-errno")
+    #base_flags.append("-fveclib=libmvec")
 
 # Architecture / compiler specific extra flags
 env_flags_str = os.environ.get('EXTRA_FLAGS', '')
@@ -209,15 +213,15 @@ def compile_autoconversion_snow_fortran(
         raise FileNotFoundError(f"Fortran source not found: {src_path}")
 
     cxx = os.environ["CXX"]
-    if cxx == "clang++":
+    if cxx.endswith("clang++"):
         f90 = "flang"
-    elif cxx == "g++":
+    elif cxx.endswith("g++"):
         f90 = "gfortran"
     else:
-        assert cxx == "icpx"
+        assert cxx.endwidth("icpx")
         f90 = "ifx"
 
-    cmd = [f90, "-O3",  "-fPIC", "-shared", src_path, "-o", libname]
+    cmd = [f90, "-O3",  "-fPIC", "-shared", "-ffast-math",  src_path, "-o", libname]
     print("Compiling Fortran:", " ".join(cmd))
     subprocess.check_call(cmd)
     print(f"Built {libname}")
@@ -351,7 +355,7 @@ def run_autoconversion_snow():
     report = sdfg.get_latest_report()
     dace_total_time = report.events[0].duration  # useconds
     print(f"Run time SDFG ({sdfg.name}): {float(dace_total_time)} us")
-    write_runtime(f"autoconversion_snow{env_suffix_str}", "dace", dace_total_time)
+    write_runtime(f"autoconversion_snow{env_suffix_str}_v3", "dace", dace_total_time)
 
     # ----- Build and run Fortran -----
     raw_func = compile_autoconversion_snow_fortran(
@@ -363,7 +367,7 @@ def run_autoconversion_snow():
     fortran_func(**data_F)
     fortran_total_time = float(data_F["timer"][0])
     print(f"Run time Fortran: {fortran_total_time} us")
-    write_runtime(f"autoconversion_snow{env_suffix_str}", "fortran", fortran_total_time)
+    write_runtime(f"autoconversion_snow{env_suffix_str}_v3", "fortran", fortran_total_time)
 
     # ----- Results -----
     print("Autoconversion snow (DaCe vs Fortran) comparison:")
@@ -376,7 +380,7 @@ def run_autoconversion_snow():
             print(f"  Run DaCe {rep+1}/10: {dace_time} us")
 
             write_runtime(
-                f"autoconversion_snow{env_suffix_str}",
+                f"autoconversion_snow{env_suffix_str}_v3",
                 "dace",
                 dace_time,
             )
@@ -387,7 +391,7 @@ def run_autoconversion_snow():
         fortran_total_time = float(copy_data_F["timer"][0])
         print(f"  Run time Fortran {rep+1}/10: {fortran_total_time} us")
         write_runtime(
-            f"autoconversion_snow{env_suffix_str}",
+            f"autoconversion_snow{env_suffix_str}_v3",
             "fortran",
             fortran_total_time,
         )
@@ -398,7 +402,7 @@ def run_autoconversion_snow():
     elif cpu_name == "amd_epyc":
         vlens = [4, 8, 16, 32, 64]
     else:
-        vlens = [8]
+        vlens = [2, 4, 8, 16, 32, 64]
     
     for vlen in vlens:
         for cpy in [False, True]:
@@ -424,7 +428,7 @@ def run_autoconversion_snow():
             dace_total_time = report.events[0].duration  # useconds
             print(f"Run time SDFG ({vec_sdfg.name}): {float(dace_total_time)} us")
             if compare_row_col_dicts(data_F_dace_vec, data_F, rtol=1e-12, atol=1e-12):
-                write_runtime(f"autoconversion_snow{env_suffix_str}", "dace_vec", dace_total_time, vlen=vlen, cpy=cpy)
+                write_runtime(f"autoconversion_snow{env_suffix_str}_v3", "dace_vec", dace_total_time, vlen=vlen, cpy=cpy)
 
                 for rep in range(10):
                     vec_compiled(**data_F_dace_vec)
@@ -432,7 +436,7 @@ def run_autoconversion_snow():
                     dace_vec_time = report.events[0].duration
                     print(f"  Run {rep+1}/10: {dace_vec_time} us")
                     write_runtime(
-                        f"autoconversion_snow{env_suffix_str}",
+                        f"autoconversion_snow{env_suffix_str}_v3",
                         "dace_vec",
                         dace_vec_time,
                         vlen=vlen,

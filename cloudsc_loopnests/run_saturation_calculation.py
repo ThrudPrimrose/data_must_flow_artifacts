@@ -62,7 +62,9 @@ if cpu_name == "arm":
 if compiler_exec == "icpx":
     base_flags.remove("-fopenmp")
     base_flags.append("-qopenmp")
-
+if compiler_exec.endswith("clang++"):
+    base_flags.append("-fno-math-errno")
+    #base_flags.append("-fveclib=libmvec")
 # Architecture / compiler specific extra flags
 env_flags_str = os.environ.get('EXTRA_FLAGS', '')
 base_flags_str = ' '.join(base_flags)
@@ -202,15 +204,15 @@ def compile_fortran(src_path: str = "./saturation_calculation.f90",
         raise FileNotFoundError(f"Fortran source not found: {src_path}")
 
     cxx = os.environ["CXX"]
-    if cxx == "clang++":
+    if cxx.endswith("clang++"):
         f90 = "flang"
-    elif cxx == "g++":
+    elif cxx.endswith("g++"):
         f90 = "gfortran"
     else:
-        assert cxx == "icpx"
+        assert cxx.endwidth("icpx")
         f90 = "ifx"
 
-    cmd = [f90, "-O3", "-ffast-math", "-fPIC", "-shared", src_path, "-o", libname]
+    cmd = [f90, "-O3",  "-fPIC", "-shared", "-ffast-math", src_path, "-o", libname]
     print("Compiling Fortran:", " ".join(cmd))
     subprocess.check_call(cmd)
     print(f"Built {libname}")
@@ -454,62 +456,6 @@ def make_col_major(arrays: Dict[str, np.ndarray]) -> Dict[str, np.ndarray]:
 
     return out
 
-def compile_fortran(src_path: str = "./saturation_calculation.f90",
-                    libname: str = "libsaturation.so",
-                    func_name: str = "compute_saturation_values") -> Callable:
-    """
-    Compile a Fortran file into a shared library and return a Python-callable
-    wrapper for the compute_saturation_values subroutine.
-
-    Parameters
-    ----------
-    src_path : str
-        Path to the .f90 source file.
-    libname : str
-        Output shared library name.
-
-    Returns
-    -------
-    compute_sat : Python wrapper for the Fortran subroutine
-    """
-    if not os.path.exists(src_path):
-        raise FileNotFoundError(f"Fortran source not found: {src_path}")
-
-    # Compile Fortran → shared library
-    cmd = ["gfortran", "-O3", "-fPIC", "-shared", src_path, "-o", libname]
-    print("Compiling Fortran:", " ".join(cmd))
-    subprocess.check_call(cmd)
-    print(f"Built {libname}")
-
-    # Load the shared library
-    lib = ctypes.CDLL(f"./{libname}")
-
-    # Fortran symbol name (“compute_saturation_values_”)
-    symbol = func_name
-    try:
-        compute_sat = getattr(lib, symbol)
-    except AttributeError:
-        raise RuntimeError(f"Fortran symbol '{symbol}' not found in shared library.")
-
-    compute_sat.restype = None
-
-    # Build ctypes argtypes directly (same as earlier)
-    ndF64 = np.ctypeslib.ndpointer(dtype=np.float64, flags='F_CONTIGUOUS')
-
-    compute_sat.argtypes = [
-        ctypes.c_int, ctypes.c_int, ctypes.c_int, ctypes.c_int, # KIDIA, KFDIA, klon, klev
-        ndF64, ndF64,                                     # ZTP1, PAP
-        ndF64, ndF64, ndF64, ndF64, ndF64, ndF64, ndF64,  # ZFOEALFA .. ZQSLIQ
-        ctypes.c_double, ctypes.c_double, ctypes.c_double, ctypes.c_double,
-        ctypes.c_double, ctypes.c_double, ctypes.c_double, ctypes.c_double,
-        ctypes.c_double, ctypes.c_double,                  # RTT..RTWAT_RTICE_R
-        ndF64, # Timer
-    ]
-
-    print("Fortran function loaded")
-
-    return compute_sat
-
 def set_map_sched(sdfg: dace.SDFG):
     for n, g in sdfg.all_nodes_recursive():
         if isinstance(n, dace.nodes.MapEntry):
@@ -605,7 +551,7 @@ def run_saturation_calculation():
     report = sdfg.get_latest_report()
     dace_total_time = report.events[0].duration  # microseconds
     print(f"Run time SDFG ({sdfg.name}): {float(dace_total_time)} us")
-    write_runtime(f"saturation_calculation{env_suffix_str}", "dace", dace_total_time)
+    write_runtime(f"saturation_calculation{env_suffix_str}_v3", "dace", dace_total_time)
 
     # ===== Build and run Fortran baseline (1×) =====
     raw_func = compile_fortran(
@@ -618,7 +564,7 @@ def run_saturation_calculation():
 
     fortran_total_time = float(data_F["timer"][0])
     print(f"Run time Fortran: {fortran_total_time} us")
-    write_runtime(f"saturation_calculation{env_suffix_str}", "fortran", fortran_total_time)
+    write_runtime(f"saturation_calculation{env_suffix_str}_v3", "fortran", fortran_total_time)
 
     # ===== Baseline results + repeated timings =====
     print("Saturation calculation (DaCe vs Fortran) comparison:")
@@ -630,7 +576,7 @@ def run_saturation_calculation():
             dace_time = report.events[0].duration
             print(f"  Run DaCe {rep+1}/10: {dace_time} us")
             write_runtime(
-                f"saturation_calculation{env_suffix_str}",
+                f"saturation_calculation{env_suffix_str}_v3",
                 "dace",
                 dace_time,
             )
@@ -644,7 +590,7 @@ def run_saturation_calculation():
         ft_time = float(fortran_repeat_data["timer"][0])
         print(f"  Run Fortran {rep+1}/10: {ft_time} us")
         write_runtime(
-            f"saturation_calculation{env_suffix_str}",
+            f"saturation_calculation{env_suffix_str}_v3",
             "fortran",
             ft_time,
         )
@@ -681,7 +627,7 @@ def run_saturation_calculation():
         vlens = [4, 8, 16, 32, 64]
     else:
         vlens = [2, 4, 8, 16, 32, 64]
-    vlens = []
+
     for vlen in vlens:
         for cpy in [True, False]:
             # First vec run: fresh inputs from base_data
@@ -721,7 +667,7 @@ def run_saturation_calculation():
                     f"Run time SDFG ({vec_sdfg.name}): {float(dace_vec_time)} us"
                 )
                 write_runtime(
-                    f"saturation_calculation{env_suffix_str}",
+                    f"saturation_calculation{env_suffix_str}_v3",
                     "dace_vec",
                     dace_vec_time,
                     vlen=vlen,
@@ -735,7 +681,7 @@ def run_saturation_calculation():
                     dace_vec_time_rep = report.events[0].duration
                     print(f"  Run {rep+1}/10: {dace_vec_time_rep} us")
                     write_runtime(
-                        f"saturation_calculation{env_suffix_str}",
+                        f"saturation_calculation{env_suffix_str}_v3",
                         "dace_vec",
                         dace_vec_time_rep,
                         vlen=vlen,

@@ -62,6 +62,9 @@ if cpu_name == "arm":
 if compiler_exec == "icpx":
     base_flags.remove("-fopenmp")
     base_flags.append("-qopenmp")
+if compiler_exec.endswith("clang++"):
+    base_flags.append("-fno-math-errno")
+    #base_flags.append("-fveclib=libmvec")
 
 # Architecture / compiler specific extra flags
 env_flags_str = os.environ.get('EXTRA_FLAGS', '')
@@ -260,15 +263,15 @@ def compile_rain_evaporation_fortran(
         raise FileNotFoundError(f"Fortran source not found: {src_path}")
 
     cxx = os.environ["CXX"]
-    if cxx == "clang++":
+    if cxx.endswith("clang++"):
         f90 = "flang"
-    elif cxx == "g++":
+    elif cxx.endswith("g++"):
         f90 = "gfortran"
     else:
-        assert cxx == "icpx"
+        assert cxx.endwidth("icpx")
         f90 = "ifx"
 
-    cmd = [f90, "-O3", "-ffast-math", "-fPIC", "-shared", src_path, "-o", libname]
+    cmd = [f90, "-O3",  "-fPIC", "-shared", "-ffast-math", src_path, "-o", libname]
     print("Compiling Fortran:", " ".join(cmd))
     subprocess.check_call(cmd)
     print(f"Built {libname}")
@@ -411,7 +414,7 @@ def run_rain_evaporation():
     report = sdfg.get_latest_report()
     dace_total_time = report.events[0].duration
     print(f"Run time SDFG ({sdfg.name}): {float(dace_total_time)} us")
-    write_runtime(f"rain_evaporation{env_suffix_str}", "dace", dace_total_time)
+    write_runtime(f"rain_evaporation{env_suffix_str}_v3", "dace", dace_total_time)
 
     # ---------------------------------------------------------------------
     #  BASELINE: Fortran (1×)
@@ -425,7 +428,7 @@ def run_rain_evaporation():
     fortran_func(**data_F)
     fortran_total_time = float(data_F["timer"][0])
     print(f"Run time Fortran: {fortran_total_time} us")
-    write_runtime(f"rain_evaporation{env_suffix_str}", "fortran", fortran_total_time)
+    write_runtime(f"rain_evaporation{env_suffix_str}_v3", "fortran", fortran_total_time)
 
     # ---------------------------------------------------------------------
     #  BASELINE COMPARISON + REPEATED (10×) TIMING
@@ -440,7 +443,7 @@ def run_rain_evaporation():
             report = sdfg.get_latest_report()
             dace_time = report.events[0].duration
             print(f"  Run DaCe {rep+1}/10: {dace_time} us")
-            write_runtime(f"rain_evaporation{env_suffix_str}", "dace", dace_time)
+            write_runtime(f"rain_evaporation{env_suffix_str}_v3", "dace", dace_time)
 
     del data_F_dace
 
@@ -450,7 +453,7 @@ def run_rain_evaporation():
         fortran_func(**fortran_repeat_data)
         ft_time = float(fortran_repeat_data["timer"][0])
         print(f"  Run Fortran {rep+1}/10: {ft_time} us")
-        write_runtime(f"rain_evaporation{env_suffix_str}", "fortran", ft_time)
+        write_runtime(f"rain_evaporation{env_suffix_str}_v3", "fortran", ft_time)
 
     # ---------------------------------------------------------------------
     #  VECTORIZATION SWEEP (identical structure to autoconversion_snow)
@@ -503,7 +506,7 @@ def run_rain_evaporation():
                 )
 
                 write_runtime(
-                    f"rain_evaporation{env_suffix_str}",
+                    f"rain_evaporation{env_suffix_str}_v3",
                     "dace_vec",
                     dace_vec_time,
                     vlen=vlen,
@@ -516,7 +519,7 @@ def run_rain_evaporation():
                     r = vec_sdfg.get_latest_report().events[0].duration
                     print(f"  Run {rep+1}/10: {r} us")
                     write_runtime(
-                        f"rain_evaporation{env_suffix_str}",
+                        f"rain_evaporation{env_suffix_str}_v3",
                         "dace_vec",
                         r,
                         vlen=vlen,
