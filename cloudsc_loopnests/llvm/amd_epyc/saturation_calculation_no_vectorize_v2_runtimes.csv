@@ -1,5 +1,9 @@
 name,variant,runtime_us,vlen,cpy
-saturation_calculation_no_vectorize_v2,dace,1026982.0,None,None
-saturation_calculation_no_vectorize_v2,fortran,1290640.0229999998,None,None
-saturation_calculation_no_vectorize_v2,dace,1032306.0,None,None
-saturation_calculation_no_vectorize_v2,fortran,1302505.0920000002,None,None
+saturation_calculation_no_vectorize_v2,dace,1024546.0,None,None
+saturation_calculation_no_vectorize_v2,fortran,1298149.5329999998,None,None
+saturation_calculation_no_vectorize_v2,dace,1036639.0,None,None
+saturation_calculation_no_vectorize_v2,fortran,1309204.198,None,None
+saturation_calculation_no_vectorize_v2,dace,1027144.0,None,None
+saturation_calculation_no_vectorize_v2,fortran,1295389.562,None,None
+saturation_calculation_no_vectorize_v2,dace,1036446.0,None,None
+saturation_calculation_no_vectorize_v2,fortran,1300603.1970000002,None,None

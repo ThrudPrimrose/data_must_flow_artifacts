@@ -1,9 +1,0 @@
-name,variant,runtime_us,vlen,cpy
-rain_evaporation_force_width_512_size_8388608,dace,177406.0,None,None
-rain_evaporation_force_width_512_size_8388608,fortran,3705323.114,None,None
-rain_evaporation_force_width_512_size_8388608,dace,169804.0,None,None
-rain_evaporation_force_width_512_size_8388608,fortran,3753713.2249999996,None,None
-rain_evaporation_force_width_512_size_8388608,dace,152305.0,None,None
-rain_evaporation_force_width_512_size_8388608,fortran,3667606.858,None,None
-rain_evaporation_force_width_512_size_8388608,dace,152826.0,None,None
-rain_evaporation_force_width_512_size_8388608,fortran,3674339.641,None,None

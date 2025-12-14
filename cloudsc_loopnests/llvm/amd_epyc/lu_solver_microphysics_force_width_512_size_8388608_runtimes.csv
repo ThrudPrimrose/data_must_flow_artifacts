@@ -1,5 +1,0 @@
-name,variant,runtime_us,vlen,cpy
-lu_solver_microphysics_force_width_512_size_8388608,dace,1143802.0,None,None
-lu_solver_microphysics_force_width_512_size_8388608,fortran,1348448.028,None,None
-lu_solver_microphysics_force_width_512_size_8388608,dace,1137967.0,None,None
-lu_solver_microphysics_force_width_512_size_8388608,fortran,1518518.909,None,None

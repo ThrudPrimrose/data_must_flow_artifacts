@@ -1,5 +1,0 @@
-name,variant,runtime_us,vlen,cpy
-lu_solver_microphysics_libmvec_size_8388608,dace,1143317.0,None,None
-lu_solver_microphysics_libmvec_size_8388608,fortran,1720419.369,None,None
-lu_solver_microphysics_libmvec_size_8388608,dace,1137990.0,None,None
-lu_solver_microphysics_libmvec_size_8388608,fortran,541425.266,None,None

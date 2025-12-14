@@ -1,0 +1,3 @@
+name,variant,runtime_us,vlen,cpy
+lu_solver_microphysics_force_width_512_size_4194304_v3,dace,531416.0,None,None
+lu_solver_microphysics_force_width_512_size_4194304_v3,dace,532959.0,None,None
