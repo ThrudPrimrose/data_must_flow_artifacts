@@ -17,7 +17,7 @@ from math import log, exp
 from dace.utils.log_runtime import write_runtime
 
 
-N = int(os.environ.get("__DACE_N", "64"))
+N = 8192 * 2048 #int(os.environ.get("__DACE_N", "64"))
 envsuffix = os.environ.get("SUFFIX", "")
 
 

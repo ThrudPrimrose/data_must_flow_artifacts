@@ -10,7 +10,7 @@
 #SBATCH --cpus-per-task=72
 
 spack load cmake
-spack loag gcc@14.2
+spack load gcc@14.2
 spack load mpfr mpc
 
 # 1. Make scripts executable
