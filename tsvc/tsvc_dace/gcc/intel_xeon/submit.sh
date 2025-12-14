@@ -1,7 +1,7 @@
 #!/bin/bash
 #SBATCH --job-name=ts_i_gcc  # Job name
 #SBATCH --nodes=1                     # Number of nodes
-#SBATCH --partition=intelv100               # Partition/queue
+#SBATCH --partition=intel               # Partition/queue
 #SBATCH --time=04:00:00               # Walltime (hh:mm:ss)
 #SBATCH --output=%x_%j.out            # Standard output (%x=job name, %j=job ID)
 #SBATCH --error=%x_%j.err             # Standard error
@@ -43,7 +43,8 @@ for RUNMULTI in 0 ; do
 
 
         # Run benchmark
-        pytest -n 1   run_tsvc.py
+        pytest -n 1 -vv  run_tsvc.py
+        rm completed_tests.txt
 
         rm *.so
         rm run_tsvc.py
