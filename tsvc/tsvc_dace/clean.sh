@@ -9,6 +9,10 @@ find . \
   \( -name "*.out" -o -name "*.err" -o -name "*.sdfgz" -o -name "*.sdfg" -o -name "*.csv" -o -name "*.so" \) \
   -print -delete
 
+find . \
+  -type f \
+  \( -name "*.txt" -o -name "*.so"  \) \
+  -print -delete
 
 echo "Deleting all .dacecache folders recursively..."
 
