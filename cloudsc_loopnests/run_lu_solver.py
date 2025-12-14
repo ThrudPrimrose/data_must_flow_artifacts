@@ -210,7 +210,7 @@ def compile_lu_solver_fortran(
     elif cxx.endswith("g++"):
         f90 = "gfortran"
     else:
-        assert cxx.endwidth("icpx")
+        assert cxx.endswidth("icpx")
         f90 = "ifx"
 
     cmd = [f90, "-O3",  "-fPIC", "-shared",  src_path, "-o", libname]

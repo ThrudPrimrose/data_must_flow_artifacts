@@ -209,7 +209,7 @@ def compile_fortran(src_path: str = "./saturation_calculation.f90",
     elif cxx.endswith("g++"):
         f90 = "gfortran"
     else:
-        assert cxx.endwidth("icpx")
+        assert cxx.endswidth("icpx")
         f90 = "ifx"
 
     cmd = [f90, "-O3",  "-fPIC", "-shared", "-ffast-math", src_path, "-o", libname]
