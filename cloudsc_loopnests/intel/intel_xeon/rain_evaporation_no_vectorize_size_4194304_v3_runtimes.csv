@@ -1,3 +1,0 @@
-name,variant,runtime_us,vlen,cpy
-rain_evaporation_no_vectorize_size_4194304_v3,dace,70668.0,None,None
-rain_evaporation_no_vectorize_size_4194304_v3,dace,71207.0,None,None

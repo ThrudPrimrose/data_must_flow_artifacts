@@ -6,10 +6,15 @@ from pathlib import Path
 # -------------------------------------------------------------------
 # CONFIG
 # -------------------------------------------------------------------
-COMPILERS = ["gcc", "intel", "llvm", "gracclang"]
+COMPILERS = ["gcc", "intel", "llvm", "gracelang"]
 CLUSTERS  = ["amd_epyc", "arm", "intel_xeon"]
 TARGET_FILENAMES = [
-    "runtimes_v2.csv",
+    "runtimes_v2_default.csv",
+    "runtimes_v3_.csv",
+    "runtimes_v3_force_width_256.csv",
+    "runtimes_v3_force_width_512.csv",
+    "runtimes_v3_intrinsic_neon.csv",
+    "runtimes_v3_default.csv",
     "runtimes__force_width_512_v2.csv",
 ]
 
