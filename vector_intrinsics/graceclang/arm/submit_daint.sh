@@ -41,7 +41,7 @@ for RUNMULTI in 0 ; do
         cp ../../benchmark_vector_intrinsics.py .
 
         # Run benchmark
-        pytest -n benchmark_vector_intrinsics.py
+        pytest -n 1 benchmark_vector_intrinsics.py
 
         # Remove script
         rm benchmark_vector_intrinsics.py

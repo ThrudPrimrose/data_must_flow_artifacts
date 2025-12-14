@@ -5,6 +5,18 @@ set -e
 echo "Deleting *.out *.err *.sdfgz *.sdfg files recursively..."
 
 find . \
+  -type f \
+  \( -name "*.out" -o -name "*.err" -o -name "*.sdfgz" -o -name "*.sdfg" -o -name "*.csv" -o -name "*.so" \) \
+  -print -delete
+
+find . \
+  -type f \
+  \( -name "*.txt" -o -name "*.so"  \) \
+  -print -delete
+
+echo "Deleting all .dacecache folders recursively..."
+
+find . \
   -type d \
   -name ".dacecache" \
   -print -exec rm -rf {} +
