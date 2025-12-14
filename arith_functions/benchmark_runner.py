@@ -43,14 +43,15 @@ FUNCTIONS = {
 BASE_LIBRARIES = [
     ("SLEEF Manual Scalar",     "lib/lib{func}_sleef_scalar.so"),
     ("SLEEF Manual 256",        "lib/lib{func}_sleef_256.so"),
-
+    ("SLEEF Manual 256",        "lib/lib{func}_sleef_256.so"),
     ("g++ LIBMVEC 256",         "lib/lib{func}_g++_libmvec_256.so"),
     ("g++ AMD AOCL 256",        "lib/lib{func}_g++_aocl_256.so"),
-
     ("clang++ LIBMVEC 256",     "lib/lib{func}_clang++_libmvec_256.so"),
     ("clang++ AMD AOCL 256",    "lib/lib{func}_clang++_aocl_256.so"),
     ("clang++ SVML 256",        "lib/lib{func}_clang++_svml_256.so"),
     ("clang++ SLEEF AUTO 256",  "lib/lib{func}_clang++_sleef_auto_256.so"),
+    # Intel icpx (SVML only)
+    ("icpx SVML 256",           "lib/lib{func}_icpx_svml_256.so"),
 ]
 
 AVX512_LIBRARIES = [
@@ -59,6 +60,7 @@ AVX512_LIBRARIES = [
     ("clang++ LIBMVEC 512",     "lib/lib{func}_clang++_libmvec_512.so"),
     ("clang++ SVML 512",        "lib/lib{func}_clang++_svml_512.so"),
     ("clang++ SLEEF AUTO 512",  "lib/lib{func}_clang++_sleef_auto_512.so"),
+    ("icpx SVML 512",           "lib/lib{func}_icpx_svml_512.so"),
 ]
 
 LIBRARIES = BASE_LIBRARIES + AVX512_LIBRARIES if is_intel_xeon() else BASE_LIBRARIES
@@ -196,7 +198,8 @@ def run_function(func_name, cfg):
             log_implementaitons_std_sdfg.instrument = dace.dtypes.InstrumentationType.Timer
             for run in range(1, NUM_RUNS + 1):
                 log_implementaitons_std_sdfg(in_array, out, len(in_array))
-                runtime = log_implementaitons_std_sdfg.get_latest_report().events[0].duration
+                # get ms from us
+                runtime = log_implementaitons_std_sdfg.get_latest_report().events[0].duration * 1e-3
                 errors = compute_errors(baseline_output, out)
                 speedup = baseline_runtime / runtime
 
@@ -215,6 +218,8 @@ def run_function(func_name, cfg):
             log_implementaitons_std_sdfg.instrument = dace.dtypes.InstrumentationType.Timer
             for run in range(1, NUM_RUNS + 1):
                 log_implementaitons_std_sdfg(in_array, out, len(in_array))
+                # get ms from us
+                runtime = log_implementaitons_std_sdfg.get_latest_report().events[0].duration * 1e-3
                 errors = compute_errors(baseline_output, out)
                 speedup = baseline_runtime / runtime
 
