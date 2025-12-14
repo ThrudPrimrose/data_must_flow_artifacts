@@ -1,0 +1,9 @@
+name,variant,runtime_us,vlen,cpy
+saturation_calculation_intrinsic_sve_v3,dace,489170.0,None,None
+saturation_calculation_intrinsic_sve_v3,fortran,460460.59800000006,None,None
+saturation_calculation_intrinsic_sve_v3,dace,485021.0,None,None
+saturation_calculation_intrinsic_sve_v3,fortran,459632.36900000006,None,None
+saturation_calculation_intrinsic_sve_v3,dace,483228.0,None,None
+saturation_calculation_intrinsic_sve_v3,fortran,465563.359,None,None
+saturation_calculation_intrinsic_sve_v3,dace,459323.0,None,None
+saturation_calculation_intrinsic_sve_v3,fortran,466565.56200000003,None,None

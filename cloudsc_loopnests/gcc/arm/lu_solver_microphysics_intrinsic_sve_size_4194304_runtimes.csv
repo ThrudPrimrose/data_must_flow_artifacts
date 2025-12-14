@@ -1,7 +1,0 @@
-name,variant,runtime_us,vlen,cpy
-lu_solver_microphysics_intrinsic_sve_size_4194304,dace,470150.0,None,None
-lu_solver_microphysics_intrinsic_sve_size_4194304,dace,462578.0,None,None
-lu_solver_microphysics_intrinsic_sve_size_4194304,dace,464927.0,None,None
-lu_solver_microphysics_intrinsic_sve_size_4194304,dace,460135.0,None,None
-lu_solver_microphysics_intrinsic_sve_size_4194304,dace,467189.0,None,None
-lu_solver_microphysics_intrinsic_sve_size_4194304,dace,465807.0,None,None

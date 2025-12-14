@@ -1,7 +1,0 @@
-name,variant,runtime_us,vlen,cpy
-saturation_calculation_no_vectorize,dace,549579.0,None,None
-saturation_calculation_no_vectorize,dace,538114.0,None,None
-saturation_calculation_no_vectorize,dace,537697.0,None,None
-saturation_calculation_no_vectorize,dace,524425.0,None,None
-saturation_calculation_no_vectorize,dace,563824.0,None,None
-saturation_calculation_no_vectorize,dace,527543.0,None,None

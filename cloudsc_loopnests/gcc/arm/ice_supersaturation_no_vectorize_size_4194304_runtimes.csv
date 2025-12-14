@@ -1,7 +1,0 @@
-name,variant,runtime_us,vlen,cpy
-ice_supersaturation_no_vectorize_size_4194304,dace,77698.0,None,None
-ice_supersaturation_no_vectorize_size_4194304,dace,70167.0,None,None
-ice_supersaturation_no_vectorize_size_4194304,dace,65743.0,None,None
-ice_supersaturation_no_vectorize_size_4194304,dace,58587.0,None,None
-ice_supersaturation_no_vectorize_size_4194304,dace,60930.0,None,None
-ice_supersaturation_no_vectorize_size_4194304,dace,46203.0,None,None

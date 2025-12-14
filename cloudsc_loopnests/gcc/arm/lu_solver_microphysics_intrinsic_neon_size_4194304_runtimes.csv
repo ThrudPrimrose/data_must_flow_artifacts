@@ -1,7 +1,0 @@
-name,variant,runtime_us,vlen,cpy
-lu_solver_microphysics_intrinsic_neon_size_4194304,dace,463182.0,None,None
-lu_solver_microphysics_intrinsic_neon_size_4194304,dace,466932.0,None,None
-lu_solver_microphysics_intrinsic_neon_size_4194304,dace,480867.0,None,None
-lu_solver_microphysics_intrinsic_neon_size_4194304,dace,459115.0,None,None
-lu_solver_microphysics_intrinsic_neon_size_4194304,dace,234745.0,None,None
-lu_solver_microphysics_intrinsic_neon_size_4194304,dace,462621.0,None,None

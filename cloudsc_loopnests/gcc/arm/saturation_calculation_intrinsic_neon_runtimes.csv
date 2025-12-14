@@ -1,7 +1,0 @@
-name,variant,runtime_us,vlen,cpy
-saturation_calculation_intrinsic_neon,dace,539096.0,None,None
-saturation_calculation_intrinsic_neon,dace,542775.0,None,None
-saturation_calculation_intrinsic_neon,dace,533953.0,None,None
-saturation_calculation_intrinsic_neon,dace,519772.0,None,None
-saturation_calculation_intrinsic_neon,dace,537852.0,None,None
-saturation_calculation_intrinsic_neon,dace,519080.0,None,None
