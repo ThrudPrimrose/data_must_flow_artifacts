@@ -17,7 +17,7 @@ from math import log, exp
 from dace.utils.log_runtime import write_runtime
 
 
-N = 8192 * 2048 #int(os.environ.get("__DACE_N", "64"))
+N = 8192 * 512 #int(os.environ.get("__DACE_N", "64"))
 envsuffix = os.environ.get("SUFFIX", "")
 
 
@@ -135,7 +135,7 @@ def run_vectorization_test(
             variant="dace",
             runtime_us=runtime_us,
             output_dir=output_dir,
-            filename=f"vector_intrinsics_{envsuffix}_runtimes"
+            filename=f"vector_load_store_{envsuffix}_runtimes"
         )
 
     # ------------------------------------------------------------------
@@ -198,7 +198,7 @@ def run_vectorization_test(
                     vlen=vlen,
                     cpy=cpy,
                     output_dir=output_dir,
-                    filename=f"vector_intrinsics_{envsuffix}_runtimes"
+                    filename=f"vector_load_store_{envsuffix}_runtimes"
                 )
 
     return sdfg
@@ -526,65 +526,61 @@ def strided_store_stride_8(A: dace.float64[N], B: dace.float64[8 * N], scale: da
 # Collect all intrinsic DaCe programs
 ###############################################################################
 """
+dace_vector_mult,
+dace_vector_mult_w_scalar,
+dace_vector_add,
+dace_vector_add_w_scalar,
+dace_vector_sub,
+dace_vector_sub_w_scalar,
+dace_vector_sub_w_scalar_c,
+dace_vector_div,
+dace_vector_div_w_scalar,
+dace_vector_div_w_scalar_c,
 
+dace_vector_copy,
+dace_vector_copy_w_scalar,
+dace_vector_exp,
+dace_vector_log,
+dace_vector_min,
+dace_vector_min_w_scalar,
+dace_vector_max,
+dace_vector_max_w_scalar,
+dace_vector_gt,
+dace_vector_gt_w_scalar,
+
+dace_vector_gt_w_scalar_c,
+dace_vector_lt,
+dace_vector_lt_w_scalar,
+dace_vector_lt_w_scalar_c,
+dace_vector_ge,
+dace_vector_ge_w_scalar,
+dace_vector_ge_w_scalar_c,
+dace_vector_le,
+dace_vector_le_w_scalar,
+
+dace_vector_le_w_scalar_c,
+dace_vector_eq,
+dace_vector_eq_w_scalar,
+dace_vector_ne,
+dace_vector_ne_w_scalar,
+vecscale_unit_stride,
 """
 INTRINSIC_FUNCS = [
     # ------------------------------------------------------------------
     # Intrinsics
     # ------------------------------------------------------------------
-    dace_vector_mult,
-    dace_vector_mult_w_scalar,
-    dace_vector_add,
-    dace_vector_add_w_scalar,
-    dace_vector_sub,
-    dace_vector_sub_w_scalar,
-    dace_vector_sub_w_scalar_c,
-    dace_vector_div,
-    dace_vector_div_w_scalar,
-    dace_vector_div_w_scalar_c,
-
-    dace_vector_copy,
-    dace_vector_copy_w_scalar,
-    dace_vector_exp,
-    dace_vector_log,
-    dace_vector_min,
-    dace_vector_min_w_scalar,
-    dace_vector_max,
-    dace_vector_max_w_scalar,
-    dace_vector_gt,
-    dace_vector_gt_w_scalar,
-
-    dace_vector_gt_w_scalar_c,
-    dace_vector_lt,
-    dace_vector_lt_w_scalar,
-    dace_vector_lt_w_scalar_c,
-    dace_vector_ge,
-    dace_vector_ge_w_scalar,
-    dace_vector_ge_w_scalar_c,
-    dace_vector_le,
-    dace_vector_le_w_scalar,
-
-    dace_vector_le_w_scalar_c,
-    dace_vector_eq,
-    dace_vector_eq_w_scalar,
-    dace_vector_ne,
-    dace_vector_ne_w_scalar,
-    vecscale_unit_stride,
     strided_load_stride_2,
     strided_load_stride_3,
     strided_load_stride_4,
-
     strided_load_stride_5,
     strided_load_stride_6,
     strided_load_stride_7,
     strided_load_stride_8,
-    strided_load_stride_16,
     strided_store_stride_2,
     strided_store_stride_3,
     strided_store_stride_4,
     strided_store_stride_5,
     strided_store_stride_6,
-
     strided_store_stride_7,
     strided_store_stride_8,
 ]
