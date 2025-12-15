@@ -355,7 +355,7 @@ for ax, kernel in zip(axes[:, 0], kernels):
                     if row["variant"].iloc[0] == "dace_best":
                         ax.text(
                             x + 0.02,
-                            y,
+                            y + yerr_high + 0.1,
                             f"{sp:.2f}×",
                             ha="center",
                             va="bottom",
