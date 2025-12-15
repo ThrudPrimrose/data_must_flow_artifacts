@@ -46,7 +46,7 @@ dace.config.Config.set("compiler", "cpu", "executable", value=compiler_exec)
 base_flags = [
     '-fopenmp', '-fstrict-aliasing', '-std=c++17', '-faligned-new',
     '-fPIC', '-Wall', '-Wextra', '-O3', '-march=native', '-ffast-math',
-    '-Wno-unused-parameter', '-Wno-unused-label',
+    '-Wno-unused-parameter', '-Wno-unused-label', "-fno-math-errno"
 ]
 
 
@@ -57,9 +57,6 @@ if compiler_exec == "icpx":
     base_flags.remove("-fopenmp")
     base_flags.append("-qopenmp")
 
-if compiler_exec.endswith("clang++"):
-    base_flags.append("-fno-math-errno")
-    #base_flags.append("-fveclib=libmvec")
 
 # Architecture / compiler specific extra flags
 env_flags_str = os.environ.get('EXTRA_FLAGS', '')
@@ -224,7 +221,7 @@ def compile_ice_supersaturation_fortran(
         assert cxx.endswith("icpx")
         f90 = "ifx"
 
-    cmd = [f90, "-O3",  "-fPIC", "-shared", "-ffast-math",  src_path, "-o", libname]
+    cmd = [f90, "-O3",  "-fPIC", "-shared", "-ffast-math", "-fno-math-errno", src_path, "-o", libname]
     print("Compiling Fortran:", " ".join(cmd))
     subprocess.check_call(cmd)
     print(f"Built {libname}")
@@ -337,20 +334,20 @@ def run_ice_supersaturation():
         if scalar_name in sdfg.symbols:
             sdfg.replace_dict({scalar_name: scalar_value})
             sdfg.remove_symbol(scalar_name)
-
-    repldict = {
-        "sym_nclv": 5,
-        "sym_ncldqs": scalar_specialization_values["ncldqs"],
-        "sym_ncldqi": scalar_specialization_values["ncldqi"],
-        "sym_ncldqv": scalar_specialization_values["ncldqv"],
-    }
+    repldict = {"sym_nclv": 5,
+                "sym_ncldqs": scalar_specialization_values["ncldqs"],
+                "sym_ncldqi": scalar_specialization_values["ncldqi"],
+                "sym_ncldqs": scalar_specialization_values["ncldqs"],
+                "sym_ncldqv": scalar_specialization_values["ncldqv"]}
     sdfg.replace_dict(repldict)
-    for sym in repldict:
+    for sym, val in repldict.items():
         if sym in sdfg.symbols:
             sdfg.remove_symbol(sym)
-
     sdfg.validate()
     RemoveUnusedSymbols().apply_pass(sdfg, {})
+    ConstantPropagation().apply_pass(sdfg, {})
+    sdfg.apply_transformations_repeated(LoopToMap)
+    sdfg.simplify()
 
     # ===== Instrumentation and scheduling =====
     sdfg.instrument = dace.dtypes.InstrumentationType.Timer
