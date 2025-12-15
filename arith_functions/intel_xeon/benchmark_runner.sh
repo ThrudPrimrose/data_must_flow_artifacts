@@ -1,10 +1,9 @@
-# 1. Make scripts executable
 export AOCL_UTILS=$SCRATCH
 export C_INCLUDE_PATH=${AOCL_UTILS}/include:${C_INCLUDE_PATH}
 export CPLUS_INCLUDE_PATH=${AOCL_UTILS}/include:${CPLUS_INCLUDE_PATH}
 export LD_LIBRARY_PATH=${AOCL_UTILS}/lib64:${LD_LIBRARY_PATH}
 export AOCL_LIBM=$SCRATCH
-export LD_LIBRARY_PATH=$AOCL_LIBM/lib64:$LD_LIBRARY_PATH
+export LD_LIBRARY_PATH=/scratch/ybudanaz/aocl-libm-ose/install/lib:$AOCL_LIBM/lib64:$LD_LIBRARY_PATH
 
 export SLEEF_DIR=$(spack location -i sleef)
 export SLEEF_INCLUDE=${SLEEF_DIR}/include
@@ -17,8 +16,7 @@ export SVML_INCLUDE=${INTEL_INSTALL_DIR}/include
 export SVML_LIB=${INTEL_INSTALL_DIR}/lib
 export LD_LIBRARY_PATH=${SVML_LIB}:${LD_LIBRARY_PATH}
 
-export CPU="intel_xeon"
-
+# 1. Make scripts executable
 chmod +x build_and_benchmark.sh
 
 # 2. Build all libraries

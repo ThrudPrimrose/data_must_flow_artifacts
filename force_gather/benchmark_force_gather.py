@@ -223,7 +223,7 @@ if __name__ == "__main__":
             # -------------------------------------------------------
             # Vectorized versions
             # -------------------------------------------------------
-            for l in [2, 4, 8, 16, 32, 64, 128, 256]:
+            for l in [4, 8, 16, 32, 64, 128, 256]:
                 # std no-copy version
                 sdfg_vec, name = build_vectorized_sdfg(
                     sdfg, vec_width=l, insert_copies=False, suffix=f"no_cpy",

@@ -6,7 +6,7 @@ export C_INCLUDE_PATH=${AOCL_UTILS}/include:${C_INCLUDE_PATH}
 export CPLUS_INCLUDE_PATH=${AOCL_UTILS}/include:${CPLUS_INCLUDE_PATH}
 export LD_LIBRARY_PATH=${AOCL_UTILS}/lib64:${LD_LIBRARY_PATH}
 export AOCL_LIBM=$SCRATCH
-export LD_LIBRARY_PATH=$AOCL_LIBM/lib64:$LD_LIBRARY_PATH
+export LD_LIBRARY_PATH=/scratch/ybudanaz/aocl-libm-ose/install/lib:$AOCL_LIBM/lib64:$LD_LIBRARY_PATH
 
 export SLEEF_DIR=$(spack location -i sleef)
 export SLEEF_INCLUDE=${SLEEF_DIR}/include
@@ -99,7 +99,7 @@ for func in "${FUNCS[@]}"; do
 
     g++ $COMMON_GCC_FLAGS \
         -mprefer-vector-width=${width} \
-        --I${SVML_INCLUDE} \
+        -I${SVML_INCLUDE} \
         ${func}_benchmark.cpp \
         -o lib/lib${func}_g++_svml_${width}.so \
         -L${SVML_LIB} -lsvml -lm
