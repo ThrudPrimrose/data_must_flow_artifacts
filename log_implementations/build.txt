@@ -1,0 +1,22 @@
+spack install mpfr mpc
+spack load mpfr mpc
+
+export AOCL_UTILS=$SCRATCH
+export C_INCLUDE_PATH=${AOCL_UTILS}/include:${C_INCLUDE_PATH}
+export C_PLUS_INCLUDE_PATH=${AOCL_UTILS}/include:${C_PLUS_INCLUDE_PATH}
+export LD_LIBRARY_PATH=${AOCL_UTILS}/lib:${LD_LIBRARY_PATH}
+
+export LD_LIBRARY_PATH=${SCRATCH}/aocl-libm-ose/install/lib:${LD_LIBRARY_PATH}
+export C_INCLUDE_PATH=${SCRATCH}/aocl-libm-ose/install/include:${C_INCLUDE_PATH}
+export C_PLUS_INCLUDE_PATH=${SCRATCH}/aocl-libm-ose/install/include:${C_PLUS_INCLUDE_PATH}
+
+scons PREFIX=$SCRATCH -j32 --aocl_utils_install_path=$(spack location -i aocl-utils@5.0)    --aocl_utils_link=0
+
+#AOCL utils:
+git checkout aocl-5.0
+cmake -DCMAKE_CXX_COMPILER=g++ -DCMAKE_INSTALL_PREFIX=$SCRATCH -DCMAKE_C_COMPILER=gcc -G "Unix Makefiles" -DCMAKE_INSTALL_PREFIX=$SCRATCH .. && make -j && make install
+
+#AOCL Libm
+# gcc@10.2 because 14.2 unsupported
+scons CXX="g++ -I$SCRATCH/include" CC="clang -I$SCRATCH/include" PREFIX=$SCRATCH CCFLAGS="-I$SCRATCH/include"  CPPPATH=$SCRATCH/include LIBPATH=$SCRATCH/lib64:$SCRATCH/lib -j32 --aocl_utils_install_path=$SCRATCH   --aocl_utils_link=1
+scons CXX="g++ install_prefix=$SCRATCH --prefix=$SCRATCH DESTDIR=$SCRATCH -I$SCRATCH/include" CC="clang -I$SCRATCH/include" PREFIX=$SCRATCH CXXFLAGS="-I$SCRATCH/include" CCFLAGS="-I$SCRATCH/include"  CPPPATH=$SCRATCH/include LIBPATH=$SCRATCH/lib64:$SCRATCH/lib --aocl_utils_install_path=$SCRATCH --aocl_utils_link=1 install 

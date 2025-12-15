@@ -1,9 +1,0 @@
-name,variant,runtime_us,vlen,cpy
-lu_solver_microphysics_size_8388608,dace,1239334.0,None,None
-lu_solver_microphysics_size_8388608,fortran,1740506.878,None,None
-lu_solver_microphysics_size_8388608,dace,1246268.0,None,None
-lu_solver_microphysics_size_8388608,fortran,1667396.052,None,None
-lu_solver_microphysics_size_8388608,dace,1250805.0,None,None
-lu_solver_microphysics_size_8388608,fortran,2499242.368,None,None
-lu_solver_microphysics_size_8388608,dace,1248039.0,None,None
-lu_solver_microphysics_size_8388608,fortran,1800482.932,None,None

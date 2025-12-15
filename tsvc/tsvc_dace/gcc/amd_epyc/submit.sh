@@ -1,7 +1,7 @@
 #!/bin/bash
 #SBATCH --job-name=ts_a_gcc  # Job name
 #SBATCH --nodes=1                     # Number of nodes
-#SBATCH --partition=amdv100               # Partition/queue
+#SBATCH --partition=amd               # Partition/queue
 #SBATCH --time=04:00:00               # Walltime (hh:mm:ss)
 #SBATCH --output=%x_%j.out            # Standard output (%x=job name, %j=job ID)
 #SBATCH --error=%x_%j.err             # Standard error
@@ -26,7 +26,6 @@ export OMP_PROC_BIND=close
 # Define configurations: each element is "EXTRA_FLAGS SUFFIX"
 configs=(
     "" "default"                                   # first run: no extra flags, no suffix
-    "-mprefer-vector-width=512" "force_width_512"
     "-mprefer-vector-width=256" "force_width_256"   # second run
 )
 
@@ -43,7 +42,8 @@ for RUNMULTI in 0 ; do
         cp ../../tsvcpp.cpp .
 
         # Run benchmark
-        pytest -n 1   run_tsvc.py
+        pytest -n 1  -vv run_tsvc.py
+        rm completed_tests.txt
 
         rm *.so
         rm run_tsvc.py

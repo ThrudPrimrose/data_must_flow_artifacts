@@ -1,5 +1,0 @@
-name,variant,runtime_us,vlen,cpy
-rain_evaporation_no_vectorize_size_8388608,dace,279151.0,None,None
-rain_evaporation_no_vectorize_size_8388608,fortran,3780270.603,None,None
-rain_evaporation_no_vectorize_size_8388608,dace,282520.0,None,None
-rain_evaporation_no_vectorize_size_8388608,fortran,3919257.766,None,None

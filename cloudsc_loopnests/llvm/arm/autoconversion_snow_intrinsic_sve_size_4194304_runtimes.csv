@@ -1,3 +1,0 @@
-name,variant,runtime_us,vlen,cpy
-autoconversion_snow_intrinsic_sve_size_4194304,dace,67432.0,None,None
-autoconversion_snow_intrinsic_sve_size_4194304,dace,67095.0,None,None

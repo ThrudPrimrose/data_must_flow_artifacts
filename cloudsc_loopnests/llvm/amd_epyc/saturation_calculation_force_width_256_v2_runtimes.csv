@@ -1,9 +1,9 @@
 name,variant,runtime_us,vlen,cpy
-saturation_calculation_force_width_256_v2,dace,1028097.0,None,None
-saturation_calculation_force_width_256_v2,fortran,1292857.949,None,None
-saturation_calculation_force_width_256_v2,dace,1027571.0,None,None
-saturation_calculation_force_width_256_v2,fortran,1296164.2,None,None
-saturation_calculation_force_width_256_v2,dace,1030519.0,None,None
-saturation_calculation_force_width_256_v2,fortran,1297399.486,None,None
-saturation_calculation_force_width_256_v2,dace,1041610.0,None,None
-saturation_calculation_force_width_256_v2,fortran,1307255.2449999999,None,None
+saturation_calculation_force_width_256_v2,dace,1023834.0,None,None
+saturation_calculation_force_width_256_v2,fortran,1292467.924,None,None
+saturation_calculation_force_width_256_v2,dace,1033452.0,None,None
+saturation_calculation_force_width_256_v2,fortran,1301035.202,None,None
+saturation_calculation_force_width_256_v2,dace,1023615.0,None,None
+saturation_calculation_force_width_256_v2,fortran,1293768.943,None,None
+saturation_calculation_force_width_256_v2,dace,1036372.0,None,None
+saturation_calculation_force_width_256_v2,fortran,1305728.233,None,None

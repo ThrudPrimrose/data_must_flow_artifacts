@@ -28,8 +28,6 @@ configs=(
     "-mprefer-vector-width=512" "force_width_256"   # second run
     "-mprefer-vector-width=512" "force_width_512"
     "-fno-vectorize" "no_vectorize"
-    # Prob disable if no arith function
-    "-fno-math-errno -fveclib=libmvec -mprefer-vector-width=512" "libmvec"
 )
 
 for RUNMULTI in 0 1; do

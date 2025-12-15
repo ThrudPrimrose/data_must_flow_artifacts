@@ -1,5 +1,5 @@
 #!/bin/bash
-#SBATCH --job-name=TXN_amd_epyc_llvm  # Job name
+#SBATCH --job-name=csclamd_epyc_llvm  # Job name
 #SBATCH --nodes=1                     # Number of nodes
 #SBATCH --partition=amd               # Partition/queue
 #SBATCH --time=04:00:00               # Walltime (hh:mm:ss)

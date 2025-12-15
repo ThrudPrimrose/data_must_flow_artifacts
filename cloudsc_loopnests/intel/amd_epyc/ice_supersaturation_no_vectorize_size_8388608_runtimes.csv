@@ -1,9 +1,0 @@
-name,variant,runtime_us,vlen,cpy
-ice_supersaturation_no_vectorize_size_8388608,dace,96419.0,None,None
-ice_supersaturation_no_vectorize_size_8388608,fortran,1477003.197,None,None
-ice_supersaturation_no_vectorize_size_8388608,dace,96143.0,None,None
-ice_supersaturation_no_vectorize_size_8388608,fortran,1418823.871,None,None
-ice_supersaturation_no_vectorize_size_8388608,dace,96084.0,None,None
-ice_supersaturation_no_vectorize_size_8388608,fortran,1459933.5289999999,None,None
-ice_supersaturation_no_vectorize_size_8388608,dace,96482.0,None,None
-ice_supersaturation_no_vectorize_size_8388608,fortran,1474541.648,None,None

@@ -1,5 +1,0 @@
-name,variant,runtime_us,vlen,cpy
-ice_supersaturation_size_8388608,dace,91612.0,None,None
-ice_supersaturation_size_8388608,fortran,1502556.925,None,None
-ice_supersaturation_size_8388608,dace,92261.0,None,None
-ice_supersaturation_size_8388608,fortran,1488039.111,None,None

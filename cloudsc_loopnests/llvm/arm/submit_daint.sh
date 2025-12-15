@@ -1,5 +1,5 @@
 #!/bin/bash
-#SBATCH --job-name=TXN_arm_llvm  # Job name
+#SBATCH --job-name=csclarm_llvm  # Job name
 #SBATCH --nodes=1                     # Number of nodes
 #SBATCH --partition=normal               # Partition/queue
 #SBATCH --time=04:00:00               # Walltime (hh:mm:ss)

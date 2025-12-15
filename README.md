@@ -69,10 +69,11 @@ python3 benchmark_log_implementations.py
 
 For x86:
 ```bash
-cmake -G Ninja ../llvm   -DCMAKE_BUILD_TYPE=RelWithDebInfo   -DCMAKE_INSTALL_PREFIX=$SCRATCH   -DLLVM_ENABLE_PROJECTS="clang" -DLLVM_ENABLE_RUNTIMES="openmp"  -DLLVM_ENABLE_RTTI=ON  -DLLVM_USE_DEPSLOG=OFF
+cmake -G Ninja ../llvm   -DCMAKE_BUILD_TYPE=RelWithDebInfo   -DCMAKE_INSTALL_PREFIX=$SCRATCH   -DLLVM_ENABLE_PROJECTS="clang;flang;mlir" -DLLVM_ENABLE_RUNTIMES="openmp;compiler-rt;flang-rt"  -DLLVM_ENABLE_RTTI=ON  -DLLVM_TARGETS_TO_BUILD="X86" -DLLVM_USE_DEPSLOG=OFF
 ```
 
 For ARM:
 ```bash
-cmake -G Ninja ../llvm   -DCMAKE_BUILD_TYPE=RelWithDebInfo   -DCMAKE_INSTALL_PREFIX=$SCRATCH   -DLLVM_ENABLE_PROJECTS="clang" -DLLVM_ENABLE_RUNTIMES="openmp"   -DLLVM_ENABLE_RTTI=ON   -DLLVM_TARGETS_TO_BUILD="AArch64;ARM" -DLLVM_USE_DEPSLOG=OFF -DLLVM_DEFAULT_TARGET_TRIPLE="aarch64-linux-gnu"
+cmake -G Ninja ../llvm   -DCMAKE_BUILD_TYPE=RelWithDebInfo   -DCMAKE_INSTALL_PREFIX=$SCRATCH    -DLLVM_ENABLE_PROJECTS="clang;flang;mlir" -DLLVM_ENABLE_RUNTIMES="openmp;compiler-rt;flang-rt"   -DLLVM_ENABLE_RTTI=ON   -DLLVM_TARGETS_TO_BUILD="AArch64" -DLLVM_USE_DEPSLOG=OFF -DLLVM_DEFAULT_TARGET_TRIPLE="aarch64-unknown-linux-gnu"
+export LD_LIBRARY_PATH=/capstor/scratch/cscs/ybudanaz/lib/clang/21/lib/aarch64-linux-gnu:${LD_LIBRARY_PATH}
 ```
