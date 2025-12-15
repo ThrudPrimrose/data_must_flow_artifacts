@@ -230,8 +230,6 @@ def run_vectorization_test(dace_func: Union[dace.SDFG, callable],
                            apply_loop_to_map=False,
                            break_vectorize=False,
                            split_all_branches=False):
-    return
-
     # Create copies for comparison
     arrays_orig = {k: copy.deepcopy(v) for k, v in arrays.items()}
     arrays_vec = {k: copy.deepcopy(v) for k, v in arrays.items()}
