@@ -212,7 +212,10 @@ def compile_fortran(src_path: str = "./saturation_calculation.f90",
         assert cxx.endswith("icpx")
         f90 = "ifx"
 
-    cmd = [f90, "-O3",  "-fPIC", "-shared", "-ffast-math", "-fno-math-errno", src_path, "-o", libname]
+    if cxx.endswith("clang++"):
+        cmd = [f90, "-O3",  "-fPIC", "-shared", "-ffast-math",  src_path, "-o", libname]
+    else:
+        cmd = [f90, "-O3",  "-fPIC", "-shared", "-ffast-math", "-fno-math-errno", src_path, "-o", libname]
     print("Compiling Fortran:", " ".join(cmd))
     subprocess.check_call(cmd)
     print(f"Built {libname}")
