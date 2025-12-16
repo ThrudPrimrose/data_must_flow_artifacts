@@ -242,7 +242,7 @@ import os
 import fcntl
 
 
-def log_runtime(time_ns: int, name: str, filename: str = "runtimes_v6f"):
+def log_runtime(time_ns: int, name: str, filename: str = "runtimes_v7f"):
     header = "name,time_ns\n"
     line = f"{name},{time_ns}\n"
     filename += f"_{envsuffix}.csv"
