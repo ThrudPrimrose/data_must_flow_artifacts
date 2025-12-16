@@ -93,7 +93,7 @@ def build_tsvcpp_lib():
         cmd = [
             cxx_exec,
             "-O3",
-            "-march=native"
+            "-march=native",
             "-std=c++17",
             "-fPIC",
             "-shared",
