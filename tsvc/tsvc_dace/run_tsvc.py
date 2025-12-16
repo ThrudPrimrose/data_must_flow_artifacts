@@ -42,17 +42,9 @@ base_flags = [
     '-Wno-unused-parameter', '-Wno-unused-label', "-ffast-math",
 ]
 
-
+cpu_name = os.environ.get('CPU_NAME', 'amd_epyc')
 if cpu_name == "arm":
     base_flags.remove("-march=native")
-
-if compiler_exec == "icpx":
-    base_flags.remove("-fopenmp")
-    base_flags.append("-qopenmp")
-
-if compiler_exec.endswith("clang++"):
-    base_flags.append("-fno-math-errno")
-    #base_flags.append("-fveclib=libmvec")
 
 # Architecture / compiler specific extra flags
 env_flags_str = os.environ.get('EXTRA_FLAGS', '')
@@ -101,6 +93,7 @@ def build_tsvcpp_lib():
         cmd = [
             cxx_exec,
             "-O3",
+            "-march=native"
             "-std=c++17",
             "-fPIC",
             "-shared",
