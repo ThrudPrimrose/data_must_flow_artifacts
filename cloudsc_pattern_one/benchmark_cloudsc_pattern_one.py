@@ -17,7 +17,7 @@ dace.config.Config.set("compiler", "cpu", "executable", value=compiler_exec)
 base_flags = [
     '-fopenmp', '-fstrict-aliasing', '-std=c++17', '-faligned-new',
     '-fPIC', '-Wall', '-Wextra', '-O3', '-march=native', '-ffast-math',
-    '-Wno-unused-parameter', '-Wno-unused-label'
+    '-Wno-unused-parameter', '-Wno-unused-label', '-fno-math-errno'
 ]
 # Clang / clang++
 if 'clang' in compiler_exec:
