@@ -212,7 +212,10 @@ def compile_fortran(src_path: str = "./saturation_calculation.f90",
         assert cxx.endswith("icpx")
         f90 = "ifx"
 
-    cmd = [f90, "-O3",  "-fPIC", "-shared", "-ffast-math", src_path, "-o", libname]
+    if cxx.endswith("clang++"):
+        cmd = [f90, "-O3",  "-fPIC", "-shared", "-ffast-math",  src_path, "-o", libname]
+    else:
+        cmd = [f90, "-O3",  "-fPIC", "-shared", "-ffast-math", "-fno-math-errno", src_path, "-o", libname]
     print("Compiling Fortran:", " ".join(cmd))
     subprocess.check_call(cmd)
     print(f"Built {libname}")
@@ -535,14 +538,13 @@ def run_saturation_calculation():
 
     sdfg.validate()
     RemoveUnusedSymbols().apply_pass(sdfg, {})
-    sdfg.save("saturation_calculation_simpl.sdfg")
+    ConstantPropagation().apply_pass(sdfg, {})
 
     # Parallelization + instrumentation
     sdfg.apply_transformations_repeated(LoopToMap)
     sdfg.instrument = dace.dtypes.InstrumentationType.Timer
     sdfg.simplify()
     set_map_sched(sdfg)
-    sdfg.save("saturation_calculation_par.sdfg")
 
     # ===== Compile and run DaCe baseline (1×) =====
     compiled = sdfg.compile()

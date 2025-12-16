@@ -36,11 +36,48 @@ CPP_FILE = "tsvcpp.cpp"
 
 SAVE_SDFGS = False
 
+base_flags = [
+    '-fopenmp', '-fstrict-aliasing', '-std=c++17', '-faligned-new',
+    '-fPIC', '-Wall', '-Wextra', '-O3', '-march=native', 
+    '-Wno-unused-parameter', '-Wno-unused-label', "-ffast-math",
+]
+
+cpu_name = os.environ.get('CPU_NAME', 'amd_epyc')
+if cpu_name == "arm":
+    base_flags.remove("-march=native")
+
+# Architecture / compiler specific extra flags
+env_flags_str = os.environ.get('EXTRA_FLAGS', '')
+base_flags_str = ' '.join(base_flags)
+
+flags = base_flags_str + " " + env_flags_str if env_flags_str != '' else base_flags_str
+dace.config.Config.set("compiler", "cpu", "args", value=flags)
+compiler_exec = os.environ.get('CXX', 'c++')
+dace.config.Config.set("compiler", "cpu", "executable", value=compiler_exec)
+cxx_exec = compiler_exec
+
+multi_core = int(os.environ.get('RUN_MULTICORE', '0')) == 1
+core_count = 1
+multicore_suffix = '' if core_count == 1 else '_multicore'
+
+
 import fcntl
 DONE_FILE = os.environ.get("TSVC_DONE_FILE", "./completed_tests.txt")
 
 import pytest
 envsuffix = os.environ.get("SUFFIX", "")
+
+def set_arrdtype(sdfg: dace.SDFG):
+    for n, g in sdfg.all_nodes_recursive():
+        if isinstance(n, dace.nodes.MapEntry):
+            n.map.schedule = dace.dtypes.ScheduleType.Sequential
+        if isinstance(n, dace.nodes.NestedSDFG):
+            for arr_name, arr in n.sdfg.arrays.items():
+                if arr.storage == dace.dtypes.StorageType.Default and arr.transient is True:
+                    arr.storage = dace.dtypes.StorageType.Register
+    for arr_name, arr in sdfg.arrays.items():
+        if arr.storage == dace.dtypes.StorageType.Default and arr.transient is True:
+            arr.storage = dace.dtypes.StorageType.Register
 
 def build_tsvcpp_lib():
     """Compile tsvcpp.cpp into a shared library located next to this Python file."""
@@ -54,13 +91,15 @@ def build_tsvcpp_lib():
     # Always rebuild for each worker
     if not lib_path.exists() or cpp_path.stat().st_mtime > lib_path.stat().st_mtime:
         cmd = [
-            "g++",
+            cxx_exec,
             "-O3",
+            "-march=native",
             "-std=c++17",
             "-fPIC",
             "-shared",
             "-ffast-math",
             "-fstrict-aliasing",
+            "-fno-math-errno",
             str(cpp_path),
             "-o",
             str(lib_path),
@@ -151,6 +190,7 @@ def compare_kernel(dace_func, arrays, params):
     # ---- Run DaCe version ----
     dace_sdfg: dace.SDFG = dace_func.to_sdfg()
     dace_sdfg.apply_transformations_repeated(LoopToMap)
+    set_arrdtype(dace_sdfg)
     dace_sdfg(**arrays_dace, **params)
 
     # ---- Configure C++ function signature dynamically ----
@@ -178,11 +218,15 @@ def compare_kernel(dace_func, arrays, params):
         cpp_func(*args_cpp)
         log_runtime(int(time_ns[0]), cpp_name)
 
-    dace_sdfg.intrument = dace.dtypes.InstrumentationType.Timer
+    
     # Do it 10 more times
+    dace_sdfg.instrument = dace.dtypes.InstrumentationType.Timer
+    c_dace_sdfg = dace_sdfg.compile()
     for i in range(10):
-        cpp_func(*args_cpp)
-        log_runtime(int(time_ns[0]), "base_" + dace_sdfg.name.replace("run_tsvc_dace_", ""))
+        c_dace_sdfg(**arrays_dace, **params)
+        report = dace_sdfg.get_latest_report()
+        total_time = report.events[0].duration * 1000  # useconds
+        log_runtime(int(total_time), "base_" + dace_sdfg.name.replace("run_tsvc_dace_", ""))
 
     return int(time_ns[0])
 
@@ -191,7 +235,7 @@ import os
 import fcntl
 
 
-def log_runtime(time_ns: int, name: str, filename: str = "runtimes_v4"):
+def log_runtime(time_ns: int, name: str, filename: str = "runtimes_v7f"):
     header = "name,time_ns\n"
     line = f"{name},{time_ns}\n"
     filename += f"_{envsuffix}.csv"
@@ -221,7 +265,6 @@ def run_vectorization_test(dace_func: Union[dace.SDFG, callable],
                            save_sdfgs=SAVE_SDFGS,
                            sdfg_name=None,
                            fuse_overlapping_loads=False,
-                           insert_copies=True,
                            filter_map=-1,
                            cleanup=False,
                            from_sdfg=False,
@@ -230,8 +273,6 @@ def run_vectorization_test(dace_func: Union[dace.SDFG, callable],
                            apply_loop_to_map=False,
                            break_vectorize=False,
                            split_all_branches=False):
-    return
-
     # Create copies for comparison
     arrays_orig = {k: copy.deepcopy(v) for k, v in arrays.items()}
     arrays_vec = {k: copy.deepcopy(v) for k, v in arrays.items()}
@@ -316,87 +357,83 @@ def run_vectorization_test(dace_func: Union[dace.SDFG, callable],
     else:
         filter_map = None
 
-    pass_info = dict()
-    if not break_vectorize:
-        VectorizeCPU(vector_width=vector_width,
-                     fuse_overlapping_loads=fuse_overlapping_loads,
-                     insert_copies=insert_copies).apply_pass(copy_sdfg, pass_info)
-    else:
-        from dace.transformation.passes.vectorization.vectorize_break import VectorizeBreak
-        VectorizeBreak(vector_width=vector_width).apply_pass(copy_sdfg, pass_info)
-    copy_sdfg.validate()
-    #print(pass_info)
-    #print(copy_sdfg.name, ":", pass_info["Vectorize"])
-    # Single core
-    for n, g in copy_sdfg.all_nodes_recursive():
-        if isinstance(n, dace.nodes.MapEntry):
-            print(n, n.map.schedule)
-            n.map.schedule = dace.dtypes.ScheduleType.Sequential
-    for n, g in copy_sdfg.all_nodes_recursive():
-        if isinstance(n, dace.nodes.MapEntry):
-            print(n.map.schedule)
-            assert n.map.schedule == dace.dtypes.ScheduleType.Sequential
+    for insert_copies in [True, False]:
+        pass_info = dict()
+        if not break_vectorize:
+            VectorizeCPU(vector_width=vector_width,
+                        fuse_overlapping_loads=fuse_overlapping_loads,
+                        insert_copies=insert_copies).apply_pass(copy_sdfg, pass_info)
+        else:
+            from dace.transformation.passes.vectorization.vectorize_break import VectorizeBreak
+            VectorizeBreak(vector_width=vector_width).apply_pass(copy_sdfg, pass_info)
+        if insert_copies:
+            copy_sdfg.name += "_cpy1"
+        else:
+            copy_sdfg.name += "_cpy1"
 
-    def set_arrdtype(sdfg: dace.SDFG):
-        for n, g in sdfg.all_nodes_recursive():
+        copy_sdfg.validate()
+        #print(pass_info)
+        #print(copy_sdfg.name, ":", pass_info["Vectorize"])
+        # Single core
+        for n, g in copy_sdfg.all_nodes_recursive():
             if isinstance(n, dace.nodes.MapEntry):
+                print(n, n.map.schedule)
                 n.map.schedule = dace.dtypes.ScheduleType.Sequential
-            if isinstance(n, dace.nodes.NestedSDFG):
-                for arr_name, arr in n.sdfg.arrays.items():
-                    if arr.storage == dace.dtypes.StorageType.Default and arr.transient is True:
-                        arr.storage = dace.dtypes.StorageType.Register
-        for arr_name, arr in sdfg.arrays.items():
-            if arr.storage == dace.dtypes.StorageType.Default and arr.transient is True:
-                arr.storage = dace.dtypes.StorageType.Register
-    set_arrdtype(copy_sdfg)
+        for n, g in copy_sdfg.all_nodes_recursive():
+            if isinstance(n, dace.nodes.MapEntry):
+                print(n.map.schedule)
+                assert n.map.schedule == dace.dtypes.ScheduleType.Sequential
 
-    if save_sdfgs and sdfg_name:
-        copy_sdfg.save(f"{sdfg_name}_vectorized.sdfg")
-    c_copy_sdfg = copy_sdfg.compile()
 
-    if save_sdfgs:
-        copy_sdfg.save(f"{sdfg_name}_vectorized.sdfg")
-    c_copy_sdfg = copy_sdfg.compile()
-    #raise Exception("X")
+        set_arrdtype(copy_sdfg)
 
-    # Run both
-    c_sdfg(**arrays_orig, **params)
-
-    c_copy_sdfg(**arrays_vec, **params)
-
-    # Compare results
-    for name in arrays.keys():
-        diff = arrays_vec[name] - arrays_orig[name]
-        print(diff)
-        allclose = np.allclose(arrays_orig[name], arrays_vec[name], rtol=1e-12, equal_nan=True)
-        if not allclose:
-            sdfg.save(f"{sdfg_name}.sdfg")
+        if save_sdfgs and sdfg_name:
             copy_sdfg.save(f"{sdfg_name}_vectorized.sdfg")
-        assert allclose, f"(Vectorize) {name} Diff: {arrays_orig[name] - arrays_vec[name]}"
+        c_copy_sdfg = copy_sdfg.compile()
 
-        if exact is not None:
-            diff = arrays_vec[name] - exact
-            allclose = np.allclose(arrays_vec[name], exact, rtol=0, atol=1e-300, equal_nan=True)
-            if not allclose:
-                if not allclose:
-                    sdfg.save(f"{sdfg_name}.sdfg")
-                    copy_sdfg.save(f"{sdfg_name}_vectorized.sdfg")
-            assert allclose, f"(Vectorize) {name} Diff: max abs diff = {np.max(np.abs(diff))}"
+        if save_sdfgs:
+            copy_sdfg.save(f"{sdfg_name}_vectorized.sdfg")
+        c_copy_sdfg = copy_sdfg.compile()
+        #raise Exception("X")
 
-    # If we are here then write timing results
+        # Run both
+        c_sdfg(**arrays_orig, **params)
 
-    report = copy_sdfg.get_latest_report()
-    # Or: sdfg.get_instrumentation_reports()[-1]
-    #print(report)
-
-    total_time = report.events[0].duration * 1000  # useconds
-    log_runtime(int(total_time), sdfg_name)
-
-    for i in range(10):
         c_copy_sdfg(**arrays_vec, **params)
+
+        # Compare results
+        for name in arrays.keys():
+            diff = arrays_vec[name] - arrays_orig[name]
+            print(diff)
+            allclose = np.allclose(arrays_orig[name], arrays_vec[name], rtol=1e-12, equal_nan=True)
+            if not allclose:
+                sdfg.save(f"{sdfg_name}.sdfg")
+                copy_sdfg.save(f"{sdfg_name}_vectorized.sdfg")
+            assert allclose, f"(Vectorize) {name} Diff: {arrays_orig[name] - arrays_vec[name]}"
+
+            if exact is not None:
+                diff = arrays_vec[name] - exact
+                allclose = np.allclose(arrays_vec[name], exact, rtol=0, atol=1e-300, equal_nan=True)
+                if not allclose:
+                    if not allclose:
+                        sdfg.save(f"{sdfg_name}.sdfg")
+                        copy_sdfg.save(f"{sdfg_name}_vectorized.sdfg")
+                assert allclose, f"(Vectorize) {name} Diff: max abs diff = {np.max(np.abs(diff))}"
+
+        # If we are here then write timing results
+
         report = copy_sdfg.get_latest_report()
+        # Or: sdfg.get_instrumentation_reports()[-1]
+        #print(report)
+
         total_time = report.events[0].duration * 1000  # useconds
         log_runtime(int(total_time), sdfg_name)
+
+        for i in range(10):
+            c_copy_sdfg(**arrays_vec, **params)
+            report = copy_sdfg.get_latest_report()
+            total_time = report.events[0].duration * 1000  # useconds
+            log_runtime(int(total_time), sdfg_name)
 
 
     tname = sdfg.name.replace("dace_", "").replace("_run_timed", "")

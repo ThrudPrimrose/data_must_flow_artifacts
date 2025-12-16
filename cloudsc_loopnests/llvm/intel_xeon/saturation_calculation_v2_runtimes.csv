@@ -1,5 +1,0 @@
-name,variant,runtime_us,vlen,cpy
-saturation_calculation_v2,dace,917037.0,None,None
-saturation_calculation_v2,fortran,1173118.2410000002,None,None
-saturation_calculation_v2,dace,923018.0,None,None
-saturation_calculation_v2,fortran,1171426.394,None,None

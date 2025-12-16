@@ -271,7 +271,10 @@ def compile_rain_evaporation_fortran(
         assert cxx.endswith("icpx")
         f90 = "ifx"
 
-    cmd = [f90, "-O3",  "-fPIC", "-shared", "-ffast-math", src_path, "-o", libname]
+    if cxx.endswith("clang++"):
+        cmd = [f90, "-O3",  "-fPIC", "-shared", "-ffast-math",  src_path, "-o", libname]
+    else:
+        cmd = [f90, "-O3",  "-fPIC", "-shared", "-ffast-math", "-fno-math-errno", src_path, "-o", libname]
     print("Compiling Fortran:", " ".join(cmd))
     subprocess.check_call(cmd)
     print(f"Built {libname}")
@@ -376,6 +379,13 @@ def run_rain_evaporation():
     sdfg.simplify()
 
     # ----- Specialize scalars -----
+
+    # Further passes
+    PowerOperatorExpansion().apply_pass(sdfg, {})
+    RemoveFPTypeCasts().apply_pass(sdfg, {})
+    RemoveIntTypeCasts().apply_pass(sdfg, {})
+    sdfg.apply_transformations_repeated(WCRToAugAssign)
+    OffsetLoopsAndMaps(offset_expr="-1", begin_expr=None).apply_pass(sdfg, {})
     for scalar_name, scalar_value in scalar_specialization_values.items():
         if scalar_name in sdfg.arrays:
             sdutil.specialize_scalar(
@@ -385,21 +395,21 @@ def run_rain_evaporation():
         if scalar_name in sdfg.symbols:
             sdfg.replace_dict({scalar_name: scalar_value})
             sdfg.remove_symbol(scalar_name)
-
+    repldict = {"sym_nclv": 5,
+                "sym_ncldqs": scalar_specialization_values["ncldqs"],
+                "sym_ncldqi": scalar_specialization_values["ncldqi"],
+                "sym_ncldqs": scalar_specialization_values["ncldqs"],
+                "sym_ncldqv": scalar_specialization_values["ncldqv"]}
+    sdfg.replace_dict(repldict)
+    for sym, val in repldict.items():
+        if sym in sdfg.symbols:
+            sdfg.remove_symbol(sym)
     sdfg.validate()
+    RemoveUnusedSymbols().apply_pass(sdfg, {})
+    ConstantPropagation().apply_pass(sdfg, {})
+    sdfg.apply_transformations_repeated(LoopToMap)
+    sdfg.simplify()
 
-    # Replace symbolic constants
-    sdfg.replace_dict({"sym_nclv": 5})
-    if "sym_nclv" in sdfg.symbols:
-        sdfg.remove_symbol("sym_nclv")
-    sdfg.validate()
-
-    # Further passes
-    PowerOperatorExpansion().apply_pass(sdfg, {})
-    RemoveFPTypeCasts().apply_pass(sdfg, {})
-    RemoveIntTypeCasts().apply_pass(sdfg, {})
-    sdfg.apply_transformations_repeated(WCRToAugAssign)
-    OffsetLoopsAndMaps(offset_expr="-1", begin_expr=None).apply_pass(sdfg, {})
     sdfg.apply_transformations_repeated(LoopToMap)
 
     sdfg.instrument = dace.dtypes.InstrumentationType.Timer

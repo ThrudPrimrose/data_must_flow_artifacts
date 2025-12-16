@@ -59,7 +59,7 @@ dace.config.Config.set("compiler", "cpu", "executable", value=compiler_exec)
 # Base compilation flags
 base_flags = [
     '-fopenmp', '-fstrict-aliasing', '-std=c++17', '-faligned-new',
-    '-fPIC', '-Wall', '-Wextra', '-O0', '-march=native', 
+    '-fPIC', '-Wall', '-Wextra', '-O3', '-march=native', 
     '-Wno-unused-parameter', '-Wno-unused-label', "-ffast-math",
 ]
 
@@ -221,7 +221,10 @@ def compile_autoconversion_snow_fortran(
         assert cxx.endswith("icpx")
         f90 = "ifx"
 
-    cmd = [f90, "-O3",  "-fPIC", "-shared", "-ffast-math",  src_path, "-o", libname]
+    if cxx.endswith("clang++"):
+        cmd = [f90, "-O3",  "-fPIC", "-shared", "-ffast-math",  src_path, "-o", libname]
+    else:
+        cmd = [f90, "-O3",  "-fPIC", "-shared", "-ffast-math", "-fno-math-errno", src_path, "-o", libname]
     print("Compiling Fortran:", " ".join(cmd))
     subprocess.check_call(cmd)
     print(f"Built {libname}")
@@ -341,6 +344,7 @@ def run_autoconversion_snow():
             sdfg.remove_symbol(sym)
     sdfg.validate()
     RemoveUnusedSymbols().apply_pass(sdfg, {})
+    ConstantPropagation().apply_pass(sdfg, {})
     sdfg.apply_transformations_repeated(LoopToMap)
     sdfg.simplify()
     sdfg.instrument = dace.dtypes.InstrumentationType.Timer

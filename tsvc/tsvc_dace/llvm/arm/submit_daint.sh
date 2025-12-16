@@ -17,20 +17,20 @@ export CC=clang
 export CXX=clang++
 
 export CPU_NAME="arm"
-export OMP_NUM_THREADS=288
+export OMP_NUM_THREADS=1
 export OMP_PLACES=cores
 export OMP_PROC_BIND=close
 
 # Define configurations: each element is "EXTRA_FLAGS SUFFIX"
 configs=(
-    "" ""
+    "-march=native" ""
     "-march=armv9-a+simd+nosve+nosve2 -D__DACE_USE_AVX512=0 -D__ARM_NEON -D__DACE_USE_INTRINSICS=1 -D__DACE_USE_SVE=0" "intrinsic_neon"
     "-march=armv9-a+sve2+sve+nosimd -D__DACE_USE_AVX512=0 -D__ARM_FEATURE_SVE -D__DACE_USE_INTRINSICS=1 -D__DACE_USE_SVE=1" "intrinsic_sve"
     "-fno-vectorize" "no_vectorize"
 )
 
 for RUNMULTI in 0 ; do
-    export __DACE_INSERT_COPIES="$RUNMULTI"
+    export RUN_MULTICORE=0
     for ((i=0; i<${#configs[@]}; i+=2)); do
         export EXTRA_FLAGS="${configs[i]}"
         export SUFFIX="${configs[i+1]}"
