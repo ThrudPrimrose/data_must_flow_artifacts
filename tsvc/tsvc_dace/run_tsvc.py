@@ -39,7 +39,7 @@ SAVE_SDFGS = False
 base_flags = [
     '-fopenmp', '-fstrict-aliasing', '-std=c++17', '-faligned-new',
     '-fPIC', '-Wall', '-Wextra', '-O3', '-march=native', 
-    '-Wno-unused-parameter', '-Wno-unused-label', "-ffast-math",
+    '-Wno-unused-parameter', '-Wno-unused-label', "-ffast-math", "-fno-math-errno"
 ]
 
 cpu_name = os.environ.get('CPU_NAME', 'amd_epyc')
@@ -71,13 +71,13 @@ def set_arrdtype(sdfg: dace.SDFG):
     for n, g in sdfg.all_nodes_recursive():
         if isinstance(n, dace.nodes.MapEntry):
             n.map.schedule = dace.dtypes.ScheduleType.Sequential
-        if isinstance(n, dace.nodes.NestedSDFG):
-            for arr_name, arr in n.sdfg.arrays.items():
-                if arr.storage == dace.dtypes.StorageType.Default and arr.transient is True:
-                    arr.storage = dace.dtypes.StorageType.Register
-    for arr_name, arr in sdfg.arrays.items():
-        if arr.storage == dace.dtypes.StorageType.Default and arr.transient is True:
-            arr.storage = dace.dtypes.StorageType.Register
+        #if isinstance(n, dace.nodes.NestedSDFG):
+        #    for arr_name, arr in n.sdfg.arrays.items():
+        #        if arr.storage == dace.dtypes.StorageType.Default and arr.transient is True:
+        #            arr.storage = dace.dtypes.StorageType.Register
+    #for arr_name, arr in sdfg.arrays.items():
+    #    if arr.storage == dace.dtypes.StorageType.Default and arr.transient is True:
+    #        arr.storage = dace.dtypes.StorageType.Register
 
 def build_tsvcpp_lib():
     """Compile tsvcpp.cpp into a shared library located next to this Python file."""
@@ -285,6 +285,7 @@ def run_vectorization_test(dace_func: Union[dace.SDFG, callable],
             sdfg.simplify(validate=True, validate_all=True, skip=skip_simplify or set())
     else:
         sdfg: dace.SDFG = dace_func
+    set_arrdtype(sdfg)
 
     assert apply_loop_to_map is True
     if apply_loop_to_map:
@@ -292,8 +293,6 @@ def run_vectorization_test(dace_func: Union[dace.SDFG, callable],
         sdfg.simplify()
         InlineSDFGs().apply_pass(sdfg, {})
 
-    if save_sdfgs and sdfg_name:
-        sdfg.save(f"{sdfg_name}.sdfg")
     c_sdfg = sdfg.compile()
 
     # Vectorized SDFG
@@ -387,37 +386,23 @@ def run_vectorization_test(dace_func: Union[dace.SDFG, callable],
 
         set_arrdtype(copy_sdfg)
 
-        if save_sdfgs and sdfg_name:
-            copy_sdfg.save(f"{sdfg_name}_vectorized.sdfg")
         c_copy_sdfg = copy_sdfg.compile()
 
-        if save_sdfgs:
-            copy_sdfg.save(f"{sdfg_name}_vectorized.sdfg")
-        c_copy_sdfg = copy_sdfg.compile()
         #raise Exception("X")
 
         # Run both
         c_sdfg(**arrays_orig, **params)
-
         c_copy_sdfg(**arrays_vec, **params)
 
         # Compare results
         for name in arrays.keys():
             diff = arrays_vec[name] - arrays_orig[name]
-            print(diff)
             allclose = np.allclose(arrays_orig[name], arrays_vec[name], rtol=1e-12, equal_nan=True)
-            if not allclose:
-                sdfg.save(f"{sdfg_name}.sdfg")
-                copy_sdfg.save(f"{sdfg_name}_vectorized.sdfg")
             assert allclose, f"(Vectorize) {name} Diff: {arrays_orig[name] - arrays_vec[name]}"
 
             if exact is not None:
                 diff = arrays_vec[name] - exact
                 allclose = np.allclose(arrays_vec[name], exact, rtol=0, atol=1e-300, equal_nan=True)
-                if not allclose:
-                    if not allclose:
-                        sdfg.save(f"{sdfg_name}.sdfg")
-                        copy_sdfg.save(f"{sdfg_name}_vectorized.sdfg")
                 assert allclose, f"(Vectorize) {name} Diff: max abs diff = {np.max(np.abs(diff))}"
 
         # If we are here then write timing results
@@ -3915,8 +3900,6 @@ def test_s2244():
     c = np.random.rand(LEN)
     e = np.random.rand(LEN)
 
-    #sdfg = dace_s2244.to_sdfg()
-    #sdfg.save("s2244_v3.sdfg")
 
     compare_kernel(
         dace_s2244,
@@ -6012,8 +5995,6 @@ def s1281():
 
     sdfg = dace_s1281.to_sdfg()
     sdfg.apply_transformations_repeated(LoopToMap)
-    sdfg.save("s1281.sdfg")
-
     compare_kernel(
         dace_s1281,
         {
@@ -6055,11 +6036,6 @@ def test_s291():
 
     a = np.random.rand(LEN)
     b = np.random.rand(LEN)
-
-    #sdfg = dace_s291.to_sdfg()
-    #sdfg.save("s291.sdfg")
-    #sdfg.apply_transformations_repeated(LoopToMap)
-    #sdfg.save("s291_ltm.sdfg")
 
     compare_kernel(
         dace_s291,
