@@ -19,7 +19,32 @@ base_flags = [
     '-fPIC', '-Wall', '-Wextra', '-O3', '-march=native', '-ffast-math',
     '-Wno-unused-parameter', '-Wno-unused-label'
 ]
-
+# Clang / clang++
+if 'clang' in compiler_exec:
+    base_flags += [
+        '-Rpass=loop-vectorize',
+        '-Rpass-missed=loop-vectorize',
+        '-Rpass-analysis=loop-vectorize',
+        #'-Rpass=slp-vectorize',
+        #'-Rpass-missed=slp-vectorize',
+        #'-Rpass-analysis=slp-vectorize',
+    ]
+elif 'g++' in compiler_exec:
+    base_flags += [
+        '-fopt-info-vec',
+        '-fopt-info-vec-missed',
+        '-fopt-info-loop',
+        # Optional (very verbose):
+        # '-fopt-info-optimized',
+    ]
+elif 'icpx' in compiler_exec:
+    base_flags += [
+        '-qopt-report=5',              # Max verbosity
+        '-qopt-report-phase=vec',      # Vectorization
+        '-qopt-report-phase=loop',     # Loop opts
+        # Optional:
+        # '-qopt-report-file=stdout',
+    ]
 
 if cpu_name == "arm":
     base_flags.remove("-march=native")
@@ -214,9 +239,9 @@ def save_timings_to_csv(filename, i, isize, timings_dict):
 def build_vectorized_sdfg(base_sdfg, vec_width, insert_copies, cpy_suffix, base_name):
     sdfg = copy.deepcopy(base_sdfg)
     VectorizeCPU(vector_width=vec_width, insert_copies=insert_copies).apply_pass(sdfg, {})
-    if use_dace_log_and_exp:
-        ReplaceSTDExpWithDaCeExp().apply_pass(sdfg, {})
-        ReplaceSTDLogWithDaCeLog().appl_pass(sdfg, {})
+    #if use_dace_log_and_exp:
+    #    ReplaceSTDExpWithDaCeExp().apply_pass(sdfg, {})
+    #    ReplaceSTDLogWithDaCeLog().apply_pass(sdfg, {})
     # Naming scheme: based sdfg name + compiler name + flag suffix read from env + vector length + copy suffix
     if "/" in compiler_exec and "clang" in compiler_exec:
         cname = "graceclang"
@@ -225,6 +250,9 @@ def build_vectorized_sdfg(base_sdfg, vec_width, insert_copies, cpy_suffix, base_
     name = f"{base_name}_{cname}_{env_suffix_str}_veclen_{vec_width}_{cpy_suffix}"
     sdfg.name = name
     sdfg.instrument = dace.dtypes.InstrumentationType.Timer
+    set_dtype(sdfg)
+    set_sched(sdfg)
+    sdfg.save("cloudsc.sdfg")
     return sdfg, sdfg.name
 
 
@@ -233,11 +261,26 @@ def build_vectorized_sdfg(base_sdfg, vec_width, insert_copies, cpy_suffix, base_
 # Main
 # -------------------------------------------------------
 
+def set_sched(sdfg: dace.SDFG):
+    for node, g in sdfg.all_nodes_recursive():
+        if isinstance(node, dace.nodes.MapEntry):
+            node.map.schedule = dace.dtypes.ScheduleType.Sequential
+
+def set_dtype(sdfg: dace.SDFG):
+    for an, a in sdfg.arrays.items():
+        if a.transient:
+            a.storage = dace.dtypes.StorageType.Register
+            a.lifetime = dace.dtypes.AllocationLifetime.SDFG
+    for state in sdfg.all_states():
+        for node in state.nodes():
+            if isinstance(node, dace.nodes.NestedSDFG):
+                set_dtype(node.sdfg)
+
 if __name__ == "__main__":
-    NUM_REPS = 20
+    NUM_REPS = 10
     all_timings = {}
 
-    for i, N in enumerate([8192 * 576, 8192 * 576 * 2, 8192 * 576 * 4, 8192 * 576 * 8]):
+    for i, N in enumerate([8192 * 576,]):
         size = N
 
         @dace.program
@@ -246,64 +289,68 @@ if __name__ == "__main__":
                     rg: dace.float64, riceinit: dace.float64, rlmin: dace.float64, rlstt: dace.float64, rtt: dace.float64,
                     rv: dace.float64, za: dace.float64[N], zdp: dace.float64[N], zfokoop: dace.float64[N],
                     zicecld: dace.float64[N], zrho: dace.float64[N], ztp2: dace.float64[N], zcldtopdist: dace.float64[N],
-                    zicenuclei: dace.float64[N], zqxfg: dace.float64[N], zsolqa: dace.float64[N]):
+                    zicenuclei: dace.float64[N], zqxfg: dace.float64[N], zsolqa: dace.float64[N],
+                    idx: dace.int32[N]):
             for it_47 in dace.map[
                     0:N:1,
             ]:
                 # Check if crossing cloud top threshold
-                if za[it_47] < rcldtopcf and za[it_47] >= rcldtopcf:
+                za_val = idx[it_47]
+                if za[za_val] < rcldtopcf and za[za_val] >= rcldtopcf:
                     zcldtopdist[it_47] = 0.0
                 else:
                     zcldtopdist[it_47] = zcldtopdist[it_47] + (zdp[it_47] / (rg * zrho[it_47]))
 
                 # Ice nucleation and deposition
-                if ztp2[it_47] < rtt and zqxfg[it_47] > rlmin:
-                    # Calculate ice saturation vapor pressure
-                    tmp_arg_72 = (r3ies * (ztp2[it_47] - rtt)) / (ztp2[it_47] - r4ies)
-                    tmp_call_47 = r2es * np.exp(tmp_arg_72)
-                    zvpice = (rv * tmp_call_47) / rd
+                #if ztp2[it_47] < rtt and zqxfg[it_47] > rlmin:
+                # Calculate ice saturation vapor pressure
+                tmp_arg_72 = (r3ies * (ztp2[it_47] - rtt)) / (ztp2[it_47] - r4ies)
+                tmp_call_47 = r2es * np.exp(tmp_arg_72)
+                zvpice = (rv * tmp_call_47) / rd
 
-                    # Calculate liquid vapor pressure
-                    zvpliq = zfokoop[it_47] * np.log(zvpice)
+                # Calculate liquid vapor pressure
+                zvpliq = zfokoop[it_47] * np.log(zvpice)
 
-                    # Ice nuclei concentration
-                    tmp_arg_27 = -0.639 + ((-1.96 * zvpice + 1.96 * zvpliq) / zvpliq)
-                    zicenuclei[it_47] = 1000.0 * np.exp(tmp_arg_27)
+                # Ice nuclei concentration
+                tmp_arg_27 = -0.639 + ((-1.96 * zvpice + 1.96 * zvpliq) / zvpliq)
+                zicenuclei[it_47] = 1000.0 * np.exp(tmp_arg_27)
 
-                    # Nucleation factor
-                    zinfactor = min(1.0, 6.66666666666667e-05 * zicenuclei[it_47])
+                # Nucleation factor
+                zinfactor = min(1.0, 6.66666666666667e-05 * zicenuclei[it_47])
 
-                    # Deposition calculation parameters
-                    zadd = (1.6666666666667 * rlstt * (rlstt / (rv * ztp2[it_47]) - 1.0)) / ztp2[it_47]
-                    zbdd = (0.452488687782805 * pap[it_47] * rv * ztp2[it_47]) / zvpice
+                # Deposition calculation parameters
+                zadd = (1.6666666666667 * rlstt * (rlstt / (rv * ztp2[it_47]) - 1.0)) / ztp2[it_47]
+                zbdd = (0.452488687782805 * pap[it_47] * rv * ztp2[it_47]) / zvpice
 
-                    tmp_call_49 = (zicenuclei[it_47] / zrho[it_47])
-                    zcvds = (7.8 * tmp_call_49 * (zvpliq - zvpice)) / (zvpice * (zadd + zbdd))
+                tmp_call_49 = (zicenuclei[it_47] / zrho[it_47])
+                zcvds = (7.8 * tmp_call_49 * (zvpliq - zvpice)) / (zvpice * (zadd + zbdd))
 
-                    # Initial ice content
-                    zice0 = max(riceinit * zicenuclei[it_47] / zrho[it_47], zicecld[it_47])
+                # Initial ice content
+                zice0 = max(riceinit * zicenuclei[it_47] / zrho[it_47], zicecld[it_47])
 
-                    # New ice after deposition
-                    tmp_arg_30 = 0.666 * ptsphy * zcvds + zice0
-                    zinew = tmp_arg_30**1.5
+                # New ice after deposition
+                tmp_arg_30 = 0.666 * ptsphy * zcvds + zice0
+                zinew = tmp_arg_30**1.5
 
-                    # Deposition amount
-                    zdepos1 = max(0.0, za[it_47] * (zinew - zice0))
-                    zdepos2 = min(zdepos1, 1.1)
+                # Deposition amount
+                zdepos1 = max(0.0, za[za_val] * (zinew - zice0))
+                zdepos2 = min(zdepos1, 1.1)
 
-                    # Apply nucleation factor and cloud top distance factor
-                    tmp_arg_33 = zinfactor + (1.0 - zinfactor) * (rdepliqrefrate + zcldtopdist[it_47] / rdepliqrefdepth)
-                    zdepos3 = zdepos2 * min(1.0, tmp_arg_33)
+                # Apply nucleation factor and cloud top distance factor
+                tmp_arg_33 = zinfactor + (1.0 - zinfactor) * (rdepliqrefrate + zcldtopdist[it_47] / rdepliqrefdepth)
+                zdepos3 = zdepos2 * min(1.0, tmp_arg_33)
 
-                    # Update mixing ratios
-                    zqxfg[it_47] = zqxfg[it_47] + zdepos3
-                    zsolqa[it_47] = zsolqa[it_47] + zdepos3
+                # Update mixing ratios
+                zqxfg[it_47] = zqxfg[it_47] + zdepos3
+                zsolqa[it_47] = zsolqa[it_47] + zdepos3
 
 
         # Baseline SDFG
         cloudsc_pattern_one_sdfg = cloudsc_pattern_one.to_sdfg()
         cloudsc_pattern_one_sdfg.name = "cloudsc_pattern_one"
         cloudsc_pattern_one_sdfg.instrument = dace.dtypes.InstrumentationType.Timer
+        set_dtype(cloudsc_pattern_one_sdfg)
+        set_sched(cloudsc_pattern_one_sdfg)
 
         # Baseline arrays
         """Generate test data for the loop body function"""
@@ -347,7 +394,9 @@ if __name__ == "__main__":
         data['zrho'] = safe_uniform(0.9, 1.2, (_N, ))  # density
         data['zcldtopdist'] = safe_uniform(0.1, 1.0, (_N, ))  # distance to cloud top
         data['zicenuclei'] = safe_uniform(1e2, 1e4, (_N, ))  # ice nuclei concentration
-
+        idx = np.arange(N, dtype=np.int32)
+        rng.shuffle(idx)           # in-place
+        data['idx'] = idx
         # Run baseline
         all_timings["cloudsc_pattern_one", size] = run_sdfg_multiple_times(
             sdfg=cloudsc_pattern_one_sdfg,
