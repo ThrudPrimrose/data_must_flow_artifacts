@@ -2,14 +2,11 @@
 
 import matplotlib.pyplot as plt
 
-from matplotlib.backends.backend_pdf import PdfPages
 import matplotlib.ticker as ticker
 
+import matplotlib.cm as cm
+
 import numpy as np
-
-import hw_info
-
-import json
 
 
 ##########################################################
@@ -33,10 +30,10 @@ def generate_roofline_plot( peak_gflops: float,
                             points:list[dict],  # provide a list of datapoint dicts, 
                                                 # where the data point dict is structured as follows: 
                                                 # {'name': 'my bm name', 'OI': 10.00, 'GFLOPs' : 20.00, 'label': 'my bm label'}
-                            title:str = "Roofline Plot", filename:str = "roffline.png"
+                            title:str = "Roofline Plot", filename:str = "roofline.png"
                             ):
     # Axis limits
-    xmin, xmax, ymin, ymax = 0.04, 600, 0.4, max(peak_gflops, 4000)*2
+    xmin, xmax, ymin, ymax = 0.01, 20, 0.01, peak_gflops/0.8
     #Figure
     fig_ratio = 2
     fig_dimension = 7
@@ -69,35 +66,48 @@ def generate_roofline_plot( peak_gflops: float,
         if roof["val"] > max_roof:
             max_roof = roof["val"]
 
-    # Draw slopes
+        # Draw slopes (memory bandwidth lines)
     for slope in mem_bottlenecks:
-        print("slope\t\"" + slope["name"] + "\"\t\t" + str(slope["val"]) + " GB/s")
+        bw = slope["val"]
+        print("slope\t\"" + slope["name"] + "\"\t\t" + str(bw) + " GB/s")
 
-        y = [0, max_roof]
-        x = [float(yy)/slope["val"] for yy in y]
-        ax.loglog(x, y, linewidth=1.0,
+        # ---- FIX: clip line to plot box (no zero, no fake origin) ----
+        x_start = max(xmin, ymin / bw)
+        y_start = bw * x_start
+
+        x_end = min(xmax, max_roof / bw)
+        y_end = bw * x_end
+        # --------------------------------------------------------------
+
+        ax.loglog(
+            [x_start, x_end],
+            [y_start, y_end],
+            linewidth=1.0,
             linestyle='-.',
             marker="2",
             color="grey",
-            zorder=10)
+            zorder=10
+        )
 
-        # Label
-        xpos = xmin*(10**(xlogsize*0.04))
-        ypos = xpos*slope["val"]
-        if ypos<ymin:
-            ypos = ymin*(10**(ylogsize*0.02))
-            xpos = ypos/slope["val"]
-        pos = (xpos, ypos)
+        # Label (placed slightly above the start of the line)
+        xpos = x_start * 1.2
+        ypos = bw * xpos
 
-        ax.annotate(slope["name"] + ": " + str(slope["val"]) + " GB/s", pos,
-        rotation=np.arctan(m/fig_ratio)*180/np.pi, rotation_mode='anchor',
-        fontsize=11,
-        ha="left", va='bottom',
-        color="grey")
-    
-    # In the meantime: find maximum slope
-    if slope["val"] > max_slope:
-        max_slope = slope["val"]
+        ax.annotate(
+            slope["name"] + ": " + str(bw) + " GB/s",
+            (xpos, ypos),
+            rotation=np.arctan(m / fig_ratio) * 180 / np.pi,
+            rotation_mode='anchor',
+            fontsize=11,
+            ha="left",
+            va='bottom',
+            color="grey"
+        )
+
+        # Track maximum slope
+        if bw > max_slope:
+            max_slope = bw
+
 
     # Draw roofs
     for roof in cpu_roofs:
@@ -118,73 +128,44 @@ def generate_roofline_plot( peak_gflops: float,
             fontsize=11,
             color="grey")
 
+    colormap = plt.cm.tab20
+    num_colors = 20  # You can adjust this depending on how many colors you need
 
-        for data_point in points:
-            oi = data_point['OI']
+    # Cycle through the colors from the colormap
+    colors = [colormap(i / num_colors) for i in range(num_colors)]
 
-            #draw dotted vertical line through data point
-            plt.axvline(x=oi, dashes=[10, 10, 3, 10], linewidth=0.4, color="#aaaaaa")
+    # Example: Assign a color to each point (you can define your own logic for this)
+    point_colors = [colors[i % num_colors] for i in range(len(points))]
 
-            ax.text(
-                oi/1.15, ymin*1.24,
-                data_point['name'],
-                fontsize=12,
-                rotation=90,
-                va="bottom",
-                color="#888888")
-            
-            # Draw data point 
-            ax.scatter(oi, data_point["GFLOPs"], label=data_point["label"], zorder=100)
+    for i, data_point in enumerate(points):
+        oi = data_point['OI']
 
-        # Logarithmic axis labels format
-        #ax.yaxis.set_major_formatter(ticker.FuncFormatter(lambda y,pos: ('{{:.{:1d}f}}'.format(int(np.maximum(-np.log10(y),0)))).format(y)))
-        ax.xaxis.set_major_formatter(ticker.FuncFormatter(lambda y,pos: ('{{:.{:1d}f}}'.format(int(np.maximum(-np.log10(y),0)))).format(y)))
+        #draw dotted vertical line through data point
+        plt.axvline(x=oi, dashes=[10, 10, 3, 10], linewidth=0.3, color="#aaaaaa")
 
+        ax.text(
+            oi/1.15, ymin*1.24,
+            data_point['name'],
+            fontsize=12,
+            rotation=90,
+            va="bottom",
+            color="#888888")
         
-        ax.set_xlim(xmin, xmax)
-        ax.set_ylim(ymin, ymax)
+        # Draw data point 
+        ax.scatter(oi, data_point["GFLOPs"], c=point_colors[i], label=data_point["label"], alpha=.7, zorder=100)
 
-        plt.figlegend()
-        plt.title(title, fontsize=20)
-        plt.tight_layout()
-        set_size(fig_dimension*fig_ratio,fig_dimension)
-        plt.savefig(filename)
-        plt.show()
+    # Logarithmic axis labels format
+    #ax.yaxis.set_major_formatter(ticker.FuncFormatter(lambda y,pos: ('{{:.{:1d}f}}'.format(int(np.maximum(-np.log10(y),0)))).format(y)))
+    ax.xaxis.set_major_formatter(ticker.FuncFormatter(lambda y,pos: ('{{:.{:1d}f}}'.format(int(np.maximum(-np.log10(y),0)))).format(y)))
 
-        pp = PdfPages(filename)
-        pp.savefig(fig)
-        pp.close()
-
-def roofline_plot_from_json(json_path:str, cpu_name:str, title:str = "Roofline Plot", result_filename:str = "roofline.png",):
-
-    max_bandwidth_t = hw_info.get_theoretical_bandwidth()
-    max_bandwidth_p = hw_info.get_sustained_memory_bandwidth_with_stream()['Copy']/1000
-
-    _, peak_gflops = hw_info.get_cpu_peak_flops()
-
-    with open(json_path, 'r') as f:
-        measurements = json.load(f)
-
-    points = []
     
-    for point_name, size_measurements in measurements.items():
-        time_sum = 0
-        total_avg = {}
-        for event_set, event_measurements in size_measurements.items():
-            print(event_measurements)
-            time_sum += event_measurements["Average"]["Time"]
-            total_avg |= event_measurements["Average"]
-        total_avg["time"] = time_sum/len(event_measurements)
+    ax.set_xlim(xmin, xmax)
+    ax.set_ylim(ymin, ymax)
 
-        
-        point_dict = {'name': point_name, 'OI': total_avg['PAPI_DP_OPS']/(total_avg['MEM_LOAD_RETIRED:L3_MISS:u'])/64, 'GFLOPs' : total_avg['PAPI_DP_OPS']/total_avg['time']/1e6, 'label': point_name}
-        points.append(point_dict)
-    
-    
-    print("Points:", points)
+    plt.figlegend()
+    plt.title(title, fontsize=20)
+    plt.tight_layout()
+    set_size(fig_dimension*fig_ratio,fig_dimension)
+    plt.savefig(filename)
 
-    generate_roofline_plot(peak_gflops=peak_gflops, peak_mem_bandwidth_p=max_bandwidth_p, peak_mem_bandwidth_t=max_bandwidth_t, points=points[0:3])
-
-
-if __name__ == "__main__":
-    roofline_plot_from_json("/home/alex/Studium/bachelor_thesis/data_must_flow/data_must_flow_artifacts/cloudsc_pattern_one/cloudsc_pattern_one_timings__singlecore.json", 'local')
+    print(f"Created roofline plot at {filename}")

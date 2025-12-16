@@ -251,7 +251,7 @@ if __name__ == "__main__":
     NUM_REPS = 1
     all_timings = {}
 
-    for i, N in enumerate([8192 * 576, 8192 * 576 * 2]):
+    for i, N in enumerate([8192 * 576, 8192 * 576 * 2, 8192 * 576 * 4, 8192 * 576 * 8]):
         size = N
 
         @dace.program

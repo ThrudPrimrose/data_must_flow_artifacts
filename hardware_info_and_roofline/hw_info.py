@@ -3,6 +3,7 @@ from cpuinfo import get_cpu_info
 import subprocess
 import json
 from pathlib import Path
+import os
 
 def parse_lscpu():
     lscpu = subprocess.run(['lscpu'], capture_output=True, text=True)
@@ -38,11 +39,11 @@ def check_sudo_privileges():
     except subprocess.CalledProcessError:
         return False
 
-def get_cpu_peak_flops():
+def get_cpu_peak_flops(num_cores):
     """Returns peak FLOPS of CPU as GFLOPs/s"""
     
     # Load specific cpu info that can only be obtained from spec sheets
-    with open("cpu_info.json", "r") as file:
+    with open(f"{os.path.dirname(os.path.realpath(__file__))}/cpu_info.json", "r") as file:
         cpu_db = json.load(file)
 
     cpu_info = get_cpu_info()
@@ -91,13 +92,14 @@ def get_cpu_peak_flops():
         fma_tp_dp = 1 # since we cannot know the fma throughput of the cpu without looking at the manual, we simply assume 1
         fma_tp_sp = 1
 
+    cpu_cores = min(cpu_cores, num_cores)
     flops_dp = clock_freq * cpu_cores * elements_per_vector_dp * fma_tp_dp * 2/1e9
     flops_sp = clock_freq * cpu_cores * elements_per_vector_sp * fma_tp_sp * 2/1e9
         
     return flops_sp, flops_dp
         
 
-def get_theoretical_bandwidth():
+def get_theoretical_bandwidth(num_cores = 0):
     """returns the theoretical bandwidth in GB/s"""
 
     #try to calculate theoretical bandwidth from dmidecode output if sudo rights available
@@ -138,7 +140,7 @@ def get_theoretical_bandwidth():
                     raise NotImplementedError("The function for calculating theoretical bandwidth has not been designed to support multiple different memory widths")
         return speed_mt * width * len(used_channels)
     else:
-        with open("cpu_info.json", "r") as file:
+        with open(f"{os.path.dirname(os.path.realpath(__file__))}/cpu_info.json", "r") as file:
             cpu_db = json.load(file)
 
         lscpu_dict = parse_lscpu()
@@ -183,9 +185,14 @@ def build_stream():
 
     return exe_path
 
-def get_sustained_memory_bandwidth_with_stream():
+def get_sustained_memory_bandwidth_with_stream(num_threads:int = 0):
     """Calls build_stream() to build an appropriately sized STREAM benchmark executable, executes it and returns the results"""
     stream_exe = build_stream()
+
+    old_omp_num_threads = int(os.environ.get('OMP_NUM_THREADS', 0))
+    if num_threads>0:
+        os.environ['OMP_NUM_THREADS'] = str(num_threads)
+
     output = subprocess.run(
         [stream_exe],
         stdout=subprocess.PIPE,
@@ -195,31 +202,42 @@ def get_sustained_memory_bandwidth_with_stream():
     if output.returncode != 0:
         raise RuntimeError("STREAM failed:\n" + output.stderr)
     
+    if 'OMP_NUM_THREADS' in os.environ:
+        if old_omp_num_threads > 0:
+            os.environ['OMP_NUM_THREADS'] = str(old_omp_num_threads)
+        else:
+            del os.environ['OMP_NUM_THREADS']
+
     lines = output.stdout.split('\n')
     result = {}
     for line in lines:
         if line.startswith("Copy"):
-            result["Copy"] = float(line.split()[1].strip())
+            result["Copy"] = float(line.split()[1].strip())/1000
         elif line.startswith("Scale"):
-            result["Scale"] = float(line.split()[1].strip())
+            result["Scale"] = float(line.split()[1].strip())/1000
         elif line.startswith("Add"):
-            result["Add"] = float(line.split()[1].strip())
+            result["Add"] = float(line.split()[1].strip())/1000
         elif line.startswith("Triad"):
-            result["Triad"] = float(line.split()[1].strip())
+            result["Triad"] = float(line.split()[1].strip())/1000
     return result
 
-def get_practical_bandwidth():
+def get_practical_bandwidth(num_threads = 0):
     """Measures the practical memory bandwidth using the STREAM benchmark"""
-    return get_sustained_memory_bandwidth_with_stream()
-
+    return get_sustained_memory_bandwidth_with_stream(num_threads)
 
 if __name__ == "__main__":
     sp, dp = get_cpu_peak_flops()
     print(f"""
 ------------------ CPU FLOPS ------------------
 SP: {sp} GFLOPs/s DP: {dp} GFLOPs/s""")
-    mem_speed_t = get_theoretical_bandwidth()
-    mem_speed_p = get_practical_bandwidth()
+    mem_speed_t_mc = get_theoretical_bandwidth()
+    mem_speed_p_mc = get_practical_bandwidth(6)
+
+    mem_speed_t_sc = get_theoretical_bandwidth(1)
+    mem_speed_p_sc = get_practical_bandwidth(1)
+
     print(f"""
 ------------------- MEM SPEED ------------------
-Theoretical: {mem_speed_t}GB/s Practical: {mem_speed_p}GB/s""")
+Theoretical (MC): {mem_speed_t_mc}GB/s Practical (MC): {mem_speed_p_mc}GB/s
+Theoretical (SC): {mem_speed_t_sc}GB/s Practical (MC): {mem_speed_p_sc}GB/s
+""")
