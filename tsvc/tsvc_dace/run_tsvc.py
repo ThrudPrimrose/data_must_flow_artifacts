@@ -36,11 +36,56 @@ CPP_FILE = "tsvcpp.cpp"
 
 SAVE_SDFGS = False
 
+base_flags = [
+    '-fopenmp', '-fstrict-aliasing', '-std=c++17', '-faligned-new',
+    '-fPIC', '-Wall', '-Wextra', '-O3', '-march=native', 
+    '-Wno-unused-parameter', '-Wno-unused-label', "-ffast-math",
+]
+
+
+if cpu_name == "arm":
+    base_flags.remove("-march=native")
+
+if compiler_exec == "icpx":
+    base_flags.remove("-fopenmp")
+    base_flags.append("-qopenmp")
+
+if compiler_exec.endswith("clang++"):
+    base_flags.append("-fno-math-errno")
+    #base_flags.append("-fveclib=libmvec")
+
+# Architecture / compiler specific extra flags
+env_flags_str = os.environ.get('EXTRA_FLAGS', '')
+base_flags_str = ' '.join(base_flags)
+
+flags = base_flags_str + " " + env_flags_str if env_flags_str != '' else base_flags_str
+dace.config.Config.set("compiler", "cpu", "args", value=flags)
+compiler_exec = os.environ.get('CXX', 'c++')
+dace.config.Config.set("compiler", "cpu", "executable", value=compiler_exec)
+cxx_exec = compiler_exec
+
+multi_core = int(os.environ.get('RUN_MULTICORE', '0')) == 1
+core_count = 1
+multicore_suffix = '' if core_count == 1 else '_multicore'
+
+
 import fcntl
 DONE_FILE = os.environ.get("TSVC_DONE_FILE", "./completed_tests.txt")
 
 import pytest
 envsuffix = os.environ.get("SUFFIX", "")
+
+def set_arrdtype(sdfg: dace.SDFG):
+    for n, g in sdfg.all_nodes_recursive():
+        if isinstance(n, dace.nodes.MapEntry):
+            n.map.schedule = dace.dtypes.ScheduleType.Sequential
+        if isinstance(n, dace.nodes.NestedSDFG):
+            for arr_name, arr in n.sdfg.arrays.items():
+                if arr.storage == dace.dtypes.StorageType.Default and arr.transient is True:
+                    arr.storage = dace.dtypes.StorageType.Register
+    for arr_name, arr in sdfg.arrays.items():
+        if arr.storage == dace.dtypes.StorageType.Default and arr.transient is True:
+            arr.storage = dace.dtypes.StorageType.Register
 
 def build_tsvcpp_lib():
     """Compile tsvcpp.cpp into a shared library located next to this Python file."""
@@ -54,13 +99,14 @@ def build_tsvcpp_lib():
     # Always rebuild for each worker
     if not lib_path.exists() or cpp_path.stat().st_mtime > lib_path.stat().st_mtime:
         cmd = [
-            "g++",
+            cxx_exec,
             "-O3",
             "-std=c++17",
             "-fPIC",
             "-shared",
             "-ffast-math",
             "-fstrict-aliasing",
+            "-fno-math-errno",
             str(cpp_path),
             "-o",
             str(lib_path),
@@ -151,6 +197,7 @@ def compare_kernel(dace_func, arrays, params):
     # ---- Run DaCe version ----
     dace_sdfg: dace.SDFG = dace_func.to_sdfg()
     dace_sdfg.apply_transformations_repeated(LoopToMap)
+    set_arrdtype(dace_sdfg)
     dace_sdfg(**arrays_dace, **params)
 
     # ---- Configure C++ function signature dynamically ----
@@ -339,17 +386,7 @@ def run_vectorization_test(dace_func: Union[dace.SDFG, callable],
             print(n.map.schedule)
             assert n.map.schedule == dace.dtypes.ScheduleType.Sequential
 
-    def set_arrdtype(sdfg: dace.SDFG):
-        for n, g in sdfg.all_nodes_recursive():
-            if isinstance(n, dace.nodes.MapEntry):
-                n.map.schedule = dace.dtypes.ScheduleType.Sequential
-            if isinstance(n, dace.nodes.NestedSDFG):
-                for arr_name, arr in n.sdfg.arrays.items():
-                    if arr.storage == dace.dtypes.StorageType.Default and arr.transient is True:
-                        arr.storage = dace.dtypes.StorageType.Register
-        for arr_name, arr in sdfg.arrays.items():
-            if arr.storage == dace.dtypes.StorageType.Default and arr.transient is True:
-                arr.storage = dace.dtypes.StorageType.Register
+
     set_arrdtype(copy_sdfg)
 
     if save_sdfgs and sdfg_name:
