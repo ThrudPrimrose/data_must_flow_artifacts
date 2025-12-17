@@ -170,7 +170,7 @@ def plot_scatter(folder1, folder2):
     print(configs)
 
 
-    plt.figure(figsize=(7*1.2, 3*1.2))
+    plt.figure(figsize=(8, 2.9))
 
     markers = ["o", "s", "^", "D", "v", ">", "<", "p", "x", "*"]
     colors = plt.rcParams["axes.prop_cycle"].by_key()["color"]
@@ -264,10 +264,10 @@ def plot_scatter(folder1, folder2):
     plt.ylim(-0.1, YLIM)
     plt.legend(
         loc="upper center",
-        bbox_to_anchor=(0.5, -0.245),
+        bbox_to_anchor=(0.5, -0.325),
         ncol=len(vector_lengths),
     )
-    plt.tight_layout(rect=[0, 0.12, 1, 1])
+    plt.tight_layout(rect=[0, 0.08, 1, 1])
     plt.savefig("configs_name_v2.png")
     plt.savefig("configs_name_v2.pdf")
 

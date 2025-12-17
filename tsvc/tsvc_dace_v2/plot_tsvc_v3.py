@@ -408,6 +408,13 @@ kernels = sorted(
     key=kernel_sort_key
 )
 
+PREFERRED_COMPILER_ORDER = [
+    "gcc",
+    "llvm",
+    "intel",       # for x86
+    "graceclang",  # for Grace
+]
+
 best_choices = {}
 for page in range(1):
     page_kernels = kernels
@@ -422,7 +429,7 @@ for page in range(1):
     fig.subplots_adjust(
         left=0.043,
         right=0.965,
-        bottom=0.125,
+        bottom=0.108,
         top=0.945,
         wspace=0.32,
         hspace=0.5
@@ -436,6 +443,8 @@ for page in range(1):
         best_choice = {}
         for cpu in CPU_ORDER:
             compilers = CPU_COMPILERS[cpu]
+            available = CPU_COMPILERS[cpu]
+            compilers = [c for c in PREFERRED_COMPILER_ORDER if c in available]
             n_comp = len(compilers)
 
             # spacing parameters (tuned for 6 bars)
@@ -497,14 +506,15 @@ for page in range(1):
 
                     # Star marker for selected impl
                     if is_best:
-                        ax.plot(
-                            x,
-                            y,
-                            marker="*",
-                            markersize=6,
-                            color="black",
-                            zorder=4
-                        )
+                        if kernel != "s*":
+                            ax.plot(
+                                x,
+                                y,
+                                marker="*",
+                                markersize=6,
+                                color="black",
+                                zorder=4
+                            )
 
 
         ax.axhline(1.0, linestyle="--", linewidth=0.8)
@@ -552,7 +562,7 @@ for page in range(1):
                 [0], [0],
                 color=color,
                 lw=6,
-                label=compiler_label_map[compiler] + " C++"
+                label=compiler_label_map[compiler] 
             )
         )
         legend_handles.append(
@@ -560,7 +570,7 @@ for page in range(1):
                 [0], [0],
                 color=lighten_color(color, 0.5),
                 lw=6,
-                label=compiler_label_map[compiler] + " w. Hints"
+                label=compiler_label_map[compiler] + " + Vectra"
             )
         )
 

@@ -18,14 +18,14 @@ base_name = args.base_name
 # Load 4 CSVs
 # ------------------------
 paths = [
-    ("gcc",  "amd_epyc",   "gcc/amd_epyc/cloudsc_pattern_one_timings__singlecore.csv"),
-    ("gcc",  "intel_xeon", "gcc/intel_xeon/cloudsc_pattern_one_timings__singlecore.csv"),
+    ("gcc",  "amd_epyc",   "gcc/amd_epyc/cloudsc_pattern_one_timings__singlecore_v1.csv"),
+    ("gcc",  "intel_xeon", "gcc/intel_xeon/cloudsc_pattern_one_timings__singlecore_v1.csv"),
     #("gcc",  "arm", "gcc/arm/cloudsc_pattern_one_timings__singlecore.csv"),
-    ("llvm", "amd_epyc",   "llvm/amd_epyc/cloudsc_pattern_one_timings__singlecore.csv"),
-    ("llvm", "intel_xeon", "llvm/intel_xeon/cloudsc_pattern_one_timings__libmvec_singlecore.csv"),
+    ("llvm", "amd_epyc",   "llvm/amd_epyc/cloudsc_pattern_one_timings__singlecore_v1.csv"),
+    ("llvm", "intel_xeon", "llvm/intel_xeon/cloudsc_pattern_one_timings__singlecore_v1.csv"),
     #("llvm", "arm", "llvm/arm/cloudsc_pattern_one_timings__singlecore.csv"),
-    ("intel", "amd_epyc", "llvm/intel_xeon/cloudsc_pattern_one_timings__singlecore.csv"),
-    ("intel", "intel_xeon", "llvm/intel_xeon/cloudsc_pattern_one_timings__singlecore.csv"),
+    ("intel", "amd_epyc", "llvm/intel_xeon/cloudsc_pattern_one_timings__singlecore_v1.csv"),
+    ("intel", "intel_xeon", "llvm/intel_xeon/cloudsc_pattern_one_timings__singlecore_v1.csv"),
 
 ]
 
@@ -220,8 +220,8 @@ for vl in ["8", "16", "32", "64"]:
         ax.set_yscale("log")
         ax.set_xlabel("Size")
         ax.set_ylabel("Median Runtime (ms)")
-        ax.set_title(f"Median Runtime: CloudSC Pattern One + DaCe Vectorization Hints + " + 
-                    "Explicit Copy" if l == "w_cpy" else f"Median Runtime: CloudSC Pattern One + DaCe Vectorization Hints + " + "No Copy")
+        ax.set_title(f"Median Runtime: CloudSC Pattern One + + Vectra + " + 
+                    "Explicit Copy" if l == "w_cpy" else f"Median Runtime: CloudSC Pattern One + + Vectra + " + "No Copy")
 
         ax.legend(
             title="Variant + SDFG",

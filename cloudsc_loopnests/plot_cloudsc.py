@@ -385,7 +385,7 @@ for ax, kernel in zip(axes[:, 0], kernels):
                 [0], [0],
                 color=lighten_color(base_color, 0.5),
                 lw=6,
-                label=f"{label} + Vector Hints"
+                label=f"{label} + Vectra"
             )
         )
 

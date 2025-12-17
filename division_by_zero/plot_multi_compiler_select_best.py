@@ -237,7 +237,7 @@ ax.set_xticklabels(sizes)
 ax.set_xlabel("Size")
 ax.set_ylabel("Median Runtime (s)")
 ax.set_title(
-    "Median Runtime: Elementwise Op. w. Predicate + DaCe Vectorization Hints\n"
+    "Median Runtime: Elementwise Op. w. Predicate + + Vectra\n"
     "Base vs Best (veclen, copy/no_copy)"
 )
 

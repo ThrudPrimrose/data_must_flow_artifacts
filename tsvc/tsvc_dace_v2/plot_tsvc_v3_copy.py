@@ -593,7 +593,7 @@ for page in range(1):
                 [0], [0],
                 color=lighten_color(color, 0.5),
                 lw=6,
-                label=compiler_label_map[compiler] + " w. Hints"
+                label=compiler_label_map[compiler] + " + Vectra"
             )
         )
 

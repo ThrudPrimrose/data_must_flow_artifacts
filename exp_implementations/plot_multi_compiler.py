@@ -215,8 +215,8 @@ for intrin in ["_dace_intrin__", ""]:
             ax.set_yscale("log")
             ax.set_xlabel("Size")
             ax.set_ylabel("Median Runtime (ms)")
-            ax.set_title(f"Median Runtime: Exp Implementations + DaCe Vectorization Hints + " + 
-                        "Explicit Copy" if l == "w_cpy" else f"Median Runtime: Exp Implementations + DaCe Vectorization Hints + " + "No Copy")
+            ax.set_title(f"Median Runtime: Exp Implementations + + Vectra + " + 
+                        "Explicit Copy" if l == "w_cpy" else f"Median Runtime: Exp Implementations + + Vectra + " + "No Copy")
 
             ax.legend(
                 title="Variant + SDFG",

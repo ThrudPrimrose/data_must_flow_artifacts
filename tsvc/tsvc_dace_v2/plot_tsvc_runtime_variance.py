@@ -600,55 +600,60 @@ aligned = cpp.merge(
 
 aligned = aligned.sort_values("speedup_norm_cpp", ascending=False)
 
-plt.figure(figsize=(12, 4))
-x = range(len(aligned))
-
-plt.scatter(x, aligned["speedup_norm_cpp"], s=12, label="CPP")
-plt.scatter(x, aligned["speedup_norm_dace"], s=12, label="DACE")
-
-plt.axhline(1.0, linestyle="--")
-plt.xticks(x, aligned["kernel"], rotation=90)
-plt.xlabel("Kernel")
-plt.ylabel("Normalized speedup (max(gcc/llvm, llvm/gcc))")
-plt.title("Normalized compiler speedup: CPP vs DACE")
-plt.legend()
-plt.tight_layout()
-plt.savefig("compiler_speedup_cpp_vs_dace_normalized.pdf")
-plt.close()
-
-print("[OK] Saved compiler_speedup_cpp_vs_dace_normalized.pdf")
-
-
 # ==============================================================
 # 3) Min(CPP, DACE) normalized plot
 # ==============================================================
+K = 50  # number of points to plot
 
 aligned["speedup_norm_min_cpp_dace"] = np.minimum(
     aligned["speedup_norm_cpp"],
     aligned["speedup_norm_dace"],
 )
 
-plt.figure(figsize=(12, 4))
-x = range(len(aligned))
+plt.figure(figsize=(7, 3.3))
+x = range(K)
 
 plt.scatter(
     x,
-    aligned["speedup_norm_cpp"],
+    aligned["speedup_norm_cpp"].iloc[:K],
     s=12,
-    label="CPP",
+    label="C++ Baseline",
 )
-plt.scatter(x, aligned["speedup_norm_min_cpp_dace"], s=12, label="DACE")
-
+plt.scatter(
+    x,
+    aligned["speedup_norm_min_cpp_dace"].iloc[:K],
+    s=12,
+    label="C++ Baseline with Vectra",
+)
 
 plt.axhline(1.0, linestyle="--")
-plt.xticks(x, aligned["kernel"], rotation=90)
-plt.xlabel("Kernel")
-plt.ylabel("Normalized speedup (max(gcc/llvm, llvm/gcc))")
-plt.title("Normalized compiler speedup (min of CPP and DACE)")
+#plt.xticks(x, labels=[""] * K)
+plt.xticks([], [])
+plt.xlabel("Selected TSVC Kernels")
+plt.ylabel("Normalized Speedup\nMax(GCC/LLVM, LLVM/GCC)")
+plt.title("Performance Variability Between GCC and LLVM on TSVC Benchmarks")
+# Enable major and minor grids
+#plt.grid(which="major", axis="both", linestyle="--", linewidth=0.6, alpha=0.6)
+#plt.grid(which="minor", axis="both", linestyle=":", linewidth=0.4, alpha=0.4)
+plt.grid(which="major", axis="y", linestyle="--", linewidth=0.6, alpha=0.6)
+# Enable minor ticks (required for minor grid)
+#plt.minorticks_on()
+# Legend below the plot
+plt.legend(
+    loc="upper center",
+    bbox_to_anchor=(0.5, -0.13),
+    ncol=2,
+    frameon=True,
+    fontsize=9
+)
+
+# Extra bottom margin for legend
+
 plt.tight_layout()
+
 plt.savefig("compiler_speedup_min_cpp_dace_normalized.pdf")
 plt.close()
-
+exit(0)
 print("[OK] Saved compiler_speedup_min_cpp_dace_normalized.pdf")
 
 
