@@ -3,7 +3,7 @@ import os
 import pandas as pd
 from pathlib import Path
 import numpy as np
-
+import re
 # -------------------------------------------------------------------
 # CONFIG
 # -------------------------------------------------------------------
@@ -85,48 +85,114 @@ df_all = pd.concat(all_rows, ignore_index=True)
 
 # Ensure time_ns column is numeric
 df_all["time_ns"] = pd.to_numeric(df_all["time_ns"], errors="coerce")
-
-import re
+print("1=======")
+print(df_all)
+print("1=======")
 import re
 
 def normalize_name(name: str) -> str:
     """
     Normalize runtime entry names:
-      - sXXX_run_timed      -> cpp_sXXX
-      - sXXX[_cpy]          -> dace_sXXX
-      - dace_sXXX[_cpy]     -> dace_sXXX
-      - others              -> unchanged
+      - sXXX_run_timed   -> cpp_sXXX
+      - sXXX             -> dace_sXXX
+      - dace_sXXX        -> unchanged
+      - dace_sXXX_copy   -> dace_sXXX
+      - base_sXXX        -> dace_sXXX
+      - others           -> unchanged
     """
 
-    # ------------------------------------------------------------
-    # Strip optional '_cpy' suffix first
-    # ------------------------------------------------------------
-    base = re.sub(r"_cpy$", "", name)
-
-    # 1) s<digits>_run_timed -> cpp_s<digits>
-    m = re.fullmatch(r"s(\d+)_run_timed", base)
+    # 1) s<digits>_run_timed → cpp_s<digits>
+    m = re.fullmatch(r"s(\d+)_run_timed", name)
     if m:
         return f"cpp_s{m.group(1)}"
 
-    # 2) s<digits> -> dace_s<digits>
-    m = re.fullmatch(r"s(\d+)", base)
+    # 2) dace_s<digits>_copy → dace_s<digits>
+    m = re.fullmatch(r"dace_s(\d+)_cpy", name)
     if m:
         return f"dace_s{m.group(1)}"
 
-    # 3) dace_s<digits> -> keep as-is
-    m = re.fullmatch(r"dace_s(\d+)", base)
+    # 3) base_s<digits> → dace_s<digits>
+    m = re.fullmatch(r"base_s(\d+)", name)
     if m:
         return f"dace_s{m.group(1)}"
 
-    # 4) Otherwise leave unchanged
-    return base
+    # 4) s<digits> → dace_s<digits>
+    m = re.fullmatch(r"s(\d+)", name)
+    if m:
+        return f"dace_s{m.group(1)}"
 
+    # 5) dace_s<digits> → keep as-is
+    if re.fullmatch(r"dace_s\d+", name):
+        return name
+
+    # 6) Otherwise leave unchanged
+    return name
+
+def extract_kernel_id(name: str):
+    """
+    Returns (family, kernel)
+
+    family:
+      - "cpp"   for sXXX_run_timed
+      - "dace"  for base_sXXX, sXXX, sXXX_cpy, dace_sXXX, dace_sXXX_cpy
+
+    kernel:
+      - sXXX
+    """
+
+    # cpp baseline: separate family, same kernel
+    m = re.fullmatch(r"s(\d+)_run_timed", name)
+    if m:
+        return "cpp_" + f"s{m.group(1)}"
+
+    # dace family (all others you listed)
+    m = re.search(r"(?:^|_)(s\d+)", name)
+    if m:
+        return "dace_" + m.group(1)
+
+    return None
+
+print("2=======")
+print(df_all)
+print("2=======")
+
+df_all["kernel"] = df_all["name"].apply(extract_kernel_id)
+print("3=======")
+print(df_all)
+print("3=======")
+
+medians = (
+    df_all
+    .groupby(["compiler", "cluster", "kernel", "name"], as_index=False)
+    ["time_ns"]
+    .median()
+    .rename(columns={"time_ns": "median_time_ns"})
+)
+best = (
+    medians
+    .sort_values("median_time_ns")
+    .groupby(["compiler", "cluster", "kernel"], as_index=False)
+    .first()
+)
+df_best = df_all.merge(
+    best[["compiler", "cluster", "kernel", "name"]],
+    on=["compiler", "cluster", "kernel", "name"],
+    how="inner",
+)
+assert (
+    df_best
+    .groupby(["compiler", "cluster", "kernel"])["name"]
+    .nunique()
+    .max()
+    == 1
+)
+
+df_all = df_best
 # Apply normalization
 df_all["name"] = df_all["name"].astype(str).apply(normalize_name)
-
+#raise Exception(df_all)
 print("\n== Raw Combined DataFrame ==")
-print(df_all.head())
-print(df_all.tail())
+
 
 # -------------------------------------------------------------------
 # 3. Compute statistics per (compiler, cluster, name)
@@ -150,6 +216,7 @@ def split_name(name):
     if name.startswith("dace_s") or name.startswith("base_"):
         return "dace", name.replace("dace_", "").replace("base_", "")
     return None, None
+#raise Exception(summary)
 
 summary[["impl", "kernel"]] = summary["name"].apply(
     lambda n: pd.Series(split_name(n))
@@ -206,35 +273,37 @@ merged = best_per_kernel_impl.merge(
 assert (merged["median_ns_chosen"] == merged["median_ns_min"]).all()
 
 # Get median time per compiler and CPU per test
-kernel_median_values = (
-    best_per_kernel_impl
-    .melt(
-        id_vars=["cluster", "kernel", "compiler"],
-        value_vars=["median_ns", "median_cpp_ns"],
-        value_name="value",
-    )
-    .dropna(subset=["value"])
-)
-print(kernel_median_values)
 compiler_cluster_kernel_median = (
-    kernel_median_values
-    .groupby(["cluster", "kernel", "compiler"])
+    best_per_kernel_impl
+    .groupby(["compiler", "cluster", "kernel"])
     .agg(
-        median_kernel_ns=("value", "median"),
-        num_values=("value", "count"),
+        median_kernel_ns=("median_ns", "median"),
+        num_impls=("impl", "nunique"),
     )
     .reset_index()
 )
-print(compiler_cluster_kernel_median)
+compiler_cluster_kernel_cpp_median = (
+    best_per_kernel_impl
+    .groupby(["compiler", "cluster", "kernel"])
+    .agg(
+        median_kernel_cpp_ns=("median_cpp_ns", "median"),
+        num_impls=("impl", "nunique"),
+    )
+    .reset_index()
+)
 best_per_kernel_impl = best_per_kernel_impl.merge(
     compiler_cluster_kernel_median,
     on=["compiler", "cluster", "kernel"],
     how="left"
 )
-#raise Exception(compiler_cluster_kernel_median)
-
+best_per_kernel_impl = best_per_kernel_impl.merge(
+    compiler_cluster_kernel_cpp_median,
+    on=["compiler", "cluster", "kernel"],
+    how="left"
+)
 best_per_kernel_impl["norm_runtime"] = (
-    best_per_kernel_impl["median_ns"] / best_per_kernel_impl["median_kernel_ns"]
+    best_per_kernel_impl["median_ns"] /
+    best_per_kernel_impl["median_kernel_ns"]
 )
 best_per_kernel_impl["speedup_over_median"] = np.where(
     (best_per_kernel_impl["median_ns"] > 0) &
@@ -244,38 +313,20 @@ best_per_kernel_impl["speedup_over_median"] = np.where(
 )
 best_per_kernel_impl["norm_cpp_runtime"] = (
     best_per_kernel_impl["median_cpp_ns"] /
-    best_per_kernel_impl["median_kernel_ns"]
+    best_per_kernel_impl["median_kernel_cpp_ns"]
 )
 best_per_kernel_impl["speedup_over_cpp_median"] = np.where(
     (best_per_kernel_impl["median_cpp_ns"] > 0) &
-    (best_per_kernel_impl["median_kernel_ns"] > 0),
-    best_per_kernel_impl["median_kernel_ns"] / best_per_kernel_impl["median_cpp_ns"],
+    (best_per_kernel_impl["median_kernel_cpp_ns"] > 0),
+    best_per_kernel_impl["median_kernel_cpp_ns"] / best_per_kernel_impl["median_cpp_ns"],
     0.0
-)
-RTOL = 1e-6
-ATOL = 1e-9
-# For each kernel group, check if any impl matches the median
-median_match = (
-    best_per_kernel_impl
-    .groupby(["compiler", "cluster", "kernel"])
-    .apply(
-        lambda df: np.any(
-            np.isclose(
-                df["median_ns"],
-                df["median_kernel_ns"],
-                rtol=RTOL,
-                atol=ATOL,
-            )
-        )
-    )
 )
 #best_per_kernel_impl[best_per_kernel_impl["speedup_over_median"] > 0.0]
 
 # Drop 0 runtimes
-best_per_kernel_impl = best_per_kernel_impl[best_per_kernel_impl["kernel"] != "s242"]
+#best_per_kernel_impl = best_per_kernel_impl[best_per_kernel_impl["kernel"] != "s242"]
 best_per_kernel_impl = best_per_kernel_impl[best_per_kernel_impl["kernel"] != "s273"]
-best_per_kernel_impl = best_per_kernel_impl[best_per_kernel_impl["kernel"] != "s115"]
-best_per_kernel_impl = best_per_kernel_impl[best_per_kernel_impl["kernel"] != "s441"]
+#best_per_kernel_impl = best_per_kernel_impl[best_per_kernel_impl["kernel"] != "s115"]
 #best_per_kernel_impl = best_per_kernel_impl[best_per_kernel_impl["kernel"] != "s175"]
 print(best_per_kernel_impl)
 plot_df = best_per_kernel_impl
@@ -284,8 +335,7 @@ kernels = sorted(plot_df["kernel"].unique())
 # ------------------------------------------------------------
 # Filter kernels with insufficient speedup
 # ------------------------------------------------------------
-MIN_SPEEDUP = 1.34
-INV_MIN_SPEEDUP = 0.75
+MIN_SPEEDUP = 1.25
 
 # Compute max speedup per kernel
 kernel_max_speedup = (
@@ -296,10 +346,10 @@ kernel_max_speedup = (
 
 # Keep only kernels that show a meaningful speedup
 valid_kernels = kernel_max_speedup[
-    (kernel_max_speedup > MIN_SPEEDUP) | (kernel_max_speedup < INV_MIN_SPEEDUP)
+    kernel_max_speedup > MIN_SPEEDUP
 ].index
 invalid_kernels = kernel_max_speedup[
-    (kernel_max_speedup <= MIN_SPEEDUP) | (kernel_max_speedup >= INV_MIN_SPEEDUP)
+    kernel_max_speedup <= MIN_SPEEDUP
 ].index
 
 print("VALID KERNELS")
@@ -313,18 +363,11 @@ print("TOTAL:", len(valid_kernels) +  len(invalid_kernels))
 mask = plot_df["kernel"].isin(valid_kernels)
 print(mask.value_counts())
 # Filter dataframe
-closest_kernel = (kernel_max_speedup - 1.0).abs().idxmin()
-valid_kernels = set(valid_kernels)
-valid_kernels.add(closest_kernel)
 plot_df = plot_df[plot_df["kernel"].isin(valid_kernels)].copy()
 
 
-dropped = kernel_max_speedup[kernel_max_speedup < MIN_SPEEDUP]
 
-plot_df.loc[
-    plot_df["kernel"] == closest_kernel,
-    "kernel"
-] = "s*"
+dropped = kernel_max_speedup[kernel_max_speedup < MIN_SPEEDUP]
 
 print("=" * 80)
 print("Dropped kernels (no speedup ≥ 1.05):")
@@ -346,6 +389,7 @@ from matplotlib.lines import Line2D
 # ------------------------------------------------------------
 # Configuration
 # ------------------------------------------------------------
+KERNELS_PER_ROW = 6
 BAR_WIDTH = 0.12
 BAR_ALPHA = 0.8
 
@@ -395,18 +439,9 @@ kernels = sorted(plot_df["kernel"].unique())
 #n_pages = math.ceil(len(kernels) / KERNELS_PER_ROW)
 kernels = sorted(plot_df["kernel"].unique())
 
-N_COLS = 5
+N_COLS = 6
 N_ROWS = math.ceil(len(kernels) / N_COLS)
 
-def kernel_sort_key(k):
-    if k == "s*":
-        return (float("inf"),)   # always last
-    # extract integer part from sXXX
-    return (int(k[1:]),)
-kernels = sorted(
-    plot_df["kernel"].unique(),
-    key=kernel_sort_key
-)
 
 best_choices = {}
 for page in range(1):
@@ -415,17 +450,17 @@ for page in range(1):
     fig, axes = plt.subplots(
         N_ROWS,
         N_COLS,
-        figsize=(1.6 * N_COLS, 1.4 * N_ROWS),
+        figsize=(1.6 * N_COLS, 1.2 * N_ROWS),
         squeeze=False
     )
 
     fig.subplots_adjust(
-        left=0.043,
-        right=0.965,
-        bottom=0.125,
-        top=0.945,
+        left=0.023,
+        right=0.985,
+        bottom=0.055,
+        top=0.975,
         wspace=0.32,
-        hspace=0.5
+        hspace=0.46
     )
     axes_flat = axes.flatten()
     for ax, kernel in zip(axes_flat, page_kernels):
@@ -455,9 +490,7 @@ for page in range(1):
                     ]
 
                     if row.empty:
-                        raise Exception(df_cpu, row)
-                        #raise Exception(row)
-                        #continue
+                        continue
 
                     x = (
                         base_x[cpu]
@@ -510,7 +543,7 @@ for page in range(1):
         ax.axhline(1.0, linestyle="--", linewidth=0.8)
         ymax = df_k["speedup_over_median"].max()
         #upper = math.ceil((ymax + 0.24) / 0.5) * 0.5
-        upper = math.ceil((ymax + 0.4) / 0.5) * 0.5
+        upper = math.ceil(ymax / 0.5) * 0.5
         ax.set_ylim(-0.001, upper + 0.001)
 
         #ax.set_yscale("log")
@@ -568,7 +601,7 @@ for page in range(1):
     fig.legend(
         handles=legend_handles,
         loc="lower center",
-        ncol=len(legend_handles)//2,
+        ncol=len(legend_handles),
         fontsize=8,
         frameon=True,
         handlelength=1.8,
@@ -576,7 +609,6 @@ for page in range(1):
     )
 
     plt.savefig(f"speedup_over_median_page_{page}_filtered.pdf")
-    plt.savefig(f"speedup_over_median_page_{page}_filtered.png")
     plt.close()
 
 
