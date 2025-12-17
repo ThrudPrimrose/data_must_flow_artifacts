@@ -170,7 +170,7 @@ def plot_scatter(folder1, folder2):
     print(configs)
 
 
-    plt.figure(figsize=(14, 6))
+    plt.figure(figsize=(7*1.2, 3*1.2))
 
     markers = ["o", "s", "^", "D", "v", ">", "<", "p", "x", "*"]
     colors = plt.rcParams["axes.prop_cycle"].by_key()["color"]
@@ -214,7 +214,7 @@ def plot_scatter(folder1, folder2):
             marker=markers[i % len(markers)],
             s=45,
             alpha=0.85,
-            label=f"VL={vlen}",
+            label=f"VL={vlen} Elements",
         )
 
     df_valid["config_label"] = (
@@ -234,8 +234,8 @@ def plot_scatter(folder1, folder2):
         .drop_duplicates("dense_config")
         .set_index("dense_config")["config_label"]
     )
-    plt.xlabel("Configuration")
-    plt.ylabel("Performance (% of Roofline)")
+    plt.xlabel("Vector Unit and L1 Configuration")
+    plt.ylabel("Performance (% of Roofline)", fontsize=12)
     plt.title("Roofline Efficiency per Vector Unit and L1 Configuration")
     plt.xticks(
         configs_dense,
@@ -244,13 +244,6 @@ def plot_scatter(folder1, folder2):
     )
     plt.grid(True, linestyle="--", alpha=0.4)
     plt.tight_layout(rect=[0, 0.12, 1, 1])
-    ltt = plt.gcf().text(
-        0.5 - 0.04 * 3 ,  # auto-ish left shift
-        0.1125,
-        "Vector Length:",
-        ha="right",
-        va="center"
-    )
     plt.legend(
         loc="upper center",
         bbox_to_anchor=(0.5, -0.48),
@@ -268,23 +261,15 @@ def plot_scatter(folder1, folder2):
         [f"C{i}" for (i, c) in enumerate(config_labels.loc[configs_dense].values)],
         rotation=90
     )
-    ltt.remove()
-    ltt2 = plt.gcf().text(
-        0.5 - 0.04 * 3 ,  # auto-ish left shift
-        0.145,
-        "Vector Length:",
-        ha="right",
-        va="center"
-    )
+    plt.ylim(-0.1, YLIM)
     plt.legend(
         loc="upper center",
-        bbox_to_anchor=(0.5, -0.175),
+        bbox_to_anchor=(0.5, -0.245),
         ncol=len(vector_lengths),
     )
     plt.tight_layout(rect=[0, 0.12, 1, 1])
     plt.savefig("configs_name_v2.png")
     plt.savefig("configs_name_v2.pdf")
-    ltt2.remove()
 
     df["Performance % wrt. Roofline"] = (
         df["Performance % of Roofline"].astype(float)
