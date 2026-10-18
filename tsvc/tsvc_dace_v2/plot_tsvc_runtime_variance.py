@@ -283,7 +283,7 @@ variants = {
         "impl": "cpp",
         "name_prefix": ("cpp_",),
         "outfile": "gcc_over_llvm_cpp.pdf",
-        "title": "GCC speedup over LLVM (CPP variants)",
+        "title": "GCC speedup over LLVM on TSVC 2 Benchmarks",
     },
     "dace": {
         "impl": "dace",
@@ -339,10 +339,15 @@ for tag, cfg in variants.items():
     )
 
     plt.axhline(1.0, linestyle="--")
-    plt.xticks(x, df_sorted["kernel"], rotation=90)
-    plt.xlabel("Kernel")
-    plt.ylabel("Speedup (llvm / gcc)")
+    #plt.xticks(x, df_sorted["kernel"], rotation=90)
+    plt.xlabel("TSVC 2 Kernels")
+    plt.ylabel("Speedup (GCC over LLVM)")
     plt.title(cfg["title"])
+    plt.minorticks_on()
+    ax = plt.gca()
+    ax.grid(True, which="major", axis="y", linewidth=0.8)
+    ax.grid(True, which="minor", axis="y", linestyle=":", linewidth=0.25)
+    plt.xticks([], [])
     plt.tight_layout()
     plt.savefig(cfg["outfile"])
     plt.close()
@@ -421,7 +426,7 @@ plt.scatter(
 plt.axhline(1.0, linestyle="--")
 plt.xticks(x, aligned["kernel"], rotation=90)
 plt.xlabel("Kernel")
-plt.ylabel("Speedup (llvm / gcc)")
+plt.ylabel("Speedup (GCC over LLVM)")
 plt.title("GCC speedup over LLVM: CPP vs DACE (aligned by kernel)")
 plt.legend()
 plt.tight_layout()
@@ -474,7 +479,7 @@ plt.scatter(
 plt.axhline(1.0, linestyle="--")
 plt.xticks(x, aligned["kernel"], rotation=90)
 plt.xlabel("Kernel")
-plt.ylabel("Speedup (llvm / gcc)")
+plt.ylabel("Speedup (GCC over LLVM)")
 plt.title("GCC speedup over LLVM (min of CPP and DACE)")
 plt.tight_layout()
 plt.savefig("gcc_over_llvm_min_cpp_dace.pdf")

@@ -34,7 +34,7 @@ from dace.transformation.passes import InlineSDFGs
 from dace.transformation.passes.remove_redundant_copy_tasklets import RemoveReduntantCopyTasklets
 from dace.transformation.passes.split_tasklets import SplitTasklets
 from run_and_compare import run_and_compare
-from dace.transformation.passes.clean_data_to_scalar_slice_to_tasklet_pattern import CleanDataToScalarSliceToTaskletPattern
+from dace.transformation.passes.clean_access_node_to_scalar_slice_to_tasklet_pattern import CleanAccessNodeToScalarSliceToTaskletPattern
 from dace.transformation.passes.split_tasklets import SplitTasklets
 from dace.transformation.passes.vectorization.tasklet_preprocessing_passes import PowerOperatorExpansion, RemoveFPTypeCasts, RemoveIntTypeCasts
 from dace.transformation.passes.vectorization.lower_interstate_conditional_assignments_to_tasklets import LowerInterstateConditionalAssignmentsToTasklets
@@ -283,7 +283,7 @@ assert run_and_compare(original_sdfg, sdfg), "Stage 6 SplitTasklets (1/2)"
 print("Stage 6 SplitTasklets- (2/2)")
 assert run_and_compare(original_sdfg, sdfg), "Stage 6 SplitTasklets (2/2)"
 
-CleanDataToScalarSliceToTaskletPattern().apply_pass(sdfg, {})
+CleanAccessNodeToScalarSliceToTaskletPattern().apply_pass(sdfg, {})
 sdfg.validate()
 sdfg.save("stage6_wip.sdfgz", compress=True)
 print("Stage 6 CleanDataToScalarSliceToTasklet- (1/2)")
